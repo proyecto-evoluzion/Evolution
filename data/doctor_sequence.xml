@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+	<data noupdate="1">
+
+		<!-- Sequence type for attention -->
+		<record model="ir.sequence" id="seq_type_doctor_presurgical_record">
+			<field name="name">Pre-Surgical Record sequence</field>
+			<field name="code">doctor.presurgical.record</field>
+			<field name="prefix"></field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+		</record>
+		
+	</data>
+</odoo>

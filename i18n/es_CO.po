@@ -1,0 +1,1419 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* clinica_doctor_data
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-22 05:27+0000\n"
+"PO-Revision-Date: 2019-05-22 05:27+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
+msgid ", Age:"
+msgstr ", Edad:"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_goldman:0
+msgid "0-5 Points: Class I 1% Complications"
+msgstr "0-5 Points: Class I 1% Complications"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_goldman:0
+msgid "13-25 Points: Class III 14% Complications"
+msgstr "13-25 Points: Class III 14% Complications"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_goldman:0
+msgid "26-53 Points: Class IV 78% Complications"
+msgstr "26-53 Points: Class IV 78% Complications"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_goldman:0
+msgid "6-12 Points: Class II 7% Complications"
+msgstr "6-12 Points: Class II 7% Complications"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_asa
+msgid "A.S.A"
+msgstr "A.S.A"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,blood_type:0
+#: selection:doctor.presurgical.record,blood_type:0
+msgid "AB"
+msgstr "AB"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "AS - Unidentified Adult"
+msgstr "AS - Unidentified Adult"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_asa:0
+msgid "ASA 1"
+msgstr "ASA 1"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_asa:0
+msgid "ASA 2"
+msgstr "ASA 2"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_asa:0
+msgid "ASA 3"
+msgstr "ASA 3"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_asa:0
+msgid "ASA 4"
+msgstr "ASA 4"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_asa:0
+msgid "ASA 5"
+msgstr "ASA 5"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Accompany Person's Details"
+msgstr "Datos del Responsable y el Acompañante"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_accompany_phone
+msgid "Accompany Person's Phone Number"
+msgstr "Número de Teléfono de la Persona Acompañante"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_accompany_relationship
+msgid "Accompany Person's Relationship"
+msgstr "Acompañar la relación de la persona"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Address"
+msgstr "Dirección"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_administrative_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_administrative_data
+msgid "Administrative Data"
+msgstr "Administrative Data"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Administrative Data Form"
+msgstr "Administrative Data Form"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_age
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Age"
+msgstr "Edad"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_albumin
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Albumin"
+msgstr "Albumin"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_is_alcoholic
+msgid "Alcoholic Drinks"
+msgstr "Bebidas Alcohólicas"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_allergic
+msgid "Allergic"
+msgstr "Alergicos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_assurance_partner_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_assurance_partner_id
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
+msgid "Assurance Company"
+msgstr "Aseguradora"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Assurance Details"
+msgstr "Detalles de Aseguramiento"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_assurance_plan
+msgid "Assurance Plan"
+msgstr "Assurance Plan"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.assurance_plan_form
+msgid "Assurance Plan Form"
+msgstr "Assurance Plan Form"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.assurance_plan_tree
+msgid "Assurance Plan Tree"
+msgstr "Assurance Plan Tree"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_assurance_plan
+msgid "Assurance Plans"
+msgstr "Planes de Aseguramiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_attention_code_id
+msgid "Attention Code"
+msgstr "Código de la Consulta"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_number
+msgid "Attention number"
+msgstr "Atención Nº"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Aunt"
+msgstr "Tia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_birth_date
+msgid "Birth Date"
+msgstr "Fecha de Nacimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
+msgid "Birth Date:"
+msgstr "Fecha de Nacimiento:"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Blood Count"
+msgstr "Caudra Hemática"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_blood_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_blood_type
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Blood Type"
+msgstr "Tipo de sangre"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
+msgid "Blood Type:"
+msgstr "Blood Type:"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_body_background_others
+msgid "Body Background Others"
+msgstr "Body Background Others"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "CC - ID Document"
+msgstr "CC - ID Document"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "CE - Aliens Certificate"
+msgstr "CE - Aliens Certificate"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_cups_code
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_cups_code
+msgid "CUPS Code"
+msgstr "CUPS Code"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,civil_state:0
+msgid "Casada/o"
+msgstr "Casada/o"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cigarate_daily
+msgid "Cigarettes / Day"
+msgstr "Cigarrillos / Dia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_civil_state
+msgid "Civil Status"
+msgstr "Estado Civil"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,help:clinica_doctor_data.action_doctor_administrative_data
+msgid "Click to create doctor datas."
+msgstr "Click to create doctor datas."
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Cm"
+msgstr "Cm"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cocaine
+msgid "Cocaine"
+msgstr "Cocaina"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_code
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_code
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_patient_occupation_filter
+msgid "Code"
+msgstr "Código"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,disease_state:0
+msgid "Confirmado Nuevo"
+msgstr "Confirmado Nuevo"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Contact Information"
+msgstr "Información de contacto"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,user_type:0
+msgid "Contributivo"
+msgstr "Contributivo"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_contrtaceptive_methods
+msgid "Contrtaceptive Methods"
+msgstr "Método de planificación"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Country"
+msgstr "País"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_birth_country_id
+msgid "Country of Birth"
+msgstr "País de nacimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_create_date
+msgid "Created on"
+msgstr "Creado"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_creatinine
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Creatinine"
+msgstr "Creatinine"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Date of Exam"
+msgstr "Fecha de los exámenes"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_birth_date
+msgid "Date of Last Birth"
+msgstr "Fecha del último parto"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_menstruation_date
+msgid "Date of Last Menstruation"
+msgstr "Fecha de última menstruación"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_date_attention
+msgid "Date of attention"
+msgstr "Fecha de atención"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,age_meassure_unit:0
+#: selection:doctor.presurgical.record,age_meassure_unit:0
+msgid "Days"
+msgstr "Días"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Department"
+msgstr "Departamento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_id
+msgid "Diagnosis"
+msgstr "Diagnosis"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_diastolic_artery_presure
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Diastolic Artery Pressure"
+msgstr "Diastolic Artery Pressure"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_differential
+msgid "Differential"
+msgstr "Diferencial"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state
+msgid "Disease Status"
+msgstr "Disease Status"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_diseases
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_diseases
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_cups_code_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_cups_code_tree
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_diseases_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_diseases_tree
+msgid "Diseases"
+msgstr "Diagnósticos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_display_name
+msgid "Display Name"
+msgstr "Nombre Público"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_details
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_details
+msgid "Doctor"
+msgstr "Doctor"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_tree
+msgid "Doctor Administrative Data Tree"
+msgstr "Doctor Administrative Data Tree"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_config_details
+msgid "Doctor Configuration"
+msgstr "Configuración Módulo"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Doctor Details"
+msgstr "Doctor Details"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_process
+msgid "Doctor Process"
+msgstr "Procesos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
+msgid "Doctor Tree"
+msgstr "Doctor Tree"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor
+msgid "Doctors"
+msgstr "Doctors"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_ecg
+msgid "E.C.G"
+msgstr "E.C.G"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_ecstasy
+msgid "Ecstasy"
+msgstr "Éxtasis"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Electrocardiogram"
+msgstr "Electrocardiogram"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_email
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_email
+msgid "Email"
+msgstr "Email"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_fc
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "FC"
+msgstr "FC"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_fr
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "FR"
+msgstr "FR"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Father"
+msgstr "Padre"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,gender:0
+#: selection:doctor.doctor,gender:0
+#: selection:doctor.presurgical.record,gender:0
+msgid "Female"
+msgstr "Female"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_first_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_first_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_last_name
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "First Last Name"
+msgstr "Primer Apellido"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_first_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_first_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_name
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "First Name"
+msgstr "Primer Nombre"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_alcohol_frequency
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Friend"
+msgstr "Amigo/a"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_goldman
+msgid "GOLDMAN"
+msgstr "GOLDMAN"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_gender
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_gender
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_gender
+msgid "Gender"
+msgstr "Género"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
+msgid "Gender:"
+msgstr "Gender:"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_glob
+msgid "Glob"
+msgstr "Glob"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_glycemia
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Glycemia"
+msgstr "Glycemia"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Grand Father"
+msgstr "Abuelo"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Grand Mother"
+msgstr "Abuela"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
+msgid "Group By"
+msgstr "Agrupar por"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_hb
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "HB"
+msgstr "HB"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_product_id
+#: model:ir.ui.view,arch_db:clinica_doctor_data.product_normal_form_view_inherit_health_procedures
+msgid "Health Procedure"
+msgstr "Procedimiento en salud"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_health_procedures
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_health_procedures
+msgid "Health Procedures"
+msgstr "Procedimientos en salud"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_hto
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Hto (Hematocrit)"
+msgstr "Hto (Hematrocrito)"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_id
+msgid "ID"
+msgstr "ID"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_body_mass_index
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "IMC (Body Mass Index)"
+msgstr "IMC (Indice de Masa Corporal)"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_image
+msgid "Image"
+msgstr "Imagen"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,disease_state:0
+msgid "Impresión Diagnóstica"
+msgstr "Impresión Diagnóstica"
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_details.py:77
+#: code:addons/clinica_doctor_data/models/doctor_details.py:314
+#, python-format
+msgid "Invalid Email ! Please enter a valid email address."
+msgstr "Invalid Email ! Please enter a valid email address."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:158
+#: code:addons/clinica_doctor_data/models/doctor_details.py:288
+#, python-format
+msgid "Invalid birth date!"
+msgstr "Invalid birth date!"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.product_normal_form_view_inherit_health_procedures
+msgid "Is Health Procedure?"
+msgstr "¿Es un procedimiento en salud?"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Kg"
+msgstr "Kg"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_type
+msgid "Kind"
+msgstr "Tipo"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record___last_update
+msgid "Last Modified on"
+msgstr "Última Modificación el"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_write_date
+msgid "Last Updated on"
+msgstr "Actualizado"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_leukocytes
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Leukocytes"
+msgstr "Leucocitos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Location/City/Town"
+msgstr "Municipio"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_birth_city_id
+msgid "Location/City/Town of Birth"
+msgstr "Municipio de nacimiento"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "MS - Unidentified Minor"
+msgstr "MS - Unidentified Minor"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,gender:0
+#: selection:doctor.doctor,gender:0
+#: selection:doctor.presurgical.record,gender:0
+msgid "Male"
+msgstr "Male"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_marijuana
+msgid "Marijuana"
+msgstr "Marihuana"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_medical_recipe
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Medical Orders and Recipe"
+msgstr "Ordenes médicas y Receta"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_image_medium
+msgid "Medium-sized image"
+msgstr "Imagen de tamaño mediano"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_doctor_administrative_data_image_medium
+msgid "Medium-sized image of this contact. It is automatically resized as a 128x128px image, with aspect ratio preserved. Use this field in form views or some kanban views."
+msgstr "Imagen mediana de este contacto. Se redimensiona automáticamente a 128x128px, con el ratio de aspecto preservado. Se usa este campo en las vistas formulario y en algunas vistas kanban."
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,age_meassure_unit:0
+#: selection:doctor.presurgical.record,age_meassure_unit:0
+msgid "Months"
+msgstr "Meses"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Mother"
+msgstr "Madre"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_accompany_name
+msgid "Name of the companion"
+msgstr "Nombre del Acompañante"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_numberid
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
+msgid "Number ID"
+msgstr "Número de Identificación"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_numberid_integer
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_numberid_integer
+msgid "Number ID for TI or CC Documents"
+msgstr "Number ID for TI or CC Documents"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_abortion_number
+msgid "Number of Abortions"
+msgstr "Número de abortos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_child_number
+msgid "Number of Children"
+msgstr "Número de hijos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pregnancy_number
+msgid "Number of Pregnancies"
+msgstr "Número de embarazos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_occupation_id
+msgid "Occupation"
+msgstr "Ocupación"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Other"
+msgstr "Otro Cual"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_other_accompany_relationship
+msgid "Other Accompany Person's Relationship"
+msgstr "Relación de otra persona acompañante"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Other Personal Information"
+msgstr "Otros Datos Personales"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Other Relationship"
+msgstr "Other Relationship"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_other_responsible_relationship
+msgid "Other Responsible Person's Relationship"
+msgstr "Other Responsible Person's Relationship"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Others"
+msgstr "Otros"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "PA - Passport"
+msgstr "PA - Passport"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_pt
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "PT"
+msgstr "PT"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_ptt
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "PTT"
+msgstr "PTT"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Paraclinical Exam"
+msgstr "Examenes Paraclínicos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_exam_date
+msgid "Paraclinical Exam Date"
+msgstr "Paraclinical Exam Date"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_others
+msgid "Paraclinical Others"
+msgstr "Paraclinical Others"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_doctor_administrative_data_partner_id
+msgid "Partner-related data of administrative data "
+msgstr "Partner-related data of administrative data "
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_doctor_doctor_partner_id
+msgid "Partner-related data of doctor "
+msgstr "Partner-related data of doctor "
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pathological
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Pathological"
+msgstr "Patológicos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_patient_id
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_filter
+msgid "Patient"
+msgstr "Paciente"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Patient Background"
+msgstr "Patient Background"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Patient Details"
+msgstr "Detalles del Paciente"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_patient_name
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
+msgid "Patient Name"
+msgstr "Patient Name"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_patient_occupation
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_patient_profession
+msgid "Patient Occupation"
+msgstr "Patient Occupation"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_patient_occupation_form
+msgid "Patient Occupation Form"
+msgstr "Patient Occupation Form"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_patient_occupation_tree
+msgid "Patient Occupation Tree"
+msgstr "Patient Occupation Tree"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pharmacological
+msgid "Pharmacological"
+msgstr "Farmacológicos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_phone
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_phone
+msgid "Phone Number"
+msgstr "Número de Teléfono"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Physical Details"
+msgstr "Physical Details"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_exam
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Physical Exam"
+msgstr "Examen Físico"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Place of Birth"
+msgstr "Lugar de Nacimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Place of Residence"
+msgstr "Lugar de Residencia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_name
+msgid "Plan"
+msgstr "Plan"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_code
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
+msgid "Plan Code"
+msgstr "Plan Code"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_plan_analysis
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Plan, Analysis and Conduct"
+msgstr "Plan, Análisis y Conducta"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
+msgid "Plans"
+msgstr "Planes"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_platelets
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Platelets"
+msgstr "Plaquetas"
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:183
+#: code:addons/clinica_doctor_data/models/doctor_details.py:320
+#, python-format
+msgid "Please enter non zero value for Number ID"
+msgstr "Please enter non zero value for Number ID"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_presurgical_record
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
+msgid "Pre-surgical Records"
+msgstr "Pre-surgical Records"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Presurgical Form"
+msgstr "Presurgical Form"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_tree
+msgid "Presurgical Tree"
+msgstr "Presurgical Tree"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,disease_type:0
+msgid "Principal"
+msgstr "Principal"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_process_id
+msgid "Process"
+msgstr "Procedimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_product_product
+msgid "Product"
+msgstr "Producto"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_patient_occupation_filter
+msgid "Profession"
+msgstr "Profesión"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Pruebas Coogulacian"
+msgstr "Pruebas Coogulacian"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Quimico Sanguinea"
+msgstr "Quimico Sanguinea"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "RC - Civil Registry"
+msgstr "RC - Civil Registry"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_consultation_reason
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Reason for Consultation"
+msgstr "Motivo de Consulta"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,disease_type:0
+msgid "Relacionado"
+msgstr "Relacionado"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Related Contact"
+msgstr "Related Contact"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_partner_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_partner_id
+msgid "Related Partner"
+msgstr "Empresa relacionada"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Relationship"
+msgstr "Parentesco"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_residence_address
+msgid "Residence Address"
+msgstr "Dirección de residencia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_residence_country_id
+msgid "Residence Country"
+msgstr "País de Residencia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_residence_department_id
+msgid "Residence Department"
+msgstr "Departamento de residencia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_residence_city_id
+msgid "Residence Location/City/Town"
+msgstr "Residencia municipio"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Responsible Person's Details"
+msgstr "Datos de la Persona Responsable"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_responsible_name
+msgid "Responsible Person's Name"
+msgstr "Nombre del Responsable"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_responsible_phone
+msgid "Responsible Person's Phone Number"
+msgstr "Número de Teléfono de la Persona Responsable"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_responsible_relationship
+msgid "Responsible Person's Relationship"
+msgstr "Relación de la persona responsable"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_blood_rh
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_blood_rh
+msgid "Rh"
+msgstr "Rh"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_rx_chest
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Rx. Chest"
+msgstr "Rx. Torax"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "S (seconds)"
+msgstr "S (seconds)"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
+msgid "Search Administrative Data"
+msgstr "Search Administrative Data"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
+msgid "Search Assurancen Plans"
+msgstr "Buscar Planes Assurancen"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_doctor_filter
+msgid "Search Doctor"
+msgstr "Search Doctor"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_patient_occupation_filter
+msgid "Search Patient Occupation"
+msgstr "Search Patient Occupation"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_filter
+msgid "Search Presurgical"
+msgstr "Search Presurgical"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_second_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_second_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_last_name
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
+msgid "Second Last Name"
+msgstr "Segundo Apellido"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_second_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_second_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_name
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
+msgid "Second Name"
+msgstr "Segundo Nombre"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,civil_state:0
+msgid "Separada/o"
+msgstr "Separada/o"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_sistolic_arteric_presure
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Sistolic Arteric Pressure"
+msgstr "Sistolic Arteric Pressure"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_size
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Size"
+msgstr "Tamaño"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_image_small
+msgid "Small-sized image"
+msgstr "Imagen de tamaño pequeño"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_doctor_administrative_data_image_small
+msgid "Small-sized image of this contact. It is automatically resized as a 64x64px image, with aspect ratio preserved. Use this field anywhere a small image is required."
+msgstr "Imagen de tamaño pequeño de este contacto. Se redimensiona automáticamente a 64x64px, con el ratio de aspecto preservado. Use este campo donde se requiera una imagen pequeña."
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_smoke
+msgid "Smoke"
+msgstr "Fuma"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,civil_state:0
+msgid "Soltera/o"
+msgstr "Soltera/o"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "State"
+msgstr "Estado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,user_type:0
+msgid "Subsidiado"
+msgstr "Subsidiado"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_surgical
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Surgical"
+msgstr "Quirúrgicos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "TA"
+msgstr "TA"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_tc
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "TC"
+msgstr "TC"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.doctor,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "TI - Identity Card"
+msgstr "TI - Identity Card"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_doctor_administrative_data_image
+msgid "This field holds the image used as avatar for this contact, limited to 1024x1024px"
+msgstr "Este campo contiene la imagen utilizada como avatar para este contacto, limitada a 1024x1024px"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_doctor_id
+msgid "Treating Doctor"
+msgstr "Médico Tratante"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_document_type
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
+msgid "Type of Document"
+msgstr "Tipo de Documento"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,accompany_relationship:0
+#: selection:doctor.administrative.data,responsible_relationship:0
+msgid "Uncle"
+msgstr "Tio"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_age_meassure_unit
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age_meassure_unit
+msgid "Unit of Measure of Age"
+msgstr "Unidad de Medida de la edad"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,civil_state:0
+msgid "Unión libre"
+msgstr "Unión libre"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_user_type
+msgid "User Type"
+msgstr "Tipo de Usuario"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_vsg
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "VSG"
+msgstr "VSG"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,user_type:0
+msgid "Vinculado"
+msgstr "Vinculado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,civil_state:0
+msgid "Viuda/o"
+msgstr "Viuda/o"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Vol %"
+msgstr "Vol %"
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:169
+#: code:addons/clinica_doctor_data/models/doctor_details.py:299
+#, python-format
+msgid "Warning!"
+msgstr "Warning!"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_weight
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Weight"
+msgstr "Peso"
+
+#. module: clinica_doctor_data
+#: selection:doctor.administrative.data,age_meassure_unit:0
+#: selection:doctor.presurgical.record,age_meassure_unit:0
+msgid "Years"
+msgstr "Años"
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:200
+#: code:addons/clinica_doctor_data/models/doctor_details.py:337
+#, python-format
+msgid "You can choose 'AS' document only if the age is greater than 17 years."
+msgstr "You can choose 'AS' document only if the age is greater than 17 years."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:198
+#: code:addons/clinica_doctor_data/models/doctor_details.py:335
+#, python-format
+msgid "You can only choose 'MS' document for age between 1 to 30 days."
+msgstr "You can only choose 'MS' document for age between 1 to 30 days."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:192
+#: code:addons/clinica_doctor_data/models/doctor_details.py:329
+#, python-format
+msgid "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
+msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:196
+#: code:addons/clinica_doctor_data/models/doctor_details.py:333
+#, python-format
+msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
+msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:194
+#: code:addons/clinica_doctor_data/models/doctor_details.py:331
+#, python-format
+msgid "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
+msgstr "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_assurance_plan
+msgid "assurance.plan"
+msgstr "assurance.plan"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "b/m"
+msgstr "b/m"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,disease_state:0
+msgid "confirmado repetido"
+msgstr "confirmado repetido"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_form
+msgid "doctor Form"
+msgstr "doctor Form"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_doctor_administrative_data
+msgid "doctor.administrative.data"
+msgstr "doctor.administrative.data"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_doctor_cups_code
+msgid "doctor.cups.code"
+msgstr "doctor.cups.code"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_doctor_diseases
+msgid "doctor.diseases"
+msgstr "doctor.diseases"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_doctor_doctor
+msgid "doctor.doctor"
+msgstr "doctor.doctor"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_doctor_patient_occupation
+msgid "doctor.patient.occupation"
+msgstr "doctor.patient.occupation"
+
+#. module: clinica_doctor_data
+#: model:ir.model,name:clinica_doctor_data.model_doctor_presurgical_record
+msgid "doctor.presurgical.record"
+msgstr "doctor.presurgical.record"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "g/dl"
+msgstr "g/dl"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "kg/m²"
+msgstr "kg/m²"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "m (Minutes)"
+msgstr "m (Minutes)"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "mg/dl"
+msgstr "mg/dl"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "mm/H"
+msgstr "mm/H"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "x 10^3/ul"
+msgstr "x 10^3/ul"
+
