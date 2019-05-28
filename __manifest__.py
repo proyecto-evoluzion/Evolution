@@ -22,7 +22,7 @@
 
 {
     'name': 'Clinica Doctor Datas',
-    'version': '1.12',
+    'version': '1.11',
     'license': 'Other proprietary',
     'category': 'custom',
     'description': """
@@ -31,7 +31,7 @@
     'author' : 'BroadTech IT Solutions Pvt Ltd',
     'website' : 'http://www.broadtech-innovations.com',
     'depends': [
-        'base','l10n_co_res_partner','product'
+        'base','l10n_co_res_partner'
     ],
     'data': [
         'security/ir.model.access.csv',
