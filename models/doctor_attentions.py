@@ -36,9 +36,7 @@ class PresurgicalRecord(models.Model):
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
-                                      ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
-                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.administrative.data', 'Patient', ondelete='restrict')

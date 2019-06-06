@@ -2,48 +2,48 @@
 <odoo>
         
         <record id="assurance_plan_form" model="ir.ui.view">
-            <field name="name">assurance.plan.form</field>
-            <field name="model">assurance.plan</field>
+            <field name="name">doctor.insurer.plan.form</field>
+            <field name="model">doctor.insurer.plan</field>
             <field name="arch" type="xml">
             <form string="Assurance Plan Form">
-            	<sheet>
-            		<group>
-            			<group>
-            				<field name='name' required="1"/>
-            				<field name='code' required="1"/>
-            				<field name='assurance_partner_id' required="1" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
-            			</group>
-            			<group>
-            			</group>
-            		</group>
-            	</sheet>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='name' required="1"/>
+                            <field name='code' required="1"/>
+                            <field name='insurer_id' required="1" domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </sheet>
             </form>
             </field>
         </record>
         
         <record id="assurance_plan_tree" model="ir.ui.view">
-            <field name="name">assurance.plan.tree</field>
-            <field name="model">assurance.plan</field>
+            <field name="name">doctor.insurer.plan.tree</field>
+            <field name="model">doctor.insurer.plan</field>
             <field name="arch" type="xml">
                 <tree string="Assurance Plan Tree">
                     <field name="name"/>
-            	    <field name='code'/>
-       				<field name="assurance_partner_id"/>
+                    <field name='code'/>
+                    <field name="insurer_id"/>
                 </tree>
             </field>
         </record>
         
         
         <record id="view_assurance_plan_filter" model="ir.ui.view">
-            <field name="name">assurance.plan.search</field>
-            <field name="model">assurance.plan</field>
+            <field name="name">doctor.insurer.plan.search</field>
+            <field name="model">doctor.insurer.plan</field>
             <field name="arch" type="xml">
                 <search string="Search Assurancen Plans">
                     <field name="name" string="Plans" />
                     <field name='code' string="Plan Code" />
-                    <field name="assurance_partner_id" string="Assurance Company"/>
+                    <field name="insurer_id" string="Assurance Company"/>
                     <group expand="0" string="Group By">
-                    	<filter string="Assurance Company" name="groupby_assurance_partner_id" domain="[]" context="{'group_by':'assurance_partner_id'}"/>
+                        <filter string="Assurance Company" name="groupby_assurance_partner_id" domain="[]" context="{'group_by':'insurer_id'}"/>
                     </group>
                 </search>
             </field>
@@ -51,14 +51,14 @@
         
         <record id="action_assurance_plan" model="ir.actions.act_window">
             <field name="name">Assurance Plans</field>
-            <field name="res_model">assurance.plan</field>
+            <field name="res_model">doctor.insurer.plan</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="assurance_plan_tree"/>
             <field name="search_view_id" ref="view_assurance_plan_filter"/>
-        </record> 
+        </record>    
         
-        <record id="doctor_patient_occupation_form" model="ir.ui.view">
+        <!-- <record id="doctor_patient_occupation_form" model="ir.ui.view">
             <field name="name">doctor.patient.occupation.form</field>
             <field name="model">doctor.patient.occupation</field>
             <field name="arch" type="xml">
@@ -107,7 +107,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="doctor_patient_occupation_tree"/>
             <field name="search_view_id" ref="view_doctor_patient_occupation_filter"/>
-        </record> 
+        </record>  -->
         
 	    <!-- doctor diseases Form View -->
 	    <record model="ir.ui.view" id="view_doctor_diseases_form">
@@ -146,50 +146,46 @@
         
         <!-- Doctor form -->
         <record id="doctor_doctor_form" model="ir.ui.view">
-            <field name="name">doctor.doctor.form</field>
-            <field name="model">doctor.doctor</field>
+            <field name="name">doctor.professional.form</field>
+            <field name="model">doctor.professional</field>
             <field name="arch" type="xml">
             <form string="doctor Form">
-            	<sheet>
-            		<group name="main_info">
-            			<group name="sub_info1" >
-            				<field name="first_name" required="1"/>
-            				<field name="first_last_name"  required="1"/>
-            				<field name="second_name" required="1"/>
-            				<field name="second_last_name"/>
-            			</group>
-            			<group name="sub_info2" >
-            				<field name="email"/>
-            				<field name="phone"/>
-            			</group>
-            		</group>
-            	</sheet>
+                <sheet>
+                    <group name="main_info" col="4">
+                        <field name="lastname"  required="1"/>                            
+                        <field name="surname"/>
+                        <field name="firstname" required="1"/>
+                        <field name="middlename"/>
+                        <field name="email"/>
+                        <field name="phone"/>
+                    </group>
+                </sheet>
             </form>
             </field>
         </record>
         <!-- Doctor Tree -->
         <record id="doctor_doctor_tree" model="ir.ui.view">
-            <field name="name">doctor.doctor.tree</field>
-            <field name="model">doctor.doctor</field>
+            <field name="name">doctor.professional.tree</field>
+            <field name="model">doctor.professional</field>
             <field name="arch" type="xml">
                 <tree string="Doctor Tree">
-                    <field name="first_name"/>
-       				<field name="first_last_name"/>
-        			<field name="second_name" placeholder="Second Name"/>
-        			<field name="second_last_name" placeholder="Second Last Name"/>
-        			<field name="email"/>
-            		<field name="phone"/>
+                    <field name="lastname"/>                            
+                        <field name="surname"/>
+                        <field name="firstname"/>
+                        <field name="middlename"/>
+                        <field name="email"/>
+                        <field name="phone"/>
                 </tree>
             </field>
         </record>
         
         <!-- Doctor filter -->
         <record id="view_doctor_doctor_filter" model="ir.ui.view">
-            <field name="name">doctor.doctor.search</field>
-            <field name="model">doctor.doctor</field>
+            <field name="name">doctor.professional.search</field>
+            <field name="model">doctor.professional</field>
             <field name="arch" type="xml">
                 <search string="Search Doctor">
-                    <field name="first_name" />
+                    <field name="firstname" />
                 </search>
             </field>
        </record>
@@ -197,7 +193,7 @@
         <!-- Doctor Action -->
         <record id="action_doctor_details" model="ir.actions.act_window">
             <field name="name">Doctor</field>
-            <field name="res_model">doctor.doctor</field>
+            <field name="res_model">doctor.professional</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="doctor_doctor_tree"/>
@@ -205,200 +201,203 @@
         </record> 
         
         <record id="doctor_administrative_data_form" model="ir.ui.view">
-            <field name="name">doctor.administrative.data.form</field>
-            <field name="model">doctor.administrative.data</field>
+            <field name="name">doctor.patient.form</field>
+            <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
             <form string="Administrative Data Form">
-            	<sheet>
-            		<field name="image" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
-            		<div class="oe_title">
+                <sheet>
+                    <field name="photo" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
+                    <div class="oe_title">
                         <div>
                             <div>
-                                <label for="document_type" string="Type of Document"/>
-                        		<field name="document_type" placeholder="Type of Document" required="1"/>
+                                <label for="tdoc" string="Type of Document"/>
+                                <field name="tdoc" placeholder="Type of Document" required="1"/>
                             </div>
-                            <div attrs="{'invisible':[('document_type','in',['cc','ti'])]}">
+                            <div attrs="{'invisible':[('tdoc','in',['cc','ti'])]}">
                                 <label  for="name" string="Number ID"/>
-                        		<field name="name" placeholder="Number ID" required="1"/>
+                                <field name="name" placeholder="Number ID" required="1"/>
                             </div>
-                            <div attrs="{'invisible':[('document_type','not in',['cc','ti'])]}">
-                                <label  for="numberid_integer" string="Number ID"/>
-                        		<field name="numberid_integer" placeholder="Number ID" attrs="{'required': [('document_type','in',['cc','ti'])]}"/>
+                            <div attrs="{'invisible':[('tdoc','not in',['cc','ti'])]}">
+                                <label  for="ref" string="Number ID"/>
+                                <field name="ref" placeholder="Number ID" attrs="{'required': [('tdoc','in',['cc','ti'])]}"/>
                             </div>
                         </div>
                     </div>
-            		<group name='group_personal_info'>
-            			<group name='group_personal_info_sub1'>
-                            <field name="first_last_name" required="1" placeholder="First Last Name"/>
-                            <field name="second_last_name" placeholder="Second Last Name"/>
-            				<field name="first_name" required="1" placeholder="First Name"/>
-            				<field name="second_name" placeholder="Second Name"/>
-            				<field name="patient_name" invisible="1"/>
-            				<field name="partner_id" string="Related Contact" readonly="1" invisible="1"/>
-            			</group>
-            			<group name='group_personal_info_sub2'>
-            				<field name="gender" />
-<!--             				<field name="blood_type"/> -->
-            				<label for="blood_type" string="Blood Type"/>
-            				<div>
-            					<div>
-            						<field name="blood_type" nolabel="1" class="oe_inline" />
-           							<field name="blood_rh" nolabel="1" class="oe_inline" />
-            					</div>
-            				</div>
-            				<field name="birth_date" required="1"/>
-            				<label for="age" string="Age"/>
-            				<div>
-            					<div>
-            						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
-           							<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
-            					</div>
-            				</div>
-            			</group>
-            		</group>
-            		<group string='Place of Birth' name='group_birth_place' col="4">
-            			<field name="birth_country_id" string="Country" placeholder="Country" options="{'no_create_edit': True}"/>
-<!--            				<field name="birth_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}" -->
-<!--            					context="{'country_id': birth_country_id,'default_country_id':birth_country_id}" domain="[('country_id','=',birth_country_id)]"/> -->
-           				<field name="birth_city_id" string="Location/City/Town" placeholder="Location/City/Town"
-           					options="{'no_create_edit': True}"  domain="[('country_id','=',birth_country_id)]"/>
-<!--            				<field name="birth_district" string="Districts/Localties/Areas" placeholder="Districts/Localties/Areas"/> -->
-<!--            				<field name="birth_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
-            		</group> 
-<!--             		<group name='group_birth_address'> -->
-<!--             			<field name="birth_address" string="Address" placeholder="Address"/> -->
-<!--             		</group> -->
-            		<group string='Place of Residence' name='group_residence_place' col="6">
-            			<field name="residence_country_id" string="Country" placeholder="Country" options="{'no_create_edit': True}"/>
-           				<field name="residence_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}"
-           					context="{'country_id': residence_country_id,'default_country_id':residence_country_id}"  domain="[('country_id','=',residence_country_id)]"/>
-           				<field name="residence_city_id" string="Location/City/Town" placeholder="Location/City/Town" 
-            					options="{'no_create_edit': True}"  domain="[('state_id','=',residence_department_id),('country_id','=',residence_country_id)]"/>
-<!--            				<field name="residence_district" string="Districts/Localties/Areas" placeholder="Districts/Localties/Areas"/> -->
-<!--            				<field name="residence_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
-            		</group>
-            		<group name='group_residence_address'>
-            			<field name="residence_address" string="Address" placeholder="Address"/>
-            		</group>
-            		<group name='group_other_personal_info' string="Other Personal Information">
-            			<group name='group_other_personal_info_sub1'>
-            				<field name="civil_state"/>
-            				<field name="occupation_id" options="{'no_create_edit': True}"/>
-            			</group>
-            			<group name='group_other_personal_info_sub2'>
-<!--             				<field name="beliefs"/> -->
-            			</group>
-            		</group>
-            		<group name='group_contact_info' string="Contact Information" col="4">
-           				<field name="email"/>
-           				<field name="phone"/>
-<!--            				<field name="mobile"/> -->
-            		</group>
-            		<group name='group_accompany_responsible_personal_info' >
-            			<group name='group_accompany_personal_info' string="Accompany Person's Details">
-            				<field name="accompany_name" />
-            				<label for="accompany_relationship" string="Relationship"/>
-            				<div>
-            					<div>
-            						<field name="accompany_relationship" nolabel="1" class="oe_inline"/>
-            						<field name="other_accompany_relationship" nolabel="1" class="oe_inline" 
-            							placeholder="Other Relationship" attrs="{'invisible':[('accompany_relationship','!=','other')]}"/>
-            					</div>
-            				</div>
-            				<field name="accompany_phone" string="Phone"/>
-            			</group>
-            			<group name='group_responsible_personal_info' string="Responsible Person's Details">
-            				<field name="responsible_name"/>
-            				<label for="responsible_relationship" string="Relationship"/>
-            				<div>
-            					<div>
-            						<field name="responsible_relationship" nolabel="1" class="oe_inline" />
-            						<field name="other_responsible_relationship" nolabel="1" class="oe_inline" 
-            							placeholder="Other Relationship" attrs="{'invisible':[('responsible_relationship','!=','other')]}"/>
-            					</div>
-            				</div>
-            				<field name="responsible_phone" string="Phone"/>
-            			</group>
-            		</group>
-<!--             		<group name='group_parent_info' > -->
-<!--             			<group name='group_father_info' string="Father's Details"> -->
-<!--             				<field name="father_name"/> -->
-<!--             				<field name="father_occupation" string="Occupation"/> -->
-<!--             				<field name="father_address" string="Address"/> -->
-<!--             				<field name="father_phone" string="Phone"/> -->
-<!--             			</group> -->
-<!--             			<group name='group_mother_info' string="Mother's Details"> -->
-<!--             				<field name="mother_name"/> -->
-<!--             				<field name="mother_occupation" string="Occupation"/> -->
-<!--             				<field name="mother_address" string="Address"/> -->
-<!--             				<field name="mother_phone" string="Phone"/> -->
-<!--             			</group> -->
-<!--             		</group> -->
-            		<group name='group_insurer_info' string="Assurance Details" >
-            			<group name='group_insurer_info_sub1'>
-            				<field name="user_type"/>
-<!--       						<field name="primary_payer"/> -->
-            			</group>
-            			<group name='group_insurer_info_sub2'>
-            				<field name="assurance_partner_id"
-      							domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
-<!--       						<field name="assurance_plan_id" options="{'no_create_edit': True}" -->
-<!--       							placeholder="Assurer Plans" domain="[('assurance_partner_id','=',assurance_partner_id)]"/> -->
-<!--       						<field name="other_assurance_partner_id"  -->
-<!--       							domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/> -->
-<!--       						<field name="other_assurance_plan_id" options="{'no_create_edit': True}" -->
-<!--       							placeholder="Assurer Plans" domain="[('assurance_partner_id','=',other_assurance_partner_id)]"/> -->
-            			</group>
-            		</group>
-            		<group name='group_doctor' string="Doctor Details" >
-            			<group name='group_doctor_info_sub1'>
-            				<field name="doctor_id"/>
-            			</group>
-            			<group name='group_doctor_info_sub2'>
-            			</group>
-            		</group>
-            	</sheet>
+                    <group name='group_personal_info'>
+                        <group name='group_personal_info_sub1'>
+                            <field name="lastname" required="1" placeholder="First Last Name"/>
+                            <field name="surname" placeholder="Second Last Name"/>
+                            <field name="firstname" required="1" placeholder="First Name"/>
+                            <field name="middlename" placeholder="Second Name"/>
+                            <field name="partner_id" string="Related Contact" readonly="1" invisible="1"/>
+                        </group>
+                        <group name='group_personal_info_sub2'>
+                            <field name="sex" />
+<!--                            <field name="blood_type"/> -->
+                            <label for="blood_type" string="Blood Type"/>
+                            <div>
+                                 <field name="blood_type" class="left-margin" style="width: 20%"/>
+                                 <field name="blood_rh" style="width: 25%"/>
+                            </div>
+                            <field name="birth_date" required="1"/>
+                            <label for="age" string="Age"/>
+                            <div>
+                                <div>
+                                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+                                    <field name="age_unit" nolabel="1" class="oe_inline" />
+                                </div>
+                            </div>
+                        </group>
+                    </group>
+
+                    <group>
+                    <group name='group_insurer_info_sub1'>
+                            <field name="user_type"/>
+<!--                            <field name="primary_payer"/> -->
+                            <field name="phone"/>
+                            <field name="link_type"/>
+                        </group>
+                        <group name='group_insurer_info_sub2'>
+                            <field name="insurer_id"
+                                domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                            <field name="email"/>
+                            <field name="residence_address" string="Address" placeholder="Address"/>
+                        </group>
+                    </group>
+                    <group string='Place of Birth' name='group_birth_place' col="4">
+                        <field name="birth_city_id" string="Location/City/Town" placeholder="Location/City/Town"
+                            options="{'no_create_edit': True}"  domain="[('country_id','=',birth_country_id)]"/>
+
+
+                        <field name="birth_country_id" string="Origin" placeholder="Origin" options="{'no_create_edit': True}"/>
+<!--                            <field name="birth_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}" -->
+<!--                                context="{'country_id': birth_country_id,'default_country_id':birth_country_id}" domain="[('country_id','=',birth_country_id)]"/> -->
+                        
+<!--                            <field name="birth_district" string="Districts/Localties/Areas" placeholder="Districts/Localties/Areas"/> -->
+<!--                            <field name="birth_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
+                    </group> 
+<!--                    <group name='group_birth_address'> -->
+<!--                        <field name="birth_address" string="Address" placeholder="Address"/> -->
+<!--                    </group> -->
+                    <group string='Place of Residence' name='group_residence_place' col="6">
+                        <field name="residence_country_id" string="Country" placeholder="Country" options="{'no_create_edit': True}"/>
+                        <field name="residence_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}"
+                            context="{'country_id': residence_country_id,'default_country_id':residence_country_id}"  domain="[('country_id','=',residence_country_id)]"/>
+                        <field name="residence_city_id" string="Location/City/Town" placeholder="Location/City/Town" 
+                                options="{'no_create_edit': True}"  domain="[('state_id','=',residence_department_id),('country_id','=',residence_country_id)]"/>
+<!--                            <field name="residence_district" string="Districts/Localties/Areas" placeholder="Districts/Localties/Areas"/> -->
+<!--                            <field name="residence_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
+                    </group>
+                    <!-- <group name='group_residence_address'>
+                        <field name="residence_address" string="Address" placeholder="Address"/>
+                    </group> -->
+                    <group name='group_other_personal_info' string="Other Personal Information" col="4">
+                        <!-- <group name='group_other_personal_info_sub1'  > -->
+                            <field name="civil_state"/>
+                            <field name="occupation" /> <!--options="{'no_create_edit': True}"-->
+                        <!-- </group> -->
+                        <!-- <group name='group_other_personal_info_sub2'>
+                            <field name="beliefs"/>
+                        </group> -->
+                    </group>
+
+                    <group name='group_accompany_responsible_personal_info' >
+                        <group name='group_accompany_personal_info' string="Accompany Person's Details">
+                            <field name="accompany_name" />
+                            <label for="accompany_relationship" string="Relationship"/>
+                            <div>
+                                <div>
+                                    <field name="accompany_relationship" nolabel="1" class="oe_inline"/>
+                                    <field name="other_accompany_relationship" nolabel="1" class="oe_inline" 
+                                        placeholder="Other Relationship" attrs="{'invisible':[('accompany_relationship','!=','other')]}"/>
+                                </div>
+                            </div>
+                            <field name="accompany_phone"/>
+                            <field name="copy_responsible_info"/>
+                        </group>
+                        <group name='group_responsible_personal_info' string="Responsible Person's Details">
+                            <field name="responsible_name"/>
+                            <label for="responsible_relationship" string="Relationship"/>
+                            <div>
+                                <div>
+                                    <field name="responsible_relationship" nolabel="1" class="oe_inline" />
+                                    <field name="other_responsible_relationship" nolabel="1" class="oe_inline" 
+                                        placeholder="Other Relationship" attrs="{'invisible':[('responsible_relationship','!=','other')]}"/>
+                                </div>
+                            </div>
+                            <field name="responsible_phone" />
+                        </group>
+                    </group>
+<!--                    <group name='group_parent_info' > -->
+<!--                        <group name='group_father_info' string="Father's Details"> -->
+<!--                            <field name="father_name"/> -->
+<!--                            <field name="father_occupation" string="Occupation"/> -->
+<!--                            <field name="father_address" string="Address"/> -->
+<!--                            <field name="father_phone" string="Phone"/> -->
+<!--                        </group> -->
+<!--                        <group name='group_mother_info' string="Mother's Details"> -->
+<!--                            <field name="mother_name"/> -->
+<!--                            <field name="mother_occupation" string="Occupation"/> -->
+<!--                            <field name="mother_address" string="Address"/> -->
+<!--                            <field name="mother_phone" string="Phone"/> -->
+<!--                        </group> -->
+<!--                    </group> -->
+ <!--                    <group name='group_insurer_info' string="Assurance Details" >
+                        <group name='group_insurer_info_sub1'>
+                            <field name="user_type"/>
+                        </group>
+                        <group name='group_insurer_info_sub2'>
+                            <field name="insurer_id"
+                                domain="[('is_company','=',True)]" options="{'no_create_edit': True}"/>
+                        </group>
+                    </group> -->
+                    <group name='group_doctor' string="Doctor Details" >
+                        <group name='group_doctor_info_sub1'>
+                            <field name="doctor_id"/>
+                        </group>
+                        <group name='group_doctor_info_sub2'>
+                        </group>
+                    </group>
+                </sheet>
             </form>
             </field>
         </record>
 
         <record id="doctor_administrative_data_tree" model="ir.ui.view">
-            <field name="name">doctor.administrative.data.tree</field>
-            <field name="model">doctor.administrative.data</field>
+            <field name="name">doctor.patient.tree</field>
+            <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
                 <tree string="Doctor Administrative Data Tree">
                     <field name="name"/>
-       				<field name="document_type"/>
-       				<field name="patient_name"/>
-<!--        				<field name="first_name"/> -->
-<!--        				<field name="first_last_name"/> -->
-<!--         			<field name="second_name" placeholder="Second Name"/> -->
-<!--         			<field name="second_last_name" placeholder="Second Last Name"/> -->
-        			<field name="birth_date" required="1"/>
-       				<field name="age" required="1"/>
-       				<field name="age_meassure_unit"/>
-       				<field name="gender" />
-            		<field name="blood_type"/>
-            		<field name="blood_rh"/>
+                    <field name="tdoc"/>
+                    <field name="firstname"/>
+                    <field name="lastname"/>
+                    <field name="middlename" placeholder="Second Name"/>
+                    <field name="surname" placeholder="Second Last Name"/>
+                    <field name="birth_date" required="1"/>
+                    <field name="age" required="1"/>
+                    <field name="age_unit"/>
+                    <field name="sex" />
+                    <field name="blood_type"/>
+                    <field name="blood_rh"/>
                 </tree>
             </field>
         </record>
         
         <record model="ir.ui.view" id="doctor_administrative_data_kanban_view">
-            <field name="name">doctor.administrative.data.kanban</field>
-            <field name="model">doctor.administrative.data</field>
+            <field name="name">doctor.patient.kanban</field>
+            <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
                 <kanban class="o_res_partner_kanban">
                     <field name="name"/>
-                    <field name="patient_name"/>
-                    <field name="first_name"/>
-                    <field name="first_last_name"/>
-                    <field name="second_name"/>
-                    <field name="second_last_name"/>
-                    <field name="document_type"/>
-                    <field name="gender"/>
+                    <field name="firstname"/>
+                    <field name="lastname"/>
+                    <field name="middlename"/>
+                    <field name="surname"/>
+                    <field name="tdoc"/>
+                    <field name="sex"/>
                     <field name="blood_type"/>
-            		<field name="blood_rh"/>
+                    <field name="blood_rh"/>
                     <field name="birth_date"/>
                     <field name="age"/>
                     <field name="id"/>
@@ -407,17 +406,17 @@
                             <div class="oe_kanban_global_click o_res_partner_kanban">
                                 <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
                                 <div class="o_kanban_image">
-		                            <img t-att-src="kanban_image('doctor.administrative.data', 'image_medium', record.id.raw_value)"/>
-		                        </div>
+                                    <img t-att-src="kanban_image('doctor.patient', 'image_medium', record.id.raw_value)"/>
+                                </div>
                                 <div class="oe_kanban_details">
                                     <strong class="oe_partner_heading"><field name="name"/></strong>
                                     <ul>
-                                        <li t-if="record.document_type.raw_value" class="o_text_overflow"><field name="document_type"/></li>
-                                        <li t-if="record.first_name.raw_value"><field name="patient_name"/></li>
-                                        <li t-if="record.gender.raw_value" class="o_text_overflow">Gender: <field name="gender"/></li>
+                                        <li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="tdoc"/></li>
+                                        <li t-if="record.firstname.raw_value"><field name="firstname"/></li>
+                                        <li t-if="record.sex.raw_value" class="o_text_overflow">Gender: <field name="sex"/></li>
                                         <li t-if="record.blood_type.raw_value">Blood Type: <field name="blood_type"/><field name="blood_rh"/></li>
                                         <li t-if="record.birth_date.raw_value">Birth Date: <field name="birth_date"/>
-                                        	<t t-if="record.age.raw_value">, Age: <field name="age"/></t>
+                                            <t t-if="record.age.raw_value">, Age: <field name="age"/></t>
                                         </li>
                                     </ul>
                                     <div class="oe_kanban_partner_links"/>
@@ -431,23 +430,22 @@
         </record>
         
         <record id="view_doctor_administrative_data_filter" model="ir.ui.view">
-            <field name="name">doctor.administrative.data.search</field>
-            <field name="model">doctor.administrative.data</field>
+            <field name="name">doctor.patient.search</field>
+            <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
                 <search string="Search Administrative Data">
                     <field name="name" string="Number ID" />
-                    <field name="patient_name" string="Patient Name" />
-                    <field name="document_type" string="Type of Document"/>
+                    <field name="tdoc" string="Type of Document"/>
                     <group expand="0" string="Group By">
-                    	<filter string="Type of Document" name="groupby_document_type" domain="[]" context="{'group_by':'document_type'}"/>
+                        <filter string="Type of Document" name="groupby_tdoc" domain="[]" context="{'group_by':'tdoc'}"/>
                     </group>
                 </search>
             </field>
        </record>
         
         <record id="action_doctor_administrative_data" model="ir.actions.act_window">
-            <field name="name">Administrative Data</field>
-            <field name="res_model">doctor.administrative.data</field>
+            <field name="name">Patients</field>
+            <field name="res_model">doctor.patient</field>
             <field name="view_type">form</field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="view_id" ref="doctor_administrative_data_kanban_view"/>
@@ -457,7 +455,7 @@
                 Click to create doctor datas.
               </p>
             </field>
-        </record> 
+        </record>
         
         <menuitem id="menu_doctor_details"
             name="Doctor"
@@ -467,29 +465,31 @@
             name="Doctor Process"
             parent="menu_doctor_details"
             sequence="1"/>
-        
-        <menuitem id="menu_doctor_administrative_data"
-            name="Administrative Data"
-            parent="menu_doctor_process"
-            action="clinica_doctor_data.action_doctor_administrative_data"
-            sequence="1"/>
-            
+
         <menuitem id="menu_doctor_config_details"
             name="Doctor Configuration"
             parent="menu_doctor_details"
             sequence="5"/>
             
+        
+        <menuitem id="menu_doctor_administrative_data"
+            name="Patients"
+            parent="menu_doctor_config_details"
+            action="clinica_doctor_data.action_doctor_administrative_data"
+            sequence="1"/>
+            
+        
         <menuitem id="menu_assurance_plan"
             name="Assurance Plan"
             parent="menu_doctor_config_details"
             action="action_assurance_plan"
             sequence="6"/>  
         
-        <menuitem id="menu_patient_profession"
+        <!-- <menuitem id="menu_patient_profession"
             name="Patient Occupation"
             parent="menu_doctor_config_details"
             action="action_doctor_patient_occupation"
-            sequence="7"/>
+            sequence="7"/> -->
             
         <menuitem id="menu_doctor"
             name="Doctors"

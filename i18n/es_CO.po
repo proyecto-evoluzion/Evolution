@@ -46,17 +46,15 @@ msgid "A.S.A"
 msgstr "A.S.A"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,blood_type:0
-#: selection:doctor.presurgical.record,blood_type:0
+#: selection:doctor.patient,blood_type:0
 msgid "AB"
 msgstr "AB"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.patient,tdoc:0
 #: selection:doctor.doctor,document_type:0
-#: selection:doctor.presurgical.record,document_type:0
 msgid "AS - Unidentified Adult"
-msgstr "AS - Unidentified Adult"
+msgstr "AS - Adulto sin Identificación"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_asa:0
@@ -86,17 +84,17 @@ msgstr "ASA 5"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Accompany Person's Details"
-msgstr "Datos del Responsable y el Acompañante"
+msgstr "Datos del Acompañante"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_accompany_phone
-msgid "Accompany Person's Phone Number"
-msgstr "Número de Teléfono de la Persona Acompañante"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_accompany_phone
+msgid "Phone"
+msgstr "Teléfono"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_accompany_relationship
 msgid "Accompany Person's Relationship"
-msgstr "Acompañar la relación de la persona"
+msgstr "Parentezco del Acompañante"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -106,18 +104,16 @@ msgstr "Dirección"
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_administrative_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_administrative_data
-msgid "Administrative Data"
-msgstr "Administrative Data"
+msgid "Patients"
+msgstr "Pacientes"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Administrative Data Form"
-msgstr "Administrative Data Form"
+msgstr "Formularios de datos administrativos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_age
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age
-#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Age"
 msgstr "Edad"
@@ -139,36 +135,37 @@ msgid "Allergic"
 msgstr "Alergicos"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_assurance_partner_id
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_assurance_partner_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_insurer_plan_insurer_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_insurer_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
 msgid "Assurance Company"
 msgstr "Aseguradora"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_assurance_details
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Assurance Details"
-msgstr "Detalles de Aseguramiento"
+msgstr "Planes de Aseguradoras"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_assurance_plan
 msgid "Assurance Plan"
-msgstr "Assurance Plan"
+msgstr "Gestionar Planes"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.assurance_plan_form
 msgid "Assurance Plan Form"
-msgstr "Assurance Plan Form"
+msgstr "Formulario de planes - Aseguradora"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.assurance_plan_tree
 msgid "Assurance Plan Tree"
-msgstr "Assurance Plan Tree"
+msgstr "Lista de planes - Aseguradora"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_assurance_plan
 msgid "Assurance Plans"
-msgstr "Planes de Aseguramiento"
+msgstr "Planes de Aseguradoras"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_attention_code_id
@@ -181,13 +178,36 @@ msgid "Attention number"
 msgstr "Atención Nº"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Aunt"
 msgstr "Tia"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_birth_date
+#: selection:doctor.patient,link_type:0
+#: selection:doctor.patient,link_type:0
+msgid "Contributor"
+msgstr "Contribuyente"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,link_type:0
+#: selection:doctor.patient,link_type:0
+msgid "Beneficiary"
+msgstr "Beneficiario"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_link_type
+msgid "Link Type"
+msgstr "Tipo Vinculación"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_copy_responsible_info
+msgid "Is Also Responsible"
+msgstr "Es Responsable"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_birth_date
 msgid "Birth Date"
 msgstr "Fecha de Nacimiento"
@@ -221,18 +241,31 @@ msgid "Body Background Others"
 msgstr "Body Background Others"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
-#: selection:doctor.doctor,document_type:0
-#: selection:doctor.presurgical.record,document_type:0
+#: selection:doctor.patient,tdoc:0
+#: selection:doctor.professional,document_type:0
 msgid "CC - ID Document"
-msgstr "CC - ID Document"
+msgstr "CC - Cédula de ciudadanía"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.patient,tdoc:0
 #: selection:doctor.doctor,document_type:0
 #: selection:doctor.presurgical.record,document_type:0
 msgid "CE - Aliens Certificate"
-msgstr "CE - Aliens Certificate"
+msgstr "CE - Cédula de Extranjería"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,tdoc:0
+#: selection:doctor.professional,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "MS - Unidentified Minor"
+msgstr "MS - Menor sin Identificación"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,tdoc:0
+#: selection:doctor.professional,document_type:0
+#: selection:doctor.presurgical.record,document_type:0
+msgid "TI - Identity Card"
+msgstr "TI - Tarjeta de Identidad"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_cups_code
@@ -241,7 +274,7 @@ msgid "CUPS Code"
 msgstr "CUPS Code"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,civil_state:0
+#: selection:doctor.patient,civil_state:0
 msgid "Casada/o"
 msgstr "Casada/o"
 
@@ -251,14 +284,14 @@ msgid "Cigarettes / Day"
 msgstr "Cigarrillos / Dia"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_civil_state
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_civil_state
 msgid "Civil Status"
 msgstr "Estado Civil"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,help:clinica_doctor_data.action_doctor_administrative_data
 msgid "Click to create doctor datas."
-msgstr "Click to create doctor datas."
+msgstr "Clic aquí para crear un paciente"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
@@ -270,10 +303,11 @@ msgstr "Cm"
 msgid "Cocaine"
 msgstr "Cocaina"
 
+
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_code
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_code
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_patient_occupation_filter
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_code
 msgid "Code"
 msgstr "Código"
 
@@ -288,7 +322,7 @@ msgid "Contact Information"
 msgstr "Información de contacto"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,user_type:0
+#: selection:doctor.patient,user_type:0
 msgid "Contributivo"
 msgstr "Contributivo"
 
@@ -301,6 +335,11 @@ msgstr "Método de planificación"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Country"
 msgstr "País"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Origin"
+msgstr "Procedencia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_birth_country_id
@@ -353,8 +392,9 @@ msgstr "Fecha de última menstruación"
 msgid "Date of attention"
 msgstr "Fecha de atención"
 
+
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,age_meassure_unit:0
+#: selection:doctor.patient,age_meassure_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
 msgid "Days"
 msgstr "Días"
@@ -412,10 +452,14 @@ msgid "Display Name"
 msgstr "Nombre Público"
 
 #. module: clinica_doctor_data
-#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_details
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_details
 msgid "Doctor"
 msgstr "Doctor"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_details
+msgid "Doctor"
+msgstr "Profesionales de la salud"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_tree
@@ -430,7 +474,7 @@ msgstr "Configuración Módulo"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Doctor Details"
-msgstr "Doctor Details"
+msgstr "Gestionar Profesionales"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_process
@@ -445,7 +489,7 @@ msgstr "Doctor Tree"
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor
 msgid "Doctors"
-msgstr "Doctors"
+msgstr "Profesionales de la Salud"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_ecg
@@ -487,25 +531,24 @@ msgid "Father"
 msgstr "Padre"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,gender:0
-#: selection:doctor.doctor,gender:0
+#: selection:doctor.patient,sex:0
+#: selection:doctor.professional,sex:0
 #: selection:doctor.presurgical.record,gender:0
 msgid "Female"
 msgstr "Female"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_first_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_first_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_lastname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_last_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "First Last Name"
 msgstr "Primer Apellido"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_first_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_first_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_firstname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_name
-#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "First Name"
 msgstr "Primer Nombre"
 
@@ -515,8 +558,8 @@ msgid "Frequency"
 msgstr "Frecuencia"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Friend"
 msgstr "Amigo/a"
 
@@ -526,8 +569,8 @@ msgid "GOLDMAN"
 msgstr "GOLDMAN"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_gender
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_gender
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_sex
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_sex
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_gender
 msgid "Gender"
 msgstr "Género"
@@ -549,14 +592,14 @@ msgid "Glycemia"
 msgstr "Glycemia"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Grand Father"
 msgstr "Abuelo"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Grand Mother"
 msgstr "Abuela"
 
@@ -592,11 +635,11 @@ msgid "Hto (Hematocrit)"
 msgstr "Hto (Hematrocrito)"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_insurer_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_id
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_id
 msgid "ID"
 msgstr "ID"
@@ -693,15 +736,8 @@ msgid "Location/City/Town of Birth"
 msgstr "Municipio de nacimiento"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
-#: selection:doctor.doctor,document_type:0
-#: selection:doctor.presurgical.record,document_type:0
-msgid "MS - Unidentified Minor"
-msgstr "MS - Unidentified Minor"
-
-#. module: clinica_doctor_data
-#: selection:doctor.administrative.data,gender:0
-#: selection:doctor.doctor,gender:0
+#: selection:doctor.patient,sex:0
+#: selection:doctor.doctor,sex:0
 #: selection:doctor.presurgical.record,gender:0
 msgid "Male"
 msgstr "Male"
@@ -728,21 +764,21 @@ msgid "Medium-sized image of this contact. It is automatically resized as a 128x
 msgstr "Imagen mediana de este contacto. Se redimensiona automáticamente a 128x128px, con el ratio de aspecto preservado. Se usa este campo en las vistas formulario y en algunas vistas kanban."
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,age_meassure_unit:0
+#: selection:doctor.patient,age_meassure_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
 msgid "Months"
 msgstr "Meses"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Mother"
 msgstr "Madre"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_accompany_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_accompany_name
 msgid "Name of the companion"
-msgstr "Nombre del Acompañante"
+msgstr "Nombre"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_name
@@ -775,13 +811,13 @@ msgid "Number of Pregnancies"
 msgstr "Número de embarazos"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_occupation_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_occupation
 msgid "Occupation"
 msgstr "Ocupación"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Other"
 msgstr "Otro Cual"
 
@@ -798,7 +834,7 @@ msgstr "Otros Datos Personales"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Other Relationship"
-msgstr "Other Relationship"
+msgstr "Otro Parentesco"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_other_responsible_relationship
@@ -811,11 +847,11 @@ msgid "Others"
 msgstr "Otros"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
-#: selection:doctor.doctor,document_type:0
-#: selection:doctor.presurgical.record,document_type:0
+#: selection:doctor.patient,tdoc:0
+#: selection:doctor.professional,tdoc:0
+#: selection:doctor.presurgical.record,tdoc:0
 msgid "PA - Passport"
-msgstr "PA - Passport"
+msgstr "PA - Pasaporte"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_pt
@@ -904,15 +940,15 @@ msgid "Pharmacological"
 msgstr "Farmacológicos"
 
 #. module: clinica_doctor_data
-#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.field_doctor_patient_phone
 msgid "Phone"
 msgstr "Teléfono"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_phone
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_phone
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_phone
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_phone
 msgid "Phone Number"
-msgstr "Número de Teléfono"
+msgstr "Teléfono"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
@@ -1017,11 +1053,11 @@ msgid "Quimico Sanguinea"
 msgstr "Quimico Sanguinea"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
+#: selection:doctor.patient,tdoc:0
 #: selection:doctor.doctor,document_type:0
 #: selection:doctor.presurgical.record,document_type:0
 msgid "RC - Civil Registry"
-msgstr "RC - Civil Registry"
+msgstr "RC - Registro Civil"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_consultation_reason
@@ -1073,17 +1109,17 @@ msgstr "Residencia municipio"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Responsible Person's Details"
-msgstr "Datos de la Persona Responsable"
+msgstr "Datos del Responsable"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_responsible_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_responsible_name
 msgid "Responsible Person's Name"
-msgstr "Nombre del Responsable"
+msgstr "Nombre"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_responsible_phone
-msgid "Responsible Person's Phone Number"
-msgstr "Número de Teléfono de la Persona Responsable"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_responsible_phone
+msgid "Phone"
+msgstr "Teléfono"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_responsible_relationship
@@ -1133,8 +1169,8 @@ msgid "Search Presurgical"
 msgstr "Search Presurgical"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_second_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_second_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_surname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_last_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
@@ -1142,8 +1178,8 @@ msgid "Second Last Name"
 msgstr "Segundo Apellido"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_second_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_second_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_middlename
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
@@ -1215,11 +1251,11 @@ msgid "TC"
 msgstr "TC"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,document_type:0
-#: selection:doctor.doctor,document_type:0
+#: selection:doctor.patient,tdoc:0
+#: selection:doctor.professional,document_type:0
 #: selection:doctor.presurgical.record,document_type:0
 msgid "TI - Identity Card"
-msgstr "TI - Identity Card"
+msgstr "TI - Tarjeta de Identidad"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,help:clinica_doctor_data.field_doctor_administrative_data_image
@@ -1227,12 +1263,12 @@ msgid "This field holds the image used as avatar for this contact, limited to 10
 msgstr "Este campo contiene la imagen utilizada como avatar para este contacto, limitada a 1024x1024px"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_doctor_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_doctor_id
 msgid "Treating Doctor"
 msgstr "Médico Tratante"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_doctor_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_document_type
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -1241,8 +1277,8 @@ msgid "Type of Document"
 msgstr "Tipo de Documento"
 
 #. module: clinica_doctor_data
-#: selection:doctor.administrative.data,accompany_relationship:0
-#: selection:doctor.administrative.data,responsible_relationship:0
+#: selection:doctor.patient,accompany_relationship:0
+#: selection:doctor.patient,responsible_relationship:0
 msgid "Uncle"
 msgstr "Tio"
 
@@ -1258,7 +1294,7 @@ msgid "Unión libre"
 msgstr "Unión libre"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_user_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_user_type
 msgid "User Type"
 msgstr "Tipo de Usuario"
 
