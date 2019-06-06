@@ -221,7 +221,7 @@ class DoctorAdministrativeData(models.Model):
 #     mother_occupation = fields.Char(string="Mother's Occupation")
 #     mother_address = fields.Text(string="Mother's Address")
 #     mother_phone = fields.Char(string="Mother's Phone Number")
-    user_type =  fields.Selection([('contributory','Contributivo'),('subsidized','Subsidiado'),('linked','Vinculado')], string="User Type")
+    user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular')
 #     primary_payer =  fields.Selection([('private_user','Usuario Particular'),('eps','EPS'),
 #                                        ('another_insurer','Otra Aseguradora'),('mixed','Pago Mixto')], string="Primary Payer")
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')

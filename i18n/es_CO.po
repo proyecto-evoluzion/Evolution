@@ -241,6 +241,46 @@ msgid "Body Background Others"
 msgstr "Body Background Others"
 
 #. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Contributory"
+msgstr "Contributivo"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Subsidized"
+msgstr "Subsidiado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Linked"
+msgstr "Vinculado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Particular"
+msgstr "Particular"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Other"
+msgstr "Otro"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Victim - Contributive"
+msgstr "Víctima - Contributivo"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Victim - Subsidized"
+msgstr "Víctima - Subsidiado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.patient,user_type:0
+msgid "Victim - Linked"
+msgstr "Víctima - Vinculado"
+
+#. module: clinica_doctor_data
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.professional,document_type:0
 msgid "CC - ID Document"
