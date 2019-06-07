@@ -55,6 +55,7 @@ class PresurgicalRecord(models.Model):
     consultation_reason = fields.Text(string="Reason for Consultation")
     pathological = fields.Text(string="Pathological")
     surgical = fields.Text(string="Surgical")
+    relatives = fields.Text(string="Relatives")
     smoke = fields.Boolean(string="Smoke")
     cigarate_daily = fields.Integer(string="Cigarettes / Day")
     is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
@@ -107,8 +108,16 @@ class PresurgicalRecord(models.Model):
                                             string="GOLDMAN", default='class_1')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')
     disease_state = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
+                                       ('new_confirmed', 'Confirmado Nuevo'),
+                                       ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
+    disease_state2 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
+                                       ('new_confirmed', 'Confirmado Nuevo'),
+                                       ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
+    disease_state3 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
                                        ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')

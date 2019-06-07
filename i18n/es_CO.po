@@ -23,22 +23,22 @@ msgstr ", Edad:"
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
 msgid "0-5 Points: Class I 1% Complications"
-msgstr "0-5 Points: Class I 1% Complications"
-
-#. module: clinica_doctor_data
-#: selection:doctor.presurgical.record,paraclinical_goldman:0
-msgid "13-25 Points: Class III 14% Complications"
-msgstr "13-25 Points: Class III 14% Complications"
-
-#. module: clinica_doctor_data
-#: selection:doctor.presurgical.record,paraclinical_goldman:0
-msgid "26-53 Points: Class IV 78% Complications"
-msgstr "26-53 Points: Class IV 78% Complications"
+msgstr "Clase I"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
 msgid "6-12 Points: Class II 7% Complications"
-msgstr "6-12 Points: Class II 7% Complications"
+msgstr "Clase II"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_goldman:0
+msgid "13-25 Points: Class III 14% Complications"
+msgstr "Clase III"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,paraclinical_goldman:0
+msgid "26-53 Points: Class IV 78% Complications"
+msgstr "Clase IV"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_asa
@@ -220,7 +220,7 @@ msgstr "Fecha de Nacimiento:"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Blood Count"
-msgstr "Caudra Hemática"
+msgstr "Cuadro Hemático"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_blood_type
@@ -451,8 +451,15 @@ msgstr "Descripción"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease2_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease3_id
 msgid "Diagnosis"
-msgstr "Diagnosis"
+msgstr "Diagnóstico"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Other Diseases"
+msgstr "Otros Diagnósticos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_diastolic_artery_presure
@@ -467,8 +474,10 @@ msgstr "Diferencial"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state2
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state3
 msgid "Disease Status"
-msgstr "Disease Status"
+msgstr "Tipo"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_diseases
@@ -480,6 +489,12 @@ msgstr "Disease Status"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_diseases_tree
 msgid "Diseases"
 msgstr "Diagnósticos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_diseases_form
+msgid "Main Disease"
+msgstr "Diagnóstico Principal"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_assurance_plan_display_name
@@ -544,7 +559,7 @@ msgstr "Éxtasis"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Electrocardiogram"
-msgstr "Electrocardiogram"
+msgstr "Electrocardiograma"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_email
@@ -589,6 +604,7 @@ msgstr "Primer Apellido"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_name
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "First Name"
 msgstr "Primer Nombre"
 
@@ -908,7 +924,7 @@ msgstr "PTT"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Paraclinical Exam"
-msgstr "Examenes Paraclínicos"
+msgstr "Paraclínicos y Conducta"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_exam_date
@@ -945,7 +961,7 @@ msgstr "Paciente"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Patient Background"
-msgstr "Patient Background"
+msgstr "Antecedentes"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
@@ -1050,17 +1066,17 @@ msgstr "Please enter non zero value for Number ID"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_presurgical_record
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
 msgid "Pre-surgical Records"
-msgstr "Pre-surgical Records"
+msgstr "HC Preanestésica"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Presurgical Form"
-msgstr "Presurgical Form"
+msgstr "Formulario Preanestésico"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_tree
 msgid "Presurgical Tree"
-msgstr "Presurgical Tree"
+msgstr "Lista de Historias Clínicas Preanestésicas"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,disease_type:0
@@ -1085,12 +1101,12 @@ msgstr "Profesión"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Pruebas Coogulacian"
-msgstr "Pruebas Coogulacian"
+msgstr "Pruebas Coagulación"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Quimico Sanguinea"
-msgstr "Quimico Sanguinea"
+msgstr "Química Sanguínea"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,tdoc:0
@@ -1241,7 +1257,7 @@ msgstr "Sistolic Arteric Pressure"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_size
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Size"
-msgstr "Tamaño"
+msgstr "Talla"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_image_small
@@ -1278,6 +1294,12 @@ msgstr "Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Surgical"
 msgstr "Quirúrgicos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_relatives
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Relatives"
+msgstr "Familiares"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
