@@ -129,7 +129,7 @@ msgstr "Edad"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_albumin
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Albumin"
-msgstr "Albumin"
+msgstr "Albúmina"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_is_alcoholic
@@ -417,7 +417,7 @@ msgstr "Creado"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_creatinine
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Creatinine"
-msgstr "Creatinine"
+msgstr "Creatinina"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
@@ -652,7 +652,7 @@ msgstr "Glob"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_glycemia
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Glycemia"
-msgstr "Glycemia"
+msgstr "Glicemia"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,accompany_relationship:0

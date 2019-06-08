@@ -39,7 +39,7 @@ class PresurgicalRecord(models.Model):
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
-    patient_id = fields.Many2one('doctor.administrative.data', 'Patient', ondelete='restrict')
+    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     first_name = fields.Char(string='First Name')
     first_last_name = fields.Char(string='First Last Name')
     second_name = fields.Char(string='Second Name')
