@@ -113,13 +113,13 @@ class PresurgicalRecord(models.Model):
     disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')
     disease_state = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     disease_state2 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     disease_state3 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
     plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")

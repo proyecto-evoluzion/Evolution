@@ -22,23 +22,28 @@ msgstr ", Edad:"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "0-5 Points: Class I 1% Complications"
-msgstr "Clase I"
+msgstr "Class I"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "6-12 Points: Class II 7% Complications"
-msgstr "Clase II"
+msgstr "Class II"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "13-25 Points: Class III 14% Complications"
-msgstr "Clase III"
+msgstr "Class III"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "26-53 Points: Class IV 78% Complications"
-msgstr "Clase IV"
+msgstr "Class IV"
+
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_asa
@@ -114,7 +119,9 @@ msgstr "Formularios de datos administrativos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_age
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Age"
 msgstr "Edad"
 
@@ -587,10 +594,10 @@ msgstr "Padre"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,sex:0
-#: selection:doctor.professional,sex:0
+#: selection:doctor.doctor,sex:0
 #: selection:doctor.presurgical.record,gender:0
 msgid "Female"
-msgstr "Female"
+msgstr "Mujer"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_lastname
@@ -796,7 +803,7 @@ msgstr "Municipio de nacimiento"
 #: selection:doctor.doctor,sex:0
 #: selection:doctor.presurgical.record,gender:0
 msgid "Male"
-msgstr "Male"
+msgstr "Hombre"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_marijuana
