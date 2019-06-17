@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<!-- quirurgic_sheet form -->
+	<record id="clinica_quirurgic_sheet_form" model="ir.ui.view">
+         <field name="name">doctor.quirurgic.sheet.form</field>
+         <field name="model">doctor.quirurgic.sheet</field>
+         <field name="arch" type="xml">
+         <form string="Quirurgic Sheet Form">
+         	<sheet>
+         		<group name="main_group">
+         			<group name="main_sub_group1" >
+         				<field name='invoice_id' />
+         				<field name='procedure_date' required="1"/>
+         				<field name='patient_id' required="1"/>
+         				<field name='document_type'/>
+         				<field name='numberid' attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>
+            			<field name='numberid_integer' string="Number ID" attrs="{'invisible':[('document_type','not in',['cc','ti'])]}"/>
+         			</group>
+         			<group name="main_sub_group2" >
+         				<field name='first_name' />
+         				<field name='first_last_name'/>
+         				<field name='second_name' />
+         				<field name='second_last_name'/>
+         			</group>
+         		</group>
+         		<group name="patient_personal_details">
+         			<group name="patient_personal_details_sub1" >
+         				<field name='gender' />
+         				<label for="blood_type" string="Blood Type"/>
+           				<div>
+           					<div>
+           						<field name="blood_type" nolabel="1" class="oe_inline" />
+          						<field name="blood_rh" nolabel="1" class="oe_inline" />
+           					</div>
+           				</div>
+         			</group>
+         			<group name="patient_personal_details_sub2" >
+            			<field name='birth_date' />
+            			<label for="age" string="Age"/>
+           				<div>
+           					<div>
+           						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+          						<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+           					</div>
+           				</div>
+         			</group>
+         		</group>
+         		<group name="health_professionals">
+         			<group name="health_professionals_sub1" >
+         				<field name='surgeon_id' domain="[('profession_type','=','doctor')]"/>
+         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
+         				<field name='anesthesia_type' />
+         			</group>
+         			<group name="health_professionals_sub2" >
+         				<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>
+         				<field name='helper_id' domain="[('profession_type','=','helpers')]"/>
+         			</group>
+         		</group>
+         		<group name="other_info_group">
+         			<group name="other_info_group_sub1" >
+         				<field name='procedure_scope' />
+         				<field name='procedure_purpose' />
+         				<field name='surgical_execution' />
+         			</group>
+         			<group name="other_info_group_sub2" >
+         				<field name='disease_id' />
+         				<field name='procedure_id' />
+         				<field name='user_id' />
+         			</group>
+         		</group>
+         		<group name="tisue_sending_patologist">
+         			<field name='tisue_sending_patologist' />
+         		</group>
+         		<group name="sign_stamp">
+         			<field name='sign_stamp' />
+         		</group>
+         	</sheet>
+         </form>
+         </field>
+    </record>
+    
+    <record id="clinica_quirurgic_sheet_tree" model="ir.ui.view">
+       <field name="name">doctor.quirurgic.sheet.tree</field>
+       <field name="model">doctor.quirurgic.sheet</field>
+       <field name="arch" type="xml">
+       <tree string="Quirurgic Sheet Tree">
+            <field name="patient_id"/>
+	   	    <field name='invoice_id'/>
+			<field name="procedure_date"/>
+			<field name="disease_id"/>
+       </tree>
+       </field>
+   </record>
+   
+   <record id="clinica_quirurgic_sheet_filter" model="ir.ui.view">
+        <field name="name">doctor.quirurgic.sheet.search</field>
+        <field name="model">doctor.quirurgic.sheet</field>
+        <field name="arch" type="xml">
+            <search string="Search Quirurgic Sheet">
+                <field name="surgeon_id"  />
+                <field name='anesthesiologist_id'/>
+                <field name='technologist_id'/>
+         		<field name='helper_id'/>
+                <field name="patient_id" />
+                <field name="invoice_id" />
+                <group expand="0" string="Group By">
+                	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                	<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
+                	<filter string="Anesthesiologist" name="groupby_anesthesiologist_id" domain="[]" context="{'group_by':'anesthesiologist_id'}"/>
+                </group>
+            </search>
+        </field>
+   </record>
+        
+   <record id="action_clinica_quirurgic_sheet" model="ir.actions.act_window">
+       <field name="name">Quirurgic Sheet</field>
+       <field name="res_model">doctor.quirurgic.sheet</field>
+       <field name="view_type">form</field>
+       <field name="view_mode">tree,form</field>
+       <field name="view_id" ref="clinica_quirurgic_sheet_tree"/>
+       <field name="search_view_id" ref="clinica_quirurgic_sheet_filter"/>
+   </record> 
+   
+   <menuitem id="menu_clinica_quirurgic_sheet"
+       name="Quirurgic Sheet"
+       parent="menu_doctor_process"
+       action="clinica_doctor_data.action_clinica_quirurgic_sheet"
+       sequence="8"/>
+
+</odoo>

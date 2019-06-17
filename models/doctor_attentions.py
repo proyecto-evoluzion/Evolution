@@ -36,10 +36,12 @@ class PresurgicalRecord(models.Model):
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
+                                      ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
+                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
-    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    patient_id = fields.Many2one('doctor.administrative.data', 'Patient', ondelete='restrict')
     first_name = fields.Char(string='First Name')
     first_last_name = fields.Char(string='First Last Name')
     second_name = fields.Char(string='Second Name')
@@ -55,7 +57,6 @@ class PresurgicalRecord(models.Model):
     consultation_reason = fields.Text(string="Reason for Consultation")
     pathological = fields.Text(string="Pathological")
     surgical = fields.Text(string="Surgical")
-    relatives = fields.Text(string="Relatives")
     smoke = fields.Boolean(string="Smoke")
     cigarate_daily = fields.Integer(string="Cigarettes / Day")
     is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
@@ -108,18 +109,10 @@ class PresurgicalRecord(models.Model):
                                             string="GOLDMAN", default='class_1')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
-    disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
-    disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')
     disease_state = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
-    disease_state2 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
-                                       ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
-    disease_state3 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
-                                       ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
+                                       ('repeat_confirmed', 'confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
     plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")

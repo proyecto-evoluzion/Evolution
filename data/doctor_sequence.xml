@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-	<data noupdate="1">
+	<data noupdate="0">
 
 		<!-- Sequence type for attention -->
 		<record model="ir.sequence" id="seq_type_doctor_presurgical_record">
@@ -10,6 +10,23 @@
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
 		</record>
+		
+		<record id="seq_doctor_quirurgic_sheet" model="ir.sequence">
+            <field name="name">Quirurgic Sheet</field>
+            <field name="code">doctor.quirurgic.sheet</field>
+            <field name="prefix">QS </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+		
+		<!-- Sequence type for room -->
+		<record id="seq_doctor_waiting_room" model="ir.sequence">
+            <field name="name">Waiting Room</field>
+            <field name="code">doctor.waiting.room</field>
+            <field name="prefix">AP / </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
 		
 	</data>
 </odoo>

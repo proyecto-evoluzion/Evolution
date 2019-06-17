@@ -21,7 +21,9 @@
 
 from . import doctor_details
 from . import doctor_product 
+from . import doctor_calendar
 from . import doctor_attentions
+from . import quirurgic_sheet
 
 
 

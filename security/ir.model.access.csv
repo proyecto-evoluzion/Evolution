@@ -1,7 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_doctor_administrative_data,access_doctor_administrative_data,model_doctor_patient,base.group_user,1,1,1,1
-access_assurance_plan,access_assurance_plan,model_doctor_insurer_plan,base.group_user,1,1,1,1
-access_doctor_doctor,access_doctor_doctor,model_doctor_professional,base.group_user,1,1,1,1
+access_doctor_administrative_data,access_doctor_administrative_data,model_doctor_administrative_data,base.group_user,1,1,1,1
+access_assurance_plan,access_assurance_plan,model_assurance_plan,base.group_user,1,1,1,1
+access_doctor_patient_occupation,access_doctor_patient_occupation,model_doctor_patient_occupation,base.group_user,1,1,1,1
+access_doctor_doctor,access_doctor_doctor,model_doctor_doctor,base.group_user,1,1,1,1
 access_doctor_diseases,access_doctor_diseases,model_doctor_diseases,base.group_user,1,1,1,1
 access_doctor_cups_code,access_doctor_cups_code,model_doctor_cups_code,base.group_user,1,1,1,1
 access_doctor_presurgical_record,access_doctor_presurgical_record,model_doctor_presurgical_record,base.group_user,1,1,1,1
+access_doctor_schedule,access_doctor_schedule,model_doctor_schedule,base.group_user,1,1,1,1
+access_doctor_waiting_room,access_doctor_waiting_room,model_doctor_waiting_room,base.group_user,1,1,1,1
+access_doctor_waiting_room_procedures,access_doctor_waiting_room_procedures,model_doctor_waiting_room_procedures,base.group_user,1,1,1,1
+access_doctor_quirurgic_sheet,access_doctor_quirurgic_sheet,model_doctor_quirurgic_sheet,base.group_user,1,1,1,1
+
