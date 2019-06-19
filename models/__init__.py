@@ -24,6 +24,8 @@ from . import doctor_product
 from . import doctor_calendar
 from . import doctor_attentions
 from . import quirurgic_sheet
+from . import nurse_sheet
+from . import anhestesic_registry
 
 
 

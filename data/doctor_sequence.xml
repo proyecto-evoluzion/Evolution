@@ -11,6 +11,7 @@
             <field name="company_id" eval="False"/>
 		</record>
 		
+		<!-- Sequence type for Quirurgic Sheet -->
 		<record id="seq_doctor_quirurgic_sheet" model="ir.sequence">
             <field name="name">Quirurgic Sheet</field>
             <field name="code">doctor.quirurgic.sheet</field>
@@ -24,6 +25,24 @@
             <field name="name">Waiting Room</field>
             <field name="code">doctor.waiting.room</field>
             <field name="prefix">AP / </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+        
+		<!-- Sequence type for Nurse Sheet -->
+		<record id="seq_clinica_nurse_sheet" model="ir.sequence">
+            <field name="name">Nurse Sheet</field>
+            <field name="code">nurse.sheet</field>
+            <field name="prefix">NS </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+        
+		<!-- Sequence type for anhestesic.registry -->
+		<record id="seq_clinica_anhestesic_registry" model="ir.sequence">
+            <field name="name">Anhestesic Registry</field>
+            <field name="code">anhestesic.registry</field>
+            <field name="prefix">AR </field>
             <field name="padding">5</field>
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>

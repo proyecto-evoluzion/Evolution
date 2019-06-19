@@ -10,4 +10,8 @@ access_doctor_schedule,access_doctor_schedule,model_doctor_schedule,base.group_u
 access_doctor_waiting_room,access_doctor_waiting_room,model_doctor_waiting_room,base.group_user,1,1,1,1
 access_doctor_waiting_room_procedures,access_doctor_waiting_room_procedures,model_doctor_waiting_room_procedures,base.group_user,1,1,1,1
 access_doctor_quirurgic_sheet,access_doctor_quirurgic_sheet,model_doctor_quirurgic_sheet,base.group_user,1,1,1,1
+access_clinica_nurse_sheet,access_clinica_nurse_sheet,model_clinica_nurse_sheet,base.group_user,1,1,1,1
+access_nurse_sheet_procedures,access_nurse_sheet_procedures,model_nurse_sheet_procedures,base.group_user,1,1,1,1
+access_clinica_anhestesic_registry,access_clinica_anhestesic_registry,model_clinica_anhestesic_registry,base.group_user,1,1,1,1
+
 

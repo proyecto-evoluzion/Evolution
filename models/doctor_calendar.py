@@ -34,6 +34,7 @@ class DoctorSchedule(models.Model):
     _name = "doctor.schedule"
     _description= 'Doctor Schedule'
     _rec_name = 'professional_id'
+    _order = 'id desc'
     
     professional_id = fields.Many2one('doctor.doctor', string='Doctor')
     start_date = fields.Datetime(string='Start Date', default=fields.Datetime.now, copy=False)
@@ -79,6 +80,10 @@ class DoctorWaitingRoom(models.Model):
     notes = fields.Text(string='Observations or Notes')
     programmer_id = fields.Many2one('res.users', string='Programmer', default=lambda self: self.env.user)
     procedure_ids = fields.One2many('doctor.waiting.room.procedures', 'room_id', string='Helath Procedures', copy=False)
+    state = fields.Selection([('new','New'),('confirmed','Confirmed'),('ordered','SO Created')], 
+                                        string='Status', default='new')
+    nurse_sheet_created = fields.Boolean(string='Nurse Sheet Created', compute='_compute_nurse_sheet_creation')
+    sale_order_id = fields.Many2one('sale.order', string='Sales Order', copy=False)
     
     @api.multi
     @api.depends('birth_date')
@@ -101,6 +106,13 @@ class DoctorWaitingRoom(models.Model):
                 else:
                     room.age_meassure_unit = '1'
                     room.age = int(date_diff.years)
+                    
+    @api.multi
+    def _compute_nurse_sheet_creation(self):
+        for room in self:
+            nurse_sheet_ids = self.env['clinica.nurse.sheet'].search([('room_id','=',room.id)])
+            if nurse_sheet_ids:
+                room.nurse_sheet_created = True
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):
@@ -172,27 +184,28 @@ class DoctorWaitingRoom(models.Model):
             if self.surgeon_id:
                 start_date = self.procedure_date
                 end_date = self.procedure_end_date
-                if end_date <= start_date:
-                    raise ValidationError(_("End date should be greater than start date!"))
-                start_time_between_rooms = self.search([('surgeon_id','=',self.surgeon_id.id),
-                                            ('procedure_date','<=',start_date),
-                                            ('procedure_end_date','>',start_date),
-                                            ])
-                if len(start_time_between_rooms) > 1:
-                    raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
-                end_time_between_rooms = self.search([('surgeon_id','=',self.surgeon_id.id),
-                                            ('procedure_date','<',end_date),
-                                            ('procedure_end_date','>=',end_date),
-                                            ])
-                if len(end_time_between_rooms) > 1:
-                    raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
-                
-                overlap_rooms = self.search([('surgeon_id','=',self.surgeon_id.id),
-                                            ('procedure_date','>=',start_date),
-                                            ('procedure_end_date','<=',end_date),
-                                            ])
-                if len(overlap_rooms) > 1:
-                    raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
+                if end_date and start_date:
+                    if end_date <= start_date:
+                        raise ValidationError(_("End date should be greater than start date!"))
+                    start_time_between_rooms = self.search([('surgeon_id','=',self.surgeon_id.id),
+                                                ('procedure_date','<=',start_date),
+                                                ('procedure_end_date','>',start_date),
+                                                ])
+                    if len(start_time_between_rooms) > 1:
+                        raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
+                    end_time_between_rooms = self.search([('surgeon_id','=',self.surgeon_id.id),
+                                                ('procedure_date','<',end_date),
+                                                ('procedure_end_date','>=',end_date),
+                                                ])
+                    if len(end_time_between_rooms) > 1:
+                        raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
+                    
+                    overlap_rooms = self.search([('surgeon_id','=',self.surgeon_id.id),
+                                                ('procedure_date','>=',start_date),
+                                                ('procedure_end_date','<=',end_date),
+                                                ])
+                    if len(overlap_rooms) > 1:
+                        raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
                 
     
     @api.model
@@ -236,6 +249,78 @@ class DoctorWaitingRoom(models.Model):
         self._check_document_types()
         self._validate_surgeon_room()
         return res
+    
+    @api.multi
+    def action_confirm(self):
+        for room in self:
+            room.state = 'confirmed'
+            
+    @api.multi
+    def _set_nurse_sheet_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_room_id' : self.id
+        }
+        if self.sale_order_id and self.sale_order_id.picking_ids:
+            procedure_list = []
+            for picking in self.sale_order_id.picking_ids:
+                for move in picking.move_lines:
+                    procedure_list.append((0,0,{'product_id': move.product_id and move.product_id.id or False,
+                                                'product_uom_qty': move.product_uom_qty,
+                                                'quantity_done': move.quantity_done,
+                                                'move_id': move.id}))
+            if procedure_list:
+                vals.update({'default_procedure_ids': procedure_list})
+        return vals
+            
+    @api.multi
+    def action_view_nurse_sheet(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_nurse_sheet')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_nurse_sheet_values()
+        nurse_sheet_ids = self.env['clinica.nurse.sheet'].search([('room_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(nurse_sheet_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(nurse_sheet_ids.ids) + ")]"
+        elif len(nurse_sheet_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.view_clinica_nurse_sheet_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = nurse_sheet_ids.id
+        return result
+    
+    @api.multi
+    def _create_so(self):
+        for room in self:
+            so_vals = {
+                    'partner_id': room.patient_id and room.patient_id.partner_id and room.patient_id.partner_id.id or False
+                }
+            sale_order = self.env['sale.order'].create(so_vals)
+            for procedure in room.procedure_ids:
+                so_line_vals = {
+                    'product_id': procedure.product_id and procedure.product_id.id or False,
+                    'product_uom_qty': procedure.quantity,
+                    'order_id': sale_order.id,
+                    }
+                self.env['sale.order.line'].create(so_line_vals)
+        return sale_order
+    
+    @api.multi
+    def action_create_so(self):
+        for room in self:
+            room.sale_order_id = room._create_so().id
+            room.state = 'ordered'
+        return self.action_view_sale_order()
+            
+    @api.multi
+    def action_view_sale_order(self):
+        action = self.env.ref('sale.action_quotations')
+        result = action.read()[0]
+        res = self.env.ref('sale.view_order_form', False)
+        result['views'] = [(res and res.id or False, 'form')]
+        result['res_id'] = self.sale_order_id.id
+        return result
     
 
 class DoctorWaitingRoomProcedures(models.Model):

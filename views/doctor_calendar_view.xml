@@ -70,59 +70,85 @@
          <field name="model">doctor.waiting.room</field>
          <field name="arch" type="xml">
          <form string="Waiting Room Form">
+         	<header>
+                <button name="action_confirm" string="Confirm Appointment" class="btn-primary" type="object" states='new'/>
+                <button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
+                	class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"/>
+                <button name="action_create_so" string="Create Sales Order" 
+                	class="btn-primary" type="object" states="confirmed"/>
+            	<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
+            </header>
          	<sheet>
+         		<div class="oe_button_box" name="button_box">
+                    <button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                    	states="ordered" string="Quotation">
+                    </button>
+                    <button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                    	attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets">
+                    </button>
+                </div>
+         		<div class="oe_title">
+                    <h1>
+                        <field name="name" readonly="1"/>
+                    </h1>
+                </div>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-         				<field name='schedule_id'/>
-         				<field name='patient_id' required="1"/>
-         				<field name='procedure_date' required="1"/>
-         				<field name='procedure_end_date' required="1"/>
+         				<field name='schedule_id' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='patient_id' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='procedure_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='procedure_end_date' required="1" attrs="{'readonly':[('state','!=','new')]}"/>
          			</group>
          			<group name="main_sub_group2" >
-         				<field name='document_type'/>
-         				<field name='numberid' attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>
-         				<field name='numberid_integer' string="Number ID" attrs="{'invisible':[('document_type','not in',['cc','ti'])]}"/>
+         				<field name='document_type' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='numberid' 
+         					attrs="{'invisible':[('document_type','in',['cc','ti'])],'readonly':[('state','!=','new')]}"/>
+         				<field name='numberid_integer' string="Number ID" 
+         					attrs="{'invisible':[('document_type','not in',['cc','ti'])],'readonly':[('state','!=','new')]}"/>
          			</group>
          		</group>
          		<group name="patient_info_group1">
          			<group name="patient_info_sub1" >
-         				<field name='first_name' />
-         				<field name='first_last_name'/>
-         				<field name='second_name'/>
-         				<field name='second_last_name'/>
+         				<field name='first_name'  attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='first_last_name' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='second_name' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='second_last_name' attrs="{'readonly':[('state','!=','new')]}"/>
          			</group>
          			<group name="patient_info_sub2" >
-         				<field name='phone'/>
-         				<field name='gender'/>
-         				<field name='birth_date'/>
-         				<label for="age" string="Age"/>
+         				<field name='phone' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='gender' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='birth_date' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<label for="age" string="Age" attrs="{'readonly':[('state','!=','new')]}"/>
 	       				<div>
 	       					<div>
 	       						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
 	      						<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
 	       					</div>
 	       				</div>
+	       				<field name='nurse_sheet_created' invisible="1"/>
          			</group>
          		</group>
          		<group name="profession_details">
          			<group name="profession_details_sub1" >
-         				<field name='surgeon_id' domain="[('profession_type','=','doctor')]"/>
-         				<field name='programmer_id' />
+         				<field name='surgeon_id' domain="[('profession_type','=','doctor')]" 
+         					attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='programmer_id'  attrs="{'readonly':[('state','!=','new')]}"/>
          			</group>
          			<group name="profession_details_sub2" >
-         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]" />
-         				<field name='anesthesia_type' />
+         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"  
+         					attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='anesthesia_type'  attrs="{'readonly':[('state','!=','new')]}"/>
          			</group>
          		</group>
          		<group name="procedure">
-         			<field name='procedure' />
+         			<field name='procedure'  attrs="{'readonly':[('state','!=','new')]}"/>
          		</group>
          		<group name="procedure">
          			<field name='notes' />
          		</group>
          		<notebook>
         			<page name="procedures" string="Health Procedures">
-        				 <field name="procedure_ids" colspan="4" nolabel="1" 
+        				 <field name="procedure_ids" colspan="4" nolabel="1"  attrs="{'readonly':[('state','!=','new')]}"
         				 	context="{'default_surgeon_id':surgeon_id,'default_anesthesiologist_id':anesthesiologist_id}">
         				 	<tree editable="bottom">
         				 		<field name="product_id"/>
