@@ -61,10 +61,10 @@ class DoctorQuirurgicSheet(models.Model):
     technologist_id = fields.Many2one('doctor.professional', string='Surgical Technologists')
     helper_id = fields.Many2one('doctor.professional', string='Surgical Helpers')
     procedure_scope = fields.Selection([('ambulatory','Ambulatorio'),('hospitable','Hospitalario'),
-                                        ('emergency','Urgencias')], string='Scope of the Procedure')
+                                        ('emergency','Urgencias')], string='Scope of the Procedure', default='ambulatory')
     procedure_purpose = fields.Selection([('diagnosis','Diagnóstico'),('therapeutic','Terapéutico'),
                                         ('specific_protection','Protección específica'),('early_detection_general','Detección temprana de Enfermedad general'),
-                                        ('early_detection_ocupational','Detección temprana de enfermedad laboral')], string='Purpose of the procedure')
+                                        ('early_detection_ocupational','Detección temprana de enfermedad laboral')], string='Purpose of the procedure', default='therapeutic')
     surgical_execution = fields.Selection([('ambulatory','Ambulatorio'),('hospitable','Hospitalario'),
                                         ('emergency','Urgencias')], string='Execution of the Surgical Act')
     
