@@ -46,6 +46,15 @@
             <field name="padding">5</field>
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>
+
+        <!-- Sequence type for plastic.surgery -->
+		<record id="seq_clinica_plastic_surgery" model="ir.sequence">
+            <field name="name">Plastic Surgery</field>
+            <field name="code">clinica.plastic.surgery</field>
+            <field name="prefix">PS </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
 		
 	</data>
 </odoo>

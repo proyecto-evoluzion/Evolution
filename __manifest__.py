@@ -42,7 +42,8 @@
         'views/quirurgic_sheet_view.xml',
         'views/nurse_sheet_view.xml',
         'views/doctor_calendar_view.xml',
-        'views/anhestesic_registry_view.xml'
+        'views/anhestesic_registry_view.xml',
+        'views/plastic_surgery_sheet_view.xml'
     ],
     'demo': [
     ],

@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <odoo>
         
-        <record id="clinica_presurgical_record_form" model="ir.ui.view">
-            <field name="name">doctor.presurgical.record.form</field>
-            <field name="model">doctor.presurgical.record</field>
+        <record id="clinica_plastic_surgery_form" model="ir.ui.view">
+            <field name="name">clinica.plastic.surgery.form</field>
+            <field name="model">clinica.plastic.surgery</field>
             <field name="arch" type="xml">
-            <form string="Presurgical Form">
+            <form string="Plastic Surgery Form">
             	<sheet>
             		<group name="main_group">
             			<group name="main_sub_group1" >
@@ -25,10 +25,12 @@
             				
             			</group>
             			<group name="attention_details_sub_group2" >
-            				<field name='first_name' required="1"/>
+            				
             				<field name='first_last_name' required="1"/>
+                            <field name='second_last_name' />
+                            <field name='first_name' required="1"/>
             				<field name='second_name' />
-            				<field name='second_last_name' />
+            				
             			</group>
             		</group>
             		<group name='patient_personal_details' col="6">
@@ -139,108 +141,6 @@
             				</group>
             			</page>
             		 	<page name="paraclinical_exam" string="Paraclinical Exam">
-            				<group name="paraclinical_exam_date" >
-            					<group>
-            						<field name="paraclinical_exam_date" string="Date of Exam"/>
-            					</group>
-            					<group>
-            					</group>
-            				</group>
-            				<group name="paraclinical_blood_count" string="Blood Count">
-            					<group name="paraclinical_blood_count_sub1">
-            						<label for="paraclinical_hb" string="HB"/>
-		           					<div>
-		           						<field name="paraclinical_hb" nolabel="1" class="oe_inline"/>
-		          						 g/dl
-		           					</div>
-		           					<label for="paraclinical_hto" string="Hto (Hematocrit)"/>
-		           					<div>
-		           						<field name="paraclinical_hto" nolabel="1" class="oe_inline"/>
-		          						 Vol %
-		           					</div>
-		           					<label for="paraclinical_leukocytes" string="Leukocytes"/>
-		           					<div>
-		           						<field name="paraclinical_leukocytes" nolabel="1" class="oe_inline"/>
-		          						 x 10^3/ul
-		           					</div>
-            					</group>
-            					<group name="paraclinical_blood_count_sub2">
-            						<field name="paraclinical_differential" />
-            						<label for="paraclinical_vsg" string="VSG"/>
-		           					<div>
-		           						<field name="paraclinical_vsg" nolabel="1" class="oe_inline"/>
-		          						 mm/H
-		          				    </div> 
-            					</group>
-            				</group>
-            				<group name="pruebas_coogulacian" string="Pruebas Coogulacian">
-            					<group name="pruebas_coogulacian_sub1">
-            						<label for="paraclinical_pt" string="PT"/>
-		           					<div>
-		           						<field name="paraclinical_pt" nolabel="1" class="oe_inline"/>
-		          						 S (seconds)
-		           					</div>
-		           					<label for="paraclinical_ptt" string="PTT"/>
-		           					<div>
-		           						<field name="paraclinical_ptt" nolabel="1" class="oe_inline"/>
-		          						 S (seconds)
-		           					</div>
-            					</group>
-            					<group name="pruebas_coogulacian_sub2">
-            						<label for="paraclinical_platelets" string="Platelets"/>
-		           					<div>
-		           						<field name="paraclinical_platelets" nolabel="1" class="oe_inline"/>
-		          						 x 10^3/ul
-		           					</div>
-		           					<label for="paraclinical_tc" string="TC"/>
-		           					<div>
-		           						<field name="paraclinical_tc" nolabel="1" class="oe_inline"/>
-		          						 m (Minutes)
-		           					</div>
-            					</group>
-            				</group>
-            				<group name="quimico_sanguinea" string="Quimico Sanguinea">
-            					<group name="quimico_sanguinea_sub1">
-            						<label for="paraclinical_glycemia" string="Glycemia"/>
-		           					<div>
-		           						<field name="paraclinical_glycemia" nolabel="1" class="oe_inline"/>
-		          						 mg/dl
-		           					</div>
-		           					<label for="paraclinical_creatinine" string="Creatinine"/>
-		           					<div>
-		           						<field name="paraclinical_creatinine" nolabel="1" class="oe_inline"/>
-		          						 mg/dl
-		           					</div>
-            					</group>
-            					<group name="quimico_sanguinea_sub2">
-            						<label for="paraclinical_albumin" string="Albumin"/>
-		           					<div>
-		           						<field name="paraclinical_albumin" nolabel="1" class="oe_inline"/>
-		          						 g/dl
-		           					</div>
-	           						<field name="paraclinical_glob" />
-            					</group>
-            				</group>
-            				<group name="ecg" colspan="2" col='1'>
-            					<label for="paraclinical_ecg" string="Electrocardiogram"/>
-            					<field name="paraclinical_ecg" nolabel="1"/>
-            				</group>
-            				<group name="paraclinical_rx_chest" colspan="2" col='1'>
-            					<label for="paraclinical_rx_chest" string="Rx. Chest"/>
-            					<field name="paraclinical_rx_chest" nolabel="1"/>
-            				</group>
-            				<group name="paraclinical_others" colspan="2" col='1'>
-            					<label for="paraclinical_others" string="Others"/>
-            					<field name="paraclinical_others" nolabel="1"/>
-            				</group>
-            				<group name="paraclinic_details">
-            					<group>
-           							<field name="paraclinical_asa" />
-           						</group>
-            					<group>
-           							<field name="paraclinical_goldman" />
-           						</group>
-            				</group>
 
                             <group name="disease_details" string="Main Disease">
                             <group>
@@ -297,9 +197,9 @@
             </field>
         </record>
         
-        <record id="clinica_presurgical_record_tree" model="ir.ui.view">
-            <field name="name">doctor.presurgical.record.tree</field>
-            <field name="model">doctor.presurgical.record</field>
+        <record id="clinica_plastic_surgery_tree" model="ir.ui.view">
+            <field name="name">clinica.plastic.surgery.tree</field>
+            <field name="model">clinica.plastic.surgery</field>
             <field name="arch" type="xml">
                 <tree string="Presurgical Tree">
                     <field name="number"/>
@@ -313,11 +213,11 @@
         </record>
         
         
-        <record id="clinica_presurgical_record_filter" model="ir.ui.view">
-            <field name="name">doctor.presurgical.record.search</field>
-            <field name="model">doctor.presurgical.record</field>
+        <record id="clinica_plastic_surgery_filter" model="ir.ui.view">
+            <field name="name">clinica.plastic.surgery.search</field>
+            <field name="model">clinica.plastic.surgery</field>
             <field name="arch" type="xml">
-                <search string="Search Presurgical">
+                <search string="Search Plastic Surgery">
                     <field name="number"  />
                     <field name='attention_code_id'/>
                     <field name="patient_id" />
@@ -328,20 +228,20 @@
             </field>
        </record>
         
-        <record id="action_clinica_presurgical_record" model="ir.actions.act_window">
-            <field name="name">Pre-surgical Records</field>
-            <field name="res_model">doctor.presurgical.record</field>
+        <record id="action_clinica_plastic_surgery" model="ir.actions.act_window">
+            <field name="name">Plastic Surgery Sheet</field>
+            <field name="res_model">clinica.plastic.surgery</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="clinica_presurgical_record_tree"/>
             <field name="search_view_id" ref="clinica_presurgical_record_filter"/>
         </record> 
         
-        <menuitem id="menu_clinica_presurgical_record"
-            name="Pre-surgical Records"
+        <menuitem id="menu_clinica_plastic_surgery"
+            name="Plastic Surgery Sheet"
             parent="menu_doctor_process"
-            action="clinica_doctor_data.action_clinica_presurgical_record"
-            sequence="6"/>
+            action="clinica_doctor_data.action_clinica_plastic_surgery"
+            sequence="9"/>
         
  </odoo>
  

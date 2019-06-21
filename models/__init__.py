@@ -24,7 +24,9 @@ from . import doctor_product
 from . import doctor_attentions
 from . import quirurgic_sheet
 from . import nurse_sheet
+from . import plastic_surgery_sheet
 from . import doctor_calendar
 from . import anhestesic_registry
+
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

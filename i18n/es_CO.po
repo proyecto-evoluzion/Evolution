@@ -62,6 +62,7 @@ msgstr "AB"
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "AS - Unidentified Adult"
 msgstr "AS - Adulto sin Identificación"
 
@@ -126,6 +127,7 @@ msgstr "Formularios de datos administrativos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_age
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
@@ -134,6 +136,7 @@ msgstr "Formularios de datos administrativos"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_patient_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Age"
 msgstr "Edad"
 
@@ -175,11 +178,13 @@ msgstr "Albumina"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_is_alcoholic
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_is_alcoholic
 msgid "Alcoholic Drinks"
 msgstr "Bebidas Alcohólicas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_allergic
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_allergic
 msgid "Allergic"
 msgstr "Alergicos"
 
@@ -218,11 +223,13 @@ msgstr "Planes de Aseguradoras"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_attention_code_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_attention_code_id
 msgid "Attention Code"
 msgstr "Código de la Consulta"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_number
 msgid "Attention number"
 msgstr "Atención Nº"
 
@@ -258,6 +265,7 @@ msgstr "Es Responsable"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_birth_date
@@ -322,12 +330,14 @@ msgstr "Lista HC Anestésica"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_administrative_data_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_blood_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_form_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_blood_type
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Blood Type"
 msgstr "Tipo de sangre"
 
@@ -387,6 +397,7 @@ msgstr "Víctima - Vinculado"
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:doctor.quirurgic.sheet,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "CC - ID Document"
 msgstr "CC - Cédula de ciudadanía"
 
@@ -397,6 +408,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:doctor.quirurgic.sheet,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "CE - Aliens Certificate"
 msgstr "CE - Cédula de Extranjería"
 
@@ -407,6 +419,7 @@ msgstr "CE - Cédula de Extranjería"
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:doctor.quirurgic.sheet,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "MS - Unidentified Minor"
 msgstr "MS - Menor sin Identificación"
 
@@ -433,6 +446,7 @@ msgstr "Casada/o"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cigarate_daily
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_cigarate_daily
 msgid "Cigarettes / Day"
 msgstr "Cigarrillos / Dia"
 
@@ -453,6 +467,7 @@ msgstr "Cm"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cocaine
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_cocaine
 msgid "Cocaine"
 msgstr "Cocaina"
 
@@ -481,6 +496,7 @@ msgstr "Contributivo"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_contrtaceptive_methods
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_contrtaceptive_methods
 msgid "Contrtaceptive Methods"
 msgstr "Método de planificación"
 
@@ -550,16 +566,19 @@ msgstr "Fecha de los exámenes"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_birth_date
 msgid "Date of Last Birth"
 msgstr "Fecha del último parto"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_menstruation_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_menstruation_date
 msgid "Date of Last Menstruation"
 msgstr "Fecha de última menstruación"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_date_attention
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_date_attention
 msgid "Date of attention"
 msgstr "Fecha de atención"
 
@@ -586,6 +605,9 @@ msgstr "Descripción"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease3_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_disease_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease2_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease3_id
 msgid "Diagnosis"
 msgstr "Diagnóstico"
 
@@ -606,6 +628,7 @@ msgstr "Forma de realización del acto quirurgico"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Other Diseases"
 msgstr "Otros Diagnósticos"
 
@@ -625,6 +648,9 @@ msgstr "Diferencial"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state2
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_state3
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state2
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state3
 msgid "Disease Status"
 msgstr "Tipo"
 
@@ -641,6 +667,7 @@ msgstr "Diagnósticos"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_diseases_form
 msgid "Main Disease"
 msgstr "Diagnóstico Principal"
@@ -709,6 +736,7 @@ msgstr "E.C.G"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_ecstasy
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_ecstasy
 msgid "Ecstasy"
 msgstr "Éxtasis"
 
@@ -748,6 +776,7 @@ msgstr "Padre"
 #: selection:clinica.anhestesic.registry,gender:0
 #: selection:doctor.presurgical.record,gender:0
 #: selection:doctor.quirurgic.sheet,gender:0
+#: selection:clinica.plastic.surgery,gender:0
 msgid "Female"
 msgstr "Mujer"
 
@@ -764,6 +793,7 @@ msgstr "Sangrado"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_first_last_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_first_last_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_first_last_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_first_last_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -776,6 +806,7 @@ msgstr "Primer Apellido"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_first_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_first_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_first_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_first_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -784,6 +815,7 @@ msgstr "Primer Nombre"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_alcohol_frequency
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_alcohol_frequency
 msgid "Frequency"
 msgstr "Frecuencia"
 
@@ -804,6 +836,7 @@ msgstr "GOLDMAN"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_sex
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_sex
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_gender
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_gender	
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_gender
 msgid "Gender"
@@ -955,6 +988,7 @@ msgstr "Observaciones"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_patient_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
@@ -1013,7 +1047,9 @@ msgstr "ID"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_body_mass_index
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_body_mass_index
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "IMC (Body Mass Index)"
 msgstr "IMC (Indice de Masa Corporal)"
 
@@ -1163,17 +1199,21 @@ msgstr "Municipio de nacimiento"
 #: selection:doctor.presurgical.record,gender:0
 #: selection:clinica.anhestesic.registry,gender:0
 #: selection:doctor.quirurgic.sheet,gender:0
+#: selection:clinica.plastic.surgery,gender:0
 msgid "Male"
 msgstr "Hombre"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_marijuana
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_marijuana
 msgid "Marijuana"
 msgstr "Marihuana"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_medical_recipe
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_medical_recipe
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Medical Orders and Recipe"
 msgstr "Ordenes médicas y Receta"
 
@@ -1219,10 +1259,12 @@ msgstr "Nombre"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_numberid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_numberid
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
@@ -1255,16 +1297,19 @@ msgstr "Number ID for TI or CC Documents"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_abortion_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
 msgid "Number of Abortions"
 msgstr "Número de abortos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_child_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_child_number
 msgid "Number of Children"
 msgstr "Número de hijos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pregnancy_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pregnancy_number
 msgid "Number of Pregnancies"
 msgstr "Número de embarazos"
 
@@ -1302,6 +1347,7 @@ msgstr "Other Responsible Person's Relationship"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_form
 msgid "Others"
 msgstr "Otros"
 
@@ -1312,6 +1358,7 @@ msgstr "Otros"
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:doctor.quirurgic.sheet,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "PA - Passport"
 msgstr "PA - Pasaporte"
 
@@ -1354,7 +1401,9 @@ msgstr "Partner-related data of doctor "
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pathological
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pathological
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Pathological"
 msgstr "Patológicos"
 
@@ -1366,11 +1415,13 @@ msgstr "Paciente"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Patient Background"
 msgstr "Antecedentes"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_form
 msgid "Patient Details"
 msgstr "Detalles del Paciente"
 
@@ -1398,6 +1449,7 @@ msgstr "Patient Occupation Tree"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pharmacological
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pharmacological
 msgid "Pharmacological"
 msgstr "Farmacológicos"
 
@@ -1414,12 +1466,15 @@ msgstr "Teléfono"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Physical Details"
-msgstr "Physical Details"
+msgstr "Detalles Físicos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_exam
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_exam
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Physical Exam"
 msgstr "Examen Físico"
 
@@ -1446,7 +1501,9 @@ msgstr "Plan Code"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_plan_analysis
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_plan_analysis
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Plan, Analysis and Conduct"
 msgstr "Plan, Análisis y Conducta"
 
@@ -1475,6 +1532,12 @@ msgstr "Please enter non zero value for Number ID"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
 msgid "Pre-surgical Records"
 msgstr "HC Preanestésica"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_plastic_surgery
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_plastic_surgery
+msgid "Plastic Surgery Sheet"
+msgstr "HC Cirugía Plástica"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_waiting_room
@@ -1546,6 +1609,7 @@ msgstr "Procedimiento"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Paraclinical Exam"
 msgstr "Examenes Paraclínicos"
 
@@ -1605,12 +1669,15 @@ msgstr "Química Sanguínea"
 #: selection:doctor.presurgical.record,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "RC - Civil Registry"
 msgstr "RC - Registro Civil"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_consultation_reason
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_consultation_reason
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Reason for Consultation"
 msgstr "Motivo de Consulta"
 
@@ -1736,6 +1803,7 @@ msgstr "Buscar Prequirúrgico"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_second_last_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_second_last_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_second_last_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_second_last_name
@@ -1773,6 +1841,7 @@ msgstr "Tejido enviado a patología"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_second_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_second_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_second_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
@@ -1823,7 +1892,9 @@ msgstr "Cirujano"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_size
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_size
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Size"
 msgstr "Talla"
 
@@ -1839,6 +1910,7 @@ msgstr "Imagen de tamaño pequeño de este contacto. Se redimensiona automática
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_smoke
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_smoke
 msgid "Smoke"
 msgstr "Fuma"
 
@@ -1859,13 +1931,17 @@ msgstr "Subsidiado"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_surgical
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_surgical
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Surgical"
 msgstr "Quirúrgicos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_relatives
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_relatives
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Relatives"
 msgstr "Familiares"
 
@@ -1886,6 +1962,7 @@ msgstr "TC"
 #: selection:doctor.presurgical.record,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
+#: selection:clinica.plastic.surgery,document_type:0
 msgid "TI - Identity Card"
 msgstr "TI - Tarjeta de Identidad"
 
@@ -1905,6 +1982,7 @@ msgstr "Médico Tratante"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_document_type
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -1965,7 +2043,9 @@ msgstr "Warning!"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_weight
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_weight
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Weight"
 msgstr "Peso"
 
