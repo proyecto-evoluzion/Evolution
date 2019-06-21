@@ -62,8 +62,8 @@ class AnhestesicRegistry(models.Model):
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')
-    start_date = fields.Datetime(string='Start Date', default=fields.Datetime.now, copy=False)
-    end_date = fields.Datetime(string='End date', copy=False)
+    start_time = fields.Datetime(string='Start Time', default=fields.Datetime.now, copy=False)
+    end_time = fields.Datetime(string='End Time', copy=False)
     preoperative_note = fields.Text(string='Preoperative Note')
     
     paraclinical_exam_date = fields.Date(string="Paraclinical Exam Date")

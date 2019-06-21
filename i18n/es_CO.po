@@ -915,10 +915,10 @@ msgid "Procedure"
 msgstr "Procedimiento"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_start_date
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_start_date
-msgid "Start Date"
-msgstr "Fecha de Inicio"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_start_time
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_start_time
+msgid "Start Time"
+msgstr "Hora Inicial"
 
 
 #. module: clinica_doctor_data
@@ -927,9 +927,9 @@ msgid "End Date"
 msgstr "Fecha Final"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_end_date
-msgid "End date"
-msgstr "Fecha final"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_end_time
+msgid "End Time"
+msgstr "Hora Final"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:189
@@ -1202,6 +1202,33 @@ msgstr "Municipio de nacimiento"
 #: selection:clinica.plastic.surgery,gender:0
 msgid "Male"
 msgstr "Hombre"
+
+#. module: clinica_doctor_data
+#: selection:doctor.quirurgic.sheet,surgical_execution:0
+msgid "Single or one-sided"
+msgstr "Único o Unilateral"
+
+#. module: clinica_doctor_data
+#: selection:doctor.quirurgic.sheet,surgical_execution:0
+msgid "Multiple or bilateral, same route, different specialty"
+msgstr "Múltiple o bilateral, misma vía, diferente especialidad"
+
+
+#. module: clinica_doctor_data
+#: selection:doctor.quirurgic.sheet,surgical_execution:0
+msgid "Multiple or bilateral, same way, same specialty"
+msgstr "Múltiple o bilateral, misma vía, igual especialidad"
+
+#. module: clinica_doctor_data
+#: selection:doctor.quirurgic.sheet,surgical_execution:0
+msgid "Multiple or bilateral, different way, different specialty"
+msgstr "Múltiple o bilateral, diferente vía, diferente especialidad"
+
+#. module: clinica_doctor_data
+#: selection:doctor.quirurgic.sheet,surgical_execution:0
+msgid "Multiple or bilateral, different way, same specialty"
+msgstr "Múltiple o bilateral, diferente vía, igual especialidad"
+
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_marijuana

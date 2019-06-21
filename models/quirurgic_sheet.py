@@ -65,8 +65,8 @@ class DoctorQuirurgicSheet(models.Model):
     procedure_purpose = fields.Selection([('diagnosis','Diagnóstico'),('therapeutic','Terapéutico'),
                                         ('specific_protection','Protección específica'),('early_detection_general','Detección temprana de Enfermedad general'),
                                         ('early_detection_ocupational','Detección temprana de enfermedad laboral')], string='Purpose of the procedure', default='therapeutic')
-    surgical_execution = fields.Selection([('ambulatory','Ambulatorio'),('hospitable','Hospitalario'),
-                                        ('emergency','Urgencias')], string='Execution of the Surgical Act')
+    surgical_execution = fields.Selection([('single','Single or one-sided'),('multiple_same_diff','Multiple or bilateral, same route, different specialty'),
+                                        ('multiple_same_same','Multiple or bilateral, same way, same specialty'), ('multiple_diff_diff','Multiple or bilateral, different way, different specialty'), ('multiple_diff_same','Multiple or bilateral, different way, same specialty')], string='Execution of the Surgical Act')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis')
     tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
