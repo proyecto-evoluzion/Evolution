@@ -340,7 +340,7 @@
             name="Pre-surgical Records"
             parent="menu_doctor_process"
             action="clinica_doctor_data.action_clinica_presurgical_record"
-            sequence="3"/>
+            sequence="6"/>
         
  </odoo>
  

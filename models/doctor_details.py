@@ -71,6 +71,11 @@ class Doctor(models.Model):
     phone = fields.Char(string='Phone Number')
     partner_id = fields.Many2one('res.partner', copy=False, ondelete='restrict', string='Related Partner', 
                                     help='Partner-related data of doctor ')
+    profession_type = fields.Selection([('doctor','Doctor'),('anesthesiologist','Anesthesiologist'),
+                                        ('technologists','Surgical Technologists'),('helpers','Surgical Helpers')], 
+                                       string='Profession Type', default='doctor')
+    product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
+                                   string="Health Procedures", copy=False)
     
     def _check_email(self, email):
         if not tools.single_email_re.match(email):
