@@ -26,10 +26,10 @@
             			</group>
             			<group name="attention_details_sub_group2" >
             				
-            				<field name='first_last_name' required="1"/>
-                            <field name='second_last_name' />
-                            <field name='first_name' required="1"/>
-            				<field name='second_name' />
+            				<field name='lastname' required="1"/>
+                            <field name='surname' />
+                            <field name='firstname' required="1"/>
+            				<field name='middlename' />
             				
             			</group>
             		</group>

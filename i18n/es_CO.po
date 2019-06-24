@@ -58,7 +58,7 @@ msgstr "AB"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,tdoc:0
-#: selection:doctor.doctor,document_type:0
+#: selection:doctor.professional,document_type:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
@@ -146,7 +146,7 @@ msgid "Preoperative Note"
 msgstr "Nota Pre-Operatoria"
 
 #. module: clinica_doctor_data
-#: selection:doctor.doctor,profession_type:0
+#: selection:doctor.professional,profession_type:0
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesiologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_anesthesiologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_anesthesiologist_id
@@ -403,7 +403,7 @@ msgstr "CC - Cédula de ciudadanía"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,tdoc:0
-#: selection:doctor.doctor,document_type:0
+#: selection:doctor.professional,document_type:0
 #: selection:doctor.presurgical.record,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
@@ -586,6 +586,7 @@ msgstr "Fecha de atención"
 #. module: clinica_doctor_data
 #: selection:doctor.patient,age_meassure_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
+#: selection:doctor.waiting.room,age_meassure_unit:0
 msgid "Days"
 msgstr "Días"
 
@@ -772,7 +773,7 @@ msgstr "Padre"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,sex:0
-#: selection:doctor.doctor,sex:0
+#: selection:doctor.professional,sex:0
 #: selection:clinica.anhestesic.registry,gender:0
 #: selection:doctor.presurgical.record,gender:0
 #: selection:doctor.quirurgic.sheet,gender:0
@@ -788,27 +789,27 @@ msgid "Bleeding"
 msgstr "Sangrado"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_first_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_lastname
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_first_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_first_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_first_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_first_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_lastname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_lastname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_lastname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_lastname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_lastname
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "First Last Name"
 msgstr "Primer Apellido"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_first_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_firstname
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_first_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_first_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_first_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_first_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_first_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_firstname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_firstname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_firstname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_firstname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_firstname
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "First Name"
 msgstr "Primer Nombre"
@@ -1195,7 +1196,7 @@ msgstr "Municipio de nacimiento"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,sex:0
-#: selection:doctor.doctor,sex:0
+#: selection:doctor.professional,sex:0
 #: selection:doctor.presurgical.record,gender:0
 #: selection:clinica.anhestesic.registry,gender:0
 #: selection:doctor.quirurgic.sheet,gender:0
@@ -1257,6 +1258,7 @@ msgstr "Imagen mediana de este contacto. Se redimensiona automáticamente a 128x
 #. module: clinica_doctor_data
 #: selection:doctor.patient,age_meassure_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
+#: selection:doctor.waiting.room,age_meassure_unit:0
 msgid "Months"
 msgstr "Meses"
 
@@ -1692,7 +1694,7 @@ msgstr "Química Sanguínea"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,tdoc:0
-#: selection:doctor.doctor,document_type:0
+#: selection:doctor.professional,document_type:0
 #: selection:doctor.presurgical.record,document_type:0
 #: selection:doctor.waiting.room,document_type:0
 #: selection:clinica.anhestesic.registry,document_type:0
@@ -1826,27 +1828,27 @@ msgid "Search Presurgical"
 msgstr "Buscar Prequirúrgico"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_second_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_surname
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_second_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_second_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_second_last_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_second_last_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_surname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_surname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_surname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_surname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_surname
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_patient_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
 msgid "Second Last Name"
 msgstr "Segundo Apellido"
 
 #. module: clinica_doctor_data
-#: selection:doctor.doctor,profession_type:0
+#: selection:doctor.professional,profession_type:0
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_technologist_id
 msgid "Surgical Technologists"
 msgstr "Instrumentador/a"
 
 #. module: clinica_doctor_data
-#: selection:doctor.doctor,profession_type:0
+#: selection:doctor.professional,profession_type:0
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_helper_id
 msgid "Surgical Helpers"
 msgstr "Ayudante"
@@ -1862,14 +1864,14 @@ msgid "Tisue sending to patologist"
 msgstr "Tejido enviado a patología"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_second_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_second_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_middlename
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_middlename
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_second_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_second_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_second_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_second_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_middlename
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_middlename
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_middlename
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_middlename
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_doctor_tree
 msgid "Second Name"
@@ -2079,6 +2081,7 @@ msgstr "Peso"
 #. module: clinica_doctor_data
 #: selection:doctor.administrative.data,age_meassure_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
+#: selection:doctor.waiting.room,age_meassure_unit:0
 msgid "Years"
 msgstr "Años"
 
@@ -2166,8 +2169,8 @@ msgstr "doctor.diseases"
 
 #. module: clinica_doctor_data
 #: model:ir.model,name:clinica_doctor_data.model_doctor_doctor
-msgid "doctor.doctor"
-msgstr "doctor.doctor"
+msgid "doctor.professional"
+msgstr "doctor.professional"
 
 #. module: clinica_doctor_data
 #: model:ir.model,name:clinica_doctor_data.model_doctor_patient_occupation

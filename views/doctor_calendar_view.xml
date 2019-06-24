@@ -109,10 +109,10 @@
          		</group>
          		<group name="patient_info_group1">
          			<group name="patient_info_sub1" >
-         				<field name='first_name'  attrs="{'readonly':[('state','!=','new')]}"/>
-         				<field name='first_last_name' attrs="{'readonly':[('state','!=','new')]}"/>
-         				<field name='second_name' attrs="{'readonly':[('state','!=','new')]}"/>
-         				<field name='second_last_name' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='firstname'  attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='lastname' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='middlename' attrs="{'readonly':[('state','!=','new')]}"/>
+         				<field name='surname' attrs="{'readonly':[('state','!=','new')]}"/>
          			</group>
          			<group name="patient_info_sub2" >
          				<field name='phone' attrs="{'readonly':[('state','!=','new')]}"/>

@@ -40,10 +40,10 @@
        				</div>
             	</group>
             	<group name='patient_info_sub2'>
-                  <field name='first_last_name' />
-                  <field name='second_last_name' />
-                  <field name='first_name'/>
-                  <field name='second_name'/>     
+                  <field name='lastname' />
+                  <field name='surname' />
+                  <field name='firstname'/>
+                  <field name='middlename'/>     
             	</group>
             </group>
             

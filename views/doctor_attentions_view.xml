@@ -25,10 +25,10 @@
             				
             			</group>
             			<group name="attention_details_sub_group2" >
-            				<field name='first_name' required="1"/>
-            				<field name='first_last_name' required="1"/>
-            				<field name='second_name' />
-            				<field name='second_last_name' />
+            				<field name='firstname' required="1"/>
+            				<field name='lastname' required="1"/>
+            				<field name='middlename' />
+            				<field name='surname' />
             			</group>
             		</group>
             		<group name='patient_personal_details' col="6">

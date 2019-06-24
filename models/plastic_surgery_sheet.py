@@ -40,10 +40,10 @@ class PlasticSurgerySheet(models.Model):
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
-    first_name = fields.Char(string='First Name')
-    first_last_name = fields.Char(string='First Last Name')
-    second_name = fields.Char(string='Second Name')
-    second_last_name = fields.Char(string='Second Last Name')
+    firstname = fields.Char(string='First Name')
+    lastname = fields.Char(string='First Last Name')
+    middlename = fields.Char(string='Second Name')
+    surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
@@ -124,10 +124,17 @@ class PlasticSurgerySheet(models.Model):
     @api.onchange('patient_id')
     def onchange_patient_id(self):
         if self.patient_id:
-            self.first_name = self.patient_id.first_name
-            self.first_last_name = self.patient_id.first_last_name
-            self.second_name = self.patient_id.second_name
-            self.second_last_name = self.patient_id.second_last_name
+            self.firstname = self.patient_id.firstname
+            self.lastname = self.patient_id.lastname
+            self.middlename = self.patient_id.middlename
+            self.surname = self.patient_id.surname
+            self.document_type = self.patient_id.tdoc
+            self.numberid = self.patient_id.name
+            self.numberid_integer = self.patient_id.ref
+            self.birth_date = self.patient_id.birth_date
+            self.gender = self.patient_id.sex
+            self.blood_rh = self.patient_id.blood_rh
+            self.blood_type = self.patient_id.blood_type
             
     def _check_birth_date(self, birth_date):
         warn_msg = '' 

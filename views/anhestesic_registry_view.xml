@@ -21,10 +21,10 @@
          				<field name='numberid_integer' string="Number ID" attrs="{'invisible':[('document_type','not in',['cc','ti'])]}"/>
          			</group>
          			<group name="main_sub_group2" >
-                <field name='first_last_name' />
-                <field name='second_last_name' />
-         				<field name='first_name'/>
-                <field name='second_name'/>
+                <field name='lastname' />
+                <field name='surname' />
+         				<field name='firstname'/>
+                <field name='middlename'/>
          			</group>
          		</group>
          		<group name="patient_info_group">
@@ -57,8 +57,8 @@
 		                <field name="anesthesia_type"/>
          	    	</group>
          	    	<group name="professional_info_sub2">
-         	    		<field name="start_time" />
-         	    		<field name="end_time" />
+         	    		<field name="start_time" widget="float_time" />
+         	    		<field name="end_time" widget="float_time" />
          	    		<field name="preoperative_note" />
          	    	</group>
          	    </group>
