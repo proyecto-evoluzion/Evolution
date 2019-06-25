@@ -19,15 +19,14 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
+
+from odoo import models, fields, api, _
 
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+class Partner(models.Model):
+    _inherit = "res.partner"
+    
+    professional_created = fields.Boolean(string="Professional Created", copy=False)
+        
+        
+        

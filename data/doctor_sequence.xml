@@ -29,6 +29,15 @@
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>
         
+		<!-- Sequence type for room -->
+		<record id="seq_doctor_surgery_room_procedure" model="ir.sequence">
+            <field name="name">Surgery Room</field>
+            <field name="code">doctor.surgery.room.procedure</field>
+            <field name="prefix">Room / </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+        
 		<!-- Sequence type for Nurse Sheet -->
 		<record id="seq_clinica_nurse_sheet" model="ir.sequence">
             <field name="name">Nurse Sheet</field>
@@ -43,6 +52,15 @@
             <field name="name">Anhestesic Registry</field>
             <field name="code">anhestesic.registry</field>
             <field name="prefix">AR </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+
+        <!-- Sequence type for plastic.surgery -->
+		<record id="seq_clinica_plastic_surgery" model="ir.sequence">
+            <field name="name">Plastic Surgery</field>
+            <field name="code">clinica.plastic.surgery</field>
+            <field name="prefix">PS </field>
             <field name="padding">5</field>
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>

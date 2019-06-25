@@ -19,15 +19,8 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
+from . import create_health_professional
+
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

@@ -43,11 +43,11 @@ class ClinicaNurseSheet(models.Model):
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
-    patient_id = fields.Many2one('doctor.administrative.data', 'Patient', ondelete='restrict')
-    first_name = fields.Char(string='First Name')
-    first_last_name = fields.Char(string='First Last Name')
-    second_name = fields.Char(string='Second Name')
-    second_last_name = fields.Char(string='Second Last Name')
+    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    firstname = fields.Char(string='First Name')
+    lastname = fields.Char(string='First Last Name')
+    middlename = fields.Char(string='Second Name')
+    surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
@@ -55,16 +55,11 @@ class ClinicaNurseSheet(models.Model):
                                          compute='_compute_age_meassure_unit')
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
-    vital_signs_date_hour = fields.Datetime(string='Vital Signs Date Hour')
-    vital_signs_fc = fields.Integer(string='FC')
-    sistolic_arteric_pressure = fields.Integer(string='Sistolic Arteric Pressure')
-    diastolic_arteric_pressure = fields.Integer(string='Diastolic Arteric Pressure')
-    oximetry = fields.Integer(string='Oximetry')
-    diuresis = fields.Integer(string='Diuresis')
-    bleeding = fields.Integer(string='Bleeding')
-    room_id = fields.Many2one('doctor.waiting.room', string='Waiting Room/Appointment', copy=False)
+    
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     procedure_ids = fields.One2many('nurse.sheet.procedures', 'nurse_sheet_id', string='Health Procedures', copy=False)
     updated_stock = fields.Boolean(string='Stock Updated', copy=False)
+    vital_sign_ids = fields.One2many('nurse.sheet.vital.signs', 'nurse_sheet_id', string='Vital signs', copy=False)
     
     @api.multi
     @api.depends('birth_date')
@@ -91,15 +86,15 @@ class ClinicaNurseSheet(models.Model):
     @api.onchange('patient_id')
     def onchange_patient_id(self):
         if self.patient_id:
-            self.first_name = self.patient_id.first_name
-            self.first_last_name = self.patient_id.first_last_name
-            self.second_name = self.patient_id.second_name
-            self.second_last_name = self.patient_id.second_last_name
-            self.gender = self.patient_id.gender
+            self.firstname = self.patient_id.firstname
+            self.lastname = self.patient_id.lastname
+            self.middlename = self.patient_id.middlename
+            self.surname = self.patient_id.surname
+            self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
-            self.document_type = self.patient_id.document_type
+            self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.numberid_integer
+            self.numberid_integer = self.patient_id.ref
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             
@@ -221,7 +216,18 @@ class NurseSheetProcedures(models.Model):
     quantity_done = fields.Float(string='Used Products')
     move_id = fields.Many2one('stock.move', string='Stock Move', copy=False)
     
+  
+class NurseSheetVitalSigns(models.Model):
+    _name = "nurse.sheet.vital.signs"
     
+    nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False)
+    vital_signs_date_hour = fields.Datetime(string='Vital Signs Date Hour')
+    vital_signs_fc = fields.Integer(string='FC')
+    sistolic_arteric_pressure = fields.Integer(string='Sistolic Arteric Pressure')
+    diastolic_arteric_pressure = fields.Integer(string='Diastolic Arteric Pressure')
+    oximetry = fields.Integer(string='Oximetry')
+    diuresis = fields.Integer(string='Diuresis')
+    bleeding = fields.Integer(string='Bleeding')
         
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

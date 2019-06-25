@@ -42,11 +42,11 @@ class DoctorQuirurgicSheet(models.Model):
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
-    patient_id = fields.Many2one('doctor.administrative.data', 'Patient', ondelete='restrict')
-    first_name = fields.Char(string='First Name')
-    first_last_name = fields.Char(string='First Last Name')
-    second_name = fields.Char(string='Second Name')
-    second_last_name = fields.Char(string='Second Last Name')
+    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    firstname = fields.Char(string='First Name')
+    lastname = fields.Char(string='First Last Name')
+    middlename = fields.Char(string='Second Name')
+    surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
@@ -54,19 +54,19 @@ class DoctorQuirurgicSheet(models.Model):
                                          compute='_compute_age_meassure_unit')
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
-    surgeon_id = fields.Many2one('doctor.doctor', string='Surgeon')
-    anesthesiologist_id = fields.Many2one('doctor.doctor', string='Anesthesiologist')
+    surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')
-    technologist_id = fields.Many2one('doctor.doctor', string='Surgical Technologists')
-    helper_id = fields.Many2one('doctor.doctor', string='Surgical Helpers')
+    technologist_id = fields.Many2one('doctor.professional', string='Surgical Technologists')
+    helper_id = fields.Many2one('doctor.professional', string='Surgical Helpers')
     procedure_scope = fields.Selection([('ambulatory','Ambulatorio'),('hospitable','Hospitalario'),
-                                        ('emergency','Urgencias')], string='Scope of the Procedure')
+                                        ('emergency','Urgencias')], string='Scope of the Procedure', default='ambulatory')
     procedure_purpose = fields.Selection([('diagnosis','Diagnóstico'),('therapeutic','Terapéutico'),
                                         ('specific_protection','Protección específica'),('early_detection_general','Detección temprana de Enfermedad general'),
-                                        ('early_detection_ocupational','Detección temprana de enfermedad laboral')], string='Purpose of the procedure')
-    surgical_execution = fields.Selection([('ambulatory','Ambulatorio'),('hospitable','Hospitalario'),
-                                        ('emergency','Urgencias')], string='Execution of the Surgical Act')
+                                        ('early_detection_ocupational','Detección temprana de enfermedad laboral')], string='Purpose of the procedure', default='therapeutic')
+    surgical_execution = fields.Selection([('single','Single or one-sided'),('multiple_same_diff','Multiple or bilateral, same route, different specialty'),
+                                        ('multiple_same_same','Multiple or bilateral, same way, same specialty'), ('multiple_diff_diff','Multiple or bilateral, different way, different specialty'), ('multiple_diff_same','Multiple or bilateral, different way, same specialty')], string='Execution of the Surgical Act')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis')
     tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
@@ -99,17 +99,17 @@ class DoctorQuirurgicSheet(models.Model):
     @api.onchange('patient_id')
     def onchange_patient_id(self):
         if self.patient_id:
-            self.first_name = self.patient_id.first_name
-            self.first_last_name = self.patient_id.first_last_name
-            self.second_name = self.patient_id.second_name
-            self.second_last_name = self.patient_id.second_last_name
-            self.gender = self.patient_id.gender
+            self.firstname = self.patient_id.firstname
+            self.lastname = self.patient_id.lastname
+            self.middlename = self.patient_id.middlename
+            self.surname = self.patient_id.surname
+            self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
-            self.document_type = self.patient_id.document_type
+            self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.numberid_integer
+            self.numberid_integer = self.patient_id.ref
             
     @api.onchange('document_type','numberid_integer','numberid')
     def onchange_number_id(self):

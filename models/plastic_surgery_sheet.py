@@ -29,8 +29,8 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 import calendar
 from odoo.exceptions import ValidationError
 
-class PresurgicalRecord(models.Model):
-    _name = "doctor.presurgical.record"
+class PlasticSurgerySheet(models.Model):
+    _name = "clinica.plastic.surgery"
     _rec_name = 'number'
     
     number = fields.Char('Attention number', readonly=True)
@@ -82,31 +82,6 @@ class PresurgicalRecord(models.Model):
     physical_body_mass_index = fields.Float(string="IMC (Body Mass Index)")
     physical_exam = fields.Text(string="Physical Exam")
     
-    paraclinical_exam_date = fields.Date(string="Paraclinical Exam Date")
-    paraclinical_hb = fields.Float(string="HB")
-    paraclinical_hto = fields.Float(string="Hto (Hematocrit)")
-    paraclinical_leukocytes = fields.Float(string="Leukocytes")
-    paraclinical_differential = fields.Text(string="Differential")
-    paraclinical_vsg = fields.Integer(string="VSG")
-    paraclinical_pt = fields.Float(string="PT")
-    paraclinical_ptt = fields.Float(string="PTT")
-    paraclinical_platelets = fields.Float(string="Platelets")
-    paraclinical_tc = fields.Float(string="TC")
-    paraclinical_glycemia = fields.Float(string="Glycemia")
-    paraclinical_creatinine = fields.Float(string="Creatinine")
-    paraclinical_albumin = fields.Float(string="Albumin")
-    paraclinical_glob = fields.Text(string="Glob")
-    paraclinical_ecg = fields.Text(string="E.C.G")
-    paraclinical_rx_chest = fields.Text(string="Rx. Chest")
-    paraclinical_others = fields.Text(string="Paraclinical Others")
-    paraclinical_asa = fields.Selection([('1','ASA 1'),('2','ASA 2'),('3','ASA 3'),
-                                         ('4','ASA 4'), ('5','ASA 5') ], string="A.S.A")
-    paraclinical_goldman = fields.Selection([('class_1','0-5 Points: Class I 1% Complications'),
-                                             ('class_2','6-12 Points: Class II 7% Complications'),
-                                             ('class_3','13-25 Points: Class III 14% Complications'),
-                                             ('class_4','26-53 Points: Class IV 78% Complications')],
-                                            string="GOLDMAN", default='class_1')
-    
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
@@ -153,14 +128,13 @@ class PresurgicalRecord(models.Model):
             self.lastname = self.patient_id.lastname
             self.middlename = self.patient_id.middlename
             self.surname = self.patient_id.surname
-            self.gender = self.patient_id.sex
-            self.birth_date = self.patient_id.birth_date
-            self.phone = self.patient_id.phone
             self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
-            self.blood_type = self.patient_id.blood_type
+            self.birth_date = self.patient_id.birth_date
+            self.gender = self.patient_id.sex
             self.blood_rh = self.patient_id.blood_rh
+            self.blood_type = self.patient_id.blood_type
             
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
@@ -228,7 +202,7 @@ class PresurgicalRecord(models.Model):
             if warn_msg:
                 raise ValidationError(warn_msg)
         
-        res = super(PresurgicalRecord, self).create(vals)
+        res = super(PlasticSurgerySheet, self).create(vals)
         res._check_document_types()
         return res
     
@@ -252,7 +226,7 @@ class PresurgicalRecord(models.Model):
             if warn_msg:
                 raise ValidationError(warn_msg)
         
-        res = super(PresurgicalRecord, self).write(vals)
+        res = super(PlasticSurgerySheet, self).write(vals)
         self._check_document_types()
         return res
     

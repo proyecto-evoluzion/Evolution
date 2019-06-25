@@ -29,6 +29,10 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError
 
+class ClinicaSurgeryRoom(models.Model):
+    _name = "clinica.surgery.room"
+    
+    name = fields.Char(string='Description')
 
 class DoctorSchedule(models.Model):
     _name = "doctor.schedule"
@@ -36,7 +40,7 @@ class DoctorSchedule(models.Model):
     _rec_name = 'professional_id'
     _order = 'id desc'
     
-    professional_id = fields.Many2one('doctor.doctor', string='Doctor')
+    professional_id = fields.Many2one('doctor.professional', string='Doctor')
     start_date = fields.Datetime(string='Start Date', default=fields.Datetime.now, copy=False)
     duration = fields.Float(string='Duration (in hours)')
     end_date = fields.Datetime(string='End Date', copy=False)
@@ -53,6 +57,8 @@ class DoctorWaitingRoom(models.Model):
     _description= 'Doctor Waiting Room'
     
     name = fields.Char(string='Name', copy=False)
+    room_type = fields.Selection([('surgery','Surgery Room'),('waiting','Waiting Room')], string='Room Type')
+    surgery_room_id = fields.Many2one('clinica.surgery.room', string='Surgery Room', copy=False)
     schedule_id = fields.Many2one('doctor.schedule', string='Schedule', copy=False)
     procedure_date = fields.Datetime(string='Procedure Date', default=fields.Datetime.now, copy=False)
     procedure_end_date = fields.Datetime(string='Procedure End Date', copy=False)
@@ -61,19 +67,19 @@ class DoctorWaitingRoom(models.Model):
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
-    patient_id = fields.Many2one('doctor.administrative.data', 'Patient', ondelete='restrict')
-    first_name = fields.Char(string='First Name')
-    first_last_name = fields.Char(string='First Last Name')
-    second_name = fields.Char(string='Second Name')
-    second_last_name = fields.Char(string='Second Last Name')
+    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    firstname = fields.Char(string='First Name')
+    lastname = fields.Char(string='First Last Name')
+    middlename = fields.Char(string='Second Name')
+    surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
     phone = fields.Char(string='Telephone')
-    surgeon_id = fields.Many2one('doctor.doctor', string='Surgeon')
-    anesthesiologist_id = fields.Many2one('doctor.doctor', string='Anesthesiologist')
+    surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')
     procedure = fields.Text(string='Procedure')
@@ -117,16 +123,16 @@ class DoctorWaitingRoom(models.Model):
     @api.onchange('patient_id')
     def onchange_patient_id(self):
         if self.patient_id:
-            self.first_name = self.patient_id.first_name
-            self.first_last_name = self.patient_id.first_last_name
-            self.second_name = self.patient_id.second_name
-            self.second_last_name = self.patient_id.second_last_name
-            self.gender = self.patient_id.gender
+            self.firstname = self.patient_id.firstname
+            self.lastname = self.patient_id.lastname
+            self.middlename = self.patient_id.middlename
+            self.surname = self.patient_id.surname
+            self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
             self.phone = self.patient_id.phone
-            self.document_type = self.patient_id.document_type
+            self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.numberid_integer
+            self.numberid_integer = self.patient_id.ref
             
     @api.onchange('schedule_id')
     def onchange_schedule_id(self):
@@ -206,11 +212,39 @@ class DoctorWaitingRoom(models.Model):
                                                 ])
                     if len(overlap_rooms) > 1:
                         raise ValidationError(_("%s has another appointment in this date range! Please choose another. ") % self.surgeon_id.partner_id.name)
+    
+    @api.multi
+    def _validate_surgery_room_alocation(self):   
+        for room in self:  
+            start_date = self.procedure_date
+            end_date = self.procedure_end_date
+            if end_date and start_date:
+                start_time_between_rooms = self.search([('surgery_room_id','=',self.surgery_room_id.id),
+                                            ('procedure_date','<=',start_date),
+                                            ('procedure_end_date','>',start_date),
+                                            ])
+                if len(start_time_between_rooms) > 1:
+                    raise ValidationError(_("%s is already allocated for this date! Please choose another. ") % self.surgery_room_id.name)
+                end_time_between_rooms = self.search([('surgery_room_id','=',self.surgery_room_id.id),
+                                            ('procedure_date','<',end_date),
+                                            ('procedure_end_date','>=',end_date),
+                                            ])
+                if len(end_time_between_rooms) > 1:
+                    raise ValidationError(_("%s is already allocated for this date! Please choose another. ") % self.surgery_room_id.name)
                 
+                overlap_rooms = self.search([('surgery_room_id','=',self.surgery_room_id.id),
+                                            ('procedure_date','>=',start_date),
+                                            ('procedure_end_date','<=',end_date),
+                                            ])
+                if len(overlap_rooms) > 1:
+                    raise ValidationError(_("%s is already allocated for this date! Please choose another. ") % self.surgery_room_id.name)
     
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('doctor.waiting.room') or '/'
+        if vals.get('room_type', False) and vals['room_type'] == 'surgery':
+            vals['name'] = self.env['ir.sequence'].next_by_code('doctor.surgery.room.procedure') or '/'
+        else:
+            vals['name'] = self.env['ir.sequence'].next_by_code('doctor.waiting.room') or '/'
         if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
             numberid_integer = 0
             if vals.get('numberid_integer', False):
@@ -224,6 +258,9 @@ class DoctorWaitingRoom(models.Model):
         res = super(DoctorWaitingRoom, self).create(vals)
         res._check_document_types()
         res._validate_surgeon_room()
+        if vals.get('room_type', False) and vals['room_type'] == 'surgery':
+            if vals.get('surgery_room_id', False):
+                res._validate_surgery_room_alocation()
         return res
     
     @api.multi
@@ -248,6 +285,9 @@ class DoctorWaitingRoom(models.Model):
         res = super(DoctorWaitingRoom, self).write(vals)
         self._check_document_types()
         self._validate_surgeon_room()
+        if vals.get('room_type', False) and vals['room_type'] == 'surgery':
+            if vals.get('surgery_room_id', False):
+                self._validate_surgery_room_alocation()
         return res
     
     @api.multi
@@ -329,8 +369,8 @@ class DoctorWaitingRoomProcedures(models.Model):
     room_id = fields.Many2one('doctor.waiting.room', string='Waiting Room', copy=False)
     product_id = fields.Many2one('product.product', string='Health Procedure')
     quantity = fields.Float(string='Quantity')
-    surgeon_id = fields.Many2one('doctor.doctor', string='Surgeon')
-    anesthesiologist_id = fields.Many2one('doctor.doctor', string='Anesthesiologist')
+    surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     
     @api.onchange('surgeon_id','anesthesiologist_id')
     def onchange_surgeon_anesthesiologist(self):

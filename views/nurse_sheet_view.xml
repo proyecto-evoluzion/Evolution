@@ -40,32 +40,15 @@
        				</div>
             	</group>
             	<group name='patient_info_sub2'>
-            		<field name="first_name" />
-	                <field name="first_last_name" />
-	                <field name="second_name" />
-	                <field name="second_last_name"/>
+                  <field name='lastname' />
+                  <field name='surname' />
+                  <field name='firstname'/>
+                  <field name='middlename'/>     
             	</group>
             </group>
             
-            <group name='main_vital_signs' string="Signos Vitales">
-            	<group name="sub_vital_signs1">
-            		<field name="vital_signs_date_hour" string="Date and Hour"/>
-            		<field name="vital_signs_fc"/>
-            		<label for="sistolic_arteric_pressure" string="TA"/>
-   					<div>
-   						<field name="sistolic_arteric_pressure" placeholder="Sistolic Arteric Pressure" nolabel="1" class="oe_inline"/>
-  						 / <field name="diastolic_arteric_pressure" placeholder="Diastolic Artery Pressure" nolabel="1" class="oe_inline" />
-   					</div>
-            	</group>
-            	<group name="sub_vital_signs2">
-            		<field name="oximetry"/>
-            		<field name="diuresis"/>
-            		<field name="bleeding"/>
-            	</group>
-            </group>
             <notebook>
       			<page name="procedures" string="Health Procedures">
-<!--       				 <button name="action_reverse_stock_procedures" icon="fa-arrow-circle-o-left" string="Reverse Procedures"/> -->
       				 <group>
                			<div class="oe_button_box" name="button_box">
                				<button name="action_update_stock" string='Update Stock'
@@ -79,12 +62,25 @@
       				 	force_save="1" attrs="{'readonly':[('updated_stock','=',True)]}">
       				 	<tree editable="bottom" create="false" >
        				 		<field name="product_id" readonly="1" force_save="1"/>
-       				 		<field name="product_uom_qty"  readonly="1" force_save="1"/>
+       				 		<field name="product_uom_qty"  readonly="1" force_save="1" invisible="1"/>
        				 		<field name="quantity_done" force_save="1"/>
        				 		<field name="move_id"  readonly="1" invisible="1" force_save="1"/>
 <!--        				 		<field name="updated_stock" invisible="1"/> -->
        				 	</tree>
       				 </field>
+      			</page>
+      			<page name="vital_signs" string="Signos Vitales">
+      				<field name="vital_sign_ids" colspan="4" nolabel="1" >
+      					<tree editable="top">
+      						<field name="vital_signs_date_hour" string="Date and Hour"/>
+      						<field name="vital_signs_fc"/>
+	      					<field name="sistolic_arteric_pressure" string="Sistolic Arteric Pressure" />
+	      					<field name="diastolic_arteric_pressure" string="Diastolic Artery Pressure"/>
+	      					<field name="oximetry"/>
+		            		<field name="diuresis"/>
+		            		<field name="bleeding"/>
+      					</tree>
+      				</field>
       			</page>
       		</notebook>
         </form>
@@ -133,7 +129,7 @@
             name="Nurse Sheet"
             parent="menu_doctor_process"
             action="action_clinica_nurse_sheet"
-            sequence="6"/>
+            sequence="5"/>
            
         
 </odoo>         
