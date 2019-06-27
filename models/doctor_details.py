@@ -239,6 +239,25 @@ class DoctorAdministrativeData(models.Model):
     partner_id = fields.Many2one('res.partner', copy=False, ondelete='restrict', string='Related Partner', 
                                     help='Partner-related data of administrative data ')
     
+    pathological = fields.Text(string="Pathological")
+    surgical = fields.Text(string="Surgical")
+    smoke = fields.Boolean(string="Smoke")
+    cigarate_daily = fields.Integer(string="Cigarettes / Day")
+    is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
+    alcohol_frequency = fields.Integer(string="Frequency")
+    marijuana = fields.Boolean(string="Marijuana")
+    cocaine = fields.Boolean(string="Cocaine")
+    ecstasy = fields.Boolean(string="Ecstasy")
+    body_background_others = fields.Text(string="Body Background Others")
+    pharmacological = fields.Text(string="Pharmacological")
+    allergic = fields.Text(string="Allergic")
+    pregnancy_number = fields.Integer(string="Number of Pregnancies")
+    child_number = fields.Integer(string="Number of Children")
+    abortion_number = fields.Integer(string="Number of Abortions")
+    last_birth_date = fields.Date(string="Date of Last Birth")
+    last_menstruation_date = fields.Date(string="Date of Last Menstruation")
+    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods")
+    
     
     @api.multi
     @api.depends('firstname', 'lastname', 'middlename', 'surname')

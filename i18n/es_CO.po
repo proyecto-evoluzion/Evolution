@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-25 09:47+0000\n"
-"PO-Revision-Date: 2019-06-25 09:47+0000\n"
+"POT-Creation-Date: 2019-06-27 13:06+0000\n"
+"PO-Revision-Date: 2019-06-27 13:06+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -166,12 +166,14 @@ msgstr "Albumina"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_is_alcoholic
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_is_alcoholic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_is_alcoholic
 msgid "Alcoholic Drinks"
 msgstr "Bebidas Alcohólicas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_allergic
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_allergic
 msgid "Allergic"
 msgstr "Alergicos"
@@ -323,6 +325,7 @@ msgstr "Blood Type:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_body_background_others
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_body_background_others
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_body_background_others
 msgid "Body Background Others"
 msgstr "Body Background Others"
@@ -369,6 +372,7 @@ msgstr "Casada/o"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_cigarate_daily
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_cigarate_daily
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cigarate_daily
 msgid "Cigarettes / Day"
 msgstr "Cigarrillos / Dia"
@@ -396,6 +400,7 @@ msgstr "Cm"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_cocaine
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_cocaine
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cocaine
 msgid "Cocaine"
 msgstr "Cocaina"
@@ -470,6 +475,7 @@ msgstr "Contributivo"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_contrtaceptive_methods
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_contrtaceptive_methods
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_contrtaceptive_methods
 msgid "Contrtaceptive Methods"
 msgstr "Método de planificación"
@@ -570,12 +576,14 @@ msgstr "Fecha de los exámenes"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_birth_date
 msgid "Date of Last Birth"
 msgstr "Fecha del último parto"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_menstruation_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_menstruation_date
 msgid "Date of Last Menstruation"
 msgstr "Fecha de última menstruación"
@@ -786,6 +794,7 @@ msgstr "E.C.G"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_ecstasy
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_ecstasy
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_ecstasy
 msgid "Ecstasy"
 msgstr "Éxtasis"
@@ -886,6 +895,7 @@ msgstr "Primer Nombre"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_alcohol_frequency
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_alcohol_frequency
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_alcohol_frequency
 msgid "Frequency"
 msgstr "Frecuencia"
@@ -1068,16 +1078,16 @@ msgstr "Fecha de la intervención"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_details.py:82
-#: code:addons/clinica_doctor_data/models/doctor_details.py:333
+#: code:addons/clinica_doctor_data/models/doctor_details.py:352
 #, python-format
 msgid "Invalid Email ! Please enter a valid email address."
 msgstr "Invalid Email ! Please enter a valid email address."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:158
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:173
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:192
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:170
-#: code:addons/clinica_doctor_data/models/doctor_details.py:295
+#: code:addons/clinica_doctor_data/models/doctor_details.py:314
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:144
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:147
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:136
@@ -1250,6 +1260,7 @@ msgstr "Hombre"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_marijuana
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_marijuana
 msgid "Marijuana"
 msgstr "Marihuana"
@@ -1376,18 +1387,21 @@ msgstr "Number ID for TI or CC Documents"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_abortion_number
 msgid "Number of Abortions"
 msgstr "Número de abortos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_child_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_child_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_child_number
 msgid "Number of Children"
 msgstr "Número de hijos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pregnancy_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_pregnancy_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pregnancy_number
 msgid "Number of Pregnancies"
 msgstr "Número de embarazos"
@@ -1470,6 +1484,7 @@ msgstr "Other Responsible Person's Relationship"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Others"
 msgstr "Otros"
 
@@ -1542,9 +1557,11 @@ msgstr "Partner-related data of doctor "
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pathological
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_pathological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pathological
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Pathological"
 msgstr "Patológicos"
 
@@ -1568,6 +1585,7 @@ msgstr "Paciente"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Patient Background"
 msgstr "Antecedentes"
 
@@ -1585,6 +1603,7 @@ msgstr "Patients"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pharmacological
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pharmacological
 msgid "Pharmacological"
 msgstr "Farmacológicos"
@@ -1665,9 +1684,9 @@ msgstr "Plaquetas"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:145
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:198
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:217
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:157
-#: code:addons/clinica_doctor_data/models/doctor_details.py:339
+#: code:addons/clinica_doctor_data/models/doctor_details.py:358
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:131
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:172
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:123
@@ -2101,6 +2120,7 @@ msgstr "Imagen de tamaño pequeño de este contacto. Se redimensiona automática
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_smoke
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_smoke
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_smoke
 msgid "Smoke"
 msgstr "Fuma"
@@ -2185,9 +2205,11 @@ msgstr "Surgery Rooms"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_surgical
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_surgical
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_surgical
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Surgical"
 msgstr "Quirúrgicos"
 
@@ -2402,8 +2424,8 @@ msgid "Waiting Rooms/Appointments"
 msgstr "Salas de Espera/Citas"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:184
-#: code:addons/clinica_doctor_data/models/doctor_details.py:306
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:203
+#: code:addons/clinica_doctor_data/models/doctor_details.py:325
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:158
 #, python-format
 msgid "Warning!"
@@ -2430,9 +2452,9 @@ msgstr "Años"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:173
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:215
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:234
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:185
-#: code:addons/clinica_doctor_data/models/doctor_details.py:356
+#: code:addons/clinica_doctor_data/models/doctor_details.py:375
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:159
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:189
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:151
@@ -2442,9 +2464,9 @@ msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:171
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:213
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:232
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:183
-#: code:addons/clinica_doctor_data/models/doctor_details.py:354
+#: code:addons/clinica_doctor_data/models/doctor_details.py:373
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:157
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:187
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:149
@@ -2454,9 +2476,9 @@ msgstr "You can only choose 'MS' document for age between 1 to 30 days."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:165
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:207
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:226
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:177
-#: code:addons/clinica_doctor_data/models/doctor_details.py:348
+#: code:addons/clinica_doctor_data/models/doctor_details.py:367
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:151
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:181
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:143
@@ -2466,9 +2488,9 @@ msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:169
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:211
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:230
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:181
-#: code:addons/clinica_doctor_data/models/doctor_details.py:352
+#: code:addons/clinica_doctor_data/models/doctor_details.py:371
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:155
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:185
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:147
@@ -2478,9 +2500,9 @@ msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:167
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:209
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:228
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:179
-#: code:addons/clinica_doctor_data/models/doctor_details.py:350
+#: code:addons/clinica_doctor_data/models/doctor_details.py:369
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:153
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:183
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:145

@@ -162,6 +162,25 @@ class PresurgicalRecord(models.Model):
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             
+            self.pathological = self.patient_id.pathological
+            self.surgical = self.patient_id.surgical
+            self.smoke = self.patient_id.smoke
+            self.cigarate_daily = self.patient_id.cigarate_daily
+            self.is_alcoholic = self.patient_id.is_alcoholic
+            self.alcohol_frequency = self.patient_id.alcohol_frequency
+            self.marijuana = self.patient_id.marijuana
+            self.cocaine = self.patient_id.cocaine
+            self.ecstasy = self.patient_id.ecstasy
+            self.body_background_others = self.patient_id.body_background_others
+            self.pharmacological = self.patient_id.pharmacological
+            self.allergic = self.patient_id.allergic
+            self.pregnancy_number = self.patient_id.pregnancy_number
+            self.child_number = self.patient_id.child_number
+            self.abortion_number = self.patient_id.abortion_number
+            self.last_birth_date = self.patient_id.last_birth_date
+            self.last_menstruation_date = self.patient_id.last_menstruation_date
+            self.contrtaceptive_methods = self.patient_id.contrtaceptive_methods
+            
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
         today_datetime = datetime.today()
