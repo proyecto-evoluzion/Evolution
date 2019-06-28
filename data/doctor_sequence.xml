@@ -65,5 +65,14 @@
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>
 		
+		<!-- Sequence type for anhestesic.registry -->
+		<record id="seq_clinica_medical_evolution" model="ir.sequence">
+            <field name="name">Medical Order Evolution</field>
+            <field name="code">medical.evolution</field>
+            <field name="prefix">ME </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+        
 	</data>
 </odoo>

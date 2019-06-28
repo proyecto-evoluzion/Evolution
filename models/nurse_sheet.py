@@ -220,7 +220,7 @@ class NurseSheetProcedures(models.Model):
 class NurseSheetVitalSigns(models.Model):
     _name = "nurse.sheet.vital.signs"
     
-    nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False)
+    nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False, ondelete='cascade')
     vital_signs_date_hour = fields.Datetime(string='Vital Signs Date Hour')
     vital_signs_fc = fields.Integer(string='FC')
     sistolic_arteric_pressure = fields.Integer(string='Sistolic Arteric Pressure')
