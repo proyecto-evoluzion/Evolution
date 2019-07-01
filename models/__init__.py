@@ -29,6 +29,7 @@ from . import plastic_surgery_sheet
 from . import doctor_calendar
 from . import anhestesic_registry
 from . import medical_evolution
+from . import doctor_epicrisis
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
