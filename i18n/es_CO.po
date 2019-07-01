@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-28 06:40+0000\n"
-"PO-Revision-Date: 2019-06-28 06:40+0000\n"
+"POT-Creation-Date: 2019-07-01 05:48+0000\n"
+"PO-Revision-Date: 2019-07-01 05:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -224,6 +224,11 @@ msgstr "Lista HC Anestésica"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_waiting_room
 msgid "Appointment"
 msgstr "Cita"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_arthritis
+msgid "Arthritis"
+msgstr "Artritis"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_insurer_plan_insurer_id
@@ -651,6 +656,11 @@ msgid "Detección temprana de enfermedad laboral"
 msgstr "Detección temprana de enfermedad laboral"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_diabetes
+msgid "Diabetes"
+msgstr "Diabetes"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease2_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease3_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_id
@@ -1053,6 +1063,11 @@ msgid "Hto (Hematocrit)"
 msgstr "Hto (Hematrocrito)"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_hypertension
+msgid "Hypertension"
+msgstr "Hipertensión"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_id
@@ -1108,7 +1123,7 @@ msgstr "Fecha de la intervención"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_details.py:82
-#: code:addons/clinica_doctor_data/models/doctor_details.py:352
+#: code:addons/clinica_doctor_data/models/doctor_details.py:356
 #, python-format
 msgid "Invalid Email ! Please enter a valid email address."
 msgstr "Invalid Email ! Please enter a valid email address."
@@ -1117,7 +1132,7 @@ msgstr "Invalid Email ! Please enter a valid email address."
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:158
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:192
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:170
-#: code:addons/clinica_doctor_data/models/doctor_details.py:314
+#: code:addons/clinica_doctor_data/models/doctor_details.py:318
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:131
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:144
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:147
@@ -1766,7 +1781,7 @@ msgstr "Plaquetas"
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:145
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:217
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:157
-#: code:addons/clinica_doctor_data/models/doctor_details.py:358
+#: code:addons/clinica_doctor_data/models/doctor_details.py:362
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:118
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:131
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:172
@@ -2376,6 +2391,11 @@ msgid "Therapeutic Procedure"
 msgstr "Terapéutico"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_thyroid_disease
+msgid "Thyroid Disease"
+msgstr "Enfermedad Tiroidea"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_tisue_sending_patologist
 msgid "Tisue sending to patologist"
 msgstr "Tejido enviado a patología"
@@ -2525,7 +2545,7 @@ msgstr "Salas de Espera/Citas"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:203
-#: code:addons/clinica_doctor_data/models/doctor_details.py:325
+#: code:addons/clinica_doctor_data/models/doctor_details.py:329
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:158
 #, python-format
 msgid "Warning!"
@@ -2555,7 +2575,7 @@ msgstr "Años"
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:173
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:234
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:185
-#: code:addons/clinica_doctor_data/models/doctor_details.py:375
+#: code:addons/clinica_doctor_data/models/doctor_details.py:379
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:146
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:159
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:189
@@ -2568,7 +2588,7 @@ msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:171
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:232
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:183
-#: code:addons/clinica_doctor_data/models/doctor_details.py:373
+#: code:addons/clinica_doctor_data/models/doctor_details.py:377
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:144
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:157
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:187
@@ -2581,7 +2601,7 @@ msgstr "You can only choose 'MS' document for age between 1 to 30 days."
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:165
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:226
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:177
-#: code:addons/clinica_doctor_data/models/doctor_details.py:367
+#: code:addons/clinica_doctor_data/models/doctor_details.py:371
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:138
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:151
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:181
@@ -2594,7 +2614,7 @@ msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:169
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:230
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:181
-#: code:addons/clinica_doctor_data/models/doctor_details.py:371
+#: code:addons/clinica_doctor_data/models/doctor_details.py:375
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:142
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:155
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:185
@@ -2607,7 +2627,7 @@ msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:167
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:228
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:179
-#: code:addons/clinica_doctor_data/models/doctor_details.py:369
+#: code:addons/clinica_doctor_data/models/doctor_details.py:373
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:140
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:153
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:183

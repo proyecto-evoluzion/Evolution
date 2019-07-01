@@ -370,7 +370,16 @@
                     
                     <notebook>
             			<page name="background" string="Patient Background">
-            			
+            				<group name="pathological_background" >
+            					<group name="pathological_background_sub1">
+            						<field name="diabetes"/>
+            						<field name="hypertension"/>
+            					</group>
+            					<group name="pathological_background_sub2">
+            						<field name="arthritis"/>
+            						<field name="thyroid_disease"/>
+            					</group>
+            				</group>
             				<group name="pathological" colspan="2" col='1'>
             					<label for="pathological" string="Pathological"/>
             					<field name="pathological" nolabel="1"/>

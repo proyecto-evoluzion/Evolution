@@ -257,6 +257,10 @@ class DoctorAdministrativeData(models.Model):
     last_birth_date = fields.Date(string="Date of Last Birth")
     last_menstruation_date = fields.Date(string="Date of Last Menstruation")
     contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods")
+    diabetes = fields.Boolean(string="Diabetes")
+    hypertension = fields.Boolean(string="Hypertension")
+    arthritis = fields.Boolean(string="Arthritis")
+    thyroid_disease = fields.Boolean(string="Thyroid Disease")
     
     
     @api.multi
