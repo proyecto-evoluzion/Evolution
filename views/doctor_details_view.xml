@@ -151,18 +151,23 @@
             <field name="arch" type="xml">
             <form string="doctor Form">
                 <sheet>
-                    <group name="main_info" col="4">
-                    	<field name="profession_type" required="1"/>
-                        <field name="lastname"  required="1"/>                            
-                        <field name="surname"/>
-                        <field name="firstname" required="1"/>
-                        <field name="middlename"/>
-                        <field name="email"/>
-                        <field name="phone"/>
+                    <group name="main_info" >
+                    	<group>
+                    		<field name="profession_type" required="1"/>
+	                        <field name="email"/>
+	                        <field name="phone"/> 
+                    	</group>
+                    	<group>
+                    		<field name="firstname" required="1"/>
+	                        <field name="lastname"  required="1"/> 
+	                        <field name="middlename"/>
+	                        <field name="surname"/>
+                    	</group>
                     </group>
                     <notebook colspan="4">
 	                    <page string="My procedures">
-	                        <field name="product_ids" nolabel="1"/>
+	                        <field name="product_ids" nolabel="1" 
+	                        	context="{'search_default_health_procedure': 1}"/>
 	                    </page>
 	                </notebook>
                 </sheet>

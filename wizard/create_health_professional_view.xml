@@ -10,10 +10,10 @@
                	<group name="main_info">
                		<group>
                			<field name="profession_type" required="1"/>
-                        <field name="lastname"  required="1"/>                            
-                        <field name="surname"/>
                         <field name="firstname" required="1"/>
-                        <field name="middlename"/>
+                        <field name="lastname"  required="1"/>      
+                        <field name="middlename"/>                      
+                        <field name="surname"/>
                		</group>
                		<group>
                			<field name="email"/>
@@ -22,7 +22,7 @@
                    </group>
                    <notebook >
                     <page string="My procedures">
-                        <field name="professional_product_ids" nolabel="1"/>
+                        <field name="professional_product_ids" nolabel="1" context="{'search_default_health_procedure': 1}"/>
                     </page>
                 </notebook>
                 <footer>

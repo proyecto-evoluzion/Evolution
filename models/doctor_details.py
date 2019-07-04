@@ -154,12 +154,14 @@ class Doctor(models.Model):
 
 class DoctorAdministrativeData(models.Model):
     _name = "doctor.patient"
+    _rec_name = 'patient_name'
     
     @api.model
     def _default_image(self):
         image_path = get_module_resource('clinica_doctor_data', 'static/src/img', 'default_image.png')
         return tools.image_resize_image_big(base64.b64encode(open(image_path, 'rb').read()))
     
+    patient_name = fields.Char(string='Patient Name', store=True, compute='_compute_patient_name')
     name = fields.Char(string='Number ID')
     ref = fields.Integer(string='Number ID for TI or CC Documents')
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')

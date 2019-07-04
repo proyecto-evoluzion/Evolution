@@ -191,9 +191,10 @@ class MedicalOrderEvolutionNotes(models.Model):
     
     medical_evolution_id = fields.Many2one('clinica.medical.evolution', 'Medical Evolution', ondelete='cascade')
     note = fields.Char(string='Description')
-    date_hour = fields.Datetime(string='Date and Hour')
+    date_hour = fields.Datetime(string='Date and Hour', default=fields.Datetime.now)
     
     
-
+        
+# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 
 

@@ -47,7 +47,7 @@ class CreateHealthProfessional(models.TransientModel):
             res.update({
                 'firstname': partner.x_name1 or '',
                 'lastname': partner.x_name2 or '',
-                'middlename': partner.x_lastname1 or '',
+                'middlename': partner.x_lastname1 or '', 
                 'surname': partner.x_lastname2 or '',
                 'email': partner.email or '',
                 'phone': partner.phone or '',

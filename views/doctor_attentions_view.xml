@@ -49,7 +49,10 @@
             					</div>
             				</div>
             		</group>
-            		
+            		<group name="consultation_reason" colspan="2" col='1'>
+                         <label for="consultation_reason" string="Reason for Consultation"/>
+                         <field name="consultation_reason" nolabel="1"/>
+                     </group>
             				
             		<notebook>
             			<page name="background" string="Patient Background">
@@ -278,10 +281,6 @@
                             <group name="process_sub2" >
                             </group>
                         </group> -->
-                        <group name="consultation_reason" colspan="2" col='1'>
-                            <label for="consultation_reason" string="Reason for Consultation"/>
-                            <field name="consultation_reason" nolabel="1"/>
-                        </group>
                         <group name="plan_analysis" colspan="2" col='1'>
                             <label for="plan_analysis" string="Plan, Analysis and Conduct"/>
                             <field name="plan_analysis" nolabel="1"/>

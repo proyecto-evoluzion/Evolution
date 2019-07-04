@@ -48,7 +48,7 @@
             </group>
             
             <notebook>
-      			<page name="procedures" string="Health Procedures">
+      			<page name="procedures" string="Hoja de Gastos">
       				 <group>
                			<div class="oe_button_box" name="button_box">
                				<button name="action_update_stock" string='Update Stock'
@@ -59,8 +59,8 @@
                		</group>
       				 
       				 <field name="procedure_ids" colspan="4" nolabel="1" context="{'default_room_id':room_id}" 
-      				 	force_save="1" attrs="{'readonly':[('updated_stock','=',True)]}">
-      				 	<tree editable="bottom" create="false" >
+      				 	force_save="1" attrs="{'readonly':[('updated_stock','=',True)]}" >
+      				 	<tree editable="bottom" create="false" limit="10000">
        				 		<field name="product_id" readonly="1" force_save="1"/>
        				 		<field name="product_uom_qty"  readonly="1" force_save="1" invisible="1"/>
        				 		<field name="quantity_done" force_save="1"/>

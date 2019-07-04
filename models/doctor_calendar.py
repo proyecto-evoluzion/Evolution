@@ -368,7 +368,7 @@ class DoctorWaitingRoomProcedures(models.Model):
     
     room_id = fields.Many2one('doctor.waiting.room', string='Waiting Room', copy=False)
     product_id = fields.Many2one('product.product', string='Health Procedure')
-    quantity = fields.Float(string='Quantity')
+    quantity = fields.Float(string='Quantity', default=1)
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     
