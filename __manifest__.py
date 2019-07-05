@@ -22,7 +22,7 @@
 
 {
     'name': 'Clinica Doctor Datas',
-    'version': '1.28',
+    'version': '1.29',
     'license': 'Other proprietary',
     'category': 'custom',
     'description': """
@@ -48,6 +48,7 @@
         'views/plastic_surgery_sheet_view.xml',
         'views/medical_evolution_view.xml',
         'views/doctor_epicrisis_view.xml',
+        'views/clinica_record_list_visualizer_view.xml',
     ],
     'demo': [
     ],

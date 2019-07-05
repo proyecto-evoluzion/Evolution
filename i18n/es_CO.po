@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-04 11:50+0000\n"
-"PO-Revision-Date: 2019-07-04 11:50+0000\n"
+"POT-Creation-Date: 2019-07-05 09:49+0000\n"
+"PO-Revision-Date: 2019-07-05 09:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -412,6 +412,18 @@ msgid "Click to create doctor datas."
 msgstr "Clic aquí para crear un paciente"
 
 #. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_record_list_visualizer
+#: model:ir.model,name:clinica_doctor_data.model_clinica_record_list_visualizer
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_record_list_visualizer
+msgid "Clinica Record Visualizer"
+msgstr "Clinica Record Visualizer"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
+msgid "Clinica Record Visualizer Form"
+msgstr "Clinica Record Visualizer Form"
+
+#. module: clinica_doctor_data
 #: selection:product.product,procedure_type:0
 msgid "Clinical laboratory"
 msgstr "Laboratorio clínico"
@@ -543,6 +555,7 @@ msgstr "Crear Orden de Venta"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_create_uid
@@ -564,6 +577,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_create_date
@@ -744,6 +758,7 @@ msgstr "Diagnósticos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_display_name
@@ -776,6 +791,7 @@ msgstr "Desea actualizar los procedimientos usados en el inventario?"
 #: selection:create.health.professional,profession_type:0
 #: selection:doctor.professional,profession_type:0
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_details
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_doctor_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_professional_id
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_details
 msgid "Doctor"
@@ -861,6 +877,11 @@ msgstr "Email"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_end_date
 msgid "End Date"
 msgstr "Fecha Final"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_end_period
+msgid "End Period"
+msgstr "End Period"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_end_time
@@ -1112,6 +1133,7 @@ msgstr "Hipertensión"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_id
@@ -1221,6 +1243,7 @@ msgstr "Tipo"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code___last_update
@@ -1243,6 +1266,7 @@ msgstr "Última Modificación el"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_write_uid
@@ -1264,6 +1288,7 @@ msgstr "Actualizado por"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_write_date
@@ -1312,6 +1337,11 @@ msgstr "Liquidos Administrados"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 msgid "Liquidos Eliminados"
 msgstr "Liquidos Eliminados"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
+msgid "List of Nurse Sheets"
+msgstr "List of Nurse Sheets"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,anesthesia_type:0
@@ -1566,6 +1596,8 @@ msgid "Nurse Sheet Created"
 msgstr "Nurse Sheet Created"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_nurse_sheet_ids
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Nurse Sheets"
 msgstr "Hoja de Enfermería"
@@ -1726,6 +1758,7 @@ msgstr "Patológicos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_patient_id
@@ -2324,6 +2357,11 @@ msgstr "Soltera/o"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_start_date
 msgid "Start Date"
 msgstr "Fecha de Inicio"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_start_period
+msgid "Start Period"
+msgstr "Start Period"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_start_time

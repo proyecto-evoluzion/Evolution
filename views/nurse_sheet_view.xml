@@ -94,9 +94,11 @@
         <field name="model">clinica.nurse.sheet</field>
         <field name="arch" type="xml">
             <tree string="Nurse Sheet">
+            	<field name="room_id" />
                 <field name="patient_id"/>
                 <field name="document_type"/>
                 <field name="numberid"/>
+                <field name="procedure_date"/>
             </tree>
         </field>
     </record>

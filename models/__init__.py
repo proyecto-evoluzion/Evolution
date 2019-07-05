@@ -30,6 +30,7 @@ from . import doctor_calendar
 from . import anhestesic_registry
 from . import medical_evolution
 from . import doctor_epicrisis
+from . import clinica_record_list_visualizer
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<odoo>
+
+	<record id="clinica_record_list_visualizer_form" model="ir.ui.view">
+         <field name="name">clinica.record.list.visualizer.form</field>
+         <field name="model">clinica.record.list.visualizer</field>
+         <field name="arch" type="xml">
+         <form string="Clinica Record Visualizer Form">
+         	<sheet>
+         		<group name="main_group">
+         			<group name="main_sub_group1" >
+         				<field name='patient_id' required="1"/>
+         				<field name='doctor_id' domain="[('profession_type','=','doctor')]"/>
+         				<field name='start_period'/>
+         				<field name='end_period'/>
+         			</group>
+         			<group name="main_sub_group2" >
+         			</group>
+         		</group>
+         		<notebook>
+         			<page name='nurse_sheet' string="Nurse Sheets">
+         				<separator string="List of Nurse Sheets"/>
+         				<field name="nurse_sheet_ids" nolabel="1" force_save="1" readonly="1">
+         					<tree string="Nurse Sheets">
+         						<field name="name"/>
+         						<field name="room_id" />
+         						<field name="patient_id"/>
+         						<field name="document_type"/>
+         						<field name="numberid"/>
+         						<field name="procedure_date"/>
+         					</tree>
+         				</field>
+         			</page>
+         		</notebook>
+         	</sheet>
+         </form>
+         </field>
+     </record>
+     
+      <record id="action_clinica_record_list_visualizer" model="ir.actions.act_window">
+          <field name="name">Clinica Record Visualizer</field>
+          <field name="res_model">clinica.record.list.visualizer</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">form</field>
+          <field name="view_id" ref="clinica_record_list_visualizer_form"/>
+      </record> 
+      
+      <menuitem id="menu_clinica_record_list_visualizer"
+          name="Clinica Record Visualizer"
+          parent="menu_doctor_process"
+          action="clinica_doctor_data.action_clinica_record_list_visualizer"
+          sequence="20"/>
+
+</odoo>
