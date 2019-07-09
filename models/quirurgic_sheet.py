@@ -29,10 +29,17 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError
+import html2text
 
 class DoctorQuirurgicSheet(models.Model):
     _name = "doctor.quirurgic.sheet"
     _description= 'Doctor Quirurgic Sheet'      
+    
+    @api.model
+    def _get_signature(self):
+        user = self.env.user
+        signature = html2text.html2text(user.signature)
+        return signature
     
     name = fields.Char(string='Name', copy=False)
     invoice_id = fields.Many2one('account.invoice', string='Invoice')
@@ -71,8 +78,10 @@ class DoctorQuirurgicSheet(models.Model):
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis')
     tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
     procedure_id = fields.Many2one('product.product', string='Procedure')
-    sign_stamp = fields.Text(string='Sign and médical stamp')
+    sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
+    description = fields.Text(string='Quirurgic Description')
+    
     
     @api.multi
     @api.depends('birth_date')

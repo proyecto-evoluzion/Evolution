@@ -32,12 +32,18 @@ from dateutil import relativedelta
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 import calendar
 from odoo.exceptions import ValidationError
-
+import html2text
 
 class MedicalOrderEvolution(models.Model):
     _name = "clinica.medical.evolution"
     _order = 'id desc'
     _description = 'Medical orders and Evolution'
+    
+    @api.model
+    def _get_signature(self):
+        user = self.env.user
+        signature = html2text.html2text(user.signature)
+        return signature
     
     name = fields.Char(string="Name", copy=False)
     procedure_date = fields.Datetime(string='Procedure Date', default=fields.Datetime.now, copy=False)
@@ -64,7 +70,7 @@ class MedicalOrderEvolution(models.Model):
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')
     procedure = fields.Text(string="Procedure")
-    sign_stamp = fields.Text(string='Sign and médical stamp')
+    sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
     evolution_note_ids = fields.One2many('clinica.medical.evolution.note', 'medical_evolution_id', string='Orders and Evolutions Notes', copy=False)
 
@@ -190,7 +196,7 @@ class MedicalOrderEvolutionNotes(models.Model):
     _name = "clinica.medical.evolution.note"  
     
     medical_evolution_id = fields.Many2one('clinica.medical.evolution', 'Medical Evolution', ondelete='cascade')
-    note = fields.Char(string='Description')
+    note = fields.Text(string='Description')
     date_hour = fields.Datetime(string='Date and Hour', default=fields.Datetime.now)
     
     

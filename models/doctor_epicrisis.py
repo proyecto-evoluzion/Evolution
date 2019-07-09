@@ -28,10 +28,17 @@ from dateutil import relativedelta
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 import calendar
 from odoo.exceptions import ValidationError
+import html2text
 
 class DoctorEpicrisis(models.Model):
     _name = "doctor.epicrisis"
     _order = 'id desc'
+    
+    @api.model
+    def _get_signature(self):
+        user = self.env.user
+        signature = html2text.html2text(user.signature)
+        return signature
     
     name = fields.Char(string='Name', copy=False)
     patient_in_date = fields.Datetime(string='In Date', copy=False)
@@ -54,8 +61,9 @@ class DoctorEpicrisis(models.Model):
                                          compute='_compute_age_meassure_unit')
     disease_id = fields.Many2one('doctor.diseases', 'Diseases', ondelete='restrict')
     procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict')
-    sign_stamp = fields.Text(string='Sign and médical stamp')
+    sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
+    epicrisis_note = fields.Text(string='Epicrisis')
     
     @api.multi
     @api.depends('birth_date')

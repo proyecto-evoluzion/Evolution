@@ -22,7 +22,7 @@
 
 {
     'name': 'Clinica Doctor Datas',
-    'version': '1.29',
+    'version': '1.30',
     'license': 'Other proprietary',
     'category': 'custom',
     'description': """

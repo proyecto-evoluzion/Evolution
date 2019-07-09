@@ -72,6 +72,9 @@
          		<group name="tisue_sending_patologist">
          			<field name='tisue_sending_patologist' />
          		</group>
+         		<group name="quirurgic_description">
+         			<field name='description' />
+         		</group>
          		<group name="sign_stamp">
          			<field name='sign_stamp' />
          		</group>

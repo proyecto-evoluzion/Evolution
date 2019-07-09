@@ -79,6 +79,7 @@
 	      					<field name="oximetry"/>
 		            		<field name="diuresis"/>
 		            		<field name="bleeding"/>
+		            		<field name="note"/>
       					</tree>
       				</field>
       			</page>

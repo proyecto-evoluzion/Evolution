@@ -228,6 +228,7 @@ class NurseSheetVitalSigns(models.Model):
     oximetry = fields.Integer(string='Oximetry')
     diuresis = fields.Integer(string='Diuresis')
     bleeding = fields.Integer(string='Bleeding')
+    note = fields.Text(string='Nursing Note')
         
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

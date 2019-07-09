@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 09:49+0000\n"
-"PO-Revision-Date: 2019-07-05 09:49+0000\n"
+"POT-Creation-Date: 2019-07-09 09:31+0000\n"
+"PO-Revision-Date: 2019-07-09 09:31+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -896,6 +896,7 @@ msgstr "End date should be greater than start date!"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_doctor_epicrisis
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_epicrisis_note
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_doctor_epicrisis
 msgid "Epicrisis"
 msgstr "Epicrisis"
@@ -1200,11 +1201,11 @@ msgstr "Invalid Email ! Please enter a valid email address."
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:192
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:170
 #: code:addons/clinica_doctor_data/models/doctor_details.py:320
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:119
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:131
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:128
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:137
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:144
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:147
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:136
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:145
 #, python-format
 msgid "Invalid birth date!"
 msgstr "Invalid birth date!"
@@ -1603,6 +1604,11 @@ msgid "Nurse Sheets"
 msgstr "Hoja de Enfermería"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_note
+msgid "Nursing Note"
+msgstr "Nota de Enfermería"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_notes
 msgid "Observations or Notes"
 msgstr "Observaciones"
@@ -1885,11 +1891,11 @@ msgstr "Plaquetas"
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:217
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:157
 #: code:addons/clinica_doctor_data/models/doctor_details.py:364
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:106
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:118
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:115
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:124
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:131
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:172
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:123
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:132
 #, python-format
 msgid "Please enter non zero value for Number ID"
 msgstr "Please enter non zero value for Number ID"
@@ -2013,6 +2019,11 @@ msgstr "Cantidad"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Quimico Sanguinea"
 msgstr "Química Sanguínea"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_description
+msgid "Quirurgic Description"
+msgstr "Descripción Quirurgica"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_quirurgic_sheet
@@ -2699,11 +2710,11 @@ msgstr "Años"
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:234
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:185
 #: code:addons/clinica_doctor_data/models/doctor_details.py:381
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:134
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:146
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:143
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:152
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:159
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:189
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:151
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:160
 #, python-format
 msgid "You can choose 'AS' document only if the age is greater than 17 years."
 msgstr "You can choose 'AS' document only if the age is greater than 17 years."
@@ -2713,11 +2724,11 @@ msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:232
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:183
 #: code:addons/clinica_doctor_data/models/doctor_details.py:379
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:132
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:144
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:141
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:150
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:157
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:187
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:149
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:158
 #, python-format
 msgid "You can only choose 'MS' document for age between 1 to 30 days."
 msgstr "You can only choose 'MS' document for age between 1 to 30 days."
@@ -2727,11 +2738,11 @@ msgstr "You can only choose 'MS' document for age between 1 to 30 days."
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:226
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:177
 #: code:addons/clinica_doctor_data/models/doctor_details.py:373
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:126
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:138
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:135
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:144
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:151
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:181
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:143
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:152
 #, python-format
 msgid "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
@@ -2741,11 +2752,11 @@ msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:230
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:181
 #: code:addons/clinica_doctor_data/models/doctor_details.py:377
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:130
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:142
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:139
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:148
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:155
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:185
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:147
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:156
 #, python-format
 msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
 msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
@@ -2755,11 +2766,11 @@ msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:228
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:179
 #: code:addons/clinica_doctor_data/models/doctor_details.py:375
-#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:128
-#: code:addons/clinica_doctor_data/models/medical_evolution.py:140
+#: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:137
+#: code:addons/clinica_doctor_data/models/medical_evolution.py:146
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:153
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:183
-#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:145
+#: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:154
 #, python-format
 msgid "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
 msgstr "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
