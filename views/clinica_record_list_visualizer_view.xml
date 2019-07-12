@@ -6,6 +6,9 @@
          <field name="model">clinica.record.list.visualizer</field>
          <field name="arch" type="xml">
          <form string="Clinica Record Visualizer Form">
+         	<header>
+         		<button name="action_print_clinica_record_history" string="Print Details" class="btn-primary" type="object"/>
+         	</header>
          	<sheet>
          		<group name="main_group">
          			<group name="main_sub_group1" >
@@ -17,123 +20,106 @@
          			<group name="main_sub_group2" >
          			</group>
          		</group>
-         		<notebook>
-         			<page name='nurse_sheet' string="Nurse Sheets">
-         				<separator string="List of Nurse Sheets"/>
-         				<field name="nurse_sheet_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Nurse Sheets">
-         						<field name="name"/>
-         						<field name="room_id" />
-         						<field name="patient_id"/>
-         						<field name="document_type"/>
-         						<field name="numberid"/>
-         						<field name="procedure_date"/>
-         					</tree>
-         				</field>
-         			</page>
-         			<page name='quirurgic_sheet' string="Quirurgic Sheets">
-         				<separator string="List of Quirurgic Sheets"/>
-         				<field name="quirurgic_sheet_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Quirurgic Sheets">
-         						<field name="name"/>
-         						<field name="patient_id" />
-         						<field name="invoice_id"/>
-         						<field name="procedure_date"/>
-         						<field name="disease_id"/>
-         					</tree>
-         				</field>
-         			</page>
-         			<page name="clinica_room" string="Waiting Room/ Surgery Room Procedures">
-         				<separator string="Surgery Room Procedures"/>
-         				<field name="surgery_room_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Surgery Room Procedures">
-         						<field name="name"/>
-         						<field name="surgery_room_id"/>
-				                <field name="schedule_id"/>
-				        	    <field name='patient_id'/>
-				   				<field name="surgeon_id"/>
-				   				<field name="anesthesiologist_id"/>
-				   				<field name="procedure_date"/>
-				   				<field name="procedure_end_date"/>
-         					</tree>
-         				</field>
-         				<separator string="Waiting Rooms"/>
-         				<field name="waiting_room_ids" nolabel="1" force_save="1" readonly="1">
-       					<tree string="Waiting Room">
-       						<field name="name"/>
-       						<field name="schedule_id"/>
-			        	    <field name='patient_id'/>
-			   				<field name="surgeon_id"/>
-			   				<field name="anesthesiologist_id"/>
-			   				<field name="procedure_date"/>
-			   				<field name="procedure_end_date"/>
-       					</tree>
-         				</field>
-         			</page>
-         			<page name='presurgical_records' string="Pre-surgical Records">
-         				<separator string="List of Pre-surgical Records"/>
-         				<field name="presurgical_record_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Pre-surgical Records">
-         						<field name="number"/>
-			            	    <field name='attention_code_id'/>
-			       				<field name="date_attention"/>
-			       				<field name="patient_id"/>
-			       				<field name="document_type"/>
-			       				<field name="numberid"/>
-         					</tree>
-         				</field>
-         			</page>
-         			<page name='anhestesic_registry' string="Anhestesic Registry">
-         				<separator string="Anhestesic Registry"/>
-         				<field name="anhestesic_registry_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Anhestesic Registry">
-         						<field name="name"/>
-			     				<field name="intervention_date"/>
-			     				<field name="patient_id"/>
-			     				<field name="document_type"/>
-			     				<field name="numberid"/>
-         					</tree>
-         				</field>
-         			</page>
-         			<page name='plastic_surgery_sheet' string="Plastic Surgery Sheet">
-         				<separator string="Plastic Surgery Sheet"/>
-         				<field name="plastic_surgery_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Plastic Surgery Sheet">
-         						<field name="number"/>
-			            	    <field name='attention_code_id'/>
-			       				<field name="date_attention"/>
-			       				<field name="patient_id"/>
-			       				<field name="document_type"/>
-			       				<field name="numberid"/>
-         					</tree>
-         				</field>
-         			</page>
-         			<page name='medical_evolution' string="Medical Orders and Evolution">
-         				<separator string="Medical Orders and Evolution"/>
-         				<field name="medical_evolution_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Medical Orders and Evolution">
-         						<field name="name"/>
-			     				<field name="procedure_date"/>
-			     				<field name="patient_id"/>
-			     				<field name="tdoc"/>
-			     				<field name="numberid"/>
-         					</tree>
-         				</field>
-         			</page>
-         			<page name='epicrisis' string="Epicrisis">
-         				<separator string="Epicrisis"/>
-         				<field name="epicrisis_ids" nolabel="1" force_save="1" readonly="1">
-         					<tree string="Epicrisis">
-         						<field name="name"/>
-				   				<field name="patient_in_date"/>
-				   				<field name="patient_out_date"/>
-				   				<field name="patient_id"/>
-				   				<field name="tdoc"/>
-				   				<field name="numberid"/>
-         					</tree>
-         				</field>
-         			</page>
-         		</notebook>
+         		
+   				<separator string="Nurse Sheets"/>
+   				<field name="nurse_sheet_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Nurse Sheets">
+   						<field name="name"/>
+   						<field name="room_id" />
+   						<field name="patient_id"/>
+   						<field name="document_type"/>
+   						<field name="numberid"/>
+   						<field name="procedure_date"/>
+   					</tree>
+   				</field>
+   				<separator string="Quirurgic Sheets"/>
+   				<field name="quirurgic_sheet_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Quirurgic Sheets">
+   						<field name="name"/>
+   						<field name="patient_id" />
+   						<field name="invoice_id"/>
+   						<field name="procedure_date"/>
+   						<field name="disease_id"/>
+   					</tree>
+   				</field>
+   				<separator string="Surgery Room Procedures"/>
+   				<field name="surgery_room_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Surgery Room Procedures">
+   						<field name="name"/>
+   						<field name="surgery_room_id"/>
+              			<field name="schedule_id"/>
+      	    			<field name='patient_id'/>
+		 				<field name="surgeon_id"/>
+		 				<field name="anesthesiologist_id"/>
+		 				<field name="procedure_date"/>
+		 				<field name="procedure_end_date"/>
+   					</tree>
+   				</field>
+   				<separator string="Waiting Rooms"/>
+   				<field name="waiting_room_ids" nolabel="1" force_save="1" readonly="1">
+ 					<tree string="Waiting Room">
+ 						<field name="name"/>
+ 						<field name="schedule_id"/>
+		     	    	<field name='patient_id'/>
+						<field name="surgeon_id"/>
+						<field name="anesthesiologist_id"/>
+						<field name="procedure_date"/>
+						<field name="procedure_end_date"/>
+ 					</tree>
+   				</field>
+   				<separator string="Pre-surgical Records"/>
+   				<field name="presurgical_record_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Pre-surgical Records">
+   						<field name="number"/>
+		         	    <field name='attention_code_id'/>
+	    				<field name="date_attention"/>
+	    				<field name="patient_id"/>
+	    				<field name="document_type"/>
+	    				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Anhestesic Registry"/>
+   				<field name="anhestesic_registry_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Anhestesic Registry">
+   						<field name="name"/>
+		  				<field name="intervention_date"/>
+		  				<field name="patient_id"/>
+		  				<field name="document_type"/>
+		  				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Plastic Surgery Sheet"/>
+   				<field name="plastic_surgery_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Plastic Surgery Sheet">
+   						<field name="number"/>
+		         	    <field name='attention_code_id'/>
+	    				<field name="date_attention"/>
+	    				<field name="patient_id"/>
+	    				<field name="document_type"/>
+	    				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Medical Orders and Evolution"/>
+   				<field name="medical_evolution_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Medical Orders and Evolution">
+   						<field name="name"/>
+		  				<field name="procedure_date"/>
+		  				<field name="patient_id"/>
+		  				<field name="tdoc"/>
+		  				<field name="numberid"/>
+   					</tree>
+   				</field>
+   				<separator string="Epicrisis"/>
+   				<field name="epicrisis_ids" nolabel="1" force_save="1" readonly="1">
+   					<tree string="Epicrisis">
+   						<field name="name"/>
+		 				<field name="patient_in_date"/>
+		 				<field name="patient_out_date"/>
+		 				<field name="patient_id"/>
+		 				<field name="tdoc"/>
+		 				<field name="numberid"/>
+   					</tree>
+   				</field>
          	</sheet>
          </form>
          </field>

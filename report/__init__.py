@@ -19,10 +19,7 @@
 #
 ###############################################################################
 
-from . import wizard 
-from . import report 
-from . import models 
-
+from . import clinica_visualizer_report
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

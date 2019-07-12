@@ -226,6 +226,10 @@ class ClinicaRecordVisualizer(models.Model):
         self.plastic_surgery_ids = plastic_surgery_ids
         self.medical_evolution_ids = medical_evolution_ids
         self.epicrisis_ids = epicrisis_ids
+        
+    @api.multi
+    def action_print_clinica_record_history(self):
+        return self.env.ref('clinica_doctor_data.clinica_visualizer_report').report_action(self)
             
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
