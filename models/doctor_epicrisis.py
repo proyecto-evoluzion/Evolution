@@ -180,6 +180,28 @@ class DoctorEpicrisis(models.Model):
         res = super(DoctorEpicrisis, self).write(vals)
         self._check_tdocs()
         return res
+    
+    @api.multi
+    def _set_visualizer_default_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_view_model': 'epicrisis',
+            }
+        return vals
+           
+    @api.multi
+    def action_view_clinica_record_history(self):
+        context = self._set_visualizer_default_values()
+        return {
+                'name': _('Clinica Record History'),
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'clinica.record.list.visualizer',
+                'view_id': self.env.ref('clinica_doctor_data.clinica_record_list_visualizer_form').id,
+                'type': 'ir.actions.act_window',
+                'context': context,
+                'target': 'new'
+            }
             
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

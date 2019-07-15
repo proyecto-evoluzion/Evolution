@@ -206,6 +206,29 @@ class ClinicaNurseSheet(models.Model):
                     procedure_line.move_id.quantity_done = procedure_line.quantity_done
             nurse_sheet.updated_stock = True
         return True
+    
+    @api.multi
+    def _set_visualizer_default_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_doctor_id': self.room_id and self.room_id.surgeon_id and self.room_id.surgeon_id.id or False,
+            'default_view_model': 'nurse_sheet',
+            }
+        return vals
+           
+    @api.multi
+    def action_view_clinica_record_history(self):
+        context = self._set_visualizer_default_values()
+        return {
+                'name': _('Clinica Record History'),
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'clinica.record.list.visualizer',
+                'view_id': self.env.ref('clinica_doctor_data.clinica_record_list_visualizer_form').id,
+                'type': 'ir.actions.act_window',
+                'context': context,
+                'target': 'new'
+            }
 
 class NurseSheetProcedures(models.Model):
     _name = "nurse.sheet.procedures"

@@ -54,6 +54,11 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Medical Orders and Evolution", copy=False)
     epicrisis_ids = fields.Many2many('doctor.epicrisis', 'epicrisis_visualizer_rel', 'visualizer_id', 'epicrisis_id', 
                                    string="Epicrisis", copy=False)
+    view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
+                                   ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
+                                   ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
+                                   ('plastic_surgery','Plastic Surgery'),('medical_evolution','Medical Evolution'),
+                                   ('epicrisis','Epicrisis'),('all','All')], string='View from model', default='all')
     
     
     def _get_nurse_sheet_ids(self, search_domain, doctor, start_period, end_period):
@@ -94,6 +99,8 @@ class ClinicaRecordVisualizer(models.Model):
         surgery_room_domain = []
         waiting_room_domain = []
         surgery_search_domain = []
+        waiting_room_objs = []
+        surgery_room_objs = []
         surgery_search_domain.extend(search_domain)
         if start_period:
             surgery_search_domain.append(('procedure_date','>=',start_period))
@@ -108,11 +115,13 @@ class ClinicaRecordVisualizer(models.Model):
         waiting_room_domain.extend(surgery_search_domain)
         surgery_room_domain.append(('room_type','=','surgery'))
         waiting_room_domain.append(('room_type','=','waiting'))
-         
-        surgery_room_objs = self.env['doctor.waiting.room'].search(surgery_room_domain)
+        
+        if self.view_model in ['surgery_room','all']:
+            surgery_room_objs = self.env['doctor.waiting.room'].search(surgery_room_domain)
         if surgery_room_objs:
             surgery_room_ids = surgery_room_objs.ids
-        waiting_room_objs = self.env['doctor.waiting.room'].search(waiting_room_domain)
+        if self.view_model in ['waiting_room','all']:
+            waiting_room_objs = self.env['doctor.waiting.room'].search(waiting_room_domain)
         if waiting_room_objs:
             waiting_room_ids = waiting_room_objs.ids
         return surgery_room_ids,waiting_room_ids
@@ -193,7 +202,7 @@ class ClinicaRecordVisualizer(models.Model):
             epicrisis_ids = epicrisis_objs.ids
         return epicrisis_ids
     
-    @api.onchange('patient_id','start_period','end_period','doctor_id')
+    @api.onchange('patient_id','start_period','end_period','doctor_id','view_model')
     def onchange_visualizer_filter(self):
         search_domain = []
         nurse_sheet_ids = []
@@ -208,14 +217,22 @@ class ClinicaRecordVisualizer(models.Model):
         if self.patient_id:
             search_domain.append(('patient_id','=',self.patient_id.id))
         if self.patient_id or self.doctor_id or self.start_period or self.end_period:
-            nurse_sheet_ids = self._get_nurse_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            quirurgic_sheet_ids = self._get_quirurgic_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            surgery_room_ids,waiting_room_ids = self._get_surgery_room_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            presurgical_record_ids = self._get_presurgical_record_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            anhestesic_registry_ids = self._get_anhestesic_registry_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            plastic_surgery_ids = self._get_plastic_surgery_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            medical_evolution_ids = self._get_medical_evolution_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
-            epicrisis_ids = self._get_epicrisis_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['nurse_sheet','all']:
+                nurse_sheet_ids = self._get_nurse_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['quirurgic_sheet','all']:
+                quirurgic_sheet_ids = self._get_quirurgic_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['waiting_room','surgery_room','all']:
+                surgery_room_ids,waiting_room_ids = self._get_surgery_room_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['presurgical','all']:
+                presurgical_record_ids = self._get_presurgical_record_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['anhestesic_registry','all']:
+                anhestesic_registry_ids = self._get_anhestesic_registry_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['plastic_surgery','all']:
+                plastic_surgery_ids = self._get_plastic_surgery_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['medical_evolution','all']:
+                medical_evolution_ids = self._get_medical_evolution_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['epicrisis','all']:
+                epicrisis_ids = self._get_epicrisis_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             
         self.nurse_sheet_ids = nurse_sheet_ids
         self.quirurgic_sheet_ids = quirurgic_sheet_ids

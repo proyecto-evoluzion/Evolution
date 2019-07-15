@@ -7,6 +7,11 @@
         <field name="model">clinica.nurse.sheet</field>
         <field name="arch" type="xml">
         <form string="Nurse Sheet">
+        	<header>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
+            </header>
+            <sheet>
             <group name='main_group'>
             	<group name='sub_group1'>
 	                <field name="room_id" required="1"/>
@@ -84,6 +89,7 @@
       				</field>
       			</page>
       		</notebook>
+      		</sheet>
         </form>
         </field>
     </record>

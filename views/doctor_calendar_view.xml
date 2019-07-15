@@ -118,6 +118,8 @@
                 	class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"/>
                 <button name="action_create_so" string="Create Sales Order" 
                 	class="btn-primary" type="object" states="confirmed"/>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
             	<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
             </header>
          	<sheet>

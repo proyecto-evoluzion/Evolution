@@ -362,6 +362,32 @@ class DoctorWaitingRoom(models.Model):
         result['res_id'] = self.sale_order_id.id
         return result
     
+    @api.multi
+    def _set_visualizer_default_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_doctor_id': self.surgeon_id and self.surgeon_id.id or False,
+            }
+        if self.room_type == 'waiting':
+            vals.update({'default_view_model': 'waiting_room'})
+        elif self.room_type == 'surgery':
+            vals.update({'default_view_model': 'surgery_room'})
+        return vals
+           
+    @api.multi
+    def action_view_clinica_record_history(self):
+        context = self._set_visualizer_default_values()
+        return {
+                'name': _('Clinica Record History'),
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'clinica.record.list.visualizer',
+                'view_id': self.env.ref('clinica_doctor_data.clinica_record_list_visualizer_form').id,
+                'type': 'ir.actions.act_window',
+                'context': context,
+                'target': 'new'
+            }
+    
 
 class DoctorWaitingRoomProcedures(models.Model):
     _name = "doctor.waiting.room.procedures"

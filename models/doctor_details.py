@@ -263,6 +263,18 @@ class DoctorAdministrativeData(models.Model):
     hypertension = fields.Boolean(string="Hypertension")
     arthritis = fields.Boolean(string="Arthritis")
     thyroid_disease = fields.Boolean(string="Thyroid Disease")
+    nurse_sheet_ids = fields.One2many('clinica.nurse.sheet', 'patient_id', string="Nurse Sheets", copy=False)
+    quirurgic_sheet_ids = fields.One2many('doctor.quirurgic.sheet', 'patient_id', string="Quirurgic Sheets", copy=False)
+    surgery_room_ids = fields.One2many('doctor.waiting.room', 'patient_id', string="Surgery Room Procedures", 
+                                       copy=False, domain=[('room_type','=','surgery')])
+    waiting_room_ids = fields.One2many('doctor.waiting.room', 'patient_id', string="Surgery Room Procedures", 
+                                       copy=False, domain=[('room_type','=','waiting')])
+    presurgical_record_ids = fields.One2many('doctor.presurgical.record', 'patient_id', string="Pre-surgical Records", 
+                                             copy=False)
+    anhestesic_registry_ids = fields.One2many('clinica.anhestesic.registry', 'patient_id', string="Anhestesic Registry", copy=False)
+    plastic_surgery_ids = fields.One2many('clinica.plastic.surgery', 'patient_id', string="Plastic Surgery Sheets", copy=False)
+    medical_evolution_ids = fields.One2many('clinica.medical.evolution', 'patient_id', string="Medical Orders and Evolution", copy=False)
+    epicrisis_ids = fields.One2many('doctor.epicrisis', 'patient_id', string="Epicrisis", copy=False)
     
     
     @api.multi
