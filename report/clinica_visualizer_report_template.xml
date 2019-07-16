@@ -3,6 +3,8 @@
     <data>
     
     	<template id="clinica_doctor_data.nurse_sheet_visualizer_template">
+    		<div class="page">
+           	<div class="oe_structure"/>
     		<t t-if="clinica_records['nurse_sheets']">
     			<br/>
     			<span style="width:100%; text-align:left; font-size:30px;"><strong>NURSE SHEETS</strong></span>
@@ -12,8 +14,8 @@
        			<p><br></br></p>
        			<table style="width:100%;">
        				<tr>
-       					<td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Procedure Date: <span t-field="nurse_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
-       					<td style="width:50%; text-align:center; font-size: 20px;"><strong>Nurse Sheet Number: <span t-field="nurse_sheet.name" style="padding-left:2px;"/></strong></td>
+       					<td style="width:30%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Procedure Date: <span t-field="nurse_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
+       					<td style="width:50%; text-align:left; font-size: 20px;"><strong>Nurse Sheet Number: <span t-field="nurse_sheet.name" style="padding-left:2px;"/></strong></td>
        					<td></td>
        				</tr>
        			</table>
@@ -50,23 +52,6 @@
        						Anesthesiologist: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.anesthesiologist_id.partner_id"/>
        					</td>
        				</tr>
-       				<tr t-if="nurse_sheet.procedure_ids"><td colspan="2" style="text-align:center; border: 2px solid black;"><strong>HOJA DE GASTOS</strong></td></tr>
-       				<tr t-if="nurse_sheet.procedure_ids" style="padding:0px;">
-       					<td colspan="2" style="border: 2px solid black; padding:0px;">
-        					<table class="table" style="width:100%;margin:0px;">
-        						<thead>
-        							<th style="width:80%; border-right: 1px solid black;border-bottom: 1px solid black !important;">Health Procedure</th>
-        							<th style="width:20%;text-align:right;border-bottom: 1px solid black !important;">Used Products</th>
-        						</thead>
-        						<tbody>
-        							<tr t-foreach="nurse_sheet.procedure_ids" t-as="procedure">
-        								<td style="width:80%;border-top: 0px !important;border-right: 1px solid black;"><span t-field="procedure.product_id"/></td>
-        								<td style="width:20%;text-align:right; border-top: 0px !important;"><span t-field="procedure.quantity_done"/></td>
-        							</tr>
-        						</tbody>
-        					</table>
-        				</td>
-       				</tr>
        				<tr t-if="nurse_sheet.vital_sign_ids"><td colspan="2" style="text-align:center; border: 2px solid black;"><strong>SIGNOS VITALES</strong></td></tr>
        				<tr t-if="nurse_sheet.vital_sign_ids" style="padding:0px;">
        					<td colspan="2" style="border: 2px solid black; padding:0px;">
@@ -99,10 +84,14 @@
        				
        			</table>
        			<p><br></br></p>
+       			<p style="page-break-after: always;"/>
         	</t>
+        	</div>
     	</template>
     	
     	<template id="clinica_doctor_data.quirurgic_sheet_visualizer_template">
+    		<div class="page">
+           	<div class="oe_structure"/>
     		<t t-if="clinica_records['quirgic_sheets']">
     			<br/>
     			<strong><span style="width:100%; text-align:left; font-size:30px;">QUIRURGIC SHEETS</span></strong>
@@ -171,10 +160,14 @@
        				</tr>
        			</table>
    				<p><br></br></p>
+   				<p style="page-break-after: always;"/>
    			</t>
+   			</div>
 		</template>
 		
 		<template id="clinica_doctor_data.room_visualizer_template">
+			<div class="page">
+           	<div class="oe_structure"/>
 			<t t-if="record == 'surgery_rooms'">
 				<br/>
 				<t t-if="clinica_records['surgery_rooms']">
@@ -183,6 +176,7 @@
 				<t t-set="clinica_rooms" t-value="clinica_records['surgery_rooms']" />
 			</t>
 			<t t-if="record == 'waiting_rooms'">
+				<br/>
 				<t t-if="clinica_records['waiting_rooms']">
 				<strong><span style="width:100%; text-align:left; font-size:30px;">APPOINTMENTS</span></strong>
 				</t>
@@ -253,10 +247,14 @@
        				</tr>
        			</table>
        			<p><br></br></p>
+       			<p style="page-break-after: always;"/>
    			</t>
+   			</div>
 		</template>
 		
 		<template id="clinica_doctor_data.presurgical_record_visualizer_template">
+			<div class="page">
+           	<div class="oe_structure"/>
 			<t t-if="clinica_records['presurgical_records']">
 			<br/>
 			<strong><span style="width:100%; text-align:left; font-size:30px;">PRE-SURGICAL RECORDS</span></strong>
@@ -474,10 +472,14 @@
        				</tr>
    				</table>
    				<p><br></br></p>
+   				<p style="page-break-after: always;"/>
 			</t>
+			</div>
 	   </template>
 	   
 	   <template id="clinica_doctor_data.anhestesic_registry_visualizer_template">
+	   		<div class="page">
+           	<div class="oe_structure"/>
 	   		<t t-if="clinica_records['anhestesic_registry']">
 	   			<br></br>
 	   			<strong><span style="width:100%; text-align:left; font-size:30px;">ANHESTESIC REGISTRY</span></strong>
@@ -609,10 +611,14 @@
        					</td>
        				</tr>
        			</table>
+       			<p style="page-break-after: always;"/>
        		</t>
+       		</div>
        	</template>
        	
        	<template id="clinica_doctor_data.plastic_surgery_visualizer_template">
+       		<div class="page">
+           	<div class="oe_structure"/>
        		<t t-if="clinica_records['plastic_surgery']">
        			<br/>
        			<strong><span style="width:100%; text-align:left; font-size:30px;">PLASTIC SURGERY SHEETS</span></strong>
@@ -767,10 +773,14 @@
        					</td>
        				</tr>
    				</table>
+   				<p style="page-break-after: always;"/>
 			</t>
+			</div>
 		</template>
 		
 		<template id="clinica_doctor_data.medical_evolution_visualizer_template">
+			<div class="page">
+           	<div class="oe_structure"/>
 			<t t-if="clinica_records['medical_evolution']">
 				<br/>
 				<strong><span style="width:100%; text-align:left; font-size:30px;">MEDICAL ORDERS AND EVOLUTION</span></strong>
@@ -839,10 +849,14 @@
         				</td>
        				</tr>
    				</table>
+   				<p style="page-break-after: always;"/>
 			</t>
+			</div>
 		</template>
 		
 		<template id="clinica_doctor_data.epicrisis_visualizer_template">
+			<div class="page">
+           	<div class="oe_structure"/>
 			<t t-if="clinica_records['epicrisis']" >
 				<br/>
 				<strong><span style="width:100%; text-align:left; font-size:30px;">EPICRISIS</span></strong>
@@ -854,8 +868,8 @@
        			<table style="width:100%;">
        				<tr>
        					<td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>In Date: <span t-field="epicrisis.patient_in_date" style="padding-left:2px;"/></strong></td>
-       					<td style="width:50%; text-align:center; font-size: 20px;"><strong>Epicrisis Number: <span t-field="epicrisis.name" style="padding-left:2px;"/></strong></td>
-       					<td style="width:25%; padding-left:5px; text-align:right; font-size: 15px;"><strong>Out Date: <span t-field="epicrisis.patient_out_date" style="padding-left:2px;"/></strong></td>
+       					<td style="width:40%; text-align:center; font-size: 20px;"><strong>Epicrisis Number: <span t-field="epicrisis.name" style="padding-left:2px;"/></strong></td>
+       					<td style="width:30%; padding-left:5px; text-align:right; font-size: 15px;"><strong>Out Date: <span t-field="epicrisis.patient_out_date" style="padding-left:2px;"/></strong></td>
        				</tr>
        			</table>
        			<table class="table table-bordered" style="border: 2px solid black; width:100%;">
@@ -894,15 +908,18 @@
        					</td>
        				</tr>
        			</table>
+       			<p style="page-break-after: always;"/>
        		</t>
+       		</div>
        	</template>
     
-        <template id="clinica_doctor_data.visualizer_report_template">
+    
+        <template id="visualizer_report_template">
             <t t-call="web.html_container">
+            <t t-call="web.external_layout">
             <t t-set="o" t-value="o.with_context({'lang':o.patient_id.partner_id.lang})" />
             <t t-foreach="clinica_records" t-as="record">
-            <div class="page">
-           		<div class="oe_structure"/>
+            
            		<t t-if="record == 'nurse_sheets'">
            			<t t-call="clinica_doctor_data.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
            		</t>
@@ -928,7 +945,8 @@
            			<t t-call="clinica_doctor_data.epicrisis_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
            		</t>
            		<p style="page-break-after: always;"/>
-           	</div>
+           		
+            </t>
             </t>
             </t>
         </template>
