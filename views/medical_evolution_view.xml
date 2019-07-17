@@ -69,7 +69,7 @@
          	    	<page name="description" string="Description">
          	    		<field name="evolution_note_ids" colspan="4" nolabel="1" >
       					<tree editable="top">
-      						<field name="date_hour" string="Date and Hour"/>
+      						<field name="date_hour"/>
       						<field name="note"/>
       					</tree>
       					</field>

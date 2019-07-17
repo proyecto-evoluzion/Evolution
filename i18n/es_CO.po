@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-17 06:11+0000\n"
-"PO-Revision-Date: 2019-07-17 06:11+0000\n"
+"POT-Creation-Date: 2019-07-17 08:31+0000\n"
+"PO-Revision-Date: 2019-07-17 08:31+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -39,22 +39,22 @@ msgstr ", Edad:"
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
 msgid "0-5 Points: Class I 1% Complications"
-msgstr "0-5 Points: Class I 1% Complications"
+msgstr "Class I"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
 msgid "13-25 Points: Class III 14% Complications"
-msgstr "13-25 Points: Class III 14% Complications"
+msgstr "Class III"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
 msgid "26-53 Points: Class IV 78% Complications"
-msgstr "26-53 Points: Class IV 78% Complications"
+msgstr "Class IV 78%"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,paraclinical_goldman:0
 msgid "6-12 Points: Class II 7% Complications"
-msgstr "6-12 Points: Class II 7% Complications"
+msgstr "Class II"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
@@ -68,14 +68,14 @@ msgstr "<br/>\n"
 msgid "<br/>\n"
 "				<strong><span style=\"width:100%; text-align:left; font-size:30px;\">MEDICAL ORDERS AND EVOLUTION</span></strong>"
 msgstr "<br/>\n"
-"				<strong><span style=\"width:100%; text-align:left; font-size:30px;\">MEDICAL ORDERS AND EVOLUTION</span></strong>"
+"				<strong><span style=\"width:100%; text-align:left; font-size:30px;\">ÓRDENES MÉDICAS Y EVOLUCIÓN</span></strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "<br/>\n"
 "			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">PRE-SURGICAL RECORDS</span></strong>"
 msgstr "<br/>\n"
-"			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">PRE-SURGICAL RECORDS</span></strong>"
+"			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">REGISTROS PRE-ANESTÉSICOS</span></strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -183,7 +183,7 @@ msgstr "<br/>\n"
 msgid "<br/>\n"
 "    			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">QUIRURGIC SHEETS</span></strong>"
 msgstr "<br/>\n"
-"    			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">QUIRURGIC SHEETS</span></strong>"
+"    			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">REGISTROS QUIRÚRGICOS</span></strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -355,7 +355,7 @@ msgstr "<br/>\n"
 msgid "<br/>\n"
 "       			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">PLASTIC SURGERY SHEETS</span></strong>"
 msgstr "<br/>\n"
-"       			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">PLASTIC SURGERY SHEETS</span></strong>"
+"       			<strong><span style=\"width:100%; text-align:left; font-size:30px;\">REGISTROS CIRUGÍA PLÁSTICA</span></strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
@@ -365,7 +365,7 @@ msgstr "<strong><span style=\"width:100%; text-align:left; font-size:30px;\">CIT
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "<strong><span style=\"width:100%; text-align:left; font-size:30px;\">SURGERY ROOM PROCEDURES</span></strong>"
-msgstr "<strong><span style=\"width:100%; text-align:left; font-size:30px;\">SURGERY ROOM PROCEDURES</span></strong>"
+msgstr "<strong><span style=\"width:100%; text-align:left; font-size:30px;\">PROCEDIMIENTOS SALA CIRUGÍA</span></strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
@@ -670,7 +670,7 @@ msgstr "Número de Teléfono de la Persona Acompañante"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_accompany_relationship
 msgid "Accompany Person's Relationship"
-msgstr "Acompañar la relación de la persona"
+msgstr "Parentezco del Acompañante"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -925,6 +925,7 @@ msgstr "Fecha de Nacimiento:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_bleeding
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Bleeding"
 msgstr "Sangrado"
 
@@ -1086,7 +1087,7 @@ msgstr "Clic aquí para crear un paciente"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:260
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:291
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:292
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:409
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:230
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:235
@@ -1106,7 +1107,7 @@ msgstr "Clinica Record History"
 #: model:ir.model,name:clinica_doctor_data.model_clinica_record_list_visualizer
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_record_list_visualizer
 msgid "Clinica Record Visualizer"
-msgstr "Clinica Record Visualizer"
+msgstr "Visualizador Registros"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
@@ -1176,7 +1177,7 @@ msgstr "Confirmar Cita"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Confirm Room Procedure"
-msgstr "Confirm Room Procedure"
+msgstr "Confirmar Sala Procedimiento"
 
 #. module: clinica_doctor_data
 #: selection:clinica.plastic.surgery,disease_state:0
@@ -1336,7 +1337,6 @@ msgstr "Cristaloides:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_date_hour
-#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
@@ -1484,7 +1484,7 @@ msgstr "Diagnóstico"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_diastolic_arteric_pressure
 msgid "Diastolic Arteric Pressure"
-msgstr "Diastolic Arteric Pressure"
+msgstr "Presión Aterial Diastólica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_diastolic_artery_presure
@@ -1494,7 +1494,7 @@ msgstr "Diastolic Arteric Pressure"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Diastolic Artery Pressure"
-msgstr "Diastolic Artery Pressure"
+msgstr "Presión Aterial Diastólica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_differential
@@ -1510,8 +1510,9 @@ msgstr "Diferencial:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_diseases_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_disease_id
 msgid "Disease"
-msgstr "Diagnóstico"
+msgstr "Enfermedad"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state
@@ -1531,7 +1532,6 @@ msgstr "Tipo:"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_diseases
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_disease_id
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_diseases
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_cups_code_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_cups_code_tree
@@ -1575,6 +1575,7 @@ msgstr "Nombre Público"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_diuresis
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Diuresis"
 msgstr "Diuresis"
 
@@ -1641,7 +1642,7 @@ msgstr "Doctors"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_duration
 msgid "Duration (in hours)"
-msgstr "Duration (in hours)"
+msgstr "Duración (en horas)"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_ecg
@@ -1751,7 +1752,7 @@ msgstr "FR"
 #: selection:doctor.patient,accompany_relationship:0
 #: selection:doctor.patient,responsible_relationship:0
 msgid "Father"
-msgstr "Father"
+msgstr "Padre"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,gender:0
@@ -2064,7 +2065,7 @@ msgstr "Invalid Email ! Please enter a valid email address."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:190
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:188
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:189
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:198
 #: code:addons/clinica_doctor_data/models/doctor_details.py:336
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:161
@@ -2316,12 +2317,12 @@ msgstr "Medical Evolution Number:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Medical Orders and Evolution"
-msgstr "Medical Orders and Evolution"
+msgstr "Órdenes Médicas y Evolución"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
 msgid "Medical Orders and Evolution Form"
-msgstr "Medical Orders and Evolution Form"
+msgstr "Órdenes Médicas y Evolución Form"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_tree
@@ -2340,7 +2341,7 @@ msgstr "Ordenes médicas y Receta"
 #. module: clinica_doctor_data
 #: model:ir.model,name:clinica_doctor_data.model_clinica_medical_evolution
 msgid "Medical orders and Evolution"
-msgstr "Medical orders and Evolution"
+msgstr "Órdenes Médicas y Evolución"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_user_id
@@ -2562,6 +2563,7 @@ msgstr "Hoja de Enfermería"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_note
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Nursing Note"
 msgstr "Nota de Enfermería"
 
@@ -2588,7 +2590,7 @@ msgstr "Orders and Evolutions Notes"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Origin"
-msgstr "Origen"
+msgstr "Procedencia"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,accompany_relationship:0
@@ -2650,6 +2652,7 @@ msgstr "Out Date:"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_oximetry
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Oximetry"
 msgstr "Oximetría"
 
@@ -2778,7 +2781,7 @@ msgstr "Paciente"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Patient Background"
-msgstr "Antecedentes"
+msgstr "Antec. Paciente"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
@@ -2807,7 +2810,7 @@ msgstr "Patient Name:"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_administrative_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_administrative_data
 msgid "Patients"
-msgstr "Patients"
+msgstr "Pacientes"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_pharmacological
@@ -2862,7 +2865,7 @@ msgstr "Plan"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_insurer_plan_code
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
 msgid "Plan Code"
-msgstr "Plan Code"
+msgstr "Código"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_plan_analysis
@@ -2905,7 +2908,7 @@ msgstr "HC Cirugía Plástica"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_plastic_surgery_ids
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Plastic Surgery Sheets"
-msgstr "Plastic Surgery Sheets"
+msgstr "Registros Cirugía Plástica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_platelets
@@ -2923,7 +2926,7 @@ msgstr "Platelets:"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:177
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:218
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:219
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:185
 #: code:addons/clinica_doctor_data/models/doctor_details.py:380
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:148
@@ -2948,7 +2951,7 @@ msgstr "Pre-surgical Attention Number:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Pre-surgical Records"
-msgstr "Pre-surgical Records"
+msgstr "Registros Pre-Anestésicos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_preoperative_note
@@ -2980,7 +2983,7 @@ msgstr "Principal"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Print Details"
-msgstr "Print Details"
+msgstr "Imprimir"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_procedure
@@ -3098,7 +3101,7 @@ msgstr "Descripción Quirurgica"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_quirurgic_sheet
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgic_sheet
 msgid "Quirurgic Sheet"
-msgstr "Quirurgic Sheet"
+msgstr "HC Quirúrgica"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
@@ -3121,7 +3124,7 @@ msgstr "Quirurgic Sheet Tree"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Quirurgic Sheets"
-msgstr "Quirurgic Sheets"
+msgstr "Registros Quirúrgicos"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
@@ -3148,7 +3151,7 @@ msgstr "RC - Registro Civil"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Reason for Consultation"
-msgstr "Motivo de Consulta"
+msgstr "Motivo de Consulta y Enfermedad Actual"
 
 #. module: clinica_doctor_data
 #: selection:clinica.plastic.surgery,disease_type:0
@@ -3357,7 +3360,7 @@ msgstr "Search Quirurgic Sheet"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 msgid "Search Surgery room procedures"
-msgstr "Search Surgery room procedures"
+msgstr "Search Procedimientos Sala Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_surname
@@ -3428,9 +3431,13 @@ msgstr "Único o Unilateral"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
-#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Sistolic Arteric Pressure"
-msgstr "Sistolic Arteric Pressure"
+msgstr "Presión Aterial Sistólica"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+msgid "Sistolic Artery Pressure"
+msgstr "Sistolic Artery Pressure"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_size
@@ -3560,7 +3567,7 @@ msgstr "Cirujano:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_surgery_room_procedures_calendar
 msgid "Surgery Room"
-msgstr "Surgery Room"
+msgstr "Sala de Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
@@ -3578,7 +3585,7 @@ msgstr "Surgery Room Procedure Number:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Surgery Room Procedures"
-msgstr "Surgery Room Procedures"
+msgstr "Procedimientos Sala Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_tree
@@ -3600,7 +3607,7 @@ msgstr "Surgery Room:"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_surgery_room
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_surgery_room
 msgid "Surgery Rooms"
-msgstr "Surgery Rooms"
+msgstr "Salas de Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_surgical
@@ -3685,7 +3692,7 @@ msgstr "TI - Tarjeta de Identidad"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_phone
 msgid "Telephone"
-msgstr "Telephone"
+msgstr "Teléfono"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_text_template
@@ -3871,7 +3878,7 @@ msgstr "Víctima - Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "View History"
-msgstr "View History"
+msgstr "Ver Historia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_view_model
@@ -3945,7 +3952,7 @@ msgid "Waiting Rooms/Appointments"
 msgstr "Salas de Espera/Citas"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:199
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:200
 #: code:addons/clinica_doctor_data/models/doctor_details.py:347
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:169
 #, python-format
@@ -3981,7 +3988,7 @@ msgstr "Años"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:205
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:235
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:236
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:213
 #: code:addons/clinica_doctor_data/models/doctor_details.py:397
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:176
@@ -3995,7 +4002,7 @@ msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:203
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:233
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:234
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:211
 #: code:addons/clinica_doctor_data/models/doctor_details.py:395
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:174
@@ -4009,7 +4016,7 @@ msgstr "You can only choose 'MS' document for age between 1 to 30 days."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:197
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:227
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:228
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:205
 #: code:addons/clinica_doctor_data/models/doctor_details.py:389
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:168
@@ -4023,7 +4030,7 @@ msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:201
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:231
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:232
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:209
 #: code:addons/clinica_doctor_data/models/doctor_details.py:393
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:172
@@ -4037,7 +4044,7 @@ msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:199
-#: code:addons/clinica_doctor_data/models/doctor_attentions.py:229
+#: code:addons/clinica_doctor_data/models/doctor_attentions.py:230
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:207
 #: code:addons/clinica_doctor_data/models/doctor_details.py:391
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:170
@@ -4190,7 +4197,7 @@ msgstr "m (Minutos)"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "m (Minutes)<br/>"
-msgstr "m (Minutes)<br/>"
+msgstr "m (Minutos)<br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template

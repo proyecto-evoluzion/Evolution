@@ -80,12 +80,12 @@
       					<tree editable="top">
       						<field name="vital_signs_date_hour" string="Date and Hour"/>
       						<field name="vital_signs_fc"/>
-	      					<field name="sistolic_arteric_pressure" string="Sistolic Arteric Pressure" />
+	      					<field name="sistolic_arteric_pressure" string="Sistolic Artery Pressure" />
 	      					<field name="diastolic_arteric_pressure" string="Diastolic Artery Pressure"/>
-	      					<field name="oximetry"/>
-		            		<field name="diuresis"/>
-		            		<field name="bleeding"/>
-		            		<field name="note"/>
+	      					<field name="oximetry" string="Oximetry"/>
+		            		<field name="diuresis" string="Diuresis"/>
+		            		<field name="bleeding" string="Bleeding"/>
+		            		<field name="note" string="Nursing Note"/>
       					</tree>
       				</field>
       			</page>
