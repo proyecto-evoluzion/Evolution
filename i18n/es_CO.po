@@ -2017,7 +2017,7 @@ msgstr "RC - Registro Civil"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Reason for Consultation"
-msgstr "Motivo de Consulta"
+msgstr "Motivo de Consulta y Enfermedad Actual"
 
 #. module: clinica_doctor_data
 #: selection:doctor.presurgical.record,disease_type:0
