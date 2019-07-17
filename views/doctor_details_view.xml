@@ -396,9 +396,21 @@
             				<group name="patient_backgorund_main" >
             					<group name="patient_backgorund_sub1" >
             						<field name="smoke" />
-            						<field name="cigarate_daily" />
+            						<label for="cigarate_daily" string="Cigarettes"/>
+		                            <div>
+		                                <div>
+		                                    <field name="cigarate_daily" nolabel="1" class="oe_inline"/>
+		                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+		                                </div>
+		                            </div>
             						<field name="is_alcoholic" />
-            						<field name="alcohol_frequency" />
+            						<label for="alcohol_frequency" string="Frequency"/>
+		                            <div>
+		                                <div>
+		                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline"/>
+		                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+		                                </div>
+		                            </div>
             						<field name="marijuana" />
             						<field name="cocaine" />
             						<field name="ecstasy" />

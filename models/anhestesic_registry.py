@@ -86,6 +86,9 @@ class AnhestesicRegistry(models.Model):
     paraclinical_asa = fields.Selection([('1','ASA 1'),('2','ASA 2'),('3','ASA 3'),
                                          ('4','ASA 4'), ('5','ASA 5') ], string="A.S.A")
     paraclinical_goldman = fields.Text(string="GOLDMAN")
+    mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
+                                       ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
+    dental_prostheses = fields.Boolean(string='Dental Prostheses')
     
     monitor = fields.Text(string="Monitor")
     crystalloids = fields.Float(string="Crystalloids")
@@ -95,6 +98,35 @@ class AnhestesicRegistry(models.Model):
     bleeding = fields.Float(string="Bleeding")
     diuresis = fields.Float(string="Diuresis")
     liposuction = fields.Float(string="Liposuction")
+    
+    pathological = fields.Text(string="Pathological", related='patient_id.pathological')
+    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
+    cigarate_daily = fields.Integer(string="Cigarettes", related='patient_id.cigarate_daily')
+    smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
+                                  ('year','per Year')], string="Smoke Unit of Measure", default='day', related='patient_id.smoke_uom')
+    is_alcoholic = fields.Boolean(string="Alcoholic Drinks", related='patient_id.is_alcoholic')
+    alcohol_frequency = fields.Integer(string="Frequency", related='patient_id.alcohol_frequency')
+    alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
+                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day', 
+                                             related='patient_id.alcohol_frequency_uom')
+    marijuana = fields.Boolean(string="Marijuana", related='patient_id.marijuana')
+    cocaine = fields.Boolean(string="Cocaine", related='patient_id.cocaine')
+    ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
+    body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
+    pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
+    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
+    pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
+    child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
+    abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
+    last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
+    last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
+    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
+    diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
+    hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
+    arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
+    thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
+    
     
     @api.multi
     @api.depends('birth_date')

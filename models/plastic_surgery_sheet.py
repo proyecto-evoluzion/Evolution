@@ -53,25 +53,34 @@ class PlasticSurgerySheet(models.Model):
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
     consultation_reason = fields.Text(string="Reason for Consultation")
-    pathological = fields.Text(string="Pathological")
-    surgical = fields.Text(string="Surgical")
+    pathological = fields.Text(string="Pathological", related='patient_id.pathological')
+    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     relatives = fields.Text(string="Relatives")
-    smoke = fields.Boolean(string="Smoke")
-    cigarate_daily = fields.Integer(string="Cigarettes / Day")
-    is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
-    alcohol_frequency = fields.Integer(string="Frequency")
-    marijuana = fields.Boolean(string="Marijuana")
-    cocaine = fields.Boolean(string="Cocaine")
-    ecstasy = fields.Boolean(string="Ecstasy")
-    body_background_others = fields.Text(string="Body Background Others")
-    pharmacological = fields.Text(string="Pharmacological")
-    allergic = fields.Text(string="Allergic")
-    pregnancy_number = fields.Integer(string="Number of Pregnancies")
-    child_number = fields.Integer(string="Number of Children")
-    abortion_number = fields.Integer(string="Number of Abortions")
-    last_birth_date = fields.Date(string="Date of Last Birth")
-    last_menstruation_date = fields.Date(string="Date of Last Menstruation")
-    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods")
+    smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
+    cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')
+    smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
+                                  ('year','per Year')], string="Smoke Unit of Measure", default='day', related='patient_id.smoke_uom')
+    is_alcoholic = fields.Boolean(string="Alcoholic Drinks", related='patient_id.is_alcoholic')
+    alcohol_frequency = fields.Integer(string="Frequency", related='patient_id.alcohol_frequency')
+    alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
+                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day', 
+                                             related='patient_id.alcohol_frequency_uom')
+    marijuana = fields.Boolean(string="Marijuana", related='patient_id.marijuana')
+    cocaine = fields.Boolean(string="Cocaine", related='patient_id.cocaine')
+    ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
+    body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
+    pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
+    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
+    pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
+    child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
+    abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
+    last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
+    last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
+    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
+    diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
+    hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
+    arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
+    thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
     
     physical_sistolic_arteric_presure = fields.Integer(string="Sistolic Arteric Pressure")
     physical_diastolic_artery_presure = fields.Integer(string="Diastolic Artery Pressure")
@@ -98,6 +107,8 @@ class PlasticSurgerySheet(models.Model):
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
     plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
+    medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
+    
     
     @api.multi
     @api.depends('birth_date')
@@ -166,6 +177,11 @@ class PlasticSurgerySheet(models.Model):
             self.numberid = str(self.numberid_integer) 
         if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer == 0:
             self.numberid = str(0)
+            
+    @api.onchange('medical_recipe_template_id')
+    def onchange_medical_recipe_template_id(self):
+        if self.medical_recipe_template_id:
+            self.medical_recipe = self.medical_recipe_template_id.template_text
             
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:

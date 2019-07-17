@@ -19,19 +19,29 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import clinica_record_list_visualizer
+
+import logging
+logger = logging.getLogger(__name__)
+
+from odoo import models, fields, api, _
 
 
+class ClinicaTextTemplate(models.Model):
+    _name = "clinica.text.template"
+    _order = 'id desc'
+    _description = 'Clinica Template'
+    
+    name = fields.Char(string='Template Name')
+    user_id = fields.Many2one('res.users', string="User")
+    template_text = fields.Text(string='Template Text')
+    type = fields.Selection([('quirurgic_description','Quirurgic Description'),
+                             ('epicrisis','Epicrisis'),
+                             ('medical_recipe','Medical Orders and Recipe')], string='Template Type')
+    
+            
+    
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+
+
+
+

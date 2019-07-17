@@ -59,11 +59,40 @@ class DoctorEpicrisis(models.Model):
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
-    disease_id = fields.Many2one('doctor.diseases', 'Disease', ondelete='restrict')
+    disease_id = fields.Many2one('doctor.diseases', 'Diseases', ondelete='restrict')
     procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict')
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
     epicrisis_note = fields.Text(string='Epicrisis')
+    epicrisis_template_id = fields.Many2one('clinica.text.template', string='Template')
+    
+    pathological = fields.Text(string="Pathological", related='patient_id.pathological')
+    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
+    cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')
+    smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
+                                  ('year','per Year')], string="Smoke Unit of Measure", default='day', related='patient_id.smoke_uom')
+    is_alcoholic = fields.Boolean(string="Alcoholic Drinks", related='patient_id.is_alcoholic')
+    alcohol_frequency = fields.Integer(string="Frequency", related='patient_id.alcohol_frequency')
+    alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
+                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day', 
+                                             related='patient_id.alcohol_frequency_uom')
+    marijuana = fields.Boolean(string="Marijuana", related='patient_id.marijuana')
+    cocaine = fields.Boolean(string="Cocaine", related='patient_id.cocaine')
+    ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
+    body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
+    pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
+    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
+    pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
+    child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
+    abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
+    last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
+    last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
+    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
+    diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
+    hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
+    arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
+    thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
     
     @api.multi
     @api.depends('birth_date')
@@ -108,6 +137,11 @@ class DoctorEpicrisis(models.Model):
             self.numberid_integer = 0
         if self.tdoc and self.tdoc in ['cc','ti'] and self.numberid_integer:
             self.numberid = self.numberid_integer
+            
+    @api.onchange('epicrisis_template_id')
+    def onchange_epicrisis_template_id(self):
+        if self.epicrisis_template_id:
+            self.epicrisis_note = self.epicrisis_template_id.template_text
             
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:

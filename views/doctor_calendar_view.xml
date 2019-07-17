@@ -206,6 +206,67 @@
         				 	</tree>
         				 </field>
         			</page>
+        			<page name="background" string="Patient Background">
+	      				<group name="pathological_background" >
+	       					<group name="pathological_background_sub1">
+	       						<field name="diabetes"/>
+	       						<field name="hypertension"/>
+	       					</group>
+	       					<group name="pathological_background_sub2">
+	       						<field name="arthritis"/>
+	       						<field name="thyroid_disease"/>
+	       					</group>
+       					</group>
+	       				<group name="pathological" colspan="2" col='1'>
+	       					<label for="pathological" string="Pathological"/>
+	       					<field name="pathological" nolabel="1"/>
+	       				</group>
+	       				<group name="surgical" colspan="2" col='1'>
+	       					<label for="surgical" string="Surgical"/>
+	       					<field name="surgical" nolabel="1"/>
+	       				</group>
+	       				<group name="patient_backgorund_main" >
+	       					<group name="patient_backgorund_sub1" >
+	       						<field name="smoke" />
+	       						<label for="cigarate_daily" string="Cigarettes"/>
+	                            <div>
+	                                <div>
+	                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" />
+	                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+	                                </div>
+	                            </div>
+	       						<field name="is_alcoholic" />
+	       						<label for="alcohol_frequency" string="Frequency"/>
+	                            <div>
+	                                <div>
+	                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline"/>
+	                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+	                                </div>
+	                            </div>
+	       						<field name="marijuana" />
+	       						<field name="cocaine" />
+	       						<field name="ecstasy" />
+	       						
+	       					</group>
+	       					<group name="patient_backgorund_sub2" >
+	       						<field name="body_background_others" string="Others"/>
+	       						<field name="pharmacological" />
+	       						<field name="allergic" />
+	       					</group>
+	       				</group>
+	       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+	       					<group name="patient_female_backgorund_sub1" >
+	       						<field name="pregnancy_number" />
+	       						<field name="child_number" />
+	       						<field name="abortion_number" />
+	       					</group>
+	       					<group name="patient_female_backgorund_sub2" >
+	       						<field name="last_birth_date" />
+	       						<field name="last_menstruation_date" />
+	       						<field name="contrtaceptive_methods" />
+	       					</group>
+	       				</group>
+	      			</page>
         		</notebook>
          	</sheet>
          </form>
