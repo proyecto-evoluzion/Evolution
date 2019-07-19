@@ -435,6 +435,7 @@
             					</group>
             				</group>
             			</page> 
+            			<!--  
             			<page name="nurse_sheets" string="Nurse Sheets">
             				<field name="nurse_sheet_ids" nolabel="1" force_save="1" readonly="1" >
 			   					<tree string="Nurse Sheets">
@@ -543,6 +544,7 @@
 			   					</tree>
 			   				</field>
             			</page>
+            			-->
             		</notebook>
                 </sheet>
             </form>
