@@ -62,8 +62,8 @@ class AnhestesicRegistry(models.Model):
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')
-    start_time = fields.Datetime(string='Start Time', default=fields.Datetime.now, copy=False)
-    end_time = fields.Datetime(string='End Time', copy=False)
+    start_time = fields.Float(string='Surgery Starting Hour')
+    end_time = fields.Float(string='Surgery Ending Hour')
     preoperative_note = fields.Text(string='Preoperative Note')
     
     paraclinical_exam_date = fields.Date(string="Paraclinical Exam Date")
@@ -85,7 +85,8 @@ class AnhestesicRegistry(models.Model):
     paraclinical_others = fields.Text(string="Paraclinical Others")
     paraclinical_asa = fields.Selection([('1','ASA 1'),('2','ASA 2'),('3','ASA 3'),
                                          ('4','ASA 4'), ('5','ASA 5') ], string="A.S.A")
-    paraclinical_goldman = fields.Text(string="GOLDMAN")
+    paraclinical_goldman = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
+                                       ('class3', 'Clase III'),('class4','Clase IV')], string='GOLDMAN')
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     dental_prostheses = fields.Boolean(string='Dental Prostheses')
@@ -107,7 +108,20 @@ class AnhestesicRegistry(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     
-    monitor = fields.Text(string="Monitor")
+    monitor_ids = fields.One2many('clinica.anhestesic.registry.monitor', 'anhestesic_registry_id', 
+                                         string='Orders and Evolutions Notes', copy=False)
+    intravenous = fields.Boolean(string="Intravenous")
+    inhalation = fields.Boolean(string="Inhalation")
+    sellick = fields.Boolean(string="Sellick")
+    fast_sequence = fields.Boolean(string="Fast Sequence")
+    mixed = fields.Boolean(string="Mixed")
+    pre_induction = fields.Text(string="Pre-induction")
+    induction = fields.Text(string="Induction")
+    maintenance = fields.Text(string="Maintenance")
+    reversion = fields.Text(string="Reversion")
+    analgesics = fields.Text(string="Analgesics")
+    antiemetics = fields.Text(string="Antiemetics")
+    
     crystalloids = fields.Float(string="Crystalloids")
     blood = fields.Float(string="Blood")
     colloids = fields.Float(string="Colloids")
@@ -115,6 +129,15 @@ class AnhestesicRegistry(models.Model):
     bleeding = fields.Float(string="Bleeding")
     diuresis = fields.Float(string="Diuresis")
     liposuction = fields.Float(string="Liposuction")
+    motor_lock = fields.Boolean(string="Motor Lock")
+    coma = fields.Boolean(string="Coma")
+    awake = fields.Boolean(string="Awake")
+    asleep = fields.Boolean(string="Asleep")
+    intubated = fields.Boolean(string="Intubated")
+    reagent = fields.Boolean(string="Reagent")
+    shock = fields.Boolean(string="Shock")
+    uci = fields.Boolean(string="UCI")
+    recovery = fields.Boolean(string="Recovery")
     
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
@@ -143,6 +166,12 @@ class AnhestesicRegistry(models.Model):
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
+    
+    anesthesia_start_time = fields.Float(string="Anesthesia Start Time")
+    intubation_time = fields.Float(string="Intubation Time")
+    extubation_time = fields.Float(string="Extubation Time")
+    anesthesia_end_time = fields.Float(string="Anesthesia End Time")
+    recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
     
     
     @api.multi
@@ -288,6 +317,13 @@ class AnhestesicRegistry(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+class AnhestesicRegistryMonitor(models.Model):
+    _name = "clinica.anhestesic.registry.monitor"  
+    
+    anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry', ondelete='cascade')
+    monitor = fields.Text(string='Monitor')
+    date_hour = fields.Datetime(string='Date and Hour', default=fields.Datetime.now)
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

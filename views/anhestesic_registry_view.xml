@@ -61,9 +61,20 @@
 		                <field name="anesthesia_type"/>
          	    	</group>
          	    	<group name="professional_info_sub2">
+         	    		<field name="preoperative_note" />
+         	    	</group>
+         	    </group>
+         	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios">
+         	    	<group name="eventos_transoperatorios_sub1">
          	    		<field name="start_time" widget="float_time" />
          	    		<field name="end_time" widget="float_time" />
-         	    		<field name="preoperative_note" />
+         	    		<field name="anesthesia_start_time" widget="float_time" />
+         	    		<field name="intubation_time" widget="float_time" />
+         	    	</group>
+         	    	<group name="eventos_transoperatorios_sub2">
+         	    		<field name="extubation_time" widget="float_time" />
+         	    		<field name="anesthesia_end_time" widget="float_time" />
+         	    		<field name="recovery_transfer_time" widget="float_time" />
          	    	</group>
          	    </group>
          	    <notebook>
@@ -272,9 +283,35 @@
                         </group>
          	    	</page>
          	    	<page name="monitor" string="Monitor">
-         	    		<group name="monitor" colspan="2" col='1'>
-           					<field name="monitor" nolabel="1" placeholder="Monitor"/>
-           				</group>
+         	    		<field name="monitor_ids" colspan="4" nolabel="1" >
+      					<tree editable="top">
+      						<field name="date_hour"/>
+      						<field name="monitor"/>
+      					</tree>
+      					</field>
+      					<group name="induction_main" string="Inducción">
+      						<group name="induction_sub1">
+      							<field name="intravenous"/>
+      							<field name="inhalation" />
+      							<field name="sellick"/>
+      						</group>
+      						<group name="induction_sub2">
+      							<field name="fast_sequence" />
+      							<field name="mixed"/>
+      						</group>
+      					</group>
+      					<group name="medicines_main" string="Medicines">
+      						<group name="medicines_sub1">
+      							<field name="pre_induction"/>
+      							<field name="induction"/>
+      							<field name="maintenance"/>
+      						</group>
+      						<group name="medicines_sub2">
+      							<field name="reversion"/>
+      							<field name="analgesics"/>
+      							<field name="antiemetics"/>
+      						</group>
+      					</group>
          	    	</page>
          	    	<page name="liquidos" string="Detalles Liquidos">
          	    		<group name="liquidos_group" >
@@ -317,6 +354,21 @@
 	          						 ml
 	          				    </div>
          					</group>
+           				</group>
+           				<group name="final_state" string="Final State">
+           					<group name="final_state_sub1">
+           						<field name="motor_lock"/>
+           						<field name="coma"/>
+           						<field name="awake"/>
+           						<field name="asleep"/>
+           						<field name="intubated"/>
+           					</group>
+           					<group name="final_state_sub2">
+           						<field name="reagent"/>
+           						<field name="shock"/>
+           						<field name="uci"/>
+           						<field name="recovery"/>
+           					</group>
            				</group>
          	    	</page>
          	    </notebook>

@@ -112,10 +112,10 @@ class PresurgicalRecord(models.Model):
     paraclinical_others = fields.Text(string="Paraclinical Others")
     paraclinical_asa = fields.Selection([('1','ASA 1'),('2','ASA 2'),('3','ASA 3'),
                                          ('4','ASA 4'), ('5','ASA 5') ], string="A.S.A")
-    paraclinical_goldman = fields.Selection([('class_1','0-5 Points: Class I 1% Complications'),
-                                             ('class_2','6-12 Points: Class II 7% Complications'),
-                                             ('class_3','13-25 Points: Class III 14% Complications'),
-                                             ('class_4','26-53 Points: Class IV 78% Complications')],
+    paraclinical_goldman = fields.Selection([('class_1','Class I'),
+                                             ('class_2','Class II'),
+                                             ('class_3','Class III'),
+                                             ('class_4','Class IV')],
                                             string="GOLDMAN", default='class_1')
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
