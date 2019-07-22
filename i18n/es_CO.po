@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-19 07:16+0000\n"
-"PO-Revision-Date: 2019-07-19 07:16+0000\n"
+"POT-Creation-Date: 2019-07-22 09:10+0000\n"
+"PO-Revision-Date: 2019-07-22 09:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -915,7 +915,7 @@ msgid "Click to create doctor datas."
 msgstr "Clic aquí para crear un paciente"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:260
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:282
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:292
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:409
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:230
@@ -1013,6 +1013,9 @@ msgid "Confirm Room Procedure"
 msgstr "Confirmar Sala Procedimiento"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,disease_state:0
+#: selection:clinica.anhestesic.registry,disease_state2:0
+#: selection:clinica.anhestesic.registry,disease_state3:0
 #: selection:clinica.plastic.surgery,disease_state:0
 #: selection:clinica.plastic.surgery,disease_state2:0
 #: selection:clinica.plastic.surgery,disease_state3:0
@@ -1023,6 +1026,9 @@ msgid "Confirmado Nuevo"
 msgstr "Confirmado Nuevo"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,disease_state:0
+#: selection:clinica.anhestesic.registry,disease_state2:0
+#: selection:clinica.anhestesic.registry,disease_state3:0
 #: selection:clinica.plastic.surgery,disease_state:0
 #: selection:clinica.plastic.surgery,disease_state2:0
 #: selection:clinica.plastic.surgery,disease_state3:0
@@ -1293,6 +1299,9 @@ msgid "Diabetes"
 msgstr "Diabetes"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease2_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease3_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease2_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease3_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_id
@@ -1354,6 +1363,9 @@ msgid "Disease"
 msgstr "Enfermedad"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease_state
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease_state2
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease_state3
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state2
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_state3
@@ -1912,6 +1924,9 @@ msgid "IMC (Body Mass Index):"
 msgstr "IMC (Indice de Masa Corporal):"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,disease_state:0
+#: selection:clinica.anhestesic.registry,disease_state2:0
+#: selection:clinica.anhestesic.registry,disease_state3:0
 #: selection:clinica.plastic.surgery,disease_state:0
 #: selection:clinica.plastic.surgery,disease_state2:0
 #: selection:clinica.plastic.surgery,disease_state3:0
@@ -1977,7 +1992,7 @@ msgid "Invalid Email ! Please enter a valid email address."
 msgstr "Invalid Email ! Please enter a valid email address."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:190
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:212
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:189
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:198
 #: code:addons/clinica_doctor_data/models/doctor_details.py:336
@@ -2024,6 +2039,7 @@ msgid "Kg <br/>"
 msgstr "Kg <br/>"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_disease_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_disease_type
 msgid "Kind"
@@ -2178,6 +2194,7 @@ msgid "MS - Unidentified Minor"
 msgstr "MS - Menor sin Identificación"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Main Disease"
@@ -2253,8 +2270,10 @@ msgstr "Medical Orders and Evolution Tree"
 
 #. module: clinica_doctor_data
 #: selection:clinica.text.template,type:0
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_medical_recipe
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_medical_recipe
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_medical_recipe
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Medical Orders and Recipe"
@@ -2528,6 +2547,7 @@ msgid "Other Accompany Person's Relationship"
 msgstr "Relación de otra persona acompañante"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Other Diseases"
@@ -2793,11 +2813,13 @@ msgstr "Plan"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_insurer_plan_code
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
 msgid "Plan Code"
-msgstr "Código"
-Origen
+msgstr "Códigorige. module: clinica_doctor_dat: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_plan_analysi: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_plan_analysi: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_for: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_forsgid \"Plan, Analysis and Conductsgstr \"Plan, Análisis y Conducta"
+
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_plan_analysis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_plan_analysis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_plan_analysis
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Plan, Analysis and Conduct"
@@ -2851,7 +2873,7 @@ msgid "Platelets:"
 msgstr "Platelets:"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:177
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:199
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:219
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:185
 #: code:addons/clinica_doctor_data/models/doctor_details.py:380
@@ -2905,6 +2927,7 @@ msgid "Presurgical Tree"
 msgstr "Lista de Historias Clínicas Preanestésicas"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,disease_type:0
 #: selection:clinica.plastic.surgery,disease_type:0
 #: selection:doctor.presurgical.record,disease_type:0
 msgid "Principal"
@@ -2956,6 +2979,7 @@ msgid "Procedure:"
 msgstr "Procedimiento:"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_process_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_product_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_process_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_process_id
@@ -3099,6 +3123,7 @@ msgid "Reason for Consultation"
 msgstr "Motivo de Consulta y Enfermedad Actual"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,disease_type:0
 #: selection:clinica.plastic.surgery,disease_type:0
 #: selection:doctor.presurgical.record,disease_type:0
 msgid "Relacionado"
@@ -3656,6 +3681,7 @@ msgstr "Teléfono"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_text_template
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_medical_recipe_template_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_medical_recipe_template_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_epicrisis_template_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_medical_recipe_template_id
@@ -3958,7 +3984,7 @@ msgid "Years"
 msgstr "Años"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:205
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:227
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:236
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:213
 #: code:addons/clinica_doctor_data/models/doctor_details.py:397
@@ -3972,7 +3998,7 @@ msgid "You can choose 'AS' document only if the age is greater than 17 years."
 msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:203
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:225
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:234
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:211
 #: code:addons/clinica_doctor_data/models/doctor_details.py:395
@@ -3986,7 +4012,7 @@ msgid "You can only choose 'MS' document for age between 1 to 30 days."
 msgstr "You can only choose 'MS' document for age between 1 to 30 days."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:197
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:219
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:228
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:205
 #: code:addons/clinica_doctor_data/models/doctor_details.py:389
@@ -4000,7 +4026,7 @@ msgid "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:201
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:223
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:232
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:209
 #: code:addons/clinica_doctor_data/models/doctor_details.py:393
@@ -4014,7 +4040,7 @@ msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 y
 msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:199
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:221
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:230
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:207
 #: code:addons/clinica_doctor_data/models/doctor_details.py:391

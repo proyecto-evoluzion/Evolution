@@ -89,6 +89,23 @@ class AnhestesicRegistry(models.Model):
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     dental_prostheses = fields.Boolean(string='Dental Prostheses')
+    disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')
+    disease_state = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
+                                       ('new_confirmed', 'Confirmado Nuevo'),
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
+    disease_state2 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
+                                       ('new_confirmed', 'Confirmado Nuevo'),
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
+    disease_state3 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
+                                       ('new_confirmed', 'Confirmado Nuevo'),
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
+    process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
+    plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
+    medical_recipe = fields.Text(string="Medical Orders and Recipe")
+    medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     
     monitor = fields.Text(string="Monitor")
     crystalloids = fields.Float(string="Crystalloids")
@@ -171,6 +188,11 @@ class AnhestesicRegistry(models.Model):
             self.numberid_integer = 0
         if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
             self.numberid = self.numberid_integer
+            
+    @api.onchange('medical_recipe_template_id')
+    def onchange_medical_recipe_template_id(self):
+        if self.medical_recipe_template_id:
+            self.medical_recipe = self.medical_recipe_template_id.template_text
             
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
