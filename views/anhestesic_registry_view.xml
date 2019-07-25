@@ -289,6 +289,18 @@
       						<field name="monitor"/>
       					</tree>
       					</field>
+                <group name="induction_main" string="Intubation">
+                  <group name="intubation_sub1">
+                    <field name="orotracheal"/>
+                    <field name="nasotracheal" />
+                    <field name="tracheostomy"/>
+                  </group>
+                  <group name="intubation_sub2">
+                    <field name="attemps" />
+                    <field name="used_laryngoscope"/>
+                    <field name="intubation"/>
+                  </group>
+                </group>
       					<group name="induction_main" string="Inducción">
       						<group name="induction_sub1">
       							<field name="intravenous"/>

@@ -110,6 +110,14 @@ class AnhestesicRegistry(models.Model):
     
     monitor_ids = fields.One2many('clinica.anhestesic.registry.monitor', 'anhestesic_registry_id', 
                                          string='Orders and Evolutions Notes', copy=False)
+
+    orotracheal = fields.Boolean(string="Orotracheal")
+    nasotracheal = fields.Boolean(string="Nasotracheal")
+    tracheostomy = fields.Boolean(string="Tracheostomy")
+    attemps = fields.Integer(string="Attemps")
+    used_laryngoscope = fields.Boolean(string="Used Laryngoscope")
+    intubation = fields.Selection([('easy', 'Easy'), ('hard', 'Hard')], string="Intubation", default='easy')
+
     intravenous = fields.Boolean(string="Intravenous")
     inhalation = fields.Boolean(string="Inhalation")
     sellick = fields.Boolean(string="Sellick")
