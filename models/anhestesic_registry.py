@@ -111,6 +111,21 @@ class AnhestesicRegistry(models.Model):
     monitor_ids = fields.One2many('clinica.anhestesic.registry.monitor', 'anhestesic_registry_id', 
                                          string='Orders and Evolutions Notes', copy=False)
 
+    heart_noises = fields.Boolean(string="Heart Noises")
+    ind_blood_pressure = fields.Boolean(string="Automatic Indirect Blood Pressure") # Automatic Indirect Blood Pressure
+    dir_blood_pressure = fields.Boolean(string="Direct Blood Pressure") # Direct Blood Pressure
+    ekg = fields.Boolean(string="EKG")
+    oxymetry = fields.Boolean(string="Oximetry")
+    capnometry = fields.Boolean(string="Capnometry")
+    capnography = fields.Boolean(string="Capnography")
+    respirometer = fields.Boolean(string="Respirometer")
+    spirometry = fields.Boolean(string="Spirometry")
+    cent_venous_pressure = fields.Boolean(string="Central venous pressure") #central venous pressure
+    intermitt_venous_pressure = fields.Boolean(string="Intermittent venous pressure")  #intermittent venous pressure
+    diuresis_bool = fields.Boolean(string="Diuresis")
+    temperature = fields.Boolean(string="Temperature")
+    other_monitor = fields.Char(string='Other Monitor')
+
     orotracheal = fields.Boolean(string="Orotracheal")
     nasotracheal = fields.Boolean(string="Nasotracheal")
     tracheostomy = fields.Boolean(string="Tracheostomy")

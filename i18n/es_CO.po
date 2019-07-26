@@ -3610,6 +3610,76 @@ msgid "Reagent"
 msgstr "Reactivo"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_heart_noises
+msgid "Heart Noises"
+msgstr "Ruidos Cardiacos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_ind_blood_pressure
+msgid "Automatic Indirect Blood Pressure"
+msgstr "Presión Arterial Indirecta Automática"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_dir_blood_pressure
+msgid "Direct Blood Pressure"
+msgstr "Presión Arterial Directa"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_ekg
+msgid "EKG"
+msgstr "EKG"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_oxymetry
+msgid "Oximetry"
+msgstr "Oximetría"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_capnometry
+msgid "Capnometry"
+msgstr "Capnometría"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_capnography
+msgid "Capnography"
+msgstr "Capnografía"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_respirometer
+msgid "Respirometer"
+msgstr "Respirómetro"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_spirometry
+msgid "Spirometry"
+msgstr "Espirometría"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_cent_venous_pressure
+msgid "central venous pressure"
+msgstr "Presión venosa central"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intermitt_venous_pressure
+msgid "Intermittent venous pressure"
+msgstr "Presión venosa intermitente"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_diuresis_bool
+msgid "Diuresis"
+msgstr "Diuresis"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_temperature
+msgid "Temperature"
+msgstr "Temperatura"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_other_monitor
+msgid "Other Monitor"
+msgstr "Otra Monitoría"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_consultation_reason
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_consultation_reason
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form

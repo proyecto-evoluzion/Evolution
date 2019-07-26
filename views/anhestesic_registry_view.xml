@@ -289,6 +289,26 @@
       						<field name="monitor"/>
       					</tree>
       					</field>
+                <group>
+                  <group name="checklist_sub1">
+                    <field name="heart_noises"/>
+                    <field name="ind_blood_pressure"/>
+                    <field name="dir_blood_pressure"/>
+                    <field name="ekg"/>
+                    <field name="oxymetry"/>
+                    <field name="capnometry"/>
+                    <field name="capnography"/>
+                  </group>
+                  <group name="checklist_sub2">
+                    <field name="respirometer" />
+                    <field name="spirometry" />
+                    <field name="cent_venous_pressure" />
+                    <field name="intermitt_venous_pressure" />
+                    <field name="diuresis_bool" />
+                    <field name="temperature" />
+                    <field name="other_monitor" />
+                  </group>
+                </group>
                 <group name="induction_main" string="Intubation">
                   <group name="intubation_sub1">
                     <field name="orotracheal"/>
