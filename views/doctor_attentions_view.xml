@@ -142,8 +142,9 @@
 		           						<field name="physical_fr" nolabel="1" class="oe_inline"/>
 		          						 b/m
 		           					</div>
-		           					<field name="dental_prostheses"/>
+                                    
             					</group>
+
             					<group name="physical_exam_details_sub1">
             						<label for="physical_weight" string="Weight"/>
 		           					<div>
@@ -161,6 +162,12 @@
 		          						 kg/m²
 		           					</div>
             					</group>
+
+                                <group>
+                                    <field name="dental_prostheses"/>
+                                    <field name = "prostheses_type" attrs="{'invisible': [('dental_prostheses', '=', False)]}"/>
+                                    <field name = "prostheses_location" attrs="{'invisible':[('dental_prostheses', '=', False)]}"/>
+                                </group>
             				</group>
             				<group name="physical_exam" colspan="2" col='1'>
             					<label for="physical_exam" string="Physical Exam"/>

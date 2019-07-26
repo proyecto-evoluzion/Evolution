@@ -92,6 +92,8 @@ class PresurgicalRecord(models.Model):
     physical_body_mass_index = fields.Float(string="IMC (Body Mass Index)")
     physical_exam = fields.Text(string="Physical Exam")
     dental_prostheses = fields.Boolean(string='Dental Prostheses')
+    prostheses_type = fields.Selection([('fixed','Fixed'),('removable','Removable')], string='Prostheses Type', default='fixed')
+    prostheses_location = fields.Selection([('above','Above'),('below','Below')], string='Prostheses Location', default='above')
     
     paraclinical_exam_date = fields.Date(string="Paraclinical Exam Date")
     paraclinical_hb = fields.Float(string="HB")

@@ -1301,6 +1301,36 @@ msgid "Dental Prostheses"
 msgstr "Protesis Dental"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_type
+msgid "Prostheses Type"
+msgstr "Tipo Protesis"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_location
+msgid "Prostheses Location"
+msgstr "Ubicación Prótesis"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,prostheses_type:0
+msgid "Fixed"
+msgstr "Fija"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,prostheses_type:0
+msgid "Removable"
+msgstr "Removible"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,prostheses_location:0
+msgid "Above"
+msgstr "Arriba"
+
+#. module: clinica_doctor_data
+#: selection:doctor.presurgical.record,prostheses_location:0
+msgid "Below"
+msgstr "Abajo"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Department"
 msgstr "Departamento"
@@ -3056,13 +3086,17 @@ msgid "Pre-surgical Attention Number:"
 msgstr "Pre-surgical Attention Number:"
 
 #. module: clinica_doctor_data
-#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_presurgical_record
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_presurgical_record_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_presurgical_record_ids
-#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Pre-surgical Records"
 msgstr "Registros Pre-Anestésicos"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_presurgical_record
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
+msgid "Pre-surgical Records"
+msgstr "HC Pre-Anestésica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_preoperative_note
