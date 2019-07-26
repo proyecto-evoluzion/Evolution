@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-22 12:43+0000\n"
-"PO-Revision-Date: 2019-07-22 12:43+0000\n"
+"POT-Creation-Date: 2019-07-26 04:47+0000\n"
+"PO-Revision-Date: 2019-07-26 04:47+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -395,6 +395,7 @@ msgstr "AB"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -450,6 +451,21 @@ msgid "Accompany Person's Relationship"
 msgstr "Parentezco del Acompañante"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_add_items_delivered
+msgid "Additional items delivered?"
+msgstr "Se entregaron elementos adicionales ?"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_supplies_delivered
+msgid "Additional items or supplies were delivered"
+msgstr "Se entregaron elementos o insumos adicionales"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_add_supplies_text
+msgid "Additional supplies"
+msgstr "Insumos adicionales"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Address"
 msgstr "Dirección"
@@ -464,6 +480,7 @@ msgstr "Formularios de datos administrativos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_age
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_age
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age
@@ -475,6 +492,7 @@ msgstr "Formularios de datos administrativos"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
@@ -545,6 +563,11 @@ msgid "All"
 msgstr "All"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_equipment_working
+msgid "All equipment for monitoring and resuscitation of the patient working"
+msgstr "Todos los equipos para monitoreo y reanimación del paciente funcionando"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_allergic
@@ -582,12 +605,15 @@ msgstr "Hora de Inicio de Anestesia"
 #: selection:doctor.professional,profession_type:0
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesiologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_anesthesiologist_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_anesthesiologist_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_monitor_indu_anesthesiologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_anesthesiologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_anesthesiologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedures_anesthesiologist_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
 msgid "Anesthesiologist"
@@ -628,6 +654,16 @@ msgstr "Anhestesic Registry Number:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_tree
 msgid "Anhestesic Registry Tree"
 msgstr "Lista HC Anestésica"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_antibiotic_prophylaxis
+msgid "Antibiotic prophylaxis before surgery (which)"
+msgstr "Profilaxis antibiótica antes de la cirugia (cual)"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_antiembolicas_stockings
+msgid "Antiembolicas stockings"
+msgstr "Medias antiembolicas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_antiemetics
@@ -693,6 +729,11 @@ msgid "Assurance Plans"
 msgstr "Planes de Aseguradoras"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_attemps
+msgid "Attemps"
+msgstr "Número de intentos"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_attention_code_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_attention_code_id
 msgid "Attention Code"
@@ -723,6 +764,12 @@ msgid "Aunt"
 msgstr "Tia"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_nurse_id
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
+msgid "Auxiliary Nurse"
+msgstr "Auxiliar de enfermería"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_awake
 msgid "Awake"
 msgstr "Despierto"
@@ -737,6 +784,7 @@ msgstr "Beneficiario"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_birth_date
@@ -820,6 +868,7 @@ msgstr "Body Background Others"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -834,6 +883,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -950,7 +1000,7 @@ msgid "Click to create doctor datas."
 msgstr "Clic aquí para crear un paciente"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:311
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:319
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:292
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:409
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:230
@@ -1046,6 +1096,16 @@ msgstr "Coma"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Confirm Appointment"
 msgstr "Confirmar Cita"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_confirm_patient_name
+msgid "Confirm Patient Name"
+msgstr "Confirma nombre paciente"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_confirm_procedure
+msgid "Confirm Procedure"
+msgstr "Confirma Procedimiento"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
@@ -1156,6 +1216,7 @@ msgstr "Crear Orden de Venta"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template_create_uid
@@ -1180,6 +1241,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template_create_date
@@ -1286,6 +1348,7 @@ msgstr "Fecha de atención"
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
+#: selection:clinica.quirurgical.check.list,age_meassure_unit:0
 #: selection:doctor.epicrisis,age_meassure_unit:0
 #: selection:doctor.patient,age_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
@@ -1293,6 +1356,16 @@ msgstr "Fecha de atención"
 #: selection:doctor.waiting.room,age_meassure_unit:0
 msgid "Days"
 msgstr "Días"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_delivered_nurse_id
+msgid "Delivered Nurse"
+msgstr "Entrega Enfermera"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_sample_delivered_text
+msgid "Delivered Samples Details"
+msgstr "Delivered Samples Details"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_dental_prostheses
@@ -1476,6 +1549,7 @@ msgstr "Diagnósticos:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template_display_name
@@ -1565,6 +1639,11 @@ msgid "Doctor Waiting Room"
 msgstr "Sala de Espera"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_doctor_done_additionaly
+msgid "Doctor something was done additionally or changed the procedure"
+msgstr "Doctor algo se realizo adicional o cambió el procedimiento"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor
 msgid "Doctors"
 msgstr "Doctors"
@@ -1579,6 +1658,11 @@ msgstr "Duración (en horas)"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_ecg
 msgid "E.C.G"
 msgstr "E.C.G"
+
+#. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,intubation:0
+msgid "Easy"
+msgstr "Fácil"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_ecstasy
@@ -1632,6 +1716,11 @@ msgstr "Hora Final:"
 #, python-format
 msgid "End date should be greater than start date!"
 msgstr "End date should be greater than start date!"
+
+#. module: clinica_doctor_data
+#: selection:clinica.quirurgical.check.list,patient_out_with:0
+msgid "Enfermera"
+msgstr "Enfermera"
 
 #. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0
@@ -1711,9 +1800,19 @@ msgid "FR:"
 msgstr "FR:"
 
 #. module: clinica_doctor_data
+#: selection:clinica.quirurgical.check.list,patient_out_with:0
+msgid "Familiar"
+msgstr "Familiar"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_fast_sequence
 msgid "Fast Sequence"
 msgstr "Secuencia Rápida"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_fasting_time_greater
+msgid "Fasting time greater than 8 hours"
+msgstr "Tiempo de ayuno mayor a 8 horas."
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,accompany_relationship:0
@@ -1726,6 +1825,7 @@ msgstr "Padre"
 #: selection:clinica.medical.evolution,sex:0
 #: selection:clinica.nurse.sheet,gender:0
 #: selection:clinica.plastic.surgery,gender:0
+#: selection:clinica.quirurgical.check.list,gender:0
 #: selection:doctor.epicrisis,gender:0
 #: selection:doctor.presurgical.record,gender:0
 #: selection:doctor.professional,sex:0
@@ -1744,6 +1844,7 @@ msgstr "Estado Final"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_lastname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_lastname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_lastname
@@ -1759,6 +1860,7 @@ msgstr "Primer Apellido"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_firstname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_firstname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_firstname
@@ -1804,6 +1906,16 @@ msgid "Friend"
 msgstr "Amigo/a"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_history_received
+msgid "Full medical history is received"
+msgstr "Se recibe historia clínica completa"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_full_staff_in_room
+msgid "Full staff is found inside the room to start the procedure"
+msgstr "Se encuentra personal completo dentro de la sala para iniciar procedimiento"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_goldman
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_goldman
 msgid "GOLDMAN"
@@ -1820,6 +1932,7 @@ msgstr "GOLDMAN:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_sex
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_gender
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_sex
@@ -1836,6 +1949,7 @@ msgstr "Gender:"
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,anesthesia_type:0
 #: selection:clinica.medical.evolution,anesthesia_type:0
+#: selection:clinica.quirurgical.check.list,anesthesia_type:0
 #: selection:doctor.quirurgic.sheet,anesthesia_type:0
 #: selection:doctor.waiting.room,anesthesia_type:0
 msgid "General"
@@ -1887,6 +2001,7 @@ msgstr "Abuela"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
@@ -1910,6 +2025,11 @@ msgid "HB:"
 msgstr "HB:"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,intubation:0
+msgid "Hard"
+msgstr "Difícil"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_product_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedures_product_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_procedures_product_id
@@ -1931,6 +2051,11 @@ msgstr "Procedimientos en salud"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedure_ids
 msgid "Helath Procedures"
 msgstr "Procedimiento en salud"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_history_complete
+msgid "History completed and signed"
+msgstr "Historia diligenciada y firmada"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
@@ -1975,12 +2100,23 @@ msgid "Hypertension"
 msgstr "Hipertensión"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_reported_disfunction_equip
+msgid "I have reported the dysfunctional equipment or elements to the head of surgery"
+msgstr "He reportado los equipos o elementos disfuncionantes al jefe de cirugía"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_flu_symptoms_enquired
+msgid "I inquire about flu symptoms in the last week"
+msgstr "Indago sobre síntomas de gripa en la última semana"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template_id
@@ -2012,6 +2148,11 @@ msgstr "IMC (Indice de Masa Corporal)"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "IMC (Body Mass Index):"
 msgstr "IMC (Indice de Masa Corporal):"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+msgid "INTRA-OPERATORY"
+msgstr "INTRA-OPERATORIO"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,disease_state:0
@@ -2068,6 +2209,31 @@ msgid "Initial Demand"
 msgstr "Demanda Inicial"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_allergic_text
+msgid "Inquiry about allergies"
+msgstr "Indagó sobre alergias"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_allergic_enquired
+msgid "Inquiry about allergies ?"
+msgstr "Indagó sobre alergias ?"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_enquired_proc_medication
+msgid "Inquiry about medications prior to the procedure (Anticoagulants, Antihypertensives, Vitamins, Antibiotics. Hypothyroid, Hypoglycemic agents, Analgesics, etc.)"
+msgstr "Indago sobre medicamentos previos al procedimiento (Anticoagulantes, Antihipertensivos, Vitaminas, Antibióticos. Hipotiroideos, Hipoglicemiantes, Analgésicos, etc.)"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_equipments_in_order
+msgid "Instrumentadora all the equipment is suitably sterile and in order"
+msgstr "Instrumentadora todo el equipo se encuentra adecuadamente estéril y en orden"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_materials_in_room
+msgid "Instrumentation the materials, medications and special supplies requested by the surgeon are in the room"
+msgstr "Instrumentadora los materiales, medicamentos e insumos especiales solicitados por el cirujano se encuentran en la sala"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
@@ -2078,6 +2244,11 @@ msgstr "Demanda Inicial"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Insurer:"
 msgstr "Insurer:"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_venous_pressure_working
+msgid "Intermittent venous pressure working"
+msgstr "Presión Venosa Intermitente funsionando"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intervention_date
@@ -2095,54 +2266,15 @@ msgid "Intravenous"
 msgstr "Intravenosa"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_orotracheal
-msgid "Orotracheal"
-msgstr "Orotraqueal"
-
-#. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_nasotracheal
-msgid "Nasotracheal"
-msgstr "Nasotraqueal"
-
-#. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_tracheostomy
-msgid "Tracheostomy"
-msgstr "Traqueostomía"
-
-#. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_attemps
-msgid "Attemps"
-msgstr "Número de intentos"
-
-#. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_used_laryngoscope
-msgid "Used Laryngoscope"
-msgstr "Usó Laringoscopio?"
-
-#. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intubation
-msgid "Intubation"
-msgstr "Intubación"
-
-#. module: clinica_doctor_data
-#: selection:clinica.anhestesic.registry,intubation:0
-msgid "Easy"
-msgstr "Fácil"
-
-#. module: clinica_doctor_data
-#: selection:clinica.anhestesic.registry,intubation:0
-msgid "Hard"
-msgstr "Difícil"
-
-#. module: clinica_doctor_data
-#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
-msgid "Intubation"
-msgstr "Intubación"
-
-#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intubated
 msgid "Intubated"
 msgstr "Intubado"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intubation
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
+msgid "Intubation"
+msgstr "Intubación"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intubation_time
@@ -2150,25 +2282,31 @@ msgid "Intubation Time"
 msgstr "Hora de intubación"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/doctor_details.py:82
-#: code:addons/clinica_doctor_data/models/doctor_details.py:374
+#: code:addons/clinica_doctor_data/models/doctor_details.py:83
+#: code:addons/clinica_doctor_data/models/doctor_details.py:375
 #, python-format
 msgid "Invalid Email ! Please enter a valid email address."
 msgstr "Invalid Email ! Please enter a valid email address."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:241
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:249
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:189
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:198
-#: code:addons/clinica_doctor_data/models/doctor_details.py:336
+#: code:addons/clinica_doctor_data/models/doctor_details.py:337
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:161
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:165
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:173
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:158
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:179
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:183
 #, python-format
 msgid "Invalid birth date!"
 msgstr "Invalid birth date!"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_investigated_drug_consumption
+msgid "Investigate consumption of alcohol and narcotics in the last 24 hours"
+msgstr "Indagar consumo de alcohol y estupefacientes en las ultimas 24 horas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_invoice_id
@@ -2190,6 +2328,11 @@ msgstr "Es Responsable"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.product_normal_form_view_inherit_health_procedures
 msgid "Is Health Procedure?"
 msgstr "¿Es un procedimiento en salud?"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_is_scheduled
+msgid "Is scheduled to ?"
+msgstr "Esta programado para ?"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
@@ -2217,6 +2360,7 @@ msgstr "Tipo"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template___last_update
@@ -2243,6 +2387,7 @@ msgstr "Última Modificación el"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template_write_uid
@@ -2267,6 +2412,7 @@ msgstr "Actualizado por"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_text_template_write_date
@@ -2332,6 +2478,7 @@ msgstr "Liquidos Eliminados"
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,anesthesia_type:0
 #: selection:clinica.medical.evolution,anesthesia_type:0
+#: selection:clinica.quirurgical.check.list,anesthesia_type:0
 #: selection:doctor.quirurgic.sheet,anesthesia_type:0
 #: selection:doctor.waiting.room,anesthesia_type:0
 msgid "Local"
@@ -2352,6 +2499,7 @@ msgstr "Municipio de nacimiento"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -2378,6 +2526,7 @@ msgstr "Mantenimiento"
 #: selection:clinica.medical.evolution,sex:0
 #: selection:clinica.nurse.sheet,gender:0
 #: selection:clinica.plastic.surgery,gender:0
+#: selection:clinica.quirurgical.check.list,gender:0
 #: selection:doctor.epicrisis,gender:0
 #: selection:doctor.presurgical.record,gender:0
 #: selection:doctor.professional,sex:0
@@ -2477,6 +2626,14 @@ msgid "Medicines"
 msgstr "Medicamentos"
 
 #. module: clinica_doctor_data
+#: selection:clinica.quirurgical.check.list,pay:0
+#: selection:clinica.quirurgical.check.list,pay_add_items_delivered:0
+#: selection:clinica.quirurgical.check.list,proc_bill_pay:0
+#: selection:clinica.quirurgical.check.list,sample_delivered_pay:0
+msgid "Medico"
+msgstr "Medico"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_photo_medium
 msgid "Medium-sized image"
 msgstr "Imagen de tamaño mediano"
@@ -2498,10 +2655,16 @@ msgid "Monitor"
 msgstr "Monitoría"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_monitoring_induction_complete
+msgid "Monitoring and induction is complete to start"
+msgstr "La monitoria y la inducción se encuentra completo para iniciar"
+
+#. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
+#: selection:clinica.quirurgical.check.list,age_meassure_unit:0
 #: selection:doctor.epicrisis,age_meassure_unit:0
 #: selection:doctor.patient,age_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
@@ -2551,6 +2714,7 @@ msgstr "Mis procedimientos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_name
@@ -2563,15 +2727,61 @@ msgid "Name of the companion"
 msgstr "Nombre"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_nasotracheal
+msgid "Nasotracheal"
+msgstr "Nasotraqueal"
+
+#. module: clinica_doctor_data
 #: selection:doctor.waiting.room,state:0
 msgid "New"
 msgstr "New"
+
+#. module: clinica_doctor_data
+#: selection:clinica.quirurgical.check.list,add_items_delivered:0
+#: selection:clinica.quirurgical.check.list,add_supplies:0
+#: selection:clinica.quirurgical.check.list,allergic_enquired:0
+#: selection:clinica.quirurgical.check.list,antibiotic_prophylaxis:0
+#: selection:clinica.quirurgical.check.list,antiembolicas_stockings:0
+#: selection:clinica.quirurgical.check.list,blood_returned:0
+#: selection:clinica.quirurgical.check.list,confirm_patient_name:0
+#: selection:clinica.quirurgical.check.list,confirm_procedure:0
+#: selection:clinica.quirurgical.check.list,delivered_recovery_exam:0
+#: selection:clinica.quirurgical.check.list,doctor_done_additionaly:0
+#: selection:clinica.quirurgical.check.list,enquired_proc_medication:0
+#: selection:clinica.quirurgical.check.list,equipment_working:0
+#: selection:clinica.quirurgical.check.list,equipments_in_order:0
+#: selection:clinica.quirurgical.check.list,equipments_in_room:0
+#: selection:clinica.quirurgical.check.list,fasting_time_greater:0
+#: selection:clinica.quirurgical.check.list,flu_symptoms_enquired:0
+#: selection:clinica.quirurgical.check.list,full_staff_in_room:0
+#: selection:clinica.quirurgical.check.list,history_complete:0
+#: selection:clinica.quirurgical.check.list,history_received:0
+#: selection:clinica.quirurgical.check.list,informed_family:0
+#: selection:clinica.quirurgical.check.list,investigated_drug_consumption:0
+#: selection:clinica.quirurgical.check.list,is_scheduled:0
+#: selection:clinica.quirurgical.check.list,materials_in_room:0
+#: selection:clinica.quirurgical.check.list,monitoring_induction_complete:0
+#: selection:clinica.quirurgical.check.list,operational_site_marking:0
+#: selection:clinica.quirurgical.check.list,patient_belongins_locked:0
+#: selection:clinica.quirurgical.check.list,pre_anesthetic_assessment_complete:0
+#: selection:clinica.quirurgical.check.list,pre_surgical_lab_exams:0
+#: selection:clinica.quirurgical.check.list,recording_vital_signs:0
+#: selection:clinica.quirurgical.check.list,removed_dental_aceesories:0
+#: selection:clinica.quirurgical.check.list,reported_disfunction_equip:0
+#: selection:clinica.quirurgical.check.list,sample_delivered:0
+#: selection:clinica.quirurgical.check.list,special_preparation:0
+#: selection:clinica.quirurgical.check.list,supplies_delivered:0
+#: selection:clinica.quirurgical.check.list,surgical_concent_filled:0
+#: selection:clinica.quirurgical.check.list,venous_pressure_working:0
+msgid "No"
+msgstr "No"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_numberid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_numberid
@@ -2583,6 +2793,7 @@ msgstr "New"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
@@ -2595,6 +2806,7 @@ msgstr "Número de Identificación"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_numberid_integer
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_numberid_integer
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_numberid_integer
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_numberid_integer
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_numberid_integer
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_ref
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_numberid_integer
@@ -2661,6 +2873,11 @@ msgid "Number of Pregnancies:"
 msgstr "Number of Pregnancies:"
 
 #. module: clinica_doctor_data
+#: selection:doctor.professional,profession_type:0
+msgid "Nurse"
+msgstr "Enfermera"
+
+#. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_nurse_sheet
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_procedures_nurse_sheet_id
@@ -2712,6 +2929,11 @@ msgid "Odontological"
 msgstr "Odontológico"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_operational_site_marking
+msgid "Operational site marking"
+msgstr "Marcación sitio operatorio"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_evolution_note_ids
 msgid "Orders and Evolutions Notes"
@@ -2721,6 +2943,11 @@ msgstr "Orders and Evolutions Notes"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Origin"
 msgstr "Procedencia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_orotracheal
+msgid "Orotracheal"
+msgstr "Orotraqueal"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,accompany_relationship:0
@@ -2792,6 +3019,7 @@ msgstr "Oximetría"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -2800,6 +3028,16 @@ msgstr "Oximetría"
 #: selection:doctor.waiting.room,document_type:0
 msgid "PA - Passport"
 msgstr "PA - Pasaporte"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+msgid "POST OPERATORY"
+msgstr "POS-OPERATORIO"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+msgid "PRE-OPERATORY"
+msgstr "PRE-OPERATORIO"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_pt
@@ -2828,6 +3066,14 @@ msgstr "PTT"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "PTT:"
 msgstr "PTT:"
+
+#. module: clinica_doctor_data
+#: selection:clinica.quirurgical.check.list,pay:0
+#: selection:clinica.quirurgical.check.list,pay_add_items_delivered:0
+#: selection:clinica.quirurgical.check.list,proc_bill_pay:0
+#: selection:clinica.quirurgical.check.list,sample_delivered_pay:0
+msgid "Paciente"
+msgstr "Paciente"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
@@ -2890,6 +3136,7 @@ msgstr "Patológicos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_patient_id
@@ -2902,6 +3149,7 @@ msgstr "Patológicos"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
 msgid "Patient"
@@ -2948,6 +3196,11 @@ msgstr "Patient Name:"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_administrative_data
 msgid "Patients"
 msgstr "Pacientes"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_pay
+msgid "Pay"
+msgstr "Pay"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_pharmacological
@@ -3062,18 +3315,24 @@ msgid "Platelets:"
 msgstr "Platelets:"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:228
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:236
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:219
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:185
-#: code:addons/clinica_doctor_data/models/doctor_details.py:380
+#: code:addons/clinica_doctor_data/models/doctor_details.py:381
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:148
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:152
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:160
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:188
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:166
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:170
 #, python-format
 msgid "Please enter non zero value for Number ID"
 msgstr "Please enter non zero value for Number ID"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_pre_anesthetic_assessment_complete
+msgid "Pre-anesthetic assessment and informed consent Anesthetic fully completed"
+msgstr "Valoración pre anestésica y Consentimiento informado Anestésico totalmente diligenciado"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_pre_induction
@@ -3097,6 +3356,10 @@ msgstr "Registros Pre-Anestésicos"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
 msgid "Pre-surgical Records"
 msgstr "HC Pre-Anestésica"
+
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_pre_surgical_lab_exams
+msgid "Pre-surgical clinical laboratory exams."
+msgstr "Exámanes pre quirúrgicos laboratorio clínico."
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_preoperative_note
@@ -3147,6 +3410,7 @@ msgstr "Procedimiento"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_procedure_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedure_date
 msgid "Procedure Date"
@@ -3169,6 +3433,11 @@ msgstr "Fecha de finalización del procedimiento"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_product_product_procedure_type
 msgid "Procedure Type"
 msgstr "Tipo de procedimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_proc_bill_pay
+msgid "Procedure bill is paid by"
+msgstr "La cuenta del procedimiento la paga"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
@@ -3294,6 +3563,23 @@ msgid "Quirurgic Sheets"
 msgstr "Registros Quirúrgicos"
 
 #. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_quirurgical_check_list
+#: model:ir.model,name:clinica_doctor_data.model_clinica_quirurgical_check_list
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgical_check_list
+msgid "Quirurgical Check List"
+msgstr "Quirurgical Check List"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+msgid "Quirurgical Check List Form"
+msgstr "Quirurgical Check List Form"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_tree
+msgid "Quirurgical Check List Tree"
+msgstr "Quirurgical Check List Tree"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Quotation"
 msgstr "Cotización"
@@ -3303,6 +3589,7 @@ msgstr "Cotización"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -3311,6 +3598,11 @@ msgstr "Cotización"
 #: selection:doctor.waiting.room,document_type:0
 msgid "RC - Civil Registry"
 msgstr "RC - Registro Civil"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+msgid "RECOVERY"
+msgstr "RECUPERACIÓN"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_reagent
@@ -3326,9 +3618,19 @@ msgid "Reason for Consultation"
 msgstr "Motivo de Consulta y Enfermedad Actual"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_received_nurse_id
+msgid "Received Nurse"
+msgstr "Recibe Enfermera"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_recovery
 msgid "Recovery"
 msgstr "Recuperación"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_delivered_recovery_exam
+msgid "Recovery exams are delivered"
+msgstr "Se entregan exámenes a recuperación"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,disease_type:0
@@ -3360,6 +3662,11 @@ msgstr "Parentesco"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Relatives"
 msgstr "Familiares"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_removed_dental_aceesories
+msgid "Removal of: Dental prostheses, jewelry, lenses, enamel, tampons, etc."
+msgstr "Retiro de: Prótesis dentales, joyas, lentes, esmalte, tampones, etc."
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_residence_address
@@ -3455,6 +3762,11 @@ msgid "Sales Order"
 msgstr "Orden de Venta"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_sample_delivered
+msgid "Samples were delivered to the laboratory"
+msgstr "Se entregaron tomaron muestras para laboratorio"
+
+#. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_doctor_schedule
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_schedule_id
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_doctor_schedule
@@ -3472,6 +3784,16 @@ msgstr "Schedule Form"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_schedule_tree
 msgid "Schedule Tree"
 msgstr "Schedule Tree"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_scheduled_patient_id
+msgid "Scheduled Patient"
+msgstr "Esta programado Paciente"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_scheduled_surgeon_id
+msgid "Scheduled Surgeon"
+msgstr "Esta programado Dr.( Cirujano)"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure_scope
@@ -3539,6 +3861,11 @@ msgid "Search Quirurgic Sheet"
 msgstr "Search Quirurgic Sheet"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
+msgid "Search Quirurgical Check List"
+msgstr "Search Quirurgical Check List"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 msgid "Search Surgery room procedures"
 msgstr "Search Procedimientos Sala Cirugía"
@@ -3548,6 +3875,7 @@ msgstr "Search Procedimientos Sala Cirugía"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_surname
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_surname
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_surname
@@ -3564,6 +3892,7 @@ msgstr "Segundo Apellido"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_middlename
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_middlename
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_middlename
@@ -3578,6 +3907,7 @@ msgstr "Segundo Nombre"
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,anesthesia_type:0
 #: selection:clinica.medical.evolution,anesthesia_type:0
+#: selection:clinica.quirurgical.check.list,anesthesia_type:0
 #: selection:doctor.quirurgic.sheet,anesthesia_type:0
 #: selection:doctor.waiting.room,anesthesia_type:0
 msgid "Sedación"
@@ -3692,6 +4022,16 @@ msgid "Soltera/o"
 msgstr "Soltera/o"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_special_preparations_text
+msgid "Special preparations"
+msgstr "Preparaciones especiales"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_special_preparation
+msgid "Special preparations ?"
+msgstr "Preparaciones especiales ?"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_start_date
 msgid "Start Date"
 msgstr "Fecha de Inicio"
@@ -3734,12 +4074,15 @@ msgstr "Apto para Cirugía"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_surgeon_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_equipments_room_surgeon_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedures_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_surgeon_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
 msgid "Surgeon"
@@ -3753,6 +4096,11 @@ msgstr "Cirujano"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Surgeon:"
 msgstr "Cirujano:"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_scheduled_nurse_id
+msgid "Surgery Assistant Nurse"
+msgstr "Nombre Auxiliar de Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_end_time
@@ -3853,6 +4201,7 @@ msgstr "Quirúrgicos"
 #. module: clinica_doctor_data
 #: selection:create.health.professional,profession_type:0
 #: selection:doctor.professional,profession_type:0
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_technologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_technologist_id
 msgid "Surgical Technologists"
 msgstr "Instrumentador/a"
@@ -3861,6 +4210,11 @@ msgstr "Instrumentador/a"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 msgid "Surgical Technologists:"
 msgstr "Surgical Technologists:"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_surgical_concent_filled
+msgid "Surgical informed consent fully filled out"
+msgstr "Consentimiento informado Quirúrgico totalmente diligenciado"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
@@ -3893,6 +4247,7 @@ msgstr "TC:"
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
+#: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0
 #: selection:doctor.patient,tdoc:0
 #: selection:doctor.presurgical.record,document_type:0
@@ -3901,6 +4256,11 @@ msgstr "TC:"
 #: selection:doctor.waiting.room,document_type:0
 msgid "TI - Identity Card"
 msgstr "TI - Tarjeta de Identidad"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_recording_vital_signs
+msgid "Taking and recording vital signs"
+msgstr "Toma y registro de signos vitales"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_phone
@@ -3959,6 +4319,36 @@ msgid "The Medical Diseases code must be unique"
 msgstr "El código del diagnóstico debe ser único"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_add_supplies
+msgid "The patient comes out with additional supplies"
+msgstr "La paciente sale con insumos adicionales"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_patient_out_with
+msgid "The patient goes out with?"
+msgstr "El paciente sale con?"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_informed_family
+msgid "The patient's family member is informed of their status and evolution"
+msgstr "Se le informa al familiar del paciente de su estado y evolución"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_patient_belongins_locked
+msgid "The patient's personal belongings are locked in the locker held by the relative"
+msgstr "Los objetos personales del paciente se encuentran bajo llave en el lockero en poder del familiar"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_blood_returned
+msgid "The requested blood was returned to the Blood Bank, which for any reason was not used"
+msgstr "Se hizo devolución de la sangre solicitada al Banco de sangre, que por cualquier circunstancia no se utilizó"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_equipments_in_room
+msgid "The requirements for equipment requested by you are in the room"
+msgstr "Los requerimientos en cuanto equipos solicitados por usted están en sala"
+
+#. module: clinica_doctor_data
 #: selection:product.product,procedure_type:0
 msgid "Therapeutic Procedure"
 msgstr "Terapéutico"
@@ -3977,9 +4367,19 @@ msgid "Thyroid Disease"
 msgstr "Enfermedad Tiroidea"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_deliver_receive_time
+msgid "Time"
+msgstr "Tiempo"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_tisue_sending_patologist
 msgid "Tisue sending to patologist"
 msgstr "Tejido enviado a patología"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_tracheostomy
+msgid "Tracheostomy"
+msgstr "Traqueostomía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_recovery_transfer_time
@@ -3994,6 +4394,7 @@ msgstr "Médico Tratante"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesia_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_anesthesia_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_anesthesia_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_anesthesia_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_anesthesia_type
 msgid "Type of Anesthesia"
@@ -4012,6 +4413,7 @@ msgstr "Tipo de anestesia:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_document_type
@@ -4039,6 +4441,7 @@ msgstr "Tio"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_age_meassure_unit
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_age_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_age_meassure_unit
@@ -4061,6 +4464,11 @@ msgstr "Actualizar Inventario"
 #: selection:doctor.quirurgic.sheet,procedure_scope:0
 msgid "Urgencias"
 msgstr "Urgencias"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_used_laryngoscope
+msgid "Used Laryngoscope"
+msgstr "Usó Laringoscopio?"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_procedures_quantity_done
@@ -4188,7 +4596,7 @@ msgstr "Salas de Espera/Citas"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:200
-#: code:addons/clinica_doctor_data/models/doctor_details.py:347
+#: code:addons/clinica_doctor_data/models/doctor_details.py:348
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:169
 #, python-format
 msgid "Warning!"
@@ -4209,10 +4617,26 @@ msgid "Weight:"
 msgstr "Peso:"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_add_items_delivered_text
+msgid "Were are the additional items delivered?"
+msgstr "Se entregaron elementos adicionales ?"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_pay_add_items_delivered
+msgid "Who pay the aditional items delivered?"
+msgstr "Quien paga los elementos adicionales??"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_sample_delivered_pay
+msgid "Who pay the samples delivered to the laboratory"
+msgstr "Quien paga las muestras que se tomaron para laboratorio"
+
+#. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
+#: selection:clinica.quirurgical.check.list,age_meassure_unit:0
 #: selection:doctor.epicrisis,age_meassure_unit:0
 #: selection:doctor.patient,age_unit:0
 #: selection:doctor.presurgical.record,age_meassure_unit:0
@@ -4222,71 +4646,116 @@ msgid "Years"
 msgstr "Años"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:256
+#: selection:clinica.quirurgical.check.list,add_items_delivered:0
+#: selection:clinica.quirurgical.check.list,add_supplies:0
+#: selection:clinica.quirurgical.check.list,allergic_enquired:0
+#: selection:clinica.quirurgical.check.list,antibiotic_prophylaxis:0
+#: selection:clinica.quirurgical.check.list,antiembolicas_stockings:0
+#: selection:clinica.quirurgical.check.list,blood_returned:0
+#: selection:clinica.quirurgical.check.list,confirm_patient_name:0
+#: selection:clinica.quirurgical.check.list,confirm_procedure:0
+#: selection:clinica.quirurgical.check.list,delivered_recovery_exam:0
+#: selection:clinica.quirurgical.check.list,doctor_done_additionaly:0
+#: selection:clinica.quirurgical.check.list,enquired_proc_medication:0
+#: selection:clinica.quirurgical.check.list,equipment_working:0
+#: selection:clinica.quirurgical.check.list,equipments_in_order:0
+#: selection:clinica.quirurgical.check.list,equipments_in_room:0
+#: selection:clinica.quirurgical.check.list,fasting_time_greater:0
+#: selection:clinica.quirurgical.check.list,flu_symptoms_enquired:0
+#: selection:clinica.quirurgical.check.list,full_staff_in_room:0
+#: selection:clinica.quirurgical.check.list,history_complete:0
+#: selection:clinica.quirurgical.check.list,history_received:0
+#: selection:clinica.quirurgical.check.list,informed_family:0
+#: selection:clinica.quirurgical.check.list,investigated_drug_consumption:0
+#: selection:clinica.quirurgical.check.list,is_scheduled:0
+#: selection:clinica.quirurgical.check.list,materials_in_room:0
+#: selection:clinica.quirurgical.check.list,monitoring_induction_complete:0
+#: selection:clinica.quirurgical.check.list,operational_site_marking:0
+#: selection:clinica.quirurgical.check.list,patient_belongins_locked:0
+#: selection:clinica.quirurgical.check.list,pre_anesthetic_assessment_complete:0
+#: selection:clinica.quirurgical.check.list,pre_surgical_lab_exams:0
+#: selection:clinica.quirurgical.check.list,recording_vital_signs:0
+#: selection:clinica.quirurgical.check.list,removed_dental_aceesories:0
+#: selection:clinica.quirurgical.check.list,reported_disfunction_equip:0
+#: selection:clinica.quirurgical.check.list,sample_delivered:0
+#: selection:clinica.quirurgical.check.list,special_preparation:0
+#: selection:clinica.quirurgical.check.list,supplies_delivered:0
+#: selection:clinica.quirurgical.check.list,surgical_concent_filled:0
+#: selection:clinica.quirurgical.check.list,venous_pressure_working:0
+msgid "Yes"
+msgstr "Yes"
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:264
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:236
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:213
-#: code:addons/clinica_doctor_data/models/doctor_details.py:397
+#: code:addons/clinica_doctor_data/models/doctor_details.py:398
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:176
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:180
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:188
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:205
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:194
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:198
 #, python-format
 msgid "You can choose 'AS' document only if the age is greater than 17 years."
 msgstr "You can choose 'AS' document only if the age is greater than 17 years."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:254
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:262
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:234
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:211
-#: code:addons/clinica_doctor_data/models/doctor_details.py:395
+#: code:addons/clinica_doctor_data/models/doctor_details.py:396
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:174
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:178
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:186
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:203
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:192
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:196
 #, python-format
 msgid "You can only choose 'MS' document for age between 1 to 30 days."
 msgstr "You can only choose 'MS' document for age between 1 to 30 days."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:248
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:256
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:228
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:205
-#: code:addons/clinica_doctor_data/models/doctor_details.py:389
+#: code:addons/clinica_doctor_data/models/doctor_details.py:390
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:168
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:172
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:180
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:197
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:186
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:190
 #, python-format
 msgid "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 msgstr "You can only choose 'RC' or 'MS' documents, for age less than 1 month."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:252
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:260
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:232
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:209
-#: code:addons/clinica_doctor_data/models/doctor_details.py:393
+#: code:addons/clinica_doctor_data/models/doctor_details.py:394
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:172
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:176
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:184
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:201
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:190
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:194
 #, python-format
 msgid "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
 msgstr "You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:250
+#: code:addons/clinica_doctor_data/models/anhestesic_registry.py:258
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:230
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:207
-#: code:addons/clinica_doctor_data/models/doctor_details.py:391
+#: code:addons/clinica_doctor_data/models/doctor_details.py:392
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:170
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:174
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:182
 #: code:addons/clinica_doctor_data/models/plastic_surgery_sheet.py:199
 #: code:addons/clinica_doctor_data/models/quirurgic_sheet.py:188
+#: code:addons/clinica_doctor_data/models/quirurgical_check_list.py:192
 #, python-format
 msgid "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."
 msgstr "You cannot choose 'RC' or 'MS' document types for age greater than 17 years."

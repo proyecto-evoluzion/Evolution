@@ -31,6 +31,7 @@ from . import doctor_calendar
 from . import anhestesic_registry
 from . import medical_evolution
 from . import doctor_epicrisis
+from . import quirurgical_check_list
 from . import clinica_record_list_visualizer
 
 

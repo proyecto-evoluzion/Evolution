@@ -83,5 +83,14 @@
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>
         
+		<!-- Sequence type for doctor.epicrisis -->
+		<record id="seq_quirurgical_check_list" model="ir.sequence">
+            <field name="name">Quirurgical Check List</field>
+            <field name="code">quirurgical.check.list</field>
+            <field name="prefix">QCL </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>
+        
 	</data>
 </odoo>

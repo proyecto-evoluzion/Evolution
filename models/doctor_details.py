@@ -72,7 +72,8 @@ class Doctor(models.Model):
     partner_id = fields.Many2one('res.partner', copy=False, ondelete='restrict', string='Related Partner', 
                                     help='Partner-related data of doctor ')
     profession_type = fields.Selection([('doctor','Doctor'),('anesthesiologist','Anesthesiologist'),
-                                        ('technologists','Surgical Technologists'),('helpers','Surgical Helpers')], 
+                                        ('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),
+                                        ('nurse','Nurse')], 
                                        string='Profession Type', default='doctor')
     product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
                                    string="Health Procedures", copy=False)
