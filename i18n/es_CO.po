@@ -3567,7 +3567,7 @@ msgstr "Registros Quirúrgicos"
 #: model:ir.model,name:clinica_doctor_data.model_clinica_quirurgical_check_list
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgical_check_list
 msgid "Quirurgical Check List"
-msgstr "Quirurgical Check List"
+msgstr "CheckList Quirúrgica"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
