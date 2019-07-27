@@ -48,6 +48,7 @@
         'views/nurse_sheet_view.xml',
         'views/doctor_calendar_view.xml',
         'views/anhestesic_registry_view.xml',
+        'views/post_anhestesic_care_view.xml',
         'views/plastic_surgery_sheet_view.xml',
         'views/medical_evolution_view.xml',
         'views/doctor_epicrisis_view.xml',
