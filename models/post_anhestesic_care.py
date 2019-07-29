@@ -52,6 +52,21 @@ class ClinicaPostAnhestesicCare(models.Model):
 	anhestesia = fields.Selection([('inhalatoria','Inhalatoria'),('intravenosa','Intravenosa'),('regional','Regional'),('peridural','Peridural'),('raquidea','Raquidea'),('bloqueo','Bloqueo'),('local','Local C.')], string='Anestésia')
 	#selection airway
 	airway = fields.Selection([('res_espontanea','Respiración Espontánea'),('canulao2','Cánula O2 L/min'),('venturi','Venturi%'),('iot_int','IOT INT'),('t_en_t','T en T'),('venti_mecanica','Ventilación mecánica'),('fr','FR'),('fi_o2','Fi O2'),('peep','PEEP'),('vc','V.C.')], string='Vía Aérea')
+	#drains
+	nasogastric_tube = fields.Integer(string='Tubo Nasogástrico')
+	chest_tube = fields.Integer(string='Tubo Tórax')
+	hemovac = fields.Integer(string='Hemovac')
+	urinary_tube = fields.Integer(string='Sonda Vesical')
+	cystostomy = fields.Integer(string='Sonda Cistostomía')
+	others = fields.Integer(string='Otros')
+	total = fields.Integer(string='Total', compute='_get_sum', store=True)
+
+
+	@api.depends('nasogastric_tube','chest_tube','hemovac','urinary_tube','cystostomy','others')
+	def _get_sum(self):
+		for rec in self:
+			rec.total= rec.nasogastric_tube+rec.chest_tube+rec.hemovac+rec.urinary_tube+rec.cystostomy+rec.others
+			
 
 
 class PostAnhestesicCareVitalSigns(models.Model):

@@ -821,7 +821,7 @@ msgstr "Sangre"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Blood Count"
-msgstr "Caudra Hemática"
+msgstr "Cuadro Hemático"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_blood_type

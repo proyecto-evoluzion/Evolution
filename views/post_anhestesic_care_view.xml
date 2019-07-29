@@ -31,6 +31,39 @@
               <field name="airway"/>
             </group>
 
+            <group>
+            <group>
+            </group>
+            <group string="Drenajes">
+              <label for="paraclinical_hb" string="Tubo Nasogástrico"/>
+                <div>
+                  <field name="nasogastric_tube" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="chest_tube" string="Tubo Tórax"/>
+                <div>
+                  <field name="chest_tube" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="hemovac" string="Hemovac"/>
+                <div>
+                  <field name="hemovac" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="urinary_tube" string="Sonda Vesical"/>
+                <div>
+                  <field name="urinary_tube" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="cystostomy" string="Sonda Cistostomía"/>
+                <div>
+                  <field name="cystostomy" nolabel="1" class="oe_inline"/> cc
+                </div>
+                <label for="others" string="Otros"/>
+                <div>
+                  <field name="others" nolabel="1" class="oe_inline"/> cc
+                </div>
+
+                <field name="total"/>
+            </group>
+            </group>
+
             <notebook>
       			<page name="vital_signs" string="Signos Vitales">
       				<field name="vital_sign_ids" colspan="4" nolabel="1" >
