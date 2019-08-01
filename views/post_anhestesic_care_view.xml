@@ -32,9 +32,7 @@
             </group>
 
             <group>
-            <group>
-            </group>
-            <group string="Drenajes">
+              <group string="Drenajes">
               <label for="paraclinical_hb" string="Tubo Nasogástrico"/>
                 <div>
                   <field name="nasogastric_tube" nolabel="1" class="oe_inline"/> cc
@@ -62,10 +60,53 @@
 
                 <field name="total"/>
             </group>
+            <group string="Líquidos">
+                <field name="liquids_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="liquid_via"/>
+                    <field name="liquid_site"/>
+                    <field name="liquid_type"/>
+                    <field name="liquid_initial_amount" sum="Total"/>
+                    <field name="liquid_amount_recovery" sum="Total"/>
+                  </tree>
+                </field>
+            </group>
             </group>
 
-            <notebook>
-      			<page name="vital_signs" string="Signos Vitales">
+            <group string="Escala Aldrete">
+                <field name="aldrete_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="conscience"/>
+                    <field name="saturation"/>
+                    <field name="breathing"/>
+                    <field name="circulation"/>
+                    <field name="activity"/>
+                    <field name="aldrete_score"/>
+                  </tree>
+                </field>
+              </group>
+            
+              <group string="Drogas">
+                <field name="drugs_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="drug_time"/>
+                    <field name="drug_name" />
+                    <field name="drug_quantity"/>
+                    <field name="drug_via"/>
+                    <field name="drug_dr"/>
+                  </tree>
+                </field>
+              </group>
+              <group string="Observaciones">
+                <field name="observations_ids" nolabel="1">
+                  <tree editable="bottom">
+                    <field name="observation_time"/>
+                    <field name="observation" />
+                  </tree>
+                </field>
+              </group>
+           
+            <group string="Signos Vitales">
       				<field name="vital_sign_ids" colspan="4" nolabel="1" >
       					<tree editable="top">
       						<field name="vital_signs_date_hour"/>
@@ -78,8 +119,7 @@
                   <field name="vital_signs_vomit"/>
       					</tree>
       				</field>
-      			</page>
-      		</notebook>
+            </group>      		
       		</sheet>
         </form>
         </field>

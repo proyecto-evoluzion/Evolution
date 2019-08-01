@@ -48,6 +48,11 @@ class ClinicaPostAnhestesicCare(models.Model):
 	nurse_id = fields.Many2one('doctor.professional', string='Auxiliar Enfermería')
 	#vital signs
 	vital_sign_ids = fields.One2many('post.anhestesic.care.vital.signs', 'post_anhestesic_care_id', string='Signos Vitales', copy=False)
+	#liquids
+	liquids_ids = fields.One2many('post.anhestesic.care.liquids', 'post_anhestesic_care_id', string='Líquidos', copy=False)
+	drugs_ids = fields.One2many('post.anhestesic.care.drugs','post_anhestesic_care_id', string='Drogas', copy=False )
+	observations_ids = fields.One2many('post.anhestesic.care.observations','post_anhestesic_care_id', string='Observaciones', copy=False )
+	aldrete_ids= fields.One2many('post.anhestesic.care.aldrete','post_anhestesic_care_id', string='Escala Aldrete', copy=False )
 	#selection anhestesia
 	anhestesia = fields.Selection([('inhalatoria','Inhalatoria'),('intravenosa','Intravenosa'),('regional','Regional'),('peridural','Peridural'),('raquidea','Raquidea'),('bloqueo','Bloqueo'),('local','Local C.')], string='Anestésia')
 	#selection airway
@@ -59,7 +64,9 @@ class ClinicaPostAnhestesicCare(models.Model):
 	urinary_tube = fields.Integer(string='Sonda Vesical')
 	cystostomy = fields.Integer(string='Sonda Cistostomía')
 	others = fields.Integer(string='Otros')
-	total = fields.Integer(string='Total', compute='_get_sum', store=True)
+	total = fields.Integer(string='Total (cc)', compute='_get_sum', store=True, help="Total in cubic centimeters")
+	
+	
 
 
 	@api.depends('nasogastric_tube','chest_tube','hemovac','urinary_tube','cystostomy','others')
@@ -82,3 +89,103 @@ class PostAnhestesicCareVitalSigns(models.Model):
 	vital_signs_queasiness  = fields.Boolean(string="Náuseas")
 	vital_signs_vomit  = fields.Boolean(string="Vómito")
 
+
+class PostAnhestesicCareLiquids(models.Model):
+	_name = "post.anhestesic.care.liquids"
+	
+	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
+	#liquids
+	liquid_via = fields.Char(string='Via')
+	liquid_site = fields.Char(string='Sitio')
+	liquid_type = fields.Char(string='Tipo')
+	liquid_initial_amount = fields.Integer(string='Cantidad Inicial (cc)')
+	liquid_amount_recovery = fields.Integer(string='Cantidad en Recuperación (cc)')
+
+class PostAnhestesicCareDrugs(models.Model):
+	_name = "post.anhestesic.care.drugs"
+	
+	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
+	#drugs
+	drug_time = fields.Datetime(string='Fecha y Hora', default=fields.Datetime.now)
+	drug_name = fields.Char(string='Droga')
+	drug_quantity = fields.Float(string='Cantidad')
+	drug_via = fields.Char(string='Via')
+	drug_dr = fields.Char(string='D.R.')
+	
+class PostAnhestesicObservations(models.Model):
+	_name = "post.anhestesic.care.observations"
+	
+	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
+	#observation
+	observation_time = fields.Datetime(string='Fecha y Hora', default=fields.Datetime.now)
+	observation = fields.Char('Observaciones')
+
+class PostAnhestesicAldrete(models.Model):
+	_name = "post.anhestesic.care.aldrete"
+	_score = 0
+	
+	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
+	#aldrete
+	conscience = fields.Selection([('2','Despierto'),('1','Responde Llamado'),('0','No Responde')], string='Conciencia')
+	saturation = fields.Selection([('2','SO2 > 93% + Aire'),('1','SO2 > 90% + O2'),('0','SO > 90% + O2')], string='Saturación')
+	breathing = fields.Selection([('2','Capaz de Toser'),('1','Disnea'),('0','Apnea')], string='Respiración')
+	circulation = fields.Selection([('2','T/A ± 20%'),('1','T/A ± 20% - 50%'),('0','T/A ± 50%')], string='Circulación')
+	activity = fields.Selection([('2','Mueve 4 Extremidades'),('1','Mueve 2 Extremidades'),('0','Inmóvil')], string='Actividad')
+	aldrete_score = fields.Integer('Puntaje', compute='_compute_score')
+
+	@api.multi
+	@api.depends('conscience','saturation','breathing','circulation','activity')
+	def _compute_score(self):
+		if self.conscience:
+			if self.conscience == '2':
+				self.aldrete_score = int(self.aldrete_score)+2
+			elif self.conscience == '1':
+				self.aldrete_score = int(self.aldrete_score)+ 1
+			elif self.conscience == '0':
+				self.aldrete_score = int(self.aldrete_score)+0
+		else:
+			self.aldrete_score |= 0
+
+	
+		if self.saturation:
+			if self.saturation == '2':
+				self.aldrete_score = int(self.aldrete_score)+2
+			elif self.saturation == '1':
+				self.aldrete_score = int(self.aldrete_score)+1
+			elif self.saturation == '0':
+				self.aldrete_score = int(self.aldrete_score)+0
+		else:
+			self.aldrete_score |= 0
+
+		if self.breathing:
+			if self.breathing == '2':
+				self.aldrete_score = int(self.aldrete_score)+2
+			elif self.breathing == '1':
+				self.aldrete_score = int(self.aldrete_score)+1
+			elif self.breathing == '0':
+				self.aldrete_score = int(self.aldrete_score)+0
+		else:
+			self.aldrete_score |= 0
+
+		if self.circulation:
+			if self.circulation == '2':
+				self.aldrete_score = int(self.aldrete_score)+2
+			elif self.circulation == '1':
+				self.aldrete_score = int(self.aldrete_score)+1
+			elif self.circulation == '0':
+				self.aldrete_score = int(self.aldrete_score)+0
+		else:
+			self.aldrete_score |= 0
+
+		if self.activity:
+			if self.activity == '2':
+				self.aldrete_score = int(self.aldrete_score)+2
+			elif self.activity == '1':
+				self.aldrete_score = int(self.aldrete_score)+1
+			elif self.activity == '0':
+				self.aldrete_score = int(self.aldrete_score)+0
+		else:
+			self.aldrete_score |= 0
+
+		
+		
