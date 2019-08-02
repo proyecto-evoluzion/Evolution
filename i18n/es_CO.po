@@ -593,12 +593,12 @@ msgstr "Analgésicos"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesia_end_time
 msgid "Anesthesia End Time"
-msgstr "Hora Final Anestesia"
+msgstr "Hora Fin Anestesia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesia_start_time
 msgid "Anesthesia Start Time"
-msgstr "Hora Inicio de Anestesia"
+msgstr "Hora Inicio Anestesia"
 
 #. module: clinica_doctor_data
 #: selection:create.health.professional,profession_type:0
@@ -638,12 +638,12 @@ msgstr "Anesthesiologist:"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_anhestesic_registry
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Anhestesic Registry"
-msgstr "HC Anestésica"
+msgstr "Registros Anestésia"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 msgid "Anhestesic Registry Form"
-msgstr "Formulario HC Anestésica "
+msgstr "Formulario Registros Anestésia "
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -653,7 +653,7 @@ msgstr "Anhestesic Registry Number:"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_tree
 msgid "Anhestesic Registry Tree"
-msgstr "Lista HC Anestésica"
+msgstr "Lista Registros Anestésia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_antibiotic_prophylaxis
@@ -3292,7 +3292,7 @@ msgstr "Plastic Surgery Form"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_plastic_surgery
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Plastic Surgery Sheet"
-msgstr "HC Cirugía Plástica"
+msgstr "Hojas Cirugía Plástica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_plastic_surgery_ids
@@ -3355,7 +3355,7 @@ msgstr "Registros Pre-Anestésicos"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_presurgical_record
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
 msgid "Pre-surgical Records"
-msgstr "HC Pre-Anestésica"
+msgstr "Registros Pre-Anestésicos"
 
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_pre_surgical_lab_exams
 msgid "Pre-surgical clinical laboratory exams."
@@ -3538,12 +3538,12 @@ msgstr "Descripción Quirurgica"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_quirurgic_sheet
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgic_sheet
 msgid "Quirurgic Sheet"
-msgstr "HC Quirúrgica"
+msgstr "Hoja Quirúrgica"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
 msgid "Quirurgic Sheet Form"
-msgstr "Quirurgic Sheet Form"
+msgstr "Formulario Hoja Quirúrgica"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
@@ -3567,7 +3567,7 @@ msgstr "Registros Quirúrgicos"
 #: model:ir.model,name:clinica_doctor_data.model_clinica_quirurgical_check_list
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgical_check_list
 msgid "Quirurgical Check List"
-msgstr "CheckList Quirúrgica"
+msgstr "CheckList Quirúrgico"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
@@ -4175,7 +4175,7 @@ msgstr "Nombre Auxiliar de Cirugía"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_end_time
 msgid "Surgery Ending Hour"
-msgstr "Hora de Fin de Cirugía"
+msgstr "Hora Fin Cirugía"
 
 #. module: clinica_doctor_data
 #: selection:doctor.waiting.room,room_type:0
@@ -4641,7 +4641,7 @@ msgstr "Sala de Espera"
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_waiting_room
 msgid "Waiting Room "
-msgstr "Waiting Room "
+msgstr "Sala Espera "
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form

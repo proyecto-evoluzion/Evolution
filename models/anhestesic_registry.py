@@ -125,6 +125,19 @@ class AnhestesicRegistry(models.Model):
     diuresis_bool = fields.Boolean(string="Diuresis")
     temperature = fields.Boolean(string="Temperature")
     other_monitor = fields.Char(string='Other Monitor')
+    #ocular protection
+    occlusion_protection = fields.Boolean(string="Oclusión")
+    gel_protection = fields.Boolean(string="Gel")
+    #laryngeal mask
+    number_mask =  fields.Integer(string='Número')
+    air_mask = fields.Float(string='Aire (cm)')
+    difficulty_mask = fields.Selection([('easy', 'Fácil'), ('difficult', 'Difícil')], string="Dificultad", default='easy')
+
+    facial_mask = fields.Boolean(string="Máscara Facial")
+    other_facial_mask = fields.Char(string='Otra')
+    nasal_cannula = fields.Boolean(string="Cánula Nasal")
+    venturi = fields.Boolean(string="Venturi")
+    percentage = fields.Char(string="%")
 
     tube_type = fields.Selection([('regular', 'Normal'), ('ringed', 'Anillado')], string="Tipo Tubo", default='regular')
     tube_number = fields.Char(string='Número Tubo')
@@ -351,7 +364,7 @@ class AnhestesicRegistryMonitor(models.Model):
     
     anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry', ondelete='cascade')
     monitor = fields.Text(string='Monitor')
-    date_hour = fields.Datetime(string='Date and Hour', default=fields.Datetime.now)
+    date_hour = fields.Datetime(string='Date and hopeur', default=fields.Datetime.now)
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 
