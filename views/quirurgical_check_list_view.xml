@@ -289,6 +289,9 @@
 	       				</group>
 	         		</page>
 	         	</notebook>
+	         	<group string="Observaciones">
+	         		<field name="observations" nolabel="1"/>
+	         	</group>
          	</sheet>
          </form>
          </field>

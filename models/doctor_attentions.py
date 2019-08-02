@@ -87,8 +87,8 @@ class PresurgicalRecord(models.Model):
     physical_diastolic_artery_presure = fields.Integer(string="Diastolic Artery Pressure")
     physical_fc = fields.Integer(string="FC")
     physical_fr = fields.Integer(string="FR")
-    physical_weight = fields.Float(string="Weight")
-    physical_size = fields.Float(string="Size")
+    physical_weight = fields.Float(string="Weight", required=True)
+    physical_size = fields.Float(string="Size", required=True)
     physical_body_mass_index = fields.Float(string="IMC (Body Mass Index)")
     physical_exam = fields.Text(string="Physical Exam")
     dental_prostheses = fields.Boolean(string='Dental Prostheses')
@@ -140,6 +140,8 @@ class PresurgicalRecord(models.Model):
     plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
+    mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
+                                       ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     
     
     @api.multi

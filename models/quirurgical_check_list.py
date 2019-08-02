@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 ###############################################################################
 #
 #    BroadTech IT Solutions Pvt Ltd
@@ -119,6 +119,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
     patient_out_with = fields.Selection([('nurse','Enfermera'),('family', 'Familiar')], string="The patient goes out with?")
     add_supplies = fields.Selection([('yes','Yes'),('no', 'No')], string="The patient comes out with additional supplies")
     add_supplies_text = fields.Text(string="Additional supplies")
+
+    observations = fields.Text(string="Observaciones")
     
     
     @api.multi

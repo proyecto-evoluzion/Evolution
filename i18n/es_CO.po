@@ -593,12 +593,12 @@ msgstr "Analgésicos"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesia_end_time
 msgid "Anesthesia End Time"
-msgstr "Hora de fin de Anestesia"
+msgstr "Hora Final Anestesia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_anesthesia_start_time
 msgid "Anesthesia Start Time"
-msgstr "Hora de Inicio de Anestesia"
+msgstr "Hora Inicio de Anestesia"
 
 #. module: clinica_doctor_data
 #: selection:create.health.professional,profession_type:0
@@ -1767,7 +1767,7 @@ msgstr "Forma de realización del acto quirurgico:"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_extubation_time
 msgid "Extubation Time"
-msgstr "Hora de extubación"
+msgstr "Hora Extubación"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_fc
@@ -2279,7 +2279,7 @@ msgstr "Intubación"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intubation_time
 msgid "Intubation Time"
-msgstr "Hora de intubación"
+msgstr "Hora Inducción"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_details.py:83
@@ -4454,7 +4454,7 @@ msgstr "Traqueostomía"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_recovery_transfer_time
 msgid "Transfer Time to Recovery"
-msgstr "Hora de Traslado a Recuperación"
+msgstr "Hora Entrega a Recuperación"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_doctor_id

@@ -53,6 +53,7 @@ class ClinicaPostAnhestesicCare(models.Model):
 	drugs_ids = fields.One2many('post.anhestesic.care.drugs','post_anhestesic_care_id', string='Drogas', copy=False )
 	observations_ids = fields.One2many('post.anhestesic.care.observations','post_anhestesic_care_id', string='Observaciones', copy=False )
 	aldrete_ids= fields.One2many('post.anhestesic.care.aldrete','post_anhestesic_care_id', string='Escala Aldrete', copy=False )
+	medical_orders_ids= fields.One2many('post.anhestesic.care.medical.orders','post_anhestesic_care_id', u'Órdenes Médicas')
 	#selection anhestesia
 	anhestesia = fields.Selection([('inhalatoria','Inhalatoria'),('intravenosa','Intravenosa'),('regional','Regional'),('peridural','Peridural'),('raquidea','Raquidea'),('bloqueo','Bloqueo'),('local','Local C.')], string='Anestésia')
 	#selection airway
@@ -98,8 +99,8 @@ class PostAnhestesicCareLiquids(models.Model):
 	liquid_via = fields.Char(string='Via')
 	liquid_site = fields.Char(string='Sitio')
 	liquid_type = fields.Char(string='Tipo')
-	liquid_initial_amount = fields.Integer(string='Cantidad Inicial (cc)')
-	liquid_amount_recovery = fields.Integer(string='Cantidad en Recuperación (cc)')
+	liquid_initial_amount = fields.Integer(string='Cant. Inicial (cc)')
+	liquid_amount_recovery = fields.Integer(string='Cant. Recuperación (cc)')
 
 class PostAnhestesicCareDrugs(models.Model):
 	_name = "post.anhestesic.care.drugs"
@@ -187,5 +188,16 @@ class PostAnhestesicAldrete(models.Model):
 		else:
 			self.aldrete_score |= 0
 
-		
-		
+class PostAnhestesicMedicalOrders(models.Model):
+
+	_name = 'post.anhestesic.care.medical.orders'
+	_rec_name = 'procedures_id'
+
+
+	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
+	plantilla_id = fields.Many2one('post.anhestesic.care.medical.orders.temp', 'Plantillas')
+	prescripcion = fields.Char(u'Prescripción')
+	procedures_id = fields.Many2one('product.product', 'Medicamento/Otro elemento', required=True)
+	recomendacion = fields.Text('Recomendaciones')
+
+

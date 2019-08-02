@@ -64,18 +64,14 @@
          	    		<field name="preoperative_note" />
          	    	</group>
          	    </group>
-         	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios">
-         	    	<group name="eventos_transoperatorios_sub1">
+         	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios" colspan="4">
+                  <field name="anesthesia_start_time" widget="float_time"/>
+         	    		<field name="intubation_time" widget="float_time" />         	  
          	    		<field name="start_time" widget="float_time" />
          	    		<field name="end_time" widget="float_time" />
-         	    		<field name="anesthesia_start_time" widget="float_time" />
-         	    		<field name="intubation_time" widget="float_time" />
-         	    	</group>
-         	    	<group name="eventos_transoperatorios_sub2">
-         	    		<field name="extubation_time" widget="float_time" />
+                  <field name="extubation_time" widget="float_time" />
          	    		<field name="anesthesia_end_time" widget="float_time" />
          	    		<field name="recovery_transfer_time" widget="float_time" />
-         	    	</group>
          	    </group>
          	    <notebook>
          	    	<page name="background" string="Patient Background">
@@ -311,11 +307,17 @@
                 </group>
                 <group name="induction_main" string="Intubation">
                   <group name="intubation_sub1">
+                    <field name="tube_type" />
+                    <field name="tube_number" />
+                    <separator/>
                     <field name="orotracheal"/>
                     <field name="nasotracheal" />
                     <field name="tracheostomy"/>
                   </group>
                   <group name="intubation_sub2">
+                    <field name="distance" />
+                    <field name="pneumotapon" />
+                    <separator/>
                     <field name="attemps" />
                     <field name="used_laryngoscope"/>
                     <field name="intubation"/>

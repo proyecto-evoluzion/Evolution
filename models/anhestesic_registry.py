@@ -126,6 +126,11 @@ class AnhestesicRegistry(models.Model):
     temperature = fields.Boolean(string="Temperature")
     other_monitor = fields.Char(string='Other Monitor')
 
+    tube_type = fields.Selection([('regular', 'Normal'), ('ringed', 'Anillado')], string="Tipo Tubo", default='regular')
+    tube_number = fields.Char(string='Número Tubo')
+    distance = fields.Float(string='Distancia (cm)')
+    pneumotapon = fields.Float(string='Neumotapón (cm)')
+
     orotracheal = fields.Boolean(string="Orotracheal")
     nasotracheal = fields.Boolean(string="Nasotracheal")
     tracheostomy = fields.Boolean(string="Tracheostomy")
