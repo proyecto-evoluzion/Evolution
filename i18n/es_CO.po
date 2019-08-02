@@ -3292,7 +3292,7 @@ msgstr "Plastic Surgery Form"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_plastic_surgery
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Plastic Surgery Sheet"
-msgstr "Hojas Cirugía Plástica"
+msgstr "Hoja Cirugía Plástica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_plastic_surgery_ids
@@ -4227,7 +4227,7 @@ msgstr "Salas de Cirugía"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_start_time
 msgid "Surgery Starting Hour"
-msgstr "Hora de Inicio de Cirugía"
+msgstr "Hora Inicio Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_surgical

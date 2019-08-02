@@ -305,6 +305,39 @@
                     <field name="other_monitor" />
                   </group>
                 </group>
+
+                <group string="Protección Ocular">
+                   <group>
+                    <field name="occlusion_protection" />
+                  </group>
+                  <group>
+                    <field name="gel_protection" />
+                  </group>
+                </group>
+
+                <group string="Máscara Laríngea">
+                  <group>
+                  <field name="number_mask" />
+                  <field name="air_mask" />
+                  </group>
+                  <group>
+                  <field name="difficulty_mask" />
+                </group>
+                </group>
+
+                 <group >
+                  <group>
+                  <field name="facial_mask" />
+                  <field name="venturi" />
+                  <field name="nasal_cannula" />
+                </group>
+                <group>
+                  <field name="other_facial_mask" />
+                  <field name="percentage" />
+                  
+                </group>
+                </group>
+
                 <group name="induction_main" string="Intubation">
                   <group name="intubation_sub1">
                     <field name="tube_type" />
