@@ -82,7 +82,8 @@ class PostAnhestesicCareVitalSigns(models.Model):
 	
 	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
 	vital_signs_date_hour = fields.Datetime(string='Fecha y Hora', default=fields.Datetime.now)
-	vital_signs_ta = fields.Integer(string='TA')
+	vital_signs_tas = fields.Integer(string='TAS')
+	vital_signs_tad = fields.Integer(string='TAD')
 	vital_signs_fc = fields.Integer(string='FC')
 	vital_signs_fr = fields.Integer(string='FR')
 	vital_signs_sao2 = fields.Integer(string='SaO2')

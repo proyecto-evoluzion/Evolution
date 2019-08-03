@@ -110,7 +110,8 @@
       				<field name="vital_sign_ids" colspan="4" nolabel="1" >
       					<tree editable="top">
       						<field name="vital_signs_date_hour"/>
-                  <field name="vital_signs_ta"/>
+                  <field name="vital_signs_tas"/>
+                  <field name="vital_signs_tad"/>
                   <field name="vital_signs_fc"/>
                   <field name="vital_signs_fr"/>
                   <field name="vital_signs_sao2"/>
@@ -155,7 +156,7 @@
 	    
     <!--  Action -->
     <record id="action_clinica_post_anhestesic_care" model="ir.actions.act_window">
-        <field name="name">Post-Anhestesic care</field>
+        <field name="name">Cuidado Post-Anestésico</field>
         <field name="res_model">clinica.post.anhestesic.care</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
