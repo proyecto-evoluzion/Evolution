@@ -225,7 +225,7 @@ msgstr "<strong>OBSERVACIONES</strong>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 msgid "<strong>OTHER DETAILS</strong>"
-msgstr "<strong>OTHER DETAILS</strong>"
+msgstr "<strong>OTROS DETALLES</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -273,7 +273,7 @@ msgstr "<strong>ANTECEDENTES</strong>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "<strong>PATIENT DATA</strong>"
-msgstr "<strong>PATIENT DATA</strong>"
+msgstr "<strong>DATOS PACIENTE</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -320,7 +320,7 @@ msgstr "<strong>QUIMICO SANGUINEA</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 msgid "<strong>QUIRURGIC DESCRIPTION</strong>"
-msgstr "<strong>QUIRURGIC DESCRIPTION</strong>"
+msgstr "<strong>DESCRIPCIÓN QUIRÚRGICA</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -626,7 +626,7 @@ msgstr "Anestesiólogo"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Anesthesiologist:"
-msgstr "Anesthesiologist:"
+msgstr "Anestesiólogo:"
 
 #. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0
@@ -922,7 +922,7 @@ msgstr "Casada/o"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Cigarettes"
-msgstr "Cigarettes"
+msgstr "Cigarrillos"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_cigarate_daily
@@ -2243,7 +2243,7 @@ msgstr "Instrumentadora los materiales, medicamentos e insumos especiales solici
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Insurer:"
-msgstr "Insurer:"
+msgstr "Aseguradora:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_venous_pressure_working
@@ -2316,7 +2316,7 @@ msgstr "Factura"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 msgid "Invoice:"
-msgstr "Invoice:"
+msgstr "Factura:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_copy_responsible_info
@@ -2825,7 +2825,7 @@ msgstr "Number ID for TI or CC Documents"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Number ID:"
-msgstr "Number ID:"
+msgstr "Identificación:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_abortion_number
@@ -3189,7 +3189,7 @@ msgstr "Patient Name"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Patient Name:"
-msgstr "Patient Name:"
+msgstr "Nombre Paciente:"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_administrative_data
@@ -3548,7 +3548,7 @@ msgstr "Formulario Hoja Quirúrgica"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 msgid "Quirurgic Sheet Number:"
-msgstr "Quirurgic Sheet Number:"
+msgstr "Hoja Quirúrgica N°:"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_tree
@@ -4279,7 +4279,7 @@ msgstr "Instrumentador/a"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 msgid "Surgical Technologists:"
-msgstr "Surgical Technologists:"
+msgstr "Instrumentador:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_surgical_concent_filled

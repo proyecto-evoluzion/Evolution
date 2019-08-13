@@ -31,9 +31,10 @@
     'author' : 'BroadTech IT Solutions Pvt Ltd',
     'website' : 'http://www.broadtech-innovations.com',
     'depends': [
-        'base','l10n_co_res_partner','product', 'l10n_co_tax_extension'
+        'base','contacts','l10n_co_res_partner','product', 'l10n_co_tax_extension'
     ],
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'data/doctor_sequence.xml',
         'wizard/create_health_professional_view.xml',
