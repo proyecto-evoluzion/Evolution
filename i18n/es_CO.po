@@ -171,7 +171,7 @@ msgstr "<strong>DESCRIPTION</strong>"
 msgid "<strong>ELECTROCARDIOGRAM</strong>"
 msgstr "<strong>ELECTROCARDIOGRAMA</strong>"
 
-#. module: clinica_doctor_data
+#. module: clinica_doctor_dataf
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
 msgid "<strong>EPICRISIS</strong>"
 msgstr "<strong>EPICRISIS</strong>"
@@ -1704,7 +1704,7 @@ msgstr "Fecha Final"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_end_period
 msgid "End Period"
-msgstr "End Period"
+msgstr "Fecha Fin"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -4109,7 +4109,7 @@ msgstr "Fecha de Inicio"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_start_period
 msgid "Start Period"
-msgstr "Start Period"
+msgstr "Fecha Inicio"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -4656,7 +4656,7 @@ msgstr "Lista de Sala de Espera"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Waiting Rooms"
-msgstr "Waiting Rooms"
+msgstr "Sala de Espera"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_room_ids
