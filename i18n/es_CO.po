@@ -2886,7 +2886,7 @@ msgstr "Enfermera"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_tree
 msgid "Nurse Sheet"
-msgstr "Enfermería"
+msgstr "Hoja Enfermería"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_nurse_sheet_created
@@ -4206,17 +4206,17 @@ msgstr "Procedimientos Sala Cirugía"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_tree
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_tree
 msgid "Surgery Room Tree"
-msgstr "Surgery Room Tree"
+msgstr "Lista Salas de Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_room_id
 msgid "Surgery Room/Appointment"
-msgstr "Surgery Room/Appointment"
+msgstr "Sala Cirugía/Cita"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Surgery Room:"
-msgstr "Surgery Room:"
+msgstr "Sala Cirugía:"
 
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_surgery_room
