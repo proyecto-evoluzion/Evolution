@@ -475,7 +475,7 @@ class DoctorAdministrativeData(models.Model):
         partner = self.env['res.partner'].create(partner_vals)
         res.partner_id = partner.id 
         return res
-    
+        
     @api.multi
     def write(self, vals):
         if vals.get('email', False):
@@ -507,5 +507,9 @@ class DoctorAdministrativeData(models.Model):
                     partner_vals = data._get_related_partner_vals(vals)
                     data.partner_id.write(partner_vals)
         return res
+
+    _sql_constraints = [
+        ('ref_tdoc_unique', 'unique(ref,tdoc)', 'Error creating! This patient already exists in the system.')
+    ]
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

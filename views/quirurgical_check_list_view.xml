@@ -17,7 +17,7 @@
 		                <field name="patient_id" required="1"/>
 	            	</group>
 	            	<group name='sub_group2'>
-		                <field name="procedure_date" required="1" />
+		                <field name="procedure_datetime" required="1" />
 	            	</group>
 	            </group>
             
@@ -45,6 +45,7 @@
 	            </group>
 	            <group name="health_professionals">
          			<group name="health_professionals_sub1" >
+         				<field name="procedure_id"/>
          				<field name='surgeon_id' domain="[('profession_type','=','doctor')]"/>
          				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
          				<field name='anesthesia_type' />
@@ -52,6 +53,7 @@
          			<group name="health_professionals_sub2" >
          				<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>
          				<field name='nurse_id' domain="[('profession_type','=','nurse')]"/>
+         				<field name="recovery" />
          			</group>
          		</group>
          		<notebook>
@@ -304,7 +306,7 @@
        <tree string="Quirurgical Check List Tree">
        		<field name="name"/>
             <field name="patient_id"/>
-			<field name="procedure_date"/>
+			<field name="procedure_datetime"/>
        </tree>
        </field>
    </record>

@@ -303,7 +303,10 @@ class PresurgicalRecord(models.Model):
                 'target': 'new'
             }
     
-    
+    @api.onchange('physical_size')
+    def onchange_imc(self):
+        if self.physical_size and self.physical_weight:
+            self.physical_body_mass_index = float(self.physical_weight/(self.physical_size/100)**2)
     
     
     

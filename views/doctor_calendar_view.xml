@@ -118,8 +118,8 @@
                 	class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"/>
                 <button name="action_create_so" string="Create Sales Order" 
                 	class="btn-primary" type="object" states="confirmed"/>
-                <button name="action_view_clinica_record_history" string="View History" 
-                	type="object" class="oe_highlight"/>
+                <!-- <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/> -->
             	<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
             </header>
          	<sheet>
@@ -206,7 +206,7 @@
         				 	</tree>
         				 </field>
         			</page>
-        			<page name="background" string="Patient Background">
+        			<!-- <page name="background" string="Patient Background">
 	      				<group name="pathological_background" >
 	       					<group name="pathological_background_sub1">
 	       						<field name="diabetes"/>
@@ -266,7 +266,7 @@
 	       						<field name="contrtaceptive_methods" />
 	       					</group>
 	       				</group>
-	      			</page>
+	      			</page> -->
         		</notebook>
          	</sheet>
          </form>

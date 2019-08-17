@@ -36,6 +36,7 @@ class PlasticSurgerySheet(models.Model):
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
+    type_id = fields.Selection([('fist_time','First Time'),('control','Control')], string='Consultation Type', default='fist_time')
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
@@ -158,6 +159,11 @@ class PlasticSurgerySheet(models.Model):
             warn_msg = _('Invalid birth date!')
         return warn_msg
             
+    @api.onchange('physical_size')
+    def onchange_imc(self):
+        if self.physical_size and self.physical_weight:
+            self.physical_body_mass_index = float(self.physical_weight/(self.physical_size/100)**2)
+
     @api.onchange('birth_date','age_meassure_unit')
     def onchange_birth_date(self):
         if self.age_meassure_unit == '3':

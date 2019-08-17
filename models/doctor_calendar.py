@@ -79,9 +79,8 @@ class DoctorWaitingRoom(models.Model):
                                          compute='_compute_age_meassure_unit')
     phone = fields.Char(string='Telephone')
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
-    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
-    anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
-                                        string='Type of Anesthesia')
+    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist', required=True)
+    anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], string='Type of Anesthesia', required=True)
     procedure = fields.Text(string='Procedure')
     notes = fields.Text(string='Observations or Notes')
     programmer_id = fields.Many2one('res.users', string='Programmer', default=lambda self: self.env.user)

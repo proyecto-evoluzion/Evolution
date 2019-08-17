@@ -35,7 +35,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
     _description= 'Quirurgical Check List'  
     
     name = fields.Char(string='Name', copy=False)
-    procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
+    procedure_datetime = fields.Datetime(string='Procedure Date/Time', default=fields.Datetime.now)
+    procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict')
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
@@ -68,10 +69,10 @@ class ClinicaQuirurgicalCheckList(models.Model):
     patient_belongins_locked = fields.Selection([('yes','Yes'),('no', 'No')], string="The patient's personal belongings are locked in the locker held by the relative")
     fasting_time_greater = fields.Selection([('yes','Yes'),('no', 'No')], string="Fasting time greater than 8 hours")
     flu_symptoms_enquired = fields.Selection([('yes','Yes'),('no', 'No')], string="I inquire about flu symptoms in the last week")
-    allergic_enquired = fields.Selection([('yes','Yes'),('no', 'No')], string="Inquiry about allergies ?")
-    allergic_text = fields.Text(string="Inquiry about allergies")
-    enquired_proc_medication = fields.Selection([('yes','Yes'),('no', 'No')], string="Inquiry about medications prior to the procedure (Anticoagulants, Antihypertensives, Vitamins, Antibiotics. Hypothyroid, Hypoglycemic agents, Analgesics, etc.)")
-    investigated_drug_consumption = fields.Selection([('yes','Yes'),('no', 'No')], string="Investigate consumption of alcohol and narcotics in the last 24 hours")
+    allergic_enquired = fields.Selection([('yes','Yes'),('no', 'No')], string="Does the patient have allergies ?")
+    allergic_text = fields.Text(string="Which?")
+    enquired_proc_medication = fields.Selection([('yes','Yes'),('no', 'No')], string="Did the patient consume medications prior to the procedure?")
+    investigated_drug_consumption = fields.Selection([('yes','Yes'),('no', 'No')], string="Did the patient consume alcoholic beverages and / or narcotic drugs prior to the procedure?")
     antiembolicas_stockings = fields.Selection([('yes','Yes'),('no', 'No')], string="Antiembolicas stockings")
     operational_site_marking = fields.Selection([('yes','Yes'),('no', 'No')], string="Operational site marking")
     special_preparation = fields.Selection([('yes','Yes'),('no', 'No')], string="Special preparations ?")
@@ -113,6 +114,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
     deliver_receive_time = fields.Datetime(string="Time")
     
     #RECOVERY fields
+    recovery = fields.Text(string="Recovery")
     history_received = fields.Selection([('yes','Yes'),('no', 'No')], string="Full medical history is received")
     equipment_working = fields.Selection([('yes','Yes'),('no', 'No')], string="All equipment for monitoring and resuscitation of the patient working")
     informed_family = fields.Selection([('yes','Yes'),('no', 'No')], string="The patient's family member is informed of their status and evolution")

@@ -70,7 +70,7 @@
          			<group name="other_info_group_sub2" >
          				<field name='disease_id' />
          				<field name='procedure_id' />
-         				<field name='user_id' />
+         				<!--<field name='user_id' />-->
          			</group>
          		</group>
          		<group name="tisue_sending_patologist">
