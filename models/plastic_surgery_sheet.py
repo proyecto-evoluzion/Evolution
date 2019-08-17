@@ -55,8 +55,14 @@ class PlasticSurgerySheet(models.Model):
     
     consultation_reason = fields.Text(string="Reason for Consultation")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
-    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    #surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    toxic = fields.Text(string="Toxic")
+    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
+    transfusion = fields.Text(string="Transfusion")
+    gyneco_obst = fields.Text(string="Gyneco-Obstetricians")
     relatives = fields.Text(string="Relatives")
+    others = fields.Text(string="Others")
+
     smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
     cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')
     smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
@@ -71,10 +77,14 @@ class PlasticSurgerySheet(models.Model):
     ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
     body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
     pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
-    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
     pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
     child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
     abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
+    
+    gestations = fields.Integer(string="G", help="Gestations")
+    births = fields.Integer(string="B",  help="Births")
+    cesarean = fields.Integer(string="C", help="Cesarean")
+
     last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
     last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
     contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
