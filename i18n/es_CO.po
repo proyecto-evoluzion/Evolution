@@ -887,7 +887,7 @@ msgstr "Nacimientos"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_births
 msgid "B"
-msgstr "N"
+msgstr "P"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_bleeding
@@ -1516,7 +1516,6 @@ msgstr "Fecha de los exámenes:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_last_birth_date
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_birth_date
@@ -1524,6 +1523,12 @@ msgstr "Fecha de los exámenes:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_last_birth_date
 msgid "Date of Last Birth"
 msgstr "Fecha del último parto"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_birth_date
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
+msgid "LBD"
+msgstr "FUP"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -1535,7 +1540,6 @@ msgstr "Fecha del último parto:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_last_menstruation_date
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_menstruation_date
@@ -1543,6 +1547,12 @@ msgstr "Fecha del último parto:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_last_menstruation_date
 msgid "Date of Last Menstruation"
 msgstr "Fecha de última menstruación"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_last_menstruation_date
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
+msgid "LMD"
+msgstr "FUR"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_date_attention
@@ -1968,8 +1978,8 @@ msgstr "Duración (en horas)"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
-msgid "Dx and behavior"
-msgstr "Dx y Conducta"
+msgid "Dx and Treatment"
+msgstr "Dx y Tratamiento"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_ecg
@@ -2330,6 +2340,21 @@ msgstr "General"
 #: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_gestations
 msgid "Gestations"
 msgstr "Gestaciones"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
+msgid "Abortions"
+msgstr "Número de Abortos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_last_birth_date
+msgid "Last birth date"
+msgstr "Fecha de último parto"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_mature_promoting_factor
+msgid "Mature Promoting Factor"
+msgstr "Factor promotor de la maduración"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_glob
@@ -3030,23 +3055,27 @@ msgid "Medical Evolution Number:"
 msgstr "Medical Evolution Number:"
 
 #. module: clinica_doctor_data
-#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_medical_evolution
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_medical_evolution_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_medical_evolution_ids
-#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_medical_evolution
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Medical Orders and Evolution"
 msgstr "Órdenes Médicas y Evolución"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_medical_evolution
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_medical_evolution
+msgid "Evolutions Sheet"
+msgstr "Hoja Evoluciones"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
-msgid "Medical Orders and Evolution Form"
-msgstr "Órdenes Médicas y Evolución Form"
+msgid "Evolutions Sheet Form"
+msgstr "Form. Hoja de Evoluciones"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_tree
-msgid "Medical Orders and Evolution Tree"
-msgstr "Medical Orders and Evolution Tree"
+msgid "Evolutions Sheet Tree"
+msgstr "Lista de Hojas de Evoluciones"
 
 #. module: clinica_doctor_data
 #: selection:clinica.text.template,type:0
@@ -3329,7 +3358,6 @@ msgstr "Number ID:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_abortion_number
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_abortion_number
@@ -3337,6 +3365,11 @@ msgstr "Number ID:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_abortion_number
 msgid "Number of Abortions"
 msgstr "Número de abortos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
+msgid "A"
+msgstr "A"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_child_number
@@ -3764,6 +3797,7 @@ msgstr "Peridural"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_pharmacological
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 msgid "Pharmacological"
 msgstr "Farmacológicos"
 
@@ -3811,13 +3845,17 @@ msgstr "Plan Code"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_plan_analysis
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_plan_analysis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_plan_analysis
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
-#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Plan, Analysis and Conduct"
 msgstr "Plan, Análisis y Conducta"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_treatment
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
+msgid "Treatment"
+msgstr "Tratamiento"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter

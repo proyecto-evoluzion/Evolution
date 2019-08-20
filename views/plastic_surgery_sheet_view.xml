@@ -76,9 +76,9 @@
                                 <label for="allergic" string="Allergic"/>
                                 <field name="allergic" nolabel="1"/>
                             </group>
-                            <group name="transfusion" colspan="2" col='1'>
-                                <label for="transfusion" string="Transfusion"/>
-                                <field name="transfusion" nolabel="1"/>
+                            <group name="pharmacological" colspan="2" col='1'>
+                                <label for="pharmacological" string="Pharmacological"/>
+                                <field name="pharmacological" nolabel="1"/>
                             </group>
                             <group name="gyneco_obst" colspan="2" col='1'>
                                 <label for="gyneco_obst" string="Gyneco-Obstetricians"/>
@@ -88,10 +88,14 @@
                             <group>
                                 <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
                                     <field name="gestations" />
-                                    <field name="births" />
                                     <field name="cesarean" />
+                                    <field name="last_menstruation_date" />
+                                    <field name="mature_promoting_factor" />
                                 </group>
                                 <group>
+                                    <field name="births" />
+                                    <field name="abortion_number" />
+                                    <field name="last_birth_date" />
                                 </group>
                             </group>
 
@@ -106,50 +110,14 @@
                             
 		      			</page>
             			<page name="physical_exam" string="Physical Exam">
-            				<group name="physical_exam_details" string="Physical Details" >
-            					<group name="physical_exam_details_sub1">
-            						<label for="physical_sistolic_arteric_presure" string="TA"/>
-		           					<div>
-		           						<field name="physical_sistolic_arteric_presure" placeholder="Sistolic Arteric Pressure" nolabel="1" class="oe_inline"/>
-		          						 / <field name="physical_diastolic_artery_presure" placeholder="Diastolic Artery Pressure" nolabel="1" class="oe_inline" />
-		           					</div>
-		           					<label for="physical_fc" string="FC"/>
-		           					<div>
-		           						<field name="physical_fc" nolabel="1" class="oe_inline"/>
-		          						 b/m
-		           					</div>
-		           					<label for="physical_fr" string="FR"/>
-		           					<div>
-		           						<field name="physical_fr" nolabel="1" class="oe_inline"/>
-		          						 b/m
-		           					</div>
-            					</group>
-            					<group name="physical_exam_details_sub1">
-            						<label for="physical_weight" string="Weight"/>
-		           					<div>
-		           						<field name="physical_weight" nolabel="1" class="oe_inline"/>
-		          						 Kg
-		           					</div>
-		           					<label for="physical_size" string="Size"/>
-		           					<div>
-		           						<field name="physical_size" nolabel="1" class="oe_inline"/>
-		          						 Cm
-		           					</div>
-		           					<label for="physical_body_mass_index" string="IMC (Body Mass Index)"/>
-		           					<div>
-		           						<field name="physical_body_mass_index" nolabel="1" class="oe_inline"/>
-		          						 kg/m²
-		           					</div>
-            					</group>
-            				</group>
             				<group name="physical_exam" colspan="2" col='1'>
             					<label for="physical_exam" string="Physical Exam"/>
             					<field name="physical_exam" nolabel="1"/>
             				</group>
             			</page>
-            		 	<page name="paraclinical_exam" string="Dx and behavior">
+            		 	<page name="paraclinical_exam" string="Dx and Treatment">
 
-                            <group name="disease_details" string="Main Disease">
+                        <group name="disease_details" string="Main Disease">
                             <group>
                             <field name='disease_id'/>
                             </group>
@@ -159,36 +127,10 @@
                             <field name='disease_state'/>
                             </group>  
                         </group>
-
-                        <group name="other_diseases" string="Other Diseases">
-                            <group>
-                            <field name='disease2_id'/>
-                            </group>
-                            <group>
-                            <!-- <field name='disease_type' /> -->
-                            <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
-                            <field name='disease_state2'/>
-                            </group>
-                            <group>
-                            <field name='disease3_id'/>
-                            </group>
-                            <group>
-                            <!-- <field name='disease_type' /> -->
-                            <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
-                            <field name='disease_state3'/>
-                            </group>  
-                        </group>
-                        <!-- <group name="process" >
-                            <group name="process_sub1" >
-                                <field name='process_id' domain="[('is_health_procedure','=',True)]" options="{'no_create_edit': True}"/>
-                            </group>
-                            <group name="process_sub2" >
-                            </group>
-                        </group> -->
                         
-                        <group name="plan_analysis" colspan="2" col='1'>
-                            <label for="plan_analysis" string="Plan, Analysis and Conduct"/>
-                            <field name="plan_analysis" nolabel="1"/>
+                        <group name="treatment" colspan="2" col='1'>
+                            <label for="treatment" string="Treatment"/>
+                            <field name="treatment" nolabel="1"/>
                         </group>
                         <group name="template">
 		         			<group name="template_sub1">

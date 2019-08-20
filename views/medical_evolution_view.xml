@@ -5,7 +5,7 @@
          <field name="name">clinica.medical.evolution.form</field>
          <field name="model">clinica.medical.evolution</field>
          <field name="arch" type="xml">
-         <form string="Medical Orders and Evolution Form">
+         <form string="Evolutions Sheet Form">
          	<header>
                 <button name="action_view_clinica_record_history" string="View History" 
                 	type="object" class="oe_highlight"/>
@@ -74,67 +74,6 @@
       					</tree>
       					</field>
          	    	</page>
-         	    	<page name="background" string="Patient Background">
-	      				<group name="pathological_background" >
-	       					<group name="pathological_background_sub1">
-	       						<field name="diabetes"/>
-	       						<field name="hypertension"/>
-	       					</group>
-	       					<group name="pathological_background_sub2">
-	       						<field name="arthritis"/>
-	       						<field name="thyroid_disease"/>
-	       					</group>
-       					</group>
-	       				<group name="pathological" colspan="2" col='1'>
-	       					<label for="pathological" string="Pathological"/>
-	       					<field name="pathological" nolabel="1"/>
-	       				</group>
-	       				<group name="surgical" colspan="2" col='1'>
-	       					<label for="surgical" string="Surgical"/>
-	       					<field name="surgical" nolabel="1"/>
-	       				</group>
-	       				<group name="patient_backgorund_main" >
-	       					<group name="patient_backgorund_sub1" >
-	       						<field name="smoke" />
-	       						<label for="cigarate_daily" string="Cigarettes"/>
-	                            <div>
-	                                <div>
-	                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" />
-	                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
-	                                </div>
-	                            </div>
-	       						<field name="is_alcoholic" />
-	       						<label for="alcohol_frequency" string="Frequency"/>
-	                            <div>
-	                                <div>
-	                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline"/>
-	                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
-	                                </div>
-	                            </div>
-	       						<field name="marijuana" />
-	       						<field name="cocaine" />
-	       						<field name="ecstasy" />
-	       						
-	       					</group>
-	       					<group name="patient_backgorund_sub2" >
-	       						<field name="body_background_others" string="Others"/>
-	       						<field name="pharmacological" />
-	       						<field name="allergic" />
-	       					</group>
-	       				</group>
-	       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('sex','=','male')]}">
-	       					<group name="patient_female_backgorund_sub1" >
-	       						<field name="pregnancy_number" />
-	       						<field name="child_number" />
-	       						<field name="abortion_number" />
-	       					</group>
-	       					<group name="patient_female_backgorund_sub2" >
-	       						<field name="last_birth_date" />
-	       						<field name="last_menstruation_date" />
-	       						<field name="contrtaceptive_methods" />
-	       					</group>
-	       				</group>
-	      			</page>
          	    </notebook>
          	</sheet>
          </form>
@@ -145,7 +84,7 @@
           <field name="name">clinica.medical.evolution.tree</field>
           <field name="model">clinica.medical.evolution</field>
           <field name="arch" type="xml">
-              <tree string="Medical Orders and Evolution Tree">
+              <tree string="Evolutions Sheet Tree">
                   <field name="name"/>
      				<field name="procedure_date"/>
      				<field name="patient_id"/>
@@ -159,7 +98,7 @@
             <field name="name">clinica.medical.evolution.search</field>
             <field name="model">clinica.medical.evolution</field>
             <field name="arch" type="xml">
-                <search string="Search Medical Orders and Evolution">
+                <search string="Search Evolutions">
                     <field name="numberid" />
                     <field name="patient_id" />
                     <field name="surgeon_id" />
@@ -174,7 +113,7 @@
        </record>
       
       <record id="action_clinica_medical_evolution" model="ir.actions.act_window">
-          <field name="name">Medical Orders and Evolution</field>
+          <field name="name">Evolutions Sheet</field>
           <field name="res_model">clinica.medical.evolution</field>
           <field name="view_type">form</field>
           <field name="view_mode">tree,form</field>
@@ -183,7 +122,7 @@
       </record> 
       
       <menuitem id="menu_clinica_medical_evolution"
-          name="Medical Orders and Evolution"
+          name="Evolutions Sheet"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_clinica_medical_evolution"
           sequence="10"/>

@@ -58,7 +58,6 @@ class PlasticSurgerySheet(models.Model):
     #surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     toxic = fields.Text(string="Toxic")
     allergic = fields.Text(string="Allergic", related='patient_id.allergic')
-    transfusion = fields.Text(string="Transfusion")
     gyneco_obst = fields.Text(string="Gyneco-Obstetricians")
     relatives = fields.Text(string="Relatives")
     others = fields.Text(string="Others")
@@ -79,14 +78,15 @@ class PlasticSurgerySheet(models.Model):
     pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
     pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
     child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
-    abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
     
     gestations = fields.Integer(string="G", help="Gestations")
     births = fields.Integer(string="B",  help="Births")
     cesarean = fields.Integer(string="C", help="Cesarean")
+    abortion_number = fields.Integer(string="A", related='patient_id.abortion_number', help="Abortions")
+    last_menstruation_date = fields.Date(string="LMD", related='patient_id.last_menstruation_date', help="Last menstruation date")
+    last_birth_date = fields.Date(string="LBD", related='patient_id.last_birth_date', help="Last birth date")
+    mature_promoting_factor = fields.Integer(string="MPF",  help="Mature Promoting Factor")
 
-    last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
-    last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
     contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
     diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
@@ -116,7 +116,7 @@ class PlasticSurgerySheet(models.Model):
                                        ('new_confirmed', 'Confirmado Nuevo'),
                                        ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
-    plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
+    treatment = fields.Text(string="Treatment")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     
