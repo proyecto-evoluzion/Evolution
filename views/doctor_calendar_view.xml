@@ -114,6 +114,8 @@
                 	type="object"  attrs="{'invisible':['|',('state','!=','new'),('room_type','=','surgery')]}"/>
                 <button name="action_confirm" string="Confirm Room Procedure" class="btn-primary"
                  type="object" attrs="{'invisible':['|',('state','!=','new'),('room_type','=','waiting')]}"/>
+                 <button name="action_view_anhestesic_registry" string="Create Anhestesic Registry" 
+                	class="btn-primary" type="object" attrs="{'invisible': ['|',('anhestesic_registry_created','=',True),('state','!=','ordered')]}"/>
                 <button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
                 	class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"/>
                 <button name="action_create_so" string="Create Sales Order" 
@@ -126,6 +128,9 @@
          		<div class="oe_button_box" name="button_box">
                     <button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
                     	states="ordered" string="Quotation">
+                    </button>
+                    <button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                    	attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry">
                     </button>
                     <button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
                     	attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets">
@@ -163,6 +168,7 @@
 	       					</div>
 	       				</div>
 	       				<field name='nurse_sheet_created' invisible="1"/>
+	       				<field name='anhestesic_registry_created' invisible="1"/>
          			</group>
          		</group>
          		

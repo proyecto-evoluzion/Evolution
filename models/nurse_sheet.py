@@ -88,7 +88,9 @@ class ClinicaNurseSheet(models.Model):
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
-    
+    various_procedures = fields.Boolean(string="Various Procedures", copy=False)
+    invoice_procedure_ids = fields.One2many('nurse.sheet.invoice.procedures', 'nurse_sheet_id', string='Health Procedures for Invoice', copy=False)
+    anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry')
     
     @api.multi
     @api.depends('birth_date')
@@ -136,24 +138,42 @@ class ClinicaNurseSheet(models.Model):
     
     def _set_change_room_id(self, room):
         vals = {}
-        if room.sale_order_id and room.sale_order_id.picking_ids:
+        if room.sale_order_id:
             procedure_list = []
-            for picking in room.sale_order_id.picking_ids:
-                for move in picking.move_lines:
-                    procedure_list.append((0,0,{'product_id': move.product_id and move.product_id.id or False,
-                                                'product_uom_qty': move.product_uom_qty,
-                                                'quantity_done': move.quantity_done,
-                                                'move_id': move.id}))
-            if procedure_list:
-                vals.update({'procedure_ids': procedure_list})
+            invc_procedure_list = []
+            if room.sale_order_id.picking_ids:
+                for picking in room.sale_order_id.picking_ids:
+                    for move in picking.move_lines:
+                        procedure_list.append((0,0,{'product_id': move.product_id and move.product_id.id or False,
+                                                    'product_uom_qty': move.product_uom_qty,
+                                                    'quantity_done': move.quantity_done,
+                                                    'move_id': move.id}))
+            sequence = 0
+            first_line = False
+            for sale_line in room.sale_order_id.order_line:
+                sequence += 1
+                invc_procedure_dict = {
+                    'product_id': sale_line.product_id and sale_line.product_id.id or False,
+                    'sequence': sequence,
+                    'sale_line_id': sale_line.id}
+                if self.anhestesic_registry_id:
+                    if not first_line:
+                        invc_procedure_dict.update({'procedure_start_time': self.anhestesic_registry_id.anesthesia_start_time})
+                        first_line = True
+                    if sequence == len(room.sale_order_id.order_line):
+                        invc_procedure_dict.update({'procedure_end_time': self.anhestesic_registry_id.end_time})
+                invc_procedure_list.append((0,0, invc_procedure_dict))
+            if procedure_list or invc_procedure_list:
+                vals.update({'procedure_ids': procedure_list, 'invoice_procedure_ids': invc_procedure_list})
         return vals 
         
-    @api.onchange('room_id')
+    @api.onchange('room_id','anhestesic_registry_id')
     def onchange_room_id(self):
         if self.room_id:
             room_change_vals = self._set_change_room_id(self.room_id)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
             self.procedure_ids = room_change_vals.get('procedure_ids', False)
+            self.invoice_procedure_ids = room_change_vals.get('invoice_procedure_ids', False)
             
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
@@ -187,6 +207,19 @@ class ClinicaNurseSheet(models.Model):
             if nurse_sheet.document_type == 'as' and nurse_sheet.age_meassure_unit == '1' and nurse_sheet.age <= 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
 
+    @api.multi
+    def _set_invoice_procedure_vals(self, invoice_procedure_ids):
+        for nurse_sheet in self:
+            invc_procedures = self.env['nurse.sheet.invoice.procedures'].search([('nurse_sheet_id','=',nurse_sheet.id)], order='sequence')
+            start_time = 0
+            if nurse_sheet.anhestesic_registry_id:
+                start_time = nurse_sheet.anhestesic_registry_id.anesthesia_start_time
+            for invc_proc_line in invc_procedures:
+                invc_proc_line.procedure_start_time = start_time
+                start_time = invc_proc_line.procedure_end_time
+                if invc_proc_line.last_procedure and nurse_sheet.anhestesic_registry_id:
+                    invc_proc_line.procedure_end_time = nurse_sheet.anhestesic_registry_id.end_time
+    
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('nurse.sheet') or '/'
@@ -202,6 +235,8 @@ class ClinicaNurseSheet(models.Model):
                 raise ValidationError(warn_msg)
         res = super(ClinicaNurseSheet, self).create(vals)
         res._check_document_types()
+        if vals.get('invoice_procedure_ids', False):
+            res._set_invoice_procedure_vals(vals['invoice_procedure_ids'])
         return res
     
     @api.multi
@@ -222,9 +257,11 @@ class ClinicaNurseSheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-         
+            
         res = super(ClinicaNurseSheet, self).write(vals)
         self._check_document_types()
+        if vals.get('invoice_procedure_ids', False):
+            self._set_invoice_procedure_vals(vals['invoice_procedure_ids'])
         return res
     
     @api.multi
@@ -281,6 +318,29 @@ class NurseSheetVitalSigns(models.Model):
     diuresis = fields.Integer(string='Diuresis')
     bleeding = fields.Integer(string='Bleeding')
     note = fields.Text(string='Nursing Note')
+    
+class NurseSheetInvoiceProcedures(models.Model):
+    _name = "nurse.sheet.invoice.procedures"
+    
+    nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False)
+    product_id = fields.Many2one('product.product', string='Health Procedure')
+    sequence = fields.Integer('Sequence')
+    procedure_start_time = fields.Float('Procedure Start Time')
+    procedure_end_time = fields.Float('Procedure End Time')
+    sale_line_id = fields.Many2one('sale.order.line', string='Sale Order Line', copy=False)
+    last_procedure = fields.Boolean(string='Last Procedure', copy=False, compute='_set_last_procedure')
+    
+    @api.multi
+    def _set_last_procedure(self):
+        for invc_procedure in self:
+            nurse_invc_procedure_obj = self.search([('nurse_sheet_id','=',invc_procedure.nurse_sheet_id.id)], order='sequence desc', limit=1)
+            if nurse_invc_procedure_obj == invc_procedure:
+                invc_procedure.last_procedure = True
+            else:
+                invc_procedure.last_procedure = False
+                
+    
+                
         
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

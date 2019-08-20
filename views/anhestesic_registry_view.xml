@@ -19,6 +19,7 @@
          		<group name="main_group">
          			<group name="main_sub_group1" >
          				<field name='intervention_date' required="1"/>
+         				<field name='room_id'/>
          				<field name='patient_id' required="1"/>
          				<field name='document_type'/>
          				<field name='numberid' attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>

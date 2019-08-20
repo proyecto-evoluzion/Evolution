@@ -88,6 +88,7 @@ class DoctorWaitingRoom(models.Model):
     state = fields.Selection([('new','New'),('confirmed','Confirmed'),('ordered','SO Created')], 
                                         string='Status', default='new')
     nurse_sheet_created = fields.Boolean(string='Nurse Sheet Created', compute='_compute_nurse_sheet_creation')
+    anhestesic_registry_created = fields.Boolean(string='Anhestesic Registry Created', compute='_compute_anhestesic_registry_creation')
     sale_order_id = fields.Many2one('sale.order', string='Sales Order', copy=False)
     
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
@@ -145,7 +146,14 @@ class DoctorWaitingRoom(models.Model):
         for room in self:
             nurse_sheet_ids = self.env['clinica.nurse.sheet'].search([('room_id','=',room.id)])
             if nurse_sheet_ids:
-                room.nurse_sheet_created = True
+                room.nurse_sheet_created = True           
+                     
+    @api.multi
+    def _compute_anhestesic_registry_creation(self):
+        for room in self:
+            anhestesic_registry_ids = self.env['clinica.anhestesic.registry'].search([('room_id','=',room.id)])
+            if anhestesic_registry_ids:
+                room.anhestesic_registry_created = True
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):
@@ -326,8 +334,11 @@ class DoctorWaitingRoom(models.Model):
     def _set_nurse_sheet_values(self):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
-            'default_room_id' : self.id
+            'default_room_id' : self.id,
         }
+        anhestesic_registry = self.env['clinica.anhestesic.registry'].search([('room_id','=',self.id)], limit=1)
+        if anhestesic_registry:
+            vals.update({'default_anhestesic_registry_id': anhestesic_registry.id})
         if self.sale_order_id and self.sale_order_id.picking_ids:
             procedure_list = []
             for picking in self.sale_order_id.picking_ids:
@@ -414,6 +425,31 @@ class DoctorWaitingRoom(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+    @api.multi
+    def _set_anhestesic_registry_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_room_id' : self.id
+        }
+        return vals
+            
+    @api.multi
+    def action_view_anhestesic_registry(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_anhestesic_registry')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_anhestesic_registry_values()
+        anhestesic_registry_ids = self.env['clinica.anhestesic.registry'].search([('room_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(anhestesic_registry_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(anhestesic_registry_ids.ids) + ")]"
+        elif len(anhestesic_registry_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_anhestesic_registry_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = anhestesic_registry_ids.id
+        return result
     
 
 class DoctorWaitingRoomProcedures(models.Model):
