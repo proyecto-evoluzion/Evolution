@@ -215,3 +215,10 @@ access_clinica_post_anesthesic_care,access_clinica_post_anesthesic_care,model_cl
 access_post_anesthesic_care_vitalsigns,access_post_anesthesic_care_vitalsigns,model_post_anhestesic_care_vital_signs,base.group_user,1,1,1,1
 access_post_anesthesic_care_liquids,access_post_anesthesic_care_liquids,model_post_anhestesic_care_liquids,base.group_user,1,1,1,1
 access_post_anesthesic_care_drugs,access_post_anesthesic_care_drugs,model_post_anhestesic_care_drugs,base.group_user,1,1,1,1
+access_nurse_sheet_invoice_procedures,access_nurse_sheet_invoice_procedures,model_nurse_sheet_invoice_procedures,base.group_user,1,1,1,1
+
+
+
+
+
+

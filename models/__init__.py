@@ -34,6 +34,7 @@ from . import doctor_epicrisis
 from . import quirurgical_check_list
 from . import clinica_record_list_visualizer
 from . import post_anhestesic_care
+from . import invoice
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

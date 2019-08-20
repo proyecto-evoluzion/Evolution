@@ -213,6 +213,7 @@ class AnhestesicRegistry(models.Model):
     extubation_time = fields.Float(string="Extubation Time")
     anesthesia_end_time = fields.Float(string="Anesthesia End Time")
     recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     
     
     @api.multi
@@ -236,6 +237,11 @@ class AnhestesicRegistry(models.Model):
                 else:
                     anhestesic.age_meassure_unit = '1'
                     anhestesic.age = int(date_diff.years)
+                    
+    @api.onchange('room_id')
+    def onchange_room_id(self):
+        if self.room_id:
+            self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):
