@@ -63,6 +63,10 @@
 	         				<div>
 	         					<field name="confirm_patient_name" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
 	         				</div>
+	         				<label for="confirm_bracelet_data" style="width:550px !important;"/>
+	         				<div>
+	         					<field name="confirm_bracelet_data" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         				</div>
 	         				<label for="confirm_procedure" style="width:550px !important;"/>
 	         				<div>
 	         					<field name="confirm_procedure" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>

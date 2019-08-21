@@ -33,10 +33,6 @@
 
             <group>
               <group string="Drenajes">
-              <label for="paraclinical_hb" string="Tubo Nasogástrico"/>
-                <div>
-                  <field name="nasogastric_tube" nolabel="1" class="oe_inline"/> cc
-                </div>
                 <label for="chest_tube" string="Tubo Tórax"/>
                 <div>
                   <field name="chest_tube" nolabel="1" class="oe_inline"/> cc
@@ -44,14 +40,6 @@
                 <label for="hemovac" string="Hemovac"/>
                 <div>
                   <field name="hemovac" nolabel="1" class="oe_inline"/> cc
-                </div>
-                <label for="urinary_tube" string="Sonda Vesical"/>
-                <div>
-                  <field name="urinary_tube" nolabel="1" class="oe_inline"/> cc
-                </div>
-                <label for="cystostomy" string="Sonda Cistostomía"/>
-                <div>
-                  <field name="cystostomy" nolabel="1" class="oe_inline"/> cc
                 </div>
                 <label for="others" string="Otros"/>
                 <div>
@@ -76,6 +64,7 @@
             <group string="Escala Aldrete">
                 <field name="aldrete_ids" nolabel="1">
                   <tree editable="bottom">
+                    <field name="moment"/>
                     <field name="conscience"/>
                     <field name="saturation"/>
                     <field name="breathing"/>

@@ -426,15 +426,10 @@
            				<group name="final_state" string="Final State">
            					<group name="final_state_sub1">
            						<field name="motor_lock"/>
-           						<field name="coma"/>
            						<field name="awake"/>
-           						<field name="asleep"/>
-           						<field name="intubated"/>
            					</group>
            					<group name="final_state_sub2">
            						<field name="reagent"/>
-           						<field name="shock"/>
-           						<field name="uci"/>
            						<field name="recovery"/>
            					</group>
            				</group>

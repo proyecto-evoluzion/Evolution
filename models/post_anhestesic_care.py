@@ -128,6 +128,7 @@ class PostAnhestesicAldrete(models.Model):
 	
 	post_anhestesic_care_id = fields.Many2one('clinica.post.anhestesic.care', string='Post-Anhestesic Care', copy=False, ondelete='cascade')
 	#aldrete
+	moment = fields.Selection([('1','Admisión'),('2','5'),('3','15'),('4','30'),('5','45'),('6','60'),('7','Alta')], string='Momento')
 	conscience = fields.Selection([('2','Despierto'),('1','Responde Llamado'),('0','No Responde')], string='Conciencia')
 	saturation = fields.Selection([('2','SO2 > 93% + Aire'),('1','SO2 > 90% + O2'),('0','SO > 90% + O2')], string='Saturación')
 	breathing = fields.Selection([('2','Capaz de Toser'),('1','Disnea'),('0','Apnea')], string='Respiración')

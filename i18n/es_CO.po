@@ -476,6 +476,11 @@ msgid "Accompany Person's Details"
 msgstr "Datos del Acompañante"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Reason For Consultation"
+msgstr "Motivo de Consulta"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_accompany_phone
 msgid "Accompany Person's Phone Number"
 msgstr "Número de Teléfono de la Persona Acompañante"
@@ -562,7 +567,7 @@ msgstr "Aire (cm)"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Albumin"
-msgstr "Albumin"
+msgstr "Albumina"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -913,7 +918,7 @@ msgstr "Sangre"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Blood Count"
-msgstr "Caudra Hemática"
+msgstr "Cuadro Hemático"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_blood_type
@@ -1255,6 +1260,11 @@ msgid "Confirm Patient Name"
 msgstr "Confirma nombre paciente"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_confirm_bracelet_data
+msgid "Bracelet data is verified: Name, Type and Identification Number, HR, Allergies"
+msgstr "Se verifican datos de la manilla: Nombre, Tipo y Número de identificación, RH, Alergias"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_confirm_procedure
 msgid "Confirm Procedure"
 msgstr "Confirma Procedimiento"
@@ -1447,7 +1457,7 @@ msgstr "Creado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Creatinine"
-msgstr "Creatinine"
+msgstr "Creatinina"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -1498,7 +1508,7 @@ msgstr "Fecha y hora"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_date_hour
 msgid "Date and hopeur"
-msgstr "Date and hopeur"
+msgstr "Hora y Fecha"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
@@ -1594,7 +1604,7 @@ msgstr "Protesis Dental"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Department"
-msgstr "Departamento"
+msgstr "Departamento/Ciudad"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_note
@@ -1906,6 +1916,11 @@ msgid "Doctor Details"
 msgstr "Gestionar Profesionales"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Districts/Localties/Areas"
+msgstr "Localidad/Distrito/Área"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_process
 msgid "Doctor Process"
 msgstr "Procesos"
@@ -2020,7 +2035,7 @@ msgstr "Éxtasis:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Electrocardiogram"
-msgstr "Electrocardiogram"
+msgstr "Electrocardiograma"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_email
@@ -2360,13 +2375,13 @@ msgstr "Factor promotor de la maduración"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_glob
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_paraclinical_glob
 msgid "Glob"
-msgstr "Glob"
+msgstr "Globulina"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "Glob:"
-msgstr "Glob:"
+msgstr "Globulina:"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_glycemia
@@ -2374,7 +2389,7 @@ msgstr "Glob:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Glycemia"
-msgstr "Glycemia"
+msgstr "Glicemia"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -2697,7 +2712,7 @@ msgstr "Presión Venosa Intermitente funsionando"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_intervention_date
 msgid "Intervention Date"
-msgstr "Fecha de la intervención"
+msgstr "Fecha intervención"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -3501,8 +3516,18 @@ msgstr "Orders and Evolutions Notes"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
-msgid "Origin"
+msgid "Country"
+msgstr "País"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Provenance"
 msgstr "Procedencia"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Provenance Country"
+msgstr "País de Procedencia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_orotracheal
@@ -3746,7 +3771,7 @@ msgstr "Paciente"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Patient Background"
-msgstr "Background Paciente"
+msgstr "Antecedentes Paciente"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
@@ -3812,7 +3837,7 @@ msgstr "Teléfono"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Physical Details"
-msgstr "Physical Details"
+msgstr "Exámen FÍSICO"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_exam
@@ -4147,7 +4172,7 @@ msgstr "Protección específica"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Pruebas Coogulacian"
-msgstr "Pruebas Coogulacian"
+msgstr "Pruebas Coagulación"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_post_anhestesic_care_aldrete_aldrete_score
@@ -4173,7 +4198,7 @@ msgstr "Cantidad"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Quimico Sanguinea"
-msgstr "Quimico Sanguinea"
+msgstr "Química Sanguínea"
 
 #. module: clinica_doctor_data
 #: selection:clinica.text.template,type:0
@@ -4431,13 +4456,13 @@ msgstr "Rx. Torax"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "S (seconds)"
-msgstr "S (seconds)"
+msgstr "S (segundos)"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "S (seconds) <br/>"
-msgstr "S (seconds) <br/>"
+msgstr "S (segundos) <br/>"
 
 #. module: clinica_doctor_data
 #: selection:post.anhestesic.care.aldrete,saturation:0
@@ -4447,7 +4472,7 @@ msgstr "SO > 90% + O2"
 #. module: clinica_doctor_data
 #: selection:doctor.waiting.room,state:0
 msgid "SO Created"
-msgstr "SO Created"
+msgstr "SO Creado"
 
 #. module: clinica_doctor_data
 #: selection:post.anhestesic.care.aldrete,saturation:0
@@ -4884,6 +4909,7 @@ msgstr "Surgery Room Tree"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_room_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_room_id
 msgid "Surgery Room/Appointment"
 msgstr "Cuarto Cirugía/Cita"
 
@@ -5551,6 +5577,7 @@ msgstr "Años"
 #: selection:clinica.quirurgical.check.list,supplies_delivered:0
 #: selection:clinica.quirurgical.check.list,surgical_concent_filled:0
 #: selection:clinica.quirurgical.check.list,venous_pressure_working:0
+#: selection:clinica.quirurgical.check.list,confirm_bracelet_data:0
 msgid "Yes"
 msgstr "Si"
 
@@ -5768,7 +5795,7 @@ msgstr "kg/m²"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "m (Minutes)"
-msgstr "m (Minutes)"
+msgstr "m (Minutos)"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template

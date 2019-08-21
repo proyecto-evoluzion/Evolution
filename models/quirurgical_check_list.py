@@ -61,6 +61,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
     
     #PRE-OPERATORY fields
     confirm_patient_name = fields.Selection([('yes','Yes'),('no', 'No')], string="Confirm Patient Name")
+    confirm_bracelet_data = fields.Selection([('yes','Yes'),('no', 'No')], string="Bracelet data is verified: Name, Type and Identification Number, HR, Allergies")
     confirm_procedure = fields.Selection([('yes','Yes'),('no', 'No')], string="Confirm Procedure")
     surgical_concent_filled = fields.Selection([('yes','Yes'),('no', 'No')], string='Surgical informed consent fully filled out')
     pre_anesthetic_assessment_complete = fields.Selection([('yes','Yes'),('no', 'No')], string='Pre-anesthetic assessment and informed consent Anesthetic fully completed')
