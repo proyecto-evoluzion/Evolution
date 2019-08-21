@@ -1604,7 +1604,7 @@ msgstr "Protesis Dental"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Department"
-msgstr "Departamento/Ciudad"
+msgstr "Departamento"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_note
@@ -2980,7 +2980,7 @@ msgstr "Local C."
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Location/City/Town"
-msgstr "Municipio"
+msgstr "Municipio/Ciudad"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_birth_city_id
@@ -3837,7 +3837,7 @@ msgstr "Teléfono"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Physical Details"
-msgstr "Exámen FÍSICO"
+msgstr "Exámen Físico"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_exam
