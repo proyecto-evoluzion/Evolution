@@ -212,11 +212,17 @@ class ClinicaNurseSheet(models.Model):
         for nurse_sheet in self:
             invc_procedures = self.env['nurse.sheet.invoice.procedures'].search([('nurse_sheet_id','=',nurse_sheet.id)], order='sequence')
             start_time = 0
+            load_previous = True
             if nurse_sheet.anhestesic_registry_id:
                 start_time = nurse_sheet.anhestesic_registry_id.anesthesia_start_time
             for invc_proc_line in invc_procedures:
-                invc_proc_line.procedure_start_time = start_time
-                start_time = invc_proc_line.procedure_end_time
+                if load_previous:
+                    invc_proc_line.procedure_start_time = start_time
+                if invc_proc_line.load_start_time:
+                    start_time = invc_proc_line.procedure_end_time
+                    load_previous = True
+                else:
+                    load_previous = False
                 if invc_proc_line.last_procedure and nurse_sheet.anhestesic_registry_id:
                     invc_proc_line.procedure_end_time = nurse_sheet.anhestesic_registry_id.end_time
     
@@ -328,6 +334,7 @@ class NurseSheetInvoiceProcedures(models.Model):
     procedure_start_time = fields.Float('Procedure Start Time')
     procedure_end_time = fields.Float('Procedure End Time')
     sale_line_id = fields.Many2one('sale.order.line', string='Sale Order Line', copy=False)
+    load_start_time = fields.Boolean(string='Load to Next Procedure Start', copy=False)
     last_procedure = fields.Boolean(string='Last Procedure', copy=False, compute='_set_last_procedure')
     
     @api.multi
