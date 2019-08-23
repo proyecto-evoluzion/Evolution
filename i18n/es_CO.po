@@ -693,13 +693,43 @@ msgstr "Anestésia"
 #: selection:clinica.record.list.visualizer,view_model:0
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_anhestesic_registry
 #: model:ir.model,name:clinica_doctor_data.model_clinica_anhestesic_registry
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_anhestesic_registry_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_anhestesic_registry_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_anhestesic_registry_ids
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_anhestesic_registry
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Anhestesic Registry"
 msgstr "Registros Anestésia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_anhestesic_registry_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_anhestesic_registry_id
+msgid "Anhestesic Registry"
+msgstr "Registro Anestésia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_various_procedures
+msgid "Various Procedures"
+msgstr "Varios Procedimientos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+msgid "Order and Time of Procedures"
+msgstr "Orden y Tiempo de Procedimientos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_invoice_procedures_procedure_end_time
+msgid "Procedure End Time"
+msgstr "Hora Fin Procedimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_invoice_procedures_procedure_start_time
+msgid "Procedure Start Time"
+msgstr "Hora Inicio Procedimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_invoice_procedures_load_start_time
+msgid "Load to Next Procedure Start"
+msgstr "Cargar para cuando el siguiente procedimiento inicie"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
@@ -2460,6 +2490,7 @@ msgstr "Difícil"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_cups_code_product_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedures_product_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_invoice_procedures_product_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_procedures_product_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.product_normal_form_view_inherit_health_procedures
 msgid "Health Procedure"
@@ -4705,7 +4736,7 @@ msgstr "Presión Arterial Sistólica"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Sistolic Artery Pressure"
-msgstr "Sistolic Artery Pressure"
+msgstr "Presión Arterial Sistólica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_post_anhestesic_care_liquids_liquid_site

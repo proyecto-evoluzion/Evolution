@@ -68,6 +68,10 @@
 		       					<label for="pathological" string="Pathological"/>
 		       					<field name="pathological" nolabel="1"/>
 		       				</group>
+                            <group name="surgical" colspan="2" col='1'>
+                                <label for="surgical" string="Surgical"/>
+                                <field name="surgical" nolabel="1"/>
+                            </group>
                             <group name="toxic" colspan="2" col='1'>
                                 <label for="toxic" string="Toxic"/>
                                 <field name="toxic" nolabel="1"/>

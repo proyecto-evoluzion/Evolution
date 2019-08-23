@@ -55,7 +55,7 @@ class PlasticSurgerySheet(models.Model):
     
     consultation_reason = fields.Text(string="Reason for Consultation")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
-    #surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     toxic = fields.Text(string="Toxic")
     allergic = fields.Text(string="Allergic", related='patient_id.allergic')
     gyneco_obst = fields.Text(string="Gyneco-Obstetricians")
