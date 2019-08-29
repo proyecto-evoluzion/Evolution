@@ -157,7 +157,7 @@
             					</group>
             				</group>
             				<group name="paraclinical_blood_count" string="Blood Count">
-            					<group name="paraclinical_blood_count_sub1">
+            					<group name="paraclinical_blood_count_sub1" col="7">
             						<label for="paraclinical_hb" string="HB"/>
 		           					<div>
 		           						<field name="paraclinical_hb" nolabel="1" class="oe_inline"/>

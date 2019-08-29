@@ -22,7 +22,8 @@
             			</group>
             		</group>
             		<group name="attention_details">
-            			<field name='patient_id' required="1"/>	
+            			<field name='patient_id' required="1"/>
+                        <field name="gender" invisible="1" />
             		</group>
             		<group name="consultation_reason" colspan="2" col='1'>
                          <label for="consultation_reason" string="Reason for Consultation"/>
@@ -58,18 +59,29 @@
                             </group>
 
                             <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
-                                <group >
-                                    <field name="gestations" />
-                                    <field name="cesarean" />
-                                    <field name="last_menstruation_date" />
-                                    <field name="mature_promoting_factor" />
-                                </group>
-                                <group>
-                                    <field name="gender" invisible="1" />
-                                    <field name="births" />
-                                    <field name="abortion_number" />
-                                    <field name="last_birth_date" />
-                                </group>
+                                
+                                <div>
+                                    <label for="gestations" string="G" />
+                                    <field name="gestations" class="oe_inline" width="20"/>
+                                    <label for="births" string="P" />
+                                    <field name="births" class="oe_inline" style="width:20%%"/>
+                                    <label for="cesarean" string="C" />
+                                    <field name="cesarean"  class="oe_inline" style="width:20%%"/>
+                                    <label for="abortion_number" string="A" />
+                                    <field name="abortion_number" class="oe_inline" style="width:20%%"/>
+                                   
+                                </div>   
+
+                            </group >
+                            <group name="patient_female_backgorund_main2" attrs="{'invisible':[('gender','=','male')]}">
+                                <div>
+                                    <label for="last_menstruation_date" string="FUR" />
+                                    <field name="last_menstruation_date" class="oe_inline" style="width:20%%"/>
+                                    <label for="last_birth_date" string="FUP" />
+                                    <field name="last_birth_date" class="oe_inline" style="width:20%%"/>
+                                    <label for="mature_promoting_factor" string="MPF" />
+                                    <field name="mature_promoting_factor" class="oe_inline" style="width:20%%"/>
+                                </div>
                             </group>
 
 		       				<group name="relatives" colspan="2" col='1'>

@@ -45,7 +45,7 @@ class PlasticSurgerySheet(models.Model):
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
-    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
+    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related="patient_id.sex")
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',

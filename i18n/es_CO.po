@@ -2397,6 +2397,11 @@ msgid "Last birth date"
 msgstr "Fecha de último parto"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_last_menstruation_date
+msgid "Last menstruation date"
+msgstr "Fecha de última menstruación"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_mature_promoting_factor
 msgid "Mature Promoting Factor"
 msgstr "Factor promotor de la maduración"
