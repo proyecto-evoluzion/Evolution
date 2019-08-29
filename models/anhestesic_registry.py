@@ -43,7 +43,7 @@ class AnhestesicRegistry(models.Model):
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
-    numberid = fields.Char(string='Number ID', related="patient_id.ref")
+    numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
