@@ -59,8 +59,8 @@ class DoctorEpicrisis(models.Model):
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
-    disease_id = fields.Many2one('doctor.diseases', 'Disease', ondelete='restrict')
-    procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict')
+    disease_id = fields.Many2one('doctor.diseases', 'Definitive Dx', ondelete='restrict')
+    procedure_id = fields.Many2one('product.product', 'Surgical Procedure', ondelete='restrict')
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
     epicrisis_note = fields.Text(string='Epicrisis')
@@ -93,6 +93,8 @@ class DoctorEpicrisis(models.Model):
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
+    end_time = fields.Float(string="End Time")
+    treatment = fields.Text(string="Treatment")
     
     @api.multi
     @api.depends('birth_date')

@@ -85,7 +85,7 @@ class PlasticSurgerySheet(models.Model):
     abortion_number = fields.Integer(string="A", related='patient_id.abortion_number', help="Abortions")
     last_menstruation_date = fields.Date(string="LMD", related='patient_id.last_menstruation_date', help="Last menstruation date")
     last_birth_date = fields.Date(string="LBD", related='patient_id.last_birth_date', help="Last birth date")
-    mature_promoting_factor = fields.Integer(string="MPF",  help="Mature Promoting Factor")
+    mature_promoting_factor = fields.Char(string="MPF",  help="Mature Promoting Factor")
 
     contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
     diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')

@@ -27,18 +27,6 @@
             <group name="patient">
               <field name='patient_id' required="1"/>
             </group>
-         	    <group name="professional_info_group">
-         	    	<group name="professional_info_sub1">
-		                <field name="surgeon_id" domain="[('profession_type','=','doctor')]"/>
-		                <field name="anesthesiologist_id" domain="[('profession_type','=','anesthesiologist')]"/>
-		                <field name="anesthesia_type"/>
-         	    	</group>
-         	    	<group name="professional_info_sub2">
-         	    		<field name="procedure" />
-         	    		<field name="sign_stamp"/>
-         	    		<field name="user_id" />
-         	    	</group>
-         	    </group>
          	    <notebook>
          	    	<page name="description" string="Description">
          	    		<field name="evolution_note_ids" colspan="4" nolabel="1" >
@@ -96,7 +84,7 @@
       </record> 
       
       <menuitem id="menu_clinica_medical_evolution"
-          name="Evolutions Sheet"
+          name="Med. Order and Evolution"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_clinica_medical_evolution"
           sequence="10"/>

@@ -24,8 +24,22 @@
                     <field name='patient_out_date' />
          			</group>
          		</group>
+            <group name="patient_group">
             <group name="patient">
               <field name='patient_id' required="1"/>
+            </group>
+            <group>
+              
+                  <label for="age" string="Age"/>
+                  <div>
+                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
+                    <field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+                  </div>
+                  
+            </group>
+            <group>
+
+            </group>
             </group>
          	    <group name="professional_info_group">
          	    	<group name="professional_info_sub1">
@@ -33,8 +47,10 @@
 		                <field name="procedure_id"/>
          	    	</group>
          	    	<group name="professional_info_sub2">
-         	    		<field name="sign_stamp"/>
-         	    		<field name="user_id" />
+                  <field name="end_time" widget="float_time"/>
+                  <field name="treatment" />
+         	    		<!-- <field name="sign_stamp"/>
+         	    		<field name="user_id" /> -->
          	    	</group>
          	    </group>
          	    

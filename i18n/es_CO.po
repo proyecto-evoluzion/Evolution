@@ -1762,9 +1762,18 @@ msgstr "Presión Arterial Directa"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_diseases_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_disease_id
 msgid "Disease"
 msgstr "Enfermedad"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_disease_id
+msgid "Definitive Dx"
+msgstr "Dx Definitivo"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_end_time
+msgid "End Time"
+msgstr "Hora Salida"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_disease_state
@@ -3115,8 +3124,8 @@ msgstr "Órdenes Médicas y Evolución"
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_medical_evolution
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_medical_evolution
-msgid "Evolutions Sheet"
-msgstr "Hoja Evoluciones"
+msgid "Med. Order and Evolution"
+msgstr "Ord. Médicas y Evolución"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
@@ -3919,6 +3928,12 @@ msgid "Treatment"
 msgstr "Tratamiento"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_treatment
+msgid "Treatment"
+msgstr "Tratamiento Médico"
+
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_assurance_plan_filter
 msgid "Plans"
 msgstr "Planes"
@@ -4086,11 +4101,15 @@ msgstr "Procedimiento"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_procedure
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_procedure_id
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_procedure_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedure
 msgid "Procedure"
 msgstr "Procedimiento"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_procedure_id
+msgid "Surgical Procedure"
+msgstr "Procedimiento Quirúrgico"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_procedure_date
