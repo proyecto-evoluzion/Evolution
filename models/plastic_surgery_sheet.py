@@ -53,7 +53,7 @@ class PlasticSurgerySheet(models.Model):
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
-    consultation_reason = fields.Text(string="Reason for Consultation")
+    consultation_reason = fields.Text(string="Reason for Consultation", related="patient_id.consultation_reason")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     toxic = fields.Text(string="Toxic")
@@ -120,7 +120,11 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     
-    
+    @api.onchange('patient_id')
+    def onchange_consultation_reason(self):
+        if self.patient_id:
+            self.consultation_reason = self.patient_id.consultation_reason
+
     @api.multi
     @api.depends('birth_date')
     def _compute_age_meassure_unit(self):
@@ -143,21 +147,6 @@ class PlasticSurgerySheet(models.Model):
                     data.age_meassure_unit = '1'
                     data.age = int(date_diff.years)
                     
-    @api.onchange('patient_id')
-    def onchange_patient_id(self):
-        if self.patient_id:
-            self.firstname = self.patient_id.firstname
-            self.lastname = self.patient_id.lastname
-            self.middlename = self.patient_id.middlename
-            self.surname = self.patient_id.surname
-            self.document_type = self.patient_id.tdoc
-            self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.ref
-            self.birth_date = self.patient_id.birth_date
-            self.gender = self.patient_id.sex
-            self.blood_rh = self.patient_id.blood_rh
-            self.blood_type = self.patient_id.blood_type
-            
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
         today_datetime = datetime.today()

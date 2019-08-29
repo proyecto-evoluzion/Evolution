@@ -44,7 +44,7 @@ class PresurgicalRecord(models.Model):
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
-    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
+    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related="patient_id.sex")
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
@@ -143,7 +143,11 @@ class PresurgicalRecord(models.Model):
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     
-    
+    @api.onchange('patient_id')
+    def onchange_consultation_reason(self):
+        if self.patient_id:
+            self.consultation_reason = self.patient_id.consultation_reason
+
     @api.multi
     @api.depends('birth_date')
     def _compute_age_meassure_unit(self):
@@ -165,118 +169,24 @@ class PresurgicalRecord(models.Model):
                 else:
                     data.age_meassure_unit = '1'
                     data.age = int(date_diff.years)
-                    
-    @api.onchange('patient_id')
-    def onchange_patient_id(self):
-        if self.patient_id:
-            self.firstname = self.patient_id.firstname
-            self.lastname = self.patient_id.lastname
-            self.middlename = self.patient_id.middlename
-            self.surname = self.patient_id.surname
-            self.gender = self.patient_id.sex
-            self.birth_date = self.patient_id.birth_date
-            self.phone = self.patient_id.phone
-            self.document_type = self.patient_id.tdoc
-            self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.ref
-            self.blood_type = self.patient_id.blood_type
-            self.blood_rh = self.patient_id.blood_rh
-            
-    def _check_birth_date(self, birth_date):
-        warn_msg = '' 
-        today_datetime = datetime.today()
-        today_date = today_datetime.date()
-        birth_date_format = datetime.strptime(birth_date, DF).date()
-        date_difference = today_date - birth_date_format
-        difference = int(date_difference.days)    
-        if difference < 0: 
-            warn_msg = _('Invalid birth date!')
-        return warn_msg
-            
-    @api.onchange('birth_date','age_meassure_unit')
-    def onchange_birth_date(self):
-        if self.age_meassure_unit == '3':
-            self.document_type = 'rc'
-        if self.birth_date:
-            warn_msg = self._check_birth_date(self.birth_date)
-            if warn_msg:
-                warning = {
-                        'title': _('Warning!'),
-                        'message': warn_msg,
-                    }
-                return {'warning': warning}
-            
-    @api.onchange('numberid_integer', 'document_type')
-    def onchange_numberid_integer(self):
-        if self.numberid_integer:
-            self.numberid = str(self.numberid_integer) 
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer == 0:
-            self.numberid = str(0)
+
             
     @api.onchange('medical_recipe_template_id')
     def onchange_medical_recipe_template_id(self):
         if self.medical_recipe_template_id:
             self.medical_recipe = self.medical_recipe_template_id.template_text
             
-    def _check_assign_numberid(self, numberid_integer):
-        if numberid_integer == 0:
-            raise ValidationError(_('Please enter non zero value for Number ID'))
-        else:
-            numberid = str(numberid_integer)
-            return numberid
-    
-    @api.multi
-    def _check_document_types(self):
-        for record in self:
-            if record.age_meassure_unit == '3' and record.document_type not in ['rc','ms']:
-                raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if record.age > 17 and record.age_meassure_unit == '1' and record.document_type in ['rc','ms']:
-                raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if record.age_meassure_unit in ['2','3'] and record.document_type in ['cc','as','ti']:
-                raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if record.document_type == 'ms' and record.age_meassure_unit != '3':
-                raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if record.document_type == 'as' and record.age_meassure_unit == '1' and record.age <= 17:
-                raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
             
     @api.model
     def create(self, vals):
         vals['number'] = self.env['ir.sequence'].next_by_code('doctor.presurgical.record') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
-            numberid_integer = 0
-            if vals.get('numberid_integer', False):
-                numberid_integer = vals['numberid_integer']
-            numberid = self._check_assign_numberid(numberid_integer)
-            vals.update({'numberid': numberid})
-        if vals.get('birth_date', False):
-            warn_msg = self._check_birth_date(vals['birth_date'])
-            if warn_msg:
-                raise ValidationError(warn_msg)
-        
         res = super(PresurgicalRecord, self).create(vals)
         res._check_document_types()
         return res
     
     
     @api.multi
-    def write(self, vals):
-        if vals.get('document_type', False) or 'numberid_integer' in  vals:
-            if vals.get('document_type', False):
-                document_type = vals['document_type']
-            else:
-                document_type = self.document_type
-            if document_type in ['cc','ti']:
-                if 'numberid_integer' in  vals:
-                    numberid_integer = vals['numberid_integer']
-                else:
-                    numberid_integer = self.numberid_integer
-                numberid = self._check_assign_numberid(numberid_integer)
-                vals.update({'numberid': numberid})
-        if vals.get('birth_date', False):
-            warn_msg = self._check_birth_date(vals['birth_date'])
-            if warn_msg:
-                raise ValidationError(warn_msg)
-        
+    def write(self, vals):        
         res = super(PresurgicalRecord, self).write(vals)
         self._check_document_types()
         return res

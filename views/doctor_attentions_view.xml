@@ -14,45 +14,17 @@
             		<group name="main_group">
             			<group name="main_sub_group1" >
             				<field name='attention_code_id' required="1"/>
+                            <field name='number' readonly="1"/>
             			</group>
             			<group name="main_sub_group2" >
             				<field name='date_attention' required="1"/>
-            				<field name='number' readonly="1"/>
             			</group>
             		</group>
-            		<group name="attention_details" string="Patient Details">
-            			<group name="attention_details_sub_group1" >
-            				<field name='patient_id' required="1"/>
-            				<field name='document_type' required="1"/>
-            				<field name='numberid' attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>
-            				<field name='numberid_integer' string="Number ID" attrs="{'invisible':[('document_type','not in',['cc','ti'])]}"/>
-            				
-            			</group>
-            			<group name="attention_details_sub_group2" >
-            				<field name='firstname' required="1"/>
-            				<field name='lastname' required="1"/>
-            				<field name='middlename' />
-            				<field name='surname' />
-            			</group>
+            		<group name="patient">
+            			<field name='patient_id' required="1"/>
+                        <field name='gender' invisible="1"/>
             		</group>
-            		<group name='patient_personal_details' col="6">
-            			<field name='gender' />
-            			<field name='birth_date' />
-           				<label for="age" string="Age"/>
-           				<div>
-           					<div>
-           						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
-          						<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
-           					</div>
-           				</div>
-           				<label for="blood_type" string="Blood Type"/>
-            				<div>
-            					<div>
-            						<field name="blood_type" nolabel="1" class="oe_inline" />
-           							<field name="blood_rh" nolabel="1" class="oe_inline" />
-            					</div>
-            				</div>
-            		</group>
+
             		<group name="consultation_reason" colspan="2" col='1'>
                          <label for="consultation_reason" string="Reason for Consultation"/>
                          <field name="consultation_reason" nolabel="1"/>
