@@ -28,10 +28,11 @@
          				<!-- <field name='procedure_scope' />
          				<field name='procedure_purpose' /> -->
          				<field name='surgical_execution' />
-                <field name='procedure_id' />
+                
          			</group>
          			<group name="other_info_group_sub2" >
          				<field name='disease_id' />
+                <field name='procedure_id' />
          				<!--<field name='user_id' />-->
          			</group>
          		</group>
