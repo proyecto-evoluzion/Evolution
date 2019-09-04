@@ -18,7 +18,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ###############################################################################
-
+import logging
+logger = logging.getLogger(__name__)
 from odoo import models, fields, api, _
 
 import datetime as dt
@@ -79,8 +80,12 @@ class DoctorWaitingRoom(models.Model):
                                          compute='_compute_age_meassure_unit')
     phone = fields.Char(string='Telephone')
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
-    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist', required=True)
-    anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], string='Type of Anesthesia', required=True)
+    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
+    anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], string='Type of Anesthesia')
+    circulating_id = fields.Many2one('doctor.professional', string='Circulating')
+    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
+    nurse_boss_id = fields.Many2one('doctor.professional', string='Nurse Boss')
+    technologist_id = fields.Many2one('doctor.professional', string='Surgical Technologists')
     procedure = fields.Text(string='Procedure')
     notes = fields.Text(string='Observations or Notes')
     programmer_id = fields.Many2one('res.users', string='Programmer', default=lambda self: self.env.user)
@@ -290,6 +295,9 @@ class DoctorWaitingRoom(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
+        if not vals.get('procedure_ids', False):
+            warn_msg = _('Error! Plase add at least one procedure.')
+            raise ValidationError(warn_msg)
         res = super(DoctorWaitingRoom, self).create(vals)
         res._check_document_types()
         res._validate_surgeon_room()
@@ -316,7 +324,6 @@ class DoctorWaitingRoom(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-        
         res = super(DoctorWaitingRoom, self).write(vals)
         self._check_document_types()
         self._validate_surgeon_room()

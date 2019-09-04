@@ -23,7 +23,7 @@ msgstr ""
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:241
 #, python-format
 msgid "%s has another appointment in this date range! Please choose another. "
-msgstr "%s has another appointment in this date range! Please choose another. "
+msgstr "%s tiene otra cita a esta misma hora! Por favor seleccione otra. "
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:254
@@ -31,7 +31,7 @@ msgstr "%s has another appointment in this date range! Please choose another. "
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:267
 #, python-format
 msgid "%s is already allocated for this date! Please choose another. "
-msgstr "%s is already allocated for this date! Please choose another. "
+msgstr "%s está ocupada para esta fecha/hora! Por favor seleccione otra. "
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
@@ -543,6 +543,11 @@ msgstr "Formularios de datos administrativos"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 msgid "Age"
 msgstr "Edad"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_circulating_id
+msgid "Circulating"
+msgstr "Circulante"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -1333,7 +1338,7 @@ msgstr "Confirmado repetido"
 #. module: clinica_doctor_data
 #: selection:doctor.waiting.room,state:0
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr "Confirmado"
 
 #. module: clinica_doctor_data
 #: selection:product.product,procedure_type:0
@@ -3311,7 +3316,7 @@ msgstr "Neumotapón (cm)"
 #. module: clinica_doctor_data
 #: selection:doctor.waiting.room,state:0
 msgid "New"
-msgstr "New"
+msgstr "Nuevo"
 
 #. module: clinica_doctor_data
 #: selection:clinica.quirurgical.check.list,add_items_delivered:0
@@ -3425,6 +3430,11 @@ msgstr "Number ID:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_abortion_number
 msgid "Number of Abortions"
 msgstr "Número de abortos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_nurse_boss_id
+msgid "Nurse Boss"
+msgstr "Enfermera Jefe"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
@@ -4185,7 +4195,7 @@ msgstr "Profesión"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_profession_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_profession_type
 msgid "Profession Type"
-msgstr "Profession Type"
+msgstr "Profesión"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_partner_professional_created
@@ -4954,7 +4964,7 @@ msgstr "Surgery Room Procedure Number:"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_surgery_room_procedures
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Surgery Room Procedures"
-msgstr "Procedimientos Sala Cirugía"
+msgstr "Proc. Sala Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_tree
@@ -5025,6 +5035,7 @@ msgstr "Quirúrgicos"
 #: selection:doctor.professional,profession_type:0
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_technologist_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_technologist_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_technologist_id
 msgid "Surgical Technologists"
 msgstr "Instrumentador/a"
 
@@ -5650,6 +5661,12 @@ msgstr "Si"
 #, python-format
 msgid "You can choose 'AS' document only if the age is greater than 17 years."
 msgstr "You can choose 'AS' document only if the age is greater than 17 years."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_calendar.py:295
+#, python-format
+msgid "Error! Plase add at least one procedure."
+msgstr "Error! Por favor agregue al menos un procedimiento en salud."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:295

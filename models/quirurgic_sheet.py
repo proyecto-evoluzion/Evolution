@@ -62,7 +62,9 @@ class DoctorQuirurgicSheet(models.Model):
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+    circulating_id = fields.Many2one('doctor.professional', string='Circulating')
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
+    nurse_boss_id = fields.Many2one('doctor.professional', string='Nurse Boss')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')
     technologist_id = fields.Many2one('doctor.professional', string='Surgical Technologists')
