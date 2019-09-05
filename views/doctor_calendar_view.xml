@@ -309,7 +309,7 @@
         <field name="name">doctor.waiting.room</field>
         <field name="model">doctor.waiting.room</field>
         <field name="arch" type="xml">
-            <calendar color="surgeon_id" date_start="procedure_date" date_stop="procedure_end_date" string="Waiting Room">
+            <calendar color="surgeon_id" date_start="procedure_date" date_stop="procedure_end_date" string="Waiting Room" quick_add="False" mode="week">
                 <field name="surgeon_id"/>
                 <field name="anesthesiologist_id"/>
                 <field name="patient_id"/>
