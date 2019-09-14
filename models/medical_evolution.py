@@ -50,9 +50,9 @@ class MedicalOrderEvolution(models.Model):
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                              ('pa','PA - Passport'),('rc','RC - Civil Registry'),
                              ('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),
-                             ('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+                             ('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
+    numberid = fields.Char(string='Number ID', related='patient_id.name')
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
@@ -247,7 +247,7 @@ class MedicalOrderEvolutionNotes(models.Model):
     _name = "clinica.medical.evolution.note"  
     
     medical_evolution_id = fields.Many2one('clinica.medical.evolution', 'Medical Evolution', ondelete='cascade')
-    note = fields.Text(string='Description')
+    note = fields.Text(string='Evolution')
     date_hour = fields.Datetime(string='Date and Hour', default=fields.Datetime.now)
     
     

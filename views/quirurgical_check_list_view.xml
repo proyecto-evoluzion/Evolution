@@ -46,7 +46,7 @@
 	            <group name="health_professionals">
          			<group name="health_professionals_sub1" >
          				<field name="procedure_id"/>
-         				<field name='surgeon_id' domain="[('profession_type','=','doctor')]"/>
+         				<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]"/>
          				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
          				<field name='anesthesia_type' />
          			</group>
@@ -161,7 +161,7 @@
 	         				</div>
 	         				<label for="scheduled_surgeon_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','doctor')]"/>
+	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]"/>
 	         				</div>
 	         				<label for="scheduled_patient_id" style="width:550px !important;"/>
 	         				<div>
@@ -173,7 +173,7 @@
 	         				</div>
 	         				<label for="equipments_room_surgeon_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','doctor')]"/>
+	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]"/>
 	         				</div>
 	         				<label for="materials_in_room" style="width:550px !important;"/>
 	         				<div>

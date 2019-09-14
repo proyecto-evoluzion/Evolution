@@ -124,6 +124,7 @@ class PresurgicalRecord(models.Model):
     suitable_surgery = fields.Boolean(string='Suitable for Surgery')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    other_diseases = fields.Boolean(string="Other Diseases")
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')

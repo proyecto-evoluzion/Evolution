@@ -18,7 +18,6 @@
                             <field name='type_id'/>
             			</group>
             			<group name="main_sub_group2" >
-            				<field name='date_attention' required="1"/>
             				<field name='number' readonly="1"/>
             			</group>
             		</group>
@@ -70,20 +69,16 @@
                                     <field name="cesarean"  class="oe_inline" style="width:20%%"/>
                                     <label for="abortion_number" string="A" />
                                     <field name="abortion_number" class="oe_inline" style="width:20%%"/>
-                                   
-                                </div>   
-
-                            </group >
-                            <group name="patient_female_backgorund_main2" attrs="{'invisible':[('gender','=','male')]}">
-                                <div>
                                     <label for="last_menstruation_date" string="FUR" />
                                     <field name="last_menstruation_date" class="oe_inline" style="width:20%%"/>
                                     <label for="last_birth_date" string="FUP" />
                                     <field name="last_birth_date" class="oe_inline" style="width:20%%"/>
                                     <label for="mature_promoting_factor" string="MPF" />
                                     <field name="mature_promoting_factor" class="oe_inline" style="width:20%%"/>
-                                </div>
-                            </group>
+                                   
+                                </div>   
+
+                            </group >
 
 		       				<group name="relatives" colspan="2" col='1'>
                                 <label for="relatives" string="Relatives"/>
@@ -142,7 +137,7 @@
             <field name="arch" type="xml">
                 <tree string="Presurgical Tree">
                     <field name="number"/>
-            	    <field name='attention_code_id'/>
+            	    <!-- <field name='attention_code_id'/> -->
        				<field name="date_attention"/>
        				<field name="patient_id"/>
        				<field name="document_type"/>
@@ -180,7 +175,9 @@
             name="Plastic Surgery Sheet"
             parent="menu_doctor_process"
             action="clinica_doctor_data.action_clinica_plastic_surgery"
-            sequence="9"/>
+            sequence="9"
+            groups="clinica_doctor_data.surgeon,base.group_system"
+            />
         
  </odoo>
  

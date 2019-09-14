@@ -46,9 +46,9 @@ class DoctorEpicrisis(models.Model):
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                              ('pa','PA - Passport'),('rc','RC - Civil Registry'),
                              ('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),
-                             ('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+                             ('ms','MS - Unidentified Minor')], string='Type of Document', related='patient_id.tdoc')
+    numberid = fields.Char(string='Number ID', related='patient_id.name')
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')

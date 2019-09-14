@@ -140,7 +140,7 @@
                                     <field name = "prostheses_location" attrs="{'invisible':[('dental_prostheses', '=', False)]}"/>
                                 </group>
                                 <group>
-                                    <field name="mallampati_scale"/>
+                                    <!-- <field name="mallampati_scale"/> -->
                                 </group>
             				</group>
             				<group name="physical_exam" colspan="2" col='1'>
@@ -257,6 +257,7 @@
                             <group name="disease_details" string="Main Disease">
                             <group>
                             <field name='disease_id' required="True"/>
+                            <field name="other_diseases" />
                             </group>
                             <group>
                             <!-- <field name='disease_type' /> -->
@@ -265,7 +266,7 @@
                             </group>  
                         </group>
 
-                        <group name="other_diseases" string="Other Diseases">
+                        <group name="other_diseases" string="Other Diseases" attrs="{'invisible':[('other_diseases','!=',True)]}">
                             <group>
                             <field name='disease2_id'/>
                             </group>

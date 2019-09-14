@@ -108,10 +108,10 @@
 	                        <field name="phone"/> 
                     	</group>
                     	<group>
-                    		<field name="firstname" required="1"/>
 	                        <field name="lastname"  required="1"/> 
-	                        <field name="middlename"/>
 	                        <field name="surname"/>
+                            <field name="firstname" required="1"/>
+                            <field name="middlename"/>
                     	</group>
                     </group>
                     <notebook colspan="4">
@@ -426,16 +426,20 @@
         
         <menuitem id="menu_doctor_details"
             name="Doctor"
-            sequence="5"/>
+            sequence="5"
+            groups="base.group_system,clinica_doctor_data.surgeon"
+            />
             
         <menuitem id="menu_doctor_process"
             name="Doctor Process"
             parent="menu_doctor_details"
+            groups="base.group_system,clinica_doctor_data.surgeon"
             sequence="1"/>
 
         <menuitem id="menu_doctor_config_details"
             name="Doctor Configuration"
             parent="menu_doctor_details"
+            groups="base.group_system,clinica_doctor_data.surgeon"
             sequence="5"/>
             
         
@@ -462,12 +466,14 @@
             name="Doctors"
             parent="menu_doctor_config_details"
             action="action_doctor_details"
+            groups="base.group_system"
             sequence="1"/>
             
         <menuitem id="menu_doctor_diseases"
             name="Diseases"
             parent="menu_doctor_config_details"
             action="action_doctor_diseases"
+            groups="base.group_system"
             sequence="3"/>
  </odoo>
 

@@ -31,7 +31,7 @@
          	    <group name="professional_info_group">
          	    	<group name="professional_info_sub1">
          	    		<field name="product_id" />
-		                <field name="surgeon_id" domain="[('profession_type','=','doctor')]"/>
+		                <field name="surgeon_id" domain="[('profession_type','=','plastic_surgeon')]"/>
 		                <field name="anesthesiologist_id" domain="[('profession_type','=','anesthesiologist')]"/>
 		                <field name="anesthesia_type"/>
          	    	</group>

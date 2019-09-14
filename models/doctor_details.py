@@ -71,10 +71,12 @@ class Doctor(models.Model):
     phone = fields.Char(string='Phone Number')
     partner_id = fields.Many2one('res.partner', copy=False, ondelete='restrict', string='Related Partner', 
                                     help='Partner-related data of doctor ')
-    profession_type = fields.Selection([('doctor','Doctor'),('anesthesiologist','Anesthesiologist'),
+    res_user_id = fields.Many2one('res.user', copy=False, ondelete='restrict', string='Related User', 
+                                    help='User-related data of doctor ')
+    profession_type = fields.Selection([('plastic_surgeon','Plastic Surgeon'),('anesthesiologist','Anesthesiologist'),
                                         ('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),
                                         ('nurse','Nurse')], 
-                                       string='Profession Type', default='doctor')
+                                       string='Profession Type', default='plastic_surgeon')
     product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
                                    string="Health Procedures", copy=False)
     
@@ -136,7 +138,16 @@ class Doctor(models.Model):
             partner_vals = res._get_related_partner_vals(vals)
             partner_vals.update({'tdoc': 1})
             partner = self.env['res.partner'].create(partner_vals)
-            res.partner_id = partner.id 
+            res.partner_id = partner.id
+        if not res.res_user_id:
+            user_vals = {'active': True,
+                            'login': vals.get('lastname').strip().lower()+'.'+vals.get('firstname').strip().lower(),
+                            'password': 'admin',
+                            'partner_id': partner.id,
+                            'company_id': 1,
+                            }
+            user = self.env['res.users'].create(user_vals)
+            res.res_user_id = user.id
         return res
     
     @api.multi

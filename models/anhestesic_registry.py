@@ -213,7 +213,7 @@ class AnhestesicRegistry(models.Model):
     extubation_time = fields.Float(string="Extubation Time")
     anesthesia_end_time = fields.Float(string="Anesthesia End Time")
     recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
-    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery', copy=False)
     
     @api.multi
     @api.depends('birth_date')

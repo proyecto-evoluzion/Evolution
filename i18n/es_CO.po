@@ -1642,12 +1642,16 @@ msgid "Department"
 msgstr "Departamento"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_note
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
 msgid "Description"
 msgstr "Descripción"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_note
+msgid "Evolution"
+msgstr "Evolución"
 
 #. module: clinica_doctor_data
 #: selection:post.anhestesic.care.aldrete,conscience:0
@@ -1887,7 +1891,7 @@ msgstr "Desea actualizar los procedimientos usados en el inventario?"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_doctor_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_professional_id
 msgid "Doctor"
-msgstr "Profesionales de la salud"
+msgstr "Profesional de la Salud"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_details
@@ -5565,6 +5569,11 @@ msgstr "Alerta!"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Weight"
 msgstr "Peso"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_other_diseases
+msgid "Other Diseases"
+msgstr "Otros Diagnósticos"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
