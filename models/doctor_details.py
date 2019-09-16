@@ -141,7 +141,7 @@ class Doctor(models.Model):
             res.partner_id = partner.id
         if not res.res_user_id:
             user_vals = {'active': True,
-                            'login': vals.get('lastname').strip().lower()+'.'+vals.get('firstname').strip().lower(),
+                            'login': vals.get('firstname').strip().lower()+'.'+vals.get('lastname').strip().lower(),
                             'password': 'admin',
                             'partner_id': partner.id,
                             'company_id': 1,
