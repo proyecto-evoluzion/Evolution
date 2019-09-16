@@ -3483,6 +3483,12 @@ msgid "Nurse"
 msgstr "Enfermera"
 
 #. module: clinica_doctor_data
+#: selection:doctor.professional,profession_type:0
+#: selection:create.health.professional,profession_type:0
+msgid "Plastic Surgeon"
+msgstr "Cirujano Plástico"
+
+#. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_nurse_sheet
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_procedures_nurse_sheet_id
