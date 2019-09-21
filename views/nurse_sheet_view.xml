@@ -74,7 +74,7 @@
       				 
       				 <field name="procedure_ids" colspan="4" nolabel="1" context="{'default_room_id':room_id}" 
       				 	force_save="1" attrs="{'readonly':[('updated_stock','=',True)]}" >
-      				 	<tree editable="bottom" create="false" limit="10000">
+      				 	<tree editable="bottom" create="true" limit="10000">
        				 		<field name="product_id" readonly="1" force_save="1"/>
        				 		<field name="product_uom_qty"  readonly="1" force_save="1" invisible="1"/>
        				 		<field name="quantity_done" force_save="1"/>
@@ -161,7 +161,7 @@
       			
       			<page name="invoice_procedures" string="Order and Time of Procedures" attrs="{'invisible':[('various_procedures','=',False)]}">
       				 <field name="invoice_procedure_ids" colspan="4" nolabel="1" >
-      				 	<tree editable="bottom"  limit="10000" create="false">
+      				 	<tree editable="bottom"  limit="10000" create="true">
        				 		<field name="sequence" widget="handle"/>
        				 		<field name="product_id" readonly="1" force_save="1"/>
        				 		<field name="procedure_start_time" widget="float_time" required="1"/>
@@ -222,7 +222,7 @@
             name="Nurse Sheet"
             parent="menu_doctor_process"
             action="action_clinica_nurse_sheet"
-            groups="base.group_system"
+            groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief"
             sequence="5"/>
            
         
