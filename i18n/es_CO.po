@@ -1901,52 +1901,52 @@ msgstr "Doctor"
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.accounting_assistant
 msgid "Doctor / Accounting Assistant"
-msgstr "Doctor / Accounting Assistant"
+msgstr "Doctor / Asistente Contable"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.administrative_assistant
 msgid "Doctor / Administrative Assistant"
-msgstr "Doctor / Administrative Assistant"
+msgstr "Doctor / Asistente Adminstrativo"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.clinical_auditor
 msgid "Doctor / Clinical Auditor"
-msgstr "Doctor / Clinical Auditor"
+msgstr "Doctor / Auditor Clínico"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.anesthesiologist
 msgid "Doctor / F. Anesthesiologist"
-msgstr "Doctor / F. Anesthesiologist"
+msgstr "Doctor / Anestesiólogo"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.management
 msgid "Doctor / Management"
-msgstr "Doctor / Management"
+msgstr "Doctor / Gerente"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.nursery_chief
 msgid "Doctor / Nursery chief"
-msgstr "Doctor / Nursery chief"
+msgstr "Doctor / Enfermera Jefe"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.nursing_assistant
 msgid "Doctor / Nursing Assistant"
-msgstr "Doctor / Nursing Assistant"
+msgstr "Doctor / Auxiliar Enfermería"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.pharmacist
 msgid "Doctor / Pharmacist"
-msgstr "Doctor / Pharmacist"
+msgstr "Doctor / Farmaceuta"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.programmer_assistant
 msgid "Doctor / Programmer Assistant"
-msgstr "Doctor / Programmer Assistant"
+msgstr "Doctor / Asistente Programación"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.surgeon
 msgid "Doctor / Surgeon"
-msgstr "Doctor / Surgeon"
+msgstr "Doctor / Cirujano"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_tree
