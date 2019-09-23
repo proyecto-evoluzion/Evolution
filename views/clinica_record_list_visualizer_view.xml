@@ -147,6 +147,7 @@
           name="Clinica Record Visualizer"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_clinica_record_list_visualizer"
+	  groups="clinica_doctor_data.group_system"
           sequence="20"/>
 
 </odoo>
