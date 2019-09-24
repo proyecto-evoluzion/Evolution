@@ -1949,6 +1949,11 @@ msgid "Doctor / Surgeon"
 msgstr "Doctor / Cirujano"
 
 #. module: clinica_doctor_data
+#: model:res.groups,name:clinica_doctor_data.surgical_technologist
+msgid "Doctor / Surgical Technologist"
+msgstr "Doctor / Ins. Quirúrgico"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_tree
 msgid "Doctor Administrative Data Tree"
 msgstr "Doctor Administrative Data Tree"
@@ -3812,6 +3817,7 @@ msgstr "Patológicos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_patient_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_filter
@@ -3823,6 +3829,7 @@ msgstr "Patológicos"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_surgical_technologist_form
 msgid "Patient"
 msgstr "Paciente"
 
@@ -4923,6 +4930,7 @@ msgstr "Apto para Cirugía"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedures_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_surgeon_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_surgeon_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_filter
@@ -4985,8 +4993,9 @@ msgstr "Surgery Room Tree"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_room_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_room_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_room_id
 msgid "Surgery Room/Appointment"
-msgstr "Cuarto Cirugía/Cita"
+msgstr "Cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
@@ -6009,3 +6018,34 @@ msgstr "x 10^3/ul<br/>"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_medical_orders_ids
 msgid "Órdenes Médicas"
 msgstr "Órdenes Médicas"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_end
+msgid "End"
+msgstr "Finaliza"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_ids
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_recount
+msgid "Recount"
+msgstr "Recuento"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_surgical_technologist
+msgid "Recount View"
+msgstr "Recuentos"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_start
+msgid "Starts"
+msgstr "Inicia"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_surgical_technologist_id
+msgid "Surgical technologist"
+msgstr "Instrumentador(a)"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_surgical_technologist
+msgid "Surgical Tech."
+msgstr "Ins. Quirúrgico"

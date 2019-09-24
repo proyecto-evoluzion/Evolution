@@ -7,21 +7,30 @@
          <field name="arch" type="xml">
          <form string="Surgical Technologist Form">
          	<sheet>
+	         	<div >
+                <label for="patient_id" string="Patient"/>
+                <h1><field name="patient_id" placeholder="Patient"/></h1>
+            </div>
 	         	<group>
-	         		<field name="patient_id"/>
-	         	</group>
-	         	<group>
-		         	<field name="surgeon_id"/>
+              <group>
 		         	<field name="room_id"/>
+		         	<field name="surgeon_id"/>
+             </group>
+             <group>
+             </group>
 	         	</group>
 	         	<group>
+              <group>
 		         	<field name="recount_ids" nolabel="1">
 		         		<tree editable="bottom">
 		         			<field name="recount"/>
 		         			<field name="start"/>
-							<field name="end"/>
+							    <field name="end"/>
 		         		</tree>
 		         	</field>
+            </group>
+            <group>
+            </group>
 	         	</group>
          	</sheet>
          </form>
@@ -52,7 +61,7 @@
           name="Surgical Tech."
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_doctor_surgical_technologist"
-          groups="base.group_system"
+          groups="base.group_system,clinica_doctor_data.surgical_technologist"
           sequence="15"/>
 
 </odoo>

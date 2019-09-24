@@ -35,6 +35,13 @@ class SurgicalTechnologistRecount(models.Model):
 	_name = "doctor.surgical.technologist.recount"
 
 	surgical_technologist_id = fields.Many2one('doctor.surgical.technologist', string='Surgical technologist', ondelete='restrict')
-	recount = fields.Selection([('gauze','Gauze'),('instrumental','Instrumental'),('needles','Needles')], string='Recount')
+	recount = fields.Many2one('doctor.surgical.technologist.element', string='Recount')
 	start = fields.Integer(string='Starts')
 	end = fields.Integer(string='End')
+
+class SurgicalTechnologistElements(models.Model):
+	_name = "doctor.surgical.technologist.element"
+	_rec_name="name"
+
+	name = fields.Char(string="Name", required="1")
+	active = fields.Boolean(string="Active", default=True)

@@ -40,6 +40,10 @@
         <record id="management" model="res.groups">
             <field name="name">Doctor / Management</field>
         </record>
+
+        <record id="surgical_technologist" model="res.groups">
+            <field name="name">Doctor / Surgical Technologist</field>
+        </record>
     </data>
         
 </odoo>
