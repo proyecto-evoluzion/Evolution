@@ -19,23 +19,22 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
+from odoo import models, fields, api, _
+from odoo import tools
+
+class SurgicalTechnologist(models.Model):
+	_name = "doctor.surgical.technologist"
+
+	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment')
+	recount_ids = fields.One2many('doctor.surgical.technologist.recount', 'surgical_technologist_id', string='Recount')
 
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+class SurgicalTechnologistRecount(models.Model):
+	_name = "doctor.surgical.technologist.recount"
+
+	surgical_technologist_id = fields.Many2one('doctor.surgical.technologist', string='Surgical technologist', ondelete='restrict')
+	recount = fields.Selection([('gauze','Gauze'),('instrumental','Instrumental'),('needles','Needles')], string='Recount')
+	start = fields.Integer(string='Starts')
+	end = fields.Integer(string='End')

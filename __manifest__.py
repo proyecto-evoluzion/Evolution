@@ -55,7 +55,8 @@
         'views/doctor_epicrisis_view.xml',
         'views/quirurgical_check_list_view.xml',
         'views/clinica_record_list_visualizer_view.xml',
-        'views/account_invoice_view.xml'
+        'views/account_invoice_view.xml',
+        'views/doctor_surgical_technologist.xml'
     ],
     'demo': [
     ],
