@@ -131,9 +131,11 @@
 				<button name="action_confirm" string="Confirm Room Procedure" class="btn-primary"
 				 type="object" attrs="{'invisible':['|',('state','!=','new'),('room_type','=','waiting')]}"/>
 				 <button name="action_view_anhestesic_registry" string="Create Anhestesic Registry" 
-					class="btn-primary" type="object" attrs="{'invisible': ['|',('anhestesic_registry_created','=',True),('state','!=','ordered')]}"/>
+					class="btn-primary" type="object" attrs="{'invisible': ['|',('anhestesic_registry_created','=',True),('state','!=','ordered')]}"
+					groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management"/>
 				<button name="action_view_nurse_sheet" string="Create Nurse Sheet" 
-					class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"/>
+					class="btn-primary" type="object" attrs="{'invisible': ['|',('nurse_sheet_created','=',True),('state','!=','ordered')]}"
+					groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor"/>
 				<button name="action_create_so" string="Create Sales Order" 
 					class="btn-primary" type="object" states="confirmed"/>
 				<!-- <button name="action_view_clinica_record_history" string="View History" 
@@ -146,10 +148,40 @@
 						states="ordered" string="Quotation">
 					</button>
 					<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry">
+						attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry"
+						groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 					<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets">
+						attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets"
+						groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+					</button>
+					<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Pre-Surgical Records"
+						groups="clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+					</button>
+					<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Quirurgic Sheet"
+						groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+					</button>
+					<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Quirurgical Check List"
+						groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+					</button>
+					<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Cuidado Post-Anestésico"
+						groups="clinica_doctor_data.management,clinica_doctor_data.anesthesiologist">
+					</button>
+					<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Plastic Surgery Sheet"
+						groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+					</button>
+					<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Med. Order and Evolution"
+						groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+					</button>
+					<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+						string="Epicrisis"
+						groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 				</div>
 				<div class="oe_title">
@@ -344,6 +376,12 @@
 				<field name='anesthesiologist_id'/>
 				<field name="patient_id" />
 				<field name="schedule_id" />
+				<filter string="Today's Confirmed/Ordered Appointments" name="confirmed_today" domain="[('state','in', ['confirmed','ordered']),
+				   ('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]"/>
+				<filter string="Confirmed" name="confirmed" domain="[('state','=', 'confirmed')]"/>
+				<filter string="Ordered" name="ordered" domain="[('state','=','ordered')]"/>
+				<filter string="Today's Appointments" name="today_appointement"
+					domain="[('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
 				<group expand="0" string="Group By">
 					<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
 					<filter string="Surgeon" name="groupby_surgeon_id" domain="[]" context="{'group_by':'surgeon_id'}"/>
@@ -361,7 +399,7 @@
 		<field name="view_type">form</field>
 		<field name="view_mode">calendar,tree,form</field>
 		<field name="domain">[('room_type','=','waiting')]</field>
-		<field name="context">{'default_room_type': 'waiting'}</field>
+		<field name="context">{'default_room_type': 'waiting', 'search_default_confirmed_today':1}</field>
 		<field name="view_id" ref="view_waiting_room_calendar"/>
 		<field name="search_view_id" ref="clinica_waiting_room_filter"/>
 	</record> 
@@ -425,6 +463,12 @@
 				<field name='anesthesiologist_id'/>
 				<field name="patient_id" />
 				<field name="schedule_id" />
+				<filter string="Today's Confirmed/Ordered Procedures" name="confirmed_today" domain="[('state','in', ['confirmed','ordered']),
+				   ('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]"/>
+				<filter string="Confirmed" name="confirmed" domain="[('state','=', 'confirmed')]"/>
+				<filter string="Ordered" name="ordered" domain="[('state','=', 'ordered')]"/>
+				<filter string="Today's Procedures" name="today_appointement"
+					domain="[('procedure_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('procedure_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
 				<group expand="0" string="Group By">
 					<filter string="Surgery Room" name="groupby_surgery_room_id" domain="[]" context="{'group_by':'surgery_room_id'}"/>
 					<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
@@ -443,7 +487,7 @@
 		<field name="view_type">form</field>
 		<field name="view_mode">calendar,tree,form</field>
 		<field name="domain">[('room_type','=','surgery')]</field>
-		<field name="context">{'default_room_type': 'surgery'}</field>
+		<field name="context">{'default_room_type': 'surgery', 'search_default_confirmed_today':1}</field>
 		<field name="view_id" ref="view_surgery_room_procedures_calendar"/>
 		<field name="search_view_id" ref="clinica_surgery_room_procedures_filter"/>
 	</record> 

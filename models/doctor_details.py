@@ -522,5 +522,203 @@ class DoctorAdministrativeData(models.Model):
     _sql_constraints = [
         ('ref_tdoc_unique', 'unique(ref,tdoc)', 'Error creating! This patient already exists in the system.')
     ]
+    
+    @api.multi
+    def _set_clinica_form_default_values(self):
+        return {'default_patient_id': self.id}
+    
+    @api.multi
+    def action_view_surgery_room_procedures(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_surgery_room_procedures')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        ctx_vals = self._set_clinica_form_default_values()
+        ctx_vals.update({'default_room_type': 'surgery'})
+        result['context'] = ctx_vals
+        room_proc_ids = self.env['doctor.waiting.room'].search([('room_type','=','surgery'),('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(room_proc_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(room_proc_ids.ids) + ")]"
+        elif len(room_proc_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_waiting_room_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = room_proc_ids.id
+        return result
+    
+    @api.multi
+    def action_view_appointments(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_waiting_room')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        ctx_vals = self._set_clinica_form_default_values()
+        ctx_vals.update({'default_room_type': 'waiting'})
+        result['context'] = ctx_vals
+        appointments = self.env['doctor.waiting.room'].search([('room_type','=','waiting'),('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(appointments) != 1:
+            result['domain'] = "[('id', 'in', " + str(appointments.ids) + ")]"
+        elif len(appointments) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_waiting_room_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = appointments.id
+        return result
+    
+    @api.multi
+    def action_view_nurse_sheet(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_nurse_sheet')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        nurse_sheet_ids = self.env['clinica.nurse.sheet'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(nurse_sheet_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(nurse_sheet_ids.ids) + ")]"
+        elif len(nurse_sheet_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.view_clinica_nurse_sheet_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = nurse_sheet_ids.id
+        return result
+    
+    @api.multi
+    def action_view_anhestesic_registry(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_anhestesic_registry')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        anhestesic_registry_ids = self.env['clinica.anhestesic.registry'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(anhestesic_registry_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(anhestesic_registry_ids.ids) + ")]"
+        elif len(anhestesic_registry_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_anhestesic_registry_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = anhestesic_registry_ids.id
+        return result  
+          
+    @api.multi
+    def action_view_presurgical_record(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_presurgical_record')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        pre_surgical_ids = self.env['doctor.presurgical.record'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(pre_surgical_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(pre_surgical_ids.ids) + ")]"
+        elif len(pre_surgical_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_presurgical_record_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = pre_surgical_ids.id
+        return result
+    
+    @api.multi
+    def action_view_quirurgic_sheet(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_quirurgic_sheet')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        quirurgic_sheets = self.env['doctor.quirurgic.sheet'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(quirurgic_sheets) != 1:
+            result['domain'] = "[('id', 'in', " + str(quirurgic_sheets.ids) + ")]"
+        elif len(quirurgic_sheets) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_quirurgic_sheet_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = quirurgic_sheets.id
+        return result
+    
+    @api.multi
+    def action_view_quirurgical_check_list(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_quirurgical_check_list')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        quirurgic_check_lists = self.env['clinica.quirurgical.check.list'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(quirurgic_check_lists) != 1:
+            result['domain'] = "[('id', 'in', " + str(quirurgic_check_lists.ids) + ")]"
+        elif len(quirurgic_check_lists) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_quirurgical_check_list_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = quirurgic_check_lists.id
+        return result
+    
+    @api.multi
+    def action_view_post_anhestesic_care(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_post_anhestesic_care')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        post_anhestesic_care_ids = self.env['clinica.post.anhestesic.care'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(post_anhestesic_care_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(post_anhestesic_care_ids.ids) + ")]"
+        elif len(post_anhestesic_care_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.view_clinica_post_anhestesic_care_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = post_anhestesic_care_ids.id
+        return result
+    
+    @api.multi
+    def action_view_plastic_surgery(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_plastic_surgery')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        plastic_surgery_ids = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(plastic_surgery_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(plastic_surgery_ids.ids) + ")]"
+        elif len(plastic_surgery_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_plastic_surgery_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = plastic_surgery_ids.id
+        return result
+    
+    @api.multi
+    def action_view_medical_evolution(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_medical_evolution')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        evolution_ids = self.env['clinica.medical.evolution'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(evolution_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(evolution_ids.ids) + ")]"
+        elif len(evolution_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_medical_evolution_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = evolution_ids.id
+        return result
+    
+    @api.multi
+    def action_view_epicrisis(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_doctor_epicrisis')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        epicrisis_ids = self.env['doctor.epicrisis'].search([('patient_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(epicrisis_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(epicrisis_ids.ids) + ")]"
+        elif len(epicrisis_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.clinica_doctor_epicrisis_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = epicrisis_ids.id
+        return result
+    
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+
+

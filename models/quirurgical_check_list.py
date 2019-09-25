@@ -124,6 +124,12 @@ class ClinicaQuirurgicalCheckList(models.Model):
     add_supplies_text = fields.Text(string="Additional supplies")
 
     observations = fields.Text(string="Observaciones")
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    
+    @api.onchange('room_id')
+    def onchange_room_id(self):
+        if self.room_id:
+            self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
     
     @api.multi

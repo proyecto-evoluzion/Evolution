@@ -143,6 +143,12 @@ class PresurgicalRecord(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    
+    @api.onchange('room_id')
+    def onchange_room_id(self):
+        if self.room_id:
+            self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
     @api.onchange('patient_id')
     def onchange_consultation_reason(self):
@@ -182,14 +188,14 @@ class PresurgicalRecord(models.Model):
     def create(self, vals):
         vals['number'] = self.env['ir.sequence'].next_by_code('doctor.presurgical.record') or '/'
         res = super(PresurgicalRecord, self).create(vals)
-        res._check_document_types()
+#         res._check_document_types()
         return res
     
     
     @api.multi
     def write(self, vals):        
         res = super(PresurgicalRecord, self).write(vals)
-        self._check_document_types()
+#         self._check_document_types()
         return res
     
     @api.multi

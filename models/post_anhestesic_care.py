@@ -66,7 +66,12 @@ class ClinicaPostAnhestesicCare(models.Model):
 	cystostomy = fields.Integer(string='Sonda Cistostomía')
 	others = fields.Integer(string='Otros')
 	total = fields.Integer(string='Total (cc)', compute='_get_sum', store=True, help="Total in cubic centimeters")
-	
+	room_id = fields.Many2one('doctor.waiting.room', string="Surgery Room/Appointment", copy=False)
+    
+	@api.onchange('room_id')
+	def onchange_room_id(self):
+		if self.room_id:
+			self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
 	
 
 

@@ -119,6 +119,12 @@ class PlasticSurgerySheet(models.Model):
     treatment = fields.Text(string="Treatment")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    
+    @api.onchange('room_id')
+    def onchange_room_id(self):
+        if self.room_id:
+            self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
     @api.onchange('patient_id')
     def onchange_consultation_reason(self):

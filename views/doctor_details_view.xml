@@ -170,6 +170,54 @@
             <field name="arch" type="xml">
             <form string="Administrative Data Form">
                 <sheet>
+                	<div class="oe_button_box" name="button_box">
+                		<button name="action_view_surgery_room_procedures" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Surgery Room Procedures"
+							groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
+						</button>
+                		<button name="action_view_appointments" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Appointments"
+							groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
+						</button>
+                		<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Nurse Sheets"
+							groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+						</button>
+						<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Pre-Surgical Records"
+							groups="clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						</button>
+						<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Anhestesic Registry"
+							groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						</button>
+						<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Quirurgic Sheet"
+							groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						</button>
+						<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Quirurgical Check List"
+							groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+						</button>
+						<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Cuidado Post-Anestésico"
+							groups="clinica_doctor_data.management,clinica_doctor_data.anesthesiologist">
+						</button>
+						<button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Plastic Surgery Sheet"
+							groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+						</button>
+						<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Med. Order and Evolution"
+							groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						</button>
+						<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+							string="Epicrisis"
+							groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						</button>
+                	</div>
+                	
+                	
                     <field name="photo" widget='image' class="oe_avatar" options='{"preview_image":"image_medium"}'/>
                     <div class="oe_title">
                         <div>
@@ -356,6 +404,7 @@
             <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
                 <kanban class="o_res_partner_kanban">
+                    <field name="patient_name"/>
                     <field name="name"/>
                     <field name="firstname"/>
                     <field name="lastname"/>
@@ -370,15 +419,57 @@
                     <field name="id"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click o_res_partner_kanban">
-                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
-                                <div class="o_kanban_image">
-                                    <img t-att-src="kanban_image('doctor.patient', 'image_medium', record.id.raw_value)"/>
+                        	<div t-attf-class="oe_kanban_global_click">
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <t t-if="widget.editable"><li><a type="edit">Edit</a></li></t>
+                                        <li groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
+                                        	<a name="action_view_surgery_room_procedures" type="object">Surgery Room Procedures</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
+                                        	<a name="action_view_appointments" type="object">Appointments</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+                                        	<a name="action_view_nurse_sheet" type="object">Nurse Sheet</a>
+                                        </li>
+                                        <li groups="clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+                                        	<a name="action_view_presurgical_record" type="object">Pre-Surgical Records</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+                                        	<a name="action_view_anhestesic_registry" type="object">Anhestesic Registry</a>
+                                        </li>
+                                        <li groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+                                        	<a name="action_view_quirurgic_sheet" type="object">Quirurgic Sheet</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+                                        	<a name="action_view_quirurgical_check_list" type="object">Quirurgical Check List</a>
+                                        </li>
+                                        <li groups="clinica_doctor_data.management,clinica_doctor_data.anesthesiologist">
+                                        	<a name="action_view_post_anhestesic_care" type="object">Cuidado Post-Anestésico</a>
+                                        </li>
+                                        <li groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+                                        	<a name="action_view_plastic_surgery" type="object">Plastic Surgery Sheet</a>
+                                        </li>
+                                        <li groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+                                        	<a name="action_view_medical_evolution" type="object">Med. Order and Evolution</a>
+                                        </li>
+                                        <li groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+                                        	<a name="action_view_epicrisis" type="object">Epicrisis</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="oe_kanban_details">
-                                    <strong class="oe_partner_heading"><field name="name"/></strong>
+                                <div class="oe_kanban_content">
+                                	<div class="o_kanban_image">
+		                                    <img t-att-src="kanban_image('doctor.patient', 'image_medium', record.id.raw_value)"/>
+		                                </div>
+                                	<div class="oe_kanban_details">
+                                    <strong class="oe_partner_heading"><field name="patient_name"/></strong>
                                     <ul>
                                         <li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="tdoc"/></li>
+                                    	<li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="name"/></li>
                                         <li t-if="record.firstname.raw_value"><field name="firstname"/></li>
                                         <li t-if="record.sex.raw_value" class="o_text_overflow">Gender: <field name="sex"/></li>
                                         <li t-if="record.blood_type.raw_value">Blood Type: <field name="blood_type"/><field name="blood_rh"/></li>
@@ -388,8 +479,8 @@
                                     </ul>
                                     <div class="oe_kanban_partner_links"/>
                                 </div>
+                                </div>
                             </div>
-
                         </t>
                     </templates>
                 </kanban>
