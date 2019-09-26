@@ -7,70 +7,47 @@
          <field name="model">doctor.quirurgic.sheet</field>
          <field name="arch" type="xml">
          <form string="Quirurgic Sheet Form">
+         	<header>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
+            </header>
          	<sheet>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-         				<field name='invoice_id' />
-         				<field name='procedure_date' required="1"/>
-         				<field name='patient_id' required="1"/>
-         				<field name='document_type'/>
-         				<field name='numberid' attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>
-            			<field name='numberid_integer' string="Number ID" attrs="{'invisible':[('document_type','not in',['cc','ti'])]}"/>
+                <field name='procedure_date' required="1"/>
+         				<!-- <field name='invoice_id' /> -->
          			</group>
          			<group name="main_sub_group2" >
-                <field name='lastname'/>
-                <field name='surname'/>
-         				<field name='firstname' />
-         				<field name='middlename' />
-         			</group>
-         		</group>
-         		<group name="patient_personal_details">
-         			<group name="patient_personal_details_sub1" >
-         				<field name='gender' />
-         				<label for="blood_type" string="Blood Type"/>
-           				<div>
-           					<div>
-           						<field name="blood_type" nolabel="1" class="oe_inline" />
-          						<field name="blood_rh" nolabel="1" class="oe_inline" />
-           					</div>
-           				</div>
-         			</group>
-         			<group name="patient_personal_details_sub2" >
-            			<field name='birth_date' />
-            			<label for="age" string="Age"/>
-           				<div>
-           					<div>
-           						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
-          						<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
-           					</div>
-           				</div>
          			</group>
          		</group>
          		<group name="health_professionals">
-         			<group name="health_professionals_sub1" >
-         				<field name='surgeon_id' domain="[('profession_type','=','doctor')]"/>
-         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
-         				<field name='anesthesia_type' />
-         			</group>
-         			<group name="health_professionals_sub2" >
-         				<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>
-         				<field name='helper_id' domain="[('profession_type','=','helpers')]"/>
-         			</group>
+                <field name='patient_id' required="1"/>	
          		</group>
          		<group name="other_info_group">
          			<group name="other_info_group_sub1" >
-         				<field name='procedure_scope' />
-         				<field name='procedure_purpose' />
+         				<!-- <field name='procedure_scope' />
+         				<field name='procedure_purpose' /> -->
          				<field name='surgical_execution' />
+                
          			</group>
          			<group name="other_info_group_sub2" >
          				<field name='disease_id' />
-         				<field name='procedure_id' />
-         				<field name='user_id' />
+                <field name='procedure_id' />
+         				<!--<field name='user_id' />-->
          			</group>
          		</group>
          		<group name="tisue_sending_patologist">
          			<field name='tisue_sending_patologist' />
+         		</group>
+         		<group name="template">
+         			<group name="template_sub1">
+         				<field name='description_template_id' options="{'no_create_edit': True}"
+         					domain="[('user_id','=',uid),('type','=','quirurgic_description')]"/>
+         			</group>
+         			<group></group>
+         		</group>
+         		<group name="quirurgic_description">
+         			<field name='description' />
          		</group>
          		<group name="sign_stamp">
          			<field name='sign_stamp' />

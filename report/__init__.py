@@ -19,23 +19,7 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
+from . import clinica_visualizer_report
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

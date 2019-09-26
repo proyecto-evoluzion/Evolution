@@ -36,15 +36,16 @@ class PlasticSurgerySheet(models.Model):
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+    type_id = fields.Selection([('fist_time','First Time'),('control','Control')], string='Consultation Type', default='fist_time')
+    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
+    numberid = fields.Char(string='Number ID', related='patient_id.name')
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
-    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
+    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related="patient_id.sex")
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
@@ -52,26 +53,45 @@ class PlasticSurgerySheet(models.Model):
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
-    consultation_reason = fields.Text(string="Reason for Consultation")
-    pathological = fields.Text(string="Pathological")
-    surgical = fields.Text(string="Surgical")
+    consultation_reason = fields.Text(string="Reason for Consultation", related="patient_id.consultation_reason")
+    pathological = fields.Text(string="Pathological", related='patient_id.pathological')
+    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    toxic = fields.Text(string="Toxic")
+    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
+    gyneco_obst = fields.Text(string="Gyneco-Obstetricians")
     relatives = fields.Text(string="Relatives")
-    smoke = fields.Boolean(string="Smoke")
-    cigarate_daily = fields.Integer(string="Cigarettes / Day")
-    is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
-    alcohol_frequency = fields.Integer(string="Frequency")
-    marijuana = fields.Boolean(string="Marijuana")
-    cocaine = fields.Boolean(string="Cocaine")
-    ecstasy = fields.Boolean(string="Ecstasy")
-    body_background_others = fields.Text(string="Body Background Others")
-    pharmacological = fields.Text(string="Pharmacological")
-    allergic = fields.Text(string="Allergic")
-    pregnancy_number = fields.Integer(string="Number of Pregnancies")
-    child_number = fields.Integer(string="Number of Children")
-    abortion_number = fields.Integer(string="Number of Abortions")
-    last_birth_date = fields.Date(string="Date of Last Birth")
-    last_menstruation_date = fields.Date(string="Date of Last Menstruation")
-    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods")
+    others = fields.Text(string="Others")
+
+    smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
+    cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')
+    smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
+                                  ('year','per Year')], string="Smoke Unit of Measure", default='day', related='patient_id.smoke_uom')
+    is_alcoholic = fields.Boolean(string="Alcoholic Drinks", related='patient_id.is_alcoholic')
+    alcohol_frequency = fields.Integer(string="Frequency", related='patient_id.alcohol_frequency')
+    alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
+                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day', 
+                                             related='patient_id.alcohol_frequency_uom')
+    marijuana = fields.Boolean(string="Marijuana", related='patient_id.marijuana')
+    cocaine = fields.Boolean(string="Cocaine", related='patient_id.cocaine')
+    ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
+    body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
+    pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
+    pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
+    child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
+    
+    gestations = fields.Integer(string="G", help="Gestations")
+    births = fields.Integer(string="B",  help="Births")
+    cesarean = fields.Integer(string="C", help="Cesarean")
+    abortion_number = fields.Integer(string="A", related='patient_id.abortion_number', help="Abortions")
+    last_menstruation_date = fields.Date(string="LMD", related='patient_id.last_menstruation_date', help="Last menstruation date")
+    last_birth_date = fields.Date(string="LBD", related='patient_id.last_birth_date', help="Last birth date")
+    mature_promoting_factor = fields.Char(string="MPF",  help="Mature Promoting Factor")
+
+    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
+    diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
+    hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
+    arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
+    thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
     
     physical_sistolic_arteric_presure = fields.Integer(string="Sistolic Arteric Pressure")
     physical_diastolic_artery_presure = fields.Integer(string="Diastolic Artery Pressure")
@@ -96,9 +116,21 @@ class PlasticSurgerySheet(models.Model):
                                        ('new_confirmed', 'Confirmado Nuevo'),
                                        ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
     process_id = fields.Many2one('product.product', string='Process', ondelete='restrict')
-    plan_analysis = fields.Text(string="Plan, Analysis and Conduct")
+    treatment = fields.Text(string="Treatment")
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
+    medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
+    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     
+    @api.onchange('room_id')
+    def onchange_room_id(self):
+        if self.room_id:
+            self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+    
+    @api.onchange('patient_id')
+    def onchange_consultation_reason(self):
+        if self.patient_id:
+            self.consultation_reason = self.patient_id.consultation_reason
+
     @api.multi
     @api.depends('birth_date')
     def _compute_age_meassure_unit(self):
@@ -121,21 +153,6 @@ class PlasticSurgerySheet(models.Model):
                     data.age_meassure_unit = '1'
                     data.age = int(date_diff.years)
                     
-    @api.onchange('patient_id')
-    def onchange_patient_id(self):
-        if self.patient_id:
-            self.firstname = self.patient_id.firstname
-            self.lastname = self.patient_id.lastname
-            self.middlename = self.patient_id.middlename
-            self.surname = self.patient_id.surname
-            self.document_type = self.patient_id.tdoc
-            self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.ref
-            self.birth_date = self.patient_id.birth_date
-            self.gender = self.patient_id.sex
-            self.blood_rh = self.patient_id.blood_rh
-            self.blood_type = self.patient_id.blood_type
-            
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
         today_datetime = datetime.today()
@@ -147,6 +164,11 @@ class PlasticSurgerySheet(models.Model):
             warn_msg = _('Invalid birth date!')
         return warn_msg
             
+    @api.onchange('physical_size')
+    def onchange_imc(self):
+        if self.physical_size and self.physical_weight:
+            self.physical_body_mass_index = float(self.physical_weight/(self.physical_size/100)**2)
+
     @api.onchange('birth_date','age_meassure_unit')
     def onchange_birth_date(self):
         if self.age_meassure_unit == '3':
@@ -166,6 +188,11 @@ class PlasticSurgerySheet(models.Model):
             self.numberid = str(self.numberid_integer) 
         if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer == 0:
             self.numberid = str(0)
+            
+    @api.onchange('medical_recipe_template_id')
+    def onchange_medical_recipe_template_id(self):
+        if self.medical_recipe_template_id:
+            self.medical_recipe = self.medical_recipe_template_id.template_text
             
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
@@ -229,6 +256,28 @@ class PlasticSurgerySheet(models.Model):
         res = super(PlasticSurgerySheet, self).write(vals)
         self._check_document_types()
         return res
+    
+    @api.multi
+    def _set_visualizer_default_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_view_model': 'plastic_surgery',
+            }
+        return vals
+           
+    @api.multi
+    def action_view_clinica_record_history(self):
+        context = self._set_visualizer_default_values()
+        return {
+                'name': _('Clinica Record History'),
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'clinica.record.list.visualizer',
+                'view_id': self.env.ref('clinica_doctor_data.clinica_record_list_visualizer_form').id,
+                'type': 'ir.actions.act_window',
+                'context': context,
+                'target': 'new'
+            }
     
     
     

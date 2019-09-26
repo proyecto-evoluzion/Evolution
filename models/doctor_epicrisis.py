@@ -23,17 +23,16 @@
 from odoo import models, fields, api, _
 
 import datetime as dt
-from datetime import datetime, timedelta
+from datetime import datetime
 from dateutil import relativedelta
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
-from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError
 import html2text
 
-class DoctorQuirurgicSheet(models.Model):
-    _name = "doctor.quirurgic.sheet"
-    _description= 'Doctor Quirurgic Sheet'      
+class DoctorEpicrisis(models.Model):
+    _name = "doctor.epicrisis"
+    _order = 'id desc'
     
     @api.model
     def _get_signature(self):
@@ -42,48 +41,30 @@ class DoctorQuirurgicSheet(models.Model):
         return signature
     
     name = fields.Char(string='Name', copy=False)
-    invoice_id = fields.Many2one('account.invoice', string='Invoice')
-    procedure_date = fields.Date(string='Procedure Date')
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
-                                      ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
-                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+    patient_in_date = fields.Datetime(string='In Date', copy=False)
+    patient_out_date = fields.Datetime(string='Out Date', copy=False)
+    tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
+                             ('pa','PA - Passport'),('rc','RC - Civil Registry'),
+                             ('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),
+                             ('ms','MS - Unidentified Minor')], string='Type of Document', related='patient_id.tdoc')
+    numberid = fields.Char(string='Number ID', related='patient_id.name')
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
-    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related='patient_id.sex')
+    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
-    blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
-    blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
-    surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
-    circulating_id = fields.Many2one('doctor.professional', string='Circulating')
-    anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
-    nurse_boss_id = fields.Many2one('doctor.professional', string='Nurse Boss')
-    anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
-                                        string='Type of Anesthesia')
-    technologist_id = fields.Many2one('doctor.professional', string='Surgical Technologists')
-    helper_id = fields.Many2one('doctor.professional', string='Surgical Helpers')
-    procedure_scope = fields.Selection([('ambulatory','Ambulatorio'),('hospitable','Hospitalario'),
-                                        ('emergency','Urgencias')], string='Scope of the Procedure', default='ambulatory')
-    procedure_purpose = fields.Selection([('diagnosis','Diagnóstico'),('therapeutic','Terapéutico'),
-                                        ('specific_protection','Protección específica'),('early_detection_general','Detección temprana de Enfermedad general'),
-                                        ('early_detection_ocupational','Detección temprana de enfermedad laboral')], string='Purpose of the procedure', default='therapeutic')
-    surgical_execution = fields.Selection([('single','Single or one-sided'),('multiple_same_diff','Multiple or bilateral, same route, different specialty'),
-                                        ('multiple_same_same','Multiple or bilateral, same way, same specialty'), ('multiple_diff_diff','Multiple or bilateral, different way, different specialty'), ('multiple_diff_same','Multiple or bilateral, different way, same specialty')], string='Execution of the Surgical Act')
-    
-    disease_id = fields.Many2one('doctor.diseases', string='Diagnosis')
-    tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
-    procedure_id = fields.Many2one('product.product', string='Procedure')
+    disease_id = fields.Many2one('doctor.diseases', 'Definitive Dx', ondelete='restrict')
+    procedure_id = fields.Many2one('product.product', 'Surgical Procedure', ondelete='restrict')
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
-    description = fields.Text(string='Quirurgic Description')
-    description_template_id = fields.Many2one('clinica.text.template', string='Template')
+    epicrisis_note = fields.Text(string='Epicrisis')
+    epicrisis_template_id = fields.Many2one('clinica.text.template', string='Template')
     
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
@@ -112,6 +93,8 @@ class DoctorQuirurgicSheet(models.Model):
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
+    end_time = fields.Float(string="End Time")
+    treatment = fields.Text(string="Treatment")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     
     @api.onchange('room_id')
@@ -119,28 +102,27 @@ class DoctorQuirurgicSheet(models.Model):
         if self.room_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
-    
     @api.multi
     @api.depends('birth_date')
     def _compute_age_meassure_unit(self):
-        for sheet in self:
-            if sheet.birth_date:
+        for epicrisis in self:
+            if epicrisis.birth_date:
                 today_datetime = datetime.today()
                 today_date = today_datetime.date()
-                birth_date_format = datetime.strptime(sheet.birth_date, DF).date()
+                birth_date_format = datetime.strptime(epicrisis.birth_date, DF).date()
                 date_difference = today_date - birth_date_format
                 difference = int(date_difference.days)
                 month_days = calendar.monthrange(today_date.year, today_date.month)[1]
                 date_diff = relativedelta.relativedelta(today_date, birth_date_format)
                 if difference < 30:
-                    sheet.age_meassure_unit = '3'
-                    sheet.age = int(date_diff.days)
+                    epicrisis.age_meassure_unit = '3'
+                    epicrisis.age = int(date_diff.days)
                 elif difference < 365:
-                    sheet.age_meassure_unit = '2'
-                    sheet.age = int(date_diff.months)
+                    epicrisis.age_meassure_unit = '2'
+                    epicrisis.age = int(date_diff.months)
                 else:
-                    sheet.age_meassure_unit = '1'
-                    sheet.age = int(date_diff.years)
+                    epicrisis.age_meassure_unit = '1'
+                    epicrisis.age = int(date_diff.years)
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):
@@ -151,24 +133,24 @@ class DoctorQuirurgicSheet(models.Model):
             self.surname = self.patient_id.surname
             self.gender = self.patient_id.sex
             self.birth_date = self.patient_id.birth_date
-            self.blood_type = self.patient_id.blood_type
-            self.blood_rh = self.patient_id.blood_rh
-            self.document_type = self.patient_id.tdoc
+            self.tdoc = self.patient_id.tdoc
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
+            self.blood_type = self.patient_id.blood_type
+            self.blood_rh = self.patient_id.blood_rh
             
-    @api.onchange('document_type','numberid_integer','numberid')
-    def onchange_number_id(self):
-        if self.document_type and self.document_type not in ['cc','ti']:
+    @api.onchange('tdoc','numberid_integer','numberid')
+    def onchange_numberid(self):
+        if self.tdoc and self.tdoc not in ['cc','ti']:
             self.numberid_integer = 0
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
+        if self.tdoc and self.tdoc in ['cc','ti'] and self.numberid_integer:
             self.numberid = self.numberid_integer
-    
-    @api.onchange('description_template_id')
-    def onchange_description_template_id(self):
-        if self.description_template_id:
-            self.description = self.description_template_id.template_text
-         
+            
+    @api.onchange('epicrisis_template_id')
+    def onchange_epicrisis_template_id(self):
+        if self.epicrisis_template_id:
+            self.epicrisis_note = self.epicrisis_template_id.template_text
+            
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
             raise ValidationError(_('Please enter non zero value for Number ID'))
@@ -188,23 +170,23 @@ class DoctorQuirurgicSheet(models.Model):
         return warn_msg
     
     @api.multi
-    def _check_document_types(self):
-        for room in self:
-            if room.age_meassure_unit == '3' and room.document_type not in ['rc','ms']:
+    def _check_tdocs(self):
+        for epicrisis in self:
+            if epicrisis.age_meassure_unit == '3' and epicrisis.tdoc not in ['rc','ms']:
                 raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if room.age > 17 and room.age_meassure_unit == '1' and room.document_type in ['rc','ms']:
+            if epicrisis.age > 17 and epicrisis.age_meassure_unit == '1' and epicrisis.tdoc in ['rc','ms']:
                 raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if room.age_meassure_unit in ['2','3'] and room.document_type in ['cc','as','ti']:
+            if epicrisis.age_meassure_unit in ['2','3'] and epicrisis.tdoc in ['cc','as','ti']:
                 raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if room.document_type == 'ms' and room.age_meassure_unit != '3':
+            if epicrisis.tdoc == 'ms' and epicrisis.age_meassure_unit != '3':
                 raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if room.document_type == 'as' and room.age_meassure_unit == '1' and room.age <= 17:
+            if epicrisis.tdoc == 'as' and epicrisis.age_meassure_unit == '1' and epicrisis.age <= 17:
                 raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
-      
+
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('doctor.quirurgic.sheet') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
+        vals['name'] = self.env['ir.sequence'].next_by_code('doctor.epicrisis') or '/'
+        if vals.get('tdoc', False) and vals['tdoc'] in ['cc','ti']:
             numberid_integer = 0
             if vals.get('numberid_integer', False):
                 numberid_integer = vals['numberid_integer']
@@ -214,18 +196,18 @@ class DoctorQuirurgicSheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-        res = super(DoctorQuirurgicSheet, self).create(vals)
-        res._check_document_types()
+        res = super(DoctorEpicrisis, self).create(vals)
+        res._check_tdocs()
         return res
     
     @api.multi
     def write(self, vals):
-        if vals.get('document_type', False) or 'numberid_integer' in  vals:
-            if vals.get('document_type', False):
-                document_type = vals['document_type']
+        if vals.get('tdoc', False) or 'numberid_integer' in  vals:
+            if vals.get('tdoc', False):
+                tdoc = vals['tdoc']
             else:
-                document_type = self.document_type
-            if document_type in ['cc','ti']:
+                tdoc = self.tdoc
+            if tdoc in ['cc','ti']:
                 if 'numberid_integer' in  vals:
                     numberid_integer = vals['numberid_integer']
                 else:
@@ -236,17 +218,16 @@ class DoctorQuirurgicSheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-        
-        res = super(DoctorQuirurgicSheet, self).write(vals)
-        self._check_document_types()
+         
+        res = super(DoctorEpicrisis, self).write(vals)
+        self._check_tdocs()
         return res
     
     @api.multi
     def _set_visualizer_default_values(self):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
-            'default_doctor_id': self.surgeon_id and self.surgeon_id.id or False,
-            'default_view_model': 'quirurgic_sheet',
+            'default_view_model': 'epicrisis',
             }
         return vals
            
@@ -263,8 +244,8 @@ class DoctorQuirurgicSheet(models.Model):
                 'context': context,
                 'target': 'new'
             }
+            
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
-
 
 
