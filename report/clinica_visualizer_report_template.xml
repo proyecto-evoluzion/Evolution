@@ -93,7 +93,6 @@
     			<strong><span style="width:100%; text-align:left; font-size:30px;">QUIRURGIC SHEETS</span></strong>
     			<br/>
     		</t> -->
-    		
     	    <t t-foreach="clinica_records['quirgic_sheets']" t-as="quirgic_sheet">
       			<t t-set="quirgic_sheet" t-value="quirgic_sheet.with_context({'lang':quirgic_sheet.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
@@ -494,10 +493,6 @@
 	   <template id="clinica_doctor_data.anhestesic_registry_visualizer_template">
 	   		<div class="page">
            	<div class="oe_structure"/>
-	   		<!-- <t t-if="clinica_records['anhestesic_registry']">
-	   			<strong><span style="width:100%; text-align:left; font-size:30px;">ANHESTESIC REGISTRY</span></strong>
-    	    	<br/>
-    	    </t> -->
     	    <t t-foreach="clinica_records['anhestesic_registry']" t-as="anhestesic_registry">
       			<t t-set="anhestesic_registry" t-value="anhestesic_registry.with_context({'lang':anhestesic_registry.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
@@ -930,7 +925,6 @@
 				<strong><span style="width:100%; text-align:left; font-size:30px;">EPICRISIS</span></strong>
 				<br/>
 			</t> -->
-			
     	    <t t-foreach="clinica_records['epicrisis']" t-as="epicrisis">
       			<t t-set="epicrisis" t-value="epicrisis.with_context({'lang':epicrisis.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
