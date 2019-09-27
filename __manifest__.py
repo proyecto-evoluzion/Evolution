@@ -58,7 +58,8 @@
         'views/quirurgical_check_list_view.xml',
         'views/clinica_record_list_visualizer_view.xml',
         'views/account_invoice_view.xml',
-        'views/doctor_surgical_technologist.xml'
+        'views/doctor_surgical_technologist.xml',
+        'views/doctor_clinica_prescription.xml'
     ],
     'demo': [
     ],
