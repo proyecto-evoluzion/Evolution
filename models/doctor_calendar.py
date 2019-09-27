@@ -46,12 +46,98 @@ class DoctorSchedule(models.Model):
     duration = fields.Float(string='Duration (in hours)')
     end_date = fields.Datetime(string='End Date', copy=False)
     room_ids = fields.One2many('doctor.waiting.room', 'schedule_id', string='Waiting Rooms/Appointments', copy=False)
+    time_allocation_ids = fields.One2many('doctor.schedule.time.allocation', 'schedule_id', string='Time Allocations', copy=False)
     
     @api.onchange('start_date','duration')
     def onchange_start_date_duration(self):
         if self.start_date:
             start_date = datetime.strptime(self.start_date, DEFAULT_SERVER_DATETIME_FORMAT)
             self.end_date = start_date + timedelta(hours=self.duration)
+            
+    @api.onchange('end_date')
+    def onchange_end_date(self):
+        if self.start_date and self.end_date:
+            start_date = datetime.strptime(self.start_date, DEFAULT_SERVER_DATETIME_FORMAT)
+            end_date = datetime.strptime(self.end_date, DEFAULT_SERVER_DATETIME_FORMAT)
+            duration = end_date - start_date
+            hour_diff = duration.total_seconds()/3600
+            self.duration = hour_diff
+            
+    @api.multi
+    def allocate_schedule_time(self):
+        time_space = self.env['ir.config_parameter'].sudo().get_param('clinica_doctor_data.default_time_space')
+        time_space = int(time_space)
+        start_date = datetime.strptime(self.start_date, DEFAULT_SERVER_DATETIME_FORMAT)
+        final_time = start_date + timedelta(hours=self.duration)  
+        time_space_start = start_date
+        allocation_vals_list = []
+        while time_space_start < final_time:
+            end_time = time_space_start + timedelta(minutes=time_space)  
+            if end_time > final_time:
+                end_time = final_time
+            alloc_vals = {
+                'start_time': time_space_start,
+                'end_time': end_time
+                }
+            allocation_vals_list.append((0, 0, alloc_vals))
+            time_space_start = end_time
+            
+        return allocation_vals_list
+        
+        
+    @api.model
+    def create(self, vals):
+        res = super(DoctorSchedule, self).create(vals)
+        res.time_allocation_ids = res.allocate_schedule_time()
+        return res
+    
+    @api.multi
+    def write(self, vals):
+        res = super(DoctorSchedule, self).write(vals)
+        if 'duration' in vals or 'start_date' in vals or 'end_date' in vals:
+            assigned_allocations = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',self.id),
+                                                                                       ('state','=','assigned')])
+            if assigned_allocations:
+                raise ValidationError(_("You cannot change schedule time! There are already assigned appointments for this schedule."))
+            self.time_allocation_ids.unlink()
+            self.time_allocation_ids = self.allocate_schedule_time()
+        return res
+    
+    @api.multi
+    def get_next_appointment_start_date(self):
+        assigned_allocs = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',self.id),('state','=','assigned')])
+        if not assigned_allocs:
+            next_appointment_start = self.start_date
+            return next_appointment_start
+        for alloc in self.time_allocation_ids:
+            if alloc.state != 'assigned':
+                next_appointment_start = alloc.start_time
+                break
+        return next_appointment_start
+            
+    
+    @api.multi
+    def action_create_appointment(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_waiting_room')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = {'default_room_type': 'waiting', 'default_schedule_id': self.id}
+        
+        #choose the view_mode accordingly
+        res = self.env.ref('clinica_doctor_data.clinica_waiting_room_form', False)
+        result['views'] = [(res and res.id or False, 'form')]
+        return result
+            
+class ScheduleTimeAllocation(models.Model):
+    _name = "doctor.schedule.time.allocation"
+    _order = 'start_time'
+    
+    schedule_id = fields.Many2one('doctor.schedule', string="Schedule", ondelete='cascade')
+    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    start_time = fields.Datetime(string="Start Time")
+    end_time = fields.Datetime(string="End Time")
+    state = fields.Selection([('not_assigned','Not Assigned'),('assigned','Assigned')],
+                              string='Status', copy=False, default='not_assigned')
 
 class DoctorWaitingRoom(models.Model):
     _name = "doctor.waiting.room"
@@ -123,6 +209,17 @@ class DoctorWaitingRoom(models.Model):
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
+    assigned_professional_ids = fields.Many2many('doctor.professional', 'waiting_room_professional_rel', 'room_id', 'professional_id', 
+                                                string="Responsible Professionals", copy=False)
+    from_surgery_procedure = fields.Boolean(string='Created from Surgery Room Procedure', copy=False)
+    user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),
+                                   ('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),
+                                   ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular')
+    appointment_type_id = fields.Many2one('clinica.appointment.type', string='Appointment Type')
+    insurer_id = fields.Many2one('res.partner',string='Assurance Company')
+    assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
+    schedule_allocation_id = fields.Many2one('doctor.schedule.time.allocation', string='Schedule Time Allocation')
+    
     
     @api.multi
     @api.depends('birth_date')
@@ -159,6 +256,13 @@ class DoctorWaitingRoom(models.Model):
             anhestesic_registry_ids = self.env['clinica.anhestesic.registry'].search([('room_id','=',room.id)])
             if anhestesic_registry_ids:
                 room.anhestesic_registry_created = True
+                
+    @api.onchange('room_type')
+    def onchange_room_type(self):
+        if self.room_type and self.room_type == 'surgery':
+            self.from_surgery_procedure = True
+        else:
+            self.from_surgery_procedure = False
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):
@@ -178,6 +282,9 @@ class DoctorWaitingRoom(models.Model):
     def onchange_schedule_id(self):
         if self.schedule_id:
             self.surgeon_id = self.schedule_id.professional_id and self.schedule_id.professional_id.id or False
+            if self.schedule_id.time_allocation_ids:
+                start_date = self.schedule_id.get_next_appointment_start_date()
+                self.procedure_date = start_date
             
     @api.onchange('document_type','numberid_integer','numberid')
     def onchange_numberid(self):
@@ -186,11 +293,15 @@ class DoctorWaitingRoom(models.Model):
         if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
             self.numberid = self.numberid_integer
             
-    @api.onchange('procedure_date')
+    @api.onchange('procedure_date','appointment_type_id')
     def onchange_procedure_date(self):
         if self.procedure_date:
+            if self.appointment_type_id:
+                duration = self.appointment_type_id.duration
+            else: 
+                duration = 4
             procedure_date = datetime.strptime(self.procedure_date, DEFAULT_SERVER_DATETIME_FORMAT)
-            self.procedure_end_date = procedure_date + timedelta(hours=4)
+            self.procedure_end_date = procedure_date + timedelta(hours=duration)
     
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
@@ -279,6 +390,107 @@ class DoctorWaitingRoom(models.Model):
                 if len(overlap_rooms) > 1:
                     raise ValidationError(_("%s is already allocated for this date! Please choose another. ") % self.surgery_room_id.name)
     
+    @api.multi
+    def _add_assigned_professionals(self,):
+        professional_ids = []
+        if self.surgeon_id:
+            professional_ids.append(self.surgeon_id.id)
+        if self.anesthesiologist_id:
+            professional_ids.append(self.anesthesiologist_id.id)
+        if self.circulating_id:
+            professional_ids.append(self.circulating_id.id)
+        if self.nurse_boss_id:
+            professional_ids.append(self.nurse_boss_id.id)
+        if self.technologist_id:
+            professional_ids.append(self.technologist_id.id)
+        self.assigned_professional_ids = [(6, 0, professional_ids)]
+        
+    @api.multi
+    def _allocate_in_schedule_time(self):
+        schedule_alloc_pool = self.env['doctor.schedule.time.allocation']
+        time_space_domain = [('schedule_id','=',self.schedule_id.id),'|', '|',
+                             '&', ('start_time','>=', self.procedure_date), ('end_time','<=', self.procedure_end_date),
+                             '&', ('start_time','<=', self.procedure_date), ('end_time','<=', self.procedure_date),
+                             '&', ('start_time','<=', self.procedure_end_date), ('end_time','>=', self.procedure_end_date),]
+        
+        time_space_domain = [('schedule_id','=',self.schedule_id.id),
+                             ('start_time','>=', self.procedure_date), ('end_time','<=', self.procedure_end_date),
+                             ('start_time','!=', self.procedure_end_date), ('end_time','!=', self.procedure_date)]
+        between_allocation_objs = schedule_alloc_pool.search(time_space_domain)
+        
+        if between_allocation_objs:
+            between_allocation_objs.unlink()
+            
+        time_space_domain = [('schedule_id','=',self.schedule_id.id),
+                             ('start_time','<', self.procedure_date), ('end_time','>', self.procedure_date)]
+        start_overlap_allocation_objs =  schedule_alloc_pool.search(time_space_domain, limit=1)
+        if start_overlap_allocation_objs:
+            start_overlap_allocation_objs.end_time = self.procedure_date
+        
+        time_space_domain = [('schedule_id','=',self.schedule_id.id),
+                             ('start_time','<', self.procedure_end_date), ('end_time','>', self.procedure_end_date)]
+        end_overlap_allocation_objs = schedule_alloc_pool.search(time_space_domain, limit=1)
+        if end_overlap_allocation_objs:
+            end_overlap_allocation_objs.start_time = self.procedure_end_date
+        
+        time_space_domain = [('schedule_id','=',self.schedule_id.id),
+                             ('start_time','<', self.procedure_date), ('end_time','>', self.procedure_end_date)]
+        start_end_overlap_objs = schedule_alloc_pool.search(time_space_domain, limit=1)
+        if start_end_overlap_objs:
+            aloc_end = start_end_overlap_objs.end_time
+            start_end_overlap_objs.end_time = self.procedure_date
+            end_new_alloc = schedule_alloc_pool.create({'start_time': self.procedure_end_date,
+                                                        'end_time': self.aloc_end,
+                                                        'schedule_id': self.schedule_id.id})
+        
+        new_allocation_vals = {
+            'start_time': self.procedure_date,
+            'end_time': self.procedure_end_date,
+            'patient_id': self.patient_id and self.patient_id.id or False,
+            'state': 'assigned',
+            'schedule_id': self.schedule_id.id
+            }
+        new_allocation = schedule_alloc_pool.create(new_allocation_vals)
+        self.schedule_allocation_id = new_allocation.id
+        
+    @api.multi
+    def _reallocate_schedule_time(self, vals):
+        new_start = vals.get('procedure_date', False)
+        new_end = vals.get('procedure_end_date', False)
+        schedule_alloc_pool = self.env['doctor.schedule.time.allocation']
+        if new_start:
+            time_space_domain = [('schedule_id','=',self.schedule_id.id), ('state','!=', 'assigned'),
+                                 ('start_time','<=',new_start),('end_time','>=', new_start)]
+            before_start_allocs = schedule_alloc_pool.search(time_space_domain, order='start_time desc', limit=1)
+            if before_start_allocs and before_start_allocs.id != self.schedule_allocation_id.id:
+                before_start_allocs.end_time = new_start
+            self.schedule_allocation_id.start_time = new_start
+        if new_end:
+            time_space_domain = [('schedule_id','=',self.schedule_id.id),('state','!=', 'assigned'),
+                                 ('start_time','<=',new_end), ('end_time','>=', new_end)]
+            after_start_allocs = schedule_alloc_pool.search(time_space_domain, order='start_time desc', limit=1)
+            if after_start_allocs and after_start_allocs.id != self.schedule_allocation_id.id:
+                after_start_allocs.start_time = new_end
+            self.schedule_allocation_id.end_time = new_end
+            
+        
+        if new_start:
+            start_time = new_start
+        else:
+            start_time = self.procedure_date
+        if new_end:
+            end_time = new_end
+        else:
+            end_time = self.procedure_end_date
+            
+        time_space_domain = [('schedule_id','=',self.schedule_id.id), ('state','!=', 'assigned'),
+                             ('start_time','>=',start_time),('end_time','<=',end_time)]
+            
+        between_allocs = schedule_alloc_pool.search(time_space_domain)
+        if between_allocs:
+            between_allocs.unlink()
+            
+    
     @api.model
     def create(self, vals):
         if vals.get('room_type', False) and vals['room_type'] == 'surgery':
@@ -298,12 +510,20 @@ class DoctorWaitingRoom(models.Model):
         if not vals.get('procedure_ids', False):
             warn_msg = _('Error! Plase add at least one procedure.')
             raise ValidationError(warn_msg)
+        
         res = super(DoctorWaitingRoom, self).create(vals)
         res._check_document_types()
         res._validate_surgeon_room()
         if vals.get('room_type', False) and vals['room_type'] == 'surgery':
             if vals.get('surgery_room_id', False):
                 res._validate_surgery_room_alocation()
+                
+        if vals.get('surgeon_id', False) or vals.get('anesthesiologist_id', False) \
+            or vals.get('circulating_id', False) or vals.get('nurse_boss_id', False) \
+            or vals.get('technologist_id', False):
+            res._add_assigned_professionals()
+        if vals.get('schedule_id', False):
+            res._allocate_in_schedule_time()
         return res
     
     @api.multi
@@ -324,12 +544,20 @@ class DoctorWaitingRoom(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
+            
+        if vals.get('procedure_date', False) or vals.get('procedure_end_date', False):
+            if self.schedule_id and self.schedule_allocation_id:
+                self._reallocate_schedule_time(vals)
+                
         res = super(DoctorWaitingRoom, self).write(vals)
         self._check_document_types()
         self._validate_surgeon_room()
         if vals.get('room_type', False) and vals['room_type'] == 'surgery':
             if vals.get('surgery_room_id', False):
                 self._validate_surgery_room_alocation()
+        if 'surgeon_id' in vals or 'anesthesiologist_id' in vals or 'circulating_id' in vals \
+            or 'nurse_boss_id' in vals or 'technologist_id' in vals:
+            self._add_assigned_professionals()
         return res
     
     @api.multi

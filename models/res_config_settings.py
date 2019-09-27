@@ -19,25 +19,32 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_config_settings
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
-from . import doctor_prescription
+from odoo import models, fields, api, _
 
+class ResConfigSettings(models.TransientModel):
+    _inherit = 'res.config.settings'
+    
+    default_time_space = fields.Integer(string="Schedule Time Space in Minutes")
+    
+    @api.model
+    def get_values(self):
+        res = super(ResConfigSettings, self).get_values()
+        params = self.env['ir.config_parameter'].sudo()
+        default_time_space = params.get_param('clinica_doctor_data.default_time_space', default=5)
+        res.update(
+            default_time_space=float(default_time_space)
+        )
+        return res
+    
+    @api.multi
+    def set_values(self):
+        super(ResConfigSettings, self).set_values()
+        default_time_space = float(self.default_time_space)
+        self.env['ir.config_parameter'].sudo().set_param("clinica_doctor_data.default_time_space", default_time_space)
+     
+    
+    
 
-# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+# vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:    
+    
+    

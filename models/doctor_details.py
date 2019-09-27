@@ -55,6 +55,13 @@ class DoctorDiseases(models.Model):
 
     _sql_constraints = [('code_uniq', 'unique (code)', 'The Medical Diseases code must be unique')]
     
+class AppointmentType(models.Model):
+    _name = "clinica.appointment.type"
+    
+    name = fields.Char(string="Type")
+    duration = fields.Float(string='Duration (in hours)')
+    
+    
 class Doctor(models.Model):
     _name = "doctor.professional"
     _rec_name = "partner_id"
@@ -520,7 +527,7 @@ class DoctorAdministrativeData(models.Model):
         return res
 
     _sql_constraints = [
-        ('ref_tdoc_unique', 'unique(ref,tdoc)', 'Error creating! This patient already exists in the system.')
+        ('ref_tdoc_unique', 'unique(name,tdoc)', 'Error creating! This patient already exists in the system.')
     ]
     
     @api.multi

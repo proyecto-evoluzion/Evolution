@@ -94,6 +94,41 @@
             <field name="view_id" ref="view_doctor_diseases_tree"/>
         </record> 
         
+        <!-- appointment type Form View -->
+	    <record model="ir.ui.view" id="view_doctor_appointment_type_form">
+	        <field name="name">clinica.appointment.type.form</field>
+	        <field name="model">clinica.appointment.type</field>
+	        <field name="arch" type="xml">
+	            <form string="Diseases">
+	                <group>
+	                    <field name="name" required="1"/>
+	                    <field name="duration" required="1" widget="float_time"/>
+	                </group>
+	            </form>
+	        </field>
+	    </record>
+	
+	    <!-- appointment type Tree View -->
+	    <record model="ir.ui.view" id="view_doctor_appointment_type_tree">
+	        <field name="name">clinica.appointment.type.tree</field>
+	        <field name="model">clinica.appointment.type</field>
+	        <field name="arch" type="xml">
+	            <tree string="Diseases">
+	                <field name="name"/>
+	                <field name="duration" />
+	            </tree>
+	        </field>
+	    </record>
+	    
+	    <!-- appointment type Action -->
+        <record id="action_appointment_type" model="ir.actions.act_window">
+            <field name="name">Appointment Type</field>
+            <field name="res_model">clinica.appointment.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_doctor_appointment_type_tree"/>
+        </record> 
+        
         <!-- Doctor form -->
         <record id="doctor_doctor_form" model="ir.ui.view">
             <field name="name">doctor.professional.form</field>
@@ -566,6 +601,13 @@
             action="action_doctor_diseases"
             groups="base.group_system,clinica_doctor_data.management"
             sequence="3"/>
+            
+        <menuitem id="menu_appointment_type"
+            name="Appointment Type"
+            parent="menu_doctor_config_details"
+            action="action_appointment_type"
+            sequence="4"/>
+            
  </odoo>
 
  
