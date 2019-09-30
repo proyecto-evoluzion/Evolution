@@ -1896,7 +1896,17 @@ msgstr "Profesional de la Salud"
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_details
 msgid "Doctor"
-msgstr "Doctor"
+msgstr "Gestión Clínica"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_assigned_professional_ids
+msgid "Responsible Professionals"
+msgstr "Profesionales Responsables"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Appointment"
+msgstr "Cita"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.accounting_assistant
@@ -3072,6 +3082,21 @@ msgstr "MS - Menor sin Identificación"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Main Disease"
 msgstr "Diagnóstico Principal"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_assurance_plan_id
+msgid "Assurer Plan"
+msgstr "Plan Aseguradora"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_schedule_form
+msgid "Time Allocation"
+msgstr "Asignación de Tiempo"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_time_allocation_ids
+msgid "Time Allocations"
+msgstr "Asignación de Tiempo"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_maintenance
@@ -5388,7 +5413,45 @@ msgstr "Tio"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_age_meassure_unit
 msgid "Unit of Measure of Age"
-msgstr "Unidad de Medida de la edad"
+msgstr "Unidad Medida Edad"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
+msgid "Today's Appointments"
+msgstr "Citas de hoy"
+
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
+msgid "Ordered"
+msgstr "Ordenadas"
+
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
+msgid "Confirmed"
+msgstr "Confirmadas"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_filter
+msgid "Today's Confirmed/Ordered Appointments"
+msgstr "Confirmadas hoy/Citas ordenadas"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
+msgid "Today's Confirmed/Ordered Procedures"
+msgstr "Confirmados hoy/Procedimientos ordenados"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
+msgid "Today's Procedures"
+msgstr "Procedimientos de Hoy"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
+msgid "Confirmed"
+msgstr "Confirmadas"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_filter
+msgid "Ordered"
+msgstr "Ordenadas"
 
 #. module: clinica_doctor_data
 #: selection:doctor.patient,civil_state:0
