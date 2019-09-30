@@ -176,7 +176,7 @@
             parent="menu_doctor_process"
             action="clinica_doctor_data.action_clinica_plastic_surgery"
             sequence="9"
-            groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor"
+            groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.clinical_auditor"
             />
         
  </odoo>
