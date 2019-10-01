@@ -38,6 +38,7 @@ from . import clinica_record_list_visualizer
 from . import post_anhestesic_care
 from . import invoice
 from . import doctor_prescription
+from . import record_authenticate
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

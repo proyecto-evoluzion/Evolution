@@ -22,7 +22,7 @@
 
 {
     'name': 'Clinica Doctor Datas',
-    'version': '1.44',
+    'version': '1.45',
     'license': 'Other proprietary',
     'category': 'custom',
     'description': """
@@ -31,7 +31,7 @@
     'author' : 'BroadTech IT Solutions Pvt Ltd',
     'website' : 'http://www.broadtech-innovations.com',
     'depends': [
-        'base','contacts','l10n_co_res_partner','product', 'l10n_co_tax_extension','account'
+        'base','contacts','l10n_co_res_partner','product', 'l10n_co_tax_extension','account','web'
     ],
     'data': [
         'security/security.xml',
@@ -60,7 +60,9 @@
         'views/clinica_record_list_visualizer_view.xml',
         'views/account_invoice_view.xml',
         'views/doctor_surgical_technologist.xml',
-        'views/doctor_clinica_prescription.xml'
+        'views/doctor_clinica_prescription.xml',
+        'views/assets.xml',
+        'views/record_authenticate_views.xml'
     ],
     'demo': [
     ],
