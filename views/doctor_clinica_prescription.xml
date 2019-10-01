@@ -52,7 +52,7 @@
           name="Prescription"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_doctor_prescription"
-          groups="base.group_system"
+          groups="base.group_system,clinica_doctor_data.surgeon"
           sequence="15"/>
 
 </odoo>

@@ -820,6 +820,11 @@ msgid "Assurance Plan"
 msgstr "Gestionar Planes"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_appointment_type
+msgid "Appointment Type"
+msgstr "Tipos de Cita"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.assurance_plan_form
 msgid "Assurance Plan Form"
 msgstr "Formulario de planes - Aseguradora"
@@ -884,6 +889,17 @@ msgstr "Auxiliar Enfermería"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_filter
 msgid "Auxiliary Nurse"
 msgstr "Auxiliar Enfermería"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_schedule_filter_01
+msgid "Professional"
+msgstr "Profesional Salud"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_user_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_user_type
+msgid "User Type"
+msgstr "Tipo de Usuario"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_awake
@@ -3162,7 +3178,9 @@ msgstr "Órdenes Médicas y Evolución"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_medical_evolution
-#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_medical_evolution
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
 msgid "Med. Order and Evolution"
 msgstr "Ord. Médicas y Evolución"
 
@@ -3937,6 +3955,12 @@ msgid "Physical Details"
 msgstr "Exámen Físico"
 
 #. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_cups_code
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_cups_code
+msgid "CUPS Code"
+msgstr "Códigos CUPS"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_physical_exam
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_physical_exam
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
@@ -4014,8 +4038,11 @@ msgstr "Plastic Surgery Form"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_plastic_surgery
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_plastic_surgery
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
 msgid "Plastic Surgery Sheet"
-msgstr "Hoja Cirugía Plástica"
+msgstr "HC Cirugía Plástica"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_plastic_surgery_ids
@@ -4095,6 +4122,13 @@ msgstr "Pre-surgical Attention Number:"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_presurgical_record
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Pre-surgical Records"
+msgstr "Registros Pre-Anestésicos"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
+msgid "Pre-Surgical Records"
 msgstr "Registros Pre-Anestésicos"
 
 #. module: clinica_doctor_data
@@ -4317,6 +4351,9 @@ msgstr "Descripción Quirurgica"
 #: selection:clinica.record.list.visualizer,view_model:0
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_quirurgic_sheet
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgic_sheet
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
 msgid "Quirurgic Sheet"
 msgstr "Hoja Quirúrgica"
 
@@ -4346,6 +4383,9 @@ msgstr "Registros Quirúrgicos"
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_quirurgical_check_list
 #: model:ir.model,name:clinica_doctor_data.model_clinica_quirurgical_check_list
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_quirurgical_check_list
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
 msgid "Quirurgical Check List"
 msgstr "CheckList Quirúrgico"
 
@@ -5595,6 +5635,16 @@ msgstr "Vía Aérea"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_post_anhestesic_care_vital_signs_vital_signs_vomit
 msgid "Vómito"
 msgstr "Vómito"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_appointment_type_id
+msgid "Appointment Type"
+msgstr "Tipo Cita"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_insurer_id
+msgid "Assurance Company"
+msgstr "Aseguradora"
 
 #. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0

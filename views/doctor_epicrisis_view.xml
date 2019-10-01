@@ -111,6 +111,7 @@
           name="Epicrisis"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_clinica_doctor_epicrisis"
+          groups="base.group_system,clinica_doctor_data.surgeon"
           sequence="11"/>
 
 </odoo>

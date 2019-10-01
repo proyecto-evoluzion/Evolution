@@ -544,7 +544,7 @@
 		<field name="act_window_id" ref="action_clinica_surgery_room_procedures"/>
 	</record>
 			
-   <!-- Waitin room menu -->
+   <!-- Waiting room menu -->
    <menuitem id="menu_clinica_waiting_room"
 	   name="Waiting Room "
 	   parent="menu_doctor_process"
@@ -556,7 +556,7 @@
 	   name="Surgery Room Procedures"
 	   parent="menu_doctor_process"
 	   action="clinica_doctor_data.action_clinica_surgery_room_procedures"
-	   groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant,clinica_doctor_data.surgeon"
+	   groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant"
 	   sequence="2"/>
 	
 	
