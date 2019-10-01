@@ -106,6 +106,7 @@ class DoctorSchedule(models.Model):
     @api.multi
     def get_next_appointment_start_date(self):
         assigned_allocs = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',self.id),('state','=','assigned')])
+        next_appointment_start = datetime.now()
         if not assigned_allocs:
             next_appointment_start = self.start_date
             return next_appointment_start
