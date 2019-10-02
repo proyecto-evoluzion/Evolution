@@ -1708,6 +1708,7 @@ msgstr "Departamento"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_surgery_room_name
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_description
 msgid "Description"
 msgstr "Descripción"
 
@@ -3378,6 +3379,7 @@ msgstr "Máscara Laríngea"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_name
 msgid "Name"
 msgstr "Nombre"
 
@@ -3896,6 +3898,7 @@ msgstr "Patológicos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_patient_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_filter
@@ -4304,6 +4307,7 @@ msgstr "Profesión"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_create_health_professional_profession_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_profession_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_profession_type
 msgid "Profession Type"
 msgstr "Profesión"
 
@@ -5581,6 +5585,7 @@ msgstr "Víctima - Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
 msgid "View History"
 msgstr "Ver Historia"
 
@@ -6142,3 +6147,43 @@ msgstr "Instrumentador(a)"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_surgical_technologist
 msgid "Surgical Tech."
 msgstr "Ins. Quirúrgico"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_prescription
+msgid "Prescription"
+msgstr "Prescripciones"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_name
+msgid "Order Type"
+msgstr "N° Orden"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_prescription_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_doctor_id
+msgid "Professional"
+msgstr "Doctor"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_id
+msgid "Template"
+msgstr "Plantilla"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
+msgid "Prescribe"
+msgstr "Prescripción"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_doctor_prescription
+msgid "Prescription Format"
+msgstr "Formato de prescripción"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_active
+msgid "Active"
+msgstr "Activo"
