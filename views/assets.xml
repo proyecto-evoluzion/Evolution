@@ -2,8 +2,8 @@
 <odoo>
     <template id="assets_backend" name="auth backend assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
-            <script type="text/javascript" src="/record_authenticate_by_user/static/src/js/bootbox.js"/>
-            <script type="text/javascript" src="/record_authenticate_by_user/static/src/js/main.js"/>
+            <script type="text/javascript" src="/clinica_doctor_data/static/src/js/bootbox.js"/>
+            <script type="text/javascript" src="/clinica_doctor_data/static/src/js/main.js"/>
         </xpath>
     </template>
 </odoo>
