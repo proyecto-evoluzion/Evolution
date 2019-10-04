@@ -420,10 +420,10 @@
                 <tree string="Doctor Administrative Data Tree">
                     <field name="name"/>
                     <field name="tdoc"/>
-                    <field name="firstname"/>
                     <field name="lastname"/>
-                    <field name="middlename" placeholder="Second Name"/>
                     <field name="surname" placeholder="Second Last Name"/>
+                    <field name="firstname"/>
+                    <field name="middlename" placeholder="Second Name"/>
                     <field name="birth_date" required="1"/>
                     <field name="age" required="1"/>
                     <field name="age_unit"/>
