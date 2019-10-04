@@ -301,6 +301,7 @@ msgstr "<strong>ANTECEDENTES</strong>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "<strong>PATIENT DATA</strong>"
 msgstr "<strong>DATOS DEL PACIENTE</strong>"
@@ -385,6 +386,7 @@ msgstr "<strong>RX. TORAX</strong>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
 msgid "<strong>SIGN AND MÉDICAL STAMP</strong>"
 msgstr "<strong>FIRMA Y SELLO MÉDICO</strong>"
 
@@ -2823,6 +2825,7 @@ msgstr "Instrumentadora los materiales, medicamentos e insumos especiales solici
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Insurer:"
 msgstr "Aseguradora:"
@@ -3499,6 +3502,7 @@ msgstr "Number ID for TI or CC Documents"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Number ID:"
 msgstr "Número de Identificación:"
@@ -3945,6 +3949,7 @@ msgstr "Patient Name"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Patient Name:"
 msgstr "Nombres:"
@@ -6187,3 +6192,24 @@ msgstr "Formato de prescripción"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_active
 msgid "Active"
 msgstr "Activo"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
+msgid "Date:"
+msgstr "Fecha:"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
+msgid "Prescription Type:"
+msgstr "Prescipción N°:"
+
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
+msgid "<strong>PRESCRIPTION</strong>"
+msgstr "<strong>PRESCRIPCIÓN</strong>"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
+msgid "Age:"
+msgstr "Edad:"
