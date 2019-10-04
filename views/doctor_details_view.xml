@@ -441,10 +441,10 @@
                 <kanban class="o_res_partner_kanban">
                     <field name="patient_name"/>
                     <field name="name"/>
-                    <field name="firstname"/>
                     <field name="lastname"/>
-                    <field name="middlename"/>
                     <field name="surname"/>
+                    <field name="firstname"/>
+                    <field name="middlename"/>
                     <field name="tdoc"/>
                     <field name="sex"/>
                     <field name="blood_type"/>
