@@ -418,8 +418,8 @@
             <field name="model">doctor.patient</field>
             <field name="arch" type="xml">
                 <tree string="Doctor Administrative Data Tree">
-                    <field name="name"/>
                     <field name="tdoc"/>
+                    <field name="name"/>
                     <field name="lastname"/>
                     <field name="surname" placeholder="Second Last Name"/>
                     <field name="firstname"/>
@@ -505,12 +505,11 @@
                                     <ul>
                                         <li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="tdoc"/></li>
                                     	<li t-if="record.tdoc.raw_value" class="o_text_overflow"><field name="name"/></li>
-                                        <li t-if="record.firstname.raw_value"><field name="firstname"/></li>
                                         <li t-if="record.sex.raw_value" class="o_text_overflow">Gender: <field name="sex"/></li>
                                         <li t-if="record.blood_type.raw_value">Blood Type: <field name="blood_type"/><field name="blood_rh"/></li>
                                         <li t-if="record.birth_date.raw_value">Birth Date: <field name="birth_date"/>
-                                            <t t-if="record.age.raw_value">, Age: <field name="age"/></t>
-                                        </li>
+                                        <li t-if="record.age.raw_value"/>Age: <field name="age"/> <field name="age_unit"/></li>
+                                    
                                     </ul>
                                     <div class="oe_kanban_partner_links"/>
                                 </div>

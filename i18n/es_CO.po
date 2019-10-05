@@ -35,8 +35,8 @@ msgstr "%s está ocupada para esta fecha/hora! Por favor seleccione otra. "
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
-msgid ", Age:"
-msgstr ", Edad:"
+msgid "Age:"
+msgstr "Edad:"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
