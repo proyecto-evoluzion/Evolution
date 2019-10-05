@@ -26,6 +26,7 @@
 		        </group>
             <group name="patient">
               <field name='patient_id' required="1"/>
+              <field name='numberid' required="1"/>
             </group>
          	    <notebook>
          	    	<page name="description" string="Description">
@@ -50,8 +51,8 @@
                   <field name="name"/>
      				<field name="procedure_date"/>
      				<field name="patient_id"/>
+            <field name="numberid"/>
      				<field name="tdoc"/>
-     				<field name="numberid"/>
               </tree>
           </field>
       </record>

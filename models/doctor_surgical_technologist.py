@@ -26,9 +26,15 @@ class SurgicalTechnologist(models.Model):
 	_name = "doctor.surgical.technologist"
 
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+	numberid = fields.Char(string='Number ID', related='patient_id.name')
 	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment')
 	recount_ids = fields.One2many('doctor.surgical.technologist.recount', 'surgical_technologist_id', string='Recount')
+
+	@api.onchange('patient_id')
+	def onchange_patient_id(self):
+		if self.patient_id:
+			self.numberid = self.patient_id.ref
 
 
 class SurgicalTechnologistRecount(models.Model):

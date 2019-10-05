@@ -38,6 +38,7 @@ class ClinicaPostAnhestesicCare(models.Model):
 	_description = 'Post-Anhestesic care'
 
 	patient_id = fields.Many2one('doctor.patient', 'Paciente', ondelete='restrict')
+	numberid = fields.Char(string='Number ID')
 	medical_record= fields.Char(string='HC')
 	bed = fields.Char(string='Cama')
 	date = fields.Datetime(string='Fecha y Hora', default=fields.Datetime.now)
@@ -72,6 +73,12 @@ class ClinicaPostAnhestesicCare(models.Model):
 	def onchange_room_id(self):
 		if self.room_id:
 			self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+
+
+	@api.onchange('patient_id')
+	def onchange_patient_id(self):
+		if self.patient_id:
+			self.numberid = self.patient_id.ref
 	
 
 

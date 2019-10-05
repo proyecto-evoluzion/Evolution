@@ -21,7 +21,8 @@
          			</group>
          		</group>
          		<group name="health_professionals">
-                <field name='patient_id' required="1"/>	
+                <field name='patient_id' required="1"/> 
+                <field name='numberid' required="1"/>	
          		</group>
          		<group name="other_info_group">
          			<group name="other_info_group_sub1" >
@@ -63,6 +64,7 @@
        <field name="arch" type="xml">
        <tree string="Quirurgic Sheet Tree">
             <field name="patient_id"/>
+            <field name="numberid"/>
 	   	    <field name='invoice_id'/>
 			<field name="procedure_date"/>
 			<field name="disease_id"/>
@@ -75,6 +77,7 @@
         <field name="model">doctor.quirurgic.sheet</field>
         <field name="arch" type="xml">
             <search string="Search Quirurgic Sheet">
+                <field name="numberid"  />
                 <field name="surgeon_id"  />
                 <field name='anesthesiologist_id'/>
                 <field name='technologist_id'/>
