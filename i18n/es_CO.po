@@ -39,6 +39,13 @@ msgid "Age:"
 msgstr "Edad:"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_res_partner_is_assurance
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_res_users_is_assurance
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_partner_form_inherit
+msgid "Is it an Assurance Company?"
+msgstr "Is it an Assurance Company?"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid ""
