@@ -12,6 +12,9 @@
               <field name="patient_id"/>
               <field name="date"/>
             </group>
+            <group name="basic_details2">
+              <field name="numberid"/>
+            </group>
             <group>
             <group>
               <field name="medical_record"/>
@@ -124,6 +127,7 @@
             <tree string="Post-Anhestesic care">
               <field name="date"/>
               <field name="patient_id"/>
+              <field name="numberid"/>
               <field name="surgeon_id"/>
               <field name="anesthesiologist_id"/>
             </tree>
@@ -135,6 +139,7 @@
         <field name="model">clinica.post.anhestesic.care</field>
         <field name="arch" type="xml">
             <search string="Search Post-Anhestesic care">
+                <field name="numberid" />
                 <field name="patient_id" />
                 <group expand="0" string="Group By">
                 	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>

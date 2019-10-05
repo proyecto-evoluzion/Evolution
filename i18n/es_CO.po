@@ -3462,11 +3462,14 @@ msgstr "Normal"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_numberid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_numberid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_numberid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_numberid
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form

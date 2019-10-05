@@ -154,6 +154,7 @@ class PresurgicalRecord(models.Model):
     def onchange_consultation_reason(self):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
+            self.numberid = self.patient_id.ref
 
     @api.multi
     @api.depends('birth_date')

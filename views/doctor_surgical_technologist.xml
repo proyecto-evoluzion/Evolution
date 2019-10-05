@@ -13,6 +13,9 @@
             </div>
 	         	<group>
               <group>
+              <field name="numberid"/>
+             </group>
+              <group>
 		         	<field name="room_id"/>
 		         	<field name="surgeon_id"/>
              </group>
@@ -43,11 +46,22 @@
           <field name="arch" type="xml">
               <tree string="Surgical Technologist Tree">
                  <field name="patient_id"/>
+                 <field name="numberid"/>
                  <field name="surgeon_id"/>
                  <field name="room_id"/>
               </tree>
           </field>
       </record>
+
+      <record id="clinica_surgical_technologist_filter" model="ir.ui.view">
+            <field name="name">clinica.anhestesic.registry.filter</field>
+            <field name="model">doctor.surgical.technologist</field>
+            <field name="arch" type="xml">
+                <search string="Search Anhestesic Registry">
+                    <field name="numberid" />
+                </search>
+            </field>
+       </record>
       
       <record id="action_doctor_surgical_technologist" model="ir.actions.act_window">
           <field name="name">Recount View</field>
