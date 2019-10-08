@@ -13,7 +13,7 @@
               <field name="date"/>
             </group>
             <group name="basic_details2">
-              <field name="numberid"/>
+              <field name="numberid" required="1"/>
             </group>
             <group>
             <group>

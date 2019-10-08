@@ -3470,6 +3470,7 @@ msgstr "Normal"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_numberid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_numberid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_numberid
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
@@ -3906,6 +3907,7 @@ msgstr "Patológicos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_patient_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_filter
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_filter

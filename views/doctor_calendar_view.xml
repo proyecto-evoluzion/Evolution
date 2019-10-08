@@ -45,6 +45,7 @@
 		<field name="model">doctor.schedule</field>
 		<field name="arch" type="xml">
 			<search string="Search Schedules">
+				<field name='numberid'/>
 				<group expand="0" string="Group By">
 					<filter string="Professional" 
 					name="filtering_professional_id" 
@@ -73,6 +74,8 @@
 						<field name='end_date' required="1"/>
 					</group>
 					<group name="main_sub_group2" >
+						<field name='patient_id' required="1"/>
+						<field name='numberid' required="1"/>
 					</group>
 				</group>
 				<notebook>
@@ -234,9 +237,11 @@
 					<group name="main_sub_group2" >
 						<field name='document_type' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='numberid' 
-							attrs="{'invisible':[('document_type','in',['cc','ti'])],'readonly':[('state','!=','new')]}"/>
+							attrs="{'invisible':[('document_type','in',['cc','ti'])],'readonly':[('state','!=','new')]}"
+							required="1"/>
 						<field name='numberid_integer' string="Number ID" 
-							attrs="{'invisible':[('document_type','not in',['cc','ti'])],'readonly':[('state','!=','new')]}"/>
+							attrs="{'invisible':[('document_type','not in',['cc','ti'])],'readonly':[('state','!=','new')]}" 
+							required="1"/>
 						<field name='phone' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='gender' attrs="{'readonly':[('state','!=','new')]}"/>
 						<field name='birth_date' attrs="{'readonly':[('state','!=','new')]}"/>
@@ -411,7 +416,8 @@
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
 			<search string="Search Appointments">
-				<field name="surgeon_id"  />
+				<field name="numberid"/>
+				<field name="surgeon_id"/>
 				<field name='anesthesiologist_id'/>
 				<field name="patient_id" />
 				<field name="schedule_id" />
@@ -497,6 +503,7 @@
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
 			<search string="Search Surgery room procedures">
+				<field name="numberid"/>
 				<field name="surgery_room_id"  />
 				<field name="surgeon_id"  />
 				<field name='anesthesiologist_id'/>
