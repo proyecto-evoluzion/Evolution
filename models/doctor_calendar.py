@@ -47,6 +47,14 @@ class DoctorSchedule(models.Model):
     end_date = fields.Datetime(string='End Date', copy=False)
     room_ids = fields.One2many('doctor.waiting.room', 'schedule_id', string='Waiting Rooms/Appointments', copy=False)
     time_allocation_ids = fields.One2many('doctor.schedule.time.allocation', 'schedule_id', string='Time Allocations', copy=False)
+
+    patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    numberid = fields.Char(string='Number ID')
+
+    @api.onchange('patient_id')
+    def onchange_patient_id(self):
+        if self.patient_id:
+            self.numberid = self.patient_id.name
     
     @api.onchange('start_date','duration')
     def onchange_start_date_duration(self):
