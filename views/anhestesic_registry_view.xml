@@ -422,9 +422,8 @@
               <tree string="Anhestesic Registry Tree">
                   <field name="name"/>
      				<field name="intervention_date"/>
-     				<field name="patient_id"/>
      				<field name="document_type"/>
-     				<field name="numberid"/>
+     				<field name="patient_id"/>
               </tree>
           </field>
       </record>

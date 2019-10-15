@@ -25,6 +25,9 @@ from odoo import tools
 class SurgicalTechnologist(models.Model):
 	_name = "doctor.surgical.technologist"
 
+	document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
+                                      ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
+                                      ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
 	numberid = fields.Char(string='Number ID', related='patient_id.name')
 	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')

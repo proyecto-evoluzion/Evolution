@@ -63,13 +63,13 @@
        <field name="model">doctor.quirurgic.sheet</field>
        <field name="arch" type="xml">
        <tree string="Quirurgic Sheet Tree">
+			      <field name="procedure_date"/>
+            <field name="document_type"/>
             <field name="patient_id"/>
-            <field name="numberid"/>
-	   	    <field name='invoice_id'/>
-			<field name="procedure_date"/>
-			<field name="disease_id"/>
-       </tree>
-       </field>
+			      <field name="disease_id"/>
+	   	      <field name='invoice_id'/>
+      </tree>
+      </field>
    </record>
    
    <record id="clinica_quirurgic_sheet_filter" model="ir.ui.view">

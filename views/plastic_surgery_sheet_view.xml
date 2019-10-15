@@ -137,12 +137,10 @@
             <field name="model">clinica.plastic.surgery</field>
             <field name="arch" type="xml">
                 <tree string="Presurgical Tree">
-                    <field name="number"/>
-            	    <!-- <field name='attention_code_id'/> -->
        				<field name="date_attention"/>
-       				<field name="patient_id"/>
+                    <field name="number"/>
        				<field name="document_type"/>
-       				<field name="numberid"/>
+       				<field name="patient_id"/>
                 </tree>
             </field>
         </record>

@@ -309,10 +309,10 @@
        <field name="model">clinica.quirurgical.check.list</field>
        <field name="arch" type="xml">
        <tree string="Quirurgical Check List Tree">
-       		<field name="name"/>
-            <field name="patient_id"/>
-            <field name="numberid"/>
 			<field name="procedure_datetime"/>
+       		<field name="name"/>
+            <field name="document_type"/>
+            <field name="patient_id"/>
        </tree>
        </field>
    </record>

@@ -75,12 +75,11 @@
           <field name="model">doctor.epicrisis</field>
           <field name="arch" type="xml">
               <tree string="Epicrisis Tree">
-                    <field name="name"/>
-	   				<field name="patient_in_date"/>
-	   				<field name="patient_out_date"/>
-	   				<field name="patient_id"/>
-            <field name="numberid"/>
-	   				<field name="tdoc"/>
+                <field name="name"/>
+	   				    <field name="patient_in_date"/>
+	   				    <field name="patient_out_date"/>
+	   				    <field name="tdoc"/>
+	   				    <field name="patient_id"/>
               </tree>
           </field>
       </record>

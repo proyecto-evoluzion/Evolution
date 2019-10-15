@@ -38,10 +38,9 @@
           <field name="model">doctor.prescription</field>
           <field name="arch" type="xml">
               <tree string="Doctor Prescription Tree">
-                <field name="name"/>
-                <field name="patient_id"/>
-                <field name="numberid"/>
                 <field name="prescription_date"/>
+                <field name="document_type"/>
+                <field name="patient_id"/>
                 <field name="doctor_id"/>
               </tree>
           </field>
