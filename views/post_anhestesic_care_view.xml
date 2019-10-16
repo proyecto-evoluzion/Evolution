@@ -126,8 +126,8 @@
         <field name="arch" type="xml">
             <tree string="Post-Anhestesic care">
               <field name="date"/>
+              <field name="document_type"/>
               <field name="patient_id"/>
-              <field name="numberid"/>
               <field name="surgeon_id"/>
               <field name="anesthesiologist_id"/>
             </tree>

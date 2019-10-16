@@ -14,15 +14,16 @@
             		<group name="main_group">
             			<group name="main_sub_group1" >
             				<field name='attention_code_id' required="1"/>
-                            <field name='number' readonly="1"/>
+                            <field name="lead_id" required="1"/>
             			</group>
             			<group name="main_sub_group2" >
             				<field name='date_attention' required="1"/>
+                            <field name='number' readonly="1"/>
             			</group>
             		</group>
             		<group name="patient">
                         <field name='patient_id' required="1"/>
-            			<field name='numberid' required="1"/>
+            			<field name='document_type' required="1"/>
                         <field name='gender' invisible="1"/>
             		</group>
 
@@ -251,7 +252,7 @@
            						</group>
             					<group>
            							<field name="paraclinical_goldman" />
-           							<field name="suitable_surgery" />
+           							<field name="suitable_surgery" widget='radio' options="{'horizontal': true}"/>
            						</group>
             				</group>
 
@@ -322,9 +323,8 @@
                     <field name="number"/>
             	    <field name='attention_code_id'/>
        				<field name="date_attention"/>
-       				<field name="patient_id"/>
-                    <field name="numberid"/>
        				<field name="document_type"/>
+       				<field name="patient_id"/>
                 </tree>
             </field>
         </record>
@@ -359,6 +359,7 @@
             name="Pre-surgical Records"
             parent="menu_doctor_process"
             action="clinica_doctor_data.action_clinica_presurgical_record"
+            groups="base.group_system,clinica_doctor_data.anesthesiologist"
             sequence="6"/>
         
  </odoo>
