@@ -5545,6 +5545,11 @@ msgid "Type of Document"
 msgstr "Tipo de Documento"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_lead_id
+msgid "Lead"
+msgstr "Iniciativa"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_uci
 msgid "UCI"
 msgstr "UCI"

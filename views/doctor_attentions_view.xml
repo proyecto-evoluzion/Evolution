@@ -14,15 +14,16 @@
             		<group name="main_group">
             			<group name="main_sub_group1" >
             				<field name='attention_code_id' required="1"/>
-                            <field name='number' readonly="1"/>
+                            <field name="lead_id" required="1"/>
             			</group>
             			<group name="main_sub_group2" >
             				<field name='date_attention' required="1"/>
+                            <field name='number' readonly="1"/>
             			</group>
             		</group>
             		<group name="patient">
                         <field name='patient_id' required="1"/>
-            			<field name='numberid' required="1"/>
+            			<field name='document_type' required="1"/>
                         <field name='gender' invisible="1"/>
             		</group>
 
@@ -251,7 +252,7 @@
            						</group>
             					<group>
            							<field name="paraclinical_goldman" />
-           							<field name="suitable_surgery" />
+           							<field name="suitable_surgery" widget='radio' options="{'horizontal': true}"/>
            						</group>
             				</group>
 

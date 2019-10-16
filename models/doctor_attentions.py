@@ -36,7 +36,7 @@ class PresurgicalRecord(models.Model):
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
-    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+    document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], related="patient_id.tdoc", string='Type of Document')
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
@@ -121,7 +121,7 @@ class PresurgicalRecord(models.Model):
                                             string="GOLDMAN", default='class_1')
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
-    suitable_surgery = fields.Boolean(string='Suitable for Surgery')
+    suitable_surgery = fields.Selection([('yes', 'Yes'), ('no', 'No')], default='no')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     other_diseases = fields.Boolean(string="Other Diseases")
@@ -143,7 +143,7 @@ class PresurgicalRecord(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
-    room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    lead_id = fields.Many2one('doctor.waiting.room', string='Lead', copy=False) # this is the related Proced. Schedule attached to the lead
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -154,7 +154,7 @@ class PresurgicalRecord(models.Model):
     def onchange_consultation_reason(self):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
-            self.numberid = self.patient_id.ref
+            self.document_type = self.patient_id.tdoc
 
     @api.multi
     @api.depends('birth_date')
