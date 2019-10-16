@@ -224,10 +224,17 @@ class DoctorWaitingRoom(models.Model):
     user_type =  fields.Selection([('contributory','Contributory'),('subsidized','Subsidized'),('linked','Linked'),
                                    ('particular','Particular'),('other','Other'),('victim_contributive','Victim - Contributive'),
                                    ('victim_subsidized','Victim - Subsidized'),('victim_linked','Victim - Linked')], string="User Type", default='particular')
-    appointment_type_id = fields.Many2one('clinica.appointment.type', string='Appointment Type')
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
     assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
     schedule_allocation_id = fields.Many2one('doctor.schedule.time.allocation', string='Schedule Time Allocation')
+    duration = fields.Float(string='Duration (in hours)')
+
+    
+    @api.onchange('procedure_date','duration')
+    def onchange_start_date_duration(self):
+        if self.procedure_end_date:
+            procedure_end_date = datetime.strptime(self.procedure_date, DEFAULT_SERVER_DATETIME_FORMAT)
+            self.procedure_end_date = procedure_end_date + timedelta(hours=self.duration)
     
     
     @api.multi
@@ -302,15 +309,6 @@ class DoctorWaitingRoom(models.Model):
         if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
             self.numberid = self.numberid_integer
             
-    @api.onchange('procedure_date','appointment_type_id')
-    def onchange_procedure_date(self):
-        if self.procedure_date:
-            if self.appointment_type_id:
-                duration = self.appointment_type_id.duration
-            else: 
-                duration = 4
-            procedure_date = datetime.strptime(self.procedure_date, DEFAULT_SERVER_DATETIME_FORMAT)
-            self.procedure_end_date = procedure_date + timedelta(hours=duration)
     
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
