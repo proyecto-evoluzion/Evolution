@@ -706,7 +706,7 @@ class DoctorWaitingRoom(models.Model):
         result = action.read()[0]
         #override the context to get rid of the default filtering
         result['context'] = self._set_clinica_form_default_values()
-        pre_surgical_ids = self.env['doctor.presurgical.record'].search([('room_id','=',self.id)])
+        pre_surgical_ids = self.env['doctor.presurgical.record'].search([('lead_id','=',self.id)])
         
         #choose the view_mode accordingly
         if len(pre_surgical_ids) != 1:
