@@ -20,6 +20,7 @@
 ###############################################################################
 
 from . import create_health_professional
+from . import load_anesthesia
 
 
 
