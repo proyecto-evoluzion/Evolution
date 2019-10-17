@@ -151,7 +151,7 @@ class PostAnhestesicAldrete(models.Model):
 	activity = fields.Selection([('2','Mueve 4 Extremidades'),('1','Mueve 2 Extremidades'),('0','Inmóvil')], string='Actividad')
 	aldrete_score = fields.Integer('Puntaje', compute='_compute_score')
 
-	@api.multi
+	@api.one
 	@api.depends('conscience','saturation','breathing','circulation','activity')
 	def _compute_score(self):
 		if self.conscience:
