@@ -68,7 +68,7 @@
           name="Prescription"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_doctor_prescription"
-          groups="base.group_system,clinica_doctor_data.surgeon"
+          groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursery_chief"
           sequence="15"/>
 
 </odoo>
