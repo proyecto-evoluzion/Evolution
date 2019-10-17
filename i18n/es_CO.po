@@ -2212,10 +2212,10 @@ msgid "End Time:"
 msgstr "Hora Final:"
 
 #. module: clinica_doctor_data
-#: code:addons/clinica_doctor_data/models/doctor_calendar.py:222
+#: code:addons/clinica_doctor_data/models/doctor_calendar.py:353
 #, python-format
 msgid "End date should be greater than start date!"
-msgstr "End date should be greater than start date!"
+msgstr "La fecha de finalización del procedimiento debe ser mayor de la fecha del procedimiento."
 
 #. module: clinica_doctor_data
 #: selection:clinica.quirurgical.check.list,patient_out_with:0
@@ -3493,6 +3493,7 @@ msgstr "Nuevo"
 #: selection:clinica.quirurgical.check.list,supplies_delivered:0
 #: selection:clinica.quirurgical.check.list,surgical_concent_filled:0
 #: selection:clinica.quirurgical.check.list,venous_pressure_working:0
+#: selection:doctor.presurgical.record,suitable_surgery:0
 msgid "No"
 msgstr "No"
 
@@ -5102,6 +5103,18 @@ msgid "Suitable for Surgery"
 msgstr "Apto para Cirugía"
 
 #. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_calendar.py:641
+#, python-format
+msgid "There is a problem to continue! The Anesthesiologist did not confirm the suitability yet."
+msgstr "There is a problem to continue! El anestesiólogo registró que el paciente NO es apto para cirugía."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_calendar.py:639
+#, python-format
+msgid "There is a problem to continue! The Anesthesiologist did not confirm the suitability."
+msgstr "Hay un problema para continuar! El anestesiólogo no ha confirmado que el paciente es apto para cirugía."
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_surgeon_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_equipments_room_surgeon_id
@@ -5901,6 +5914,7 @@ msgstr "Años"
 #: selection:clinica.quirurgical.check.list,surgical_concent_filled:0
 #: selection:clinica.quirurgical.check.list,venous_pressure_working:0
 #: selection:clinica.quirurgical.check.list,confirm_bracelet_data:0
+#: selection:doctor.presurgical.record,suitable_surgery:0
 msgid "Yes"
 msgstr "Si"
 
