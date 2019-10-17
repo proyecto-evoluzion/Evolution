@@ -22,7 +22,7 @@
 
 {
     'name': 'Clinica Doctor Datas',
-    'version': '1.46',
+    'version': '1.47',
     'license': 'Other proprietary',
     'category': 'custom',
     'description': """
@@ -39,6 +39,7 @@
         'data/doctor_sequence.xml',
         'data/doctor_surgical_technologist_element.xml',
         'wizard/create_health_professional_view.xml',
+        'wizard/load_anesthesia_view.xml',
         'report/clinica_visualizer_report_template.xml',
         'report/clinica_visualizer_report.xml',
         'report/inherit_external_layout.xml',

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_load_anhestesic_registry" model="ir.ui.view">
+            <field name="name">load.anesthesia.wizard.form</field>
+            <field name="model">load.anesthesia.wizard</field>
+            <field name="arch" type="xml">
+            <form string="Load Anhestesic Registry">
+               	<group name="main_info">
+               		<group>
+               			<field name="anhestesic_registry_id" required="1" domain="[('room_id','=',room_id)]"/>
+               			<field name="room_id" invisible="1" force_save="1"/>
+               		</group>
+               		<group>
+               		</group>
+                </group>
+                <footer>
+                	<button name="action_update_anesthesia_registry" type="object" 
+                     	string="Load" class="oe_highlight"/>
+                     <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        	</field>
+        </record>
+        
+        <record id="action_load_anhestesic_registry" model="ir.actions.act_window">
+            <field name="name">Load Anhestesic Registry</field>
+            <field name="res_model">load.anesthesia.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+           <field name="view_id" ref="view_load_anhestesic_registry"/>
+           <field name="target">new</field>
+        </record>
+        
+    </data>
+</odoo>

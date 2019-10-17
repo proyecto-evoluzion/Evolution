@@ -361,6 +361,5 @@
             action="clinica_doctor_data.action_clinica_presurgical_record"
             groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursery_chief"
             sequence="6"/>
-        
  </odoo>
  

@@ -92,6 +92,10 @@ class ClinicaNurseSheet(models.Model):
     invoice_procedure_ids = fields.One2many('nurse.sheet.invoice.procedures', 'nurse_sheet_id', string='Health Procedures for Invoice', copy=False)
     anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry')
     
+    surgery_start_time = fields.Float(string="Surgery Start Time")
+    surgery_end_time = fields.Float(string="Surgery End Time")
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    
     @api.multi
     @api.depends('birth_date')
     def _compute_age_meassure_unit(self):
@@ -156,24 +160,39 @@ class ClinicaNurseSheet(models.Model):
                     'product_id': sale_line.product_id and sale_line.product_id.id or False,
                     'sequence': sequence,
                     'sale_line_id': sale_line.id}
-                if self.anhestesic_registry_id:
-                    if not first_line:
-                        invc_procedure_dict.update({'procedure_start_time': self.anhestesic_registry_id.anesthesia_start_time})
-                        first_line = True
-                    if sequence == len(room.sale_order_id.order_line):
-                        invc_procedure_dict.update({'procedure_end_time': self.anhestesic_registry_id.end_time})
                 invc_procedure_list.append((0,0, invc_procedure_dict))
             if procedure_list or invc_procedure_list:
                 vals.update({'procedure_ids': procedure_list, 'invoice_procedure_ids': invc_procedure_list})
         return vals 
         
-    @api.onchange('room_id','anhestesic_registry_id')
+    @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
             room_change_vals = self._set_change_room_id(self.room_id)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
             self.procedure_ids = room_change_vals.get('procedure_ids', False)
             self.invoice_procedure_ids = room_change_vals.get('invoice_procedure_ids', False)
+            
+    def _update_invoice_procedure_time(self):
+        if self.invoice_procedure_ids:
+            invc_proc_num = len(self.invoice_procedure_ids)
+            first_procedure = self.invoice_procedure_ids[0]
+            last_procedure = self.invoice_procedure_ids[invc_proc_num-1]
+            first_procedure.procedure_start_time = self.surgery_start_time
+            last_procedure.procedure_end_time = self.surgery_end_time
+            
+    @api.onchange('anhestesic_registry_id')
+    def onchange_anhestesic_registry_id(self):
+        if self.anhestesic_registry_id:
+            self.surgery_start_time = self.anhestesic_registry_id.anesthesia_start_time
+            self.surgery_end_time = self.anhestesic_registry_id.end_time
+            
+    @api.onchange('surgery_start_time', 'surgery_end_time', 'invoice_procedure_ids')
+    def onchange_surgery_time(self):
+        if self.invoice_procedure_ids:
+            if self.surgery_start_time or self.surgery_end_time:
+                self._update_invoice_procedure_time()
+            
             
     def _check_assign_numberid(self, numberid_integer):
         if numberid_integer == 0:
@@ -213,8 +232,7 @@ class ClinicaNurseSheet(models.Model):
             invc_procedures = self.env['nurse.sheet.invoice.procedures'].search([('nurse_sheet_id','=',nurse_sheet.id)], order='sequence')
             start_time = 0
             load_previous = True
-            if nurse_sheet.anhestesic_registry_id:
-                start_time = nurse_sheet.anhestesic_registry_id.anesthesia_start_time
+            start_time = nurse_sheet.surgery_start_time
             for invc_proc_line in invc_procedures:
                 if load_previous:
                     invc_proc_line.procedure_start_time = start_time
@@ -224,7 +242,7 @@ class ClinicaNurseSheet(models.Model):
                 else:
                     load_previous = False
                 if invc_proc_line.last_procedure and nurse_sheet.anhestesic_registry_id:
-                    invc_proc_line.procedure_end_time = nurse_sheet.anhestesic_registry_id.end_time
+                    invc_proc_line.procedure_end_time = nurse_sheet.surgery_end_time
     
     @api.model
     def create(self, vals):
@@ -301,6 +319,12 @@ class ClinicaNurseSheet(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'
+        
 
 class NurseSheetProcedures(models.Model):
     _name = "nurse.sheet.procedures"
@@ -327,6 +351,7 @@ class NurseSheetVitalSigns(models.Model):
     
 class NurseSheetInvoiceProcedures(models.Model):
     _name = "nurse.sheet.invoice.procedures"
+    _order = 'sequence'
     
     nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False)
     product_id = fields.Many2one('product.product', string='Health Procedure')
