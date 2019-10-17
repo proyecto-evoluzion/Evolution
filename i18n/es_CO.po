@@ -5106,7 +5106,7 @@ msgstr "Apto para Cirugía"
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:641
 #, python-format
 msgid "There is a problem to continue! The Anesthesiologist did not confirm the suitability yet."
-msgstr "There is a problem to continue! El anestesiólogo registró que el paciente NO es apto para cirugía."
+msgstr "Hay un problema para continuar! El anestesiólogo registró que el paciente NO es apto para cirugía."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:639
