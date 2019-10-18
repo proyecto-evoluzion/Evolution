@@ -636,9 +636,9 @@ class DoctorWaitingRoom(models.Model):
                 suitable_surgery = self.env['doctor.presurgical.record'].browse(ids[0]).id.suitable_surgery
                 if suitable_surgery == "yes":
                    return self.createSO()
-                raise ValidationError(_('There is a problem to continue! The Anesthesiologist did not confirm the suitability.'))
+                raise ValidationError(_('The Anesthesiologist did not confirm the suitability.'))
             else:
-                raise ValidationError(_('There is a problem to continue! The Anesthesiologist did not confirm the suitability yet.'))
+                raise ValidationError(_('The Anesthesiologist did not confirm the suitability yet.'))
 
     @api.multi
     def createSO(self):
