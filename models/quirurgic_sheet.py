@@ -77,7 +77,7 @@ class DoctorQuirurgicSheet(models.Model):
     surgical_execution = fields.Selection([('single','Single or one-sided'),('multiple_same_diff','Multiple or bilateral, same route, different specialty'),
                                         ('multiple_same_same','Multiple or bilateral, same way, same specialty'), ('multiple_diff_diff','Multiple or bilateral, different way, different specialty'), ('multiple_diff_same','Multiple or bilateral, different way, same specialty')], string='Execution of the Surgical Act')
     
-    disease_id = fields.Many2one('doctor.diseases', string='Diagnosis')
+    disease_id = fields.Text(string="Diagnosis")
     tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
     procedure = fields.Text(string="Procedure")
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
