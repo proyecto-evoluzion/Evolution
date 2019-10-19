@@ -96,6 +96,7 @@ class DoctorEpicrisis(models.Model):
     end_time = fields.Float(string="End Time")
     treatment = fields.Text(string="Treatment")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    medical_record = fields.Char(string='Medical record')
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -138,6 +139,7 @@ class DoctorEpicrisis(models.Model):
             self.numberid_integer = self.patient_id.ref
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
+            self.medical_record = self.patient_id.doctor_id.medical_record
             
     @api.onchange('tdoc','numberid_integer','numberid')
     def onchange_numberid(self):

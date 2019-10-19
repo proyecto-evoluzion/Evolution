@@ -27,6 +27,7 @@
             <group name="patient">
               <field name='patient_id' required="1"/>
               <field name='tdoc' required="1"/>
+              <field name='medical_record' invisible="1"/>
             </group>
          	    <notebook>
          	    	<page name="description" string="Description">

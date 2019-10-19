@@ -52,11 +52,13 @@ class DoctorPrescription(models.Model):
 	template_id = fields.Many2one('doctor.prescription.template', string='Template')
 	sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
 	numberid = fields.Char(string='Number ID', related='patient_id.name')
+	medical_record = fields.Char(string='Medical record')
 
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
 		if self.patient_id:
 			self.document_type = self.patient_id.tdoc
+
 
 	@api.onchange('template_id')
 	def onchange_template_id(self):
@@ -67,6 +69,7 @@ class DoctorPrescription(models.Model):
 	def onchange_number(self):
 		if self.patient_id:
 			self.numberid = self.patient_id.ref
+			self.medical_record = self.patient_id.doctor_id.medical_record			
 
 	@api.multi
 	def _set_visualizer_default_values(self):
