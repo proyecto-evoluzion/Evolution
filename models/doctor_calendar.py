@@ -646,7 +646,6 @@ class DoctorWaitingRoom(models.Model):
             room.sale_order_id = room._create_so().id
             room.state = 'ordered'
         return self.action_view_sale_order()
-
             
     @api.multi
     def action_view_sale_order(self):
