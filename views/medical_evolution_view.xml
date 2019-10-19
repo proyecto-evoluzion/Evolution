@@ -26,6 +26,7 @@
 		        </group>
             <group name="patient">
               <field name='patient_id' required="1"/>
+              <field name='medical_record' invisible="1"/>
               <field name='numberid' required="1"/>
             </group>
          	    <notebook>

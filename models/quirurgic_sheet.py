@@ -81,6 +81,7 @@ class DoctorQuirurgicSheet(models.Model):
     tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
     procedure_id = fields.Many2one('product.product', string='Procedure')
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
+    medical_record = fields.Char(string='Medical record')
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
     description = fields.Text(string='Quirurgic Description')
     description_template_id = fields.Many2one('clinica.text.template', string='Template')
@@ -156,6 +157,7 @@ class DoctorQuirurgicSheet(models.Model):
             self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
             self.numberid_integer = self.patient_id.ref
+            self.medical_record = self.patient_id.doctor_id.medical_record
             
     @api.onchange('document_type','numberid_integer','numberid')
     def onchange_number_id(self):

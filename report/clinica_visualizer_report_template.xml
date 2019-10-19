@@ -154,7 +154,9 @@
        				</tr>
        				<tr t-if="quirgic_sheet.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
        				<tr t-if="quirgic_sheet.sign_stamp">
-       					<td colspan="2" style="width:50%; "><span style="padding-left:2px;" t-field="quirgic_sheet.sign_stamp"/></td>
+       					<td colspan="2" style="width:50%; "><span style="padding-left:2px;" t-field="quirgic_sheet.sign_stamp"/>
+                  <span style="padding-left:2px;" t-field="quirgic_sheet.medical_record"/>
+                </td>
        				</tr>
        			</table>
    				<p style="page-break-after: always;"/>
@@ -895,6 +897,7 @@
    					<tr t-if="medical_evolution.sign_stamp">
        					<td colspan="2" style="width:50%; ">
        						<span style="padding-left:2px;" t-field="medical_evolution.sign_stamp"/>
+                  <span style="padding-left:2px;" t-field="medical_evolution.medical_record"/>
        					</td>
        				</tr>
        				<tr t-if="medical_evolution.evolution_note_ids"><td colspan="2" style="text-align:center; "><strong>DESCRIPTION</strong></td></tr>
@@ -963,7 +966,8 @@
        				<tr t-if="epicrisis.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
    					<tr t-if="epicrisis.sign_stamp">
        					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="epicrisis.sign_stamp"/>
+                  <span style="padding-left:2px;" t-field="epicrisis.sign_stamp"/>
+       						<span style="padding-left:2px;" t-field="epicrisis.medical_record"/>
        					</td>
        				</tr>
        				<tr t-if="epicrisis.epicrisis_note"><td colspan="2" style="text-align:center; "><strong>EPICRISIS</strong></td></tr>
@@ -1011,6 +1015,7 @@
             <tr t-if="prescription.sign_stamp">
                 <td colspan="2" style="width:50%; ">
                   <span style="padding-left:2px;" t-field="prescription.sign_stamp"/>
+                  <span style="padding-left:2px;" t-field="prescription.medical_record"/>
                 </td>
               </tr>
             </table>

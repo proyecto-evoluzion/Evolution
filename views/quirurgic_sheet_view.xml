@@ -21,7 +21,8 @@
          			</group>
          		</group>
          		<group name="health_professionals">
-                <field name='patient_id' required="1"/> 
+                <field name='patient_id' required="1"/>
+                <field name='medical_record' invisible="1"/>
                 <field name='numberid' required="1"/>	
          		</group>
          		<group name="other_info_group">

@@ -86,6 +86,7 @@ class Doctor(models.Model):
                                        string='Profession Type', default='plastic_surgeon')
     product_ids = fields.Many2many('product.product', 'product_professional_rel', 'doctor_id', 'product_id', 
                                    string="Health Procedures", copy=False)
+    medical_record = fields.Char(string='Medical record')
     
     def _check_email(self, email):
         if not tools.single_email_re.match(email):
