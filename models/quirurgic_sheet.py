@@ -43,7 +43,7 @@ class DoctorQuirurgicSheet(models.Model):
     
     name = fields.Char(string='Name', copy=False)
     invoice_id = fields.Many2one('account.invoice', string='Invoice')
-    procedure_date = fields.Date(string='Procedure Date')
+    procedure_date = fields.Datetime(string='Procedure Date')
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
@@ -79,7 +79,7 @@ class DoctorQuirurgicSheet(models.Model):
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis')
     tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
-    procedure_id = fields.Many2one('product.product', string='Procedure')
+    procedure = fields.Text(string="Procedure")
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
     description = fields.Text(string='Quirurgic Description')

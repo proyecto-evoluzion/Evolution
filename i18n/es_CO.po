@@ -4301,7 +4301,7 @@ msgstr "Procedimiento"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_procedure
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_procedure_id
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedure
 msgid "Procedure"
 msgstr "Procedimiento"

@@ -32,7 +32,14 @@ class DoctorPrescription(models.Model):
 		signature = html2text.html2text(user.signature)
 		return signature
 
-	document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
+	document_type = fields.Selection([('cc','CC - ID Document'),
+									('ce','CE - Aliens Certificate'),
+									('pa','PA - Passport'),
+									('rc','RC - Civil Registry'),
+									('ti','TI - Identity Card'),
+									('as','AS - Unidentified Adult'),
+									('ms','MS - Unidentified Minor')],
+									 string='Type of Document', related="doctor_id.tdoc")
 	name= fields.Char(string="Order Type", required="1")
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
 	prescription_date = fields.Date(string='Date', default=fields.Date.context_today)
@@ -44,7 +51,12 @@ class DoctorPrescription(models.Model):
 	order = fields.Text(string="Order", required="1")
 	template_id = fields.Many2one('doctor.prescription.template', string='Template')
 	sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
-	numberid = fields.Char(string='Number ID', related='patient_id.name')	
+	numberid = fields.Char(string='Number ID', related='patient_id.name')
+
+	@api.onchange('patient_id')
+	def onchange_patient_id(self):
+		if self.patient_id:
+			self.document_type = self.patient_id.tdoc
 
 	@api.onchange('template_id')
 	def onchange_template_id(self):
@@ -68,15 +80,15 @@ class DoctorPrescription(models.Model):
 	def action_view_clinica_record_history(self):
 		context = self._set_visualizer_default_values()
 		return {
-                'name': _('Clinica Record History'),
-                'view_type': 'form',
-                'view_mode': 'form',
-                'res_model': 'clinica.record.list.visualizer',
-                'view_id': self.env.ref('clinica_doctor_data.clinica_record_list_visualizer_form').id,
-                'type': 'ir.actions.act_window',
-                'context': context,
-                'target': 'new'
-            }
+				'name': _('Clinica Record History'),
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': 'clinica.record.list.visualizer',
+				'view_id': self.env.ref('clinica_doctor_data.clinica_record_list_visualizer_form').id,
+				'type': 'ir.actions.act_window',
+				'context': context,
+				'target': 'new'
+			}
 
 class DoctorPrescription(models.Model):
 	_name = "doctor.prescription.template"

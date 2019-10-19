@@ -22,7 +22,7 @@
          		</group>
          		<group name="health_professionals">
                 <field name='patient_id' required="1"/> 
-                <field name='numberid' required="1"/>	
+                <field name='document_type' required="1"/>	
          		</group>
          		<group name="other_info_group">
          			<group name="other_info_group_sub1" >
@@ -33,7 +33,7 @@
          			</group>
          			<group name="other_info_group_sub2" >
          				<field name='disease_id' />
-                <field name='procedure_id' />
+                <field name='procedure' />
          				<!--<field name='user_id' />-->
          			</group>
          		</group>

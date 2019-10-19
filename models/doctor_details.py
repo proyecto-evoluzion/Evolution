@@ -672,23 +672,6 @@ class DoctorAdministrativeData(models.Model):
         return result
     
     @api.multi
-    def action_view_plastic_surgery(self):
-        action = self.env.ref('clinica_doctor_data.action_clinica_plastic_surgery')
-        result = action.read()[0]
-        #override the context to get rid of the default filtering
-        result['context'] = self._set_clinica_form_default_values()
-        plastic_surgery_ids = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.id)])
-        
-        #choose the view_mode accordingly
-        if len(plastic_surgery_ids) != 1:
-            result['domain'] = "[('id', 'in', " + str(plastic_surgery_ids.ids) + ")]"
-        elif len(plastic_surgery_ids) == 1:
-            res = self.env.ref('clinica_doctor_data.clinica_plastic_surgery_form', False)
-            result['views'] = [(res and res.id or False, 'form')]
-            result['res_id'] = plastic_surgery_ids.id
-        return result
-    
-    @api.multi
     def action_view_medical_evolution(self):
         action = self.env.ref('clinica_doctor_data.action_clinica_medical_evolution')
         result = action.read()[0]
