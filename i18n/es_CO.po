@@ -4172,7 +4172,7 @@ msgstr "Plaquetas:"
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:269
 #: code:addons/clinica_doctor_data/models/doctor_attentions.py:223
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:184
-#: code:addons/clinica_doctor_data/models/doctor_details.py:381
+#: code:addons/clinica_doctor_data/models/doctor_details.py:408
 #: code:addons/clinica_doctor_data/models/doctor_epicrisis.py:148
 #: code:addons/clinica_doctor_data/models/medical_evolution.py:152
 #: code:addons/clinica_doctor_data/models/nurse_sheet.py:160
@@ -4182,6 +4182,13 @@ msgstr "Plaquetas:"
 #, python-format
 msgid "Please enter non zero value for Number ID"
 msgstr "Please enter non zero value for Number ID"
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_details.py:387
+#: code:addons/clinica_doctor_data/models/doctor_details.py:397
+#, python-format
+msgid "This patient already exists in the system. \n Name: %s \n Last Name: %s \n DNI: %s'"
+msgstr "Este paciente ya existe en el sistema. \n Nombre: %s \n Last Apellido: %s \n Número de Identificación: %s'"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
