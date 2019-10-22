@@ -381,9 +381,21 @@ class DoctorAdministrativeData(models.Model):
     @api.onchange('ref', 'tdoc')
     def onchange_ref(self):
         if self.ref:
-            self.name = str(self.ref) 
+            self.name = str(self.ref)
+            is_patient = self.env['doctor.patient'].search([('ref','=',self.ref)])
+            if is_patient:
+                raise ValidationError(_('This patient already exists in the system. \n Name: %s \n Last Name: %s \n DNI: %s')%
+                (is_patient.firstname, is_patient.lastname, str(is_patient.ref)))
         if self.tdoc and self.tdoc in ['cc','ti'] and self.ref == 0:
             self.name = str(0)
+
+    @api.onchange('name')
+    def onchange_ref(self):
+        if self.name:
+            is_patient = self.env['doctor.patient'].search([('name','=',self.name)])
+            if is_patient:
+                raise ValidationError(_('This patient already exists in the system. \n Name: %s \n Last Name: %s \n DNI: %s')%
+                (is_patient.firstname, is_patient.lastname, is_patient.name))
     
     def _check_email(self, email):
         if not tools.single_email_re.match(email):
