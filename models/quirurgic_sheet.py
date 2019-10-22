@@ -30,6 +30,7 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError
 import html2text
+import logging
 
 class DoctorQuirurgicSheet(models.Model):
     _name = "doctor.quirurgic.sheet"
@@ -120,7 +121,6 @@ class DoctorQuirurgicSheet(models.Model):
         if self.room_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
-    
     @api.multi
     @api.depends('birth_date')
     def _compute_age_meassure_unit(self):
@@ -156,15 +156,8 @@ class DoctorQuirurgicSheet(models.Model):
             self.blood_rh = self.patient_id.blood_rh
             self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.ref
+            self.numberid_integer = int(self.patient_id.name)
             self.medical_record = self.patient_id.doctor_id.medical_record
-            
-    @api.onchange('document_type','numberid_integer','numberid')
-    def onchange_number_id(self):
-        if self.document_type and self.document_type not in ['cc','ti']:
-            self.numberid_integer = 0
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
-            self.numberid = self.numberid_integer
     
     @api.onchange('description_template_id')
     def onchange_description_template_id(self):

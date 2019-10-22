@@ -253,16 +253,10 @@ class AnhestesicRegistry(models.Model):
             self.birth_date = self.patient_id.birth_date
             self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.ref
+            self.numberid_integer = int(self.patient_id.name)
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             
-    @api.onchange('document_type','numberid_integer','numberid')
-    def onchange_numberid(self):
-        if self.document_type and self.document_type not in ['cc','ti']:
-            self.numberid_integer = 0
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
-            self.numberid = self.numberid_integer
             
     @api.onchange('medical_recipe_template_id')
     def onchange_medical_recipe_template_id(self):

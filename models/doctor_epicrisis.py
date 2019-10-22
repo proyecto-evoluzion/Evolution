@@ -136,17 +136,11 @@ class DoctorEpicrisis(models.Model):
             self.birth_date = self.patient_id.birth_date
             self.tdoc = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = self.patient_id.ref
+            self.numberid_integer = int(self.patient_id.name)
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             self.medical_record = self.patient_id.doctor_id.medical_record
-            
-    @api.onchange('tdoc','numberid_integer','numberid')
-    def onchange_numberid(self):
-        if self.tdoc and self.tdoc not in ['cc','ti']:
-            self.numberid_integer = 0
-        if self.tdoc and self.tdoc in ['cc','ti'] and self.numberid_integer:
-            self.numberid = self.numberid_integer
+        
             
     @api.onchange('epicrisis_template_id')
     def onchange_epicrisis_template_id(self):

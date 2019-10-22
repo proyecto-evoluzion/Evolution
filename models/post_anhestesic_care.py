@@ -81,9 +81,8 @@ class ClinicaPostAnhestesicCare(models.Model):
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
 		if self.patient_id:
-			self.numberid = self.patient_id.ref
-	
-
+			self.numberid = self.patient_id._name
+			self.document_type = self.patient_id.tdoc
 
 	@api.depends('nasogastric_tube','chest_tube','hemovac','urinary_tube','cystostomy','others')
 	def _get_sum(self):
