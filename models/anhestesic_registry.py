@@ -263,12 +263,6 @@ class AnhestesicRegistry(models.Model):
         if self.medical_recipe_template_id:
             self.medical_recipe = self.medical_recipe_template_id.template_text
             
-    def _check_assign_numberid(self, numberid_integer):
-        if numberid_integer == 0:
-            raise ValidationError(_('Please enter non zero value for Number ID'))
-        else:
-            numberid = str(numberid_integer)
-            return numberid
     
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
@@ -298,12 +292,6 @@ class AnhestesicRegistry(models.Model):
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('anhestesic.registry') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
-            numberid_integer = 0
-            if vals.get('numberid_integer', False):
-                numberid_integer = vals['numberid_integer']
-            numberid = self._check_assign_numberid(numberid_integer)
-            vals.update({'numberid': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
@@ -314,18 +302,6 @@ class AnhestesicRegistry(models.Model):
     
     @api.multi
     def write(self, vals):
-        if vals.get('document_type', False) or 'numberid_integer' in  vals:
-            if vals.get('document_type', False):
-                document_type = vals['document_type']
-            else:
-                document_type = self.document_type
-            if document_type in ['cc','ti']:
-                if 'numberid_integer' in  vals:
-                    numberid_integer = vals['numberid_integer']
-                else:
-                    numberid_integer = self.numberid_integer
-                numberid = self._check_assign_numberid(numberid_integer)
-                vals.update({'numberid': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:

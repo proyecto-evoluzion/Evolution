@@ -131,7 +131,7 @@
 		<field name="name">doctor.schedule.calendar</field>
 		<field name="model">doctor.schedule</field>
 		<field name="arch" type="xml">
-			<calendar color="professional_id" date_start="start_date" date_stop="end_date" string="Schedule">
+			<calendar color="professional_id" quick_add="false" date_start="start_date" date_stop="end_date" string="Schedule">
 				<field name="professional_id"/>
 				<field name="start_date"/>
 				<field name="end_date"/>
@@ -383,7 +383,7 @@
 		<field name="name">doctor.waiting.room</field>
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
-			<calendar color="surgeon_id" date_start="procedure_date" date_stop="procedure_end_date" string="Waiting Room" quick_add="False" mode="week">
+			<calendar color="surgeon_id" date_start="procedure_date" date_stop="procedure_end_date" string="Waiting Room" quick_add="false">
 				<field name="surgeon_id"/>
 				<field name="anesthesiologist_id"/>
 				<field name="patient_id"/>
@@ -468,7 +468,7 @@
 		<field name="name">doctor.waiting.room</field>
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
-			<calendar color="surgery_room_id" date_start="procedure_date" date_stop="procedure_end_date" string="Surgery Room">
+			<calendar color="surgery_room_id" date_start="procedure_date" date_stop="procedure_end_date" string="Surgery Room" quick_add="false">
 				<field name="surgery_room_id"/>
 				<field name="surgeon_id"/>
 				<field name="anesthesiologist_id"/>
