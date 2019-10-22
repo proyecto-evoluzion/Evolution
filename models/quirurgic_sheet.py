@@ -30,7 +30,6 @@ from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
 import calendar
 from odoo.exceptions import ValidationError
 import html2text
-import logging
 
 class DoctorQuirurgicSheet(models.Model):
     _name = "doctor.quirurgic.sheet"
@@ -115,11 +114,13 @@ class DoctorQuirurgicSheet(models.Model):
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
     @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+    
     
     @api.multi
     @api.depends('birth_date')
@@ -258,6 +259,11 @@ class DoctorQuirurgicSheet(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'
     
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

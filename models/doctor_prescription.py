@@ -53,6 +53,7 @@ class DoctorPrescription(models.Model):
 	sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
 	numberid = fields.Char(string='Number ID', related='patient_id.name')
 	medical_record = fields.Char(string='Medical record')
+	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
 
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
@@ -92,6 +93,11 @@ class DoctorPrescription(models.Model):
 				'context': context,
 				'target': 'new'
 			}
+		
+	@api.multi
+	def action_set_close(self):
+		for record in self:
+			record.state = 'closed' 
 
 class DoctorPrescription(models.Model):
 	_name = "doctor.prescription.template"

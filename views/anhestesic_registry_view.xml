@@ -9,6 +9,9 @@
          	<header>
                 <button name="action_view_clinica_record_history" string="View History" 
                 	type="object" class="oe_highlight"/>
+                <button name="action_set_close" string="Set to Close" 
+                		type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
          		<div class="oe_title">
@@ -18,103 +21,103 @@
                 </div>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-         				<field name='intervention_date' required="1"/>
+         				<field name='intervention_date' required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group name="main_sub_group2" >
                 <!-- <field name='room_id'/> -->
          			</group>
          		</group>
             <group name="patient">
-                <field name='patient_id' required="1"/>
-                <field name='document_type' required="1"/>
-                <field name='gender' invisible="1"/>
+                <field name='patient_id' required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
+                <field name='document_type' required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
+                <field name='gender' invisible="1"  attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
          	    <group name="professional_info_group">
          	    	<group name="professional_info_sub1">
-         	    		<field name="product_id" />
-		                <field name="surgeon_id" domain="[('profession_type','=','plastic_surgeon')]"/>
-		                <field name="anesthesiologist_id" domain="[('profession_type','=','anesthesiologist')]"/>
-		                <field name="anesthesia_type"/>
+         	    		<field name="product_id"   attrs="{'readonly':[('state','=','closed')]}"/>
+		                <field name="surgeon_id" domain="[('profession_type','=','plastic_surgeon')]"  attrs="{'readonly':[('state','=','closed')]}"/>
+		                <field name="anesthesiologist_id" domain="[('profession_type','=','anesthesiologist')]"  attrs="{'readonly':[('state','=','closed')]}"/>
+		                <field name="anesthesia_type"  attrs="{'readonly':[('state','=','closed')]}"/>
          	    	</group>
          	    	<group name="professional_info_sub2">
-         	    		<field name="preoperative_note" />
+         	    		<field name="preoperative_note"   attrs="{'readonly':[('state','=','closed')]}"/>
          	    	</group>
          	    </group>
          	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios" colspan="4">
-                  <field name="anesthesia_start_time" widget="float_time"/>
-         	    		<field name="intubation_time" widget="float_time" />         	  
-         	    		<field name="start_time" widget="float_time" />
-         	    		<field name="end_time" widget="float_time" />
-                  <field name="extubation_time" widget="float_time" />
-         	    		<field name="anesthesia_end_time" widget="float_time" />
-         	    		<field name="recovery_transfer_time" widget="float_time" />
+                  <field name="anesthesia_start_time" widget="float_time"  attrs="{'readonly':[('state','=','closed')]}"/>
+         	    		<field name="intubation_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>         	  
+         	    		<field name="start_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
+         	    		<field name="end_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
+                  <field name="extubation_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
+         	    		<field name="anesthesia_end_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
+         	    		<field name="recovery_transfer_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
          	    </group>
          	    <notebook>
          	    	<page name="background" string="Patient Background">
 	      				<group name="pathological_background" >
 	       					<group name="pathological_background_sub1">
-	       						<field name="diabetes"/>
-	       						<field name="hypertension"/>
+	       						<field name="diabetes"  attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="hypertension"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       					</group>
 	       					<group name="pathological_background_sub2">
-	       						<field name="arthritis"/>
-	       						<field name="thyroid_disease"/>
+	       						<field name="arthritis"  attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="thyroid_disease"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       					</group>
        					</group>
 	       				<group name="pathological" colspan="2" col='1'>
-	       					<label for="pathological" string="Pathological"/>
-	       					<field name="pathological" nolabel="1"/>
+	       					<label for="pathological" string="Pathological" />
+	       					<field name="pathological" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       				</group>
 	       				<group name="surgical" colspan="2" col='1'>
 	       					<label for="surgical" string="Surgical"/>
-	       					<field name="surgical" nolabel="1"/>
+	       					<field name="surgical" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       				</group>
 	       				<group name="patient_backgorund_main" >
 	       					<group name="patient_backgorund_sub1" >
-	       						<field name="smoke" />
+	       						<field name="smoke"   attrs="{'readonly':[('state','=','closed')]}"/>
 	       						<label for="cigarate_daily" string="Cigarettes"/>
 	                            <div>
 	                                <div>
-	                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" />
-	                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+	                                    <field name="cigarate_daily" nolabel="1" class="oe_inline"   attrs="{'readonly':[('state','=','closed')]}"/>
+	                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"  attrs="{'readonly':[('state','=','closed')]}"/>
 	                                </div>
 	                            </div>
-	       						<field name="is_alcoholic" />
+	       						<field name="is_alcoholic"   attrs="{'readonly':[('state','=','closed')]}"/>
 	       						<label for="alcohol_frequency" string="Frequency"/>
 	                            <div>
 	                                <div>
-	                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline"/>
-	                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"/>
+	                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;"  attrs="{'readonly':[('state','=','closed')]}"/>
 	                                </div>
 	                            </div>
-	       						<field name="marijuana" />
-	       						<field name="cocaine" />
-	       						<field name="ecstasy" />
+	       						<field name="marijuana"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="cocaine"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="ecstasy"   attrs="{'readonly':[('state','=','closed')]}"/>
 	       						
 	       					</group>
 	       					<group name="patient_backgorund_sub2" >
-	       						<field name="body_background_others" string="Others"/>
-	       						<field name="pharmacological" />
-	       						<field name="allergic" />
+	       						<field name="body_background_others" string="Others"  attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="pharmacological"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="allergic"   attrs="{'readonly':[('state','=','closed')]}"/>
 	       					</group>
 	       				</group>
 	       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
 	       					<group name="patient_female_backgorund_sub1" >
-	       						<field name="pregnancy_number" />
-	       						<field name="child_number" />
-	       						<field name="abortion_number" />
+	       						<field name="pregnancy_number"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="child_number"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="abortion_number"   attrs="{'readonly':[('state','=','closed')]}"/>
 	       					</group>
 	       					<group name="patient_female_backgorund_sub2" >
-	       						<field name="last_birth_date" />
-	       						<field name="last_menstruation_date" />
-	       						<field name="contrtaceptive_methods" />
+	       						<field name="last_birth_date"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="last_menstruation_date"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="contrtaceptive_methods"   attrs="{'readonly':[('state','=','closed')]}"/>
 	       					</group>
 	       				</group>
 	      			</page>
          	    	<page name="paraclinical_exam" string="Paraclinical Exam">
          	    		<group name="paraclinical_exam_date" >
            					<group>
-           						<field name="paraclinical_exam_date" string="Date of Exam"/>
+           						<field name="paraclinical_exam_date" string="Date of Exam"  attrs="{'readonly':[('state','=','closed')]}"/>
            					</group>
            					<group>
            					</group>
@@ -123,25 +126,25 @@
            					<group name="paraclinical_blood_count_sub1">
            						<label for="paraclinical_hb" string="HB"/>
 	           					<div>
-	           						<field name="paraclinical_hb" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_hb" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 g/dl
 	           					</div>
-	           					<label for="paraclinical_hto" string="Hto (Hematocrit)"/>
+	           					<label for="paraclinical_hto" string="Hto (Hematocrit)" />
 	           					<div>
-	           						<field name="paraclinical_hto" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_hto" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 Vol %
 	           					</div>
 	           					<label for="paraclinical_leukocytes" string="Leukocytes"/>
 	           					<div>
-	           						<field name="paraclinical_leukocytes" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_leukocytes" nolabel="1" class="oe_inline"   attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 x 10^3/ul
 	           					</div>
            					</group>
            					<group name="paraclinical_blood_count_sub2">
-           						<field name="paraclinical_differential" />
+           						<field name="paraclinical_differential"   attrs="{'readonly':[('state','=','closed')]}"/>
            						<label for="paraclinical_vsg" string="VSG"/>
 	           					<div>
-	           						<field name="paraclinical_vsg" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_vsg" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 mm/H
 	          				    </div> 
            					</group>
@@ -150,24 +153,24 @@
            					<group name="pruebas_coogulacian_sub1">
            						<label for="paraclinical_pt" string="PT"/>
 	           					<div>
-	           						<field name="paraclinical_pt" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_pt" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 S (seconds)
 	           					</div>
 	           					<label for="paraclinical_ptt" string="PTT"/>
 	           					<div>
-	           						<field name="paraclinical_ptt" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_ptt" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 S (seconds)
 	           					</div>
            					</group>
            					<group name="pruebas_coogulacian_sub2">
            						<label for="paraclinical_platelets" string="Platelets"/>
 	           					<div>
-	           						<field name="paraclinical_platelets" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_platelets" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 x 10^3/ul
 	           					</div>
-	           					<label for="paraclinical_tc" string="TC"/>
+	           					<label for="paraclinical_tc" string="TC"  attrs="{'readonly':[('state','=','closed')]}"/>
 	           					<div>
-	           						<field name="paraclinical_tc" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_tc" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 m (Minutes)
 	           					</div>
            					</group>
@@ -176,86 +179,86 @@
            					<group name="quimico_sanguinea_sub1">
            						<label for="paraclinical_glycemia" string="Glycemia"/>
 	           					<div>
-	           						<field name="paraclinical_glycemia" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_glycemia" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 mg/dl
 	           					</div>
 	           					<label for="paraclinical_creatinine" string="Creatinine"/>
 	           					<div>
-	           						<field name="paraclinical_creatinine" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_creatinine" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 mg/dl
 	           					</div>
            					</group>
            					<group name="quimico_sanguinea_sub2">
            						<label for="paraclinical_albumin" string="Albumin"/>
 	           					<div>
-	           						<field name="paraclinical_albumin" nolabel="1" class="oe_inline"/>
+	           						<field name="paraclinical_albumin" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 g/dl
 	           					</div>
-           						<field name="paraclinical_glob" />
+           						<field name="paraclinical_glob"   attrs="{'readonly':[('state','=','closed')]}"/>
            					</group>
            				</group>
            				<group name="ecg" colspan="2" col='1'>
            					<label for="paraclinical_ecg" string="Electrocardiogram"/>
-           					<field name="paraclinical_ecg" nolabel="1"/>
+           					<field name="paraclinical_ecg" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
            				</group>
            				<group name="paraclinical_rx_chest" colspan="2" col='1'>
            					<label for="paraclinical_rx_chest" string="Rx. Chest"/>
-           					<field name="paraclinical_rx_chest" nolabel="1"/>
+           					<field name="paraclinical_rx_chest" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
            				</group>
            				<group name="paraclinical_others" colspan="2" col='1'>
            					<label for="paraclinical_others" string="Others"/>
-           					<field name="paraclinical_others" nolabel="1"/>
+           					<field name="paraclinical_others" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
            				</group>
            				<group name="paraclinic_details">
            					<group>
-         						<field name="paraclinical_asa" />
-         						<field name="mallampati_scale" />
+         						<field name="paraclinical_asa"   attrs="{'readonly':[('state','=','closed')]}"/>
+         						<field name="mallampati_scale"   attrs="{'readonly':[('state','=','closed')]}"/>
          					</group>
           					<group>
-         						<field name="paraclinical_goldman" />
-         						<field name="dental_prostheses" />
+         						<field name="paraclinical_goldman" attrs="{'readonly':[('state','=','closed')]}"/>
+         						<field name="dental_prostheses" attrs="{'readonly':[('state','=','closed')]}"/>
          					</group>
            				</group>
            				<group name="disease_details" string="Main Disease">
                             <group>
-                            	<field name='disease_id' required="True"/>
+                            	<field name='disease_id' required="True"  attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group>
-                            	<field name='disease_state'/>
+                            	<field name='disease_state'  attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>  
                         </group>
                         <group name="other_diseases" string="Other Diseases">
                             <group>
-                            	<field name='disease2_id'/>
+                            	<field name='disease2_id'  attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group>
-                            	<field name='disease_state2'/>
+                            	<field name='disease_state2'  attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group>
-                            	<field name='disease3_id'/>
+                            	<field name='disease3_id'  attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>
                             <group>
-                            	<field name='disease_state3'/>
+                            	<field name='disease_state3' attrs="{'readonly':[('state','=','closed')]}"/>
                             </group>  
                         </group>
            				<group name="plan_analysis" colspan="2" col='1'>
                             <label for="plan_analysis" string="Plan, Analysis and Conduct"/>
-                            <field name="plan_analysis" nolabel="1"/>
+                            <field name="plan_analysis" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
                         <group name="template">
 		         			<group name="template_sub1">
 		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
-		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]"/>
+		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]"  attrs="{'readonly':[('state','=','closed')]}"/>
 		         			</group>
 		         			<group></group>
 		         		</group>
                         <group name="medical_recipe" colspan="2" col='1'>
                             <label for="medical_recipe" string="Medical Orders and Recipe"/>
-                            <field name="medical_recipe" nolabel="1"/>
+                            <field name="medical_recipe" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
          	    	</page>
          	    	<page name="monitor" string="Monitor">
-         	    		<field name="monitor_ids" colspan="4" nolabel="1" >
+         	    		<field name="monitor_ids" colspan="4" nolabel="1"   attrs="{'readonly':[('state','=','closed')]}">
       					<tree editable="top">
       						<field name="date_hour"/>
       						<field name="monitor"/>
@@ -263,96 +266,96 @@
       					</field>
                 <group>
                   <group name="checklist_sub1">
-                    <field name="heart_noises"/>
-                    <field name="ind_blood_pressure"/>
-                    <field name="dir_blood_pressure"/>
-                    <field name="ekg"/>
-                    <field name="oxymetry"/>
-                    <field name="capnometry"/>
-                    <field name="capnography"/>
+                    <field name="heart_noises"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="ind_blood_pressure"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="dir_blood_pressure"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="ekg"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="oxymetry"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="capnometry"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="capnography"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                   <group name="checklist_sub2">
-                    <field name="respirometer" />
-                    <field name="spirometry" />
-                    <field name="cent_venous_pressure" />
-                    <field name="intermitt_venous_pressure" />
-                    <field name="diuresis_bool" />
-                    <field name="temperature" />
-                    <field name="other_monitor" />
+                    <field name="respirometer"   attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="spirometry"   attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="cent_venous_pressure"   attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="intermitt_venous_pressure"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="diuresis_bool"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="temperature"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="other_monitor"  attrs="{'readonly':[('state','=','closed')]}" />
                   </group>
                 </group>
 
                 <group string="Protección Ocular">
                    <group>
-                    <field name="occlusion_protection" />
+                    <field name="occlusion_protection"   attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                   <group>
-                    <field name="gel_protection" />
+                    <field name="gel_protection"  attrs="{'readonly':[('state','=','closed')]}" />
                   </group>
                 </group>
 
                 <group string="Máscara Laríngea">
                   <group>
-                  <field name="number_mask" />
-                  <field name="air_mask" />
+                  <field name="number_mask"  attrs="{'readonly':[('state','=','closed')]}" />
+                  <field name="air_mask"   attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                   <group>
-                  <field name="difficulty_mask" />
+                  <field name="difficulty_mask"  attrs="{'readonly':[('state','=','closed')]}" />
                 </group>
                 </group>
 
                  <group >
                   <group>
-                  <field name="facial_mask" />
-                  <field name="venturi" />
-                  <field name="nasal_cannula" />
+                  <field name="facial_mask"  attrs="{'readonly':[('state','=','closed')]}" />
+                  <field name="venturi"  attrs="{'readonly':[('state','=','closed')]}" />
+                  <field name="nasal_cannula"  attrs="{'readonly':[('state','=','closed')]}" />
                 </group>
                 <group>
-                  <field name="other_facial_mask" />
-                  <field name="percentage" />
+                  <field name="other_facial_mask"  attrs="{'readonly':[('state','=','closed')]}" />
+                  <field name="percentage"  attrs="{'readonly':[('state','=','closed')]}" />
                   
                 </group>
                 </group>
 
                 <group name="induction_main" string="Intubation">
                   <group name="intubation_sub1">
-                    <field name="tube_type" />
-                    <field name="tube_number" />
+                    <field name="tube_type"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="tube_number"  attrs="{'readonly':[('state','=','closed')]}" />
                     <separator/>
-                    <field name="orotracheal"/>
-                    <field name="nasotracheal" />
-                    <field name="tracheostomy"/>
+                    <field name="orotracheal"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="nasotracheal"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="tracheostomy"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                   <group name="intubation_sub2">
-                    <field name="distance" />
-                    <field name="pneumotapon" />
+                    <field name="distance"   attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="pneumotapon"  attrs="{'readonly':[('state','=','closed')]}" />
                     <separator/>
-                    <field name="attemps" />
-                    <field name="used_laryngoscope"/>
-                    <field name="intubation"/>
+                    <field name="attemps"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="used_laryngoscope"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="intubation"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                 </group>
       					<group name="induction_main" string="Inducción">
       						<group name="induction_sub1">
-      							<field name="intravenous"/>
-      							<field name="inhalation" />
-      							<field name="sellick"/>
+      							<field name="intravenous"  attrs="{'readonly':[('state','=','closed')]}"/>
+      							<field name="inhalation"   attrs="{'readonly':[('state','=','closed')]}"/>
+      							<field name="sellick"  attrs="{'readonly':[('state','=','closed')]}"/>
       						</group>
       						<group name="induction_sub2">
-      							<field name="fast_sequence" />
-      							<field name="mixed"/>
+      							<field name="fast_sequence"  attrs="{'readonly':[('state','=','closed')]}" />
+      							<field name="mixed"  attrs="{'readonly':[('state','=','closed')]}"/>
       						</group>
       					</group>
       					<group name="medicines_main" string="Medicines">
       						<group name="medicines_sub1">
-      							<field name="pre_induction"/>
-      							<field name="induction"/>
-      							<field name="maintenance"/>
+      							<field name="pre_induction"  attrs="{'readonly':[('state','=','closed')]}"/>
+      							<field name="induction"  attrs="{'readonly':[('state','=','closed')]}"/> 
+      							<field name="maintenance"  attrs="{'readonly':[('state','=','closed')]}"/>
       						</group>
       						<group name="medicines_sub2">
-      							<field name="reversion"/>
-      							<field name="analgesics"/>
-      							<field name="antiemetics"/>
+      							<field name="reversion"  attrs="{'readonly':[('state','=','closed')]}"/>
+      							<field name="analgesics"  attrs="{'readonly':[('state','=','closed')]}"/>
+      							<field name="antiemetics"  attrs="{'readonly':[('state','=','closed')]}"/>
       						</group>
       					</group>
          	    	</page>
@@ -361,51 +364,51 @@
            					<group name="liquidos_administrados" string="Liquidos Administrados">
            						<label for="crystalloids" string="Crystalloids"/>
 	           					<div>
-	           						<field name="crystalloids" nolabel="1" class="oe_inline"/>
+	           						<field name="crystalloids" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="blood" string="Blood"/>
 	           					<div>
-	           						<field name="blood" nolabel="1" class="oe_inline"/>
+	           						<field name="blood" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="colloids" string="Colloids"/>
 	           					<div>
-	           						<field name="colloids" nolabel="1" class="oe_inline"/>
+	           						<field name="colloids" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="infiltrated" string="Infiltrated"/>
 	           					<div>
-	           						<field name="infiltrated" nolabel="1" class="oe_inline"/>
+	           						<field name="infiltrated" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	           					</div>
          					</group>
           					<group name="liquidos_eliminados" string="Liquidos Eliminados">
 	           					<label for="bleeding" string="Bleeding"/>
 	           					<div>
-	           						<field name="bleeding" nolabel="1" class="oe_inline"/>
+	           						<field name="bleeding" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="diuresis" string="Diuresis"/>
 	           					<div>
-	           						<field name="diuresis" nolabel="1" class="oe_inline"/>
+	           						<field name="diuresis" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="liposuction" string="Liposuction"/>
 	           					<div>
-	           						<field name="liposuction" nolabel="1" class="oe_inline"/>
+	           						<field name="liposuction" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	          						 ml
 	          				    </div>
          					</group>
            				</group>
            				<group name="final_state" string="Final State">
            					<group name="final_state_sub1">
-           						<field name="motor_lock"/>
-           						<field name="awake"/>
+           						<field name="motor_lock"  attrs="{'readonly':[('state','=','closed')]}"/>
+           						<field name="awake"  attrs="{'readonly':[('state','=','closed')]}"/>
            					</group>
            					<group name="final_state_sub2">
-           						<field name="reagent"/>
-           						<field name="recovery"/>
+           						<field name="reagent"  attrs="{'readonly':[('state','=','closed')]}"/>
+           						<field name="recovery"  attrs="{'readonly':[('state','=','closed')]}"/>
            					</group>
            				</group>
          	    	</page>

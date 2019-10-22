@@ -120,8 +120,8 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
-
-
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -186,6 +186,7 @@ class PlasticSurgerySheet(models.Model):
                         'message': warn_msg,
                     }
                 return {'warning': warning}
+    
             
     @api.onchange('medical_recipe_template_id')
     def onchange_medical_recipe_template_id(self):
@@ -276,6 +277,11 @@ class PlasticSurgerySheet(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed' 
     
     
     

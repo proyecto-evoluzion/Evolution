@@ -71,6 +71,7 @@ class ClinicaPostAnhestesicCare(models.Model):
 	others = fields.Integer(string='Otros')
 	total = fields.Integer(string='Total (cc)', compute='_get_sum', store=True, help="Total in cubic centimeters")
 	room_id = fields.Many2one('doctor.waiting.room', string="Surgery Room/Appointment", copy=False)
+	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -81,14 +82,21 @@ class ClinicaPostAnhestesicCare(models.Model):
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
 		if self.patient_id:
+			self.numberid = self.patient_id.ref
 			self.numberid = self.patient_id._name
 			self.document_type = self.patient_id.tdoc
+	
+
 
 	@api.depends('nasogastric_tube','chest_tube','hemovac','urinary_tube','cystostomy','others')
 	def _get_sum(self):
 		for rec in self:
 			rec.total= rec.nasogastric_tube+rec.chest_tube+rec.hemovac+rec.urinary_tube+rec.cystostomy+rec.others
-			
+	
+	@api.multi
+	def action_set_close(self):
+		for record in self:
+			record.state = 'closed'	
 
 
 class PostAnhestesicCareVitalSigns(models.Model):
