@@ -10,49 +10,52 @@
          	<header>
                 <button name="action_view_clinica_record_history" string="View History" 
                 	type="object" class="oe_highlight"/>
+                <button name="action_set_close" string="Set to Close" 
+                		type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-                <field name='procedure_date' required="1"/>
+                <field name='procedure_date' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
          				<!-- <field name='invoice_id' /> -->
          			</group>
          			<group name="main_sub_group2" >
          			</group>
          		</group>
          		<group name="health_professionals">
-                <field name='patient_id' required="1"/>
-                <field name='medical_record' invisible="1"/>
-                <field name='document_type' required="1"/>
+                <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                <field name='document_type' required="1" attrs="{'readonly':[('state','=','closed')]}"/>	
          		</group>
          		<group name="other_info_group">
          			<group name="other_info_group_sub1" >
          				<!-- <field name='procedure_scope' />
          				<field name='procedure_purpose' /> -->
-         				<field name='surgical_execution' />
+         				<field name='surgical_execution'  attrs="{'readonly':[('state','=','closed')]}"/>
                 
          			</group>
          			<group name="other_info_group_sub2" >
-         				<field name='disease_id' />
-                <field name='procedure' />
+         				<field name='disease_id'  attrs="{'readonly':[('state','=','closed')]}"/>
+                <field name='procedure'  attrs="{'readonly':[('state','=','closed')]}"/>
          				<!--<field name='user_id' />-->
          			</group>
          		</group>
          		<group name="tisue_sending_patologist">
-         			<field name='tisue_sending_patologist' />
+         			<field name='tisue_sending_patologist'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          		<group name="template">
          			<group name="template_sub1">
          				<field name='description_template_id' options="{'no_create_edit': True}"
-         					domain="[('user_id','=',uid),('type','=','quirurgic_description')]"/>
+         					domain="[('user_id','=',uid),('type','=','quirurgic_description')]" attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group></group>
          		</group>
          		<group name="quirurgic_description">
-         			<field name='description' />
+         			<field name='description'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          		<group name="sign_stamp">
-         			<field name='sign_stamp' />
+         			<field name='sign_stamp'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          	</sheet>
          </form>

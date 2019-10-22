@@ -214,6 +214,7 @@ class AnhestesicRegistry(models.Model):
     anesthesia_end_time = fields.Float(string="Anesthesia End Time")
     recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery', copy=False)
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
     @api.multi
     @api.depends('birth_date')
@@ -333,6 +334,11 @@ class AnhestesicRegistry(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'
         
 class AnhestesicRegistryMonitor(models.Model):
     _name = "clinica.anhestesic.registry.monitor"  

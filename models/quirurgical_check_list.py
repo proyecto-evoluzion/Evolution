@@ -125,6 +125,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 
     observations = fields.Text(string="Observaciones")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -248,7 +249,10 @@ class ClinicaQuirurgicalCheckList(models.Model):
         self._check_document_types()
         return res
     
-        
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'  
 
 
     
