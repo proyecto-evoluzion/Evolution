@@ -569,8 +569,19 @@ class DoctorWaitingRoom(models.Model):
     
     @api.multi
     def action_confirm(self):
-        for room in self:
-            room.state = 'confirmed'
+        if self.anesthesia_type=="local":
+           self.state = 'confirmed'
+        else:
+            ids = self.env['doctor.presurgical.record'].search([('lead_id','=',self.id)])
+            if len(ids) > 0:
+                suitable_surgery = self.env['doctor.presurgical.record'].browse(ids[0]).id.suitable_surgery
+                if suitable_surgery == "yes":
+                   self.state = 'confirmed'
+                   return True
+                raise ValidationError(_('The Anesthesiologist did not confirm the suitability.'))
+            else:
+                raise ValidationError(_('The Anesthesiologist did not confirm the suitability yet.'))
+
             
     @api.multi
     def _set_nurse_sheet_values(self):
@@ -628,17 +639,10 @@ class DoctorWaitingRoom(models.Model):
     
     @api.multi
     def action_create_so(self):
-        if self.anesthesia_type=="local":
-            return self.createSO()
-        else:
-            ids = self.env['doctor.presurgical.record'].search([('lead_id','=',self.id)])
-            if len(ids) > 0:
-                suitable_surgery = self.env['doctor.presurgical.record'].browse(ids[0]).id.suitable_surgery
-                if suitable_surgery == "yes":
-                   return self.createSO()
-                raise ValidationError(_('The Anesthesiologist did not confirm the suitability.'))
-            else:
-                raise ValidationError(_('The Anesthesiologist did not confirm the suitability yet.'))
+        for room in self:
+            room.sale_order_id = room._create_so().id
+            room.state = 'ordered'
+        return self.action_view_sale_order()
 
     @api.multi
     def createSO(self):

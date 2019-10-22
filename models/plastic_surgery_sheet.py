@@ -120,6 +120,8 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe = fields.Text(string="Medical Orders and Recipe")
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+
+
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -130,6 +132,9 @@ class PlasticSurgerySheet(models.Model):
     def onchange_consultation_reason(self):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
+            self.numberid = self.patient_id.name
+            self.document_typee = self.patient_id.tdoc
+            self.numberid_integer = int(self.patient_id.name)
 
     @api.multi
     @api.depends('birth_date')
@@ -181,13 +186,6 @@ class PlasticSurgerySheet(models.Model):
                         'message': warn_msg,
                     }
                 return {'warning': warning}
-            
-    @api.onchange('numberid_integer', 'document_type')
-    def onchange_numberid_integer(self):
-        if self.numberid_integer:
-            self.numberid = str(self.numberid_integer) 
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer == 0:
-            self.numberid = str(0)
             
     @api.onchange('medical_recipe_template_id')
     def onchange_medical_recipe_template_id(self):
