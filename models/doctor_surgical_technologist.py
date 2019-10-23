@@ -29,7 +29,7 @@ class SurgicalTechnologist(models.Model):
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
-	numberid = fields.Char(string='Number ID', related='patient_id.name')
+	numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
 	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment')
 	recount_ids = fields.One2many('doctor.surgical.technologist.recount', 'surgical_technologist_id', string='Recount')
@@ -45,6 +45,10 @@ class SurgicalTechnologist(models.Model):
 		for record in self:
 			record.state = 'closed' 
 
+	@api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False
 
 class SurgicalTechnologistRecount(models.Model):
 	_name = "doctor.surgical.technologist.recount"

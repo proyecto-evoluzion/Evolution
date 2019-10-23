@@ -41,8 +41,8 @@ class ClinicaNurseSheet(models.Model):
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+    numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', compute="_compute_numberid_integer", store="true")
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
@@ -95,6 +95,16 @@ class ClinicaNurseSheet(models.Model):
     surgery_start_time = fields.Float(string="Surgery Start Time")
     surgery_end_time = fields.Float(string="Surgery End Time")
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+
+    @api.depends('patient_id')
+    def _compute_numberid_integer(self):
+        for rec in self:
+            rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+
+    @api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False    
     
     @api.multi
     @api.depends('birth_date')
@@ -132,13 +142,7 @@ class ClinicaNurseSheet(models.Model):
             self.numberid_integer = self.patient_id.ref
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
-            
-    @api.onchange('document_type','numberid_integer','numberid')
-    def onchange_numberid(self):
-        if self.document_type and self.document_type not in ['cc','ti']:
-            self.numberid_integer = 0
-        if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
-            self.numberid = self.numberid_integer
+
     
     def _set_change_room_id(self, room):
         vals = {}
@@ -193,13 +197,6 @@ class ClinicaNurseSheet(models.Model):
             if self.surgery_start_time or self.surgery_end_time:
                 self._update_invoice_procedure_time()
             
-            
-    def _check_assign_numberid(self, numberid_integer):
-        if numberid_integer == 0:
-            raise ValidationError(_('Please enter non zero value for Number ID'))
-        else:
-            numberid = str(numberid_integer)
-            return numberid
     
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
@@ -211,20 +208,6 @@ class ClinicaNurseSheet(models.Model):
         if difference < 0: 
             warn_msg = _('Invalid birth date!')
         return warn_msg
-    
-    @api.multi
-    def _check_document_types(self):
-        for nurse_sheet in self:
-            if nurse_sheet.age_meassure_unit == '3' and nurse_sheet.document_type not in ['rc','ms']:
-                raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if nurse_sheet.age > 17 and nurse_sheet.age_meassure_unit == '1' and nurse_sheet.document_type in ['rc','ms']:
-                raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if nurse_sheet.age_meassure_unit in ['2','3'] and nurse_sheet.document_type in ['cc','as','ti']:
-                raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if nurse_sheet.document_type == 'ms' and nurse_sheet.age_meassure_unit != '3':
-                raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if nurse_sheet.document_type == 'as' and nurse_sheet.age_meassure_unit == '1' and nurse_sheet.age <= 17:
-                raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
 
     @api.multi
     def _set_invoice_procedure_vals(self, invoice_procedure_ids):
@@ -247,43 +230,22 @@ class ClinicaNurseSheet(models.Model):
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('nurse.sheet') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
-            numberid_integer = 0
-            if vals.get('numberid_integer', False):
-                numberid_integer = vals['numberid_integer']
-            numberid = self._check_assign_numberid(numberid_integer)
-            vals.update({'numberid': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
         res = super(ClinicaNurseSheet, self).create(vals)
-        res._check_document_types()
         if vals.get('invoice_procedure_ids', False):
             res._set_invoice_procedure_vals(vals['invoice_procedure_ids'])
         return res
     
     @api.multi
     def write(self, vals):
-        if vals.get('document_type', False) or 'numberid_integer' in  vals:
-            if vals.get('document_type', False):
-                document_type = vals['document_type']
-            else:
-                document_type = self.document_type
-            if document_type in ['cc','ti']:
-                if 'numberid_integer' in  vals:
-                    numberid_integer = vals['numberid_integer']
-                else:
-                    numberid_integer = self.numberid_integer
-                numberid = self._check_assign_numberid(numberid_integer)
-                vals.update({'numberid': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-            
         res = super(ClinicaNurseSheet, self).write(vals)
-        self._check_document_types()
         if vals.get('invoice_procedure_ids', False):
             self._set_invoice_procedure_vals(vals['invoice_procedure_ids'])
         return res
