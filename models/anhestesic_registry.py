@@ -43,8 +43,8 @@ class AnhestesicRegistry(models.Model):
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+    numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', compute="_compute_numberid_integer", store="true")
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
@@ -214,6 +214,16 @@ class AnhestesicRegistry(models.Model):
     anesthesia_end_time = fields.Float(string="Anesthesia End Time")
     recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery', copy=False)
+
+    @api.depends('patient_id')
+    def _compute_numberid_integer(self):
+        for rec in self:
+            rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+
+    @api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False
     
     @api.multi
     @api.depends('birth_date')
@@ -275,19 +285,6 @@ class AnhestesicRegistry(models.Model):
             warn_msg = _('Invalid birth date!')
         return warn_msg
     
-    @api.multi
-    def _check_document_types(self):
-        for anhestesic in self:
-            if anhestesic.age_meassure_unit == '3' and anhestesic.document_type not in ['rc','ms']:
-                raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if anhestesic.age > 17 and anhestesic.age_meassure_unit == '1' and anhestesic.document_type in ['rc','ms']:
-                raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if anhestesic.age_meassure_unit in ['2','3'] and anhestesic.document_type in ['cc','as','ti']:
-                raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if anhestesic.document_type == 'ms' and anhestesic.age_meassure_unit != '3':
-                raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if anhestesic.document_type == 'as' and anhestesic.age_meassure_unit == '1' and anhestesic.age <= 17:
-                raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
 
     @api.model
     def create(self, vals):
@@ -297,7 +294,6 @@ class AnhestesicRegistry(models.Model):
             if warn_msg:
                 raise ValidationError(warn_msg)
         res = super(AnhestesicRegistry, self).create(vals)
-        res._check_document_types()
         return res
     
     @api.multi
@@ -308,7 +304,6 @@ class AnhestesicRegistry(models.Model):
                 raise ValidationError(warn_msg)
          
         res = super(AnhestesicRegistry, self).write(vals)
-        self._check_document_types()
         return res
     
     @api.multi

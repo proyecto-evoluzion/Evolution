@@ -18,22 +18,24 @@
          				<!-- <field name='invoice_id' /> -->
          			</group>
          			<group name="main_sub_group2" >
+                <field name='surgical_execution' />
          			</group>
          		</group>
-         		<group name="health_professionals">
+         		<group name="health_professionals" col="4">
                 <field name='patient_id' required="1"/>
-                <field name='medical_record' invisible="1"/>
                 <field name='document_type' required="1"/>
+
          		</group>
+
          		<group name="other_info_group">
          			<group name="other_info_group_sub1" >
+                <field name='medical_record' invisible="1"/>
+                <field name='numberid_integer' invisible="1"/>
+                <field name='disease_id' />
          				<!-- <field name='procedure_scope' />
          				<field name='procedure_purpose' /> -->
-         				<field name='surgical_execution' />
-                
          			</group>
          			<group name="other_info_group_sub2" >
-         				<field name='disease_id' />
                 <field name='procedure' />
          				<!--<field name='user_id' />-->
          			</group>
@@ -53,6 +55,7 @@
          		</group>
          		<group name="sign_stamp">
          			<field name='sign_stamp' />
+              <field name='numberid_integer' required="1" invisible="1"/>
          		</group>
          	</sheet>
          </form>

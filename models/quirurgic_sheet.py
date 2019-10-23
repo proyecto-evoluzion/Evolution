@@ -48,14 +48,14 @@ class DoctorQuirurgicSheet(models.Model):
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', compute="_compute_numberid_integer", store="true")
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
-    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related='patient_id.sex')
+    gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender', related='patient_id.sex', store="false")
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
@@ -115,7 +115,17 @@ class DoctorQuirurgicSheet(models.Model):
     arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
     thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
-    
+
+    @api.depends('patient_id')
+    def _compute_numberid_integer(self):
+        for rec in self:
+            rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+
+    @api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False       
+
     @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
@@ -164,12 +174,6 @@ class DoctorQuirurgicSheet(models.Model):
         if self.description_template_id:
             self.description = self.description_template_id.template_text
          
-    def _check_assign_numberid(self, numberid_integer):
-        if numberid_integer == 0:
-            raise ValidationError(_('Please enter non zero value for Number ID'))
-        else:
-            numberid = str(numberid_integer)
-            return numberid
     
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
@@ -199,12 +203,7 @@ class DoctorQuirurgicSheet(models.Model):
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('doctor.quirurgic.sheet') or '/'
-        if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
-            numberid_integer = 0
-            if vals.get('numberid_integer', False):
-                numberid_integer = vals['numberid_integer']
-            numberid = self._check_assign_numberid(numberid_integer)
-            vals.update({'numberid': numberid})
+
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
@@ -215,18 +214,8 @@ class DoctorQuirurgicSheet(models.Model):
     
     @api.multi
     def write(self, vals):
-        if vals.get('document_type', False) or 'numberid_integer' in  vals:
-            if vals.get('document_type', False):
-                document_type = vals['document_type']
-            else:
-                document_type = self.document_type
-            if document_type in ['cc','ti']:
-                if 'numberid_integer' in  vals:
-                    numberid_integer = vals['numberid_integer']
-                else:
-                    numberid_integer = self.numberid_integer
-                numberid = self._check_assign_numberid(numberid_integer)
-                vals.update({'numberid': numberid})
+        vals['name'] = self.env['ir.sequence'].next_by_code('doctor.quirurgic.sheet') or '/'
+
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:

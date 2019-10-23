@@ -45,7 +45,7 @@
 		<field name="model">doctor.schedule</field>
 		<field name="arch" type="xml">
 			<search string="Search Schedules">
-				<field name='numberid'/>
+				<field name='patient_id'/>
 				<group expand="0" string="Group By">
 					<filter string="Professional" 
 					name="filtering_professional_id" 
@@ -71,11 +71,10 @@
 						<field name='professional_id' required="1" domain="[('profession_type','=','plastic_surgeon')]"/>
 						<field name='start_date' required="1"/>
 						<field name='duration' required="1" widget="float_time"/>
-						<field name='end_date' required="1"/>
 					</group>
 					<group name="main_sub_group2" >
 						<field name='patient_id' required="1"/>
-						<field name='numberid' required="1"/>
+						<field name='end_date' required="1"/>
 					</group>
 				</group>
 				<notebook>
