@@ -47,8 +47,8 @@ class DoctorEpicrisis(models.Model):
                              ('pa','PA - Passport'),('rc','RC - Civil Registry'),
                              ('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),
                              ('ms','MS - Unidentified Minor')], string='Type of Document', related='patient_id.tdoc')
-    numberid = fields.Char(string='Number ID', related='patient_id.name')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
+    numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', compute="_compute_numberid_integer", store="true")
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
@@ -56,9 +56,9 @@ class DoctorEpicrisis(models.Model):
     surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     birth_date = fields.Date(string='Birth Date')
-    age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
+    age = fields.Integer(string='Age', related="patient_id.age")
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
-                                         compute='_compute_age_meassure_unit')
+                                         related="patient_id.age_unit" )
     disease_id = fields.Many2one('doctor.diseases', 'Definitive Dx', ondelete='restrict')
     procedure_id = fields.Many2one('product.product', 'Surgical Procedure', ondelete='restrict')
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
@@ -98,33 +98,21 @@ class DoctorEpicrisis(models.Model):
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     medical_record = fields.Char(string='Medical record')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+
+    @api.depends('patient_id')
+    def _compute_numberid_integer(self):
+        for rec in self:
+            rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+
+    @api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False
     
     @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
-    
-    @api.multi
-    @api.depends('birth_date')
-    def _compute_age_meassure_unit(self):
-        for epicrisis in self:
-            if epicrisis.birth_date:
-                today_datetime = datetime.today()
-                today_date = today_datetime.date()
-                birth_date_format = datetime.strptime(epicrisis.birth_date, DF).date()
-                date_difference = today_date - birth_date_format
-                difference = int(date_difference.days)
-                month_days = calendar.monthrange(today_date.year, today_date.month)[1]
-                date_diff = relativedelta.relativedelta(today_date, birth_date_format)
-                if difference < 30:
-                    epicrisis.age_meassure_unit = '3'
-                    epicrisis.age = int(date_diff.days)
-                elif difference < 365:
-                    epicrisis.age_meassure_unit = '2'
-                    epicrisis.age = int(date_diff.months)
-                else:
-                    epicrisis.age_meassure_unit = '1'
-                    epicrisis.age = int(date_diff.years)
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):
@@ -147,77 +135,17 @@ class DoctorEpicrisis(models.Model):
     def onchange_epicrisis_template_id(self):
         if self.epicrisis_template_id:
             self.epicrisis_note = self.epicrisis_template_id.template_text
-            
-    def _check_assign_numberid(self, numberid_integer):
-        if numberid_integer == 0:
-            raise ValidationError(_('Please enter non zero value for Number ID'))
-        else:
-            numberid = str(numberid_integer)
-            return numberid
     
-    def _check_birth_date(self, birth_date):
-        warn_msg = '' 
-        today_datetime = datetime.today()
-        today_date = today_datetime.date()
-        birth_date_format = datetime.strptime(birth_date, DF).date()
-        date_difference = today_date - birth_date_format
-        difference = int(date_difference.days)    
-        if difference < 0: 
-            warn_msg = _('Invalid birth date!')
-        return warn_msg
-    
-    @api.multi
-    def _check_tdocs(self):
-        for epicrisis in self:
-            if epicrisis.age_meassure_unit == '3' and epicrisis.tdoc not in ['rc','ms']:
-                raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if epicrisis.age > 17 and epicrisis.age_meassure_unit == '1' and epicrisis.tdoc in ['rc','ms']:
-                raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if epicrisis.age_meassure_unit in ['2','3'] and epicrisis.tdoc in ['cc','as','ti']:
-                raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if epicrisis.tdoc == 'ms' and epicrisis.age_meassure_unit != '3':
-                raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if epicrisis.tdoc == 'as' and epicrisis.age_meassure_unit == '1' and epicrisis.age <= 17:
-                raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
 
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('doctor.epicrisis') or '/'
-        if vals.get('tdoc', False) and vals['tdoc'] in ['cc','ti']:
-            numberid_integer = 0
-            if vals.get('numberid_integer', False):
-                numberid_integer = vals['numberid_integer']
-            numberid = self._check_assign_numberid(numberid_integer)
-            vals.update({'numberid': numberid})
-        if vals.get('birth_date', False):
-            warn_msg = self._check_birth_date(vals['birth_date'])
-            if warn_msg:
-                raise ValidationError(warn_msg)
         res = super(DoctorEpicrisis, self).create(vals)
-        res._check_tdocs()
         return res
     
     @api.multi
     def write(self, vals):
-        if vals.get('tdoc', False) or 'numberid_integer' in  vals:
-            if vals.get('tdoc', False):
-                tdoc = vals['tdoc']
-            else:
-                tdoc = self.tdoc
-            if tdoc in ['cc','ti']:
-                if 'numberid_integer' in  vals:
-                    numberid_integer = vals['numberid_integer']
-                else:
-                    numberid_integer = self.numberid_integer
-                numberid = self._check_assign_numberid(numberid_integer)
-                vals.update({'numberid': numberid})
-        if vals.get('birth_date', False):
-            warn_msg = self._check_birth_date(vals['birth_date'])
-            if warn_msg:
-                raise ValidationError(warn_msg)
-         
         res = super(DoctorEpicrisis, self).write(vals)
-        self._check_tdocs()
         return res
     
     @api.multi

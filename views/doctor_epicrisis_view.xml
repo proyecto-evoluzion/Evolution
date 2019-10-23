@@ -30,20 +30,11 @@
             <group name="patient_group">
             <group name="patient">
               <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+            </group>
+            <group>
               <field name='tdoc' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
             <group>
-              
-                  <label for="age" string="Age"/>
-                  <div>
-                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                    <field name="age_meassure_unit" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
-                  </div>
-                  
-            </group>
-            <group>
-
             </group>
             </group>
          	    <group name="professional_info_group">
@@ -58,16 +49,16 @@
          	    		<field name="user_id" /> -->
          	    	</group>
          	    </group>
-         	    
+         	  <group name="epicrisis_note">
+              <field name='epicrisis_note'  attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
+            </group>
          		<group name="template">
          			<group name="template_sub1">
          				<field name='epicrisis_template_id' options="{'no_create_edit': True}"
          					domain="[('user_id','=',uid),('type','=','epicrisis')]" attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group></group>
-         		</group>
-         		<group name="epicrisis_note">
-         			<field name='epicrisis_note'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          	</sheet>
          </form>
