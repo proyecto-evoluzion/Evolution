@@ -176,11 +176,12 @@
 			<sheet>
 				<div class="oe_button_box" name="button_box">
 					<button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
-						states="ordered" string="Quotation">
+						states="ordered" string="Quotation"
+						groups="base.group_system,clinica_digital_consultorio.programmer_assistant">
 					</button>
 					<button name="action_view_anhestesic_registry" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						attrs="{'invisible': [('anhestesic_registry_created', '=', False)]}" string="Anhestesic Registry"
-						groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 					<button name="action_view_nurse_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						attrs="{'invisible': [('nurse_sheet_created', '=', False)]}" string="Nurse Sheets"
@@ -188,11 +189,11 @@
 					</button>
 					<button name="action_view_presurgical_record" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Pre-Surgical Records"
-						groups="clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						groups="clinica_doctor_data.anesthesiologist,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 					<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgic Sheet"
-						groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						groups="clinica_doctor_data.surgeon,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 					<button name="action_view_quirurgical_check_list" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgical Check List"
@@ -208,11 +209,11 @@
 					</button> -->
 					<button name="action_view_medical_evolution" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Med. Order and Evolution"
-						groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						groups="clinica_doctor_data.surgeon,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 					<button name="action_view_epicrisis" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Epicrisis"
-						groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
+						groups="clinica_doctor_data.surgeon,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
 				</div>
 				<div class="oe_title">
