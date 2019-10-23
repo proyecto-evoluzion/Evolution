@@ -72,8 +72,8 @@ class AnhestesicRegistry(models.Model):
     paraclinical_leukocytes = fields.Float(string="Leukocytes")
     paraclinical_differential = fields.Text(string="Differential")
     paraclinical_vsg = fields.Integer(string="VSG")
-    paraclinical_pt = fields.Float(string="PT")
-    paraclinical_ptt = fields.Float(string="PTT")
+    paraclinical_pt = fields.Char(string="PT")
+    paraclinical_ptt = fields.Char(string="PTT")
     paraclinical_platelets = fields.Float(string="Platelets")
     paraclinical_tc = fields.Float(string="TC")
     paraclinical_glycemia = fields.Float(string="Glycemia")
@@ -214,6 +214,7 @@ class AnhestesicRegistry(models.Model):
     anesthesia_end_time = fields.Float(string="Anesthesia End Time")
     recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery', copy=False)
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
@@ -224,6 +225,7 @@ class AnhestesicRegistry(models.Model):
     def _compute_numberid(self):
         for rec in self:
             rec.numberid = rec.patient_id.name if rec.patient_id else False
+
     
     @api.multi
     @api.depends('birth_date')
@@ -328,6 +330,11 @@ class AnhestesicRegistry(models.Model):
                 'context': context,
                 'target': 'new'
             }
+        
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'
         
 class AnhestesicRegistryMonitor(models.Model):
     _name = "clinica.anhestesic.registry.monitor"  

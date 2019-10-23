@@ -9,29 +9,32 @@
          	<header>
                 <button name="action_view_clinica_record_history" string="View History" 
                 	type="object" class="oe_highlight"/>
+                <button name="action_set_close" string="Set to Close" 
+               			type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
          		<div class="oe_title">
                     <h1>
-                        <field name="name" readonly="1"/>
+                        <field name="name" readonly="1" attrs="{'readonly':[('state','=','closed')]}"/>
                     </h1>
                 </div>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-         				<field name='procedure_date' required="1"/>
+         				<field name='procedure_date' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group name="main_sub_group2" >
 		             
 		         	</group>
 		        </group>
             <group name="patient">
-              <field name='patient_id' required="1"/>
-              <field name='tdoc' required="1"/>
-              <field name='medical_record' invisible="1"/>
+              <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='tdoc' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
          	    <notebook>
          	    	<page name="description" string="Description">
-         	    		<field name="evolution_note_ids" colspan="4" nolabel="1" >
+         	    		<field name="evolution_note_ids" colspan="4" nolabel="1"  attrs="{'readonly':[('state','=','closed')]}">
       					<tree editable="top">
       						<field name="date_hour"/>
       						<field name="note"/>

@@ -101,8 +101,8 @@ class PresurgicalRecord(models.Model):
     paraclinical_leukocytes = fields.Float(string="Leukocytes")
     paraclinical_differential = fields.Text(string="Differential")
     paraclinical_vsg = fields.Integer(string="VSG")
-    paraclinical_pt = fields.Float(string="PT")
-    paraclinical_ptt = fields.Float(string="PTT")
+    paraclinical_pt = fields.Char(string="PT")
+    paraclinical_ptt = fields.Char(string="PTT")
     paraclinical_platelets = fields.Float(string="Platelets")
     paraclinical_tc = fields.Float(string="TC")
     paraclinical_glycemia = fields.Float(string="Glycemia")
@@ -144,6 +144,7 @@ class PresurgicalRecord(models.Model):
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     lead_id = fields.Many2one('doctor.waiting.room', string='Lead', copy=False) # this is the related Proced. Schedule attached to the lead
+    state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -225,6 +226,11 @@ class PresurgicalRecord(models.Model):
     def onchange_imc(self):
         if self.physical_size and self.physical_weight:
             self.physical_body_mass_index = float(self.physical_weight/(self.physical_size/100)**2)
+            
+    @api.multi
+    def action_set_close(self):
+        for record in self:
+            record.state = 'closed'
     
     
     

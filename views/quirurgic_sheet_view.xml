@@ -10,11 +10,14 @@
          	<header>
                 <button name="action_view_clinica_record_history" string="View History" 
                 	type="object" class="oe_highlight"/>
+                <button name="action_set_close" string="Set to Close" 
+                		type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-                <field name='procedure_date' required="1"/>
+                <field name='procedure_date' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
          				<!-- <field name='invoice_id' /> -->
          			</group>
          			<group name="main_sub_group2" >
@@ -24,7 +27,6 @@
          		<group name="health_professionals" col="4">
                 <field name='patient_id' required="1"/>
                 <field name='document_type' required="1"/>
-
          		</group>
 
          		<group name="other_info_group">
@@ -41,21 +43,22 @@
          			</group>
          		</group>
          		<group name="tisue_sending_patologist">
-         			<field name='tisue_sending_patologist' />
+         			<field name='tisue_sending_patologist'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          		<group name="template">
          			<group name="template_sub1">
          				<field name='description_template_id' options="{'no_create_edit': True}"
-         					domain="[('user_id','=',uid),('type','=','quirurgic_description')]"/>
+         					domain="[('user_id','=',uid),('type','=','quirurgic_description')]" attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group></group>
          		</group>
          		<group name="quirurgic_description">
-         			<field name='description' />
+         			<field name='description'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          		<group name="sign_stamp">
          			<field name='sign_stamp' />
               <field name='numberid_integer' required="1" invisible="1"/>
+
          		</group>
          	</sheet>
          </form>

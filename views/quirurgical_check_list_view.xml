@@ -10,51 +10,54 @@
          	<header>
 <!--                 <button name="action_view_clinica_record_history" string="View History"  -->
 <!--                 	type="object" class="oe_highlight"/> -->
+				<button name="action_set_close" string="Set to Close" 
+               		type="object" states="open"/>
+                 <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
          		<group name='main_group'>
 	            	<group name='sub_group1'>
-		                <field name="patient_id" required="1"/>
-		                <field name="numberid" required="1"/>
+		                <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+		                <field name="numberid" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
 	            	</group>
 	            	<group name='sub_group2'>
-		                <field name="procedure_datetime" required="1" />
+		                <field name="procedure_datetime" required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
 	            	</group>
 	            </group>
             
 	            <group name='patient_info'>
 	            	<group name='patient_info_sub1'>
-	            		<field name="document_type" />
-	            		<field name="numberid"  attrs="{'invisible':[('document_type','in',['cc','ti'])]}"/>
-		                <field name="numberid_integer" string="Number ID"  attrs="{'invisible':[('document_type','not in',['cc','ti'])]}" />
-	            		<field name="gender" invisible="1" force_save="1"/>
-	            		<field name="birth_date" />
+	            		<field name="document_type"  attrs="{'readonly':[('state','=','closed')]}"/>
+	            		<field name="numberid"  attrs="{'invisible':[('document_type','in',['cc','ti'])],'readonly':[('state','=','closed')]}"/>
+		                <field name="numberid_integer" string="Number ID"  attrs="{'invisible':[('document_type','not in',['cc','ti'])],'readonly':[('state','=','closed')]}" />
+	            		<field name="gender" invisible="1" force_save="1" attrs="{'readonly':[('state','=','closed')]}"/>
+	            		<field name="birth_date"  attrs="{'readonly':[('state','=','closed')]}"/>
 		                <label for="age" string="Age"/>
 	       				<div>
 	       					<div>
 	       						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
-	      						<field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+	      						<field name="age_meassure_unit" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       					</div>
 	       				</div>
 	            	</group>
 	            	<group name='patient_info_sub2'>
-		                  <field name='lastname' />
-		                  <field name='surname' />
-		                  <field name='firstname'/>
-		                  <field name='middlename'/>     
+		                  <field name='lastname'  attrs="{'readonly':[('state','=','closed')]}"/>
+		                  <field name='surname'  attrs="{'readonly':[('state','=','closed')]}"/>
+		                  <field name='firstname' attrs="{'readonly':[('state','=','closed')]}"/>
+		                  <field name='middlename' attrs="{'readonly':[('state','=','closed')]}"/>     
 	            	</group>
 	            </group>
 	            <group name="health_professionals">
          			<group name="health_professionals_sub1" >
-         				<field name="procedure_id"/>
-         				<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]"/>
-         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
-         				<field name='anesthesia_type' />
+         				<field name="procedure_id" attrs="{'readonly':[('state','=','closed')]}"/>
+         				<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('state','=','closed')]}"/>
+         				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('state','=','closed')]}"/>
+         				<field name='anesthesia_type'  attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group name="health_professionals_sub2" >
-         				<field name='technologist_id' domain="[('profession_type','=','technologists')]"/>
-         				<field name='nurse_id' domain="[('profession_type','=','nurse')]"/>
-         				<field name="recovery" />
+         				<field name='technologist_id' domain="[('profession_type','=','technologists')]" attrs="{'readonly':[('state','=','closed')]}"/>
+         				<field name='nurse_id' domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('state','=','closed')]}"/>
+         				<field name="recovery"  attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          		</group>
          		<notebook>
@@ -62,147 +65,147 @@
 	         			<group colspan="4">
 	         				<label for="confirm_patient_name" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="confirm_patient_name" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="confirm_patient_name" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="confirm_bracelet_data" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="confirm_bracelet_data" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="confirm_bracelet_data" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="confirm_procedure" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="confirm_procedure" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="confirm_procedure" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="surgical_concent_filled" style="width:550px !important;" options="{'horizontal': true}"/>
 	         				<div>
-	         					<field name="surgical_concent_filled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="surgical_concent_filled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="pre_anesthetic_assessment_complete" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="pre_anesthetic_assessment_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="pre_anesthetic_assessment_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="removed_dental_aceesories" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="removed_dental_aceesories" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="removed_dental_aceesories" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="pre_surgical_lab_exams" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="pre_surgical_lab_exams" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="pre_surgical_lab_exams" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="patient_belongins_locked" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="patient_belongins_locked" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="patient_belongins_locked" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="fasting_time_greater" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="fasting_time_greater" nolabel="1" class="oe_inline" widget="radio"  options="{'horizontal': true}"/>
+	         					<field name="fasting_time_greater" nolabel="1" class="oe_inline" widget="radio"  options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="flu_symptoms_enquired" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="flu_symptoms_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="flu_symptoms_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="allergic_enquired" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="allergic_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="allergic_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         			</group>
 	         			<group name="allergic_text" colspan="4" col='2' attrs="{'invisible':[('allergic_enquired','!=','yes')]}">
-	       					<field name="allergic_text" attrs="{'invisible':[('allergic_enquired','!=','yes')]}"/>
+	       					<field name="allergic_text" attrs="{'invisible':[('allergic_enquired','!=','yes')], 'readonly':[('state','=','closed')]}"/>
 	       				</group>
 	       				<group colspan="4">
 	         				<label for="enquired_proc_medication" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="enquired_proc_medication" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="enquired_proc_medication" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="investigated_drug_consumption" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="investigated_drug_consumption" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="investigated_drug_consumption" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="antiembolicas_stockings" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="antiembolicas_stockings" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="antiembolicas_stockings" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="operational_site_marking" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="operational_site_marking" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="operational_site_marking" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="special_preparation" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="special_preparation" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="special_preparation" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	       				</group>
-	         			<group name="special_preparation" colspan="4" col="2" attrs="{'invisible':[('special_preparation','!=','yes')]}">
-	       					<field name="special_preparations_text" />
+	         			<group name="special_preparation" colspan="4" col="2" attrs="{'invisible':[('special_preparation','!=','yes')], 'readonly':[('state','=','closed')]}">
+	       					<field name="special_preparations_text"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       				</group>
 	         		</page>
 	         		<page name="intra-operatory" string="INTRA-OPERATORY">
 	         			<group colspan="4">
 	         				<label for="recording_vital_signs" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="recording_vital_signs" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="recording_vital_signs" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="antibiotic_prophylaxis" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="antibiotic_prophylaxis" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="antibiotic_prophylaxis" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="full_staff_in_room" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="monitoring_induction_complete" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="monitor_indu_anesthesiologist_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]"/>
+	         					<field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="is_scheduled" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="scheduled_surgeon_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]"/>
+	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="scheduled_patient_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="scheduled_patient_id" nolabel="1" class="oe_inline"/>
+	         					<field name="scheduled_patient_id" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="equipments_in_room" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="equipments_room_surgeon_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]"/>
+	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="materials_in_room" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="materials_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="materials_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="equipments_in_order" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="venous_pressure_working" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="venous_pressure_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="venous_pressure_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="supplies_delivered" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="supplies_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="supplies_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="pay" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="proc_bill_pay" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="proc_bill_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="proc_bill_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="scheduled_nurse_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="scheduled_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]"/>
+	         					<field name="scheduled_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         			</group>
 	         		</page>
@@ -210,61 +213,61 @@
 	         			<group colspan="4">
 	         				<label for="doctor_done_additionaly" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="doctor_done_additionaly" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="doctor_done_additionaly" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="sample_delivered" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="sample_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="sample_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         			</group>
-	         			<group name="sample_delivered_text" colspan="4" col="2" attrs="{'invisible':[('sample_delivered','!=','yes')]}">
+	         			<group name="sample_delivered_text" colspan="4" col="2" attrs="{'invisible':[('sample_delivered','!=','yes')],'readonly':[('state','=','closed')]}">
 	       					<field name="sample_delivered_text" />
 	       				</group>
 	       				<group colspan="4">
 	         				<label for="sample_delivered_pay" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="sample_delivered_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="sample_delivered_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="delivered_recovery_exam" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="delivered_recovery_exam" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="delivered_recovery_exam" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="reported_disfunction_equip" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="reported_disfunction_equip" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="reported_disfunction_equip" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="blood_returned" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="blood_returned" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="blood_returned" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="add_items_delivered" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         			</group>
-	         			<group name="add_items_delivered_text" colspan="4" col="2" attrs="{'invisible':[('add_items_delivered','!=','yes')]}">
+	         			<group name="add_items_delivered_text" colspan="4" col="2" attrs="{'invisible':[('add_items_delivered','!=','yes')],'readonly':[('state','=','closed')]}">
 	       					<field name="add_items_delivered_text" />
 	       				</group>
 	       				<group colspan="4">
 	         				<label for="pay_add_items_delivered" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="pay_add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="pay_add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="history_complete" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="history_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="history_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="delivered_nurse_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="delivered_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]"/>
+	         					<field name="delivered_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="received_nurse_id" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="received_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]"/>
+	         					<field name="received_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="deliver_receive_time" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="deliver_receive_time" nolabel="1" class="oe_inline"/>
+	         					<field name="deliver_receive_time" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         			</group>
 	         		</page>
@@ -272,32 +275,32 @@
 	         			<group colspan="4">
 	         				<label for="history_received" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="history_received" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="history_received" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="equipment_working" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="equipment_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="equipment_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="informed_family" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="informed_family" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="informed_family" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="patient_out_with" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="patient_out_with" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="patient_out_with" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="add_supplies" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="add_supplies" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}"/>
+	         					<field name="add_supplies" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         			</group>
 	         			<group name="add_supplies_text" colspan="4" col="2" attrs="{'invisible':[('add_supplies','!=','yes')]}">
-	       					<field name="add_supplies_text" />
+	       					<field name="add_supplies_text"  attrs="{'readonly':[('state','=','closed')]}"/>
 	       				</group>
 	         		</page>
 	         	</notebook>
 	         	<group string="Observaciones">
-	         		<field name="observations" nolabel="1"/>
+	         		<field name="observations" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
 	         	</group>
          	</sheet>
          </form>

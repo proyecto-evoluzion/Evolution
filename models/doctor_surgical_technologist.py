@@ -33,11 +33,17 @@ class SurgicalTechnologist(models.Model):
 	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment')
 	recount_ids = fields.One2many('doctor.surgical.technologist.recount', 'surgical_technologist_id', string='Recount')
-
+	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
 		if self.patient_id:
 			self.document_type = self.patient_id.tdoc
+			
+	@api.multi
+	def action_set_close(self):
+		for record in self:
+			record.state = 'closed' 
 
 	@api.depends('patient_id')
     def _compute_numberid(self):

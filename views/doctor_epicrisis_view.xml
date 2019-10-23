@@ -9,33 +9,36 @@
          	<header>
                 <button name="action_view_clinica_record_history" string="View History" 
                 	type="object" class="oe_highlight"/>
+                <button name="action_set_close" string="Set to Close" 
+               			type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
          		<div class="oe_title">
                     <h1>
-                        <field name="name" readonly="1"/>
+                        <field name="name" readonly="1" attrs="{'readonly':[('state','=','closed')]}"/>
                     </h1>
                 </div>
          		<group name="main_group">
          			<group name="main_sub_group1" >
-         				<field name='patient_in_date' required="1"/>
+         				<field name='patient_in_date' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group name="main_sub_group2" >
-                    <field name='patient_out_date' />
+                    	<field name='patient_out_date'  attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          		</group>
             <group name="patient_group">
             <group name="patient">
-              <field name='patient_id' required="1"/>
-              <field name='tdoc' required="1"/>
-              <field name='medical_record' invisible="1"/>
+              <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='tdoc' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
             <group>
               
                   <label for="age" string="Age"/>
                   <div>
-                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
-                    <field name="age_meassure_unit" nolabel="1" class="oe_inline" />
+                    <field name="age" required="1" nolabel="1" class="oe_inline" readonly="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="age_meassure_unit" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </div>
                   
             </group>
@@ -45,12 +48,12 @@
             </group>
          	    <group name="professional_info_group">
          	    	<group name="professional_info_sub1">
-         	    		<field name="disease_id" />
-		                <field name="procedure_id"/>
+         	    		<field name="disease_id"  attrs="{'readonly':[('state','=','closed')]}"/>
+		                <field name="procedure_id"  attrs="{'readonly':[('state','=','closed')]}"/>
          	    	</group>
          	    	<group name="professional_info_sub2">
-                  <field name="end_time" widget="float_time"/>
-                  <field name="treatment" />
+		                  <field name="end_time" widget="float_time" attrs="{'readonly':[('state','=','closed')]}"/>
+		                  <field name="treatment"  attrs="{'readonly':[('state','=','closed')]}"/>
          	    		<!-- <field name="sign_stamp"/>
          	    		<field name="user_id" /> -->
          	    	</group>
@@ -59,12 +62,12 @@
          		<group name="template">
          			<group name="template_sub1">
          				<field name='epicrisis_template_id' options="{'no_create_edit': True}"
-         					domain="[('user_id','=',uid),('type','=','epicrisis')]"/>
+         					domain="[('user_id','=',uid),('type','=','epicrisis')]" attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group></group>
          		</group>
          		<group name="epicrisis_note">
-         			<field name='epicrisis_note' />
+         			<field name='epicrisis_note'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          	</sheet>
          </form>

@@ -6,8 +6,17 @@
          <field name="model">doctor.surgical.technologist</field>
          <field name="arch" type="xml">
          <form string="Surgical Technologist Form">
+         	<header>
+         		<button name="action_set_close" string="Set to Close" 
+               			type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
+         	</header>
          	<sheet>
 	         	<group>
+		              <group>
+			              <field name="patient_id" placeholder="Patient" attrs="{'readonly':[('state','=','closed')]}"/>
+			              <field name="document_type" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+		             </group>
               <group>
               <field name="patient_id" placeholder="Patient" required="1"/>
               <field name="document_type" required="1"/>
@@ -21,7 +30,7 @@
 	         	</group>
 	         	<group>
               <group>
-		         	<field name="recount_ids" nolabel="1">
+		         	<field name="recount_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
 		         		<tree editable="bottom">
 		         			<field name="recount"/>
 		         			<field name="start"/>
