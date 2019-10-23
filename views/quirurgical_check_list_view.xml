@@ -15,37 +15,9 @@
                  <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
             </header>
          	<sheet>
-         		<group name='main_group'>
-	            	<group name='sub_group1'>
+         		<group name='main_group' col="4">
 		                <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-		                <field name="numberid" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-	            	</group>
-	            	<group name='sub_group2'>
 		                <field name="procedure_datetime" required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
-	            	</group>
-	            </group>
-            
-	            <group name='patient_info'>
-	            	<group name='patient_info_sub1'>
-	            		<field name="document_type"  attrs="{'readonly':[('state','=','closed')]}"/>
-	            		<field name="numberid"  attrs="{'invisible':[('document_type','in',['cc','ti'])],'readonly':[('state','=','closed')]}"/>
-		                <field name="numberid_integer" string="Number ID"  attrs="{'invisible':[('document_type','not in',['cc','ti'])],'readonly':[('state','=','closed')]}" />
-	            		<field name="gender" invisible="1" force_save="1" attrs="{'readonly':[('state','=','closed')]}"/>
-	            		<field name="birth_date"  attrs="{'readonly':[('state','=','closed')]}"/>
-		                <label for="age" string="Age"/>
-	       				<div>
-	       					<div>
-	       						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1"/>
-	      						<field name="age_meassure_unit" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
-	       					</div>
-	       				</div>
-	            	</group>
-	            	<group name='patient_info_sub2'>
-		                  <field name='lastname'  attrs="{'readonly':[('state','=','closed')]}"/>
-		                  <field name='surname'  attrs="{'readonly':[('state','=','closed')]}"/>
-		                  <field name='firstname' attrs="{'readonly':[('state','=','closed')]}"/>
-		                  <field name='middlename' attrs="{'readonly':[('state','=','closed')]}"/>     
-	            	</group>
 	            </group>
 	            <group name="health_professionals">
          			<group name="health_professionals_sub1" >
