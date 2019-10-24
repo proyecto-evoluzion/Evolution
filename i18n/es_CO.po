@@ -2615,6 +2615,11 @@ msgid "HC"
 msgstr "HC"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_medical_record
+msgid "Medical record"
+msgstr "Registro Médico"
+
+#. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,intubation:0
 msgid "Hard"
 msgstr "Difícil"
@@ -2916,6 +2921,12 @@ msgstr "Hora Inducción"
 #, python-format
 msgid "Invalid Email ! Please enter a valid email address."
 msgstr "Invalid Email ! Please enter a valid email address."
+
+#. module: clinica_doctor_data
+#: code:addons/clinica_doctor_data/models/doctor_details.py:96
+#, python-format
+msgid "This medical record already exists in the system."
+msgstr "Este registro médico ya existe en el sistema."
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/anhestesic_registry.py:282
