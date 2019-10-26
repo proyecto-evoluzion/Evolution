@@ -271,12 +271,12 @@
                     <field name="dir_blood_pressure"  attrs="{'readonly':[('state','=','closed')]}"/>
                     <field name="ekg"  attrs="{'readonly':[('state','=','closed')]}"/>
                     <field name="oxymetry"  attrs="{'readonly':[('state','=','closed')]}"/>
-                    <field name="capnometry"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="capnometry"  attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
                     <field name="capnography"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                   <group name="checklist_sub2">
                     <field name="respirometer"   attrs="{'readonly':[('state','=','closed')]}"/>
-                    <field name="spirometry"   attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="spirometry"   attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
                     <field name="cent_venous_pressure"   attrs="{'readonly':[('state','=','closed')]}"/>
                     <field name="intermitt_venous_pressure"  attrs="{'readonly':[('state','=','closed')]}" />
                     <field name="diuresis_bool"  attrs="{'readonly':[('state','=','closed')]}" />
