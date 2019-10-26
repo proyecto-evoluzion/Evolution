@@ -1719,10 +1719,35 @@ msgstr "Detalles muestras entregadas
 "
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_caprini_scale
+msgid "Caprini Scale"
+msgstr "Escala de Caprini"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_dental_prostheses
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_dental_prostheses
 msgid "Dental Prostheses"
 msgstr "Protesis Dental"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_type_fixed
+msgid "Fixed"
+msgstr "Fija"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_type_removable
+msgid "Removable"
+msgstr "Removible"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_location_above
+msgid "Above"
+msgstr "Arriba"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_location_below
+msgid "Below"
+msgstr "Abajo"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -3231,6 +3256,21 @@ msgid "Mallampati Scale"
 msgstr "Escala de Mallampati"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Prostheses Type"
+msgstr "Tipo Protesis"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Prostheses Location"
+msgstr "Ubicación Prótesis"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+msgid "Dental Prostheses"
+msgstr "Protesis Dental"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_marijuana
@@ -4423,16 +4463,6 @@ msgid "Programmer:"
 msgstr "Programó:"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_location
-msgid "Prostheses Location"
-msgstr "Ubicación Prótesis"
-
-#. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_prostheses_type
-msgid "Prostheses Type"
-msgstr "Tipo Protesis"
-
-#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 msgid "Protección Ocular"
 msgstr "Protección Ocular"
@@ -5118,7 +5148,7 @@ msgstr "Subsidiado"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_suitable_surgery
 msgid "Suitable for Surgery"
-msgstr "Apto para Cirugía"
+msgstr "Autorización de Cirugía"
 
 #. module: clinica_doctor_data
 #: code:addons/clinica_doctor_data/models/doctor_calendar.py:582

@@ -93,7 +93,11 @@ class PresurgicalRecord(models.Model):
     physical_exam = fields.Text(string="Physical Exam")
     dental_prostheses = fields.Boolean(string='Dental Prostheses')
     prostheses_type = fields.Selection([('fixed','Fixed'),('removable','Removable')], string='Prostheses Type', default='fixed')
+    prostheses_type_fixed = fields.Boolean(string='Fixed', default=False)
+    prostheses_type_removable = fields.Boolean(string='Removable', default=False)
     prostheses_location = fields.Selection([('above','Above'),('below','Below')], string='Prostheses Location', default='above')
+    prostheses_location_above = fields.Boolean(string='Above', default=False)
+    prostheses_location_below = fields.Boolean(string='Below', default=False)
     
     paraclinical_exam_date = fields.Date(string="Paraclinical Exam Date")
     paraclinical_hb = fields.Float(string="HB")
@@ -121,6 +125,11 @@ class PresurgicalRecord(models.Model):
                                             string="GOLDMAN", default='class_1')
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
+    caprini_scale = fields.Selection([('1', '1'),('2', '2'),
+                                       ('3', '3'),('4','4'),
+                                       ('5', '5'),('6','6'),
+                                       ('7', '7'),('8','8'),
+                                       ('9', '9'),('10','10'),], string='Caprini Scale')
     suitable_surgery = fields.Selection([('yes', 'Yes'), ('no', 'No')], default='no')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
