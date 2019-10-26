@@ -138,15 +138,34 @@
 		           						<field name="physical_body_mass_index" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
 		          						 kg/m²
 		           					</div>
+		           					<label for="mallampati_scale" attrs="{'readonly':[('state','=','closed')]}"/>
+		           					<div>
+		           						<field name="mallampati_scale" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
+		           					</div>
             					</group>
-                                <group>
-                                    <field name="dental_prostheses" attrs="{'readonly':[('state','=','closed')]}"/>
-                                    <field name = "prostheses_type" attrs="{'invisible': [('dental_prostheses', '=', False)],'readonly':[('state','=','closed')]}"/>
-                                    <field name = "prostheses_location" attrs="{'invisible':[('dental_prostheses', '=', False)],'readonly':[('state','=','closed')]}"/>
+            					<!-- <label for="dental_prostheses" attrs="{'readonly':[('state','=','closed')]}"/> -->
+            					<group name="dental_prostheses" string="Dental Prostheses" attrs="{'readonly':[('state','=','closed')]}">
+		           					<div>
+		           						<field name="dental_prostheses" nolabel="1" class="oe_inline"/>
+		           					</div>
                                 </group>
                                 <group>
                                     <!-- <field name="mallampati_scale"/> -->
                                 </group>
+                                <div attrs="{'invisible': [('dental_prostheses', '=', False)],'readonly':[('state','=','closed')]}">
+                                	<div class="col-md-6">
+                                    	<group name="prostheses_type" string="Prostheses Type">
+	                                    	<field name="prostheses_type_fixed" />
+	                                    	<field name="prostheses_type_removable" />
+	                                    </group>
+	                                </div>
+	                                <div class="col-md-6">
+	                                    <group name="prostheses_location" string="Prostheses Location">
+	                                    	<field name="prostheses_location_above"/>
+	                                    	<field name="prostheses_location_below"/>
+	                                    </group>
+	                                </div>
+                                </div>
             				</group>
             				<group name="physical_exam" colspan="2" col='1'>
             					<label for="physical_exam" string="Physical Exam" />
@@ -251,7 +270,7 @@
             				<group name="paraclinic_details">
             					<group>
            							<field name="paraclinical_asa" attrs="{'readonly':[('state','=','closed')]}" />
-           							<field name="mallampati_scale"  attrs="{'readonly':[('state','=','closed')]}"/>
+           							<field name="caprini_scale"  attrs="{'readonly':[('state','=','closed')]}"/>
            						</group>
             					<group>
            							<field name="paraclinical_goldman"  attrs="{'readonly':[('state','=','closed')]}"/>

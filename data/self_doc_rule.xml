@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+      
+        <record id="self_docs" model="ir.rule">
+            <field name="name">Own records only</field>
+            <field name="model_id" ref="model_doctor_waiting_room"/>
+            <field name="domain_force">[('surgeon_id.partner_id','=',user.partner_id.id)]</field>
+            <field name="groups" eval="[
+                (4, ref('clinica_doctor_data.surgeon'))]"/>
+        </record>
+
+    </data>
+</openerp>

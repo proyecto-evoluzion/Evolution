@@ -19,12 +19,19 @@
 #
 ###############################################################################
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 try:
     from xmlrpc import client as xmlrpclib
 except ImportError:
     import xmlrpclib
+    
+clinica_model_list = [
+    'clinica.nurse.sheet', 'doctor.presurgical.record', 'clinica.anhestesic.registry'
+    'doctor.quirurgic.sheet', 'clinica.post.anhestesic.care', 'clinica.quirurgical.check.list',
+    'clinica.plastic.surgery', 'clinica.medical.evolution', 'doctor.epicrisis',
+    'doctor.surgical.technologist', 'doctor.epicrisis'
+    ]
 
 class RecordAuthenticate(models.Model):
     _name = "record.authenticate"
@@ -58,4 +65,11 @@ class RecordAuthenticate(models.Model):
             return 1 
         else:
             return 0
+       
+    @api.model
+    def action_close_status(self, record_id, model): 
+        if model in clinica_model_list:
+            rec = self.env[model].browse(record_id)
+            rec.action_set_close()
+        
         
