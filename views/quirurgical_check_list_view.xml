@@ -49,7 +49,8 @@
 	            </group>
 	            <group name="health_professionals">
          			<group name="health_professionals_sub1" >
-         				<field name="procedure_id" attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
+         				<field name="procedure_id" attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
+         				<field name="procedure_ids" attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
          				<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('state','=','closed')]}"/>
          				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('state','=','closed')]}"/>
          				<field name='anesthesia_type'  attrs="{'readonly':[('state','=','closed')]}"/>

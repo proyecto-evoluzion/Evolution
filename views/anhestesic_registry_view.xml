@@ -34,7 +34,8 @@
             </group>
          	    <group name="professional_info_group">
          	    	<group name="professional_info_sub1">
-         	    		<field name="product_id"   attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
+                  <field name="product_id"   attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
+         	    		<field name="product_ids"   attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
 		                <field name="surgeon_id" domain="[('profession_type','=','plastic_surgeon')]"  attrs="{'readonly':[('state','=','closed')]}"/>
 		                <field name="anesthesiologist_id" domain="[('profession_type','=','anesthesiologist')]"  attrs="{'readonly':[('state','=','closed')]}"/>
 		                <field name="anesthesia_type"  attrs="{'readonly':[('state','=','closed')]}"/>
