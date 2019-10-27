@@ -873,7 +873,7 @@ msgstr "Número de intentos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_attention_code_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_attention_code_id
 msgid "Attention Code"
-msgstr "Código Consulta"
+msgstr "Tipo de Consulta"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -3318,7 +3318,7 @@ msgstr "Órdenes Médicas y Evolución"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_kanban_view
 msgid "Med. Order and Evolution"
-msgstr "Ord. Médicas y Evolución"
+msgstr "Evolución"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form

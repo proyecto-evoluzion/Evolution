@@ -32,11 +32,15 @@ from odoo.exceptions import ValidationError
 
 class ClinicaQuirurgicalCheckList(models.Model):
     _name = 'clinica.quirurgical.check.list'
-    _description= 'Quirurgical Check List'  
+    _description= 'Quirurgical Check List'
+
+    def all_procedures(self):
+        return self.env['clinica.anhestesic.registry'].all_procedures()
     
     name = fields.Char(string='Name', copy=False)
     procedure_datetime = fields.Datetime(string='Procedure Date/Time')
-    procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict')
+    # procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict', domain=[('is_health_procedure','=', True)]))
+    procedure_id = fields.Many2many('product.product', 'Process', ondelete='restrict', domain=[('is_health_procedure','=', True)], default=all_procedures)
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')

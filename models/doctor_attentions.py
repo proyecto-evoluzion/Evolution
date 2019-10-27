@@ -165,6 +165,10 @@ class PresurgicalRecord(models.Model):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
             self.document_type = self.patient_id.tdoc
+            lead_obj = self.lead_id.search([('patient_id','=',self.patient_id.id)])
+            lead_list = [x.id for x in lead_obj]
+            pivot = lead_list[len(lead_list)-1]
+            self.lead_id = pivot
 
     @api.multi
     @api.depends('birth_date')

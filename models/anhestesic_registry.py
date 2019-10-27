@@ -37,6 +37,9 @@ class AnhestesicRegistry(models.Model):
     _name = "clinica.anhestesic.registry"
     _order = 'id desc'
     _description = 'Anhestesic Registry'
+
+    def all_procedures(self):
+        return self.env['product.product'].search([('is_health_procedure','=',1)]).ids
     
     name = fields.Char(string="Name")
     intervention_date = fields.Datetime(string='Intervention Date', default=fields.Datetime.now, copy=False)
@@ -57,7 +60,8 @@ class AnhestesicRegistry(models.Model):
                                          compute='_compute_age_meassure_unit')
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
-    product_id = fields.Many2one('product.product', 'Process', ondelete='restrict')
+    # product_id = fields.Many2one('product.product', 'Process', ondelete='restrict', domain=[('is_health_procedure','=', True)])
+    product_id = fields.Many2many('product.product', 'Process', ondelete='restrict', domain=[('is_health_procedure','=', True)], default=all_procedures)
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
