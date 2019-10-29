@@ -32,9 +32,14 @@ from odoo.exceptions import ValidationError
 class PresurgicalRecord(models.Model):
     _name = "doctor.presurgical.record"
     _rec_name = 'number'
+
+    def _first_attention(self):
+        product_id_rec = self.env['product.product'].search([('name','in',['CONSULTA DE PRIMERA VEZ POR ESPECIALISTA EN ANESTESIOLOGIA'])], limit=1)
+        cups_obj = self.env['doctor.cups.code'].search([('product_id','=', product_id_rec.id)])
+        return cups_obj.id
     
     number = fields.Char('Attention number', readonly=True)
-    attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
+    attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict', default=_first_attention)
     date_attention = fields.Date('Date of attention', required=True, default=fields.Date.context_today)
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], related="patient_id.tdoc", string='Type of Document')
     numberid = fields.Char(string='Number ID')
