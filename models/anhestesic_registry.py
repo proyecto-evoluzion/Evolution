@@ -61,7 +61,7 @@ class AnhestesicRegistry(models.Model):
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     product_id = fields.Many2one('product.product', 'Process', ondelete='restrict')
-    product_ids = fields.Many2many('product.product', ondelete='restrict', domain=[('is_health_procedure','=', True)], default=all_procedures)
+    product_ids = fields.Many2many('product.product', 'Process',ondelete='restrict', domain=[('is_health_procedure','=', True)])
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
@@ -256,7 +256,13 @@ class AnhestesicRegistry(models.Model):
     @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
+            list_ids = []
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            for procedure_ids in self.room_id.procedure_ids:
+                for products in procedure_ids.product_id:
+                    list_ids.append(products.id)
+            self.product_ids = [(6, 0, list_ids)]
+
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):

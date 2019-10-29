@@ -35,6 +35,15 @@ from odoo.exceptions import ValidationError
 class ClinicaNurseSheet(models.Model):
     _name = "clinica.nurse.sheet"
     _order = 'id desc'
+
+    def _current_uid(self):
+        ctx = self._context
+        uid = ctx.get('uid')
+        actual_user = self.env['res.users'].search([('id','=',uid)])
+        for groups in actual_user.groups_id:
+            if groups.id == self.env.ref('clinica_doctor_data.nursing_assistant').id or groups.id == self.env.ref('clinica_doctor_data.surgical_technologist').id:
+                return True
+        return False
     
     name = fields.Char(string='Name', copy=False)
     procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
@@ -91,6 +100,7 @@ class ClinicaNurseSheet(models.Model):
     various_procedures = fields.Boolean(string="Various Procedures", copy=False)
     invoice_procedure_ids = fields.One2many('nurse.sheet.invoice.procedures', 'nurse_sheet_id', string='Health Procedures for Invoice', copy=False)
     anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry')
+    readonly_bool = fields.Boolean('Actual User', default=_current_uid)
     
     surgery_start_time = fields.Float(string="Surgery Start Time")
     surgery_end_time = fields.Float(string="Surgery End Time")
