@@ -27,7 +27,7 @@ except ImportError:
     import xmlrpclib
     
 clinica_model_list = [
-    'clinica.nurse.sheet', 'doctor.presurgical.record', 'clinica.anhestesic.registry'
+    'clinica.nurse.sheet', 'doctor.presurgical.record', 'clinica.anhestesic.registry',
     'doctor.quirurgic.sheet', 'clinica.post.anhestesic.care', 'clinica.quirurgical.check.list',
     'clinica.plastic.surgery', 'clinica.medical.evolution', 'doctor.epicrisis',
     'doctor.surgical.technologist', 'doctor.epicrisis'
