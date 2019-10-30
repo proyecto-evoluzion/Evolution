@@ -39,6 +39,36 @@ msgid "Age:"
 msgstr "Edad:"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,state:0
+#: selection:clinica.medical.evolution,state:0
+#: selection:clinica.nurse.sheet,state:0
+#: selection:clinica.plastic.surgery,state:0
+#: selection:clinica.post.anhestesic.care,state:0
+#: selection:clinica.quirurgical.check.list,state:0
+#: selection:doctor.epicrisis,state:0
+#: selection:doctor.prescription,state:0
+#: selection:doctor.presurgical.record,state:0
+#: selection:doctor.quirurgic.sheet,state:0
+#: selection:doctor.surgical.technologist,state:0
+msgid "Open"
+msgstr "Abierto"
+
+#. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,state:0
+#: selection:clinica.medical.evolution,state:0
+#: selection:clinica.nurse.sheet,state:0
+#: selection:clinica.plastic.surgery,state:0
+#: selection:clinica.post.anhestesic.care,state:0
+#: selection:clinica.quirurgical.check.list,state:0
+#: selection:doctor.epicrisis,state:0
+#: selection:doctor.prescription,state:0
+#: selection:doctor.presurgical.record,state:0
+#: selection:doctor.quirurgic.sheet,state:0
+#: selection:doctor.surgical.technologist,state:0
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: clinica_doctor_data
 #. openerp-web
 #: code:addons/clinica_doctor_data/static/src/js/main.js:34
 #, python-format
@@ -1152,7 +1182,7 @@ msgstr "Casada/o"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_cent_venous_pressure
 msgid "Central venous pressure"
-msgstr "Central venous pressure"
+msgstr "Presión venosa central"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_cesarean
@@ -1523,7 +1553,7 @@ msgstr "Crear Hoja de Enfermería"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Create Sales Order"
-msgstr "Crear Orden de Venta"
+msgstr "Crear cotización"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_create_uid
@@ -2185,8 +2215,9 @@ msgid "Duración (en horas)"
 msgstr "Duración (en horas)"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_appointment_type_duration
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_duration
-msgid "Duration (in hours)"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_durationmsgid "Duration (in hours)"
 msgstr "Duración (en horas)"
 
 #. module: clinica_doctor_data
@@ -3652,9 +3683,10 @@ msgid "Number of Abortions"
 msgstr "Número de abortos"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_nurse_boss_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_nurse_boss_id
 msgid "Nurse Boss"
-msgstr "Enfermera Jefe"
+msgstr "Jefe Enfermería"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
@@ -5635,7 +5667,7 @@ msgstr "Tipo de Documento"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_lead_id
 msgid "Lead"
-msgstr "Iniciativa"
+msgstr "Cirugía Número"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_uci
