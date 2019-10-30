@@ -102,7 +102,10 @@ class DoctorEpicrisis(models.Model):
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
         for rec in self:
-            rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+            try:
+                rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+            except:
+                rec.numberid_integer = 0
 
     @api.depends('patient_id')
     def _compute_numberid(self):
