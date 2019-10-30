@@ -397,7 +397,7 @@ class DoctorAdministrativeData(models.Model):
             self.name = str(0)
 
     @api.onchange('name')
-    def onchange_ref(self):
+    def onchange_name(self):
         if self.name:
             is_patient = self.env['doctor.patient'].search([('name','=',self.name)])
             if is_patient:
