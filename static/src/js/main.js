@@ -25,20 +25,16 @@ odoo.define('record_authenticate_by_user.main', function (require) {
             	if(result == '1'){
             		var form_content = "<form class='form'>" +
 						    		        "<div class='form-group'>" +
-						    		          "<label for='password'>Password</label>" +
-						    		          "<input type='password' class='form-control' id='c_password' name='password' placeholder='Enter your password' onkeypress='if (event.keyCode === 13) { event.preventDefault(); }'/>" +
-						    		        "</div>" +
-						    		        "<div class='form-group'>" +
-						    		            "<label>Is record status needs to be closed ?</label> &nbsp; " +
-						    		            "<input id='close_status' type='checkbox' checked='checked' onkeypress='if (event.keyCode === 13) { event.preventDefault(); }'/>" +
-						    		        "</div>" +
+						    		          "<label for='password'>Contraseña</label>" +
+						    		          "<input type='password' class='form-control' id='c_password' name='password' placeholder='Ingrese su contraseña' onkeypress='if (event.keyCode === 13) { event.preventDefault(); }'/>" +
+						    		        "</div>"+
 						    		      "</form>";
         		    var modal = bootbox.dialog({
         		        message: form_content,
-        		        title: "Confirm your account to update the record",
+        		        title: _t("Confirm your account to update the record"),
         		        buttons: [
         		          {
-        		            label: "Approve",
+        		            label: _t("Approve"),
         		            className: "btn btn-primary pull-left",
         		            callback: function() {
         		                var passkey = $('#c_password').val();
@@ -69,7 +65,7 @@ odoo.define('record_authenticate_by_user.main', function (require) {
 										setTimeout(action_close_status, 2000);
 										modal.modal("hide");
 									}else{
-										alert("User validation failured. Please try again.");
+										alert(_t("User validation failured. Please try again."));
 										modal.modal("hide");
 									}
 								});
@@ -78,10 +74,10 @@ odoo.define('record_authenticate_by_user.main', function (require) {
         		            }
         		          },
         		          {
-        		            label: "Close",
+        		            label: _t("Close"),
         		            className: "btn btn-default pull-left",
         		            callback: function() {
-        		              console.log("Modal is on closing");
+        		              console.log(_t("Modal is on closing"));
         		            }
         		          }
         		        ],

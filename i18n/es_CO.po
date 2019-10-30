@@ -39,6 +39,27 @@ msgid "Age:"
 msgstr "Edad:"
 
 #. module: clinica_doctor_data
+#. openerp-web
+#: code:addons/clinica_doctor_data/static/src/js/main.js:34
+#, python-format
+msgid "Confirm your account to update the record"
+msgstr "Guarde y firme su registro"
+
+#. module: clinica_doctor_data
+#. openerp-web
+#: code:addons/clinica_doctor_data/static/src/js/main.js:37
+#, python-format
+msgid "Approve"
+msgstr "Guardar y Firmar"
+
+#. module: clinica_doctor_data
+#. openerp-web
+#: code:addons/clinica_doctor_data/static/src/js/main.js:79
+#, python-format
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_partner_is_assurance
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_users_is_assurance
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_partner_form_inherit
