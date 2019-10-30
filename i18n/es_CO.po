@@ -90,6 +90,20 @@ msgid "Close"
 msgstr "Cerrar"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
+msgid "Set to Close"
+msgstr "Cerrar"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_partner_is_assurance
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_users_is_assurance
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_partner_form_inherit
@@ -2211,13 +2225,10 @@ msgstr "Drogas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_duration
-msgid "Duración (en horas)"
-msgstr "Duración (en horas)"
-
-#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_appointment_type_duration
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_duration
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_durationmsgid "Duration (in hours)"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_duration
+msgid "Duration (in hours)"
 msgstr "Duración (en horas)"
 
 #. module: clinica_doctor_data
