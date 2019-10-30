@@ -18,7 +18,7 @@
             <group name='main_group'>
             	<group name='sub_group1'>
 	                <field name="room_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-	                <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                  <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
             	</group>
             	<group name='sub_group2'>
 	                <field name="procedure_date" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
@@ -102,63 +102,64 @@
       				</field>
       			</page>
       			<page name="background" string="Patient Background">
+              <field name="readonly_bool" invisible="0"/>
       				<group name="pathological_background" >
        					<group name="pathological_background_sub1">
-       						<field name="diabetes" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="hypertension" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="hypertension" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        					</group>
        					<group name="pathological_background_sub2">
-       						<field name="arthritis" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="thyroid_disease" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="arthritis" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="thyroid_disease" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        					</group>
        				</group>
        				<group name="pathological" colspan="2" col='1'>
-       					<label for="pathological" string="Pathological" attrs="{'readonly':[('state','=','closed')]}"/>
-       					<field name="pathological" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+       					<label for="pathological" string="Pathological" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					<field name="pathological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        				</group>
        				<group name="surgical" colspan="2" col='1'>
-       					<label for="surgical" string="Surgical" attrs="{'readonly':[('state','=','closed')]}"/>
-       					<field name="surgical" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+       					<label for="surgical" string="Surgical" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					<field name="surgical" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        				</group>
        				<group name="patient_backgorund_main" >
        					<group name="patient_backgorund_sub1" >
-       						<field name="smoke" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<label for="cigarate_daily" string="Cigarettes" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="smoke" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<label for="cigarate_daily" string="Cigarettes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
                             <div>
                                 <div>
-                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
-                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
                                 </div>
                             </div>
-       						<field name="is_alcoholic" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="is_alcoholic" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        						<label for="alcohol_frequency" string="Frequency"/>
                             <div>
                                 <div>
-                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
-                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
                                 </div>
                             </div>
-       						<field name="marijuana" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="cocaine" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="ecstasy" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="marijuana" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="cocaine" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="ecstasy" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        						
        					</group>
        					<group name="patient_backgorund_sub2" >
-       						<field name="body_background_others" string="Others" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="pharmacological" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="allergic" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="body_background_others" string="Others" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="pharmacological" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="allergic" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        					</group>
        				</group>
-       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
+       				<group name="patient_female_backgorund_main" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}">
        					<group name="patient_female_backgorund_sub1" >
-       						<field name="pregnancy_number" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="child_number" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="abortion_number" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="pregnancy_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="child_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="abortion_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        					</group>
        					<group name="patient_female_backgorund_sub2" >
-       						<field name="last_birth_date" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="last_menstruation_date" attrs="{'readonly':[('state','=','closed')]}"/>
-       						<field name="contrtaceptive_methods" attrs="{'readonly':[('state','=','closed')]}"/>
+       						<field name="last_birth_date" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="last_menstruation_date" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="contrtaceptive_methods" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        					</group>
        				</group>
       			</page>
