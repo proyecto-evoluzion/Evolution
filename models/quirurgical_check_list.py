@@ -39,8 +39,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	
 	name = fields.Char(string='Name', copy=False)
 	procedure_datetime = fields.Datetime(string='Procedure Date/Time')
-	procedure_id = fields.Many2one('product.product', 'Procedure', ondelete='restrict')
-	procedure_ids = fields.Many2many('product.product', 'Procedure', ondelete='restrict', domain=[('is_health_procedure','=', True)], default=all_procedures)
+	procedure_id = fields.Many2one('product.product', string='Procedure')
+	procedure_ids = fields.Many2many('product.product', 'quirurgical_checklist_procedures_rel', string='Procedure', ondelete='restrict', domain=[('is_health_procedure','=', True)], default=all_procedures)
 	document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
 									  ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
 									  ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
