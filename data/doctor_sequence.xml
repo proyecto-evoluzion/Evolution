@@ -46,6 +46,15 @@
             <field name="padding">5</field>
             <field name="sequence_dian_type">invoice_computer_generated</field>
         </record>
+
+        <!-- Sequence type for Recovery Sheet -->
+        <record id="seq_clinica_recovery_sheet" model="ir.sequence">
+            <field name="name">Recovery Sheet</field>
+            <field name="code">recovery.sheet</field>
+            <field name="prefix">RS </field>
+            <field name="padding">5</field>
+            <field name="sequence_dian_type">invoice_computer_generated</field>
+        </record>        
         
 		<!-- Sequence type for anhestesic.registry -->
 		<record id="seq_clinica_anhestesic_registry" model="ir.sequence">
