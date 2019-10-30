@@ -102,7 +102,7 @@
       				</field>
       			</page>
       			<page name="background" string="Patient Background">
-              <field name="readonly_bool" invisible="0"/>
+              <field name="readonly_bool" invisible="1"/>
       				<group name="pathological_background" >
        					<group name="pathological_background_sub1">
        						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
