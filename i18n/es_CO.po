@@ -2211,13 +2211,10 @@ msgstr "Drogas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_duration
-msgid "Duración (en horas)"
-msgstr "Duración (en horas)"
-
-#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_appointment_type_duration
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_duration
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_durationmsgid "Duration (in hours)"
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_duration
+msgid "Duration (in hours)"
 msgstr "Duración (en horas)"
 
 #. module: clinica_doctor_data
@@ -3534,10 +3531,14 @@ msgstr "Máscara Laríngea"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_name
 msgid "Name"
 msgstr "Nombre"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_name
+msgid "Name"
+msgstr "Cirugía #"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_accompany_name

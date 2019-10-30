@@ -368,7 +368,7 @@
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
 			<tree string="Waiting Room Tree">
-				<field name="schedule_id"/>
+				<field name="name"/>
 				<field name='patient_id'/>
 				<field name="surgeon_id"/>
 				<field name="anesthesiologist_id"/>
@@ -453,7 +453,7 @@
 		<field name="arch" type="xml">
 			<tree string="Surgery Room Tree">
 				<field name="surgery_room_id"/>
-				<field name="schedule_id"/>
+				<field name="name"/>
 				<field name='patient_id'/>
 				<field name="surgeon_id"/>
 				<field name="anesthesiologist_id"/>
