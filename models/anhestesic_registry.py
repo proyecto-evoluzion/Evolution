@@ -61,7 +61,7 @@ class AnhestesicRegistry(models.Model):
     blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     product_id = fields.Many2one('product.product', 'Process', ondelete='restrict')
-    product_ids = fields.Many2many('product.product', 'Process',ondelete='restrict', domain=[('is_health_procedure','=', True)])
+    product_ids = fields.Many2many('product.product',ondelete='restrict', domain=[('is_health_procedure','=', True)])
     surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
