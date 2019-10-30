@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- doctor cups code Form View -->
+    <record model="ir.ui.view" id="view_clinica_recovery_sheet_form">
+        <field name="name">clinica.recovery.sheet.form</field>
+        <field name="model">clinica.recovery.sheet</field>
+        <field name="arch" type="xml">
+        <form string="Recovery Sheet">
+        	<header>
+                <button name="action_view_clinica_record_history" string="View History" 
+                	type="object" class="oe_highlight"/>
+                <button name="action_set_close" string="Set to Close" 
+                	type="object" states="open"/>
+                <field name="state" widget="statusbar" statusbar_visible="open,closed"/>
+            </header>
+            <sheet>
+            <group name='main_group'>
+            	<group name='sub_group1'>
+	                <field name="room_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                  <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+            	</group>
+            	<group name='sub_group2'>
+	                <field name="procedure_date" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+            	</group>
+            </group>
+            <group name='patient_info'>
+            	<group name='patient_info_sub1'>
+            		<field name="document_type" attrs="{'readonly':[('state','=','closed')]}"/>
+	                <label for="age" string="Age"/>
+       				<div>
+       					<div>
+       						<field name="age" required="1" nolabel="1" class="oe_inline" readonly="1" attrs="{'readonly':[('state','=','closed')]}"/>
+      						<field name="age_meassure_unit" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+       					</div>
+       				</div>
+       				
+            	</group>
+            	<group name='patient_info_sub2' attrs="{'readonly':[('state','=','closed')]}">
+            		<field name="birth_date" attrs="{'readonly':[('state','=','closed')]}"/>
+            		<field name="gender" invisible="1" force_save="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                <label for="blood_type" string="Blood Type"/>
+              <div>
+                <div>
+                  <field name="blood_type" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
+                  <field name="blood_rh" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
+                </div>
+              </div>      
+            	</group>
+            </group>
+            
+            <notebook>
+      			<page name="vital_signs" string="Signos Vitales">
+      				<field name="vital_sign_ids" colspan="4" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+      					<tree editable="top">
+      						<field name="vital_signs_date_hour" string="Date and Hour"/>
+      						<field name="vital_signs_fc"/>
+	      					<field name="sistolic_arteric_pressure" string="Sistolic Artery Pressure" />
+	      					<field name="diastolic_arteric_pressure" string="Diastolic Artery Pressure"/>
+	      					<field name="oximetry" string="Oximetry"/>
+		            		<field name="diuresis" string="Diuresis"/>
+		            		<field name="bleeding" string="Bleeding"/>
+		            		<field name="note" string="Nursing Note"/>
+      					</tree>
+      				</field>
+      			</page>
+      			<page name="background" string="Patient Background">
+              <field name="readonly_bool" invisible="1"/>
+      				<group name="pathological_background" >
+       					<group name="pathological_background_sub1">
+       						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="hypertension" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					</group>
+       					<group name="pathological_background_sub2">
+       						<field name="arthritis" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="thyroid_disease" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					</group>
+       				</group>
+       				<group name="pathological" colspan="2" col='1'>
+       					<label for="pathological" string="Pathological" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					<field name="pathological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       				</group>
+       				<group name="surgical" colspan="2" col='1'>
+       					<label for="surgical" string="Surgical" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					<field name="surgical" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       				</group>
+       				<group name="patient_backgorund_main" >
+       					<group name="patient_backgorund_sub1" >
+       						<field name="smoke" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<label for="cigarate_daily" string="Cigarettes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                            <div>
+                                <div>
+                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                </div>
+                            </div>
+       						<field name="is_alcoholic" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<label for="alcohol_frequency" string="Frequency"/>
+                            <div>
+                                <div>
+                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                </div>
+                            </div>
+       						<field name="marijuana" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="cocaine" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="ecstasy" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						
+       					</group>
+       					<group name="patient_backgorund_sub2" >
+       						<field name="body_background_others" string="Others" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="pharmacological" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="allergic" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					</group>
+       				</group>
+       				<group name="patient_female_backgorund_main" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}">
+       					<group name="patient_female_backgorund_sub1" >
+       						<field name="pregnancy_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="child_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="abortion_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					</group>
+       					<group name="patient_female_backgorund_sub2" >
+       						<field name="last_birth_date" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="last_menstruation_date" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="contrtaceptive_methods" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					</group>
+       				</group>
+      			</page>
+      			
+      			<!-- <page name="invoice_procedures" string="Order and Time of Procedures" attrs="{'invisible':[('various_procedures','=',False)]}">
+      				 <field name="invoice_procedure_ids" colspan="4" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+      				 	<tree editable="bottom"  limit="10000" create="true">
+       				 		<field name="sequence" widget="handle"/>
+       				 		<field name="product_id" readonly="1" force_save="1"/>
+       				 		<field name="procedure_start_time" widget="float_time" required="1"/>
+       				 		<field name="procedure_end_time" required="1" widget="float_time"/>
+       				 		<field name="load_start_time" style="width:15%;"/>
+       				 		<field name="sale_line_id" invisible="1" force_save="1"/>
+       				 		<field name="last_procedure" invisible="1" force_save="1"/>
+       				 	</tree>
+      				 </field>
+      			</page> -->
+      		</notebook>
+      		</sheet>
+        </form>
+        </field>
+    </record>
+	
+    
+    <!-- doctor cups code Tree View -->
+    <record model="ir.ui.view" id="view_clinica_recovery_sheet_tree">
+        <field name="name">clinica.recovery.sheet.tree</field>
+        <field name="model">clinica.recovery.sheet</field>
+        <field name="arch" type="xml">
+            <tree string="Recovery Sheet">
+            	<field name="room_id" />
+                <field name="document_type"/>
+                <field name="patient_id"/>
+                <field name="procedure_date"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="clinica_recovery_sheet_filter" model="ir.ui.view">
+        <field name="name">clinica.recovery.sheet.search</field>
+        <field name="model">clinica.recovery.sheet</field>
+        <field name="arch" type="xml">
+            <search string="Search Recovery Sheet">
+                <field name="patient_id"/>
+                <group expand="0" string="Group By">
+                	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
+                </group>
+            </search>
+        </field>
+   </record>
+	    
+    <!-- Doctor cups code Action -->
+    <record id="action_clinica_recovery_sheet" model="ir.actions.act_window">
+        <field name="name">Recovery Sheet</field>
+        <field name="res_model">clinica.recovery.sheet</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_clinica_recovery_sheet_tree"/>
+       <field name="search_view_id" ref="clinica_recovery_sheet_filter"/>
+    </record> 
+    
+    
+    <menuitem id="menu_clinica_recovery_sheet"
+            name="Recovery Sheet"
+            parent="menu_doctor_process"
+            action="action_clinica_recovery_sheet"
+            groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.clinical_auditor"
+            sequence="5"/>
+            
+</odoo>         
+            
