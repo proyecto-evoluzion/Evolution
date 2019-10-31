@@ -155,8 +155,8 @@ class DoctorWaitingRoom(models.Model):
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
-    numberid = fields.Char(string='Number ID')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
+    numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', compute="_compute_numberid_integer", store="true")   
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
@@ -222,7 +222,19 @@ class DoctorWaitingRoom(models.Model):
     assurance_plan_id = fields.Many2one('doctor.insurer.plan', string='Assurer Plan')
     schedule_allocation_id = fields.Many2one('doctor.schedule.time.allocation', string='Schedule Time Allocation')
     duration = fields.Float(string='Duration (in hours)')
+    
+    @api.depends('patient_id')
+    def _compute_numberid_integer(self):
+        for rec in self:
+            try:
+                rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+            except:
+                rec.numberid_integer = 0
 
+    @api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False
     
     @api.onchange('procedure_date','duration')
     def onchange_start_date_duration(self):

@@ -39,6 +39,71 @@ msgid "Age:"
 msgstr "Edad:"
 
 #. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,state:0
+#: selection:clinica.medical.evolution,state:0
+#: selection:clinica.nurse.sheet,state:0
+#: selection:clinica.plastic.surgery,state:0
+#: selection:clinica.post.anhestesic.care,state:0
+#: selection:clinica.quirurgical.check.list,state:0
+#: selection:doctor.epicrisis,state:0
+#: selection:doctor.prescription,state:0
+#: selection:doctor.presurgical.record,state:0
+#: selection:doctor.quirurgic.sheet,state:0
+#: selection:doctor.surgical.technologist,state:0
+msgid "Open"
+msgstr "Abierto"
+
+#. module: clinica_doctor_data
+#: selection:clinica.anhestesic.registry,state:0
+#: selection:clinica.medical.evolution,state:0
+#: selection:clinica.nurse.sheet,state:0
+#: selection:clinica.plastic.surgery,state:0
+#: selection:clinica.post.anhestesic.care,state:0
+#: selection:clinica.quirurgical.check.list,state:0
+#: selection:doctor.epicrisis,state:0
+#: selection:doctor.prescription,state:0
+#: selection:doctor.presurgical.record,state:0
+#: selection:doctor.quirurgic.sheet,state:0
+#: selection:doctor.surgical.technologist,state:0
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: clinica_doctor_data
+#. openerp-web
+#: code:addons/clinica_doctor_data/static/src/js/main.js:34
+#, python-format
+msgid "Confirm your account to update the record"
+msgstr "Guarde y firme su registro"
+
+#. module: clinica_doctor_data
+#. openerp-web
+#: code:addons/clinica_doctor_data/static/src/js/main.js:37
+#, python-format
+msgid "Approve"
+msgstr "Guardar y Firmar"
+
+#. module: clinica_doctor_data
+#. openerp-web
+#: code:addons/clinica_doctor_data/static/src/js/main.js:79
+#, python-format
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
+msgid "Set to Close"
+msgstr "Cerrar"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_partner_is_assurance
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_res_users_is_assurance
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_partner_form_inherit
@@ -1141,7 +1206,7 @@ msgstr "Casada/o"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_cent_venous_pressure
 msgid "Central venous pressure"
-msgstr "Central venous pressure"
+msgstr "Presión venosa central"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,help:clinica_doctor_data.field_clinica_plastic_surgery_cesarean
@@ -1516,7 +1581,7 @@ msgstr "Crear Hoja de Enfermería"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Create Sales Order"
-msgstr "Crear Orden de Venta"
+msgstr "Crear cotización"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_create_uid
@@ -2183,11 +2248,9 @@ msgstr "Drogas"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_duration
-msgid "Duración (en horas)"
-msgstr "Duración (en horas)"
-
-#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_appointment_type_duration
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_schedule_duration
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_duration
 msgid "Duration (in hours)"
 msgstr "Duración (en horas)"
 
@@ -3515,10 +3578,14 @@ msgstr "Máscara Laríngea"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_name
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_template_name
 msgid "Name"
 msgstr "Nombre"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_name
+msgid "Name"
+msgstr "Cirugía #"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_accompany_name
@@ -3665,9 +3732,10 @@ msgid "Number of Abortions"
 msgstr "Número de abortos"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_nurse_boss_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_nurse_boss_id
 msgid "Nurse Boss"
-msgstr "Enfermera Jefe"
+msgstr "Jefe Enfermería"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_abortion_number
@@ -5678,7 +5746,7 @@ msgstr "Tipo de Documento"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_lead_id
 msgid "Lead"
-msgstr "Iniciativa"
+msgstr "Cirugía Número"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_uci
