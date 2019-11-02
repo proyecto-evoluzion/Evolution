@@ -51,8 +51,8 @@ class MedicalOrderEvolution(models.Model):
                              ('pa','PA - Passport'),('rc','RC - Civil Registry'),
                              ('ti','TI - Identity Card'),('as','AS - Unidentified Adult'),
                              ('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
-    numberid = fields.Char(string='Number ID', related='patient_id.name')
-    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
+    numberid = fields.Char(string='Number ID', compute="_compute_numberid", store="true")
+    numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', compute="_compute_numberid_integer", store="true")
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
@@ -110,6 +110,18 @@ class MedicalOrderEvolution(models.Model):
         if self.room_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
     
+    @api.depends('patient_id')
+    def _compute_numberid_integer(self):
+        for rec in self:
+            try:
+                rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+            except:
+                rec.numberid_integer = 0
+
+    @api.depends('patient_id')
+    def _compute_numberid(self):
+        for rec in self:
+            rec.numberid = rec.patient_id.name if rec.patient_id else False
     
     @api.multi
     @api.depends('birth_date')
@@ -149,15 +161,6 @@ class MedicalOrderEvolution(models.Model):
             self.blood_rh = self.patient_id.blood_rh
             self.medical_record = self.patient_id.doctor_id.medical_record
             
-            
-            
-    def _check_assign_numberid(self, numberid_integer):
-        if numberid_integer == 0:
-            raise ValidationError(_('Please enter non zero value for Number ID'))
-        else:
-            numberid = str(numberid_integer)
-            return numberid
-    
     def _check_birth_date(self, birth_date):
         warn_msg = '' 
         today_datetime = datetime.today()
@@ -169,58 +172,23 @@ class MedicalOrderEvolution(models.Model):
             warn_msg = _('Invalid birth date!')
         return warn_msg
     
-    @api.multi
-    def _check_tdocs(self):
-        for anhestesic in self:
-            if anhestesic.age_meassure_unit == '3' and anhestesic.tdoc not in ['rc','ms']:
-                raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
-            if anhestesic.age > 17 and anhestesic.age_meassure_unit == '1' and anhestesic.tdoc in ['rc','ms']:
-                raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
-            if anhestesic.age_meassure_unit in ['2','3'] and anhestesic.tdoc in ['cc','as','ti']:
-                raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
-            if anhestesic.tdoc == 'ms' and anhestesic.age_meassure_unit != '3':
-                raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
-            if anhestesic.tdoc == 'as' and anhestesic.age_meassure_unit == '1' and anhestesic.age <= 17:
-                raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
-
     @api.model
     def create(self, vals):
-        vals['name'] = self.env['ir.sequence'].next_by_code('medical.evolution') or '/'
-        if vals.get('tdoc', False) and vals['tdoc'] in ['cc','ti']:
-            numberid_integer = 0
-            if vals.get('numberid_integer', False):
-                numberid_integer = vals['numberid_integer']
-            numberid = self._check_assign_numberid(numberid_integer)
-            vals.update({'numberid': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
         res = super(MedicalOrderEvolution, self).create(vals)
-        res._check_tdocs()
         return res
     
     @api.multi
     def write(self, vals):
-        if vals.get('tdoc', False) or 'numberid_integer' in  vals:
-            if vals.get('tdoc', False):
-                tdoc = vals['tdoc']
-            else:
-                tdoc = self.tdoc
-            if tdoc in ['cc','ti']:
-                if 'numberid_integer' in  vals:
-                    numberid_integer = vals['numberid_integer']
-                else:
-                    numberid_integer = self.numberid_integer
-                numberid = self._check_assign_numberid(numberid_integer)
-                vals.update({'numberid': numberid})
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
          
         res = super(MedicalOrderEvolution, self).write(vals)
-        self._check_tdocs()
         return res
     
     @api.multi

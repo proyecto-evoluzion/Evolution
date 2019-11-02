@@ -27,10 +27,9 @@
 		             
 		         	</group>
 		        </group>
-            <group name="patient">
+            <group name="patient" col="4">
               <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name='tdoc' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='tdoc' required="1" readonly="1"/>
             </group>
          	    <notebook>
          	    	<page name="description" string="Description">
@@ -40,6 +39,7 @@
       						<field name="note"/>
       					</tree>
       					</field>
+                <field name='medical_record' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
          	    	</page>
          	    </notebook>
          	</sheet>

@@ -309,9 +309,15 @@ class DoctorAdministrativeData(models.Model):
     
     @api.multi
     def name_get(self):
-        return [
-            (patient.id, '%s%s' % (patient.ref and '[%s] ' % patient.ref or '', patient.patient_name))
-            for patient in self]
+        res = []
+        for patient in self:
+            ref = patient.ref
+            if ref == 0:
+                name = '['+patient.name+'] '+patient.patient_name
+            else :
+                name = '['+str(patient.ref)+'] '+patient.patient_name
+            res.append((patient.id, name))
+        return res
 
     @api.model
     def name_search(self, name='', args=None, operator='ilike', limit=100):

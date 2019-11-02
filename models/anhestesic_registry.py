@@ -223,7 +223,10 @@ class AnhestesicRegistry(models.Model):
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
         for rec in self:
-            rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+            try:
+                rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
+            except:
+                rec.numberid_integer = 0
 
     @api.depends('patient_id')
     def _compute_numberid(self):
@@ -275,7 +278,7 @@ class AnhestesicRegistry(models.Model):
             self.birth_date = self.patient_id.birth_date
             self.document_type = self.patient_id.tdoc
             self.numberid = self.patient_id.name
-            self.numberid_integer = int(self.patient_id.name)
+            self.numberid_integer = int(self.patient_id.name) if self.document_type in ['cc','ti'] else 0
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             if self.room_id:
