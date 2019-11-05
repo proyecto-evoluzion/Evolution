@@ -627,6 +627,7 @@ msgstr "Formularios de datos administrativos"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Age"
 msgstr "Edad"
 
@@ -671,6 +672,7 @@ msgstr "Albumina:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_is_alcoholic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_is_alcoholic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_is_alcoholic
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_is_alcoholic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_is_alcoholic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_is_alcoholic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_is_alcoholic
@@ -691,6 +693,7 @@ msgstr "Bebidas Alcohólicas:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_alcohol_frequency_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_alcohol_frequency_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_alcohol_frequency_uom
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_alcohol_frequency_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_alcohol_frequency_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_alcohol_frequency_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_alcohol_frequency_uom
@@ -715,6 +718,7 @@ msgstr "Todos los equipos para monitoreo y reanimación del paciente funcionando
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_allergic
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_allergic
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_allergic
@@ -886,6 +890,7 @@ msgstr "Appointment Number:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_arthritis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_arthritis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_arthritis
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_arthritis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_arthritis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_arthritis
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_arthritis
@@ -1017,6 +1022,7 @@ msgstr "Beneficiario"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_birth_date
@@ -1049,6 +1055,7 @@ msgstr "P"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Bleeding"
 msgstr "Sangrado"
 
@@ -1074,6 +1081,7 @@ msgstr "Cuadro Hemático"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_blood_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_blood_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_blood_type
@@ -1086,6 +1094,7 @@ msgstr "Cuadro Hemático"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 msgid "Blood Type"
 msgstr "Tipo de sangre"
@@ -1115,6 +1124,7 @@ msgstr "Bloqueo"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_body_background_others
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_body_background_others
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_body_background_others
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_body_background_others
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_body_background_others
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_body_background_others
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_body_background_others
@@ -1224,6 +1234,7 @@ msgstr "Cesáreas"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Cigarettes"
 msgstr "Cigarrillos"
 
@@ -1231,6 +1242,7 @@ msgstr "Cigarrillos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_cigarate_daily
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_cigarate_daily
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_cigarate_daily
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_cigarate_daily
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_cigarate_daily
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_cigarate_daily
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_cigarate_daily
@@ -1407,6 +1419,7 @@ msgstr "Cm <br/>"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_cocaine
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_cocaine
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_cocaine
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_cocaine
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_cocaine
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_cocaine
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_cocaine
@@ -1541,6 +1554,7 @@ msgstr "Control"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_contrtaceptive_methods
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_contrtaceptive_methods
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_contrtaceptive_methods
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_contrtaceptive_methods
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_contrtaceptive_methods
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_contrtaceptive_methods
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_contrtaceptive_methods
@@ -1590,6 +1604,7 @@ msgstr "Crear cotización"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_create_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_create_uid
@@ -1626,6 +1641,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_create_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_create_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_create_date
@@ -1707,6 +1723,7 @@ msgstr "D.R."
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Date and Hour"
 msgstr "Fecha y hora"
 
@@ -1732,6 +1749,7 @@ msgstr "Fecha de los exámenes:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_last_birth_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_last_birth_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_birth_date
@@ -1757,6 +1775,7 @@ msgstr "Fecha del último parto:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_last_menstruation_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_last_menstruation_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_last_menstruation_date
@@ -1876,6 +1895,7 @@ msgstr "Detección temprana de enfermedad laboral"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_diabetes
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_diabetes
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_diabetes
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_diabetes
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_diabetes
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_diabetes
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_diabetes
@@ -1929,6 +1949,7 @@ msgstr "Presión Aterial Diastólica"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Diastolic Artery Pressure"
 msgstr "Presión Arterial Diastólica"
 
@@ -2030,6 +2051,7 @@ msgstr "Disnea"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_display_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_display_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_display_name
@@ -2073,6 +2095,7 @@ msgstr "Distancia (cm)"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Diuresis"
 msgstr "Diuresis"
 
@@ -2280,6 +2303,7 @@ msgstr "Fácil"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_ecstasy
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_ecstasy
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_ecstasy
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_ecstasy
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_ecstasy
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_ecstasy
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_ecstasy
@@ -2540,6 +2564,7 @@ msgstr "Fija"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Frequency"
 msgstr "Frecuencia"
 
@@ -2592,6 +2617,7 @@ msgstr "Gel"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_sex
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_gender
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_gender
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_gender
@@ -2812,6 +2838,7 @@ msgstr "Hto (Hematrocrito):"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_hypertension
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_hypertension
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_hypertension
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_hypertension
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_hypertension
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_hypertension
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_hypertension
@@ -2838,6 +2865,7 @@ msgstr "Indago sobre síntomas de gripa en la última semana"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_recovery_nurse_sheet_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_chief_nurse_sheet_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_id
@@ -3111,6 +3139,7 @@ msgstr "Tipo"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_note___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet___last_update
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care___last_update
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list___last_update
@@ -3148,6 +3177,7 @@ msgstr "Última Modificación el"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_write_uid
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_write_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_write_uid
@@ -3184,6 +3214,7 @@ msgstr "Actualizado por"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_write_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_write_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_write_date
@@ -3369,6 +3400,7 @@ msgstr "Protesis Dental"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_marijuana
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_marijuana
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_marijuana
@@ -3575,6 +3607,7 @@ msgstr "Máscara Laríngea"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_name
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_name
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_name
@@ -3723,6 +3756,7 @@ msgstr "<strong>Número de Identificación: </strong>"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_abortion_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_abortion_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_abortion_number
@@ -3747,6 +3781,7 @@ msgstr "A"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_child_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_child_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_child_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_child_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_child_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_child_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_child_number
@@ -3761,6 +3796,7 @@ msgstr "Número de hijos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_pregnancy_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_pregnancy_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_pregnancy_number
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_pregnancy_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pregnancy_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_pregnancy_number
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_pregnancy_number
@@ -3799,10 +3835,20 @@ msgid "Nurse Sheet"
 msgstr "Hoja Enfermería"
 
 #. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_recovery_sheet
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_recovery_sheet
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_tree
 msgid "Recovery Sheet"
 msgstr "Hoja Recuperación"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_nurse_chief_sheet
+#: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_nurse_chief_sheet
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_tree
+msgid "Nurse Chief Sheet"
+msgstr "Jefe de enfermería"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_nurse_sheet_created
@@ -3960,6 +4006,7 @@ msgstr "Other Responsible Person's Relationship"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Others"
 msgstr "Otros"
 
@@ -3990,8 +4037,14 @@ msgstr "Fecha de egreso:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Oximetry"
 msgstr "Oximetría"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_invoice_prepare
+msgid "Invoice Prepare"
+msgstr "Cargar a factura"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,document_type:0
@@ -4111,6 +4164,7 @@ msgstr "Partner-related data of doctor "
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Pathological"
 msgstr "Patológicos"
 
@@ -4119,6 +4173,7 @@ msgstr "Patológicos"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_patient_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_patient_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_patient_id
@@ -4154,6 +4209,7 @@ msgstr "Paciente"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Patient Background"
 msgstr "Antecedentes Paciente"
 
@@ -4207,6 +4263,7 @@ msgstr "Peridural"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_pharmacological
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_pharmacological
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_pharmacological
@@ -4499,6 +4556,7 @@ msgstr "Procedimiento Quirúrgico"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_procedure_date
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure_date
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_procedure_date
 msgid "Procedure Date"
@@ -4869,6 +4927,7 @@ msgstr "Reversión"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_blood_rh
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_blood_rh
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_blood_rh
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_blood_rh
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_blood_rh
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_blood_rh
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_blood_rh
@@ -5123,6 +5182,7 @@ msgstr "Firma y Sello Médico"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_vital_sign_ids
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
 msgid "Signos Vitales"
 msgstr "Signos Vitales"
@@ -5145,6 +5205,7 @@ msgstr "Presión Arterial Sistólica"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Sistolic Artery Pressure"
 msgstr "Presión Arterial Sistólica"
 
@@ -5182,6 +5243,7 @@ msgstr "Imagen de tamaño pequeño de este contacto. Se redimensiona automática
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_smoke
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_smoke
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_smoke
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_smoke
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_smoke
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_smoke
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_smoke
@@ -5196,6 +5258,7 @@ msgstr "Fuma"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_smoke_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_smoke_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_smoke_uom
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_smoke_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_smoke_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_smoke_uom
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_smoke_uom
@@ -5366,8 +5429,10 @@ msgstr "Surgery Room Tree"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_room_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_room_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_room_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_room_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_room_id
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_room_id
 msgid "Surgery Room/Appointment"
 msgstr "Cirugía"
 
@@ -5392,6 +5457,7 @@ msgstr "Hora de Inicio de Cirugía"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_surgical
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_surgical
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_surgical
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_surgical
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_surgical
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_surgical
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_surgical
@@ -5405,6 +5471,7 @@ msgstr "Hora de Inicio de Cirugía"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Surgical"
 msgstr "Quirúrgicos"
 
@@ -5625,6 +5692,7 @@ msgstr "Este campo contiene la imagen utilizada como avatar para este contacto, 
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_thyroid_disease
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_thyroid_disease
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_thyroid_disease
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_thyroid_disease
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_thyroid_disease
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_thyroid_disease
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_thyroid_disease
@@ -5730,6 +5798,7 @@ msgstr "Tipo de anestesia:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_tdoc
@@ -5764,6 +5833,7 @@ msgstr "Tio"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_age_meassure_unit
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_age_meassure_unit
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_age_meassure_unit
@@ -5911,6 +5981,7 @@ msgstr "Víctima - Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
 msgid "View History"
 msgstr "Ver Historia"
@@ -5928,6 +5999,7 @@ msgstr "Vital Signs Date Hour"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_vital_sign_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_recovery_sheet_vital_sign_ids
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_chief_sheet_vital_sign_ids
 msgid "Vital signs"
 msgstr "Vital signs"
 

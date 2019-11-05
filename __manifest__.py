@@ -53,6 +53,7 @@
         'views/quirurgic_sheet_view.xml',
         'views/nurse_sheet_view.xml',
         'views/recovery_sheet_view.xml',
+        'views/nurse_chief_sheet.xml',
         'views/doctor_calendar_view.xml',
         'views/anhestesic_registry_view.xml',
         'views/post_anhestesic_care_view.xml',

@@ -28,6 +28,7 @@ from . import doctor_attentions
 from . import doctor_surgical_technologist
 from . import quirurgic_sheet
 from . import nurse_sheet
+from . import nurse_chief_sheet
 from . import recovery_sheet
 from . import plastic_surgery_sheet
 from . import doctor_calendar

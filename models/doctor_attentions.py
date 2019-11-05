@@ -37,6 +37,10 @@ class PresurgicalRecord(models.Model):
         product_id_rec = self.env['product.product'].search([('name','in',['CONSULTA DE PRIMERA VEZ POR ESPECIALISTA EN ANESTESIOLOGIA'])], limit=1)
         cups_obj = self.env['doctor.cups.code'].search([('product_id','=', product_id_rec.id)])
         return cups_obj.id
+
+    def _auto_load_diasease(self):
+    	product_id_rec = self.env['doctor.diseases'].search([('name','in',['OTRAS CONSULTAS ESPECIFICADAS'])], limit=1)
+    	return product_id_rec.id
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict', default=_first_attention)
@@ -137,7 +141,7 @@ class PresurgicalRecord(models.Model):
                                        ('9', '9'),('10','10'),], string='Caprini Scale')
     suitable_surgery = fields.Selection([('yes', 'Yes'), ('no', 'No')], default='no')
     
-    disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
+    disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict', default=_auto_load_diasease)
     other_diseases = fields.Boolean(string="Other Diseases")
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
