@@ -33,14 +33,11 @@ from odoo.exceptions import ValidationError
 class ClinicaQuirurgicalCheckList(models.Model):
 	_name = 'clinica.quirurgical.check.list'
 	_description= 'Quirurgical Check List'
-
-	def all_procedures(self):
-		return self.env['clinica.anhestesic.registry'].all_procedures()
 	
 	name = fields.Char(string='Name', copy=False)
 	procedure_datetime = fields.Datetime(string='Procedure Date/Time')
 	procedure_id = fields.Many2one('product.product', string='Procedure')
-	procedure_ids = fields.Many2many('product.product', 'quirurgical_checklist_procedures_rel', string='Procedure', ondelete='restrict', domain=[('is_health_procedure','=', True)], default=all_procedures)
+	procedure_ids = fields.Many2many('product.product', 'quirurgical_checklist_procedures_rel', string='Procedure', ondelete='restrict', domain=[('is_health_procedure','=', True)])
 	document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
 									  ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
 									  ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
@@ -130,11 +127,16 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	observations = fields.Text(string="Observaciones")
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
-	
+
 	@api.onchange('room_id')
 	def onchange_room_id(self):
 		if self.room_id:
+			list_ids = []
 			self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+			for procedure_ids in self.room_id.procedure_ids:
+				for products in procedure_ids.product_id:
+					list_ids.append(products.id)
+			self.procedure_ids = [(6, 0, list_ids)]
 	
 	@api.depends('patient_id')
 	def _compute_numberid_integer(self):

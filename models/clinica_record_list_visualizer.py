@@ -38,6 +38,8 @@ class ClinicaRecordVisualizer(models.Model):
     end_period = fields.Datetime(string='End Period')
     nurse_sheet_ids = fields.Many2many('clinica.nurse.sheet', 'nurse_sheet_visualizer_rel', 'visualizer_id', 'nurse_sheet_id', 
                                    string="Nurse Sheets", copy=False)
+    nurse_chief_sheet_ids = fields.Many2many('clinica.nurse.chief.sheet', 'nurse_chief_sheet_visualizer_rel', 'visualizer_id', 'nurse_chief_sheet_id', 
+                                   string="Nurse Sheets", copy=False)
     recovery_sheet_ids = fields.Many2many('clinica.recovery.sheet', 'recovery_sheet_visualizer_rel', 'visualizer_id', 'recovery_sheet_id', 
                                    string="Recovery Sheets", copy=False)
     quirurgic_sheet_ids = fields.Many2many('doctor.quirurgic.sheet', 'quirurgic_sheet_visualizer_rel', 'visualizer_id', 'quirurgic_sheet_id', 
@@ -58,7 +60,7 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Epicrisis", copy=False)
     prescription_ids = fields.Many2many('doctor.prescription', 'prescription_visualizer_rel', 'visualizer_id', 'prescription_id', 
                                    string="Prescription", copy=False)
-    view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('recovery_sheet','Recovery Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
+    view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('nurse_chief_sheet','Nurse Chief Sheet'),('recovery_sheet','Recovery Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
                                    ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
                                    ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
                                    ('plastic_surgery','Plastic Surgery'),('medical_evolution','Medical Evolution'),
@@ -80,6 +82,22 @@ class ClinicaRecordVisualizer(models.Model):
         if nurse_sheet_objs:
             nurse_sheet_ids = nurse_sheet_objs.ids
         return nurse_sheet_ids
+
+    def _get_nurse_chief_sheet_ids(self, search_domain, doctor, start_period, end_period):
+        nurse_chief_sheet_ids = []
+        nurse_chief_search_domain = []
+        nurse_chief_search_domain.extend(search_domain)
+        if start_period:
+            nurse_chief_search_domain.append(('procedure_date','>=',start_period))
+        if end_period:
+            nurse_chief_search_domain.append(('procedure_date','<=',end_period))
+        if doctor:
+            nurse_chief_search_domain.append(('room_id.surgeon_id','=',doctor.id))
+            
+        nurse_chief_sheet_objs = self.env['clinica.nurse.chief.sheet'].search(nurse_chief_search_domain)
+        if nurse_chief_sheet_objs:
+            nurse_chief_sheet_ids = nurse_chief_sheet_objs.ids
+        return nurse_chief_sheet_ids
 
     def _get_recovery_sheet_ids(self, search_domain, doctor, start_period, end_period):
         recovery_sheet_ids = []
@@ -244,6 +262,7 @@ class ClinicaRecordVisualizer(models.Model):
     def onchange_visualizer_filter(self):
         search_domain = []
         nurse_sheet_ids = []
+        nurse_chief_sheet_ids = []
         recovery_sheet_ids = []
         quirurgic_sheet_ids = []
         surgery_room_ids = []
@@ -259,6 +278,8 @@ class ClinicaRecordVisualizer(models.Model):
         if self.patient_id or self.doctor_id or self.start_period or self.end_period:
             if self.view_model in ['nurse_sheet','all']:
                 nurse_sheet_ids = self._get_nurse_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['nurse_chief_sheet','all']:
+                nurse_chief_sheet_ids = self._get_nurse_chief_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['recovery_sheet','all']:
                 recovery_sheet_ids = self._get_recovery_sheet_ids(search_domain, self.doctor_id, self.start_period, self.end_period)                
             if self.view_model in ['quirurgic_sheet','all']:
@@ -279,6 +300,7 @@ class ClinicaRecordVisualizer(models.Model):
                 prescription_ids = self._get_prescription_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             
         self.nurse_sheet_ids = nurse_sheet_ids
+        self.nurse_chief_sheet_ids = nurse_chief_sheet_ids
         self.recovery_sheet_ids = recovery_sheet_ids
         self.quirurgic_sheet_ids = quirurgic_sheet_ids
         self.surgery_room_ids = surgery_room_ids
@@ -288,7 +310,7 @@ class ClinicaRecordVisualizer(models.Model):
         self.plastic_surgery_ids = plastic_surgery_ids
         self.medical_evolution_ids = medical_evolution_ids
         self.epicrisis_ids = epicrisis_ids
-        self.prescription_ids = prescription_ids
+        self.prescription_ids = prescription_ids       
         
     @api.multi
     def action_print_clinica_record_history(self):

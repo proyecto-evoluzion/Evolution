@@ -16,6 +16,7 @@
             </header>
          	<sheet>
          		<group name='main_group' col="4">
+         				<field name="room_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
 		                <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
 		                <field name="procedure_datetime" required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
 	            </group>
