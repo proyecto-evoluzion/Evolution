@@ -26,19 +26,22 @@ odoo.define('record_authenticate_by_user.main', function (require) {
             		var form_content = "<form class='form'>" +
 						    		        "<div class='form-group'>" +
 						    		          "<label for='password'>Contraseña</label>" +
-						    		          "<input type='password' class='form-control' id='c_password' name='password' placeholder='Ingrese su contraseña' onkeypress='if (event.keyCode === 13) { event.preventDefault(); }'/>" +
-						    		        "</div>"+
+						    		          "<input type='password' class='form-control' id='c_password' name='password' placeholder='Ingrese su contraseña' onkeypress='if (event.keyCode === 13) { event.stopImmediatePropagation(); }'/>" +
+						    		        "</div>" +
+						    		        "<div class='form-group'>" +
+						    		            "<input hidden id='close_status' type='checkbox' checked='checked'/>" +
+						    		        "</div>" +
 						    		      "</form>";
         		    var modal = bootbox.dialog({
         		        message: form_content,
-        		        title: _t("Confirm your account to update the record"),
+        		        title: _t('Confirm your account to update the record'),
         		        buttons: [
         		          {
-        		            label: _t("Approve"),
+        		            label: _t('Approve'),
         		            className: "btn btn-primary pull-left",
         		            callback: function() {
         		                var passkey = $('#c_password').val();
-        		                var close_status = $('#close_status').prop('checked');
+        		                var close_status = true;
 								rpc.query({
 								    model: 'record.authenticate',
 								    method: 'autenticate_user',
@@ -65,7 +68,7 @@ odoo.define('record_authenticate_by_user.main', function (require) {
 										setTimeout(action_close_status, 2000);
 										modal.modal("hide");
 									}else{
-										alert(_t("User validation failured. Please try again."));
+										alert(_t('User validation failured. Please try again.'));
 										modal.modal("hide");
 									}
 								});
@@ -139,5 +142,4 @@ odoo.define('record_authenticate_by_user.main', function (require) {
     
     
 });
-
 
