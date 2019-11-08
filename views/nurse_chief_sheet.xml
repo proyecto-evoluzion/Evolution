@@ -213,7 +213,7 @@
             name="Nurse Chief Sheet"
             parent="menu_doctor_process"
             action="action_clinica_nurse_chief_sheet"
-            groups="base.group_system,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.clinical_auditor"
+            groups="base.group_system,clinica_doctor_data.nursery_chief,clinica_doctor_data.clinical_auditor"
             sequence="5"/>
             
 </odoo>         

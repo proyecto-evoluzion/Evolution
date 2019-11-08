@@ -182,6 +182,8 @@ class DoctorWaitingRoom(models.Model):
     state = fields.Selection([('new','New'),('confirmed','Confirmed'),('ordered','SO Created')], 
                                         string='Status', default='new')
     nurse_sheet_created = fields.Boolean(string='Nurse Sheet Created', compute='_compute_nurse_sheet_creation')
+    recovery_sheet_created = fields.Boolean(string='Recovery Sheet Created', compute='_compute_nurse_sheet_creation')
+    nurse_chief_sheet_created = fields.Boolean(string='Recovery Sheet Created', compute='_compute_nurse_sheet_creation')
     anhestesic_registry_created = fields.Boolean(string='Anhestesic Registry Created', compute='_compute_anhestesic_registry_creation')
     sale_order_id = fields.Many2one('sale.order', string='Sales Order', copy=False)
     
@@ -269,8 +271,21 @@ class DoctorWaitingRoom(models.Model):
     def _compute_nurse_sheet_creation(self):
         for room in self:
             nurse_sheet_ids = self.env['clinica.nurse.sheet'].search([('room_id','=',room.id)])
+            nurse_chief_sheet_ids = self.env['clinica.nurse.chief.sheet'].search([('room_id','=',room.id)])
+            recovery_sheet_ids = self.env['clinica.recovery.sheet'].search([('room_id','=',room.id)])
             if nurse_sheet_ids:
-                room.nurse_sheet_created = True           
+                room.nurse_sheet_created = True
+            if nurse_chief_sheet_ids:
+                room.nurse_chief_sheet_created = True
+            if recovery_sheet_ids:
+                room.recovery_sheet_created = True
+
+    @api.multi
+    def _compute_recovery_sheet_creation(self):
+        for room in self:
+            recovery_sheet_ids = self.env['clinica.recovery.sheet'].search([('room_id','=',room.id)])
+            if recovery_sheet_ids:
+                room.recovery_sheet_created = True
                      
     @api.multi
     def _compute_anhestesic_registry_creation(self):
@@ -626,6 +641,40 @@ class DoctorWaitingRoom(models.Model):
             result['views'] = [(res and res.id or False, 'form')]
             result['res_id'] = nurse_sheet_ids.id
         return result
+
+    @api.multi
+    def action_view_nurse_chief_sheet(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_nurse_chief_sheet')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_nurse_sheet_values()
+        nurse_chief_sheet_ids = self.env['clinica.nurse.chief.sheet'].search([('room_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(nurse_chief_sheet_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(nurse_chief_sheet_ids.ids) + ")]"
+        elif len(nurse_chief_sheet_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.view_clinica_nurse_chief_sheet_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = nurse_chief_sheet_ids.id
+        return result
+
+    @api.multi
+    def action_view_recovery_sheet(self):
+        action = self.env.ref('clinica_doctor_data.action_clinica_recovery_sheet')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering # Same Nurse ctx vals
+        result['context'] = self._set_nurse_sheet_values()
+        recovery_sheet_ids = self.env['clinica.recovery.sheet'].search([('room_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(recovery_sheet_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(recovery_sheet_ids.ids) + ")]"
+        elif len(recovery_sheet_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.view_clinica_recovery_sheet_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = recovery_sheet_ids.id
+        return result
     
     @api.multi
     def _create_so(self):
@@ -836,6 +885,40 @@ class DoctorWaitingRoom(models.Model):
             res = self.env.ref('clinica_doctor_data.clinica_doctor_epicrisis_form', False)
             result['views'] = [(res and res.id or False, 'form')]
             result['res_id'] = epicrisis_ids.id
+        return result
+
+    @api.multi
+    def action_view_prescription(self):
+        action = self.env.ref('clinica_doctor_data.action_doctor_prescription')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        prescription_ids = self.env['doctor.prescription'].search([('room_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(prescription_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(prescription_ids.ids) + ")]"
+        elif len(prescription_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.doctor_prescription_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = prescription_ids.id
+        return result
+
+    @api.multi
+    def action_view_technologist(self):
+        action = self.env.ref('clinica_doctor_data.action_doctor_surgical_technologist')
+        result = action.read()[0]
+        #override the context to get rid of the default filtering
+        result['context'] = self._set_clinica_form_default_values()
+        technologist_ids = self.env['doctor.surgical.technologist'].search([('room_id','=',self.id)])
+        
+        #choose the view_mode accordingly
+        if len(technologist_ids) != 1:
+            result['domain'] = "[('id', 'in', " + str(technologist_ids.ids) + ")]"
+        elif len(technologist_ids) == 1:
+            res = self.env.ref('clinica_doctor_data.doctor_surgical_technologist_form', False)
+            result['views'] = [(res and res.id or False, 'form')]
+            result['res_id'] = technologist_ids.id
         return result
     
 

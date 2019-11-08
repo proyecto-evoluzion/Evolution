@@ -2185,6 +2185,11 @@ msgstr "Doctor / Cirujano"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.surgical_technologist
+msgid "Doctor / Recovery Assistan"
+msgstr "Doctor / Asistente de Recuperación"
+
+#. module: clinica_doctor_data
+#: model:res.groups,name:clinica_doctor_data.surgical_technologist
 msgid "Doctor / Surgical Technologist"
 msgstr "Doctor / Ins. Quirúrgico"
 
@@ -6560,8 +6565,24 @@ msgstr "Ins. Quirúrgico"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_doctor_prescription
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Prescription"
 msgstr "Prescripciones"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Resurces"
+msgstr "Ins Quirúrgico"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Nurse Chief Sheets"
+msgstr "Enfermero Jefe"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Recovery Sheets"
+msgstr "Hoja Recuperación"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_name

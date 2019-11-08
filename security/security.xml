@@ -44,6 +44,10 @@
         <record id="surgical_technologist" model="res.groups">
             <field name="name">Doctor / Surgical Technologist</field>
         </record>
+
+        <record id="recovery_assistant" model="res.groups">
+            <field name="name">Doctor / Recovery Assistant</field>
+        </record>
     </data>
         
 </odoo>

@@ -113,6 +113,7 @@
        name="Quirurgic Sheet"
        parent="menu_doctor_process"
        action="clinica_doctor_data.action_clinica_quirurgic_sheet"
-       sequence="8"/>
+       sequence="8"
+       groups="base.group_system,clinica_doctor_data.surgeon"/>
 
 </odoo>
