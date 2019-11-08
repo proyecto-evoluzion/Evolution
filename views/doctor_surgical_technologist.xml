@@ -26,6 +26,7 @@
                   <field name="recount"/>
                   <field name="start"/>
                   <field name="end"/>
+                  <field name="note"/>
                 </tree>
               </field>
             </group>
