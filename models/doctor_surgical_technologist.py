@@ -57,6 +57,7 @@ class SurgicalTechnologistRecount(models.Model):
 	recount = fields.Many2one('doctor.surgical.technologist.element', string='Recount')
 	start = fields.Integer(string='Starts')
 	end = fields.Integer(string='End')
+	note = fields.Char(string='Note')
 
 class SurgicalTechnologistElements(models.Model):
 	_name = "doctor.surgical.technologist.element"

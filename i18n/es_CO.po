@@ -6538,6 +6538,11 @@ msgid "End"
 msgstr "Finaliza"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_note
+msgid "Note"
+msgstr "Nota"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_recount
 msgid "Recount"
