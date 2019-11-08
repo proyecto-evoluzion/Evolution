@@ -463,7 +463,7 @@
           name="Anhestesic Registry"
           parent="menu_doctor_process"
           action="clinica_doctor_data.action_clinica_anhestesic_registry"
-          groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management"
+          groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management"
           sequence="7"/>
 
 </odoo>

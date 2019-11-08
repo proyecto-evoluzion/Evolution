@@ -54,6 +54,7 @@ class DoctorPrescription(models.Model):
 	numberid = fields.Char(string='Number ID', related='patient_id.name')
 	medical_record = fields.Char(string='Medical record')
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
 
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
