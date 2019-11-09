@@ -46,7 +46,7 @@ class ClinicaRecoverySheet(models.Model):
         return False
 
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
-    procedure_ids = fields.One2many('nurse.sheet.procedures', 'nurse_sheet_id', string='Health Procedures', copy=False)
+    procedure_ids = fields.One2many('nurse.chief.sheet.procedures', 'nurse_sheet_id', string='Health Procedures', copy=False)
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
@@ -81,8 +81,7 @@ class ClinicaRecoverySheet(models.Model):
     marijuana = fields.Boolean(string="Marijuana", related='patient_id.marijuana')
     cocaine = fields.Boolean(string="Cocaine", related='patient_id.cocaine')
     ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
-    invoice_prepare = fields.Boolean(string="Invoice Prepare", default=False)
-    updated_stock = fields.Boolean(string='Stock Updated', copy=False)
+    validate_oders = fields.Boolean(string='Validate Oders', copy=False)
     body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
     pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
     allergic = fields.Text(string="Allergic", related='patient_id.allergic')
@@ -230,13 +229,14 @@ class ClinicaRecoverySheet(models.Model):
         return res
 
     @api.multi
-    def action_update_stock(self):
-        for nurse_sheet in self:
-            for procedure_line in nurse_sheet.procedure_ids:
-                if procedure_line.move_id:
-                    procedure_line.move_id.quantity_done = procedure_line.quantity_done
-            nurse_sheet.updated_stock = True
-        return True
+    def action_validate_oders(self):
+    	jhjh
+    	for nurse_chief_sheet in self:
+    		for procedure_line in nurse_chief_sheet.procedure_ids:
+    			if procedure_line.move_id:
+    				procedure_line.move_id.quantity_done = procedure_line.quantity_done
+    		nurse_chief_sheet.updated_stock = True
+    	return True
     
     
     @api.multi
@@ -275,10 +275,10 @@ class NurseSheetVitalSigns(models.Model):
 
 
 class NurseSheetProcedures(models.Model):
-    _name = "nurse.sheet.procedures"
+    _name = "nurse.chief.sheet.procedures"
     
-    nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False)
-    product_id = fields.Many2one('product.product', string='Health Procedure')
+    nurse_sheet_id = fields.Many2one('clinica.nurse.chief.sheet', string='Nurse Chief Sheet', copy=False)
+    product_id = fields.Many2one('product.template', string='Health Procedure')
     product_uom_qty = fields.Float(string='Initial Demand')
     quantity_done = fields.Float(string='Used Products')
     move_id = fields.Many2one('stock.move', string='Stock Move', copy=False)

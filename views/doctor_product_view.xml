@@ -1,5 +1,31 @@
 <?xml version="1.0"?>
 <odoo>
+
+    <!-- health procedures form from product.template-->
+    <record id="product_template_form_view_inherit_health_procedures" model="ir.ui.view">
+         <field name="name">Health Procedures</field>
+         <field name="model">product.template</field>
+         <field name="inherit_id" ref="product.product_template_form_view"/>
+         <field name="arch" type="xml">
+             <field name="name" position="after">
+                 <div>
+                 <field name="is_health_procedure"/>
+                 <label for="is_health_procedure" string="Is Health Procedure?"/><br></br>
+                 <field name="is_invoice_supply"/>
+                 <label for="is_invoice_supply"/>
+                 </div>
+             </field>
+
+             <notebook>
+                 <page string="Health Procedure" attrs="{'invisible':[('is_health_procedure', '!=', True)]}">
+                     <group>
+                         <field name="procedure_code" attrs="{'required':[('is_health_procedure', '=', True)]}"/>
+                         <field name="procedure_type" attrs="{'required':[('is_health_procedure', '=', True)]}"/>
+                     </group>
+                 </page>
+             </notebook>
+         </field>
+     </record>
 	
 	<!-- health procedures form -->
 	<record id="product_normal_form_view_inherit_health_procedures" model="ir.ui.view">
@@ -11,6 +37,8 @@
                  <div>
                  <field name="is_health_procedure"/>
                  <label for="is_health_procedure" string="Is Health Procedure?"/>
+                 <field name="is_invoice_supply"/>
+                 <label for="is_invoice_supply"/>
                  </div>
              </field>
 
