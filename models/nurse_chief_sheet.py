@@ -230,11 +230,27 @@ class ClinicaRecoverySheet(models.Model):
 
     @api.multi
     def action_validate_oders(self):
+    	# flag = True
     	for nurse_chief_sheet in self:
     		for procedure_line in nurse_chief_sheet.procedure_ids:
     			if procedure_line.move_id:
     				procedure_line.move_id.quantity_done = procedure_line.quantity_done
-    		nurse_chief_sheet.updated_stock = True
+    			if procedure_line.product_id.is_invoice_supply:
+    			# if flag:
+    				vals = {
+    					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+    					'validity_day': (dt.date.today()).today(),
+    					'order_line': [(0, 0, {
+		                'product_id': procedure_line.product_id.id,
+		                'name': procedure_line.product_id.name,
+		                'product_uom_qty': procedure_line.quantity_done,
+		                'price_unit': procedure_line.product_id.lst_price,
+		                'tax_id': procedure_line.product_id.taxes_id.id,
+		            	})],
+		            	# 'state': 'sale',
+    				}
+    				self.env['sale.order'].create(vals)
+    		nurse_chief_sheet.validate_oders = True
     	return True
     
     
@@ -277,7 +293,7 @@ class NurseSheetProcedures(models.Model):
     _name = "nurse.chief.sheet.procedures"
     
     nurse_sheet_id = fields.Many2one('clinica.nurse.chief.sheet', string='Nurse Chief Sheet', copy=False)
-    product_id = fields.Many2one('product.template', string='Health Procedure')
+    product_id = fields.Many2one('product.product', string='Health Procedure')
     product_uom_qty = fields.Float(string='Initial Demand')
     quantity_done = fields.Float(string='Used Products')
     move_id = fields.Many2one('stock.move', string='Stock Move', copy=False)
