@@ -25,10 +25,22 @@ logger = logging.getLogger(__name__)
 
 from odoo import models, fields, api, _
 
+class HealthProceduresProductTemplat(models.Model):
+    _inherit = "product.template"
+    
+    is_health_procedure = fields.Boolean('Is Health Procedure?')
+    is_invoice_supply = fields.Boolean('Is Invoice Supply?')
+    procedure_code = fields.Char('Code', size=16)
+    procedure_type = fields.Selection([('1', 'Consultation'), ('2', 'Surgical Procedure'),
+                                        ('3', 'Diagnostic Image'), ('4', 'Clinical laboratory'),
+                                        ('5', 'Therapeutic Procedure'), ('6', 'Hospitalization'),
+                                        ('7', 'Odontological'), ('8', 'Other')], 'Procedure Type')
+
 class HealthProcedures(models.Model):
     _inherit = "product.product"
     
     is_health_procedure = fields.Boolean('Is Health Procedure?')
+    is_invoice_supply = fields.Boolean('Is Invoice Supply?')
     procedure_code = fields.Char('Code', size=16)
     procedure_type = fields.Selection([('1', 'Consultation'), ('2', 'Surgical Procedure'),
                                         ('3', 'Diagnostic Image'), ('4', 'Clinical laboratory'),

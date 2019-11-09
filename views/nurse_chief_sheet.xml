@@ -129,23 +129,21 @@
             <page name="procedures" string="Pedidos">
                <group>
                     <div class="oe_button_box" name="button_box">
-                      <field name="updated_stock" invisible="1"/>
-                      <label for="invoice_prepare"/>
-                      <field name="invoice_prepare"/>
-                      <button name="action_update_stock" string='Update Stock'
+                      <field name="validate_oders" invisible="1"/>
+                      <button name="action_validate_oders" string='Validate Oders'
                         type="object" icon="fa-check-square-o"
-                        confirm="Do you want to update used procedures in stock?"
-                        attrs="{'invisible':[('updated_stock','=',True)]}"/>
+                        confirm="Do you want to validate used procedures in stock?"
+                        attrs="{'invisible':[('validate_oders','=',True)]}"/>
                     </div>
                   </group>
                
                <field name="procedure_ids" colspan="4" nolabel="1" context="{'default_room_id':room_id}" 
-                force_save="1" attrs="{'readonly':['|',('updated_stock','=',True),('state','=','closed')]}" >
+                force_save="1" attrs="{'readonly':['|',('validate_oders','=',True),('state','=','closed')]}" >
                 <tree editable="bottom" create="true" limit="10000">
                   <field name="product_id" readonly="0" force_save="1"/>
                   <field name="product_uom_qty"  readonly="1" force_save="1" invisible="1"/>
                   <field name="quantity_done" force_save="1"/>
-                  <field name="move_id"  readonly="1" invisible="1" force_save="1"/>
+                  <field name="move_id"  readonly="1" invisible="0" force_save="1"/>
                   
                 </tree>
                </field>
