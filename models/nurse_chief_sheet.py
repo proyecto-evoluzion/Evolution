@@ -230,7 +230,6 @@ class ClinicaRecoverySheet(models.Model):
 
     @api.multi
     def action_validate_oders(self):
-    	jhjh
     	for nurse_chief_sheet in self:
     		for procedure_line in nurse_chief_sheet.procedure_ids:
     			if procedure_line.move_id:
