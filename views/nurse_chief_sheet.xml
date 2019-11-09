@@ -143,7 +143,7 @@
                   <field name="product_id" readonly="0" force_save="1"/>
                   <field name="product_uom_qty"  readonly="1" force_save="1" invisible="1"/>
                   <field name="quantity_done" force_save="1"/>
-                  <field name="move_id"  readonly="1" invisible="0" force_save="1"/>
+                  <field name="move_id"  readonly="0" invisible="0" force_save="1"/>
                   
                 </tree>
                </field>
