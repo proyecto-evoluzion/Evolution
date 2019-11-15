@@ -157,7 +157,7 @@ class ClinicaRecoverySheet(models.Model):
         if self.room_id:
             room_change_vals = self._set_change_room_id(self.room_id)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
-            self.procedure_ids = room_change_vals.get('procedure_ids', False)
+            #self.procedure_ids = room_change_vals.get('procedure_ids', False)
             
     # def _update_invoice_procedure_time(self):
     #     if self.invoice_procedure_ids:
