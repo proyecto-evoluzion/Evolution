@@ -273,7 +273,7 @@
 						<field name='programmer_id'  attrs="{'readonly':[('state','!=','new')]}"/>
 					</group>
 					<group name="profession_details_sub2" >
-						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('state','=','ordered')],'required':[('state','!=','new')],'invisible':[('state','=','new')]}"/>
+						<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('state','=','ordered')],'required':[('state','!=','new'),('anesthesia_type','!=','local')],'invisible':['|',('state','=','new'),('anesthesia_type','=','local')]}"/>
 						<field name='anesthesia_type'  attrs="{'readonly':[('state','!=','new'),('state','!=','confirmed')],'required':[('state','!=','new')]}"/>
 					</group>
 				</group>
