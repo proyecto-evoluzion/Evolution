@@ -117,10 +117,10 @@ class Doctor(models.Model):
                     partner_vals.update({'x_name1': vals.get('firstname', False)})
                 if 'lastname' in vals:
                     lastname = vals.get('lastname', False) or ''
-                    partner_vals.update({'x_name2': vals.get('lastname', False)})
+                    partner_vals.update({'x_lastname1': vals.get('lastname', False)})
                 if 'middlename' in vals:
                     middlename = vals.get('middlename', False) or ''
-                    partner_vals.update({'x_lastname1': vals.get('middlename', False)})
+                    partner_vals.update({'x_name2': vals.get('middlename', False)})
                 if 'surname' in vals:
                     surname = vals.get('surname', False) or ''
                     partner_vals.update({'x_lastname2': vals.get('surname', False)})
@@ -143,6 +143,18 @@ class Doctor(models.Model):
                 partner_vals.update({'phone': vals.get('phone', False)})
             partner_vals.update({'professional_created': True})
             return partner_vals
+
+    def _access_group_assign(self,profession):
+        if profession == 'plastic_surgeon':
+            return self.env.ref('clinica_doctor_data.surgeon')
+        elif profession == 'anesthesiologist':
+            return self.env.ref('clinica_doctor_data.anesthesiologist')
+        elif profession == 'technologists':
+            return self.env.ref('clinica_doctor_data.surgical_technologist')
+        elif profession == 'helpers':
+            return self.env.ref('clinica_doctor_data.recovery_assistant')
+        else:
+            return self.env.ref('clinica_doctor_data.nursing_assistant')
       
     @api.model
     def create(self, vals):
@@ -163,12 +175,16 @@ class Doctor(models.Model):
                             }
             user = self.env['res.users'].create(user_vals)
             res.res_user_id = user.id
+            #DevFARK: Assigning access group according to profession type
+            group_type = res._access_group_assign(res.profession_type)
+            group_type.write({'users': [(4,user.id)]})
         return res
     
     @api.multi
     def write(self, vals):
         if vals.get('email', False):
             self._check_email(vals.get('email'))
+        last_group_type = self._access_group_assign(self.profession_type)
         res = super(Doctor, self).write(vals)
         if 'firstname' in vals or 'lastname' in vals or 'middlename' in vals or 'surname' in vals\
                  or 'email' in vals or 'phone' in vals :
@@ -176,6 +192,14 @@ class Doctor(models.Model):
                 if doctor.partner_id:
                     partner_vals = doctor._get_related_partner_vals(vals)
                     doctor.partner_id.write(partner_vals)
+        #DevFARK: Assigning access group according to profession type
+        if vals.get('profession_type', False):
+            print(self.profession_type)
+            if self.res_user_id:
+                user_obj = self.env['res.users'].search([('id','=',self.res_user_id.id)])
+                user_obj.write({'groups_id': [(3,last_group_type.id)]})
+            group_type = self._access_group_assign(self.profession_type)
+            group_type.write({'users': [(4,self.res_user_id.id)]})
         return res
     
 
