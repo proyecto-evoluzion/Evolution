@@ -137,6 +137,11 @@ class ClinicaQuirurgicalCheckList(models.Model):
 				for products in procedure_ids.product_id:
 					list_ids.append(products.id)
 			self.procedure_ids = [(6, 0, list_ids)]
+			self.surgeon_id = self.room_id.surgeon_id.id
+			self.technologist_id = self.room_id.technologist_id.id
+			self.nurse_id = self.room_id.circulating_id.id
+			self.anesthesiologist_id = self.room_id.anesthesiologist_id.id
+			self.anesthesia_type = self.room_id.anesthesia_type
 	
 	@api.depends('patient_id')
 	def _compute_numberid_integer(self):

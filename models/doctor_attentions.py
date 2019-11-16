@@ -23,7 +23,7 @@ from odoo import models, fields, api, _
 
 from odoo import tools
 import datetime as dt
-from datetime import datetime
+from datetime import datetime, date, time, timedelta
 from dateutil import relativedelta
 from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 import calendar
@@ -139,7 +139,7 @@ class PresurgicalRecord(models.Model):
                                        ('5', '5'),('6','6'),
                                        ('7', '7'),('8','8'),
                                        ('9', '9'),('10','10'),], string='Caprini Scale')
-    suitable_surgery = fields.Selection([('yes', 'Yes'), ('no', 'No')], default='no')
+    suitable_surgery = fields.Selection([('yes', 'Yes'), ('no', 'No')], default='yes')
     
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict', default=_auto_load_diasease)
     other_diseases = fields.Boolean(string="Other Diseases")
@@ -148,7 +148,7 @@ class PresurgicalRecord(models.Model):
     disease_type = fields.Selection([('principal', 'Principal'),('related', 'Relacionado')], string='Kind')
     disease_state = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
-                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
+                                       ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status', default='new_confirmed')
     disease_state2 = fields.Selection([('diagnostic_impresson', 'Impresión Diagnóstica'),
                                        ('new_confirmed', 'Confirmado Nuevo'),
                                        ('repeat_confirmed', 'Confirmado repetido')], string='Disease Status')
@@ -176,8 +176,77 @@ class PresurgicalRecord(models.Model):
             self.document_type = self.patient_id.tdoc
             lead_obj = self.lead_id.search([('patient_id','=',self.patient_id.id)])
             lead_list = [x.id for x in lead_obj]
-            pivot = lead_list[len(lead_list)-1]
-            self.lead_id = pivot
+            if lead_list:
+                pivot = lead_list[len(lead_list)-1]
+                self.lead_id = pivot
+            #DevFARK: adding 60 days rule for put same exams values from last attention
+            last_att_obj = self.search([('patient_id','=',self.patient_id.id)])
+            if last_att_obj:
+                get_last_id = 0
+                for last_id in last_att_obj:
+                    get_last_id = last_id.id
+                last_att_obj = self.search([('id','=',get_last_id)])
+                last_date = last_att_obj.date_attention
+                last_date = dt.datetime.strptime(last_date, '%Y-%m-%d')
+                date_attention = dt.datetime.strptime(self.date_attention, '%Y-%m-%d')
+                since_sixty_days = date_attention - last_date
+                if since_sixty_days.days > 60:
+                    self.diabetes = False
+                    self.hypertension = False
+                    self.arthritis = False
+                    self.thyroid_disease = False
+                    self.smoke = False
+                    self.is_alcoholic = False
+                    self.marijuana = False
+                    self.cocaine = False
+                    self.ecstasy = False
+                    self.pathological = ''
+                    self.surgical = ''
+                    self.cigarate_daily = ''
+                    self.body_background_others = ''
+                    self.pharmacological = ''
+                    self.allergic = ''
+                    self.alcohol_frequency = ''
+
+                    self.paraclinical_hb = 0.00
+                    self.paraclinical_hto = 0.00
+                    self.paraclinical_leukocytes = 0.00
+                    self.paraclinical_glycemia = 0.00
+                    self.paraclinical_creatinine = 0.00
+                    self.paraclinical_albumin = 0.00
+                    self.paraclinical_differential = ''
+                    self.paraclinical_pt = ''
+                    self.paraclinical_ptt = ''
+                    self.paraclinical_platelets = ''
+                    self.paraclinical_glob = ''
+                    self.paraclinical_ecg = ''
+                    self.paraclinical_rx_chest = ''
+                    self.paraclinical_others = ''
+                    self.paraclinical_tc = ''
+                    self.plan_analysis = ''
+                    self.medical_recipe = ''
+                    self.paraclinical_vsg = 0
+                    self.other_diseases = False
+                else:
+                    self.paraclinical_hb = last_att_obj.paraclinical_hb
+                    self.paraclinical_hto = last_att_obj.paraclinical_hto
+                    self.paraclinical_leukocytes = last_att_obj.paraclinical_leukocytes
+                    self.paraclinical_glycemia = last_att_obj.paraclinical_glycemia
+                    self.paraclinical_creatinine = last_att_obj.paraclinical_creatinine
+                    self.paraclinical_albumin = last_att_obj.paraclinical_albumin
+                    self.paraclinical_differential = last_att_obj.paraclinical_differential
+                    self.paraclinical_pt = last_att_obj.paraclinical_pt
+                    self.paraclinical_ptt = last_att_obj.paraclinical_ptt
+                    self.paraclinical_platelets = last_att_obj.paraclinical_platelets
+                    self.paraclinical_glob = last_att_obj.paraclinical_glob
+                    self.paraclinical_ecg = last_att_obj.paraclinical_ecg
+                    self.paraclinical_rx_chest = last_att_obj.paraclinical_rx_chest
+                    self.paraclinical_others = last_att_obj.paraclinical_others
+                    self.paraclinical_tc = last_att_obj.paraclinical_tc
+                    self.plan_analysis = last_att_obj.plan_analysis
+                    self.medical_recipe = last_att_obj.medical_recipe
+                    self.paraclinical_vsg = last_att_obj.paraclinical_vsg
+                    self.other_diseases = last_att_obj.other_diseases
 
     @api.multi
     @api.depends('birth_date')

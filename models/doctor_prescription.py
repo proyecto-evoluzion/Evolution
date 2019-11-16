@@ -40,7 +40,7 @@ class DoctorPrescription(models.Model):
 									('as','AS - Unidentified Adult'),
 									('ms','MS - Unidentified Minor')],
 									 string='Type of Document', related="doctor_id.tdoc")
-	name= fields.Char(string="Order Type", required="1")
+	name= fields.Char(string="Order Type", required=False)
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
 	prescription_date = fields.Date(string='Date', default=fields.Date.context_today)
 	doctor_id = fields.Many2one('doctor.professional', string='Professional')
