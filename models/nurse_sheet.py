@@ -105,6 +105,7 @@ class ClinicaNurseSheet(models.Model):
     surgery_start_time = fields.Float(string="Surgery Start Time")
     surgery_end_time = fields.Float(string="Surgery End Time")
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    professional_id = fields.Many2one('doctor.professional', 'Professional')
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
@@ -187,6 +188,7 @@ class ClinicaNurseSheet(models.Model):
         if self.room_id:
             room_change_vals = self._set_change_room_id(self.room_id)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            self.professional_id = self.room_id.circulating_id and self.room_id.circulating_id.id or False
             self.procedure_ids = room_change_vals.get('procedure_ids', False)
             self.invoice_procedure_ids = room_change_vals.get('invoice_procedure_ids', False)
             

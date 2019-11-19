@@ -23,7 +23,8 @@
             	<group name='sub_group2'>
 	                <field name="procedure_date" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
 	                <field name="anhestesic_registry_id" domain="[('room_id','=',room_id)]" attrs="{'readonly':[('state','=','closed')]}" invisible="1"/> <!--This is not being used right now, so i hidded it-->
-	                <field name="updated_stock" invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                  <field name="updated_stock" invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
+	                <field name="professional_id" invisible="1"/>
             	</group>
             </group>
             <group name='patient_info'>

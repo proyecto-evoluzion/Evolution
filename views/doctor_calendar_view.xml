@@ -169,6 +169,9 @@
 				<button name="action_create_so" string="Create Sales Order" 
 					class="btn-primary" type="object" states="confirmed"
 					groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor"/>
+				<button name="action_cancel_procedure" string="Cancel Procedure" 
+					class="btn-primary" type="object" attrs="{'invisible': [('state','=','new')]}"
+					groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor"/>
 				<!-- <button name="action_view_clinica_record_history" string="View History" 
 					type="object" class="oe_highlight"/> -->
 				<field name="state" widget="statusbar" statusbar_visible="new,confirmed,ordered"/>
@@ -189,7 +192,7 @@
 					</button>
 					<button name="action_view_recovery_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Recovery Sheets"
-						groups="base.group_system,clinica_doctor_data.recovery_assistant,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor">
+						groups="base.group_system,clinica_doctor_data.recovery_assistant,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.nursing_assistant">
 					</button>
 					<button name="action_view_nurse_chief_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Nurse Chief Sheets"

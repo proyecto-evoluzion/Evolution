@@ -41,6 +41,14 @@ class PresurgicalRecord(models.Model):
     def _auto_load_diasease(self):
     	product_id_rec = self.env['doctor.diseases'].search([('name','in',['OTRAS CONSULTAS ESPECIFICADAS'])], limit=1)
     	return product_id_rec.id
+
+    def _default_professional(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        user_obj = self.env['res.users'].search([('id','=',user_id)])
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+        if professional_obj:
+            return professional_obj.id
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict', default=_first_attention)
@@ -49,6 +57,7 @@ class PresurgicalRecord(models.Model):
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    professional_id = fields.Many2one('doctor.professional', 'Professional', default=_default_professional)
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')

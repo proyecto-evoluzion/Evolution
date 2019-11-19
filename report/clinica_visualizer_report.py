@@ -45,6 +45,22 @@ class ClinicaVisualizerReport(models.AbstractModel):
                                     'medical_evolution': visualizer.medical_evolution_ids, 
                                     'epicrisis': visualizer.epicrisis_ids,
                                     'prescription': visualizer.prescription_ids})
+
+        #Getting context for pass current user values to footer report
+        # active_user_id = self._context.get('uid')
+        # if active_user_id:
+        #     user_obj = self.env['res.users'].search([('id','=',active_user_id)])
+        #     dict(self._context).update({'dr_name' : user_obj.name})
+
+        # print(self._context)
+        # print(self._context)
+        # print(self._context)
+        # new_context = dict(self.env.context).copy()
+        # dict(self._context).update( { 'Key' : 'Value' } )
+        # print('************************************************')
+        # print(new_context)
+        # print(new_context)
+        print(self._context)
         
         report_vals =  {
             'doc_ids': docids,
@@ -53,6 +69,20 @@ class ClinicaVisualizerReport(models.AbstractModel):
             'clinica_records': clinica_record_dict,
         }
         return report_vals
+
+class ExternalLayout(models.AbstractModel):
+    _name = 'report.web.preview_externalreport'
+    _description = 'External Layout'
+    
+    @api.model
+    def get_report_values(self, docids, data=None):
+        res = super(ExternalLayout, self).get_report_values()
+        print(res)
+        print(res)
+        print(res)
+        print(res)
+
+        return res
         
         
             

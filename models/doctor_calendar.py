@@ -691,6 +691,14 @@ class DoctorWaitingRoom(models.Model):
                     }
                 self.env['sale.order.line'].create(so_line_vals)
         return sale_order
+
+    @api.multi
+    def action_cancel_procedure(self):
+        raise ValidationError(_("Esta acción estara habilitada en los próximos días."))
+        # for room in self:
+        #     room.sale_order_id = room._create_so().id
+        #     room.state = 'ordered'
+        # return self.action_view_sale_order()
     
     @api.multi
     def action_create_so(self):
