@@ -57,7 +57,7 @@ class PresurgicalRecord(models.Model):
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
-    professional_id = fields.Many2one('doctor.professional', 'Professional', default=_default_professional)
+    # professional_id = fields.Many2one('doctor.professional', 'Professional', default=_default_professional)
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
