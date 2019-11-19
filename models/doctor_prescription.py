@@ -32,6 +32,14 @@ class DoctorPrescription(models.Model):
 		signature = html2text.html2text(user.signature)
 		return signature
 
+	def _get_professional(self):
+		ctx = self._context
+		user_id = self._context.get('uid')
+		user_obj = self.env['res.users'].search([('id','=',user_id)])
+		professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+		if professional_obj:
+			return professional_obj.id
+
 	document_type = fields.Selection([('cc','CC - ID Document'),
 									('ce','CE - Aliens Certificate'),
 									('pa','PA - Passport'),
@@ -43,11 +51,11 @@ class DoctorPrescription(models.Model):
 	name= fields.Char(string="Order Type", required=False)
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
 	prescription_date = fields.Date(string='Date', default=fields.Date.context_today)
-	doctor_id = fields.Many2one('doctor.professional', string='Professional')
+	doctor_id = fields.Many2one('doctor.professional', string='Professional', default=_get_professional)
 	profession_type = fields.Selection([('plastic_surgeon','Plastic Surgeon'),('anesthesiologist','Anesthesiologist'),
 										('technologists','Surgical Technologists'),('helpers','Surgical Helpers'),
 										('nurse','Nurse')], 
-										string='Profession Type', default='plastic_surgeon', related="doctor_id.profession_type")
+										string='Profession Type', related="doctor_id.profession_type")
 	order = fields.Text(string="Order", required="1")
 	template_id = fields.Many2one('doctor.prescription.template', string='Template')
 	sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
@@ -55,6 +63,11 @@ class DoctorPrescription(models.Model):
 	medical_record = fields.Char(string='Medical record')
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+
+	@api.onchange('doctor_id')
+	def onchange_doctor_id(self):
+		if self.doctor_id:
+			self.profession_type = self.doctor_id.profession_type
 
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
