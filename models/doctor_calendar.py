@@ -624,6 +624,14 @@ class DoctorWaitingRoom(models.Model):
             if procedure_list:
                 vals.update({'default_procedure_ids': procedure_list})
         return vals
+
+    @api.multi
+    def _set_nurse_chief_sheet_values(self):
+        vals = {
+            'default_patient_id': self.patient_id and self.patient_id.id or False,
+            'default_room_id' : self.id,
+        }
+        return vals
             
     @api.multi
     def action_view_nurse_sheet(self):
@@ -647,7 +655,7 @@ class DoctorWaitingRoom(models.Model):
         action = self.env.ref('clinica_doctor_data.action_clinica_nurse_chief_sheet')
         result = action.read()[0]
         #override the context to get rid of the default filtering
-        result['context'] = self._set_nurse_sheet_values()
+        result['context'] = self._set_nurse_chief_sheet_values()
         nurse_chief_sheet_ids = self.env['clinica.nurse.chief.sheet'].search([('room_id','=',self.id)])
         
         #choose the view_mode accordingly

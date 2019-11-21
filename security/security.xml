@@ -7,6 +7,7 @@
 
          <record id="surgeon" model="res.groups">
             <field name="name">Doctor / Surgeon</field>
+            <field name="implied_ids" eval="[(6, 0, [ref('base.group_erp_manager')])]"/>
         </record>
 
         <record id="nursing_assistant" model="res.groups">
