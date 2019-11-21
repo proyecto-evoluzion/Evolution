@@ -212,7 +212,7 @@
 					</button>
 					<button name="action_view_post_anhestesic_care" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Cuidado Post-Anestésico"
-						groups="clinica_doctor_data.management,clinica_doctor_data.anesthesiologist">
+						groups="base.group_system,clinica_doctor_data.management,clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursery_chief,clinica_doctor_data.nursing_assistant">
 					</button>
 					<!-- <button name="action_view_plastic_surgery" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Plastic Surgery Sheet"

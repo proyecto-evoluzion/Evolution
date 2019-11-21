@@ -32,7 +32,7 @@ from odoo.tools import DEFAULT_SERVER_DATE_FORMAT as DF
 import calendar
 from odoo.exceptions import ValidationError
 
-class ClinicaRecoverySheet(models.Model):
+class ClinicaNurseChief(models.Model):
     _name = "clinica.nurse.chief.sheet"
     _order = 'id desc'
 
@@ -126,36 +126,36 @@ class ClinicaRecoverySheet(models.Model):
             self.blood_rh = self.patient_id.blood_rh
 
     
-    def _set_change_room_id(self, room):
-        vals = {}
-        if room.sale_order_id:
-            procedure_list = []
-            invc_procedure_list = []
-            if room.sale_order_id.picking_ids:
-                for picking in room.sale_order_id.picking_ids:
-                    for move in picking.move_lines:
-                        procedure_list.append((0,0,{'product_id': move.product_id and move.product_id.id or False,
-                                                    'product_uom_qty': move.product_uom_qty,
-                                                    'quantity_done': move.quantity_done,
-                                                    'move_id': move.id}))
-            sequence = 0
-            first_line = False
-            for sale_line in room.sale_order_id.order_line:
-                sequence += 1
-                invc_procedure_dict = {
-                    'product_id': sale_line.product_id and sale_line.product_id.id or False,
-                    'sequence': sequence,
-                    'sale_line_id': sale_line.id}
-                invc_procedure_list.append((0,0, invc_procedure_dict))
-            if procedure_list or invc_procedure_list:
-                # vals.update({'procedure_ids': procedure_list, 'invoice_procedure_ids': invc_procedure_list})
-                vals.update({'procedure_ids': procedure_list})
-        return vals
+    # def _set_change_room_id(self, room):
+    #     vals = {}
+    #     if room.sale_order_id:
+    #         procedure_list = []
+    #         invc_procedure_list = []
+    #         if room.sale_order_id.picking_ids:
+    #             for picking in room.sale_order_id.picking_ids:
+    #                 for move in picking.move_lines:
+    #                     procedure_list.append((0,0,{'product_id': move.product_id and move.product_id.id or False,
+    #                                                 'product_uom_qty': move.product_uom_qty,
+    #                                                 'quantity_done': move.quantity_done,
+    #                                                 'move_id': move.id}))
+    #         sequence = 0
+    #         first_line = False
+    #         for sale_line in room.sale_order_id.order_line:
+    #             sequence += 1
+    #             invc_procedure_dict = {
+    #                 'product_id': sale_line.product_id and sale_line.product_id.id or False,
+    #                 'sequence': sequence,
+    #                 'sale_line_id': sale_line.id}
+    #             invc_procedure_list.append((0,0, invc_procedure_dict))
+    #         if procedure_list or invc_procedure_list:
+    #             vals.update({'procedure_ids': procedure_list, 'invoice_procedure_ids': invc_procedure_list})
+    #             vals.update({'procedure_ids': procedure_list})
+    #     return vals
         
     @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
-            room_change_vals = self._set_change_room_id(self.room_id)
+            # room_change_vals = self._set_change_room_id(self.room_id)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
             #self.procedure_ids = room_change_vals.get('procedure_ids', False)
             
@@ -216,7 +216,7 @@ class ClinicaRecoverySheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-        res = super(ClinicaRecoverySheet, self).create(vals)
+        res = super(ClinicaNurseChief, self).create(vals)
         return res
     
     @api.multi
@@ -225,33 +225,33 @@ class ClinicaRecoverySheet(models.Model):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
                 raise ValidationError(warn_msg)
-        res = super(ClinicaRecoverySheet, self).write(vals)
+        res = super(ClinicaNurseChief, self).write(vals)
         return res
 
-    @api.multi
-    def action_validate_oders(self):
-    	# flag = True
-    	for nurse_chief_sheet in self:
-    		for procedure_line in nurse_chief_sheet.procedure_ids:
-    			if procedure_line.move_id:
-    				procedure_line.move_id.quantity_done = procedure_line.quantity_done
-    			if procedure_line.product_id.is_invoice_supply:
-    			# if flag:
-    				vals = {
-    					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
-    					'validity_day': (dt.date.today()).today(),
-    					'order_line': [(0, 0, {
-		                'product_id': procedure_line.product_id.id,
-		                'name': procedure_line.product_id.name,
-		                'product_uom_qty': procedure_line.quantity_done,
-		                'price_unit': procedure_line.product_id.lst_price,
-		                'tax_id': procedure_line.product_id.taxes_id.id,
-		            	})],
-		            	# 'state': 'sale',
-    				}
-    				self.env['sale.order'].create(vals)
-    		nurse_chief_sheet.validate_oders = True
-    	return True
+    # @api.multi
+    # def action_validate_oders(self):
+    # 	flag = True
+    # 	for nurse_chief_sheet in self:
+    # 		for procedure_line in nurse_chief_sheet.procedure_ids:
+    # 			if procedure_line.move_id:
+    # 				procedure_line.move_id.quantity_done = procedure_line.quantity_done
+    # 			if procedure_line.product_id.is_invoice_supply:
+    # 			if flag:
+    # 				vals = {
+    # 					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+    # 					'validity_day': (dt.date.today()).today(),
+    # 					'order_line': [(0, 0, {
+		  #               'product_id': procedure_line.product_id.id,
+		  #               'name': procedure_line.product_id.name,
+		  #               'product_uom_qty': procedure_line.quantity_done,
+		  #               'price_unit': procedure_line.product_id.lst_price,
+		  #               'tax_id': procedure_line.product_id.taxes_id.id,
+		  #           	})],
+		  #           	'state': 'sale',
+    # 				}
+    # 				self.env['sale.order'].create(vals)
+    # 		nurse_chief_sheet.validate_oders = True
+    # 	return True
     
     
     @api.multi
