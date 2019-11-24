@@ -48,6 +48,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	lastname = fields.Char(string='First Last Name')
 	middlename = fields.Char(string='Second Name')
 	surname = fields.Char(string='Second Last Name')
+	signing_doctor = fields.Char(string='Signing Doctor')
+	procedures = fields.Char(string='Procedures')
 	gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
 	birth_date = fields.Date(string='Birth Date')
 	age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
@@ -74,6 +76,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	allergic_enquired = fields.Selection([('yes','Yes'),('no', 'No')], string="Does the patient have allergies ?")
 	allergic_text = fields.Text(string="Which?")
 	enquired_proc_medication = fields.Selection([('yes','Yes'),('no', 'No')], string="Did the patient consume medications prior to the procedure?")
+	enquired_proc_medication_note = fields.Text(string="medication note")
 	investigated_drug_consumption = fields.Selection([('yes','Yes'),('no', 'No')], string="Did the patient consume alcoholic beverages and / or narcotic drugs prior to the procedure?")
 	antiembolicas_stockings = fields.Selection([('yes','Yes'),('no', 'No')], string="Antiembolicas stockings")
 	operational_site_marking = fields.Selection([('yes','Yes'),('no', 'No')], string="Operational site marking")
@@ -83,6 +86,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	#INTRA-OPERATORY fields
 	recording_vital_signs = fields.Selection([('yes','Yes'),('no', 'No')], string="Taking and recording vital signs")
 	antibiotic_prophylaxis = fields.Selection([('yes','Yes'),('no', 'No')], string="Antibiotic prophylaxis before surgery (which)")
+	antibiotic_prophylaxis_note = fields.Text(string="Prophylaxis note")
 	full_staff_in_room = fields.Selection([('yes','Yes'),('no', 'No')], string="Full staff is found inside the room to start the procedure")
 	monitoring_induction_complete = fields.Selection([('yes','Yes'),('no', 'No')], string="Monitoring and induction is complete to start")
 	monitor_indu_anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
@@ -142,6 +146,20 @@ class ClinicaQuirurgicalCheckList(models.Model):
 			self.nurse_id = self.room_id.circulating_id.id
 			self.anesthesiologist_id = self.room_id.anesthesiologist_id.id
 			self.anesthesia_type = self.room_id.anesthesia_type
+			#DevFree: Asigning current doctor user to signing_doctor field.
+			user = self.env.user
+			professional = self.env['doctor.professional'].search([('res_user_id','=',user.id)])
+			self.signing_doctor = professional.firstname +' '+ professional.lastname
+			#DevFree: Asigning current surgery procedures
+			for proc in self.room_id:
+				for proc_ids in proc.procedure_ids:
+					if not self.procedures:
+						self.procedures = ''
+					print(proc_ids.product_id.name)
+					if not proc_ids.product_id:
+						continue
+					else:
+						self.procedures = str(self.procedures) +' '+ str(proc_ids.product_id.name)
 	
 	@api.depends('patient_id')
 	def _compute_numberid_integer(self):

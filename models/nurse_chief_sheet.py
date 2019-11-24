@@ -228,30 +228,30 @@ class ClinicaNurseChief(models.Model):
         res = super(ClinicaNurseChief, self).write(vals)
         return res
 
-    # @api.multi
-    # def action_validate_oders(self):
-    # 	flag = True
-    # 	for nurse_chief_sheet in self:
-    # 		for procedure_line in nurse_chief_sheet.procedure_ids:
-    # 			if procedure_line.move_id:
-    # 				procedure_line.move_id.quantity_done = procedure_line.quantity_done
-    # 			if procedure_line.product_id.is_invoice_supply:
-    # 			if flag:
-    # 				vals = {
-    # 					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
-    # 					'validity_day': (dt.date.today()).today(),
-    # 					'order_line': [(0, 0, {
-		  #               'product_id': procedure_line.product_id.id,
-		  #               'name': procedure_line.product_id.name,
-		  #               'product_uom_qty': procedure_line.quantity_done,
-		  #               'price_unit': procedure_line.product_id.lst_price,
-		  #               'tax_id': procedure_line.product_id.taxes_id.id,
-		  #           	})],
-		  #           	'state': 'sale',
-    # 				}
-    # 				self.env['sale.order'].create(vals)
-    # 		nurse_chief_sheet.validate_oders = True
-    # 	return True
+    @api.multi
+    def action_validate_oders(self):
+    	flag = True
+    	for nurse_chief_sheet in self:
+    		for procedure_line in nurse_chief_sheet.procedure_ids:
+    			if procedure_line.move_id:
+    				procedure_line.move_id.quantity_done = procedure_line.quantity_done
+    			if procedure_line.product_id.is_invoice_supply:
+        			if flag:
+        				vals = {
+        					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+        					'validity_day': (dt.date.today()).today(),
+        					'order_line': [(0, 0, {
+    		                'product_id': procedure_line.product_id.id,
+    		                'name': procedure_line.product_id.name,
+    		                'product_uom_qty': procedure_line.quantity_done,
+    		                'price_unit': procedure_line.product_id.lst_price,
+    		                'tax_id': procedure_line.product_id.taxes_id.id,
+    		            	})],
+    		            	'state': 'sale',
+        				}
+        				self.env['sale.order'].create(vals)
+    		nurse_chief_sheet.validate_oders = True
+    	return True
     
     
     @api.multi

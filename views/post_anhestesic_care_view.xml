@@ -14,6 +14,7 @@
             </header>
             <sheet>
             <group name="basic_details" col="4">
+              <field name="room_id" invisible="1"/>
               <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
               <field name="date" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
@@ -22,7 +23,7 @@
             </group>
             <group>
             <group>
-              <field name="medical_record" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name="medical_record" invisible="1"/>
               <field name="procedure" attrs="{'readonly':[('state','=','closed')]}"/>
               <field name="surgeon_id" attrs="{'readonly':[('state','=','closed')]}"/>
               <field name="nurse_id" attrs="{'readonly':[('state','=','closed')]}"/>

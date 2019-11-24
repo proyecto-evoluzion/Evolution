@@ -415,7 +415,7 @@ class DoctorAdministrativeData(models.Model):
             self.responsible_phone = ''
             self.other_responsible_relationship=''   
             
-    @api.onchange('ref', 'tdoc')
+    @api.onchange('ref')
     def onchange_ref(self):
         if self.ref:
             self.name = str(self.ref)

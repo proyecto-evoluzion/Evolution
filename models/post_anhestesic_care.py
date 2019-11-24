@@ -82,9 +82,16 @@ class ClinicaPostAnhestesicCare(models.Model):
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
 		if self.patient_id:
+			print(self.room_id)
+			print(self.room_id.procedure)
+			print(self.room_id.surgeon_id)
 			self.numberid = self.patient_id.ref
 			self.numberid = self.patient_id._name
 			self.document_type = self.patient_id.tdoc
+			self.procedure = self.room_id.procedure
+			self.surgeon_id = self.room_id.surgeon_id and self.room_id.surgeon_id.id or False
+			self.nurse_id = self.room_id.circulating_id and self.room_id.circulating_id.id or False
+			self.anesthesiologist_id = self.room_id.anesthesiologist_id and self.room_id.anesthesiologist_id.id or False
 	
 
 

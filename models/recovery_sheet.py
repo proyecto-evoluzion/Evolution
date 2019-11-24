@@ -207,6 +207,7 @@ class ClinicaRecoverySheet(models.Model):
     @api.model
     def create(self, vals):
         vals['name'] = self.env['ir.sequence'].next_by_code('recovery.sheet') or '/'
+        vals['state'] = 'closed'
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
@@ -221,6 +222,7 @@ class ClinicaRecoverySheet(models.Model):
             if warn_msg:
                 raise ValidationError(warn_msg)
         res = super(ClinicaRecoverySheet, self).write(vals)
+        self.state = 'closed'
         return res
     
     
