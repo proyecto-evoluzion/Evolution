@@ -118,7 +118,17 @@ class ClinicaNurseSheet(models.Model):
     @api.depends('patient_id')
     def _compute_numberid(self):
         for rec in self:
-            rec.numberid = rec.patient_id.name if rec.patient_id else False    
+            rec.numberid = rec.patient_id.name if rec.patient_id else False
+
+
+    @api.onchange('invoice_procedure_ids')
+    def onchange_procedure_ids(self):
+        if self.invoice_procedure_ids:
+            count = 0
+            for rec in self.invoice_procedure_ids:
+                count += 1
+            if count > 1:
+                self.various_procedures = True
     
     @api.multi
     @api.depends('birth_date')

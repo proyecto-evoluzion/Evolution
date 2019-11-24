@@ -89,6 +89,7 @@
 	         				<label for="enquired_proc_medication" style="width:550px !important;"/>
 	         				<div>
 	         					<field name="enquired_proc_medication" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
+	         					<span><field name="enquired_proc_medication_note" nolabel="1" placeholder="Cuales?" attrs="{'readonly':[('state','=','closed')], 'invisible': [('enquired_proc_medication', '!=', 'yes')]}"/></span>
 	         				</div>
 	         				<label for="investigated_drug_consumption" style="width:550px !important;"/>
 	         				<div>
@@ -120,22 +121,26 @@
 	         				<label for="antibiotic_prophylaxis" style="width:550px !important;"/>
 	         				<div>
 	         					<field name="antibiotic_prophylaxis" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
+	         					<span><field name="antibiotic_prophylaxis_note" nolabel="1" placeholder="Cual?" attrs="{'readonly':[('state','=','closed')], 'invisible': [('antibiotic_prophylaxis', '!=', 'yes')]}"/></span>
 	         				</div>
 	         				<label for="full_staff_in_room" style="width:550px !important;"/>
 	         				<div>
 	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
-	         				<label for="monitoring_induction_complete" style="width:550px !important;"/>
+	         				<!-- <label for="monitoring_induction_complete" style="width:550px !important;"/> -->
+	         				<strong style="width:550px !important;"><span>Dr. <field name="signing_doctor" nolabel="1" style="width:20% !important;" readonly="1"/>	La monitoria y la inducción se encuentra completo para iniciar?</span></strong>
 	         				<div>
-	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
+	         					<field style="margin-left:3%;" name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="monitor_indu_anesthesiologist_id" style="width:550px !important;"/>
 	         				<div>
 	         					<field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
-	         				<label for="is_scheduled" style="width:550px !important;"/>
+	         				<!-- <label for="is_scheduled" style="width:550px !important;"/> -->
+	         				<strong style="width:50%;"><span>Dr. <field name="signing_doctor" nolabel="1" style="width:25% !important;" readonly="1"/>	su paciente <field name="patient_id" nolabel="1" style="width:25% !important;" readonly="1"/></span></strong><br></br>
+	         				<strong style="width:50%;"><span>está programado para: <field name="procedures" nolabel="1" readonly="1" style="width:25% !important;"/></span></strong>
 	         				<div>
-	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
+	         					<field style="margin-left:3%;" name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="scheduled_surgeon_id" style="width:550px !important;"/>
 	         				<div>
@@ -145,9 +150,10 @@
 	         				<div>
 	         					<field name="scheduled_patient_id" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
-	         				<label for="equipments_in_room" style="width:550px !important;"/>
+	         				<!-- <label for="equipments_in_room" style="width:550px !important;"/> -->
+	         				<strong style="width:550px !important;"><span>Dr. <field name="signing_doctor" nolabel="1" style="width:20% !important;" readonly="1"/>	los requerimientos en cuanto a equipos solicitados por usted están en la sala?</span></strong>
 	         				<div>
-	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
+	         					<field style="margin-left:3%;" name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('state','=','closed')]}"/>
 	         				</div>
 	         				<label for="equipments_room_surgeon_id" style="width:550px !important;"/>
 	         				<div>
