@@ -67,6 +67,7 @@
         'views/doctor_clinica_prescription.xml',
         'views/assets.xml',
         'views/record_authenticate_views.xml',
+        'views/base_localization_menu.xml',
         'data/l10n_diseases_co_data.xml'
     ],
     'demo': [

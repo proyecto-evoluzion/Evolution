@@ -80,6 +80,7 @@ class DoctorQuirurgicSheet(models.Model):
 	disease_id = fields.Text(string="Diagnosis")
 	tisue_sending_patologist = fields.Text(string='Tisue sending to patologist')
 	procedure = fields.Text(string="Procedure")
+	procedure_ids = fields.Many2many('product.product',ondelete='restrict', domain=[('is_health_procedure','=', True)])
 	sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
 	medical_record = fields.Char(string='Medical record')
 	user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
@@ -132,7 +133,12 @@ class DoctorQuirurgicSheet(models.Model):
 	@api.onchange('room_id')
 	def onchange_room_id(self):
 		if self.room_id:
+			list_ids = []
 			self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+			for procedure_ids in self.room_id.procedure_ids:
+				for products in procedure_ids.product_id:
+					list_ids.append(products.id)
+			self.procedure_ids = [(6, 0, list_ids)]
 	
 	
 	@api.multi
@@ -207,7 +213,7 @@ class DoctorQuirurgicSheet(models.Model):
 	@api.model
 	def create(self, vals):
 		vals['name'] = self.env['ir.sequence'].next_by_code('doctor.quirurgic.sheet') or '/'
-
+		vals['state'] = 'closed'
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
@@ -227,6 +233,7 @@ class DoctorQuirurgicSheet(models.Model):
 		
 		res = super(DoctorQuirurgicSheet, self).write(vals)
 		self._check_document_types()
+		self.state = 'closed'
 		return res
 	
 	@api.multi

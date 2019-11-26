@@ -173,10 +173,12 @@ class PresurgicalRecord(models.Model):
     lead_id = fields.Many2one('doctor.waiting.room', string='Lead', copy=False) # this is the related Proced. Schedule attached to the lead
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
-    @api.onchange('room_id')
-    def onchange_room_id(self):
-        if self.room_id:
+    @api.onchange('lead_id')
+    def onchange_lead_id(self):
+        if self.lead_id:
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            # nurse_obj = self.env['clinica.nurse_sheet'].search([('room_id','=',self.lead_id.id),('patient_id','=',self.patient_id.id)],limit=1)
+            # self.diabetes = nurse_obj.diabetes
     
     @api.onchange('patient_id')
     def onchange_consultation_reason(self):

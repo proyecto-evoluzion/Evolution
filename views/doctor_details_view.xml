@@ -139,15 +139,15 @@
                     <group name="main_info" >
                     	<group>
                     		<field name="profession_type" required="1"/>
-	                        <field name="email"/>
-                            <field name="phone"/>
-	                        <field name="medical_record"/>
+	                        <field name="email" password="1"/>
+                            <field name="phone" password="1"/>
+	                        <field name="medical_record" password="1"/>
                     	</group>
                     	<group>
-	                        <field name="lastname"  required="1"/> 
-	                        <field name="surname"/>
-                            <field name="firstname" required="1"/>
-                            <field name="middlename"/>
+	                        <field name="lastname"  required="1" password="1"/> 
+	                        <field name="surname" password="1"/>
+                            <field name="firstname" required="1" password="1"/>
+                            <field name="middlename" password="1"/>
                     	</group>
                     </group>
                     <notebook colspan="4">
@@ -269,10 +269,10 @@
                     </div>
                     <group name='group_personal_info'>
                         <group name='group_personal_info_sub1'>
-                            <field name="lastname" required="1" placeholder="First Last Name"/>
-                            <field name="surname" placeholder="Second Last Name"/>
-                            <field name="firstname" required="1" placeholder="First Name"/>
-                            <field name="middlename" placeholder="Second Name"/>
+                            <field name="lastname" required="1" placeholder="First Last Name" password="1"/>
+                            <field name="surname" placeholder="Second Last Name" password="1"/>
+                            <field name="firstname" required="1" placeholder="First Name" password="1"/>
+                            <field name="middlename" placeholder="Second Name" password="1"/>
                             <field name="partner_id" string="Related Contact" readonly="1" invisible="1"/>
                         </group>
                         <group name='group_personal_info_sub2'>
@@ -298,14 +298,14 @@
                     <group name='group_insurer_info_sub1'>
                             <field name="user_type"/>
 <!--                            <field name="primary_payer"/> -->
-                            <field name="phone"/>
+                            <field name="phone" password="1"/>
                             <field name="link_type"/>
                         </group>
                         <group name='group_insurer_info_sub2'>
                             <field name="insurer_id"
                                 domain="['&amp;',('is_company','=',True), ('is_assurance', '=', True)]" options="{'no_create_edit': True}"/>
-                            <field name="email"/>
-                            <field name="residence_address" string="Address" placeholder="Address"/>
+                            <field name="email" password="1"/>
+                            <field name="residence_address" string="Address" placeholder="Address" password="1"/>
                         </group>
                     </group>
                     <group string='Place of Birth' name='group_birth_place' col="4">
@@ -327,7 +327,7 @@
                             <field name="residence_department_id" string="Department" placeholder="Department" options="{'no_create_edit': True}"
                                 context="{'country_id': residence_country_id,'default_country_id':residence_country_id}"  domain="[('country_id','=',residence_country_id)]"/>
                             
-                            <field name="residence_address" />
+                            <field name="residence_address" password="1"/>
                         </group>
 <!--                            <field name="residence_neighborhood" string="Neighborhood" placeholder="Neighborhood"/> -->
                     </group>
@@ -346,7 +346,7 @@
 
                     <group name='group_accompany_responsible_personal_info' >
                         <group name='group_accompany_personal_info' string="Accompany Person's Details">
-                            <field name="accompany_name" />
+                            <field name="accompany_name" password="1"/>
                             <label for="accompany_relationship" string="Relationship"/>
                             <div>
                                 <div>
@@ -355,11 +355,11 @@
                                         placeholder="Other Relationship" attrs="{'invisible':[('accompany_relationship','!=','other')]}"/>
                                 </div>
                             </div>
-                            <field name="accompany_phone"/>
+                            <field name="accompany_phone" password="1"/>
                             <field name="copy_responsible_info"/>
                         </group>
                         <group name='group_responsible_personal_info' string="Responsible Person's Details">
-                            <field name="responsible_name"/>
+                            <field name="responsible_name" password="1"/>
                             <label for="responsible_relationship" string="Relationship"/>
                             <div>
                                 <div>
@@ -368,7 +368,7 @@
                                         placeholder="Other Relationship" attrs="{'invisible':[('responsible_relationship','!=','other')]}"/>
                                 </div>
                             </div>
-                            <field name="responsible_phone" />
+                            <field name="responsible_phone" password="1"/>
                         </group>
                     </group>
 <!--                    <group name='group_parent_info' > -->

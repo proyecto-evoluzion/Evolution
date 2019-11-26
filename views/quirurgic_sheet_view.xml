@@ -25,6 +25,7 @@
          			</group>
          		</group>
          		<group name="health_professionals" col="4">
+                <field name='room_id' invisible="1"/>
                 <field name='patient_id' required="1"/>
                 <field name='document_type' required="1"/>
          		</group>
@@ -38,7 +39,8 @@
          				<field name='procedure_purpose' /> -->
          			</group>
          			<group name="other_info_group_sub2" >
-                <field name='procedure' />
+                <field name='procedure' invisible="1"/>
+                <field name="procedure_ids"  attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
          				<!--<field name='user_id' />-->
          			</group>
          		</group>
@@ -55,7 +57,7 @@
          		<group name="quirurgic_description">
          			<field name='description'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
-         		<group name="sign_stamp">
+         		<group name="sign_stamp" invisible="1">
          			<field name='sign_stamp' />
               <field name='numberid_integer' required="1" invisible="1"/>
 

@@ -99,6 +99,7 @@ msgstr "Cerrar"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
 msgid "Set to Close"
 msgstr "Cerrar"
@@ -510,6 +511,7 @@ msgstr "AB"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -1138,6 +1140,7 @@ msgstr "Body Background Others"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -1152,6 +1155,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -1800,6 +1804,7 @@ msgstr "Fecha de atención"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
 #: selection:doctor.epicrisis,age_meassure_unit:0
@@ -3322,7 +3327,7 @@ msgstr "Local C."
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Location/City/Town"
-msgstr "Municipio/Ciudad"
+msgstr "Ciudad/Localidad"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_birth_city_id
@@ -3339,6 +3344,7 @@ msgstr "Líquidos"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -3551,6 +3557,7 @@ msgstr "La monitoria y la inducción se encuentra completo para iniciar"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
 #: selection:doctor.epicrisis,age_meassure_unit:0
@@ -3851,6 +3858,11 @@ msgid "Nurse Sheet"
 msgstr "Hoja Enfermería"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.base_municipalities_menu
+msgid "Municipalities"
+msgstr "Ciudad/Localidad"
+
+#. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_recovery_sheet
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_recovery_sheet
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
@@ -3949,7 +3961,8 @@ msgstr "Marcación sitio operatorio"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_evolution_note_ids
 msgid "Orders and Evolutions Notes"
-msgstr "Orders and Evolutions Notes"
+msgstr Ordenes y notas de evolución"
+
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
@@ -4066,6 +4079,7 @@ msgstr "Cargar a factura"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -4773,6 +4787,7 @@ msgstr "Cotización"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -5588,6 +5603,7 @@ msgstr "TC:"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
 #: selection:doctor.epicrisis,tdoc:0 selection:doctor.patient,tdoc:0
@@ -5682,7 +5698,7 @@ msgstr "Se le informa al familiar del paciente de su estado y evolución"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_patient_belongins_locked
 msgid "The patient's personal belongings are locked in the locker held by the relative"
-msgstr "Los objetos personales del paciente se encuentran bajo llave en el lockero en poder del familiar"
+msgstr "Los objetos personales del paciente se encuentran bajo llave en el casillero en poder del familiar"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_blood_returned
@@ -6150,6 +6166,7 @@ msgstr "Quien paga las muestras que se tomaron para laboratorio"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
 #: selection:doctor.epicrisis,age_meassure_unit:0

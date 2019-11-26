@@ -30,6 +30,7 @@
             <group name="patient_group">
             <group name="patient">
               <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name='room_id' invisible="0"/>
             </group>
             <group>
               <field name='tdoc' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
@@ -40,7 +41,8 @@
          	    <group name="professional_info_group">
          	    	<group name="professional_info_sub1">
          	    		<field name="disease_id"  attrs="{'readonly':[('state','=','closed')]}"/>
-		                <field name="procedure_id"  attrs="{'readonly':[('state','=','closed')]}"/>
+                    <field name="procedure_id"  attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
+		                <field name="procedure_ids"  attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
          	    	</group>
          	    	<group name="professional_info_sub2">
 		                  <field name="end_time" widget="float_time" attrs="{'readonly':[('state','=','closed')]}"/>
