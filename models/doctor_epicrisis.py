@@ -61,6 +61,7 @@ class DoctorEpicrisis(models.Model):
                                          related="patient_id.age_unit" )
     disease_id = fields.Many2one('doctor.diseases', 'Definitive Dx', ondelete='restrict')
     procedure_id = fields.Many2one('product.product', 'Surgical Procedure', ondelete='restrict')
+    procedure_ids = fields.Many2many('product.product',ondelete='restrict', domain=[('is_health_procedure','=', True)])
     sign_stamp = fields.Text(string='Sign and médical stamp', default=_get_signature)
     user_id = fields.Many2one('res.users', string='Medical registry number', default=lambda self: self.env.user)
     epicrisis_note = fields.Text(string='Epicrisis')
@@ -115,7 +116,12 @@ class DoctorEpicrisis(models.Model):
     @api.onchange('room_id')
     def onchange_room_id(self):
         if self.room_id:
+            list_ids = []
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            for procedure_ids in self.room_id.procedure_ids:
+                for products in procedure_ids.product_id:
+                    list_ids.append(products.id)
+            self.procedure_ids = [(6, 0, list_ids)]
                     
     @api.onchange('patient_id')
     def onchange_patient_id(self):

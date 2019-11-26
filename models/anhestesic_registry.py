@@ -261,6 +261,9 @@ class AnhestesicRegistry(models.Model):
         if self.room_id:
             list_ids = []
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            self.surgeon_id = self.room_id.surgeon_id and self.room_id.surgeon_id.id or False
+            self.anesthesiologist_id = self.room_id.anesthesiologist_id and self.room_id.anesthesiologist_id.id or False
+            self.anesthesia_type = self.room_id.anesthesia_type
             for procedure_ids in self.room_id.procedure_ids:
                 for products in procedure_ids.product_id:
                     list_ids.append(products.id)

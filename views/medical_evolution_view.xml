@@ -85,7 +85,7 @@
           <field name="view_mode">tree,form</field>
           <field name="view_id" ref="clinica_medical_evolution_tree"/>
           <field name="search_view_id" ref="clinica_medical_evolution_filter"/>
-      </record> 
+      </record>
       
       <menuitem id="menu_clinica_medical_evolution"
           name="Med. Order and Evolution"
