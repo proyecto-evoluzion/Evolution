@@ -34,7 +34,7 @@
          			<group name="other_info_group_sub1" >
                 <field name='medical_record' invisible="1"/>
                 <field name='numberid_integer' invisible="1"/>
-                <field name='disease_id' />
+                <field name='disease_id' attrs="{'readonly':[('state','=','closed')]}"/>
          				<!-- <field name='procedure_scope' />
          				<field name='procedure_purpose' /> -->
          			</group>
