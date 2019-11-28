@@ -32,6 +32,12 @@ from odoo.exceptions import ValidationError
 class PlasticSurgerySheet(models.Model):
     _name = "clinica.plastic.surgery"
     _rec_name = 'number'
+
+    def _default_professional(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        user_obj = self.env['res.users'].search([('id','=',user_id)])
+        return user_obj.id
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict')
@@ -41,6 +47,8 @@ class PlasticSurgerySheet(models.Model):
     numberid = fields.Char(string='Number ID', related='patient_id.name')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents', related='patient_id.ref')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)
+    background_edit_flag = fields.Boolean('Background Flag', default=False)
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
@@ -121,6 +129,18 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+
+    @api.onchange('professional_id')
+    def onchange_professional_id(self):
+        if self.professional_id:
+            user_groups_list = []
+            for user_groups in self.professional_id.groups_id:
+                user_groups_list.append(user_groups.id)
+            print (user_groups_list)
+            anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+            print(anhestesic_group)
+            if anhestesic_group.id in user_groups_list:
+                self.background_edit_flag = True
     
     
     @api.onchange('room_id')
@@ -135,6 +155,9 @@ class PlasticSurgerySheet(models.Model):
             self.numberid = self.patient_id.name
             self.document_typee = self.patient_id.tdoc
             self.numberid_integer = int(self.patient_id.name)
+            hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)], limit=1)
+            if hc_object:
+                self.relatives = hc_object.relatives
 
     @api.multi
     @api.depends('birth_date')
