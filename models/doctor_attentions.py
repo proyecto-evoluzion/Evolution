@@ -46,9 +46,9 @@ class PresurgicalRecord(models.Model):
         ctx = self._context
         user_id = self._context.get('uid')
         user_obj = self.env['res.users'].search([('id','=',user_id)])
-        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
-        if professional_obj:
-            return professional_obj.id
+        # professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+        # if professional_obj:
+        return user_obj.id
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict', default=_first_attention)
@@ -57,7 +57,8 @@ class PresurgicalRecord(models.Model):
     numberid = fields.Char(string='Number ID')
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
-    # professional_id = fields.Many2one('doctor.professional', 'Professional', default=_default_professional)
+    professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)
+    background_edit_flag = fields.Boolean('Background Flag', default=False)
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
     middlename = fields.Char(string='Second Name')
@@ -173,10 +174,22 @@ class PresurgicalRecord(models.Model):
     lead_id = fields.Many2one('doctor.waiting.room', string='Lead', copy=False) # this is the related Proced. Schedule attached to the lead
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
     
+    @api.onchange('professional_id')
+    def onchange_professional_id(self):
+        if self.professional_id:
+            user_groups_list = []
+            for user_groups in self.professional_id.groups_id:
+                user_groups_list.append(user_groups.id)
+            print (user_groups_list)
+            anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+            print(anhestesic_group)
+            if anhestesic_group.id in user_groups_list:
+                self.background_edit_flag = True
+
     @api.onchange('lead_id')
     def onchange_lead_id(self):
         if self.lead_id:
-            self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+            self.patient_id = self.lead_id.patient_id and self.lead_id.patient_id.id or False
             # nurse_obj = self.env['clinica.nurse_sheet'].search([('room_id','=',self.lead_id.id),('patient_id','=',self.patient_id.id)],limit=1)
             # self.diabetes = nurse_obj.diabetes
     
@@ -185,6 +198,9 @@ class PresurgicalRecord(models.Model):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
             self.document_type = self.patient_id.tdoc
+            hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)], limit=1)
+            if hc_object:
+                self.relatives = hc_object.relatives
             lead_obj = self.lead_id.search([('patient_id','=',self.patient_id.id)])
             lead_list = [x.id for x in lead_obj]
             if lead_list:

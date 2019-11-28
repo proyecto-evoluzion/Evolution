@@ -28,6 +28,8 @@
             		</group>
             		<group name="attention_details">
                         <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                        <field name='professional_id' invisible="1"/>
+                        <field name='background_edit_flag' invisible="1"/>
             			<field name='document_type' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         <field name="gender" invisible="1"  attrs="{'readonly':[('state','=','closed')]}"/>
             		</group>
@@ -41,46 +43,46 @@
 
 		       				<group name="pathological" colspan="2" col='1'>
 		       					<label for="pathological" string="Pathological"/>
-		       					<field name="pathological" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+		       					<field name="pathological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
 		       				</group>
                             <group name="surgical" colspan="2" col='1'>
                                 <label for="surgical" string="Surgical"/>
-                                <field name="surgical" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="surgical" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             <group name="toxic" colspan="2" col='1'>
                                 <label for="toxic" string="Toxic"/>
-                                <field name="toxic" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="toxic" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             <group name="allergic" colspan="2" col='1'>
                                 <label for="allergic" string="Allergic"/>
-                                <field name="allergic" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="allergic" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             <group name="pharmacological" colspan="2" col='1'>
                                 <label for="pharmacological" string="Pharmacological"/>
-                                <field name="pharmacological" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="pharmacological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             <group name="gyneco_obst" colspan="2" col='1'>
                                 <label for="gyneco_obst" string="Gyneco-Obstetricians"/>
-                                <field name="gyneco_obst" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="gyneco_obst" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
 
                             <group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
                                 
                                 <div>
                                     <label for="gestations" string="G" />
-                                    <field name="gestations" class="oe_inline" width="20" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="gestations" class="oe_inline" width="20" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                     <label for="births" string="P" />
-                                    <field name="births" class="oe_inline" style="width:20%%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="births" class="oe_inline" style="width:20%%" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                     <label for="cesarean" string="C" />
-                                    <field name="cesarean"  class="oe_inline" style="width:20%%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="cesarean"  class="oe_inline" style="width:20%%" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                     <label for="abortion_number" string="A" />
-                                    <field name="abortion_number" class="oe_inline" style="width:20%%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="abortion_number" class="oe_inline" style="width:20%%" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                     <label for="last_menstruation_date" string="FUR" />
-                                    <field name="last_menstruation_date" class="oe_inline" style="width:20%%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="last_menstruation_date" class="oe_inline" style="width:20%%" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                     <label for="last_birth_date" string="FUP" />
-                                    <field name="last_birth_date" class="oe_inline" style="width:20%%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="last_birth_date" class="oe_inline" style="width:20%%" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                     <label for="mature_promoting_factor" string="MPF" />
-                                    <field name="mature_promoting_factor" class="oe_inline" style="width:20%%" attrs="{'readonly':[('state','=','closed')]}"/>
+                                    <field name="mature_promoting_factor" class="oe_inline" style="width:20%%" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                    
                                 </div>   
 
@@ -88,18 +90,18 @@
 
 		       				<group name="relatives" colspan="2" col='1'>
                                 <label for="relatives" string="Relatives"/>
-                                <field name="relatives" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="relatives" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             <group name="others" colspan="2" col='1'>
                                 <label for="others" string="Others"/>
-                                <field name="others" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                                <field name="others" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             
 		      			</page>
             			<page name="physical_exam" string="Physical Exam">
             				<group name="physical_exam" colspan="2" col='1'>
             					<label for="physical_exam" string="Physical Exam"/>
-            					<field name="physical_exam" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+            					<field name="physical_exam" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
             				</group>
             			</page>
             		 	<page name="paraclinical_exam" string="Dx and Treatment">
