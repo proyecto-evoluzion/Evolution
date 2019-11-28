@@ -512,6 +512,7 @@ msgstr "AB"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -1141,6 +1142,7 @@ msgstr "Body Background Others"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -1156,6 +1158,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -3346,6 +3349,7 @@ msgstr "Líquidos"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -4082,6 +4086,7 @@ msgstr "Cargar a factura"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -4790,6 +4795,7 @@ msgstr "Cotización"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -5606,6 +5612,7 @@ msgstr "TC:"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
