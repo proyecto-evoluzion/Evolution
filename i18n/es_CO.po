@@ -512,6 +512,7 @@ msgstr "AB"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -1141,6 +1142,7 @@ msgstr "Body Background Others"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -1156,6 +1158,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -1805,6 +1808,7 @@ msgstr "Fecha de atención"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.nurse.chief.sheet,age_meassure_unit:0
 #: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
@@ -3345,6 +3349,7 @@ msgstr "Líquidos"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -3558,6 +3563,7 @@ msgstr "La monitoria y la inducción se encuentra completo para iniciar"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.nurse.chief.sheet,age_meassure_unit:0
 #: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
@@ -4080,6 +4086,7 @@ msgstr "Cargar a factura"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -4788,6 +4795,7 @@ msgstr "Cotización"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -5604,6 +5612,7 @@ msgstr "TC:"
 #: selection:clinica.anhestesic.registry,document_type:0
 #: selection:clinica.medical.evolution,tdoc:0
 #: selection:clinica.nurse.sheet,document_type:0
+#: selection:clinica.nurse.chief.sheet,document_type:0
 #: selection:clinica.recovery.sheet,document_type:0
 #: selection:clinica.plastic.surgery,document_type:0
 #: selection:clinica.quirurgical.check.list,document_type:0
@@ -6167,6 +6176,7 @@ msgstr "Quien paga las muestras que se tomaron para laboratorio"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.nurse.chief.sheet,age_meassure_unit:0
 #: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
