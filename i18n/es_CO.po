@@ -1805,6 +1805,7 @@ msgstr "Fecha de atención"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.nurse.chief.sheet,age_meassure_unit:0
 #: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
@@ -3558,6 +3559,7 @@ msgstr "La monitoria y la inducción se encuentra completo para iniciar"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.nurse.chief.sheet,age_meassure_unit:0
 #: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0
@@ -6167,6 +6169,7 @@ msgstr "Quien paga las muestras que se tomaron para laboratorio"
 #: selection:clinica.anhestesic.registry,age_meassure_unit:0
 #: selection:clinica.medical.evolution,age_meassure_unit:0
 #: selection:clinica.nurse.sheet,age_meassure_unit:0
+#: selection:clinica.nurse.chief.sheet,age_meassure_unit:0
 #: selection:clinica.recovery.sheet,age_meassure_unit:0
 #: selection:clinica.plastic.surgery,age_meassure_unit:0
 #: selection:clinica.quirurgical.check.list,age_meassure_unit:0

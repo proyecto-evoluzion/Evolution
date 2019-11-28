@@ -137,7 +137,7 @@ class PlasticSurgerySheet(models.Model):
             for user_groups in self.professional_id.groups_id:
                 user_groups_list.append(user_groups.id)
             print (user_groups_list)
-            anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+            anhestesic_group = self.env.ref('clinica_doctor_data.surgeon')
             print(anhestesic_group)
             if anhestesic_group.id in user_groups_list:
                 self.background_edit_flag = True
