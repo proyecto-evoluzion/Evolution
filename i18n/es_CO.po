@@ -1606,6 +1606,11 @@ msgid "Create Sales Order"
 msgstr "Crear cotización"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Cancel Procedure"
+msgstr "Cancelar Cirugía"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_create_uid
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_medical_evolution_create_uid
@@ -2120,8 +2125,13 @@ msgid "Do you want to update used procedures in stock?"
 msgstr "Desea actualizar los procedimientos usados en el inventario?"
 
 #. module: clinica_doctor_data
-#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Do you want to validate used procedures in stock?"
+msgstr "Desea continuar con la cancelación de la cirugía?"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
+msgid "Do you want to continue?"
 msgstr "Desea confirmar los productos solicitados? Y verificar desde productos si es un producto facturable como adicional"
 
 #. module: clinica_doctor_data
@@ -5460,6 +5470,46 @@ msgstr "Surgery Room Procedure Number:"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Surgery Room Procedures"
 msgstr "Proc. Sala Cirugía"
+
+#. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.calendar_cancel_action
+msgid "Cancelation"
+msgstr "Cirugías canceladas"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.menu,name:clinica_doctor_data.calendar_cancel_menu
+msgid "Calendar Canceled"
+msgstr "Cirugías canceladas"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_calendar_cancel_name
+msgid "Origin"
+msgstr "Origen"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_calendar_cancel_user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_calendar_cancel_patient_id
+msgid "Patient"
+msgstr "Paciente"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_calendar_cancel_order_id
+msgid "Order Linked"
+msgstr "Venta Asociada"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_calendar_cancel_picking_id
+msgid "Picking Linked"
+msgstr "Movimiento Asociado"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_calendar_cancel_cancel_date
+msgid "Cancel date"
+msgstr "Fecha Cancelada"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_surgery_room_procedures_tree

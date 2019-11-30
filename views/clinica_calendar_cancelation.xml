@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <data>
+
+    <!-- Calendar Cancel Tree View -->
+    <record id="calendar_cancel_tree_view" model="ir.ui.view">
+      <field name="name">calendar.cancel.tree.view</field>
+      <field name="model">clinica.calendar.cancel</field>
+      <field name="arch" type="xml">
+        <tree default_order="name desc"
+              create="false" edit="false">
+          <field name="cancel_date"/>
+          <field name="name"/>
+          <field name="patient_id"/>
+          <field name="user_id"/>
+          <field name="order_id"/>
+          <field name="description" invisible="1"/>
+          <field name="picking_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- Calendar Cancel Form View -->
+    <record id="calendar_cancel_form_view" model="ir.ui.view">
+      <field name="name">calendar.cancel.form.view</field>
+      <field name="model">clinica.calendar.cancel</field>
+      <field name="arch" type="xml">
+        <form string="Cancel Deatails" create="false" edit="false">
+          <sheet>
+            <group name="general_view">
+              <!-- <h1># Cirugía</h1><br/> -->
+              <h1><field name="name" readonly="1"/></h1><br/>
+              <group name="left_group">
+                <field name="cancel_date"/>
+                <field name="patient_id"/>
+                <field name="user_id"/>
+              </group>
+              <group name="left_group">
+                <field name="order_id"/>
+                <field name="picking_id"/>
+                <field name="description" invisible="1"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Calendar Cancel Search View -->
+    <record id="calendar_cancel_search_view" model="ir.ui.view">
+      <field name="name">calendar_cancel_search_view</field>
+      <field name="model">clinica.calendar.cancel</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <field name="patient_id"/>
+          <field name="user_id"/>
+        </search>
+      </field>
+    </record>
+    
+
+    <!-- Calendar Cancel Action -->
+    <record id="calendar_cancel_action" model="ir.actions.act_window">
+        <field name="name">Cancelation</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">clinica.calendar.cancel</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="calendar_cancel_tree_view"/>
+    </record>
+
+    <menuitem name="Calendar Canceled" id="calendar_cancel_menu" parent="clinica_doctor_data.menu_doctor_config_details"
+          action="calendar_cancel_action" sequence="20"/>
+
+  </data>
+</odoo>

@@ -19,29 +19,34 @@
 #
 ###############################################################################
 
-from . import doctor_details
-from . import res_config_settings
-from . import clinica_text_template
-from . import res_partner
-from . import doctor_product 
-from . import doctor_attentions
-from . import doctor_surgical_technologist
-from . import quirurgic_sheet
-from . import nurse_sheet
-from . import nurse_chief_sheet
-from . import recovery_sheet
-from . import plastic_surgery_sheet
-from . import doctor_calendar
-from . import anhestesic_registry
-from . import medical_evolution
-from . import doctor_epicrisis
-from . import quirurgical_check_list
-from . import clinica_record_list_visualizer
-from . import post_anhestesic_care
-from . import invoice
-from . import doctor_prescription
-from . import record_authenticate
-from . import clinica_calendar_cancelation
+
+# import logging
+# logger = logging.getLogger(__name__)
+
+from odoo import models, fields, api, _
 
 
+class ClinicaCalendarCancel(models.Model):
+    _name = "clinica.calendar.cancel"
+    _order = 'id desc'
+    _description = 'Clinica Process Cancelation'
+    
+    name = fields.Char(string='Origin')
+    user_id = fields.Many2one('res.users', string="User")
+    patient_id = fields.Many2one('doctor.patient', string="Patient")
+    order_id = fields.Many2one('sale.order', string="Order Linked")
+    picking_id = fields.Many2one('stock.picking', string="Picking Linked")
+    description = fields.Text(string='Note')
+    cancel_date = fields.Datetime(string='Cancel date')
+
+# class InheritDoctorWaitingRoom(models.Model):
+#     _inherit = "doctor.waiting.room"
+
+#     active = fields.Boolean('Active')
+            
+    
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
+
+
+
+
