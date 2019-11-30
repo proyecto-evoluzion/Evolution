@@ -702,11 +702,34 @@ class DoctorWaitingRoom(models.Model):
 
     @api.multi
     def action_cancel_procedure(self):
-        raise ValidationError(_("Esta acción estara habilitada en los próximos días."))
-        # for room in self:
-        #     room.sale_order_id = room._create_so().id
-        #     room.state = 'ordered'
-        # return self.action_view_sale_order()
+        #DevFree:
+        picking_obj = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
+        self.env['clinica.calendar.cancel'].create({
+                'name': self.name,
+                'user_id': self.env.user.id,
+                'patient_id': self.patient_id.id,
+                'cancel_date': fields.Datetime.now(),
+                'order_id': self.sale_order_id.id,
+                'picking_id': picking_obj.id,
+                })
+        if self.sale_order_id:
+            if self.sale_order_id.state == 'sale':
+                if picking_obj:
+                    picking_obj.state = 'cancel'
+            self.sale_order_id.state = 'cancel'
+        schedule_obj = self.env['doctor.schedule'].search([('room_ids','in',[self.id])])
+        if schedule_obj:
+            schedule_time_obj = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',schedule_obj.id)])
+            schedule_time_obj.unlink()
+            schedule_obj.unlink()
+        self.unlink()
+
+        action = self.env.ref('clinica_doctor_data.action_clinica_surgery_room_procedures')
+        result = action.read()[0]
+        res = self.env.ref('clinica_doctor_data.clinica_surgery_room_procedures_tree', False)
+        result['views'] = [(res and res.id or False, 'tree')]
+        # result['res_id'] = nurse_chief_sheet_ids.id
+        return result
     
     @api.multi
     def action_create_so(self):
