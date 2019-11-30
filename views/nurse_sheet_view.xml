@@ -24,7 +24,8 @@
 	                <field name="procedure_date" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
 	                <field name="anhestesic_registry_id" domain="[('room_id','=',room_id)]" attrs="{'readonly':[('state','=','closed')]}" invisible="1"/> <!--This is not being used right now, so i hidded it-->
                   <field name="updated_stock" invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
-	                <field name="professional_id" invisible="1"/>
+                  <field name='professional_id' invisible="1"/>
+                  <field name='background_edit_flag' invisible="1"/>
             	</group>
             </group>
             <group name='patient_info'>
@@ -106,61 +107,61 @@
               <field name="readonly_bool" invisible="1"/>
       				<group name="pathological_background" >
        					<group name="pathological_background_sub1">
-       						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="hypertension" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="hypertension" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        					</group>
        					<group name="pathological_background_sub2">
-       						<field name="arthritis" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="thyroid_disease" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="arthritis" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="thyroid_disease" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        					</group>
        				</group>
        				<group name="pathological" colspan="2" col='1'>
        					<label for="pathological" string="Pathological" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       					<field name="pathological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					<field name="pathological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        				</group>
        				<group name="surgical" colspan="2" col='1'>
        					<label for="surgical" string="Surgical" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       					<field name="surgical" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       					<field name="surgical" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        				</group>
        				<group name="patient_backgorund_main" >
        					<group name="patient_backgorund_sub1" >
-       						<field name="smoke" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="smoke" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        						<label for="cigarate_daily" string="Cigarettes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
                             <div>
                                 <div>
-                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                    <field name="cigarate_daily" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                 </div>
                             </div>
-       						<field name="is_alcoholic" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="is_alcoholic" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        						<label for="alcohol_frequency" string="Frequency"/>
                             <div>
                                 <div>
-                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+                                    <field name="alcohol_frequency"  nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+                                    <field name="alcohol_frequency_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                                 </div>
                             </div>
-       						<field name="marijuana" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="cocaine" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="ecstasy" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="marijuana" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="cocaine" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="ecstasy" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        						
        					</group>
        					<group name="patient_backgorund_sub2" >
-       						<field name="body_background_others" string="Others" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="pharmacological" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="allergic" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="body_background_others" string="Others" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="pharmacological" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="allergic" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        					</group>
        				</group>
-       				<group name="patient_female_backgorund_main" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}">
+       				<group name="patient_female_backgorund_main" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}">
        					<group name="patient_female_backgorund_sub1" >
-       						<field name="pregnancy_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="child_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="abortion_number" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="pregnancy_number" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="child_number" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="abortion_number" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        					</group>
        					<group name="patient_female_backgorund_sub2" >
-       						<field name="last_birth_date" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="last_menstruation_date" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
-       						<field name="contrtaceptive_methods" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="last_birth_date" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="last_menstruation_date" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+       						<field name="contrtaceptive_methods" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
        					</group>
        				</group>
       			</page>

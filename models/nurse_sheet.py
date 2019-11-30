@@ -44,6 +44,12 @@ class ClinicaNurseSheet(models.Model):
             if groups.id == self.env.ref('clinica_doctor_data.nursing_assistant').id or groups.id == self.env.ref('clinica_doctor_data.surgical_technologist').id:
                 return True
         return False
+
+    def _default_professional(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        user_obj = self.env['res.users'].search([('id','=',user_id)])
+        return user_obj.id
     
     name = fields.Char(string='Name', copy=False)
     procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
@@ -55,6 +61,8 @@ class ClinicaNurseSheet(models.Model):
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')
+    professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)
+    background_edit_flag = fields.Boolean('Background Flag', default=False)
     middlename = fields.Char(string='Second Name')
     surname = fields.Char(string='Second Last Name')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
@@ -105,7 +113,6 @@ class ClinicaNurseSheet(models.Model):
     surgery_start_time = fields.Float(string="Surgery Start Time")
     surgery_end_time = fields.Float(string="Surgery End Time")
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
-    professional_id = fields.Many2one('doctor.professional', 'Professional')
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
@@ -114,6 +121,19 @@ class ClinicaNurseSheet(models.Model):
                 rec.numberid_integer = int(rec.patient_id.name) if rec.patient_id else False
             except:
                 rec.numberid_integer = 0
+
+    @api.onchange('professional_id')
+    def onchange_professional_id(self):
+        if self.professional_id:
+            user_groups_list = []
+            for user_groups in self.professional_id.groups_id:
+                user_groups_list.append(user_groups.id)
+            surgery_group = self.env.ref('clinica_doctor_data.surgeon')
+            anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+            if anhestesic_group.id in user_groups_list:
+                self.background_edit_flag = True
+            if surgery_group.id in user_groups_list:
+                self.background_edit_flag = True
 
     @api.depends('patient_id')
     def _compute_numberid(self):
