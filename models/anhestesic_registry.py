@@ -285,36 +285,40 @@ class AnhestesicRegistry(models.Model):
             self.blood_type = self.patient_id.blood_type
             self.blood_rh = self.patient_id.blood_rh
             if self.room_id:
-            	presurgical_obj = self.env['doctor.presurgical.record'].search([('patient_id','=',self.patient_id.id), ('lead_id','=',self.room_id.id)], limit=1)
-            	if presurgical_obj:
-            		if presurgical_obj.paraclinical_goldman:
-            			cad = presurgical_obj.paraclinical_goldman
-            			cad = cad[0:5]+''+cad[6:]
-            			self.paraclinical_goldman = cad
-            		self.paraclinical_exam_date = presurgical_obj.paraclinical_exam_date
-            		self.paraclinical_hb = presurgical_obj.paraclinical_hb
-            		self.paraclinical_hto = presurgical_obj.paraclinical_hto
-            		self.paraclinical_leukocytes = presurgical_obj.paraclinical_leukocytes
-            		self.paraclinical_differential = presurgical_obj.paraclinical_differential
-            		self.paraclinical_vsg = presurgical_obj.paraclinical_vsg
-            		self.paraclinical_tc = presurgical_obj.paraclinical_tc
-            		self.paraclinical_pt = presurgical_obj.paraclinical_pt
-            		self.paraclinical_ptt = presurgical_obj.paraclinical_ptt
-            		self.paraclinical_platelets = presurgical_obj.paraclinical_platelets
-            		self.paraclinical_glycemia = presurgical_obj.paraclinical_glycemia
-            		self.paraclinical_creatinine = presurgical_obj.paraclinical_creatinine
-            		self.paraclinical_albumin = presurgical_obj.paraclinical_albumin
-            		self.paraclinical_glob = presurgical_obj.paraclinical_glob
-            		self.paraclinical_others = presurgical_obj.paraclinical_others
-            		self.dental_prostheses = presurgical_obj.dental_prostheses
-            		self.disease_id = presurgical_obj.disease_id
-            		self.disease_state = presurgical_obj.disease_state
-            		self.disease2_id = presurgical_obj.disease2_id
-            		self.disease_state2 = presurgical_obj.disease_state2
-            		self.disease3_id = presurgical_obj.disease3_id
-            		self.disease_state3 = presurgical_obj.disease_state3
-            		self.plan_analysis = presurgical_obj.plan_analysis
-            		self.medical_recipe = presurgical_obj.medical_recipe
+                presurgical_obj = self.env['doctor.presurgical.record'].search([('patient_id','=',self.patient_id.id), ('lead_id','=',self.room_id.id)], limit=1)
+                if presurgical_obj:
+                    if presurgical_obj.paraclinical_goldman:
+                        cad = presurgical_obj.paraclinical_goldman
+                        cad = cad[0:5]+''+cad[6:]
+                        self.paraclinical_goldman = cad
+                    self.paraclinical_exam_date = presurgical_obj.paraclinical_exam_date
+                    self.paraclinical_hb = presurgical_obj.paraclinical_hb
+                    self.paraclinical_hto = presurgical_obj.paraclinical_hto
+                    self.paraclinical_leukocytes = presurgical_obj.paraclinical_leukocytes
+                    self.paraclinical_differential = presurgical_obj.paraclinical_differential
+                    self.paraclinical_vsg = presurgical_obj.paraclinical_vsg
+                    self.paraclinical_tc = presurgical_obj.paraclinical_tc
+                    self.paraclinical_pt = presurgical_obj.paraclinical_pt
+                    self.paraclinical_ptt = presurgical_obj.paraclinical_ptt
+                    self.paraclinical_platelets = presurgical_obj.paraclinical_platelets
+                    self.paraclinical_glycemia = presurgical_obj.paraclinical_glycemia
+                    self.paraclinical_creatinine = presurgical_obj.paraclinical_creatinine
+                    self.paraclinical_albumin = presurgical_obj.paraclinical_albumin
+                    self.paraclinical_glob = presurgical_obj.paraclinical_glob
+                    self.paraclinical_ecg = presurgical_obj.paraclinical_ecg
+                    self.paraclinical_others = presurgical_obj.paraclinical_others
+                    self.dental_prostheses = presurgical_obj.dental_prostheses
+                    self.disease_id = presurgical_obj.disease_id
+                    self.disease_state = presurgical_obj.disease_state
+                    self.disease2_id = presurgical_obj.disease2_id
+                    self.disease_state2 = presurgical_obj.disease_state2
+                    self.disease3_id = presurgical_obj.disease3_id
+                    self.disease_state3 = presurgical_obj.disease_state3
+                    self.plan_analysis = presurgical_obj.plan_analysis
+                    self.medical_recipe = presurgical_obj.medical_recipe
+                    self.paraclinical_rx_chest = presurgical_obj.paraclinical_rx_chest
+                    self.paraclinical_asa = presurgical_obj.paraclinical_asa
+                    self.mallampati_scale = presurgical_obj.mallampati_scale
             
             
     @api.onchange('medical_recipe_template_id')
