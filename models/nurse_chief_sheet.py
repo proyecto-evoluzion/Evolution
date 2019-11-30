@@ -230,14 +230,22 @@ class ClinicaNurseChief(models.Model):
 
     @api.multi
     def action_validate_oders(self):
-    	flag = True
-    	for nurse_chief_sheet in self:
-    		for procedure_line in nurse_chief_sheet.procedure_ids:
-    			if procedure_line.move_id:
-    				procedure_line.move_id.quantity_done = procedure_line.quantity_done
-    			if procedure_line.product_id.is_invoice_supply:
-        			if flag:
-        				vals = {
+        flag = True
+        for nurse_chief_sheet in self:
+            rest = []
+            for procedure_line in nurse_chief_sheet.procedure_ids:
+                if procedure_line.product_id.is_invoice_supply:
+                    # move_id = self.env['stock.move'].create({
+                    # 'location_id': self.env.ref('stock.stock_location_locations').id,
+                    # 'location_dest_id': self.env.ref('stock.stock_location_customers').id,
+                    # 'product_id': procedure_line.product_id.id,
+                    # 'product_uom_qty': procedure_line.quantity_done,
+                    # 'name': procedure_line.product_id.name,
+                    # 'product_uom': procedure_line.product_id.id,
+                    # })
+                    # rest.append(move_id.id)
+                    if flag:
+                        vals = {
         					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
         					'validity_day': (dt.date.today()).today(),
         					'order_line': [(0, 0, {
@@ -247,11 +255,23 @@ class ClinicaNurseChief(models.Model):
     		                'price_unit': procedure_line.product_id.lst_price,
     		                'tax_id': procedure_line.product_id.taxes_id.id,
     		            	})],
-    		            	'state': 'sale',
+    		            	'state': 'draft',
         				}
-        				self.env['sale.order'].create(vals)
-    		nurse_chief_sheet.validate_oders = True
-    	return True
+                        order_id = self.env['sale.order'].create(vals)
+
+            # sequence_obj = self.env['ir.sequence'].search([('prefix', 'in', ['WH/OUT/'])])
+            # self.env['stock.picking'].create({
+            #     'name': sequence_obj.prefix+str(sequence_obj.number_next_actual),
+            #     'origin': order_id.name,
+            #     'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+            #     'scheduled_date': fields.Datetime.now(),
+            #     'location_id': self.env.ref('stock.stock_location_locations').id,
+            #     'location_dest_id': self.env.ref('stock.stock_location_customers').id,
+            #     'picking_type_id': self.env.ref('stock.picking_type_out').id,
+            #     'move_lines': [(6,0,rest)],
+            #     })
+            nurse_chief_sheet.validate_oders = True
+        return True
     
     
     @api.multi
