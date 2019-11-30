@@ -61,7 +61,7 @@ class ClinicaNurseChief(models.Model):
                                          compute='_compute_age_meassure_unit')
     gender = fields.Selection([('male','Male'), ('female','Female')], string='Gender')
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
-    vital_sign_ids = fields.One2many('nurse.chief.sheet.vital.signs', 'recovery_sheet_id', string='Vital signs', copy=False)
+    vital_sign_ids = fields.One2many('nurse.sheet.vital.signs', 'nurse_chief_sheet_id', string='Vital signs', copy=False)
     readonly_bool = fields.Boolean('Actual User', default=_current_uid)
     diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
     hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
@@ -284,9 +284,9 @@ class ClinicaNurseChief(models.Model):
     
   
 class NurseSheetVitalSigns(models.Model):
-    _inherit = "nurse.chief.sheet.vital.signs"
+    _inherit = "nurse.sheet.vital.signs"
     
-    recovery_sheet_id = fields.Many2one('clinica.nurse.chief.sheet', string='Recovery Sheet', copy=False, ondelete='cascade')
+    nurse_chief_sheet_id = fields.Many2one('clinica.nurse.chief.sheet', string='Recovery Sheet', copy=False, ondelete='cascade')
 
 
 class NurseSheetProcedures(models.Model):
