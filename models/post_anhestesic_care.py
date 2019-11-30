@@ -45,7 +45,8 @@ class ClinicaPostAnhestesicCare(models.Model):
 	medical_record= fields.Char(string='HC')
 	bed = fields.Char(string='Cama')
 	date = fields.Datetime(string='Fecha y Hora', default=fields.Datetime.now)
-	procedure = fields.Char(string='Procedimiento')
+	# procedure = fields.Char(string='Procedimiento')
+	procedure = fields.Many2many('product.product',ondelete='restrict', domain=[('is_health_procedure','=', True)])
 	duration = fields.Float(string='Duración (en horas)')
 	surgeon_id = fields.Many2one('doctor.professional', string='Cirujano')
 	anesthesiologist_id = fields.Many2one('doctor.professional', string='Anestesiólogo')
@@ -76,19 +77,22 @@ class ClinicaPostAnhestesicCare(models.Model):
 	@api.onchange('room_id')
 	def onchange_room_id(self):
 		if self.room_id:
+			list_ids = []
 			self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
+			self.duration = self.room_id.duration or 0.00
+			for procedure_ids in self.room_id.procedure_ids:
+				for products in procedure_ids.product_id:
+					list_ids.append(products.id)
+			self.procedure = [(6, 0, list_ids)]
 
 
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
 		if self.patient_id:
-			print(self.room_id)
-			print(self.room_id.procedure)
-			print(self.room_id.surgeon_id)
 			self.numberid = self.patient_id.ref
 			self.numberid = self.patient_id._name
 			self.document_type = self.patient_id.tdoc
-			self.procedure = self.room_id.procedure
+			self.room_id = self.room_id and self.room_id.id or False
 			self.surgeon_id = self.room_id.surgeon_id and self.room_id.surgeon_id.id or False
 			self.nurse_id = self.room_id.circulating_id and self.room_id.circulating_id.id or False
 			self.anesthesiologist_id = self.room_id.anesthesiologist_id and self.room_id.anesthesiologist_id.id or False
