@@ -3142,7 +3142,7 @@ msgstr "¿Es un procedimiento en salud?"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_product_product_is_invoice_supply
 msgid "Is Invoice Supply?"
-msgstr "¿Es un insumo facturable?"
+msgstr "¿Facturación Adicional?"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_is_scheduled
@@ -4299,7 +4299,7 @@ msgstr "Pacientes"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_pay
 msgid "Pay"
-msgstr "Pay"
+msgstr "Paga"
 
 #. module: clinica_doctor_data
 #: selection:clinica.post.anhestesic.care,anhestesia:0
