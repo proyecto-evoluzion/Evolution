@@ -24,7 +24,8 @@
             <group>
             <group>
               <field name="medical_record" invisible="1"/>
-              <field name="procedure" attrs="{'readonly':[('state','=','closed')]}"/>
+              <!-- <field name="procedure" attrs="{'readonly':[('state','=','closed')]}"/> -->
+              <field name="procedure"  attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
               <field name="surgeon_id" attrs="{'readonly':[('state','=','closed')]}"/>
               <field name="nurse_id" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
