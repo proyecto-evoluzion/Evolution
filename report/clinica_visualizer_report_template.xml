@@ -130,10 +130,10 @@
        						<t t-if="quirgic_sheet.helper_id">Surgical Helpers: <span style="padding-left:2px;" t-field="quirgic_sheet.helper_id"/></t>
        					</td>
        				</tr>
-       				<tr t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_id or quirgic_sheet.user_id">
+       				<tr t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_ids or quirgic_sheet.user_id">
        					<td colspan="2" style="text-align:center; "><strong>OTHER DETAILS</strong></td>
        				</tr>
-       				<tr t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_id or quirgic_sheet.user_id">
+       				<tr t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_ids or quirgic_sheet.user_id">
        					<td style="width:50%; ">
        						<t t-if="quirgic_sheet.procedure_scope">Scope of the Procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_scope"/><br/></t> 
        						<t t-if="quirgic_sheet.procedure_purpose">Purpose of the procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_purpose"/><br/></t>
@@ -141,7 +141,7 @@
        					</td>
        					<td style="width:50%; ">
        						<t t-if="quirgic_sheet.disease_id">Diagnosis: <span style="padding-left:2px;" t-field="quirgic_sheet.disease_id"/><br/></t>
-       						<t t-if="quirgic_sheet.procedure_id">Procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_id"/><br/></t>
+       						<t t-if="quirgic_sheet.procedure_ids">Procedures: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_ids"/><br/></t>
        						<t t-if="quirgic_sheet.user_id">Medical registry number: <span style="padding-left:2px;" t-field="quirgic_sheet.user_id"/></t>
        					</td>
        				</tr>
