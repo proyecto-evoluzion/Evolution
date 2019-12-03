@@ -173,6 +173,9 @@ class PresurgicalRecord(models.Model):
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     lead_id = fields.Many2one('doctor.waiting.room', string='Lead', copy=False) # this is the related Proced. Schedule attached to the lead
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    review_note = fields.Text('Review Note')
+    review_active = fields.Boolean('Is Review Note?')
+    review_readonly = fields.Boolean('set to readonly')
     
     @api.onchange('professional_id')
     def onchange_professional_id(self):
@@ -313,7 +316,9 @@ class PresurgicalRecord(models.Model):
     
     
     @api.multi
-    def write(self, vals):        
+    def write(self, vals):
+        if vals.get('review_note', False):
+            self.review_readonly = True
         res = super(PresurgicalRecord, self).write(vals)
 #         self._check_document_types()
         return res
@@ -349,6 +354,10 @@ class PresurgicalRecord(models.Model):
     def action_set_close(self):
         for record in self:
             record.state = 'closed'
+
+    def review_note_trigger(self):
+        if not self.review_active:
+            self.write({'review_active': True})
     
     
     

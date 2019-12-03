@@ -113,6 +113,9 @@ class ClinicaNurseSheet(models.Model):
     surgery_start_time = fields.Float(string="Surgery Start Time")
     surgery_end_time = fields.Float(string="Surgery End Time")
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    review_note = fields.Text('Review Note')
+    review_active = fields.Boolean('Is Review Note?')
+    review_readonly = fields.Boolean('set to readonly')
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
@@ -230,6 +233,9 @@ class ClinicaNurseSheet(models.Model):
             last_procedure = self.invoice_procedure_ids[invc_proc_num-1]
             first_procedure.procedure_start_time = self.surgery_start_time
             last_procedure.procedure_end_time = self.surgery_end_time
+
+    def review_note_trigger(self):
+        self.review_active = True
             
     @api.onchange('anhestesic_registry_id')
     def onchange_anhestesic_registry_id(self):
@@ -287,6 +293,8 @@ class ClinicaNurseSheet(models.Model):
     
     @api.multi
     def write(self, vals):
+        if vals.get('review_note', False):
+            self.review_readonly = True
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:

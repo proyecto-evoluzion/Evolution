@@ -73,6 +73,9 @@ class ClinicaPostAnhestesicCare(models.Model):
 	total = fields.Integer(string='Total (cc)', compute='_get_sum', store=True, help="Total in cubic centimeters")
 	room_id = fields.Many2one('doctor.waiting.room', string="Surgery Room/Appointment", copy=False)
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	review_note = fields.Text('Review Note')
+	review_active = fields.Boolean('Is Review Note?')
+	review_readonly = fields.Boolean('set to readonly')
     
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -107,7 +110,18 @@ class ClinicaPostAnhestesicCare(models.Model):
 	@api.multi
 	def action_set_close(self):
 		for record in self:
-			record.state = 'closed'	
+			record.state = 'closed'
+
+	@api.multi
+	def write(self, vals):
+		if vals.get('review_note', False):
+			self.review_readonly = True
+		res = super(ClinicaPostAnhestesicCare, self).write(vals)
+		return res
+
+	def review_note_trigger(self):
+		if not self.review_active:
+			self.write({'review_active': True})
 
 
 class PostAnhestesicCareVitalSigns(models.Model):

@@ -116,6 +116,9 @@ class DoctorQuirurgicSheet(models.Model):
 	thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	review_note = fields.Text('Review Note')
+	review_active = fields.Boolean('Is Review Note?')
+	review_readonly = fields.Boolean('set to readonly')
 
 	@api.depends('patient_id')
 	def _compute_numberid_integer(self):
@@ -224,16 +227,19 @@ class DoctorQuirurgicSheet(models.Model):
 	
 	@api.multi
 	def write(self, vals):
+		if vals.get('review_note', False):
+			self.review_readonly = True
+		if vals.get('state', False):
+			self.state = 'closed'
 		vals['name'] = self.env['ir.sequence'].next_by_code('doctor.quirurgic.sheet') or '/'
 
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
 				raise ValidationError(warn_msg)
-		
+
 		res = super(DoctorQuirurgicSheet, self).write(vals)
 		self._check_document_types()
-		self.state = 'closed'
 		return res
 	
 	@api.multi
@@ -263,6 +269,10 @@ class DoctorQuirurgicSheet(models.Model):
 	def action_set_close(self):
 		for record in self:
 			record.state = 'closed'
+
+	def review_note_trigger(self):
+		if not self.review_active:
+			self.write({'review_active': True})
 	
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
 

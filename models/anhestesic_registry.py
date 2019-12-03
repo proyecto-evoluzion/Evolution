@@ -219,6 +219,9 @@ class AnhestesicRegistry(models.Model):
     recovery_transfer_time = fields.Float(string="Transfer Time to Recovery")
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery', copy=False)
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    review_note = fields.Text('Review Note')
+    review_active = fields.Boolean('Is Review Note?')
+    review_readonly = fields.Boolean('set to readonly')
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
@@ -351,6 +354,8 @@ class AnhestesicRegistry(models.Model):
     
     @api.multi
     def write(self, vals):
+        if vals.get('review_note', False):
+            self.review_readonly = True
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
@@ -386,6 +391,10 @@ class AnhestesicRegistry(models.Model):
     def action_set_close(self):
         for record in self:
             record.state = 'closed'
+
+    def review_note_trigger(self):
+        if not self.review_active:
+            self.write({'review_active': True})
         
 class AnhestesicRegistryMonitor(models.Model):
     _name = "clinica.anhestesic.registry.monitor"  

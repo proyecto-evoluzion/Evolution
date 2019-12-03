@@ -91,6 +91,9 @@ class ClinicaNurseChief(models.Model):
     last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
     last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
     contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
+    review_note = fields.Text('Review Note')
+    review_active = fields.Boolean('Is Review Note?')
+    review_readonly = fields.Boolean('set to readonly')
 
     # anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry')   
     
@@ -221,6 +224,8 @@ class ClinicaNurseChief(models.Model):
     
     @api.multi
     def write(self, vals):
+        if vals.get('review_note', False):
+            self.review_readonly = True
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
@@ -272,6 +277,10 @@ class ClinicaNurseChief(models.Model):
             #     })
             nurse_chief_sheet.validate_oders = True
         return True
+        
+    def review_note_trigger(self):
+        if not self.review_active:
+            self.write({'review_active': True})
     
     
     @api.multi
