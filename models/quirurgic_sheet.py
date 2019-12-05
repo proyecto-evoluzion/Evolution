@@ -230,7 +230,7 @@ class DoctorQuirurgicSheet(models.Model):
 		if vals.get('review_note', False):
 			self.review_readonly = True
 		if vals.get('state', False):
-			self.state = 'closed'
+			vals['state'] = 'closed'
 		vals['name'] = self.env['ir.sequence'].next_by_code('doctor.quirurgic.sheet') or '/'
 
 		if vals.get('birth_date', False):

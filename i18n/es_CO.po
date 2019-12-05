@@ -810,6 +810,7 @@ msgstr "Registros Anestésia"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_anhestesic_registry_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_anhestesic_registry_id
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Anhestesic Registry"
 msgstr "Registro Anestésia"
 
@@ -1712,6 +1713,7 @@ msgstr "Cristaloides:"
 #. module: clinica_doctor_data
 #: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_post_anhestesic_care
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_post_anhestesic_care
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Cuidado Post-Anestésico"
 msgstr "Cuidado Post-Anestésico"
 
@@ -2158,6 +2160,11 @@ msgstr "Profesionales Responsables"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Appointment"
 msgstr "Cita"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
+msgid "Appointments"
+msgstr "Citas"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.accounting_assistant
@@ -3911,6 +3918,7 @@ msgstr "Registro de enfermería N°:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_nurse_sheet_ids
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Nurse Sheets"
 msgstr "Hoja de Enfermería"
 
@@ -4531,6 +4539,7 @@ msgstr "Registros PreAnestésicos"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Pre-Surgical Records"
 msgstr "F. Pre-Anestésicos"
 
@@ -5469,6 +5478,11 @@ msgstr "Surgery Room Procedure Number:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_waiting_room_ids
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_surgery_room_procedures
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
+msgid "Surgery Room Procedures"
+msgstr "Proc. Sala Cirugía"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Surgery Room Procedures"
 msgstr "Proc. Sala Cirugía"
 
