@@ -975,6 +975,11 @@ msgid "Attention number"
 msgstr "Atención Nº"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_plastic_surgery_surgical
+msgid "Surgical"
+msgstr "Quirúrgicos"
+
+#. module: clinica_doctor_data
 #: selection:doctor.patient,accompany_relationship:0
 #: selection:doctor.patient,responsible_relationship:0
 msgid "Aunt"
@@ -4435,6 +4440,11 @@ msgid "Plastic Surgery Sheet"
 msgstr "HC Cirugía Plástica"
 
 #. module: clinica_doctor_data
+#: model:ir.actions.act_window,name:clinica_doctor_data.action_clinica_medical_evolution
+msgid "Evolutions Sheet"
+msgstr "Hoja de evoluciones"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_record_list_visualizer_plastic_surgery_ids
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_patient_plastic_surgery_ids
 msgid "Plastic Surgery Sheets"
@@ -4632,6 +4642,7 @@ msgstr "Hora fin de cirugía"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_document_type
 msgid "Type of Document"
 msgstr "Tipo de documento"
 
@@ -6677,9 +6688,14 @@ msgid "End"
 msgstr "Finaliza"
 
 #. module: clinica_doctor_data
-#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_note
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_nurse_sheet_vital_signs_note
 msgid "Note"
 msgstr "Nota"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_note
+msgid "Note"
+msgstr "Nota de enfermería"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_surgical_technologist_recount_ids
