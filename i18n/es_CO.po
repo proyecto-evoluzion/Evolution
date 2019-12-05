@@ -4621,6 +4621,26 @@ msgid "Procedure Date"
 msgstr "Fecha del procedimiento"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_surgery_start_time
+msgid "Surgery Start time"
+msgstr "Hora de inicio cirugía"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_surgery_end_time
+msgid "Surgery end time"
+msgstr "Hora fin de cirugía"
+
+#. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_document_type
+msgid "Type of Document"
+msgstr "Tipo de documento"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+msgid "Load from Anesthesia"
+msgstr "Cargar de anestesia"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_procedure_datetime
 msgid "Procedure Date/Time"
 msgstr "Fecha/Hora Procedimiento"
@@ -4651,6 +4671,8 @@ msgstr "La cuenta del procedimiento la paga"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_procedure_ids
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_procedure_ids
 msgid "Procedure:"
 msgstr "Procedimiento:"
 
@@ -5543,6 +5565,11 @@ msgid "Surgery Room/Appointment"
 msgstr "Cirugía"
 
 #. module: clinica_doctor_data
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_epicrisis_room_id
+msgid "Surgery Room/Appointment"
+msgstr "Sala de cirugía"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Surgery Room:"
 msgstr "Surgery Room:"
@@ -5915,6 +5942,7 @@ msgstr "Tipo de anestesia:"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_professional_tdoc
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_quirurgic_sheet_document_type
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_document_type
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_prescription_document_type
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_doctor_administrative_data_filter
 msgid "Type of Document"
