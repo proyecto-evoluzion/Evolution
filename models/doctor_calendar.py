@@ -703,7 +703,7 @@ class DoctorWaitingRoom(models.Model):
     @api.multi
     def action_cancel_procedure(self):
         #DevFree:
-        picking_obj = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id)])
+        picking_obj = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id),('state','in',['assigned','done'])])
         self.env['clinica.calendar.cancel'].create({
                 'name': self.name,
                 'user_id': self.env.user.id,
