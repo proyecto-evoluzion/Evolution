@@ -46,7 +46,7 @@
 		       					<field name="pathological" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
 		       				</group>
                             <group name="surgical" colspan="2" col='1'>
-                                <label for="surgical" string="Surgical"/>
+                                <label for="surgical" string="Quirúrgicos"/>
                                 <field name="surgical" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
                             </group>
                             <group name="toxic" colspan="2" col='1'>
