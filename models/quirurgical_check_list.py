@@ -131,6 +131,9 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	observations = fields.Text(string="Observaciones")
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	review_note = fields.Text('Review Note')
+	review_active = fields.Boolean('Is Review Note?')
+	review_readonly = fields.Boolean('set to readonly')
 
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -149,7 +152,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
 			#DevFree: Asigning current doctor user to signing_doctor field.
 			user = self.env.user
 			professional = self.env['doctor.professional'].search([('res_user_id','=',user.id)])
-			self.signing_doctor = professional.firstname +' '+ professional.lastname
+			if professional:
+				self.signing_doctor = professional.firstname +' '+ professional.lastname
 			#DevFree: Asigning current surgery procedures
 			for proc in self.room_id:
 				for proc_ids in proc.procedure_ids:
@@ -200,6 +204,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	
 	@api.multi
 	def write(self, vals):
+		if vals.get('review_note', False):
+			self.review_readonly = True
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
@@ -210,7 +216,11 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	@api.multi
 	def action_set_close(self):
 		for record in self:
-			record.state = 'closed'  
+			record.state = 'closed'
+
+	def review_note_trigger(self):
+		if not self.review_active:
+			self.write({'review_active': True})
 
 
 	

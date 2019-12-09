@@ -185,7 +185,7 @@
                 attrs="{'invisible':['|',('state','!=','closed'),('review_active','=',True)]}"/>
             <div class="oe_title" attrs="{'invisible':[('review_active','!=',True)]}">
                 <h2>
-                    Notas aclaratorias
+                    Nota aclaratoria
                 </h2>
             </div>
             <field name="review_active" invisible="1"/>

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data noupdate="0">
+
+        <record id="from_partner_to_patient" model="ir.cron">
+            <field name="name">Partner - Patient</field>
+            <field name="user_id" ref="base.user_root"></field>
+            <field name="active" eval="True"/>
+            <field name="doall" eval="True"/>
+            <field name="priority">1</field>
+            <field name="interval_number">1</field>
+            <field name="numbercall">-1</field>
+            <field name="interval_type">months</field>
+            <field name="state">code</field>
+            <field name="model_id" ref="clinica_doctor_data.model_res_partner"></field>
+            <field name="code">model.from_partner_to_patient()</field>
+        </record>
+
         <record model="res.country.state.city" id="res_country_state_city_co_03001">
           <field name="name">USAQUÉN</field>
           <field name="code">05001</field>
