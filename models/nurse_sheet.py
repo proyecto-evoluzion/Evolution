@@ -222,7 +222,7 @@ class ClinicaNurseSheet(models.Model):
             room_change_vals = self._set_change_room_id(self.room_id)
             print (room_change_vals)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
-            self.professional_id = self.room_id.circulating_id and self.room_id.circulating_id.id or False
+            # self.professional_id = self.room_id.circulating_id and self.room_id.circulating_id.id or False
             self.procedure_ids = room_change_vals.get('procedure_ids', False)
             self.invoice_procedure_ids = room_change_vals.get('invoice_procedure_ids', False)
             
