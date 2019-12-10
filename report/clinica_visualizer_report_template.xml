@@ -80,6 +80,11 @@
         				</td>
        				</tr>
        			</table>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="nurse_sheet.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="nurse_sheet.review_note"/>
+            </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <!-- <div style="text-align: center; border-bottom: 1px solid black;">
               <strong>Professional:</strong> <span t-field="nurse_sheet.professional_id.firstname"/> <span t-field="nurse_sheet.professional_id.lastname"/> | <span><strong>Medical Record: </strong><span t-field="nurse_sheet.professional_id.medical_record"/></span>
@@ -162,6 +167,11 @@
                 </td>
        				</tr>
        			</table>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="quirgic_sheet.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="quirgic_sheet.review_note"/>
+            </div>
    				<p style="page-break-after: always;"/>
    			</t>
    			</div>
@@ -492,6 +502,11 @@
        					</td>
        				</tr>
    				</table>
+          <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="presurgical_record.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="presurgical_record.review_note"/>
+            </div>
           <!--Espacio reservado para imprimir la firma del profesional encargado-->
           <!-- <div style="text-align: center; border-bottom: 1px solid black;">
             <strong>Professional:</strong> <span t-field="nurse_sheet.professional_id.firstname"/> <span t-field="nurse_sheet.professional_id.lastname"/> | <span><strong>Medical Record: </strong><span t-field="nurse_sheet.professional_id.medical_record"/></span>
@@ -636,6 +651,11 @@
        					</td>
        				</tr>
        			</table>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="anhestesic_registry.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="anhestesic_registry.review_note"/>
+            </div>
        			<p style="page-break-after: always;"/>
        		</t>
        		</div>
@@ -848,6 +868,11 @@
        					</td>
        				</tr>
    				</table>
+          <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="plastic_surgery.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="plastic_surgery.review_note"/>
+            </div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -925,6 +950,11 @@
         				</td>
        				</tr>
    				</table>
+          <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="medical_evolution.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="medical_evolution.review_note"/>
+            </div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -984,6 +1014,11 @@
        					</td>
        				</tr>
        			</table>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="epicrisis.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="epicrisis.review_note"/>
+            </div>
        			<p style="page-break-after: always;"/>
        		</t>
        		</div>
@@ -1026,6 +1061,11 @@
                 </td>
               </tr>
             </table>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="prescription.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="prescription.review_note"/>
+            </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <!-- <div style="text-align: center; border-bottom: 1px solid black;">
               <strong>Professional:</strong> <span t-field="prescription.doctor_id.firstname"/> <span t-field="prescription.doctor_id.lastname"/> | <span><strong>Medical Record: </strong><span t-field="prescription.doctor_id.medical_record"/></span>

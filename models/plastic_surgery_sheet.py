@@ -129,6 +129,9 @@ class PlasticSurgerySheet(models.Model):
     medical_recipe_template_id = fields.Many2one('clinica.text.template', string='Template')
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    review_note = fields.Text('Review Note')
+    review_active = fields.Boolean('Is Review Note?')
+    review_readonly = fields.Boolean('set to readonly')
 
     @api.onchange('professional_id')
     def onchange_professional_id(self):
@@ -258,6 +261,8 @@ class PlasticSurgerySheet(models.Model):
     
     @api.multi
     def write(self, vals):
+        if vals.get('review_note', False):
+            self.review_readonly = True
         if vals.get('document_type', False) or 'numberid_integer' in  vals:
             if vals.get('document_type', False):
                 document_type = vals['document_type']
@@ -304,9 +309,10 @@ class PlasticSurgerySheet(models.Model):
     @api.multi
     def action_set_close(self):
         for record in self:
-            record.state = 'closed' 
-    
-    
-    
+            record.state = 'closed'
+
+    def review_note_trigger(self):
+        if not self.review_active:
+            self.write({'review_active': True})
     
     

@@ -29,6 +29,25 @@ class Partner(models.Model):
     professional_created = fields.Boolean(string="Professional Created", copy=False)
     is_assurance = fields.Boolean(string="Is it an Assurance Company?", copy=False)
     insurer_id = fields.Many2one('res.partner',string='Assurance Company')
-        
-        
-        
+
+    @api.model 
+    def from_partner_to_patient(self):
+    	partner_obj = self.search([('id','=',1318)])
+    	vals = {
+    		'firstname': partner_obj.x_name1,
+    		'lastname': partner_obj.x_lastname1,
+    		'middlename': partner_obj.x_name2,
+    		'surname': partner_obj.x_lastname2,
+    		'name': partner_obj.xidentification,
+    		'ref': partner_obj.xidentification,
+    		'tdoc': 'pa',
+    		'email': partner_obj.email,
+    		'phone': partner_obj.mobile or partner_obj.phone,
+    	}
+    	self.env['doctor.patient'].create(vals)
+    	print('holamundo')
+    	print('holamundo')
+    	print('holamundo')
+    	print('holamundo')
+    	print('holamundo')
+    	return True

@@ -34,6 +34,9 @@ class SurgicalTechnologist(models.Model):
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment')
 	recount_ids = fields.One2many('doctor.surgical.technologist.recount', 'surgical_technologist_id', string='Recount')
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	review_note = fields.Text('Review Note')
+	review_active = fields.Boolean('Is Review Note?')
+	review_readonly = fields.Boolean('set to readonly')
 	
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
@@ -49,6 +52,17 @@ class SurgicalTechnologist(models.Model):
 	def _compute_numberid(self):
 		for rec in self:
 			rec.numberid = rec.patient_id.name if rec.patient_id else False
+
+	@api.multi
+	def write(self, vals):
+		res = super(SurgicalTechnologist, self).write(vals)
+		if vals.get('review_note', False):
+			self.review_readonly = True
+		return vals
+
+	def review_note_trigger(self):
+		if not self.review_active:
+			self.write({'review_active': True})
 
 class SurgicalTechnologistRecount(models.Model):
 	_name = "doctor.surgical.technologist.recount"

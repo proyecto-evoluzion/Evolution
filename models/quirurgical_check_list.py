@@ -131,6 +131,13 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	observations = fields.Text(string="Observaciones")
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+	review_note = fields.Text('Review Note')
+	review_active = fields.Boolean('Is Review Note?')
+	review_readonly = fields.Boolean('set to readonly')
+	presurgery_active = fields.Boolean('Presurgery?')
+	intra_surgery_active = fields.Boolean('Intra surgery?')
+	post_surgery_active = fields.Boolean('Post surgery?')
+	recovery_active = fields.Boolean('Recovery?')
 
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -149,7 +156,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
 			#DevFree: Asigning current doctor user to signing_doctor field.
 			user = self.env.user
 			professional = self.env['doctor.professional'].search([('res_user_id','=',user.id)])
-			self.signing_doctor = professional.firstname +' '+ professional.lastname
+			if professional:
+				self.signing_doctor = professional.firstname +' '+ professional.lastname
 			#DevFree: Asigning current surgery procedures
 			for proc in self.room_id:
 				for proc_ids in proc.procedure_ids:
@@ -160,6 +168,28 @@ class ClinicaQuirurgicalCheckList(models.Model):
 						continue
 					else:
 						self.procedures = str(self.procedures) +' '+ str(proc_ids.product_id.name)
+
+	@api.multi
+	@api.depends('birth_date')
+	def _compute_age_meassure_unit(self):
+		for check_list in self:
+			if check_list.birth_date:
+				today_datetime = datetime.today()
+				today_date = today_datetime.date()
+				birth_date_format = datetime.strptime(check_list.birth_date, DF).date()
+				date_difference = today_date - birth_date_format
+				difference = int(date_difference.days)
+				month_days = calendar.monthrange(today_date.year, today_date.month)[1]
+				date_diff = relativedelta.relativedelta(today_date, birth_date_format)
+				if difference < 30:
+					check_list.age_meassure_unit = '3'
+					check_list.age = int(date_diff.days)
+				elif difference < 365:
+					check_list.age_meassure_unit = '2'
+					check_list.age = int(date_diff.months)
+				else:
+					check_list.age_meassure_unit = '1'
+					check_list.age = int(date_diff.years)
 	
 	@api.depends('patient_id')
 	def _compute_numberid_integer(self):
@@ -173,6 +203,38 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	def _compute_numberid(self):
 		for rec in self:
 			rec.numberid = rec.patient_id.name if rec.patient_id else False
+
+	def _check_birth_date(self, birth_date):
+		warn_msg = ''
+		today_datetime = datetime.today()
+		today_date = today_datetime.date()
+		birth_date_format = datetime.strptime(birth_date, DF).date()
+		date_difference = today_date - birth_date_format
+		difference = int(date_difference.days)    
+		if difference < 0:
+			warn_msg = _('Invalid birth date!')
+		return warn_msg
+
+	@api.multi
+	def _check_document_types(self):
+		for check_list in self:
+			if check_list.age_meassure_unit == '3' and check_list.document_type not in ['rc','ms']:
+				raise ValidationError(_("You can only choose 'RC' or 'MS' documents, for age less than 1 month."))
+			if check_list.age > 17 and check_list.age_meassure_unit == '1' and check_list.document_type in ['rc','ms']:
+				raise ValidationError(_("You cannot choose 'RC' or 'MS' document types for age greater than 17 years."))
+			if check_list.age_meassure_unit in ['2','3'] and check_list.document_type in ['cc','as','ti']:
+				raise ValidationError(_("You cannot choose 'CC', 'TI' or 'AS' document types for age less than 1 year."))
+			if check_list.document_type == 'ms' and check_list.age_meassure_unit != '3':
+				raise ValidationError(_("You can only choose 'MS' document for age between 1 to 30 days."))
+			if check_list.document_type == 'as' and check_list.age_meassure_unit == '1' and check_list.age <= 17:
+				raise ValidationError(_("You can choose 'AS' document only if the age is greater than 17 years."))
+
+	@api.onchange('document_type','numberid_integer','numberid')
+	def onchange_number_id(self):
+		if self.document_type and self.document_type not in ['cc','ti']:
+			self.numberid_integer = 0
+		if self.document_type and self.document_type in ['cc','ti'] and self.numberid_integer:
+			self.numberid = self.numberid_integer
 
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
@@ -188,29 +250,72 @@ class ClinicaQuirurgicalCheckList(models.Model):
 			self.document_type = self.patient_id.tdoc
 			self.numberid = self.patient_id.name
 			self.numberid_integer = self.patient_id.ref
-			
+
 	@api.model
 	def create(self, vals):
+		if vals.get('confirm_patient_name', False):
+			vals['presurgery_active'] = True
+		if vals.get('recording_vital_signs', False):
+			vals['intra_surgery_active'] = True
+		if vals.get('doctor_done_additionaly', False):
+			vals['post_surgery_active'] = True
+		if vals.get('history_received', False):
+			vals['recovery_active'] = True
+		vals['name'] = self.env['ir.sequence'].next_by_code('quirurgical.check.list') or '/'
+		if vals.get('document_type', False) and vals['document_type'] in ['cc','ti']:
+			numberid_integer = 0
+			if vals.get('numberid_integer', False):
+				numberid_integer = vals['numberid_integer']
+			numberid = self._check_assign_numberid(numberid_integer)
+			vals.update({'numberid': numberid})
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
 				raise ValidationError(warn_msg)
 		res = super(ClinicaQuirurgicalCheckList, self).create(vals)
+		res._check_document_types()
 		return res
-	
+
 	@api.multi
 	def write(self, vals):
+		if vals.get('review_note', False):
+			self.review_readonly = True
+		if vals.get('confirm_patient_name', False):
+			vals['presurgery_active'] = True
+		if vals.get('recording_vital_signs', False):
+			vals['intra_surgery_active'] = True
+		if vals.get('doctor_done_additionaly', False):
+			vals['post_surgery_active'] = True
+		if vals.get('history_received', False):
+			vals['recovery_active'] = True
+		if vals.get('document_type', False) or 'numberid_integer' in  vals:
+			if vals.get('document_type', False):
+				document_type = vals['document_type']
+			else:
+				document_type = self.document_type
+			if document_type in ['cc','ti']:
+				if 'numberid_integer' in  vals:
+					numberid_integer = vals['numberid_integer']
+				else:
+					numberid_integer = self.numberid_integer
+				numberid = self._check_assign_numberid(numberid_integer)
+				vals.update({'numberid': numberid})
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
 				raise ValidationError(warn_msg)
 		res = super(ClinicaQuirurgicalCheckList, self).write(vals)
+		self._check_document_types()
 		return res
 	
 	@api.multi
 	def action_set_close(self):
 		for record in self:
-			record.state = 'closed'  
+			record.state = 'closed'
+
+	def review_note_trigger(self):
+		if not self.review_active:
+			self.write({'review_active': True})
 
 
 	

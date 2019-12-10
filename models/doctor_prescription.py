@@ -63,16 +63,19 @@ class DoctorPrescription(models.Model):
 	medical_record = fields.Char(string='Medical record')
 	state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
 	room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+	review_note = fields.Text('Review Note')
+	review_active = fields.Boolean('Is Review Note?')
+	review_readonly = fields.Boolean('set to readonly')
 
 	@api.onchange('doctor_id')
 	def onchange_doctor_id(self):
 		if self.doctor_id:
 			self.profession_type = self.doctor_id.profession_type
 
-	@api.onchange('patient_id')
-	def onchange_patient_id(self):
-		if self.patient_id:
-			self.document_type = self.patient_id.tdoc
+	# @api.onchange('patient_id')
+	# def onchange_patient_id(self):
+	# 	if self.patient_id:
+	# 		self.document_type = self.patient_id.tdoc
 
 
 	@api.onchange('template_id')
@@ -108,12 +111,25 @@ class DoctorPrescription(models.Model):
 				'target': 'new'
 			}
 		
+
+	@api.multi
+	def write(self, vals):
+		res = super(DoctorPrescription, self).write(vals)
+		if vals.get('review_note', False):
+			self.review_readonly = True
+		return vals
+
+	def review_note_trigger(self):
+		if not self.review_active:
+			self.write({'review_active': True})
+
 	@api.multi
 	def action_set_close(self):
-		for record in self:
-			record.state = 'closed' 
+		self.state = 'closed'
+		# for record in self:
+		# 	record.state = 'closed'
 
-class DoctorPrescription(models.Model):
+class DoctorPrescriptionTemplate(models.Model):
 	_name = "doctor.prescription.template"
 	_rec_name="name"
 

@@ -808,6 +808,23 @@ msgid "Anhestesic Registry"
 msgstr "Registros Anestésia"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_surgical_technologist_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgic_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_doctor_epicrisis_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_medical_evolution_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_plastic_surgery_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_sheet_form
+msgid "Review Note"
+msgstr "Nota aclaratoria"
+
+#. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_monitor_anhestesic_registry_id
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_anhestesic_registry_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form

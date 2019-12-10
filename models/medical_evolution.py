@@ -104,6 +104,9 @@ class MedicalOrderEvolution(models.Model):
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     medical_record = fields.Char(string='Medical record')
     state = fields.Selection([('open','Open'),('closed','Closed')], string='Status', default='open')
+    review_note = fields.Text('Review Note')
+    review_active = fields.Boolean('Is Review Note?')
+    review_readonly = fields.Boolean('set to readonly')
     
     @api.onchange('room_id')
     def onchange_room_id(self):
@@ -183,6 +186,8 @@ class MedicalOrderEvolution(models.Model):
     
     @api.multi
     def write(self, vals):
+        if vals.get('review_note', False):
+            self.review_readonly = True
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
             if warn_msg:
@@ -217,7 +222,11 @@ class MedicalOrderEvolution(models.Model):
     @api.multi
     def action_set_close(self):
         for record in self:
-            record.state = 'closed' 
+            record.state = 'closed'
+
+    def review_note_trigger(self):
+        if not self.review_active:
+            self.write({'review_active': True})
 
 
 class MedicalOrderEvolutionNotes(models.Model):

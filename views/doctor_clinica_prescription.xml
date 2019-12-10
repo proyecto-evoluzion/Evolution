@@ -19,7 +19,7 @@
             </group>
             <group col="4">
               <field name="patient_id" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name="document_type" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name="document_type" required="0" invisible="1"/>
               <field name="medical_record" invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
             <group col="4">
@@ -32,6 +32,17 @@
             <group>
               <field name="template_id" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
+            <button name="review_note_trigger" string='Review Note'
+                type="object" icon="fa-pencil-square-o"
+                attrs="{'invisible':['|',('state','!=','closed'),('review_active','=',True)]}"/>
+            <div class="oe_title" attrs="{'invisible':[('review_active','!=',True)]}">
+                <h2>
+                    Nota aclaratoria
+                </h2>
+            </div>
+            <field name="review_active" invisible="1"/>
+            <field name="review_readonly" invisible="1"/>
+            <field name="review_note" style="border: 1px solid red;" attrs="{'invisible':[('review_active','!=',True)], 'readonly':[('review_readonly','=',True)]}" placeholder="Escribe aquí tu nota aclaratoria"/>
          	</sheet>
          </form>
          </field>
