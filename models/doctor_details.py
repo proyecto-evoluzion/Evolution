@@ -126,8 +126,8 @@ class Doctor(models.Model):
                     partner_vals.update({'x_lastname2': vals.get('surname', False)})
                 nameList = [
                     firstname.strip(),
-                    lastname.strip(),
                     middlename.strip(),
+                    lastname.strip(),
                     surname.strip()
                     ]
                 formatedList = []

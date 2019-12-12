@@ -29,8 +29,9 @@ class DoctorPrescription(models.Model):
 	@api.model
 	def _get_signature(self):
 		user = self.env.user
-		signature = html2text.html2text(user.signature)
-		return signature
+		if user.signature:
+			signature = html2text.html2text(user.signature)
+			return signature
 
 	def _get_professional(self):
 		ctx = self._context
@@ -48,7 +49,7 @@ class DoctorPrescription(models.Model):
 									('as','AS - Unidentified Adult'),
 									('ms','MS - Unidentified Minor')],
 									 string='Type of Document', related="doctor_id.tdoc")
-	name= fields.Char(string="Order Type", required=False)
+	name= fields.Char(string="Order Type", default='Prescripción')
 	patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
 	prescription_date = fields.Date(string='Date', default=fields.Date.context_today)
 	doctor_id = fields.Many2one('doctor.professional', string='Professional', default=_get_professional)
@@ -110,7 +111,6 @@ class DoctorPrescription(models.Model):
 				'context': context,
 				'target': 'new'
 			}
-		
 
 	@api.multi
 	def write(self, vals):
