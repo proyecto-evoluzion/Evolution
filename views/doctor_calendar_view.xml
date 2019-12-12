@@ -170,7 +170,7 @@
 					class="btn-primary" type="object" states="confirmed"
 					groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor"/>
 				<button name="action_cancel_procedure" string="Cancel Procedure" 
-					class="btn-primary" type="object" attrs="{'invisible': [('state','=','new')]}"
+					class="btn-primary" type="object"
 					groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor" confirm="Do you want to continue?"/>
 				<!-- <button name="action_view_clinica_record_history" string="View History" 
 					type="object" class="oe_highlight"/> -->
@@ -248,7 +248,7 @@
 							domain="[('start_date','&lt;=', datetime.datetime.combine(context_today(), datetime.time(23,59,59))), ('start_date','&gt;=', datetime.datetime.combine(context_today(), datetime.time(0,0,0)))]" />
 				</group>
 				<group>
-					<field name='patient_id' required="1" options="{'no_create_edit': True}" attrs="{'readonly':[('state','!=','new')]}"/>
+					<field name='patient_id' required="1" options="{'no_create_edit': False}" attrs="{'readonly':[('state','!=','new')]}"/>
 				</group>
 				<group name="main_group">
 					<group name="main_sub_group1" >
