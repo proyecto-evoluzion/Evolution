@@ -703,33 +703,55 @@ class DoctorWaitingRoom(models.Model):
     @api.multi
     def action_cancel_procedure(self):
         #DevFree:
-        picking_obj = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id),('state','in',['assigned','done'])])
-        self.env['clinica.calendar.cancel'].create({
+        if self.state == 'new':
+            self.env['clinica.calendar.cancel'].create({
                 'name': self.name,
                 'user_id': self.env.user.id,
                 'patient_id': self.patient_id.id,
                 'cancel_date': fields.Datetime.now(),
                 'order_id': self.sale_order_id.id,
-                'picking_id': picking_obj.id,
+                'picking_id': False,
                 })
-        if self.sale_order_id:
-            if self.sale_order_id.state == 'sale':
-                if picking_obj:
-                    picking_obj.state = 'cancel'
-            self.sale_order_id.state = 'cancel'
-        schedule_obj = self.env['doctor.schedule'].search([('room_ids','in',[self.id])])
-        if schedule_obj:
-            schedule_time_obj = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',schedule_obj.id)])
-            schedule_time_obj.unlink()
-            schedule_obj.unlink()
-        self.unlink()
+            schedule_obj = self.env['doctor.schedule'].search([('room_ids','in',[self.id])])
+            if schedule_obj:
+                schedule_time_obj = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',schedule_obj.id)])
+                schedule_time_obj.unlink()
+                schedule_obj.unlink()
+            self.unlink()
+            action = self.env.ref('clinica_doctor_data.action_clinica_surgery_room_procedures')
+            result = action.read()[0]
+            res = self.env.ref('clinica_doctor_data.clinica_surgery_room_procedures_tree', False)
+            result['views'] = [(res and res.id or False, 'tree')]
+            # result['res_id'] = nurse_chief_sheet_ids.id
+            return result
+        else:
+            picking_obj = self.env['stock.picking'].search([('sale_id','=',self.sale_order_id.id),('state','in',['assigned','done'])])
+            self.env['clinica.calendar.cancel'].create({
+                    'name': self.name,
+                    'user_id': self.env.user.id,
+                    'patient_id': self.patient_id.id,
+                    'cancel_date': fields.Datetime.now(),
+                    'order_id': self.sale_order_id.id,
+                    'picking_id': picking_obj.id,
+                    })
+            if self.sale_order_id:
+                if self.sale_order_id.state == 'sale':
+                    if picking_obj:
+                        picking_obj.state = 'cancel'
+                self.sale_order_id.state = 'cancel'
+            schedule_obj = self.env['doctor.schedule'].search([('room_ids','in',[self.id])])
+            if schedule_obj:
+                schedule_time_obj = self.env['doctor.schedule.time.allocation'].search([('schedule_id','=',schedule_obj.id)])
+                schedule_time_obj.unlink()
+                schedule_obj.unlink()
+            self.unlink()
 
-        action = self.env.ref('clinica_doctor_data.action_clinica_surgery_room_procedures')
-        result = action.read()[0]
-        res = self.env.ref('clinica_doctor_data.clinica_surgery_room_procedures_tree', False)
-        result['views'] = [(res and res.id or False, 'tree')]
-        # result['res_id'] = nurse_chief_sheet_ids.id
-        return result
+            action = self.env.ref('clinica_doctor_data.action_clinica_surgery_room_procedures')
+            result = action.read()[0]
+            res = self.env.ref('clinica_doctor_data.clinica_surgery_room_procedures_tree', False)
+            result['views'] = [(res and res.id or False, 'tree')]
+            # result['res_id'] = nurse_chief_sheet_ids.id
+            return result
     
     @api.multi
     def action_create_so(self):
