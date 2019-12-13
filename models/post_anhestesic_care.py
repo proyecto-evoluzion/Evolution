@@ -42,6 +42,7 @@ class ClinicaPostAnhestesicCare(models.Model):
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
 	patient_id = fields.Many2one('doctor.patient', 'Paciente', ondelete='restrict')
 	numberid = fields.Char(string='Number ID')
+	name = fields.Char(string='name', default="Cuidado Post-Anestésico")
 	medical_record= fields.Char(string='HC')
 	bed = fields.Char(string='Cama')
 	date = fields.Datetime(string='Fecha y Hora', default=fields.Datetime.now)

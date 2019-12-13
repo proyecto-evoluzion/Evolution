@@ -794,7 +794,7 @@ msgstr "<strong>LÍQUIDOS ADMINISTRADOS</strong>"
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_post_anhestesic_care_anhestesia
 msgid "Anestésia"
-msgstr "Anestésia"
+msgstr "Anestesia"
 
 #. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0
@@ -805,7 +805,7 @@ msgstr "Anestésia"
 #: model:ir.ui.menu,name:clinica_doctor_data.menu_clinica_anhestesic_registry
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_record_list_visualizer_form
 msgid "Anhestesic Registry"
-msgstr "Registros Anestésia"
+msgstr "Registros Anestesia"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_surgical_technologist_form
@@ -829,7 +829,7 @@ msgstr "Nota aclaratoria"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_anhestesic_registry_id
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_administrative_data_form
 msgid "Anhestesic Registry"
-msgstr "Registro Anestésia"
+msgstr "Registro Anestesia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_nurse_sheet_various_procedures
@@ -859,7 +859,7 @@ msgstr "Cargar para cuando el siguiente procedimiento inicie"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 msgid "Anhestesic Registry Form"
-msgstr "Formulario Registros Anestésia "
+msgstr "Formulario Registros Anestesia "
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -869,7 +869,7 @@ msgstr "Número de registro anhestesico:"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_tree
 msgid "Anhestesic Registry Tree"
-msgstr "Lista Registros Anestésia"
+msgstr "Lista Registros Anestesia"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,tube_type:0
@@ -1155,6 +1155,41 @@ msgstr "Bloqueo"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_waiting_room_body_background_others
 msgid "Body Background Others"
 msgstr "Body Background Others"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Contributory"
+msgstr "Contribuyente"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Subsidized"
+msgstr "Subsidiado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Linked"
+msgstr "Asociado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Other"
+msgstr "Otro"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Victim - Contributive"
+msgstr "Victima - Contribuyente"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Victim - Subsidized"
+msgstr "Victima - Subsidiado"
+
+#. module: clinica_doctor_data
+#: selection:doctor.waiting.room,user_type:0
+msgid "Victim - Linked"
+msgstr "Victima - Asociado"
 
 #. module: clinica_doctor_data
 #: selection:clinica.anhestesic.registry,document_type:0
@@ -1612,6 +1647,11 @@ msgstr "Crear"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_partner_form_inherit
 msgid "Create Health Professional"
 msgstr "Create Health Professional"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Create Anhestesic Registry"
+msgstr "Crear Registro de Anestesia"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
@@ -6746,6 +6786,11 @@ msgstr "Prescripciones"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
 msgid "Resurces"
 msgstr "Instrumentador"
+
+#. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form
+msgid "Anhestesic Registry"
+msgstr "Registros Anestesia"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_waiting_room_form

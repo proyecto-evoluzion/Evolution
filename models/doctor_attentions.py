@@ -73,34 +73,33 @@ class PresurgicalRecord(models.Model):
     
     consultation_reason = fields.Text(string="Reason for Consultation")
     
-    pathological = fields.Text(string="Pathological", related='patient_id.pathological')
-    surgical = fields.Text(string="Surgical", related='patient_id.surgical')
+    pathological = fields.Text(string="Pathological")
+    surgical = fields.Text(string="Surgical")
     relatives = fields.Text(string="Relatives")
-    smoke = fields.Boolean(string="Smoke", related='patient_id.smoke')
-    cigarate_daily = fields.Integer(string="Cigarettes / Day", related='patient_id.cigarate_daily')
+    smoke = fields.Boolean(string="Smoke")
+    cigarate_daily = fields.Integer(string="Cigarettes / Day")
     smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
-                                  ('year','per Year')], string="Smoke Unit of Measure", default='day', related='patient_id.smoke_uom')
-    is_alcoholic = fields.Boolean(string="Alcoholic Drinks", related='patient_id.is_alcoholic')
-    alcohol_frequency = fields.Integer(string="Frequency", related='patient_id.alcohol_frequency')
+                                  ('year','per Year')], string="Smoke Unit of Measure", default='day')
+    is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
+    alcohol_frequency = fields.Integer(string="Frequency")
     alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
-                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day', 
-                                             related='patient_id.alcohol_frequency_uom')
-    marijuana = fields.Boolean(string="Marijuana", related='patient_id.marijuana')
-    cocaine = fields.Boolean(string="Cocaine", related='patient_id.cocaine')
-    ecstasy = fields.Boolean(string="Ecstasy", related='patient_id.ecstasy')
-    body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
-    pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
-    allergic = fields.Text(string="Allergic", related='patient_id.allergic')
-    pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
-    child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
-    abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
-    last_birth_date = fields.Date(string="Date of Last Birth", related='patient_id.last_birth_date')
-    last_menstruation_date = fields.Date(string="Date of Last Menstruation", related='patient_id.last_menstruation_date')
-    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related='patient_id.contrtaceptive_methods')
-    diabetes = fields.Boolean(string="Diabetes", related='patient_id.diabetes')
-    hypertension = fields.Boolean(string="Hypertension", related='patient_id.hypertension')
-    arthritis = fields.Boolean(string="Arthritis", related='patient_id.arthritis')
-    thyroid_disease = fields.Boolean(string="Thyroid Disease", related='patient_id.thyroid_disease')
+                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day')
+    marijuana = fields.Boolean(string="Marijuana")
+    cocaine = fields.Boolean(string="Cocaine")
+    ecstasy = fields.Boolean(string="Ecstasy")
+    body_background_others = fields.Text(string="Body Background Others")
+    pharmacological = fields.Text(string="Pharmacological")
+    allergic = fields.Text(string="Allergic")
+    pregnancy_number = fields.Integer(string="Number of Pregnancies", related="patient_id.pregnancy_number")
+    child_number = fields.Integer(string="Number of Children", related="patient_id.child_number")
+    abortion_number = fields.Integer(string="Number of Abortions", related="patient_id.abortion_number")
+    last_birth_date = fields.Date(string="Date of Last Birth", related="patient_id.last_birth_date")
+    last_menstruation_date = fields.Date(string="Date of Last Menstruation", related="patient_id.last_menstruation_date")
+    contrtaceptive_methods = fields.Text(string="Contrtaceptive Methods", related="patient_id.contrtaceptive_methods")
+    diabetes = fields.Boolean(string="Diabetes")
+    hypertension = fields.Boolean(string="Hypertension")
+    arthritis = fields.Boolean(string="Arthritis")
+    thyroid_disease = fields.Boolean(string="Thyroid Disease")
     
     physical_sistolic_arteric_presure = fields.Integer(string="Sistolic Arteric Pressure")
     physical_diastolic_artery_presure = fields.Integer(string="Diastolic Artery Pressure")
@@ -203,7 +202,25 @@ class PresurgicalRecord(models.Model):
             self.document_type = self.patient_id.tdoc
             hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)], limit=1)
             if hc_object:
+                print(hc_object)
+                print(hc_object.others)
                 self.relatives = hc_object.relatives
+                self.diabetes = hc_object.diabetes
+                self.hypertension = hc_object.hypertension
+                self.arthritis = hc_object.arthritis
+                self.thyroid_disease = hc_object.thyroid_disease
+                self.smoke = hc_object.smoke
+                self.is_alcoholic = hc_object.is_alcoholic
+                self.marijuana = hc_object.marijuana
+                self.cocaine = hc_object.cocaine
+                self.ecstasy = hc_object.ecstasy
+                self.pathological = hc_object.pathological
+                self.surgical = hc_object.surgical
+                self.cigarate_daily = hc_object.cigarate_daily
+                self.body_background_others = hc_object.others
+                self.pharmacological = hc_object.pharmacological
+                self.allergic = hc_object.allergic
+                self.alcohol_frequency = hc_object.alcohol_frequency
             lead_obj = self.lead_id.search([('patient_id','=',self.patient_id.id)])
             lead_list = [x.id for x in lead_obj]
             if lead_list:
@@ -221,23 +238,6 @@ class PresurgicalRecord(models.Model):
                 date_attention = dt.datetime.strptime(self.date_attention, '%Y-%m-%d')
                 since_sixty_days = date_attention - last_date
                 if since_sixty_days.days > 60:
-                    self.diabetes = False
-                    self.hypertension = False
-                    self.arthritis = False
-                    self.thyroid_disease = False
-                    self.smoke = False
-                    self.is_alcoholic = False
-                    self.marijuana = False
-                    self.cocaine = False
-                    self.ecstasy = False
-                    self.pathological = ''
-                    self.surgical = ''
-                    self.cigarate_daily = ''
-                    self.body_background_others = ''
-                    self.pharmacological = ''
-                    self.allergic = ''
-                    self.alcohol_frequency = ''
-
                     self.paraclinical_hb = 0.00
                     self.paraclinical_hto = 0.00
                     self.paraclinical_leukocytes = 0.00
@@ -258,6 +258,39 @@ class PresurgicalRecord(models.Model):
                     self.paraclinical_vsg = 0
                     self.other_diseases = False
                 else:
+                    # if not self.diabetes:
+                    #     self.diabetes = last_att_obj.diabetes
+                    # if not self.hypertension:
+                    #     self.hypertension = last_att_obj.hypertension
+                    # if not self.arthritis:
+                    #     self.arthritis = last_att_obj.arthritis
+                    # if not self.thyroid_disease:
+                    #     self.thyroid_disease = last_att_obj.thyroid_disease
+                    # if not self.smoke:
+                    #     self.smoke = last_att_obj.smoke
+                    # if not self.is_alcoholic:
+                    #     self.is_alcoholic = last_att_obj.is_alcoholic
+                    # if not self.marijuana:
+                    #     self.marijuana = last_att_obj.marijuana
+                    # if not self.cocaine:
+                    #     self.cocaine = last_att_obj.cocaine
+                    # if not self.ecstasy:
+                    #     self.ecstasy = last_att_obj.ecstasy
+                    # if not self.pathological:
+                    #     self.pathological = last_att_obj.pathological
+                    # if not self.surgical:
+                    #     self.surgical = last_att_obj.surgical
+                    # if not self.cigarate_daily:
+                    #     self.cigarate_daily = last_att_obj.cigarate_daily
+                    # if not self.body_background_others:
+                    #     self.body_background_others = last_att_obj.body_background_others
+                    # if not self.pharmacological:
+                    #     self.pharmacological = last_att_obj.pharmacological
+                    # if not self.allergic:
+                    #     self.allergic = last_att_obj.allergic
+                    # if not self.alcohol_frequency:
+                    #     self.alcohol_frequency = last_att_obj.alcohol_frequency
+
                     self.paraclinical_hb = last_att_obj.paraclinical_hb
                     self.paraclinical_hto = last_att_obj.paraclinical_hto
                     self.paraclinical_leukocytes = last_att_obj.paraclinical_leukocytes

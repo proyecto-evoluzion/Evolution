@@ -326,7 +326,7 @@ class ClinicaNurseSheet(models.Model):
     def action_view_clinica_record_history(self):
         context = self._set_visualizer_default_values()
         return {
-                'name': _('Clinica Record History'),
+                'name': _('Historial de Registros'),
                 'view_type': 'form',
                 'view_mode': 'form',
                 'res_model': 'clinica.record.list.visualizer',

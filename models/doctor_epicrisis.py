@@ -41,7 +41,7 @@ class DoctorEpicrisis(models.Model):
         return signature
     
     name = fields.Char(string='Name', copy=False)
-    patient_in_date = fields.Datetime(string='In Date', copy=False)
+    patient_in_date = fields.Datetime(string='In Date', copy=False, default=datetime.today())
     patient_out_date = fields.Datetime(string='Out Date', copy=False)
     tdoc = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                              ('pa','PA - Passport'),('rc','RC - Civil Registry'),
@@ -174,7 +174,7 @@ class DoctorEpicrisis(models.Model):
     def action_view_clinica_record_history(self):
         context = self._set_visualizer_default_values()
         return {
-                'name': _('Clinica Record History'),
+                'name': _('Historial de Registros'),
                 'view_type': 'form',
                 'view_mode': 'form',
                 'res_model': 'clinica.record.list.visualizer',
