@@ -102,7 +102,7 @@ class DoctorPrescription(models.Model):
 	def action_view_clinica_record_history(self):
 		context = self._set_visualizer_default_values()
 		return {
-				'name': _('Clinica Record History'),
+				'name': _('Historial de Registros'),
 				'view_type': 'form',
 				'view_mode': 'form',
 				'res_model': 'clinica.record.list.visualizer',
@@ -111,6 +111,12 @@ class DoctorPrescription(models.Model):
 				'context': context,
 				'target': 'new'
 			}
+
+	@api.model
+	def create(self, vals):
+		vals['state'] = 'closed'
+		res = super(DoctorPrescription, self).create(vals)
+		return res
 
 	@api.multi
 	def write(self, vals):

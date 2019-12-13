@@ -15,6 +15,7 @@
          		<group name='main_group'>
 	            	<group name='sub_group1'>
 		                <field name="patient_id" required="1"/>
+		                <field name="room_id" invisible="1"/>
 	            	</group>
 	            	<group name='sub_group2'>
 		                <field name="procedure_datetime" required="1" />
@@ -45,7 +46,8 @@
 	            </group>
 	            <group name="health_professionals">
          			<group name="health_professionals_sub1" >
-         				<field name="procedure_id"/>
+         				<field name="procedure_id" invisible="1"/>
+         				<field name="procedure_ids" widget="many2many_tags"/>
          				<field name='surgeon_id' domain="[('profession_type','=','plastic_surgeon')]"/>
          				<field name='anesthesiologist_id' domain="[('profession_type','=','anesthesiologist')]"/>
          				<field name='anesthesia_type' />

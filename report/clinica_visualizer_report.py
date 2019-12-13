@@ -24,7 +24,7 @@ from odoo import api, models, _
 
 class ClinicaVisualizerReport(models.AbstractModel):
     _name = 'report.clinica_doctor_data.visualizer_report'
-    _description = 'Clinica Record History'
+    _description = 'Historial de Registros'
     
     @api.model
     def get_report_values(self, docids, data=None):

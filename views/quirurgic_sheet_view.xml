@@ -21,13 +21,13 @@
          				<!-- <field name='invoice_id' /> -->
          			</group>
          			<group name="main_sub_group2" >
-                <field name='surgical_execution' />
+                <field name='surgical_execution' attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          		</group>
          		<group name="health_professionals" col="4">
                 <field name='room_id' invisible="1"/>
-                <field name='patient_id' required="1"/>
-                <field name='document_type' required="1"/>
+                <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                <field name='document_type' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
 
          		<group name="other_info_group">

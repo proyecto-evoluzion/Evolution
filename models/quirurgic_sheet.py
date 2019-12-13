@@ -7,7 +7,7 @@
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Lesser General Public License as
 #    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    License, or (at your option) any later version.Clinica Record History
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -255,7 +255,7 @@ class DoctorQuirurgicSheet(models.Model):
 	def action_view_clinica_record_history(self):
 		context = self._set_visualizer_default_values()
 		return {
-				'name': _('Clinica Record History'),
+				'name': _('Historial de Registros'),
 				'view_type': 'form',
 				'view_mode': 'form',
 				'res_model': 'clinica.record.list.visualizer',
