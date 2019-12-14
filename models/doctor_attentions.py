@@ -182,9 +182,7 @@ class PresurgicalRecord(models.Model):
             user_groups_list = []
             for user_groups in self.professional_id.groups_id:
                 user_groups_list.append(user_groups.id)
-            print (user_groups_list)
             anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
-            print(anhestesic_group)
             if anhestesic_group.id in user_groups_list:
                 self.background_edit_flag = True
 
@@ -202,8 +200,6 @@ class PresurgicalRecord(models.Model):
             self.document_type = self.patient_id.tdoc
             hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)], limit=1)
             if hc_object:
-                print(hc_object)
-                print(hc_object.others)
                 self.relatives = hc_object.relatives
                 self.diabetes = hc_object.diabetes
                 self.hypertension = hc_object.hypertension

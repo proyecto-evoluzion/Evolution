@@ -33,6 +33,14 @@ from odoo.exceptions import ValidationError
 class ClinicaQuirurgicalCheckList(models.Model):
 	_name = 'clinica.quirurgical.check.list'
 	_description= 'Quirurgical Check List'
+
+	def _default_professional(self):
+		ctx = self._context
+		user_id = self._context.get('uid')
+		user_obj = self.env['res.users'].search([('id','=',user_id)])
+		# professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+		# if professional_obj:
+		return user_obj.id	
 	
 	name = fields.Char(string='Name', copy=False)
 	procedure_datetime = fields.Datetime(string='Procedure Date/Time')
@@ -75,6 +83,8 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	flu_symptoms_enquired = fields.Selection([('yes','Yes'),('no', 'No')], string="I inquire about flu symptoms in the last week")
 	allergic_enquired = fields.Selection([('yes','Yes'),('no', 'No')], string="Does the patient have allergies ?")
 	allergic_text = fields.Text(string="Which?")
+	medication_text = fields.Text(string="Which?")
+	prophylaxis_text = fields.Text(string="Which?")
 	enquired_proc_medication = fields.Selection([('yes','Yes'),('no', 'No')], string="Did the patient consume medications prior to the procedure?")
 	enquired_proc_medication_note = fields.Text(string="medication note")
 	investigated_drug_consumption = fields.Selection([('yes','Yes'),('no', 'No')], string="Did the patient consume alcoholic beverages and / or narcotic drugs prior to the procedure?")
@@ -85,7 +95,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	
 	#INTRA-OPERATORY fields
 	recording_vital_signs = fields.Selection([('yes','Yes'),('no', 'No')], string="Taking and recording vital signs")
-	antibiotic_prophylaxis = fields.Selection([('yes','Yes'),('no', 'No')], string="Antibiotic prophylaxis before surgery (which)")
+	antibiotic_prophylaxis = fields.Selection([('yes','Yes'),('no', 'No')], string="Antibiotic prophylaxis before surgery")
 	antibiotic_prophylaxis_note = fields.Text(string="Prophylaxis note")
 	full_staff_in_room = fields.Selection([('yes','Yes'),('no', 'No')], string="Full staff is found inside the room to start the procedure")
 	monitoring_induction_complete = fields.Selection([('yes','Yes'),('no', 'No')], string="Monitoring and induction is complete to start")
@@ -138,6 +148,22 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	intra_surgery_active = fields.Boolean('Intra surgery?')
 	post_surgery_active = fields.Boolean('Post surgery?')
 	recovery_active = fields.Boolean('Recovery?')
+	professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)	
+
+	@api.onchange('professional_id')
+	def onchange_professional_id(self):
+		if self.professional_id:
+			user_groups_list = []
+			for user_groups in self.professional_id.groups_id:
+				user_groups_list.append(user_groups.id)
+			nursing_assistant_group = self.env.ref('clinica_doctor_data.nursing_assistant')
+			nursery_chief_group = self.env.ref('clinica_doctor_data.nursery_chief')
+			if nursing_assistant_group.id in user_groups_list:
+				self.presurgery_active = True
+			if nursery_chief_group.id in user_groups_list:
+				self.intra_surgery_active = True
+			if nursing_assistant_group.id in user_groups_list:
+				self.intra_surgery_active = True
 
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -253,10 +279,10 @@ class ClinicaQuirurgicalCheckList(models.Model):
 
 	@api.model
 	def create(self, vals):
-		if vals.get('confirm_patient_name', False):
-			vals['presurgery_active'] = True
-		if vals.get('recording_vital_signs', False):
-			vals['intra_surgery_active'] = True
+		# if vals.get('confirm_patient_name', False):
+		# 	vals['presurgery_active'] = True
+		# if vals.get('recording_vital_signs', False):
+		# 	vals['intra_surgery_active'] = True
 		if vals.get('doctor_done_additionaly', False):
 			vals['post_surgery_active'] = True
 		if vals.get('history_received', False):
@@ -278,10 +304,10 @@ class ClinicaQuirurgicalCheckList(models.Model):
 
 	@api.multi
 	def write(self, vals):
-		if vals.get('review_note', False):
-			self.review_readonly = True
-		if vals.get('confirm_patient_name', False):
-			vals['presurgery_active'] = True
+		# if vals.get('review_note', False):
+		# 	self.review_readonly = True
+		# if vals.get('confirm_patient_name', False):
+		# 	vals['presurgery_active'] = True
 		if vals.get('recording_vital_signs', False):
 			vals['intra_surgery_active'] = True
 		if vals.get('doctor_done_additionaly', False):

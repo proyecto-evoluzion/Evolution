@@ -15,51 +15,53 @@
             <sheet>
             <group name="basic_details" col="4">
               <field name="room_id" invisible="1"/>
-              <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name="date" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name="patient_id" required="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+              <field name='professional_id' invisible="1"/>
+              <field name='background_edit_flag' invisible="1"/>              
+              <field name="date" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
             </group>
             <group name="basic_details2">
-              <field name="document_type" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name="document_type" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
             </group>
             <group>
             <group>
               <field name="medical_record" invisible="1"/>
-              <!-- <field name="procedure" attrs="{'readonly':[('state','=','closed')]}"/> -->
-              <field name="procedure"  attrs="{'readonly':[('state','=','closed')]}" widget="many2many_tags"/>
-              <field name="surgeon_id" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name="nurse_id" attrs="{'readonly':[('state','=','closed')]}"/>
+              <!-- <field name="procedure" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/> -->
+              <field name="procedure"  attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}" widget="many2many_tags"/>
+              <field name="surgeon_id" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+              <field name="nurse_id" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
             </group>
             <group>
-              <field name="bed" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name="duration" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name="anesthesiologist_id" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name="bed" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+              <field name="duration" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+              <field name="anesthesiologist_id" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
             </group>
             </group>
 
             <group col="4">
-              <field name="anhestesia" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name="airway" attrs="{'readonly':[('state','=','closed')]}"/>
+              <field name="anhestesia" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+              <field name="airway" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
             </group>
 
             <group>
               <group string="Drenajes">
                 <label for="chest_tube" string="Tubo Tórax"/>
                 <div>
-                  <field name="chest_tube" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/> cc
+                  <field name="chest_tube" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/> cc
                 </div>
                 <label for="hemovac" string="Hemovac"/>
                 <div>
-                  <field name="hemovac" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/> cc
+                  <field name="hemovac" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/> cc
                 </div>
                 <label for="others" string="Otros"/>
                 <div>
-                  <field name="others" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','=','closed')]}"/> cc
+                  <field name="others" nolabel="1" class="oe_inline" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/> cc
                 </div>
 
                 <field name="total"/>
             </group>
             <group string="Líquidos">
-                <field name="liquids_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+                <field name="liquids_ids" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}">
                   <tree editable="bottom">
                     <field name="liquid_via"/>
                     <field name="liquid_site"/>
@@ -72,7 +74,7 @@
             </group>
 
             <group string="Escala Aldrete">
-                <field name="aldrete_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+                <field name="aldrete_ids" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}">
                   <tree editable="bottom">
                     <field name="moment"/>
                     <field name="conscience"/>
@@ -86,7 +88,7 @@
               </group>
             
               <group string="Drogas">
-                <field name="drugs_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+                <field name="drugs_ids" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}">
                   <tree editable="bottom">
                     <field name="drug_time"/>
                     <field name="drug_name" />
@@ -97,7 +99,7 @@
                 </field>
               </group>
               <group string="Observaciones">
-                <field name="observations_ids" nolabel="1" attrs="{'readonly':[('state','=','closed')]}">
+                <field name="observations_ids" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}">
                   <tree editable="bottom">
                     <field name="observation_time"/>
                     <field name="observation" />
@@ -106,7 +108,7 @@
               </group>
            
             <group string="Signos Vitales">
-      				<field name="vital_sign_ids" colspan="4" nolabel="1" attrs="{'readonly':[('state','=','closed')]}" >
+      				<field name="vital_sign_ids" colspan="4" nolabel="1" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}" >
       					<tree editable="top">
       						<field name="vital_signs_date_hour"/>
                   <field name="vital_signs_tas"/>
@@ -120,6 +122,30 @@
       					</tree>
       				</field>
             </group>
+            <div name="professional sign">
+              <h3>Anestesiólogo que firma y autoriza la salida del paciente: 
+                <span style="border-bottom: 1px solid black;">
+                  <field name="anhestesioligist" attrs="{'readonly':[('background_edit_flag','=',False)]}"/>
+                  <button name="anhestesioligist_sign" 
+                    string='Firmar'
+                    type="object" 
+                    icon="fa-pencil-square-o"
+                    attrs="{'invisible':[('background_edit_flag','=',False)]}" 
+                    class="btn-success"
+                    confirm="Usted autoriza y firma la salida del paciente y que quede el registro con la hora de salida."/>
+                </span>
+              </h3>
+              <h3>Fecha y hora de salida: <span><field name="sign_date_hour" attrs="{'readonly':[('background_edit_flag','=',False)]}"/></span></h3>
+              <h3>Enfermera que entrega: <span>
+                <field name="put_nurse"/>
+              </span></h3>
+              <h3>Enfermera que recibe: <span>
+                <field name="get_nurse"/>
+              </span></h3>
+              <h3>Destino: <span>
+                <field name="destiny"/>
+              </span></h3>
+            </div>
             <button name="review_note_trigger" string='Review Note'
                 type="object" icon="fa-pencil-square-o"
                 attrs="{'invisible':['|',('state','!=','closed'),('review_active','=',True)]}"/>

@@ -60,7 +60,7 @@
 	      					<field name="oximetry" string="Oximetry"/>
 		            		<field name="diuresis" string="Diuresis"/>
 		            		<field name="bleeding" string="Bleeding"/>
-		            		<field name="note" string="Nursing Note"/>
+		            		<field name="note" string="Nota"/>
       					</tree>
       				</field>
       			</page>
@@ -68,7 +68,7 @@
               <field name="readonly_bool" invisible="1"/>
       				<group name="pathological_background" >
        					<group name="pathological_background_sub1">
-       						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
+       						<field name="diabetes" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',False)]}"/>
        						<field name="hypertension" attrs="{'readonly':['|',('state','=','closed'),('readonly_bool','=',True)]}"/>
        					</group>
        					<group name="pathological_background_sub2">

@@ -37,6 +37,17 @@ class SurgicalTechnologist(models.Model):
 	review_note = fields.Text('Review Note')
 	review_active = fields.Boolean('Is Review Note?')
 	review_readonly = fields.Boolean('set to readonly')
+	product_ids = fields.Many2many('product.product',ondelete='restrict', domain=[('is_health_procedure','=', True)])
+
+	@api.onchange('room_id')
+	def onchange_room_id(self):
+		if self.room_id:
+			list_ids = []
+			self.surgeon_id = self.room_id.surgeon_id and self.room_id.surgeon_id.id or False
+			for procedure_ids in self.room_id.procedure_ids:
+				for products in procedure_ids.product_id:
+					list_ids.append(products.id)
+			self.product_ids = [(6, 0, list_ids)]
 	
 	@api.onchange('patient_id')
 	def onchange_patient_id(self):
