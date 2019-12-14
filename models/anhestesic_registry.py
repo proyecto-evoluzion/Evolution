@@ -222,6 +222,11 @@ class AnhestesicRegistry(models.Model):
     review_note = fields.Text('Review Note')
     review_active = fields.Boolean('Is Review Note?')
     review_readonly = fields.Boolean('set to readonly')
+    caprini_scale = fields.Selection([('1', '1'),('2', '2'),
+                                       ('3', '3'),('4','4'),
+                                       ('5', '5'),('6','6'),
+                                       ('7', '7'),('8','8'),
+                                       ('9', '9'),('10','10'),], string='Caprini Scale')    
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
@@ -295,6 +300,7 @@ class AnhestesicRegistry(models.Model):
                         cad = cad[0:5]+''+cad[6:]
                         self.paraclinical_goldman = cad
                     self.paraclinical_exam_date = presurgical_obj.paraclinical_exam_date
+                    self.caprini_scale = presurgical_obj.caprini_scale
                     self.paraclinical_hb = presurgical_obj.paraclinical_hb
                     self.paraclinical_hto = presurgical_obj.paraclinical_hto
                     self.paraclinical_leukocytes = presurgical_obj.paraclinical_leukocytes

@@ -41,7 +41,7 @@ class ClinicaNurseChief(models.Model):
         uid = ctx.get('uid')
         actual_user = self.env['res.users'].search([('id','=',uid)])
         for groups in actual_user.groups_id:
-            if groups.id == self.env.ref('clinica_doctor_data.nursing_assistant').id or groups.id == self.env.ref('clinica_doctor_data.surgical_technologist').id:
+            if groups.id == self.env.ref('clinica_doctor_data.anesthesiologist').id:
                 return True
         return False
 

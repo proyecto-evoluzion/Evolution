@@ -521,6 +521,7 @@ msgstr "AB"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "AS - Unidentified Adult"
 msgstr "AS - Adulto sin Identificación"
 
@@ -878,8 +879,8 @@ msgstr "Anillado"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_antibiotic_prophylaxis
-msgid "Antibiotic prophylaxis before surgery (which)"
-msgstr "Profilaxis antibiótica antes de la cirugia (cual)"
+msgid "Antibiotic prophylaxis before surgery"
+msgstr "Profilaxis antibiótica antes de la cirugia"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_antiembolicas_stockings
@@ -1204,6 +1205,7 @@ msgstr "Victima - Asociado"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "CC - ID Document"
 msgstr "CC - Cédula de ciudadanía"
 
@@ -1220,6 +1222,7 @@ msgstr "CC - Cédula de ciudadanía"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "CE - Aliens Certificate"
 msgstr "CE - Cédula de Extranjería"
 
@@ -1897,6 +1900,7 @@ msgstr "Detalles muestras entregadas
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_caprini_scale
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_caprini_scale
 msgid "Caprini Scale"
 msgstr "Escala de Caprini"
 
@@ -2251,7 +2255,7 @@ msgstr "Doctor / Gerente"
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.nursery_chief
 msgid "Doctor / Nursery chief"
-msgstr "Doctor / Enfermera Jefe"
+msgstr "Doctor / Jefe Enfermería"
 
 #. module: clinica_doctor_data
 #: model:res.groups,name:clinica_doctor_data.nursing_assistant
@@ -3433,6 +3437,7 @@ msgstr "Líquidos"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "MS - Unidentified Minor"
 msgstr "MS - Menor sin Identificación"
 
@@ -4171,6 +4176,7 @@ msgstr "Cargar a factura"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "PA - Passport"
 msgstr "PA - Pasaporte"
 
@@ -4909,6 +4915,7 @@ msgstr "Cotización"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "RC - Civil Registry"
 msgstr "RC - Registro Civil"
 
@@ -5777,6 +5784,7 @@ msgstr "TC:"
 #: selection:doctor.professional,tdoc:0
 #: selection:doctor.quirurgic.sheet,document_type:0
 #: selection:doctor.waiting.room,document_type:0
+#: selection:doctor.surgical.technologist,document_type:0
 msgid "TI - Identity Card"
 msgstr "TI - Tarjeta de Identidad"
 
@@ -6316,6 +6324,8 @@ msgstr "Se entregaron elementos adicionales ?"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_allergic_text
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_medication_text
+#: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_quirurgical_check_list_prophylaxis_text
 msgid "Which?"
 msgstr "Cuál(es)?"
 

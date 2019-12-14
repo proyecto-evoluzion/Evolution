@@ -37,6 +37,14 @@ class ClinicaPostAnhestesicCare(models.Model):
 	_order = 'id desc'
 	_description = 'Post-Anhestesic care'
 
+	def _default_professional(self):
+		ctx = self._context
+		user_id = self._context.get('uid')
+		user_obj = self.env['res.users'].search([('id','=',user_id)])
+		# professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+		# if professional_obj:
+		return user_obj.id
+
 	document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
                                       ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document', related="patient_id.tdoc")
@@ -77,6 +85,13 @@ class ClinicaPostAnhestesicCare(models.Model):
 	review_note = fields.Text('Review Note')
 	review_active = fields.Boolean('Is Review Note?')
 	review_readonly = fields.Boolean('set to readonly')
+	background_edit_flag = fields.Boolean('Background Flag', default=False)
+	professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)
+	anhestesioligist = fields.Many2one('doctor.professional', 'Anestesiólogo', domain=[('profession_type','=','anesthesiologist')])
+	put_nurse = fields.Many2one('doctor.professional', 'Put nurse', domain=[('profession_type','=','nurse')])
+	get_nurse = fields.Many2one('doctor.professional', 'Get nurse', domain=[('profession_type','=','nurse')])
+	sign_date_hour = fields.Datetime(string='Fecha y Hora')
+	destiny = fields.Text('Destino')
     
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -88,6 +103,28 @@ class ClinicaPostAnhestesicCare(models.Model):
 				for products in procedure_ids.product_id:
 					list_ids.append(products.id)
 			self.procedure = [(6, 0, list_ids)]
+
+	@api.onchange('professional_id')
+	def onchange_professional_id(self):
+		if self.professional_id:
+			user_groups_list = []
+			for user_groups in self.professional_id.groups_id:
+				user_groups_list.append(user_groups.id)
+			anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+			if anhestesic_group.id in user_groups_list:
+				self.background_edit_flag = True
+
+	def anhestesioligist_sign(self):
+		ctx = self._context
+		user_id = self._context.get('uid')
+		user_obj = self.env['res.users'].search([('id','=',user_id)])
+		professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+		self.sign_date_hour = datetime.now()
+		user_groups_list = []
+		for user_groups in user_obj:
+			user_groups_list.append(user_groups.id)
+		anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+		self.anhestesioligist = professional_obj.id
 
 
 	@api.onchange('patient_id')

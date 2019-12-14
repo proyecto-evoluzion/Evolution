@@ -281,6 +281,7 @@ class ClinicaNurseSheet(models.Model):
     
     @api.model
     def create(self, vals):
+        vals['state'] = 'closed'
         vals['name'] = self.env['ir.sequence'].next_by_code('nurse.sheet') or '/'
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
