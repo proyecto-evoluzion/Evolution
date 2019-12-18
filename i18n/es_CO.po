@@ -6101,6 +6101,11 @@ msgid "Update Stock"
 msgstr "Actualizar Inventario"
 
 #. module: clinica_doctor_data
+#: model:ir.ui.view,arch_db:account.invoice_form
+msgid "Load Procedure Time"
+msgstr "Actualizar Inventario"
+
+#. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 msgid "Validate Orders"
 msgstr "Procesar Pedidos"

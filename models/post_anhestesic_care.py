@@ -37,6 +37,7 @@ class ClinicaPostAnhestesicCare(models.Model):
 	_order = 'id desc'
 	_description = 'Post-Anhestesic care'
 
+	@api.model
 	def _default_professional(self):
 		ctx = self._context
 		user_id = self._context.get('uid')
@@ -111,7 +112,8 @@ class ClinicaPostAnhestesicCare(models.Model):
 			for user_groups in self.professional_id.groups_id:
 				user_groups_list.append(user_groups.id)
 			anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
-			if anhestesic_group.id in user_groups_list:
+			nurse_group = self.env.ref('clinica_doctor_data.nursing_assistant')
+			if anhestesic_group.id in user_groups_list or nurse_group.id in user_groups_list:
 				self.background_edit_flag = True
 
 	def anhestesioligist_sign(self):
