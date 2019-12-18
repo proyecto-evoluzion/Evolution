@@ -130,7 +130,7 @@
                     string='Firmar'
                     type="object" 
                     icon="fa-pencil-square-o"
-                    attrs="{'invisible':[('background_edit_flag','=',False)]}" 
+                    groups="clinica_doctor_data.anesthesiologist" 
                     class="btn-success"
                     confirm="Usted autoriza y firma la salida del paciente y que quede el registro con la hora de salida."/>
                 </span>
