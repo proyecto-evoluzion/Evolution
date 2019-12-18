@@ -293,7 +293,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 			if vals.get('numberid_integer', False):
 				numberid_integer = vals['numberid_integer']
 			# numberid = self._check_assign_numberid(numberid_integer)
-			vals.update({'numberid': numberid})
+			#vals.update({'numberid': numberid})
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
@@ -325,7 +325,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 				else:
 					numberid_integer = self.numberid_integer
 				# numberid = self._check_assign_numberid(numberid_integer)
-				vals.update({'numberid': numberid})
+				#vals.update({'numberid': numberid})
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
