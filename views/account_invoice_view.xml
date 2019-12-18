@@ -10,7 +10,7 @@
               <xpath expr="//notebook/page/field[@name='invoice_line_ids']" position="before">
               		<group>
                			<div class="oe_button_box" name="button_box">
-               				<button name="action_compute_procedure_time" string='Load Procedure Time'
+               				<button name="action_compute_procedure_time" string='Cargar tiempo de procedimientos'
        						type="object" icon="fa-refresh"/>
                			</div>
                		</group>
