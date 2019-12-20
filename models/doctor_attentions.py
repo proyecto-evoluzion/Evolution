@@ -78,12 +78,12 @@ class PresurgicalRecord(models.Model):
     relatives = fields.Text(string="Relatives")
     smoke = fields.Boolean(string="Smoke")
     cigarate_daily = fields.Integer(string="Cigarettes / Day")
-    smoke_uom = fields.Selection([('day','per Day'), ('week','per Week'),('month','per Month'), 
-                                  ('year','per Year')], string="Smoke Unit of Measure", default='day')
+    smoke_uom = fields.Selection([('day','por Día'), ('week','por Semana'),('month','por Mes'), 
+                                  ('year','por Año')], string="Smoke Unit of Measure", default='day')
     is_alcoholic = fields.Boolean(string="Alcoholic Drinks")
     alcohol_frequency = fields.Integer(string="Frequency")
-    alcohol_frequency_uom = fields.Selection([('day','per Day'), ('week','per Week'), ('month','per Month'), 
-                                              ('year','per Year')], string="Alcoholic Frequency Unit of Measure", default='day')
+    alcohol_frequency_uom = fields.Selection([('day','por Día'), ('week','por Semana'), ('month','por Mes'), 
+                                              ('year','por Año')], string="Alcoholic Frequency Unit of Measure", default='day')
     marijuana = fields.Boolean(string="Marijuana")
     cocaine = fields.Boolean(string="Cocaine")
     ecstasy = fields.Boolean(string="Ecstasy")

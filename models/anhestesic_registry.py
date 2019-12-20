@@ -299,6 +299,8 @@ class AnhestesicRegistry(models.Model):
                         cad = presurgical_obj.paraclinical_goldman
                         cad = cad[0:5]+''+cad[6:]
                         self.paraclinical_goldman = cad
+                    if not self.body_background_others:
+                        self.body_background_others = presurgical_obj.body_background_others
                     self.paraclinical_exam_date = presurgical_obj.paraclinical_exam_date
                     self.caprini_scale = presurgical_obj.caprini_scale
                     self.paraclinical_hb = presurgical_obj.paraclinical_hb

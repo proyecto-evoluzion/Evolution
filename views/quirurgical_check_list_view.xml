@@ -65,222 +65,192 @@
 	         			<group colspan="4">
 	         				<label for="confirm_patient_name" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="confirm_patient_name" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="confirm_patient_name" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="confirm_bracelet_data" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="confirm_bracelet_data" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="confirm_bracelet_data" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="confirm_procedure" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="confirm_procedure" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="confirm_procedure" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="surgical_concent_filled" style="width:550px !important;" options="{'horizontal': true}"/>
 	         				<div>
-	         					<field name="surgical_concent_filled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="surgical_concent_filled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="pre_anesthetic_assessment_complete" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="pre_anesthetic_assessment_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="pre_anesthetic_assessment_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="removed_dental_aceesories" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="removed_dental_aceesories" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="removed_dental_aceesories" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="pre_surgical_lab_exams" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="pre_surgical_lab_exams" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="pre_surgical_lab_exams" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="patient_belongins_locked" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="patient_belongins_locked" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="patient_belongins_locked" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="fasting_time_greater" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="fasting_time_greater" nolabel="1" class="oe_inline" widget="radio"  options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="fasting_time_greater" nolabel="1" class="oe_inline" widget="radio"  options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="flu_symptoms_enquired" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="flu_symptoms_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="flu_symptoms_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="allergic_enquired" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="allergic_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="allergic_enquired" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         			</group>
 	         			<group name="allergic_text" colspan="4" col='2' attrs="{'invisible':[('allergic_enquired','!=','yes')]}">
-	       					<field name="allergic_text" attrs="{'invisible':['|',('presurgery_active','=',False),('allergic_enquired','!=','yes')]}"/>
+	       					<field name="allergic_text" attrs="{'invisible':['|',('presurgery_active','=',True),('allergic_enquired','!=','yes')]}"/>
 	       				</group>
 	       				<group colspan="4">
 	       					<label for="enquired_proc_medication" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="enquired_proc_medication" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="enquired_proc_medication" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	       				</group>
 	   					<group name="medication_text" colspan="4" col='2' attrs="{'invisible':[('enquired_proc_medication','!=','yes')]}">
-	       					<field name="medication_text" attrs="{'invisible':['|',('presurgery_active','=',False),('enquired_proc_medication','!=','yes')]}"/>
+	       					<field name="medication_text" attrs="{'invisible':['|',('presurgery_active','=',True),('enquired_proc_medication','!=','yes')]}"/>
 	       				</group>
 	       				<group colspan="4">
 	         				<label for="investigated_drug_consumption" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="investigated_drug_consumption" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="investigated_drug_consumption" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="antiembolicas_stockings" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="antiembolicas_stockings" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="antiembolicas_stockings" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="operational_site_marking" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="operational_site_marking" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="operational_site_marking" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	         				<label for="special_preparation" style="width:550px !important;"/>
 	         				<div>
-	         					<field name="special_preparation" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	         					<field name="special_preparation" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	         				</div>
 	       				</group>
 	         			<group name="special_preparation" colspan="4" col="2" attrs="{'invisible':[('special_preparation','!=','yes')]}">
-	       					<field name="special_preparations_text" attrs="{'readonly':[('presurgery_active','=',False)]}"/>
+	       					<field name="special_preparations_text" attrs="{'readonly':[('presurgery_active','=',True)]}"/>
 	       				</group>
 	         		</page>
 	         		<page name="intra-operatory" string="INTRA-OPERATORY">
 	         			<field name="intra_surgery_active" invisible="1"/>
-	         			<group colspan="4">
-	         				<label for="recording_vital_signs" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="recording_vital_signs" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="recording_vital_signs"/><br/><br/>
 	         				</div>
-	         				<label for="antibiotic_prophylaxis" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="antibiotic_prophylaxis" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
+	         				<div class="col-md-8">
+	         					<field name="recording_vital_signs" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
 	         				</div>
-	         				<label for="prophylaxis_text" style="width:550px !important;" attrs="{'invisible':[('antibiotic_prophylaxis','!=','yes')]}"/>
-	         				<div name="prophylaxis_text" colspan="4" col='2' attrs="{'invisible':[('antibiotic_prophylaxis','!=','yes')]}">
-		       					<field name="prophylaxis_text" attrs="{'invisible':[('antibiotic_prophylaxis','!=','yes')]}"/>
-		       				</div>
-	         				<label for="full_staff_in_room" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
+	         			</div>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="antibiotic_prophylaxis"/><br/>
+	         					<label for="prophylaxis_text" attrs="{'invisible':[('antibiotic_prophylaxis','!=','yes')]}"/><br/>
 	         				</div>
-	         				<label for="monitoring_induction_complete" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
+	         				<div class="col-md-8">
+	         					<field name="antibiotic_prophylaxis" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/>
+	         					<field name="prophylaxis_text" attrs="{'invisible':[('antibiotic_prophylaxis','!=','yes')],'readonly':[('intra_surgery_active','=',True)]}"/><br/>
 	         				</div>
-	         				<label for="monitor_indu_anesthesiologist_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
+	         			</div>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="full_staff_in_room"/><br/>
+	         					<label for="monitoring_induction_complete"/><br/><br/>
+	         					<label for="monitor_indu_anesthesiologist_id"/><br/><br/>
+	         					<label for="is_scheduled"/><br/><br/>
+	         					<label for="scheduled_surgeon_id"/><br/><br/>
+	         					<label for="scheduled_patient_id"/><br/><br/>
+	         					<label for="equipments_in_room"/><br/><br/>
+	         					<label for="equipments_room_surgeon_id"/><br/><br/>
+	         					<label for="materials_in_room"/><br/><br/>
+	         					<label for="equipments_in_order"/><br/><br/>
+	         					<label for="venous_pressure_working"/><br/><br/>
+	         					<label for="supplies_delivered"/><br/><br/>
+	         					<label for="pay"/><br/><br/>
+	         					<label for="proc_bill_pay"/><br/><br/>
+	         					<label for="scheduled_nurse_id"/>
 	         				</div>
-	         				<label for="is_scheduled" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
+	         				<div class="col-md-8">
+	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/>
+	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/>
+	         					<field name="scheduled_patient_id" nolabel="1" class="oe_inline" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
+	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="materials_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
+	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
+	         					<field name="venous_pressure_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="supplies_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/>
+	         					<field name="proc_bill_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
+	         					<field name="scheduled_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/>
 	         				</div>
-	         				<label for="scheduled_surgeon_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="scheduled_patient_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="scheduled_patient_id" nolabel="1" class="oe_inline" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="equipments_in_room" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="equipments_room_surgeon_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="materials_in_room" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="materials_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="equipments_in_order" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="venous_pressure_working" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="venous_pressure_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="supplies_delivered" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="supplies_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="pay" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="proc_bill_pay" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="proc_bill_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         				<label for="scheduled_nurse_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="scheduled_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('intra_surgery_active','=',False)]}"/>
-	         				</div>
-	         			</group>
+	         			</div>
 	         		</page>
 	         		<page name="post_operatory" string="POST OPERATORY">
 	         			<field name="post_surgery_active" invisible="1"/>
-	         			<group colspan="4">
-	         				<label for="doctor_done_additionaly" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="doctor_done_additionaly" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="doctor_done_additionaly"/><br></br><br></br>
 	         				</div>
-	         				<label for="sample_delivered" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="sample_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
+	         				<div class="col-md-8">
+	         					<field name="doctor_done_additionaly" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
 	         				</div>
-	         			</group>
-	         			<group name="sample_delivered_text" colspan="4" col="2" attrs="{'invisible':[('sample_delivered','!=','yes')]}">
-	       					<field name="sample_delivered_text" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	       				</group>
-	       				<group colspan="4">
-	         				<label for="sample_delivered_pay" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="sample_delivered_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
+	         			</div>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="sample_delivered"/><br></br><br></br>
 	         				</div>
-	         				<label for="delivered_recovery_exam" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="delivered_recovery_exam" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
+	         				<div class="col-md-8">
+         						<field name="sample_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+         						<field name="sample_delivered_text" attrs="{'invisible':[('sample_delivered','!=','yes')],'readonly':[('post_surgery_active','=',True)]}"/>
+         					</div>
+	         			</div>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="sample_delivered_pay"/><br></br><br></br>
+	         					<label for="delivered_recovery_exam" /><br></br><br></br>
+	         					<label for="reported_disfunction_equip"/><br></br><br></br>
+	         					<label for="blood_returned"/><br></br><br></br><br></br>
+	         					<label for="add_items_delivered"/><br></br><br></br>
 	         				</div>
-	         				<label for="reported_disfunction_equip" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="reported_disfunction_equip" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
+	         				<div class="col-md-8">
+         						<field name="sample_delivered_pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+         						<field name="delivered_recovery_exam" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+         						<field name="reported_disfunction_equip" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+         						<field name="blood_returned" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br><br></br><br></br>
+	         					<field name="add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br>
+	         					<field name="add_items_delivered_text" attrs="{'invisible':[('add_items_delivered','!=','yes')],'readonly':[('post_surgery_active','=',True)]}"/>
 	         				</div>
-	         				<label for="blood_returned" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="blood_returned" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
+	         			</div>
+	         			<div class="col-md-12">
+	         				<div class="col-md-4">
+	         					<label for="pay_add_items_delivered"/><br></br><br></br>
+	         					<label for="history_complete"/><br></br><br></br><br></br>
+	         					<label for="delivered_nurse_id"/><br></br><br></br><br></br>
+	         					<label for="received_nurse_id"/><br></br><br></br><br></br>
+	         					<label for="deliver_receive_time"/>
 	         				</div>
-	         				<label for="add_items_delivered" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	         				</div>
-	         			</group>
-	         			<group name="add_items_delivered_text" colspan="4" col="2" attrs="{'invisible':[('add_items_delivered','!=','yes')]}">
-	       					<field name="add_items_delivered_text" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	       				</group>
-	       				<group colspan="4">
-	         				<label for="pay_add_items_delivered" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="pay_add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	         				</div>
-	         				<label for="history_complete" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="history_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	         				</div>
-	         				<label for="delivered_nurse_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="delivered_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	         				</div>
-	         				<label for="received_nurse_id" style="width:550px !important;"/>
-	         				<div>
-	         					<field name="received_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
-	         				</div>
-	         				<label for="deliver_receive_time" style="width:550px !important;"/>
-	         				<div>
+	         				<div class="col-md-8">
+	         					<field name="pay_add_items_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+	         					<field name="history_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br><br></br>
+	         					<field name="delivered_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+	         					<field name="received_nurse_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','nurse')]" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
 	         					<field name="deliver_receive_time" nolabel="1" class="oe_inline" attrs="{'readonly':[('post_surgery_active','=',True)]}"/>
 	         				</div>
-	         			</group>
+	         			</div>
 	         		</page>
 	         		<page name="recovery" string="RECOVERY">
 	         			<field name="recovery_active" invisible="1"/>

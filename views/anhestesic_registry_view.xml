@@ -99,7 +99,8 @@
 	       					<group name="patient_backgorund_sub2" >
 	       						<field name="body_background_others" string="Others" readonly="1"/>
 	       						<field name="pharmacological" readonly="1"/>
-	       						<field name="allergic" readonly="1"/>
+                    <label for="allergic" style="background-color: red; color: white;"/>
+	       						<field name="allergic" readonly="1" style="background-color: red; color: white;" nolabel="1"/>
 	       					</group>
 	       				</group>
 	       				<group name="patient_female_backgorund_main" readonly="1">
@@ -132,7 +133,7 @@
 	           					</div>
 	           					<label for="paraclinical_hto" string="Hto (Hematocrit)" />
 	           					<div>
-	           						<field name="paraclinical_hto" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="paraclinical_hto" nolabel="1" class="oe_inline" readonly="1"/>
 	          						 Vol %
 	           					</div>
 	           					<label for="paraclinical_leukocytes" string="Leukocytes"/>

@@ -279,10 +279,10 @@ class ClinicaQuirurgicalCheckList(models.Model):
 
 	@api.model
 	def create(self, vals):
-		# if vals.get('confirm_patient_name', False):
-		# 	vals['presurgery_active'] = True
-		# if vals.get('recording_vital_signs', False):
-		# 	vals['intra_surgery_active'] = True
+		if vals.get('confirm_patient_name', False):
+			vals['presurgery_active'] = True
+		if vals.get('recording_vital_signs', False):
+			vals['intra_surgery_active'] = True
 		if vals.get('doctor_done_additionaly', False):
 			vals['post_surgery_active'] = True
 		if vals.get('history_received', False):
@@ -293,7 +293,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 			if vals.get('numberid_integer', False):
 				numberid_integer = vals['numberid_integer']
 			# numberid = self._check_assign_numberid(numberid_integer)
-			vals.update({'numberid': numberid})
+			# vals.update({'numberid': numberid})
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
@@ -304,10 +304,10 @@ class ClinicaQuirurgicalCheckList(models.Model):
 
 	@api.multi
 	def write(self, vals):
-		# if vals.get('review_note', False):
-		# 	self.review_readonly = True
-		# if vals.get('confirm_patient_name', False):
-		# 	vals['presurgery_active'] = True
+		if vals.get('review_note', False):
+			self.review_readonly = True
+		if vals.get('confirm_patient_name', False):
+			vals['presurgery_active'] = True
 		if vals.get('recording_vital_signs', False):
 			vals['intra_surgery_active'] = True
 		if vals.get('doctor_done_additionaly', False):
@@ -325,7 +325,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 				else:
 					numberid_integer = self.numberid_integer
 				# numberid = self._check_assign_numberid(numberid_integer)
-				vals.update({'numberid': numberid})
+				# vals.update({'numberid': numberid})
 		if vals.get('birth_date', False):
 			warn_msg = self._check_birth_date(vals['birth_date'])
 			if warn_msg:
