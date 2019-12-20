@@ -87,7 +87,8 @@
 		       					<group name="patient_backgorund_sub2" >
 		       						<field name="body_background_others" string="Others" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
 		       						<field name="pharmacological"  attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
-		       						<field name="allergic"  attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
+		       						<label for="allergic" style="background-color: red; color: white;"/>
+		       						<field name="allergic"  attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}" style="background-color: red; color: white;" nolabel="1"/>
 		       					</group>
 		       				</group>
 		       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">
