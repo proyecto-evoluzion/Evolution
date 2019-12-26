@@ -299,8 +299,31 @@ class AnhestesicRegistry(models.Model):
                         cad = presurgical_obj.paraclinical_goldman
                         cad = cad[0:5]+''+cad[6:]
                         self.paraclinical_goldman = cad
+                    # Background
                     if not self.body_background_others:
                         self.body_background_others = presurgical_obj.body_background_others
+                    self.diabetes = presurgical_obj.diabetes
+                    self.arthritis = presurgical_obj.arthritis
+                    self.hypertension = presurgical_obj.hypertension
+                    self.thyroid_disease = presurgical_obj.thyroid_disease
+                    self.pathological = presurgical_obj.pathological
+                    self.surgical = presurgical_obj.surgical
+                    self.smoke = presurgical_obj.smoke
+                    self.cigarate_daily = presurgical_obj.cigarate_daily
+                    self.is_alcoholic = presurgical_obj.is_alcoholic
+                    self.alcohol_frequency = presurgical_obj.alcohol_frequency
+                    self.marijuana = presurgical_obj.marijuana
+                    self.cocaine = presurgical_obj.cocaine
+                    self.ecstasy = presurgical_obj.ecstasy
+                    self.pharmacological = presurgical_obj.pharmacological
+                    self.allergic = presurgical_obj.allergic
+                    self.pregnancy_number = presurgical_obj.pregnancy_number
+                    self.child_number = presurgical_obj.child_number
+                    self.abortion_number = presurgical_obj.abortion_number
+                    self.last_birth_date = presurgical_obj.last_birth_date
+                    self.last_menstruation_date = presurgical_obj.last_menstruation_date
+                    self.contrtaceptive_methods = presurgical_obj.contrtaceptive_methods
+                    # Paraclinical
                     self.paraclinical_exam_date = presurgical_obj.paraclinical_exam_date
                     self.caprini_scale = presurgical_obj.caprini_scale
                     self.paraclinical_hb = presurgical_obj.paraclinical_hb
