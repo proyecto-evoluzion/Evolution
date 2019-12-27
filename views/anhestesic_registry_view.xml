@@ -40,7 +40,7 @@
 						<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}"/>
 					</div>
 					<div class="col-md-6">
-						<label for="allergic" style="background-color: red; color: white; width: 50%;"/>
+						<strong style="background-color: red; color: white;">Alérgico</strong><br/>
 						<field name="allergic" attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','in',['closed','open'])]}" style="background-color: red; color: white;" nolabel="1" force_save="1"/>
 					</div>
 				</div>
