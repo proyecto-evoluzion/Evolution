@@ -40,8 +40,8 @@
 						<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}"/>
 					</div>
 					<div class="col-md-6" style="border-top: 1px solid red; border-right: 1px solid red; border-bottom: 1px solid red;">
-						<strong style="background-color: red; color: white;">Alérgico</strong><br/>
-						<field name="allergic" attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','in',['closed','open'])]}" nolabel="1" force_save="1"/>
+						<strong style="background-color: red; color: white; margin-left: 10%;">Alérgico</strong><br/>
+						<field name="allergic" attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','in',['closed','open'])]}" style="margin-left: 10%;" nolabel="1" force_save="1"/>
 					</div>
 				</div>
                 <field name='gender' invisible="1"  attrs="{'readonly':[('state','=','closed')]}"/>

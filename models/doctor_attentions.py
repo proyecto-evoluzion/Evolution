@@ -90,6 +90,7 @@ class PresurgicalRecord(models.Model):
     body_background_others = fields.Text(string="Body Background Others")
     pharmacological = fields.Text(string="Pharmacological")
     allergic = fields.Text(string="Allergic")
+    allergic_active = fields.Boolean(string="Allergic Alert")
     pregnancy_number = fields.Integer(string="Number of Pregnancies", related="patient_id.pregnancy_number")
     child_number = fields.Integer(string="Number of Children", related="patient_id.child_number")
     abortion_number = fields.Integer(string="Number of Abortions", related="patient_id.abortion_number")
