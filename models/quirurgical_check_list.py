@@ -148,22 +148,24 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	intra_surgery_active = fields.Boolean('Intra surgery?')
 	post_surgery_active = fields.Boolean('Post surgery?')
 	recovery_active = fields.Boolean('Recovery?')
-	professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)	
+	professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)
 
-	@api.onchange('professional_id')
-	def onchange_professional_id(self):
-		if self.professional_id:
-			user_groups_list = []
-			for user_groups in self.professional_id.groups_id:
-				user_groups_list.append(user_groups.id)
-			nursing_assistant_group = self.env.ref('clinica_doctor_data.nursing_assistant')
-			nursery_chief_group = self.env.ref('clinica_doctor_data.nursery_chief')
-			if nursing_assistant_group.id in user_groups_list:
-				self.presurgery_active = True
-			if nursery_chief_group.id in user_groups_list:
-				self.intra_surgery_active = True
-			if nursing_assistant_group.id in user_groups_list:
-				self.intra_surgery_active = True
+	#DevFree: This Onchange	allow blocking some pages of notebook in form views, its depends from professional_id if it is anestesiologist could write the page, if it is not could not write.
+
+	# @api.onchange('professional_id')
+	# def onchange_professional_id(self):
+	# 	if self.professional_id:
+	# 		user_groups_list = []
+	# 		for user_groups in self.professional_id.groups_id:
+	# 			user_groups_list.append(user_groups.id)
+	# 		nursing_assistant_group = self.env.ref('clinica_doctor_data.nursing_assistant')
+	# 		nursery_chief_group = self.env.ref('clinica_doctor_data.nursery_chief')
+	# 		if nursing_assistant_group.id in user_groups_list:
+	# 			self.presurgery_active = True
+	# 		if nursery_chief_group.id in user_groups_list:
+	# 			self.intra_surgery_active = True
+	# 		if nursing_assistant_group.id in user_groups_list:
+	# 			self.intra_surgery_active = True
 
 	@api.onchange('room_id')
 	def onchange_room_id(self):
