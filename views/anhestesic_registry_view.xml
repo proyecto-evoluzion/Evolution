@@ -29,17 +29,19 @@
          		</group>
             <group name="patient">
                 <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
+				<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
 				<div attrs="{'invisible':[('allergic_active','=',False)]}">
 					<div class="col-md-6">
-						<label for="patient_id"/>
+						<strong><label for="patient_id"/></strong>
 						<field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}" style="width: 50%;"/>
+						<strong><label for="document_type"/></strong>
+						<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}"/>
 					</div>
 					<div class="col-md-6">
 						<label for="allergic" style="background-color: red; color: white; width: 50%;"/>
 						<field name="allergic" attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','in',['closed','open'])]}" style="background-color: red; color: white; width: 50%;" nolabel="1" force_save="1"/>
 					</div>
 				</div>
-                <field name='document_type' required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
                 <field name='gender' invisible="1"  attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
          	    <group name="professional_info_group">
