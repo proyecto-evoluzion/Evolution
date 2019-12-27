@@ -94,6 +94,14 @@ class AnhestesicRegistry(models.Model):
     mallampati_scale = fields.Selection([('class1', 'Clase I'),('class2', 'Clase II'),
                                        ('class3', 'Clase III'),('class4','Clase IV')], string='Mallampati Scale')
     dental_prostheses = fields.Boolean(string='Dental Prostheses')
+    prostheses_type = fields.Selection([('fixed','Fixed'),('removable','Removable')], string='Prostheses Type', default='fixed')
+    prostheses_type_fixed = fields.Boolean(string='Fixed', default=False)
+    prostheses_type_removable = fields.Boolean(string='Removable', default=False)
+    prostheses_location = fields.Selection([('above','Above'),('below','Below')], string='Prostheses Location', default='above')
+    prostheses_location_above = fields.Boolean(string='Above', default=False)
+    prostheses_location_below = fields.Boolean(string='Below', default=False)
+
+    other_diseases = fields.Boolean(string="Other Diseases")
     disease_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease2_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
     disease3_id = fields.Many2one('doctor.diseases', string='Diagnosis', ondelete='restrict')
@@ -342,6 +350,11 @@ class AnhestesicRegistry(models.Model):
                     self.paraclinical_ecg = presurgical_obj.paraclinical_ecg
                     self.paraclinical_others = presurgical_obj.paraclinical_others
                     self.dental_prostheses = presurgical_obj.dental_prostheses
+                    self.prostheses_type_fixed = presurgical_obj.prostheses_type_fixed
+                    self.prostheses_type_removable = presurgical_obj.prostheses_type_removable
+                    self.prostheses_location_above = presurgical_obj.prostheses_location_above
+                    self.prostheses_location_below = presurgical_obj.prostheses_location_below
+                    self.other_diseases = presurgical_obj.other_diseases
                     self.disease_id = presurgical_obj.disease_id
                     self.disease_state = presurgical_obj.disease_state
                     self.disease2_id = presurgical_obj.disease2_id
