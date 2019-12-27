@@ -28,15 +28,15 @@
          			</group>
          		</group>
             <group name="patient">
-                <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
-				<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
+                <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
+				<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
 			</group>
 			<group name="patient_allergic_alert">
 				<div attrs="{'invisible':[('allergic_active','=',False)]}">
 					<div class="col-md-6">
-						<!-- <strong><label for="patient_id"/></strong> -->
+						<strong>Paciente</strong>
 						<field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}" style="width: 50%;"/>
-						<!-- <strong><label for="document_type"/></strong> -->
+						<strong>Tipo documento</strong>
 						<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}" style="width: 50%;"/>
 					</div>
 					<div class="col-md-6">
