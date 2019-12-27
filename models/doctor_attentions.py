@@ -187,6 +187,11 @@ class PresurgicalRecord(models.Model):
             if anhestesic_group.id in user_groups_list:
                 self.background_edit_flag = True
 
+    @api.onchange('allergic')
+    def onchange_allergic(self):
+        if self.allergic:
+            self.allergic_active = True                
+
     @api.onchange('lead_id')
     def onchange_lead_id(self):
         if self.lead_id:
