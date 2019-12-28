@@ -418,7 +418,7 @@ msgstr "<strong>PROCEDURE</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>PRUEBAS COOGULACIAN</strong>"
+msgid "<strong>COOGULACIAN TEST</strong>"
 msgstr "<strong>PRUEBAS COAGULACIÓN</strong>"
 
 #. module: clinica_doctor_data
@@ -865,7 +865,7 @@ msgstr "Formulario Registros Anestesia "
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 msgid "Anhestesic Registry Number:"
-msgstr "Número de registro anhestesico:"
+msgstr "Número de registro anestesico:"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_tree
@@ -4594,6 +4594,7 @@ msgstr "<strong>PRUEBA DE COAGULACIÓN</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 msgid "<strong>SANGUINEA CHEMICAL</strong>"
 msgstr "<strong>QUÍMICA SANGUINEA</strong>"
 
