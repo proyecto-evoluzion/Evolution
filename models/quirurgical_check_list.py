@@ -46,6 +46,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	procedure_datetime = fields.Datetime(string='Procedure Date/Time')
 	procedure_id = fields.Many2one('product.product', string='Procedure')
 	procedure_ids = fields.Many2many('product.product', 'quirurgical_checklist_procedures_rel', string='Procedure', ondelete='restrict', domain=[('is_health_procedure','=', True)])
+	procedure_list = fields.Char(string='Procedure List')
 	document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
 									  ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
 									  ('as','AS - Unidentified Adult'),('ms','MS - Unidentified Minor')], string='Type of Document')
@@ -171,10 +172,16 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	def onchange_room_id(self):
 		if self.room_id:
 			list_ids = []
+			cad = ''
 			self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
 			for procedure_ids in self.room_id.procedure_ids:
 				for products in procedure_ids.product_id:
 					list_ids.append(products.id)
+					if not cad:
+						cad = products.name
+					else:
+						cad = cad +','+ products.name						
+			self.procedure_list = cad
 			self.procedure_ids = [(6, 0, list_ids)]
 			self.surgeon_id = self.room_id.surgeon_id.id
 			# self.technologist_id = self.room_id.technologist_id.id
