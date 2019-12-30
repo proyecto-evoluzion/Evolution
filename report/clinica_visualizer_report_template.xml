@@ -42,15 +42,15 @@
               </t>
               <t t-if="nurse_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="nurse_sheet.vital_sign_ids">
-                <span t-field="vital_sign.vital_signs_date_hour"/><br/>
+                <span t-field="nurse_sheet.vital_sign_ids.vital_signs_date_hour"/><br/>
                 Date and Hour 
-                FC <span t-field="vital_sign.vital_signs_fc"/><br/>
-                Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
-                Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
-                Oximetry <span t-field="vital_sign.oximetry"/><br/>
-                Diuresis <span t-field="vital_sign.diuresis"/><br/>
-                Bleeding <span t-field="vital_sign.bleeding"/><br/>
-                Nursing Note <span t-field="vital_sign.note"/><br/>
+                FC <span t-field="nurse_sheet.vital_sign_ids.vital_signs_fc"/><br/>
+                Sistolic Arteric Pressure <span t-field="nurse_sheet.vital_sign_ids.sistolic_arteric_pressure"/><br/>
+                Diastolic Artery Pressure <span t-field="nurse_sheet.vital_sign_ids.diastolic_arteric_pressure"/><br/>
+                Oximetry <span t-field="nurse_sheet.vital_sign_ids.oximetry"/><br/>
+                Diuresis <span t-field="nurse_sheet.vital_sign_ids.diuresis"/><br/>
+                Bleeding <span t-field="nurse_sheet.vital_sign_ids.bleeding"/><br/>
+                Nursing Note <span t-field="nurse_sheet.vital_sign_ids.note"/><br/>
               </t>
             </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
