@@ -44,6 +44,12 @@ class MedicalOrderEvolution(models.Model):
         user = self.env.user
         signature = html2text.html2text(user.signature)
         return signature
+
+    def _default_doctor(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+        return professional_obj.id
     
     name = fields.Char(string="Name", copy=False)
     procedure_date = fields.Datetime(string='Procedure Date', default=fields.Datetime.now, copy=False)
@@ -65,7 +71,7 @@ class MedicalOrderEvolution(models.Model):
     age = fields.Integer(string='Age', compute='_compute_age_meassure_unit')
     age_meassure_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
-    surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+    surgeon_id = fields.Many2one('doctor.professional', string='Surgeon', default=_default_doctor)
     anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
     anesthesia_type = fields.Selection([('general','General'),('sedation','Sedación'),('local','Local')], 
                                         string='Type of Anesthesia')

@@ -30,65 +30,38 @@
        						</t>
        					</td>
        				</tr>
-       				<tr>
-       					<td colspan="2" style="text-align:center; ">
-       						<t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong>SURGERY ROOM PROCEDURE DETAILS</strong></t>
-       						<!-- <t t-if="nurse_sheet.room_id.room_type == 'waiting'"><strong>APPOINTMENT DETAILS</strong></t> -->
-       					</td>
-       				</tr>
-       				<tr>
-       					<td style="width:50%; ">
-       						<t t-if="nurse_sheet.room_id.room_type == 'surgery'">
-       							Surgery Room Procedure Number: <span style="padding-left:2px;" t-field="nurse_sheet.room_id"/>
-       							<br/>
-       							Surgery Room: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgery_room_id"/><br/>
-       						</t>
-       						<!-- <t t-if="nurse_sheet.room_id.room_type == 'waiting'">Appointment Number: <span style="padding-left:2px;" t-field="nurse_sheet.room_id"/></t> -->
-       					</td>
-       					<td t-if="nurse_sheet.room_id.surgeon_id or nurse_sheet.room_id.anesthesiologist_id" style="width:50%; ">
-       						<t t-if="nurse_sheet.room_id.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgeon_id.partner_id"/><br/></t>
-       						<t t-if="nurse_sheet.room_id.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.anesthesiologist_id.partner_id"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="nurse_sheet.vital_sign_ids"><td colspan="2" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
-       				<tr t-if="nurse_sheet.vital_sign_ids" style="padding:0px;">
-       					<td colspan="2" style=" padding:0px;">
-        					<table class="table" style="width:100%;margin:0px;">
-        						<thead>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:15%;">Date and Hour</th>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:7%;">FC</th>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:16%;">Sistolic Arteric Pressure</th>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:16%;">Diastolic Artery Pressure</th>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:7%;">Oximetry</th>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:7%;">Diuresis</th>
-        							<th style="border-right: 1px solid black;border-bottom: 1px solid black !important;width:7%;">Bleeding</th>
-        							<th style="border-bottom: 1px solid black !important;width:22%;">Nursing Note</th>
-        						</thead>
-        						<tbody>
-        							<tr t-foreach="nurse_sheet.vital_sign_ids" t-as="vital_sign">
-        								<td style="border-top: 0px !important;border-right: 1px solid black;"><span t-field="vital_sign.vital_signs_date_hour"/></td>
-        								<td style="border-top: 0px !important;border-right: 1px solid black; text-align:right;"><span t-field="vital_sign.vital_signs_fc"/></td>
-        								<td style="border-top: 0px !important;border-right: 1px solid black; text-align:right;"><span t-field="vital_sign.sistolic_arteric_pressure"/></td>
-        								<td style="border-top: 0px !important;border-right: 1px solid black; text-align:right;"><span t-field="vital_sign.diastolic_arteric_pressure"/></td>
-        								<td style="border-top: 0px !important;border-right: 1px solid black; text-align:right;"><span t-field="vital_sign.oximetry"/></td>
-        								<td style="border-top: 0px !important;border-right: 1px solid black; text-align:right;"><span t-field="vital_sign.diuresis"/></td>
-        								<td style="border-top: 0px !important;border-right: 1px solid black; text-align:right;"><span t-field="vital_sign.bleeding"/></td>
-        								<td style="border-top: 0px !important;"><span t-field="vital_sign.note"/></td>
-        							</tr>
-        						</tbody>
-        					</table>
-        				</td>
-       				</tr>
-       			</table>
+            </table>
+            <div>
+              <t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">SURGERY ROOM PROCEDURE DETAILS</strong><br/></t>
+              <t t-if="nurse_sheet.room_id.room_type == 'surgery'">
+                Surgery Room Procedure Number: <span style="padding-left:2px;" t-field="nurse_sheet.room_id"/><br/>
+                Surgery Room: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgery_room_id"/><br/>
+                <t t-if="nurse_sheet.room_id.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgeon_id.partner_id"/><br/></t>
+                <t t-if="nurse_sheet.room_id.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.anesthesiologist_id.partner_id"/></t>
+                <br/>
+              </t>
+              <t t-if="nurse_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
+              <t t-if="nurse_sheet.vital_sign_ids">
+                <span t-field="vital_sign.vital_signs_date_hour"/><br/>
+                Date and Hour 
+                FC <span t-field="vital_sign.vital_signs_fc"/><br/>
+                Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                Diuresis <span t-field="vital_sign.diuresis"/><br/>
+                Bleeding <span t-field="vital_sign.bleeding"/><br/>
+                Nursing Note <span t-field="vital_sign.note"/><br/>
+              </t>
+            </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="nurse_sheet.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="nurse_sheet.review_note"/>
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
-            <!-- <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Professional:</strong> <span t-field="nurse_sheet.professional_id.firstname"/> <span t-field="nurse_sheet.professional_id.lastname"/> | <span><strong>Medical Record: </strong><span t-field="nurse_sheet.professional_id.medical_record"/></span>
-            </div> -->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="nurse_sheet.doctor_id.firstname"/> <span t-field="nurse_sheet.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="nurse_sheet.doctor_id.medical_record"/></span>
+            </div>
        			<p style="page-break-after: always;"/>
         	</t>
         	</div>
@@ -122,55 +95,47 @@
        						</t>
        					</td>
        				</tr>
-       				<tr t-if="quirgic_sheet.surgeon_id or quirgic_sheet.anesthesiologist_id or quirgic_sheet.anesthesia_type or quirgic_sheet.technologist_id or quirgic_sheet.helper_id">
-       					<td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td>
-       				</tr>
-       				<tr t-if="quirgic_sheet.surgeon_id or quirgic_sheet.anesthesiologist_id or quirgic_sheet.anesthesia_type or quirgic_sheet.technologist_id or quirgic_sheet.helper_id">
-       					<td style="width:50%; ">
-       						<t t-if="quirgic_sheet.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="quirgic_sheet.surgeon_id"/><br/></t>
-       						<t t-if="quirgic_sheet.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="quirgic_sheet.anesthesiologist_id"/><br/></t>
-       						<t t-if="quirgic_sheet.anesthesia_type">Type of Anesthesia: <span style="padding-left:2px;" t-field="quirgic_sheet.anesthesia_type"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="quirgic_sheet.technologist_id">Surgical Technologists: <span style="padding-left:2px;" t-field="quirgic_sheet.technologist_id"/><br/></t>
-       						<t t-if="quirgic_sheet.helper_id">Surgical Helpers: <span style="padding-left:2px;" t-field="quirgic_sheet.helper_id"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_ids or quirgic_sheet.user_id">
-       					<td colspan="2" style="text-align:center; "><strong>OTHER DETAILS</strong></td>
-       				</tr>
-       				<tr t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_ids or quirgic_sheet.user_id">
-       					<td style="width:50%; ">
-       						<t t-if="quirgic_sheet.procedure_scope">Scope of the Procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_scope"/><br/></t> 
-       						<t t-if="quirgic_sheet.procedure_purpose">Purpose of the procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_purpose"/><br/></t>
-       						<t t-if="quirgic_sheet.surgical_execution">Execution of the Surgical Act: <span style="padding-left:2px;" t-field="quirgic_sheet.surgical_execution"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="quirgic_sheet.disease_id">Diagnosis: <span style="padding-left:2px;" t-field="quirgic_sheet.disease_id"/><br/></t>
-       						<t t-if="quirgic_sheet.procedure_ids">Procedures: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_ids"/><br/></t>
-       						<t t-if="quirgic_sheet.user_id">Medical registry number: <span style="padding-left:2px;" t-field="quirgic_sheet.user_id"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="quirgic_sheet.tisue_sending_patologist"><td colspan="2" style="text-align:center; "><strong>TISUE SENDING TO PATOLOGIST</strong></td></tr>
-       				<tr t-if="quirgic_sheet.tisue_sending_patologist"><td colspan="2" style="width:50%; ">
-       					<span style="padding-left:2px;" t-field="quirgic_sheet.tisue_sending_patologist"/>
-       					</td>
-       				</tr>
-       				<tr t-if="quirgic_sheet.description"><td colspan="2" style="text-align:center; "><strong>QUIRURGIC DESCRIPTION</strong></td></tr>
-       				<tr t-if="quirgic_sheet.description">
-       					<td colspan="2" style="width:50%; "><span style="padding-left:2px;" t-field="quirgic_sheet.description"/></td>
-       				</tr>
-       				<tr t-if="quirgic_sheet.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
-       				<tr t-if="quirgic_sheet.sign_stamp">
-       					<td colspan="2" style="width:50%; "><span style="padding-left:2px;" t-field="quirgic_sheet.sign_stamp"/>
-                  <span style="padding-left:2px;" t-field="quirgic_sheet.medical_record"/>
-                </td>
-       				</tr>
-       			</table>
+            </table>
+            <div>
+              <t t-if="quirgic_sheet.surgeon_id or quirgic_sheet.anesthesiologist_id or quirgic_sheet.anesthesia_type or quirgic_sheet.technologist_id or quirgic_sheet.helper_id"><strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/></t>
+              <t t-if="quirgic_sheet.surgeon_id or quirgic_sheet.anesthesiologist_id or quirgic_sheet.anesthesia_type or quirgic_sheet.technologist_id or quirgic_sheet.helper_id">
+                <t t-if="quirgic_sheet.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="quirgic_sheet.surgeon_id"/><br/></t>
+                  <t t-if="quirgic_sheet.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="quirgic_sheet.anesthesiologist_id"/><br/></t>
+                  <t t-if="quirgic_sheet.anesthesia_type">Type of Anesthesia: <span style="padding-left:2px;" t-field="quirgic_sheet.anesthesia_type"/><br/></t>
+                  <t t-if="quirgic_sheet.technologist_id">Surgical Technologists: <span style="padding-left:2px;" t-field="quirgic_sheet.technologist_id"/><br/></t>
+                  <t t-if="quirgic_sheet.helper_id">Surgical Helpers: <span style="padding-left:2px;" t-field="quirgic_sheet.helper_id"/><br/></t>
+              </t>
+              <t t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_ids or quirgic_sheet.user_id"><strong style="font-size:12px;">OTHER DETAILS</strong><br/></t>
+              <t t-if="quirgic_sheet.procedure_scope or quirgic_sheet.procedure_purpose or quirgic_sheet.surgical_execution or quirgic_sheet.disease_id or quirgic_sheet.procedure_ids or quirgic_sheet.user_id">
+                <t t-if="quirgic_sheet.procedure_scope">Scope of the Procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_scope"/><br/></t> 
+                <t t-if="quirgic_sheet.procedure_purpose">Purpose of the procedure: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_purpose"/><br/></t>
+                <t t-if="quirgic_sheet.surgical_execution">Execution of the Surgical Act: <span style="padding-left:2px;" t-field="quirgic_sheet.surgical_execution"/><br/></t>
+                <t t-if="quirgic_sheet.disease_id">Diagnosis: <span style="padding-left:2px;" t-field="quirgic_sheet.disease_id"/><br/></t>
+                <t t-if="quirgic_sheet.procedure_ids">Procedures: <span style="padding-left:2px;" t-field="quirgic_sheet.procedure_ids"/><br/></t>
+                <t t-if="quirgic_sheet.user_id">Medical registry number: <span style="padding-left:2px;" t-field="quirgic_sheet.user_id"/><br/></t>
+              </t>
+              <t t-if="quirgic_sheet.tisue_sending_patologist"><strong style="font-size:12px;">TISUE SENDING TO PATOLOGIST</strong><br/></t>
+              <t t-if="quirgic_sheet.tisue_sending_patologist">
+                <span style="padding-left:2px;" t-field="quirgic_sheet.tisue_sending_patologist"/><br/>
+              </t>
+              <t t-if="quirgic_sheet.description"><strong style="font-size:12px;">QUIRURGIC DESCRIPTION</strong><br/></t>
+              <t t-if="quirgic_sheet.description">
+                <span style="padding-left:2px;" t-field="quirgic_sheet.description"/><br/>
+              </t>
+              <!-- <t t-if="quirgic_sheet.sign_stamp"><strong style="font-size:12px;">SIGN AND MÉDICAL STAMP</strong><br/></t>
+              <t t-if="quirgic_sheet.sign_stamp">
+                <span style="padding-left:2px;" t-field="quirgic_sheet.sign_stamp"/><br/>
+                <span style="padding-left:2px;" t-field="quirgic_sheet.medical_record"/><br/>
+              </t> -->
+            </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="quirgic_sheet.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="quirgic_sheet.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="quirgic_sheet.surgeon_id.firstname"/> <span t-field="quirgic_sheet.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="quirgic_sheet.surgeon_id.medical_record"/></span>
             </div>
    				<p style="page-break-after: always;"/>
    			</t>
@@ -289,228 +254,131 @@
        						</t>
        					</td>
        				</tr>
-       				<tr t-if="presurgical_record.consultation_reason"><td colspan="2" style="text-align:center; "><strong>REASON FOR CONSULTATION</strong></td></tr>
-       				<tr t-if="presurgical_record.consultation_reason">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.consultation_reason"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.pathological" ><td colspan="2" style="text-align:center; "><strong>PATHOLOGICAL</strong></td></tr>
-       				<tr t-if="presurgical_record.pathological" >
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.pathological"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.surgical" ><td colspan="2" style="text-align:center; "><strong>SURGICAL</strong></td></tr>
-       				<tr t-if="presurgical_record.surgical" >
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.surgical"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.relatives" ><td colspan="2" style="text-align:center; "><strong>RELATIVES</strong></td></tr>
-       				<tr t-if="presurgical_record.relatives" >
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.relatives"/>
-       					</td>
-       				</tr>
-              <t t-if="flag == 0">
-       				  <tr t-if="presurgical_record.smoke or presurgical_record.cigarate_daily or presurgical_record.is_alcoholic or presurgical_record.alcohol_frequency or presurgical_record.marijuana or presurgical_record.cocaine or presurgical_record.ecstasy or presurgical_record.body_background_others or presurgical_record.pharmacological or presurgical_record.allergic or presurgical_record.gender == 'female'">
-       					<td colspan="2" style="text-align:center; "><strong>PATIENT BACKGROUND</strong></td></tr>
-   					    <tr t-if="presurgical_record.smoke or presurgical_record.cigarate_daily or presurgical_record.is_alcoholic or presurgical_record.alcohol_frequency or presurgical_record.marijuana or presurgical_record.cocaine or presurgical_record.ecstasy or presurgical_record.body_background_others or presurgical_record.pharmacological or presurgical_record.allergic or presurgical_record.gender == 'female'">
-   						<td colspan="2" style="padding:0px;">
-   							<table class="table" style="width:100%;margin:0px;">
-   								<tr t-if="presurgical_record.smoke or presurgical_record.cigarate_daily or presurgical_record.is_alcoholic or presurgical_record.alcohol_frequency or presurgical_record.marijuana or presurgical_record.cocaine or presurgical_record.ecstasy or presurgical_record.body_background_others or presurgical_record.pharmacological or presurgical_record.allergic">
-   								<td style="width:50%;">
-   									<t t-if="presurgical_record.smoke">Smoke: <span style="padding-left:2px;" t-field="presurgical_record.smoke"/><br/></t>
-		       						<t t-if="presurgical_record.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px;" t-field="presurgical_record.cigarate_daily"/><br/></t>
-		       						<t t-if="presurgical_record.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px;" t-field="presurgical_record.is_alcoholic"/><br/></t>
-		       						<t t-if="presurgical_record.alcohol_frequency">Frequency: <span style="padding-left:2px;" t-field="presurgical_record.alcohol_frequency"/><br/></t>
-		       						<t t-if="presurgical_record.marijuana">Marijuana: <span style="padding-left:2px;" t-field="presurgical_record.marijuana"/><br/></t>
-		       						<t t-if="presurgical_record.cocaine">Cocaine: <span style="padding-left:2px;" t-field="presurgical_record.cocaine"/><br/></t>
-		       						<t t-if="presurgical_record.ecstasy">Ecstasy: <span style="padding-left:2px;" t-field="presurgical_record.ecstasy"/></t>
-   								</td>
-   								<td style="width:50%; ">
-   									<t t-if="presurgical_record.body_background_others"><strong>Others: </strong></t>
-		   							<t t-if="presurgical_record.body_background_others">
-		   								<table style="width:100%;">
-			   								<tr>
-			   									<td><span style="padding-left:2px;" t-field="presurgical_record.body_background_others"/></td>
-			   								</tr>
-			   							</table>
-			   						</t>
-		       						<t t-if="presurgical_record.pharmacological"><strong>Pharmacological: </strong></t>
-		       						<t t-if="presurgical_record.pharmacological">
-			   							<table style="width:100%;">
-			   								<tr>
-			   									<td><span style="padding-left:2px;" t-field="presurgical_record.pharmacological"/></td>
-			   								</tr>
-			   							</table>
-			   						</t>
-		       						<t t-if="presurgical_record.allergic"><strong>Allergic: </strong></t>
-		       						<t t-if="presurgical_record.allergic">
-			   							<table style="width:100%;">
-			   								<tr>
-			   									<td><span style="padding-left:2px;" t-field="presurgical_record.allergic"/></td>
-			   								</tr>
-			   							</table>
-			   						</t>
-   								</td>
-   								</tr>
-   								<tr t-if="presurgical_record.gender == 'female'" style="border-top: 0px;">
-   									<td style="width:50%; border-right: 2px solid black;border-top: 0px;">
-   										Number of Pregnancies: <span style="padding-left:2px;" t-field="presurgical_record.pregnancy_number"/><br/>
-		       							Number of Children: <span style="padding-left:2px;" t-field="presurgical_record.child_number"/><br/>
-		       							Number of Abortions: <span style="padding-left:2px;" t-field="presurgical_record.abortion_number"/>
-   									</td>
-   									<td style="width:50%; border-top: 0px;">
-   									Date of Last Birth: <span style="padding-left:2px;" t-field="presurgical_record.last_birth_date"/><br/>
-		       							Date of Last Menstruation: <span style="padding-left:2px;" t-field="presurgical_record.last_menstruation_date"/><br/>
-		       							Contrtaceptive Methods: <span style="padding-left:2px;" t-field="presurgical_record.contrtaceptive_methods"/>
-   									</td>
-   								</tr>
-   							</table>
-   						</td>
-       				</tr>
-       				<tr t-if="presurgical_record.physical_sistolic_arteric_presure or presurgical_record.physical_diastolic_artery_presure or presurgical_record.physical_fc or presurgical_record.physical_fr or presurgical_record.physical_weight or presurgical_record.physical_size or presurgical_record.physical_body_mass_index">
-       					<td colspan="2" style="text-align:center; "><strong>PHYSICAL DETAILS</strong></td>
-       				</tr>
+       			</table>
+       			<div>
+	              <t t-if="presurgical_record.consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
+	              <t t-if="presurgical_record.consultation_reason">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.consultation_reason"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.pathological"><strong style="font-size:12px;">PATHOLOGICAL</strong><br/></t>
+	              <t t-if="presurgical_record.pathological">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.pathological"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.surgical"><strong style="font-size:12px;">SURGICAL</strong><br/></t>
+	              <t t-if="presurgical_record.surgical">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.surgical"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.relatives"><strong style="font-size:12px;">RELATIVES</strong><br/></t>
+	              <t t-if="presurgical_record.relatives">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.relatives"/><br/>
+	              </t>
+	              <t t-if="flag == 0">
+		              <t t-if="presurgical_record.smoke or presurgical_record.cigarate_daily or presurgical_record.is_alcoholic or presurgical_record.alcohol_frequency or presurgical_record.marijuana or presurgical_record.cocaine or presurgical_record.ecstasy or presurgical_record.body_background_others or presurgical_record.pharmacological or presurgical_record.allergic or presurgical_record.gender == 'female'"><strong style="font-size:12px;">PATIENT BACKGROUND</strong><br/></t>
+		              <t t-if="presurgical_record.smoke">
+		                Smoke: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.smoke"/><br/>
+		              </t>
+		              <t t-if="presurgical_record.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.cigarate_daily"/><br/></t>
+		              <t t-if="presurgical_record.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.is_alcoholic"/><br/></t>
+		              <t t-if="presurgical_record.alcohol_frequency">Frequency: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.alcohol_frequency"/><br/></t>
+		              <t t-if="presurgical_record.marijuana">Marijuana: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.marijuana"/><br/></t>
+		              <t t-if="presurgical_record.cocaine">Cocaine: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.cocaine"/><br/></t>
+		              <t t-if="presurgical_record.ecstasy">Ecstasy: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.ecstasy"/><br/></t>
+		            
+	              <t t-if="presurgical_record.body_background_others"><strong style="font-size:12px;">Others:</strong><br/></t>
+	              <t t-if="presurgical_record.body_background_others">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.body_background_others"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.pharmacological"><strong style="font-size:12px;">Pharmacological:</strong><br/></t>
+	              <t t-if="presurgical_record.pharmacological">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.pharmacological"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.allergic"><strong style="font-size:12px;">Allergic:</strong><br/></t>
+	              <t t-if="presurgical_record.allergic">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.allergic"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.gender == 'female'">
+	                Number of Pregnancies: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.pregnancy_number"/><br/>
+	                N° de hijos: <span style="padding-left:2px;" t-field="presurgical_record.child_number"/><br/>
+	                Number of Abortions: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.abortion_number"/><br/>
+	                Date of Last Birth: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.last_birth_date"/><br/>
+	                Date of Last Menstruation: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.last_menstruation_date"/><br/>
+	                Contrtaceptive Methods: <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.contrtaceptive_methods"/><br/>
+	              </t>
               </t>
-   					<tr t-if="presurgical_record.physical_sistolic_arteric_presure or presurgical_record.physical_diastolic_artery_presure or presurgical_record.physical_fc or presurgical_record.physical_fr or presurgical_record.physical_weight or presurgical_record.physical_size or presurgical_record.physical_body_mass_index">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.physical_sistolic_arteric_presure or presurgical_record.physical_diastolic_artery_presure">
-       							TA: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_sistolic_arteric_presure"/>/
-       							<span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_diastolic_artery_presure"/><br/> 
-       						</t>
-       						<t t-if="presurgical_record.physical_fc">FC: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_fc"/>b/m <br/></t>
-       						<t t-if="presurgical_record.physical_fr">FR: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_fr"/>b/m </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.physical_weight">Weight: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_weight"/>Kg <br/></t>
-       						<t t-if="presurgical_record.physical_size">Size: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_size"/>Cm <br/></t>
-       						<t t-if="presurgical_record.physical_body_mass_index">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.physical_body_mass_index"/>kg/m² </t>
-       					</td>
-       				</tr>
-   					<tr t-if="presurgical_record.physical_exam"><td colspan="2" style="text-align:center; "><strong>PHYSICAL EXAM</strong></td></tr>
-   					<tr t-if="presurgical_record.physical_exam">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.physical_exam"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_exam_date or presurgical_record.paraclinical_asa or presurgical_record.paraclinical_goldman">
-       					<td colspan="2" style="text-align:center; "><strong>PARACLINICAL EXAM</strong></td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_exam_date or presurgical_record.paraclinical_asa or presurgical_record.paraclinical_goldman">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_exam_date">Date of Exam: <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_exam_date"/><br/></t>
-       						<t t-if="presurgical_record.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_asa"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_goldman"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg">
-       					<td colspan="2" style="text-align:center; "><strong>BLOOD COUNT</strong></td>
-       				</tr>
-   					<tr t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hb"/>g/dl <br/> </t>
-       						<t t-if="presurgical_record.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hto"/>Vol % <br/> </t>
-       						<t t-if="presurgical_record.paraclinical_leukocytes">Leukocytes: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_leukocytes"/>x 10^3/ul </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_differential">Differential: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_differential"/><br/></t>
-       						<t t-if="presurgical_record.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_vsg"/>mm/H <br/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc">
-       					<td colspan="2" style="text-align:center; "><strong>COOGULACIAN TEST</strong></td>
-       				</tr>
-   					<tr t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_pt"/>S (seconds) <br/> </t>
-       						<t t-if="presurgical_record.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_ptt"/>S (seconds)  </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_platelets">Platelets: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_platelets"/> x 10^3/ul<br/> </t>
-       						<t t-if="presurgical_record.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_tc"/>m (Minutes)<br/> </t>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob">
-       					<td colspan="2" style="text-align:center; "><strong>SANGUINEA CHEMICAL</strong></td>
-       				</tr>
-   					<tr t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glycemia"/>mg/dl<br/> </t>
-       						<t t-if="presurgical_record.paraclinical_creatinine">Creatinina: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_creatinine"/>mg/dl </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.paraclinical_albumin">Albumin: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_albumin"/>g/dl<br/> </t>
-       						<t t-if="presurgical_record.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glob"/> </t>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_ecg"><td colspan="2" style="text-align:center; "><strong>ELECTROCARDIOGRAM</strong></td></tr>
-   					<tr t-if="presurgical_record.paraclinical_ecg">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.paraclinical_ecg"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_rx_chest"><td colspan="2" style="text-align:center; "><strong>RX. CHEST</strong></td></tr>
-   					<tr t-if="presurgical_record.paraclinical_rx_chest">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.paraclinical_rx_chest"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.paraclinical_others"><td colspan="2" style="text-align:center; "><strong>OTHERS</strong></td></tr>
-   					<tr t-if="presurgical_record.paraclinical_others">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.paraclinical_others"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.disease_id or presurgical_record.disease_state">
-       					<td colspan="2" style="text-align:center; "><strong>MAIN DISEASE</strong></td>
-       				</tr>
-       				<tr t-if="presurgical_record.disease_id or presurgical_record.disease_state">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.disease_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.disease_id"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.disease_state">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.disease_state"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.disease2_id or presurgical_record.disease3_id or presurgical_record.disease_state2 or presurgical_record.disease_state3">
-       					<td colspan="2" style="text-align:center; "><strong>OTHER DISEASES</strong></td></tr>
-   					<tr t-if="presurgical_record.disease2_id or presurgical_record.disease3_id or presurgical_record.disease_state2 or presurgical_record.disease_state3">
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.disease2_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.disease2_id"/><br/></t>
-       						<t t-if="presurgical_record.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.disease3_id"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="presurgical_record.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.disease_state2"/><br/></t>
-       						<t t-if="presurgical_record.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.disease_state3"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.plan_analysis"><td colspan="2" style="text-align:center; "><strong>PLAN, ANALYSIS AND CONDUCT</strong></td></tr>
-   					<tr t-if="presurgical_record.plan_analysis">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.plan_analysis"/>
-       					</td>
-       				</tr>
-       				<tr t-if="presurgical_record.medical_recipe"><td colspan="2" style="text-align:center; "><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
-   					<tr t-if="presurgical_record.medical_recipe">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="presurgical_record.medical_recipe"/>
-       					</td>
-       				</tr>
-   				</table>
+	              <t t-if="presurgical_record.physical_sistolic_arteric_presure or presurgical_record.physical_diastolic_artery_presure or presurgical_record.physical_fc or presurgical_record.physical_fr or presurgical_record.physical_weight or presurgical_record.physical_size or presurgical_record.physical_body_mass_index"><strong style="font-size:12px;">PHYSICAL DETAILS:</strong><br/></t>
+	              <t t-if="presurgical_record.physical_sistolic_arteric_presure or presurgical_record.physical_diastolic_artery_presure">
+	                TA: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_sistolic_arteric_presure"/>/
+	                <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_diastolic_artery_presure"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.physical_fc">FC: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_fc"/>b/m <br/> </t>
+	              <t t-if="presurgical_record.physical_fr">FR: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_fr"/>b/m <br/></t>
+	              <t t-if="presurgical_record.physical_weight">Weight: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_weight"/>Kg <br/> </t>
+	              <t t-if="presurgical_record.physical_size">Size: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_size"/>Cm <br/> </t>
+	              <t t-if="presurgical_record.physical_body_mass_index">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.physical_body_mass_index"/>kg/m² <br/></t>
+	              <t t-if="presurgical_record.physical_exam"><strong style="font-size:12px;">PHYSICAL EXAM:</strong><br/></t>
+	              <t t-if="presurgical_record.physical_exam">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.physical_exam"/><br/>
+	              </t>
+	              <t t-if="presurgical_record.paraclinical_exam_date or presurgical_record.paraclinical_asa or presurgical_record.paraclinical_goldman"><strong style="font-size:12px;">PARACLINICAL EXAM:</strong><br/></t>
+                <t t-if="presurgical_record.paraclinical_exam_date">Date of Exam: <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_exam_date"/><br/></t>
+         				<t t-if="presurgical_record.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_asa"/><br/></t>
+         				<t t-if="presurgical_record.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_goldman"/></t>
+	              <t t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg"><strong style="font-size:12px;">BLOOD COUNT:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hb"/>g/dl <br/> </t>
+      					<t t-if="presurgical_record.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hto"/>Vol % <br/> </t>
+      					<t t-if="presurgical_record.paraclinical_leukocytes">Leukocytes: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_leukocytes"/>x 10^3/ul </t>
+      					<t t-if="presurgical_record.paraclinical_differential">Differential: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_differential"/><br/></t>
+       				  <t t-if="presurgical_record.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_vsg"/>mm/H <br/></t>
+	              <t t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc"><strong style="font-size:12px;">COOGULACIAN TEST:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_pt"/>S (seconds) <br/> </t>
+         				<t t-if="presurgical_record.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_ptt"/>S (seconds)  </t>
+         				<t t-if="presurgical_record.paraclinical_platelets">Platelets: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_platelets"/> x 10^3/ul<br/> </t>
+         				<t t-if="presurgical_record.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_tc"/>m (Minutes)<br/> </t>
+	              <t t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob"><strong style="font-size:12px;">SANGUINEA CHEMICAL:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glycemia"/>mg/dl<br/> </t>
+         				<t t-if="presurgical_record.paraclinical_creatinine">Creatinina: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_creatinine"/>mg/dl </t>
+         				<t t-if="presurgical_record.paraclinical_albumin">Albumin: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_albumin"/>g/dl<br/> </t>
+         				<t t-if="presurgical_record.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glob"/> </t>
+	              <t t-if="presurgical_record.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAM:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_ecg">
+	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_ecg"/>
+	              </t>
+	              <t t-if="presurgical_record.paraclinical_rx_chest"><strong style="font-size:12px;">RX. CHEST:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_rx_chest">
+	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_rx_chest"/>
+	              </t>
+	              <t t-if="presurgical_record.paraclinical_others"><strong style="font-size:12px;">OTHERS:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_others">
+	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_others"/>
+	              </t>
+	              <t t-if="presurgical_record.disease_id"><strong style="font-size:12px;">MAIN DISEASE:</strong><br/></t>
+	              <t t-if="presurgical_record.disease_id">
+	                <t t-if="presurgical_record.disease_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_id"/><br/></t>
+	                <t t-if="presurgical_record.disease_id">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state"/><br/></t>
+	              </t>
+	              <t t-if="presurgical_record.disease2_id or presurgical_record.disease3_id or presurgical_record.disease_state2 or presurgical_record.disease_state3"><strong style="font-size:12px;">OTHER DISEASES:</strong><br/></t>
+	              <t t-if="presurgical_record.disease2_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease2_id"/><br/></t>
+	              <t t-if="presurgical_record.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease3_id"/><br/></t>
+	              <t t-if="presurgical_record.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state2"/><br/></t>
+	              <t t-if="presurgical_record.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state3"/><br/></t>
+	              <t t-if="presurgical_record.plan_analysis"><strong style="font-size:12px;">PLAN, ANALYSIS AND CONDUCT:</strong><br/></t>
+	              <t t-if="presurgical_record.plan_analysis">
+	              	<span style="padding-left:2px;" t-field="presurgical_record.plan_analysis"/>
+	              </t>
+	              <t t-if="presurgical_record.medical_recipe"><strong style="font-size:12px;">MEDICAL ORDERS AND RECIPE:</strong><br/></t>
+	              <t t-if="presurgical_record.medical_recipe">
+	                <span style="padding-left:2px; font-size:12px;" t-field="presurgical_record.medical_recipe"/><br/>
+	              </t>
+	            </div>
           <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="presurgical_record.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="presurgical_record.review_note"/>
             </div>
           <!--Espacio reservado para imprimir la firma del profesional encargado-->
-          <!-- <div style="text-align: center; border-bottom: 1px solid black;">
-            <strong>Professional:</strong> <span t-field="nurse_sheet.professional_id.firstname"/> <span t-field="nurse_sheet.professional_id.lastname"/> | <span><strong>Medical Record: </strong><span t-field="nurse_sheet.professional_id.medical_record"/></span>
-          </div> -->
+          <div style="text-align: center; border-bottom: 1px solid black;">
+            <strong>Firma:</strong> <span t-field="presurgical_record.doctor_id.firstname"/> <span t-field="presurgical_record.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="presurgical_record.doctor_id.medical_record"/></span>
+          </div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -540,121 +408,85 @@
        						</t>
        					</td>
        				</tr>
-       				<tr t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note">
-       					<td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td></tr>
-       				<tr t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.product_id">Process: <span style="padding-left:2px;" t-field="anhestesic_registry.product_id"/><br/></t>
-       						<t t-if="anhestesic_registry.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="anhestesic_registry.surgeon_id"/><br/></t>
-       						<t t-if="anhestesic_registry.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="anhestesic_registry.anesthesiologist_id"/><br/></t>
-       						<t t-if="anhestesic_registry.anesthesia_type">Type of Anesthesia: <span style="padding-left:2px;" t-field="anhestesic_registry.anesthesia_type"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.start_time">Start Time: <span style="padding-left:2px;" t-field="anhestesic_registry.start_time"/><br/></t>
-       						<t t-if="anhestesic_registry.end_time">End Time: <span style="padding-left:2px;" t-field="anhestesic_registry.end_time"/><br/></t>
-       						<t t-if="anhestesic_registry.preoperative_note">Preoperative Note: <span style="padding-left:2px;" t-field="anhestesic_registry.preoperative_note"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_exam_date or anhestesic_registry.paraclinical_asa or anhestesic_registry.paraclinical_goldman">
-       					<td colspan="2" style="text-align:center; "><strong>PARACLINICAL EXAM</strong></td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_exam_date or anhestesic_registry.paraclinical_asa or anhestesic_registry.paraclinical_goldman">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_exam_date">Date of Exam: <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_exam_date"/><br/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_asa"/><br/></t>
-       						<t t-if="anhestesic_registry.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_goldman"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg">
-       					<td colspan="2" style="text-align:center; "><strong>BLOOD COUNT</strong></td>
-       				</tr>
-   					<tr t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_hb"/>g/dl <br/></t>
-       						<t t-if="anhestesic_registry.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_hto"/>Vol % <br/> </t>
-       						<t t-if="anhestesic_registry.paraclinical_leukocytes">Leukocytes: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_leukocytes"/>x 10^3/ul </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_differential">Differential: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_differential"/><br/> </t>
-       						<t t-if="anhestesic_registry.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_vsg"/>mm/H <br/> </t>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc"><td colspan="2" style="text-align:center; "><strong>COOGULACIAN TEST</strong></td></tr>
-   					<tr t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_pt"/>S (seconds) <br/></t>
-       						<t t-if="anhestesic_registry.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_ptt"/>S (seconds) </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_platelets">Platelets: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_platelets"/> x 10^3/ul<br/></t>
-       						<t t-if="anhestesic_registry.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_tc"/>m (Minutes)<br/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob" >
-       					<td colspan="2" style="text-align:center; "><strong>SANGUINEA CHEMICAL</strong></td>
-       				</tr>
-   					<tr t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_glycemia"/>mg/dl<br/></t>
-       						<t t-if="anhestesic_registry.paraclinical_creatinine">Creatinine: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_creatinine"/>mg/dl</t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.paraclinical_albumin">Albumin: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_albumin"/>g/dl<br/></t>
-       						<t t-if="anhestesic_registry.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_glob"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_ecg"><td colspan="2" style="text-align:center; "><strong>ELECTROCARDIOGRAM</strong></td></tr>
-   					<tr t-if="anhestesic_registry.paraclinical_ecg">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_ecg"/>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_rx_chest"><td colspan="2" style="text-align:center; "><strong>RX. CHEST</strong></td></tr>
-   					<tr t-if="anhestesic_registry.paraclinical_rx_chest">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_rx_chest"/>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.paraclinical_others"><td colspan="2" style="text-align:center; "><strong>OTHERS</strong></td></tr>
-   					<tr t-if="anhestesic_registry.paraclinical_others">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_others"/>
-       					</td>
-       				</tr>
-       				<!-- <tr t-if="anhestesic_registry.monitor"><td colspan="2" style="text-align:center; "><strong>MONITOR</strong></td></tr>
-   					<tr t-if="anhestesic_registry.monitor">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="anhestesic_registry.monitor"/>
-       					</td>
-       				</tr> -->
-       				<tr t-if="anhestesic_registry.crystalloids or anhestesic_registry.blood or anhestesic_registry.colloids or anhestesic_registry.infiltrated"><td colspan="2" style="text-align:center; "><strong>LIQUIDOS ADMINISTRADOS</strong></td></tr>
-       				<tr t-if="anhestesic_registry.crystalloids or anhestesic_registry.blood or anhestesic_registry.colloids or anhestesic_registry.infiltrated">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.crystalloids">Crystalloids: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.crystalloids"/>ml<br/></t>
-       						<t t-if="anhestesic_registry.blood">Blood: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.blood"/>ml </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.colloids">Colloids: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.colloids"/>ml<br/></t>
-       						<t t-if="anhestesic_registry.infiltrated">Infiltrated: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.infiltrated"/>ml</t>
-       					</td>
-       				</tr>
-       				<tr t-if="anhestesic_registry.bleeding or anhestesic_registry.diuresis or anhestesic_registry.liposuction"><td colspan="2" style="text-align:center; "><strong>LIQUIDOS ELIMINADOS</strong></td></tr>
-       				<tr t-if="anhestesic_registry.bleeding or anhestesic_registry.diuresis or anhestesic_registry.liposuction">
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.bleeding">Bleeding: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.bleeding"/>ml<br/></t>
-       						<t t-if="anhestesic_registry.diuresis">Diuresis: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.diuresis"/>ml</t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="anhestesic_registry.liposuction">Liposuction: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.liposuction"/>ml<br/></t>
-       					</td>
-       				</tr>
-       			</table>
+            </table>
+            <div>
+              <t t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note"><strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/></t>
+              <t t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note">
+                <t t-if="anhestesic_registry.product_id">Process: <span style="padding-left:2px;" t-field="anhestesic_registry.product_id"/><br/></t>
+                <t t-if="anhestesic_registry.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="anhestesic_registry.surgeon_id"/><br/></t>
+                <t t-if="anhestesic_registry.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="anhestesic_registry.anesthesiologist_id"/><br/></t>
+                <t t-if="anhestesic_registry.anesthesia_type">Type of Anesthesia: <span style="padding-left:2px;" t-field="anhestesic_registry.anesthesia_type"/><br/></t>
+                <t t-if="anhestesic_registry.start_time">Start Time: <span style="padding-left:2px;" t-field="anhestesic_registry.start_time"/><br/></t>
+                <t t-if="anhestesic_registry.end_time">End Time: <span style="padding-left:2px;" t-field="anhestesic_registry.end_time"/><br/></t>
+                <t t-if="anhestesic_registry.preoperative_note">Preoperative Note: <span style="padding-left:2px;" t-field="anhestesic_registry.preoperative_note"/></t>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_exam_date or anhestesic_registry.paraclinical_asa or anhestesic_registry.paraclinical_goldman"><strong style="font-size:12px;">PARACLINICAL EXAM</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_exam_date or anhestesic_registry.paraclinical_asa or anhestesic_registry.paraclinical_goldman">
+                <t t-if="anhestesic_registry.paraclinical_exam_date">Date of Exam: <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_exam_date"/><br/></t>
+                <t t-if="anhestesic_registry.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_asa"/><br/></t>
+                <t t-if="anhestesic_registry.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_goldman"/></t>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg"><strong style="font-size:12px;">BLOOD COUNT</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg">
+                <t t-if="anhestesic_registry.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_hb"/>g/dl </t>
+                <t t-if="anhestesic_registry.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_hto"/>Vol % </t>
+                <t t-if="anhestesic_registry.paraclinical_leukocytes">Leukocytes: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_leukocytes"/>x 10^3/ul </t>
+                <t t-if="anhestesic_registry.paraclinical_differential">Differential: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_differential"/> </t>
+                <t t-if="anhestesic_registry.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_vsg"/>mm/H  </t>
+                <br/>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc"><strong style="font-size:12px;">COOGULACIAN TEST</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc">
+                <t t-if="anhestesic_registry.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_pt"/>S (seconds) </t>
+                <t t-if="anhestesic_registry.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_ptt"/>S (seconds) </t>
+                <t t-if="anhestesic_registry.paraclinical_platelets">Platelets: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_platelets"/> x 10^3/ul</t>
+                <t t-if="anhestesic_registry.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_tc"/>m (Minutes)</t>
+                <br/>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob"><strong style="font-size:12px;">SANGUINEA CHEMICAL</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob">
+                <t t-if="anhestesic_registry.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_glycemia"/>mg/dl</t>
+                <t t-if="anhestesic_registry.paraclinical_creatinine">Creatinine: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_creatinine"/>mg/dl</t>
+                <t t-if="anhestesic_registry.paraclinical_albumin">Albumin: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_albumin"/>g/dl</t>
+                <t t-if="anhestesic_registry.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_glob"/></t>
+                <br/>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAM</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_ecg">
+                <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_ecg"/><br/>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_rx_chest"><strong style="font-size:12px;">RX. CHEST</strong></t>
+              <t t-if="anhestesic_registry.paraclinical_rx_chest">
+                <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_rx_chest"/><br/>
+              </t>
+              <t t-if="anhestesic_registry.paraclinical_others"><strong style="font-size:12px;">OTHERS</strong></t>
+              <t t-if="anhestesic_registry.paraclinical_others">
+                <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_others"/><br/>
+              </t>
+              <t t-if="anhestesic_registry.crystalloids or anhestesic_registry.blood or anhestesic_registry.colloids or anhestesic_registry.infiltrated"><strong style="font-size:12px;">LIQUIDOS ADMINISTRADOS</strong><br/></t>
+              <t t-if="anhestesic_registry.crystalloids or anhestesic_registry.blood or anhestesic_registry.colloids or anhestesic_registry.infiltrated">
+                <t t-if="anhestesic_registry.crystalloids">Crystalloids: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.crystalloids"/>ml</t>
+                <t t-if="anhestesic_registry.blood">Blood: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.blood"/>ml </t>
+                <t t-if="anhestesic_registry.colloids">Colloids: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.colloids"/>ml</t>
+                <t t-if="anhestesic_registry.infiltrated">Infiltrated: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.infiltrated"/>ml</t>
+                <br/>
+              </t>
+              <t t-if="anhestesic_registry.bleeding or anhestesic_registry.diuresis or anhestesic_registry.liposuction"><strong style="font-size:12px;">LIQUIDOS ELIMINADOS</strong><br/></t>
+              <t t-if="anhestesic_registry.bleeding or anhestesic_registry.diuresis or anhestesic_registry.liposuction">
+                <t t-if="anhestesic_registry.bleeding">Bleeding: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.bleeding"/>ml</t>
+                <t t-if="anhestesic_registry.diuresis">Diuresis: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.diuresis"/>ml</t>
+                <t t-if="anhestesic_registry.liposuction">Liposuction: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.liposuction"/>ml</t>
+                <br/>
+              </t>
+            </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="anhestesic_registry.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="anhestesic_registry.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="anhestesic_registry.anesthesiologist_id.firstname"/> <span t-field="anhestesic_registry.anesthesiologist_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="anhestesic_registry.anesthesiologist_id.medical_record"/></span>
             </div>
        			<p style="page-break-after: always;"/>
        		</t>
@@ -727,151 +559,91 @@
                   </t>
                 </td>
               </tr>
-       				<tr t-if="plastic_surgery.consultation_reason"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>REASON FOR CONSULTATION</strong></td></tr>
-   					<tr t-if="plastic_surgery.consultation_reason">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.consultation_reason"/>
-       					</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.pathological" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATHOLOGICAL</strong></td></tr>
-       				<tr t-if="plastic_surgery.pathological" >
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.pathological"/>
-       					</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.surgical" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>SURGICAL</strong></td></tr>
-       				<tr t-if="plastic_surgery.surgical" >
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.surgical"/>
-       					</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.relatives" ><td colspan="2" style="text-align:center; font-size: 14px;"><strong>RELATIVES</strong></td></tr>
-       				<tr t-if="plastic_surgery.relatives" >
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.relatives"/>
-       					</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.smoke or plastic_surgery.cigarate_daily or plastic_surgery.is_alcoholic or plastic_surgery.alcohol_frequency or plastic_surgery.marijuana or plastic_surgery.cocaine or plastic_surgery.ecstasy or plastic_surgery.body_background_others or plastic_surgery.pharmacological or plastic_surgery.allergic or plastic_surgery.gender == 'female'">
-       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>PATIENT BACKGROUND</strong></td>
-       				</tr>
-   					<tr t-if="plastic_surgery.smoke or plastic_surgery.cigarate_daily or plastic_surgery.is_alcoholic or plastic_surgery.alcohol_frequency or plastic_surgery.marijuana or plastic_surgery.cocaine or plastic_surgery.ecstasy or plastic_surgery.body_background_others or plastic_surgery.pharmacological or plastic_surgery.allergic or plastic_surgery.gender == 'female'">
-   						<td colspan="2" style="padding:0px;">
-   							<table class="table" style="width:100%;margin:0px;">
-   								<tr t-if="plastic_surgery.smoke or plastic_surgery.cigarate_daily or plastic_surgery.is_alcoholic or plastic_surgery.alcohol_frequency or plastic_surgery.marijuana or plastic_surgery.cocaine or plastic_surgery.ecstasy or plastic_surgery.body_background_others or plastic_surgery.pharmacological or plastic_surgery.allergic">
-   								<td style="width:50%;">
-   									<t t-if="plastic_surgery.smoke">Smoke: <span style="padding-left:2px;" t-field="plastic_surgery.smoke"/><br/></t>
-		       						<t t-if="plastic_surgery.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px;" t-field="plastic_surgery.cigarate_daily"/><br/></t>
-		       						<t t-if="plastic_surgery.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px;" t-field="plastic_surgery.is_alcoholic"/><br/></t>
-		       						<t t-if="plastic_surgery.alcohol_frequency">Frequency: <span style="padding-left:2px;" t-field="plastic_surgery.alcohol_frequency"/><br/></t>
-		       						<t t-if="plastic_surgery.marijuana">Marijuana: <span style="padding-left:2px;" t-field="plastic_surgery.marijuana"/><br/></t>
-		       						<t t-if="plastic_surgery.cocaine">Cocaine: <span style="padding-left:2px;" t-field="plastic_surgery.cocaine"/><br/></t>
-		       						<t t-if="plastic_surgery.ecstasy">Ecstasy: <span style="padding-left:2px;" t-field="plastic_surgery.ecstasy"/></t>
-   								</td>
-   								<td style="width:50%; ">
-   									<t t-if="plastic_surgery.body_background_others">
-   									<strong >Others: </strong>
-		   							<table style="width:100%;">
-		   								<tr>
-		   									<td><span style="padding-left:2px;" t-field="plastic_surgery.body_background_others"/></td>
-		   								</tr>
-		   							</table>
-		   							</t>
-		   							<t t-if="plastic_surgery.pharmacological">
-		       						<strong>Pharmacological: </strong>
-		   							<table style="width:100%;">
-		   								<tr>
-		   									<td><span style="padding-left:2px;" t-field="plastic_surgery.pharmacological"/></td>
-		   								</tr>
-		   							</table>
-		   							</t>
-		   							<t t-if="plastic_surgery.allergic">
-		       						<strong>Allergic: </strong>
-		   							<table style="width:100%;">
-		   								<tr>
-		   									<td><span style="padding-left:2px;" t-field="plastic_surgery.allergic"/></td>
-		   								</tr>
-		   							</table>
-		   							</t>
-   								</td>
-   								</tr>
-   								<tr t-if="plastic_surgery.gender == 'female'" style="border-top: 0px;">
-   									<td style="width:50%; border-right: 2px solid black;border-top: 0px;">
-   										Number of Pregnancies: <span style="padding-left:2px;" t-field="plastic_surgery.pregnancy_number"/><br/>
-		       						N° de hijos: <span style="padding-left:2px;" t-field="plastic_surgery.child_number"/><br/>
-		       						Number of Abortions: <span style="padding-left:2px;" t-field="plastic_surgery.abortion_number"/>
-   									</td>
-   									<td style="width:50%; border-top: 0px;">
-   										Date of Last Birth: <span style="padding-left:2px;" t-field="plastic_surgery.last_birth_date"/><br/>
-		       						Date of Last Menstruation: <span style="padding-left:2px;" t-field="plastic_surgery.last_menstruation_date"/><br/>
-		       						Contrtaceptive Methods: <span style="padding-left:2px;" t-field="plastic_surgery.contrtaceptive_methods"/>
-   									</td>
-   								</tr>
-   							</table>
-   						</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index">
-       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>PHYSICAL DETAILS</strong></td>
-       				</tr>
-   					<tr t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index">
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure">TA: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_sistolic_arteric_presure"/>/
-       							<span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_diastolic_artery_presure"/><br/></t>
-       						<t t-if="plastic_surgery.physical_fc">FC: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_fc"/>b/m <br/> </t>
-       						<t t-if="plastic_surgery.physical_fr">FR: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_fr"/>b/m </t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.physical_weight">Weight: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_weight"/>Kg <br/> </t>
-       						<t t-if="plastic_surgery.physical_size">Size: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_size"/>Cm <br/> </t>
-       						<t t-if="plastic_surgery.physical_body_mass_index">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.physical_body_mass_index"/>kg/m² </t>
-       					</td>
-       				</tr>
-   					<tr t-if="plastic_surgery.physical_exam"><td colspan="2" style="text-align:center; font-size: 12px;"><strong>PHYSICAL EXAM</strong></td></tr>
-   					<tr t-if="plastic_surgery.physical_exam">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.physical_exam"/>
-       					</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.disease_id or plastic_surgery.disease_state">
-       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>MAIN DISEASE</strong></td>
-       				</tr>
-       				<tr t-if="plastic_surgery.disease_id or plastic_surgery.disease_state">
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.disease_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_id"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.disease_id">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_state"/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="plastic_surgery.disease2_id or plastic_surgery.disease3_id or plastic_surgery.disease_state2 or plastic_surgery.disease_state3">
-       					<td colspan="2" style="text-align:center; font-size: 14px;"><strong>OTHER DISEASES</strong></td>
-       				</tr>
-   					<tr t-if="plastic_surgery.disease2_id or plastic_surgery.disease3_id or plastic_surgery.disease_state2 or plastic_surgery.disease_state3">
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.disease2_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease2_id"/><br/></t>
-       						<t t-if="plastic_surgery.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease3_id"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="plastic_surgery.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_state2"/><br/></t>
-       						<t t-if="plastic_surgery.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px;" t-field="plastic_surgery.disease_state3"/></t>
-       					</td>
-       				</tr>
-       				<!-- <tr t-if="plastic_surgery.plan_analysis"><td colspan="2" style="text-align:center; "><strong>PLAN, ANALYSIS AND CONDUCT</strong></td></tr>
-   					<tr t-if="plastic_surgery.plan_analysis">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.plan_analysis"/>
-       					</td>
-       				</tr> -->
-       				<tr t-if="plastic_surgery.medical_recipe"><td colspan="2" style="text-align:center; font-size: 14px;"><strong>MEDICAL ORDERS AND RECIPE</strong></td></tr>
-   					<tr t-if="plastic_surgery.medical_recipe">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="plastic_surgery.medical_recipe"/>
-       					</td>
-       				</tr>
-   				</table>
+            </table>
+            <div>
+              <t t-if="plastic_surgery.consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
+              <t t-if="plastic_surgery.consultation_reason">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.consultation_reason"/><br/>
+              </t>
+              <t t-if="plastic_surgery.pathological"><strong style="font-size:12px;">PATHOLOGICAL</strong><br/></t>
+              <t t-if="plastic_surgery.pathological">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.pathological"/><br/>
+              </t>
+              <t t-if="plastic_surgery.surgical"><strong style="font-size:12px;">SURGICAL</strong><br/></t>
+              <t t-if="plastic_surgery.surgical">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.surgical"/><br/>
+              </t>
+              <t t-if="plastic_surgery.relatives"><strong style="font-size:12px;">RELATIVES</strong><br/></t>
+              <t t-if="plastic_surgery.relatives">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.relatives"/><br/>
+              </t>
+              <t t-if="plastic_surgery.smoke or plastic_surgery.cigarate_daily or plastic_surgery.is_alcoholic or plastic_surgery.alcohol_frequency or plastic_surgery.marijuana or plastic_surgery.cocaine or plastic_surgery.ecstasy or plastic_surgery.body_background_others or plastic_surgery.pharmacological or plastic_surgery.allergic or plastic_surgery.gender == 'female'"><strong style="font-size:12px;">PATIENT BACKGROUND</strong><br/></t>
+              <t t-if="plastic_surgery.smoke">
+                Smoke: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.smoke"/><br/>
+              </t>
+              <t t-if="plastic_surgery.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.cigarate_daily"/><br/></t>
+              <t t-if="plastic_surgery.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.is_alcoholic"/><br/></t>
+              <t t-if="plastic_surgery.alcohol_frequency">Frequency: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.alcohol_frequency"/><br/></t>
+              <t t-if="plastic_surgery.marijuana">Marijuana: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.marijuana"/><br/></t>
+              <t t-if="plastic_surgery.cocaine">Cocaine: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.cocaine"/><br/></t>
+              <t t-if="plastic_surgery.ecstasy">Ecstasy: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.ecstasy"/><br/></t>
+              <t t-if="plastic_surgery.body_background_others"><strong style="font-size:12px;">Others:</strong><br/></t>
+              <t t-if="plastic_surgery.relatives">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.body_background_others"/><br/>
+              </t>
+              <t t-if="plastic_surgery.pharmacological"><strong style="font-size:12px;">PHARMACOLOGICAL:</strong><br/></t>
+              <t t-if="plastic_surgery.relatives">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.pharmacological"/><br/>
+              </t>
+              <t t-if="plastic_surgery.allergic"><strong style="font-size:12px;">ALLERGIC:</strong><br/></t>
+              <t t-if="plastic_surgery.relatives">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.allergic"/><br/>
+              </t>
+              <t t-if="plastic_surgery.gender == 'female'">
+                Number of Pregnancies: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.pregnancy_number"/><br/>
+                N° de hijos: <span style="padding-left:2px;" t-field="plastic_surgery.child_number"/><br/>
+                Number of Abortions: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.abortion_number"/><br/>
+                Date of Last Birth: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_birth_date"/><br/>
+                Date of Last Menstruation: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_menstruation_date"/><br/>
+                Contrtaceptive Methods: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.contrtaceptive_methods"/><br/>
+              </t>
+              <t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index"><strong style="font-size:12px;">PHYSICAL DETAILS:</strong><br/></t>
+              <t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure">
+                TA: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_sistolic_arteric_presure"/>/
+                <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_diastolic_artery_presure"/><br/>
+              </t>
+              <t t-if="plastic_surgery.physical_fc">FC: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_fc"/>b/m <br/> </t>
+              <t t-if="plastic_surgery.physical_fr">FR: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_fr"/>b/m <br/></t>
+              <t t-if="plastic_surgery.physical_weight">Weight: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_weight"/>Kg <br/> </t>
+              <t t-if="plastic_surgery.physical_size">Size: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_size"/>Cm <br/> </t>
+              <t t-if="plastic_surgery.physical_body_mass_index">IMC (Body Mass Index): <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.physical_body_mass_index"/>kg/m² <br/></t>
+              <t t-if="plastic_surgery.physical_exam"><strong style="font-size:12px;">PHYSICAL EXAM:</strong><br/></t>
+              <t t-if="plastic_surgery.physical_exam">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.physical_exam"/><br/>
+              </t>
+              <t t-if="plastic_surgery.disease_id"><strong style="font-size:12px;">MAIN DISEASE:</strong><br/></t>
+              <t t-if="plastic_surgery.disease_id">
+                <t t-if="plastic_surgery.disease_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.disease_id"/><br/></t>
+                <t t-if="plastic_surgery.disease_id">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.disease_state"/><br/></t>
+              </t>
+              <t t-if="plastic_surgery.disease2_id or plastic_surgery.disease3_id or plastic_surgery.disease_state2 or plastic_surgery.disease_state3"><strong style="font-size:12px;">OTHER DISEASES:</strong><br/></t>
+              <t t-if="plastic_surgery.disease2_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.disease2_id"/><br/></t>
+              <t t-if="plastic_surgery.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.disease3_id"/><br/></t>
+              <t t-if="plastic_surgery.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.disease_state2"/><br/></t>
+              <t t-if="plastic_surgery.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="plastic_surgery.disease_state3"/><br/></t>
+              <t t-if="plastic_surgery.medical_recipe"><strong style="font-size:12px;">MEDICAL ORDERS AND RECIPE:</strong><br/></t>
+              <t t-if="plastic_surgery.medical_recipe">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.medical_recipe"/><br/>
+              </t>
+            </div>
           <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="plastic_surgery.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="plastic_surgery.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="plastic_surgery.doctor_id.firstname"/> <span t-field="plastic_surgery.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="plastic_surgery.doctor_id.medical_record"/></span>
             </div>
    				<p style="page-break-after: always;"/>
 			</t>
@@ -906,54 +678,42 @@
        						</t>
        					</td>
        				</tr>
-       				<tr t-if="medical_evolution.surgeon_id or medical_evolution.anesthesiologist_id or medical_evolution.anesthesia_type or medical_evolution.user_id">
-       					<td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td>
-       				</tr>
-       				<tr t-if="medical_evolution.surgeon_id or medical_evolution.anesthesiologist_id or medical_evolution.anesthesia_type or medical_evolution.user_id">
-       					<td style="width:50%; ">
-       						<t t-if="medical_evolution.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="medical_evolution.surgeon_id"/><br/></t>
-       						<t t-if="medical_evolution.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="medical_evolution.anesthesiologist_id"/><br/></t>
-       						<t t-if="medical_evolution.anesthesia_type">Type of Anesthesia: <span style="padding-left:2px;" t-field="medical_evolution.anesthesia_type"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="medical_evolution.user_id">Medical registry number: <span style="padding-left:2px;" t-field="medical_evolution.user_id"/><br/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="medical_evolution.procedure"><td colspan="2" style="text-align:center; "><strong>PROCEDURE</strong></td></tr>
-   					<tr t-if="medical_evolution.procedure">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="medical_evolution.procedure"/>
-       					</td>
-       				</tr>
-       				<tr t-if="medical_evolution.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
-   					<tr t-if="medical_evolution.sign_stamp">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="medical_evolution.sign_stamp"/>
-                  <span style="padding-left:2px;" t-field="medical_evolution.medical_record"/>
-       					</td>
-       				</tr>
-       				<tr t-if="medical_evolution.evolution_note_ids"><td colspan="2" style="text-align:center; "><strong>DESCRIPTION</strong></td></tr>
-       				<tr t-if="medical_evolution.evolution_note_ids" style="padding:0px;">
-       					<td colspan="2" style=" padding:0px;">
-        					<table class="table" style="width:100%;margin:0px;">
-        						<thead>
-        							<th style="width:20%;">Date and Hour</th>
-        							<th style="width:80%;">Description</th>
-        						</thead>
-        						<tbody>
-        							<tr t-foreach="medical_evolution.evolution_note_ids" t-as="note">
-        								<td style="width:20%;"><span t-field="note.date_hour"/></td>
-        								<td style="width:80%;"><span t-field="note.note"/></td>
-        							</tr>
-        						</tbody>
-        					</table>
-        				</td>
-       				</tr>
-   				</table>
+            </table>
+            <div>
+              <t t-if="medical_evolution.surgeon_id or medical_evolution.anesthesiologist_id or medical_evolution.anesthesia_type or medical_evolution.user_id"><strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/></t>
+              <t t-if="medical_evolution.surgeon_id or medical_evolution.anesthesiologist_id or medical_evolution.anesthesia_type or medical_evolution.user_id">
+                <t t-if="medical_evolution.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="medical_evolution.surgeon_id"/></t>
+                <t t-if="medical_evolution.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="medical_evolution.anesthesiologist_id"/></t>
+                <t t-if="medical_evolution.anesthesia_type">Type of Anesthesia: <span style="padding-left:2px;" t-field="medical_evolution.anesthesia_type"/></t>
+                <t t-if="medical_evolution.user_id">Medical registry number: <span style="padding-left:2px;" t-field="medical_evolution.user_id"/></t>
+                <br/>
+              </t>
+              <t t-if="medical_evolution.procedure"><strong style="font-size:12px;">PROCEDURE</strong><br/></t>
+              <t t-if="medical_evolution.procedure">
+                <span style="padding-left:2px;" t-field="medical_evolution.procedure"/><br/>
+              </t>
+              <!-- t t-if="medical_evolution.sign_stamp"><strong style="font-size:12px;">SIGN AND MÉDICAL STAMP</strong><br/></t>
+              <t t-if="medical_evolution.sign_stamp">
+                <span style="padding-left:2px;" t-field="medical_evolution.sign_stamp"/>
+                <span style="padding-left:2px;" t-field="medical_evolution.medical_record"/>
+                <br/>
+              </t> -->
+              <t t-if="medical_evolution.evolution_note_ids"><strong style="font-size:12px;">DESCRIPTION</strong><br/></t>
+              <t t-if="medical_evolution.evolution_note_ids">
+                <t t-foreach="medical_evolution.evolution_note_ids" t-as="note">
+                  Date and Hour<span style="padding-left:2px;" t-field="note.date_hour"/><br/>
+                  Description<span style="padding-left:2px;" t-field="note.note"/><br/>
+                </t>
+              </t>
+            </div>
           <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="medical_evolution.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="medical_evolution.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="medical_evolution.surgeon_id.firstname"/> <span t-field="medical_evolution.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="medical_evolution.surgeon_id.medical_record"/></span>
             </div>
    				<p style="page-break-after: always;"/>
 			</t>
@@ -988,36 +748,35 @@
        						</t>
        					</td>
        				</tr>
-       				<tr t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id">
-       					<td colspan="2" style="text-align:center; "><strong>OTHER DETAILS</strong></td>
-       				</tr>
-       				<tr t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id">
-       					<td style="width:50%; ">
-       						<t t-if="epicrisis.disease_id">Diseases: <span style="padding-left:2px;" t-field="epicrisis.disease_id"/><br/></t>
-       						<t t-if="epicrisis.procedure_id">Procedure: <span style="padding-left:2px;" t-field="epicrisis.procedure_id"/></t>
-       					</td>
-       					<td style="width:50%; ">
-       						<t t-if="epicrisis.user_id">Medical registry number: <span style="padding-left:2px;" t-field="epicrisis.user_id"/><br/></t>
-       					</td>
-       				</tr>
-       				<tr t-if="epicrisis.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
-   					<tr t-if="epicrisis.sign_stamp">
-       					<td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="epicrisis.sign_stamp"/>
-       						<span style="padding-left:2px;" t-field="epicrisis.medical_record"/>
-       					</td>
-       				</tr>
-       				<tr t-if="epicrisis.epicrisis_note"><td colspan="2" style="text-align:center; "><strong>EPICRISIS</strong></td></tr>
-   					<tr t-if="epicrisis.epicrisis_note">
-       					<td colspan="2" style="width:50%; ">
-       						<span style="padding-left:2px;" t-field="epicrisis.epicrisis_note"/>
-       					</td>
-       				</tr>
-       			</table>
+            </table>
+            <div>
+              <t t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id"><strong style="font-size:12px;">OTHER DETAILS</strong><br/></t>
+              <t t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id">
+                <t t-if="epicrisis.disease_id">Diseases: <span style="padding-left:2px;" t-field="epicrisis.disease_id"/></t>
+                <t t-if="epicrisis.procedure_id">Procedure: <span style="padding-left:2px;" t-field="epicrisis.procedure_id"/></t>
+                <t t-if="epicrisis.user_id">Medical registry number: <span style="padding-left:2px;" t-field="epicrisis.user_id"/></t>
+                <br/>
+              </t>
+              <!-- <t t-if="epicrisis.sign_stamp"><strong style="font-size:12px;">SIGN AND MÉDICAL STAMP</strong><br/></t>
+              <t t-if="epicrisis.sign_stamp">
+                <span style="padding-left:2px;" t-field="epicrisis.sign_stamp"/>
+                <span style="padding-left:2px;" t-field="epicrisis.medical_record"/>
+                <br/>
+              </t> -->
+              <t t-if="epicrisis.epicrisis_note"><strong style="font-size:12px;">EPICRISIS</strong></t>
+              <t t-if="epicrisis.epicrisis_note">
+                <span style="padding-left:2px;" t-field="epicrisis.epicrisis_note"/>
+                <br/>
+              </t>
+            </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="epicrisis.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="epicrisis.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="epicrisis.professional_id.firstname"/> <span t-field="epicrisis.professional_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="epicrisis.professional_id.medical_record"/></span>
             </div>
        			<p style="page-break-after: always;"/>
        		</t>
@@ -1047,29 +806,28 @@
                   </t>
                 </td>
               </tr>
-              <tr t-if="prescription.order">
-                <td colspan="2" style="text-align:center; "><strong>PRESCRIPTION</strong></td>
-              </tr>
-              <tr t-if="prescription.order">
-                <td colspan="2"><strong><span t-field="prescription.order"/></strong></td>
-              </tr>
-              <tr t-if="prescription.sign_stamp"><td colspan="2" style="text-align:center; "><strong>SIGN AND MÉDICAL STAMP</strong></td></tr>
-            <tr t-if="prescription.sign_stamp">
-                <td colspan="2" style="width:50%; ">
-                  <span style="padding-left:2px;" t-field="prescription.sign_stamp"/>
-                  <span style="padding-left:2px;" t-field="prescription.medical_record"/>
-                </td>
-              </tr>
             </table>
+            <div>
+              <t t-if="prescription.order"><strong style="font-size:12px;">PRESCRIPTION</strong><br/></t>
+              <t t-if="prescription.order">
+                <strong><span t-field="prescription.order"/></strong><br/>
+              </t>
+              <!-- <t t-if="prescription.sign_stamp"><strong style="font-size:12px;">SIGN AND MÉDICAL STAMP</strong><br/></t>
+              <t t-if="prescription.sign_stamp">
+                <span style="padding-left:2px;" t-field="prescription.sign_stamp"/>
+                <span style="padding-left:2px;" t-field="prescription.medical_record"/>
+                <br/>
+              </t> -->
+            </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="prescription.review_note">
               <strong>Nota Aclaratoria</strong>
               <p t-field="prescription.review_note"/>
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
-            <!-- <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Professional:</strong> <span t-field="prescription.doctor_id.firstname"/> <span t-field="prescription.doctor_id.lastname"/> | <span><strong>Medical Record: </strong><span t-field="prescription.doctor_id.medical_record"/></span>
-            </div> -->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="prescription.doctor_id.firstname"/> <span t-field="prescription.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="prescription.doctor_id.medical_record"/></span>
+            </div>
             <p style="page-break-after: always;"/>
           </t>
           </div>

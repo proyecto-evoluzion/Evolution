@@ -40,6 +40,12 @@ class DoctorQuirurgicSheet(models.Model):
 		user = self.env.user
 		signature = html2text.html2text(user.signature)
 		return signature
+
+	def _default_surgeon(self):
+		ctx = self._context
+		user_id = self._context.get('uid')
+		professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+		return professional_obj.id
 	
 	name = fields.Char(string='Name', copy=False)
 	invoice_id = fields.Many2one('account.invoice', string='Invoice')
@@ -61,7 +67,7 @@ class DoctorQuirurgicSheet(models.Model):
 										 compute='_compute_age_meassure_unit')
 	blood_type = fields.Selection([('a','A'),('b','B'),('ab','AB'),('o','O')], string='Blood Type')
 	blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
-	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon')
+	surgeon_id = fields.Many2one('doctor.professional', string='Surgeon', default=_default_surgeon)
 	circulating_id = fields.Many2one('doctor.professional', string='Circulating')
 	anesthesiologist_id = fields.Many2one('doctor.professional', string='Anesthesiologist')
 	nurse_boss_id = fields.Many2one('doctor.professional', string='Nurse Boss')

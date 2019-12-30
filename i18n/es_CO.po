@@ -255,8 +255,8 @@ msgstr "<strong>APPOINTMENT DETAILS</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>Allergic: </strong>"
-msgstr "<strong>Alérgicos: </strong>"
+msgid "<strong style="font-size:12px;">ALLERGIC:</strong><br/>"
+msgstr "<strong style="font-size:12px;">ALÉRGICOS:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -285,8 +285,8 @@ msgstr "<strong>EPICRISIS</strong>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
-msgid "<strong>HEALTH PROFESSIONAL DETAILS</strong>"
-msgstr "<strong>DETALLES PROFESIONALES DE LA SALUD</strong>"
+msgid "<strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/>"
+msgstr "<strong style="font-size:12px;">DETALLES PROFESIONALES DE LA SALUD</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
@@ -306,14 +306,14 @@ msgstr "<strong>LIQUIDOS ELIMINADOS</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>MAIN DISEASE</strong>"
-msgstr "<strong>DIAGNÓSTICO PRINCIPAL</strong>"
+msgid "<strong style="font-size:12px;">MAIN DISEASE:</strong><br/>"
+msgstr "<strong style="font-size:12px;">DIAGNÓSTICO PRINCIPAL:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>MEDICAL ORDERS AND RECIPE</strong>"
-msgstr "<strong>ORDENES MÉDICAS Y RECETA</strong>"
+msgid "<strong style="font-size:12px;">MEDICAL ORDERS AND RECIPE:</strong><br/>"
+msgstr "<strong style="font-size:12px;">ORDENES MÉDICAS Y RECETA:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -328,14 +328,14 @@ msgstr "<strong>OBSERVACIONES</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
-msgid "<strong>OTHER DETAILS</strong>"
-msgstr "<strong>OTROS DETALLES</strong>"
+msgid "<strong style="font-size:12px;">OTHER DETAILS</strong><br/>"
+msgstr "<strong style="font-size:12px;">OTROS DETALLES</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>OTHER DISEASES</strong>"
-msgstr "<strong>OTROS DIAGNÓSTICOS</strong>"
+msgid "<strong style="font-size:12px;">OTHER DISEASES:</strong><br/>"
+msgstr "<strong style="font-size:12px;">OTROS DIAGNÓSTICOS:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -352,20 +352,20 @@ msgstr "<strong>Otros: </strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>PARACLINICAL EXAM</strong>"
-msgstr "<strong>EXAMENES PARACLÍNICOS</strong>"
+msgid "<strong style="font-size:12px;">PARACLINICAL EXAM:</strong><br/>"
+msgstr "<strong style="font-size:12px;">EXAMENES PARACLÍNICOS:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>PATHOLOGICAL</strong>"
-msgstr "<strong>PATOLÓGICOS</strong>"
+msgid "<strong style="font-size:12px;">PATHOLOGICAL</strong><br/>"
+msgstr "<strong style="font-size:12px;">PATOLÓGICOS</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>PATIENT BACKGROUND</strong>"
-msgstr "<strong>ANTECEDENTES</strong>"
+msgid "<strong style="font-size:12px;">PATIENT BACKGROUND</strong><br/>"
+msgstr "<strong style="font-size:12px;">ANTECEDENTES</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -388,14 +388,14 @@ msgstr "<strong>Tipo de documento: </strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>PHYSICAL DETAILS</strong>"
-msgstr "<strong>DETALLES FÍSICOS</strong>"
+msgid "<strong style="font-size:12px;">PHYSICAL DETAILS:</strong><br/>"
+msgstr "<strong style="font-size:12px;">DETALLES FÍSICOS:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>PHYSICAL EXAM</strong>"
-msgstr "<strong>EXAMEN FÍSICO</strong>"
+msgid "<strong style="font-size:12px;">PHYSICAL EXAM:</strong><br/>"
+msgstr "<strong style="font-size:12px;">EXAMEN FÍSICO:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
@@ -424,8 +424,8 @@ msgstr "<strong>PRUEBAS COAGULACIÓN</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>Pharmacological: </strong>"
-msgstr "<strong>Farmacológicos: </strong>"
+msgid "<strong style="font-size:12px;">PHARMACOLOGICAL:</strong><br/>"
+msgstr "<strong style="font-size:12px;">FARMACOLÓGICOS:</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -435,20 +435,20 @@ msgstr "<strong>QUIMICO SANGUINEA</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
-msgid "<strong>QUIRURGIC DESCRIPTION</strong>"
-msgstr "<strong>DESCRIPCIÓN QUIRURGICA</strong>"
+msgid "<strong style="font-size:12px;">QUIRURGIC DESCRIPTION</strong><br/>"
+msgstr "<strong style="font-size:12px;">DESCRIPCIÓN QUIRURGICA</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>REASON FOR CONSULTATION</strong>"
-msgstr "<strong>MOTIVO DE CONSULTA</strong>"
+msgid "<strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/>"
+msgstr "<strong style="font-size:12px;">MOTIVO DE CONSULTA</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>RELATIVES</strong>"
-msgstr "<strong>FAMILIARES</strong>"
+msgid "<strong style="font-size:12px;">RELATIVES</strong><br/>"
+msgstr "<strong style="font-size:12px;">FAMILIARES</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -461,8 +461,8 @@ msgstr "<strong>RX. TORAX</strong>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
-msgid "<strong>SIGN AND MÉDICAL STAMP</strong>"
-msgstr "<strong>FIRMA Y SELLO MÉDICO</strong>"
+msgid "<strong style="font-size:12px;">SIGN AND MÉDICAL STAMP</strong><br/>"
+msgstr "<strong style="font-size:12px;">FIRMA Y SELLO MÉDICO</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
@@ -477,13 +477,13 @@ msgstr "<strong>SURGERY ROOM PROCEDURE DETAILS</strong>"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
-msgid "<strong>SURGICAL</strong>"
-msgstr "<strong>QUIRÚRGICOS</strong>"
+msgid "<strong style="font-size:12px;">SURGICAL</strong><br/>"
+msgstr "<strong style="font-size:12px;">QUIRÚRGICOS</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.quirurgic_sheet_visualizer_template
-msgid "<strong>TISUE SENDING TO PATOLOGIST</strong>"
-msgstr "<strong>TEJIDO ENVIADO A PATOLOGÍA</strong>"
+msgid "<strong style="font-size:12px;">TISUE SENDING TO PATOLOGIST</strong><br/>"
+msgstr "<strong style="font-size:12px;">TEJIDO ENVIADO A PATOLOGÍA</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_paraclinical_asa
@@ -6873,8 +6873,8 @@ msgstr "Prescipción N°:"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
-msgid "<strong>PRESCRIPTION</strong>"
-msgstr "<strong>PRESCRIPCIÓN</strong>"
+msgid "<strong style="font-size:12px;">PRESCRIPTION</strong><br/>"
+msgstr "<strong style="font-size:12px;">PRESCRIPCIÓN</strong><br/>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template

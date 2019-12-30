@@ -27,6 +27,7 @@
             		<group name="patient">
                         <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
                         <field name='professional_id' invisible="1"/>
+                        <field name='doctor_id' invisible="1"/>
                         <field name='background_edit_flag' invisible="1"/>
             			<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
                         <field name='gender' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>

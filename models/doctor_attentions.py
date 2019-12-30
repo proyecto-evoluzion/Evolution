@@ -46,9 +46,13 @@ class PresurgicalRecord(models.Model):
         ctx = self._context
         user_id = self._context.get('uid')
         user_obj = self.env['res.users'].search([('id','=',user_id)])
-        # professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
-        # if professional_obj:
         return user_obj.id
+
+    def _default_doctor(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+        return professional_obj.id
     
     number = fields.Char('Attention number', readonly=True)
     attention_code_id = fields.Many2one('doctor.cups.code', string="Attention Code", ondelete='restrict', default=_first_attention)
@@ -58,6 +62,7 @@ class PresurgicalRecord(models.Model):
     numberid_integer = fields.Integer(string='Number ID for TI or CC Documents')
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     professional_id = fields.Many2one('res.users', 'Professional', default=_default_professional)
+    doctor_id = fields.Many2one('doctor.professional', 'Doctor', default=_default_doctor)
     background_edit_flag = fields.Boolean('Background Flag', default=False)
     firstname = fields.Char(string='First Name')
     lastname = fields.Char(string='First Last Name')

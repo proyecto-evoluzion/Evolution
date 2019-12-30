@@ -31,6 +31,7 @@
             <group name="patient">
               <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
               <field name='room_id' invisible="0"/>
+              <field name='professional_id' invisible="1"/>
             </group>
             <group>
               <field name='tdoc' required="1" attrs="{'readonly':[('state','=','closed')]}"/>

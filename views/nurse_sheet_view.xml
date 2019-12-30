@@ -25,6 +25,7 @@
 	                <field name="anhestesic_registry_id" domain="[('room_id','=',room_id)]" attrs="{'readonly':[('state','=','closed')]}" invisible="1"/> <!--This is not being used right now, so i hidded it-->
                   <field name="updated_stock" invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
                   <field name='professional_id' invisible="1"/>
+                  <field name='doctor_id' invisible="1"/>
                   <field name='background_edit_flag' invisible="1"/>
             	</group>
             </group>

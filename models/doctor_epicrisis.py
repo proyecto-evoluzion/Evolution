@@ -39,6 +39,12 @@ class DoctorEpicrisis(models.Model):
         user = self.env.user
         signature = html2text.html2text(user.signature)
         return signature
+
+    def _default_professional(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        user_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+        return user_obj.id
     
     name = fields.Char(string='Name', copy=False)
     patient_in_date = fields.Datetime(string='In Date', copy=False, default=datetime.today())
@@ -102,6 +108,7 @@ class DoctorEpicrisis(models.Model):
     review_note = fields.Text('Review Note')
     review_active = fields.Boolean('Is Review Note?')
     review_readonly = fields.Boolean('set to readonly')
+    professional_id = fields.Many2one('doctor.professional', 'Professional', default=_default_professional)    
 
     @api.depends('patient_id')
     def _compute_numberid_integer(self):
