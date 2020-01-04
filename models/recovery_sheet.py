@@ -45,7 +45,16 @@ class ClinicaRecoverySheet(models.Model):
                 return True
         return False
 
+    def _get_professional(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        user_obj = self.env['res.users'].search([('id','=',user_id)])
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+        if professional_obj:
+            return professional_obj.id        
+
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
+    doctor_id = fields.Many2one('doctor.professional', string='Professional', default=_get_professional)
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
     procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),

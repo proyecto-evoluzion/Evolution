@@ -31,7 +31,7 @@ class ClinicaVisualizerReport(models.AbstractModel):
         visualizer_objs = self.env['clinica.record.list.visualizer'].browse(docids)
         clinica_record_dict = {'nurse_sheets': [], 'quirgic_sheets': [], 'surgery_rooms': [], 'waiting_rooms': [],
             'presurgical_records': [], 'anhestesic_registry': [], 'plastic_surgery': [], 'medical_evolution': [], 'epicrisis': [], 
-            'prescription': []
+            'prescription': [], 'recovery_sheet': []
             }
         for visualizer in visualizer_objs:
             clinica_record_dict.update({
@@ -44,6 +44,7 @@ class ClinicaVisualizerReport(models.AbstractModel):
                                     'plastic_surgery': visualizer.plastic_surgery_ids, 
                                     'medical_evolution': visualizer.medical_evolution_ids, 
                                     'epicrisis': visualizer.epicrisis_ids,
+                                    'recovery_sheet': visualizer.recovery_sheet_ids,
                                     'prescription': visualizer.prescription_ids})
 
         #Getting context for pass current user values to footer report

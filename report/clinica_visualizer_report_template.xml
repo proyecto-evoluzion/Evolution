@@ -42,15 +42,17 @@
               </t>
               <t t-if="nurse_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="nurse_sheet.vital_sign_ids">
-                <span t-field="vital_sign.vital_signs_date_hour"/><br/>
-                Date and Hour 
-                FC <span t-field="vital_sign.vital_signs_fc"/><br/>
-                Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
-                Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
-                Oximetry <span t-field="vital_sign.oximetry"/><br/>
-                Diuresis <span t-field="vital_sign.diuresis"/><br/>
-                Bleeding <span t-field="vital_sign.bleeding"/><br/>
-                Nursing Note <span t-field="vital_sign.note"/><br/>
+                <t t-foreach="nurse_sheet.vital_sign_ids" t-as="vital_sign">
+                  <span t-field="vital_sign.vital_signs_date_hour"/><br/>
+                  Date and Hour 
+                  FC <span t-field="vital_sign.vital_signs_fc"/><br/>
+                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Diuresis <span t-field="vital_sign.diuresis"/><br/>
+                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
+                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                </t>
               </t>
             </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
@@ -66,6 +68,73 @@
         	</t>
         	</div>
     	</template>
+
+      <template id="clinica_doctor_data.recovery_sheet_visualizer_template">
+        <div class="page">
+            <div class="oe_structure"/>
+        <!-- <t t-if="clinica_records['nurse_sheets']">
+          <span style="width:100%; text-align:left; font-size:30px;"><strong>NURSE SHEETS</strong></span>
+          <br/>
+          </t> -->
+          <t t-foreach="clinica_records['recovery_sheet']" t-as="recovery_sheet">
+            <t t-set="recovery_sheet" t-value="recovery_sheet.with_context({'lang':recovery_sheet.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:30%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Procedure Date: <span t-field="recovery_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:50%; text-align:right; font-size: 15px;"><strong>Nurse Sheet Number: <span t-field="recovery_sheet.name" style="padding-left:15px;"/></strong></td>
+                <td></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <!-- <td t-if="recovery_sheet.patient_id.numberid" style="width:50%; ">Number ID: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.numberid"/></td> -->
+                <td t-if="recovery_sheet.patient_id or recovery_sheet.age" style="width:50%; ">
+                  Patient Name: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id"/><br/>
+                  <t t-if="recovery_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="recovery_sheet.age"/><span style="padding-left:2px;" t-field="recovery_sheet.age_meassure_unit"/><br/></t>
+                  <t t-if="recovery_sheet.patient_id.insurer_id and flag == 0">
+                    Insurer: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.insurer_id"/><br/>
+                  </t>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <t t-if="recovery_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">SURGERY ROOM PROCEDURE DETAILS</strong><br/></t>
+              <t t-if="recovery_sheet.room_id.room_type == 'surgery'">
+                Surgery Room Procedure Number: <span style="padding-left:2px;" t-field="recovery_sheet.room_id"/><br/>
+                Surgery Room: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.surgery_room_id"/><br/>
+                <t t-if="recovery_sheet.room_id.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.surgeon_id.partner_id"/><br/></t>
+                <t t-if="recovery_sheet.room_id.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.anesthesiologist_id.partner_id"/></t>
+                <br/>
+              </t>
+              <t t-if="recovery_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
+              <t t-if="recovery_sheet.vital_sign_ids">
+                <t t-foreach="recovery_sheet.vital_sign_ids" t-as="vital_sign">
+                  <span t-field="vital_sign.vital_signs_date_hour"/><br/>
+                  Date and Hour 
+                  FC <span t-field="vital_sign.vital_signs_fc"/><br/>
+                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Diuresis <span t-field="vital_sign.diuresis"/><br/>
+                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
+                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                </t>
+              </t>
+            </div>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="recovery_sheet.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="recovery_sheet.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="recovery_sheet.doctor_id.firstname"/> <span t-field="recovery_sheet.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="recovery_sheet.doctor_id.medical_record"/></span>
+            </div>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+      </template>
     	
     	<template id="clinica_doctor_data.quirurgic_sheet_visualizer_template">
     		<div class="page">
@@ -871,6 +940,9 @@
                     <t t-if="record == 'nurse_sheets'">
                       <t t-call="clinica_doctor_data.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
+                    <t t-if="record == 'recovery_sheet'">
+                      <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
                     <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                       <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
@@ -899,6 +971,9 @@
                 </t>
                 <t t-if="record == 'nurse_sheets'">
                   <t t-call="clinica_doctor_data.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'recovery_sheet'">
+                  <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
                 <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                   <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>

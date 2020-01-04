@@ -142,6 +142,18 @@
             <field name="doctor_id"/>
             </tree>
           </field>
+          <separator string="Recovery Sheet" attrs="{'invisible':[('view_model','not in',['recovery_sheet','all'])]}"/>
+          <field name="recovery_sheet_ids" nolabel="1" force_save="1" readonly="1" 
+            attrs="{'invisible':[('view_model','not in',['recovery_sheet','all'])]}">
+            <tree string="Recovery Sheet">
+              <field name="name"/>
+            <!-- <field name="patient_in_date"/>
+            <field name="patient_out_date"/> -->
+            <field name="patient_id"/>
+            <!-- <field name="tdoc"/> -->
+            <field name="doctor_id"/>
+            </tree>
+          </field>
          	</sheet>
          </form>
          </field>
