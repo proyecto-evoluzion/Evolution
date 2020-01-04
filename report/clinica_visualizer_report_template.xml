@@ -43,8 +43,7 @@
               <t t-if="nurse_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="nurse_sheet.vital_sign_ids">
                 <t t-foreach="nurse_sheet.vital_sign_ids" t-as="vital_sign">
-                  <span t-field="vital_sign.vital_signs_date_hour"/><br/>
-                  Date and Hour 
+                  Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/>
                   FC <span t-field="vital_sign.vital_signs_fc"/><br/>
                   Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
                   Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
