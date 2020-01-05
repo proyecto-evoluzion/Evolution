@@ -154,6 +154,30 @@
             <field name="doctor_id"/>
             </tree>
           </field>
+          <separator string="Nurse Chief Sheet" attrs="{'invisible':[('view_model','not in',['nurse_chief_sheet','all'])]}"/>
+          <field name="nurse_chief_sheet_ids" nolabel="1" force_save="1" readonly="1" 
+            attrs="{'invisible':[('view_model','not in',['nurse_chief_sheet','all'])]}">
+            <tree string="Nurse Chief Sheet">
+              <field name="name"/>
+            <!-- <field name="patient_in_date"/>
+            <field name="patient_out_date"/> -->
+            <field name="patient_id"/>
+            <!-- <field name="tdoc"/> -->
+            <field name="doctor_id"/>
+            </tree>
+          </field>
+          <separator string="Surgical Technologist" attrs="{'invisible':[('view_model','not in',['surgical_technologist','all'])]}"/>
+          <field name="surgical_technologist_ids" nolabel="1" force_save="1" readonly="1" 
+            attrs="{'invisible':[('view_model','not in',['surgical_technologist','all'])]}">
+            <tree string="Surgical Technologist">
+              <field name="name"/>
+            <!-- <field name="patient_in_date"/>
+            <field name="patient_out_date"/> -->
+            <field name="patient_id"/>
+            <!-- <field name="tdoc"/> -->
+            <field name="surgeon_id"/>
+            </tree>
+          </field>
          	</sheet>
          </form>
          </field>

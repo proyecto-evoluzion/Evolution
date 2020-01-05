@@ -60,11 +60,13 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Epicrisis", copy=False)
     prescription_ids = fields.Many2many('doctor.prescription', 'prescription_visualizer_rel', 'visualizer_id', 'prescription_id', 
                                    string="Prescription", copy=False)
+    surgical_technologist_ids = fields.Many2many('doctor.surgical.technologist', 'surgical_technologist_visualizer_rel', 'visualizer_id', 'surgical_technologist_id', 
+                                   string="Surgical Technologist", copy=False)
     view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('nurse_chief_sheet','Nurse Chief Sheet'),('recovery_sheet','Recovery Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
                                    ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
                                    ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
                                    ('plastic_surgery','Plastic Surgery'),('medical_evolution','Medical Evolution'),
-                                   ('epicrisis','Epicrisis'),('prescription','Prescription'),('all','All')], string='View from model', default='all')
+                                   ('epicrisis','Epicrisis'),('prescription','Prescription'),('surgical_technologist','Surgical Technologist'),('all','All')], string='View from model', default='all')
     
     
     def _get_nurse_sheet_ids(self, search_domain, doctor, start_period, end_period):
@@ -257,6 +259,19 @@ class ClinicaRecordVisualizer(models.Model):
         if prescription_objs:
             prescription_ids = prescription_objs.ids
         return prescription_ids
+
+    def _get_surgical_technologist_ids(self, search_domain, doctor, start_period, end_period):
+        surgical_technologist_ids = []
+        surgical_technologist_search_domain = []
+        surgical_technologist_search_domain.extend(search_domain)
+        if doctor:
+            surgical_technologist_search_domain.append(('surgeon_id','=',doctor.id))
+        if start_period:
+            surgical_technologist_search_domain.append(('surgical_date','=',start_period))     
+        surgical_technologist_objs = self.env['doctor.surgical.technologist'].search(surgical_technologist_search_domain)
+        if surgical_technologist_objs:
+            surgical_technologist_ids = surgical_technologist_objs.ids
+        return surgical_technologist_ids        
     
     @api.onchange('patient_id','start_period','end_period','doctor_id','view_model')
     def onchange_visualizer_filter(self):
@@ -273,6 +288,7 @@ class ClinicaRecordVisualizer(models.Model):
         medical_evolution_ids = []
         epicrisis_ids = []
         prescription_ids = []
+        surgical_technologist_ids = []
         if self.patient_id:
             search_domain.append(('patient_id','=',self.patient_id.id))
         if self.patient_id or self.doctor_id or self.start_period or self.end_period:
@@ -298,6 +314,8 @@ class ClinicaRecordVisualizer(models.Model):
                 epicrisis_ids = self._get_epicrisis_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['prescription','all']:
                 prescription_ids = self._get_prescription_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['surgical_technologist','all']:
+                surgical_technologist_ids = self._get_surgical_technologist_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             
         self.nurse_sheet_ids = nurse_sheet_ids
         self.nurse_chief_sheet_ids = nurse_chief_sheet_ids
@@ -311,6 +329,7 @@ class ClinicaRecordVisualizer(models.Model):
         self.medical_evolution_ids = medical_evolution_ids
         self.epicrisis_ids = epicrisis_ids
         self.prescription_ids = prescription_ids       
+        self.surgical_technologist_ids = surgical_technologist_ids       
         
     @api.multi
     def action_print_clinica_record_history(self):

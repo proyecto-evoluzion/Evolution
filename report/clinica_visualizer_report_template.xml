@@ -451,6 +451,127 @@
 			</t>
 			</div>
 	   </template>
+
+     <template id="clinica_doctor_data.nurse_chief_sheet_visualizer_template">
+      <div class="page">
+            <div class="oe_structure"/>
+      <!-- <t t-if="clinica_records['presurgical_records']">
+        <strong><span style="width:100%; text-align:left; font-size:30px;">PRE-SURGICAL RECORDS</span></strong>
+            <br/>
+          </t> -->
+          <t t-foreach="clinica_records['nurse_chief_sheet']" t-as="nurse_chief_sheet">
+            <t t-set="nurse_chief_sheet" t-value="nurse_chief_sheet.with_context({'lang':nurse_chief_sheet.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Procedure Date: <span t-field="nurse_chief_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:25%; padding-left:5px; text-align:right; font-size: 15px;"><strong>Attention Code: <span t-field="nurse_chief_sheet.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td style="width:50%; ">
+                  Patient Name: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id"/><br/>
+                  <t t-if="nurse_chief_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="nurse_chief_sheet.age"/><span style="padding-left:2px;" t-field="nurse_chief_sheet.age_meassure_unit"/><br/></t>
+                  <t t-if="nurse_chief_sheet.patient_id.blood_type and flag == 0">Blood type: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.blood_type"/><br/></t>
+                  <t t-if="nurse_chief_sheet.patient_id.insurer_id and flag == 0">
+                    Insurer: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.insurer_id"/><br/>
+                  </t>
+                </td>
+              </tr>
+            </table>
+            <div>
+                <t t-if="nurse_chief_sheet.diabetes"><strong style="font-size:12px;">DIABETES</strong><br/></t>
+                <t t-if="nurse_chief_sheet.diabetes">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.diabetes"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.hypertension"><strong style="font-size:12px;">HIPERTENSIÓN</strong><br/></t>
+                <t t-if="nurse_chief_sheet.hypertension">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.hypertension"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.arthritis"><strong style="font-size:12px;">ARTRITIS</strong><br/></t>
+                <t t-if="nurse_chief_sheet.arthritis">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.arthritis"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.thyroid_disease"><strong style="font-size:12px;">ENFERMEDAD TIROIDEA</strong><br/></t>
+                <t t-if="nurse_chief_sheet.thyroid_disease">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.thyroid_disease"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.pathological"><strong style="font-size:12px;">PATHOLOGICAL</strong><br/></t>
+                <t t-if="nurse_chief_sheet.pathological">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pathological"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.surgical"><strong style="font-size:12px;">SURGICAL</strong><br/></t>
+                <t t-if="nurse_chief_sheet.surgical">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.surgical"/><br/>
+                </t>
+              <t t-if="flag == 0">
+                  <t t-if="nurse_chief_sheet.smoke or nurse_chief_sheet.cigarate_daily or nurse_chief_sheet.is_alcoholic or nurse_chief_sheet.alcohol_frequency or nurse_chief_sheet.marijuana or nurse_chief_sheet.cocaine or nurse_chief_sheet.ecstasy or nurse_chief_sheet.body_background_others or nurse_chief_sheet.pharmacological or nurse_chief_sheet.allergic or nurse_chief_sheet.gender == 'female'"><strong style="font-size:12px;">PATIENT BACKGROUND</strong><br/></t>
+                  <t t-if="nurse_chief_sheet.smoke">
+                    Smoke: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.smoke"/><br/>
+                  </t>
+                  <t t-if="nurse_chief_sheet.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.cigarate_daily"/><br/></t>
+                  <t t-if="nurse_chief_sheet.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px; font-size:12px;" t-field="presurgnurse_chief_sheetical_record.is_alcoholic"/><br/></t>
+                  <t t-if="nurse_chief_sheet.alcohol_frequency">Frequency: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.alcohol_frequency"/><br/></t>
+                  <t t-if="nurse_chief_sheet.marijuana">Marijuana: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.marijuana"/><br/></t>
+                  <t t-if="nurse_chief_sheet.cocaine">Cocaine: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.cocaine"/><br/></t>
+                  <t t-if="nurse_chief_sheet.ecstasy">Ecstasy: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.ecstasy"/><br/></t>
+                
+                <t t-if="nurse_chief_sheet.body_background_others"><strong style="font-size:12px;">Others:</strong><br/></t>
+                <t t-if="nurse_chief_sheet.body_background_others">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.body_background_others"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.pharmacological"><strong style="font-size:12px;">Pharmacological:</strong><br/></t>
+                <t t-if="nurse_chief_sheet.pharmacological">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pharmacological"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.allergic"><strong style="font-size:12px;">Allergic:</strong><br/></t>
+                <t t-if="nurse_chief_sheet.allergic">
+                  <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.allergic"/><br/>
+                </t>
+                <t t-if="nurse_chief_sheet.gender == 'female'">
+                  Number of Pregnancies: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pregnancy_number"/><br/>
+                  N° de hijos: <span style="padding-left:2px;" t-field="nurse_chief_sheet.child_number"/><br/>
+                  Number of Abortions: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.abortion_number"/><br/>
+                  Date of Last Birth: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.last_birth_date"/><br/>
+                  Date of Last Menstruation: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.last_menstruation_date"/><br/>
+                  Contrtaceptive Methods: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.contrtaceptive_methods"/><br/>
+                </t>
+              </t>
+              <t t-if="nurse_chief_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
+              <t t-if="nurse_chief_sheet.vital_sign_ids">
+                <t t-foreach="nurse_chief_sheet.vital_sign_ids" t-as="vital_sign">
+                  Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/>
+                  FC <span t-field="vital_sign.vital_signs_fc"/><br/>
+                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Diuresis <span t-field="vital_sign.diuresis"/><br/>
+                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
+                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                </t>
+              </t>
+              <t t-if="nurse_chief_sheet.procedure_ids"><strong style="font-size:12px;">PROCEDIMIENTOS</strong><br/></t>
+              <t t-if="nurse_chief_sheet.procedure_ids">
+                <t t-foreach="nurse_chief_sheet.procedure_ids" t-as="procedure_ids">
+                  Procedimiento en salud <span t-field="procedure_ids.product_id"/><br/>
+                  Cantida utilizada <span t-field="procedure_ids.quantity_done"/><br/>
+                </t>
+              </t>
+              </div>
+          <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="nurse_chief_sheet.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="nurse_chief_sheet.review_note"/>
+            </div>
+          <!--Espacio reservado para imprimir la firma del profesional encargado-->
+          <div style="text-align: center; border-bottom: 1px solid black;">
+            <strong>Firma:</strong> <span t-field="nurse_chief_sheet.doctor_id.firstname"/> <span t-field="nurse_chief_sheet.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="nurse_chief_sheet.doctor_id.medical_record"/></span>
+          </div>
+          <p style="page-break-after: always;"/>
+      </t>
+      </div>
+     </template>
 	   
 	   <template id="clinica_doctor_data.anhestesic_registry_visualizer_template">
 	   		<div class="page">
@@ -900,6 +1021,69 @@
           </t>
           </div>
         </template>
+
+        <template id="clinica_doctor_data.surgical_technologist_visualizer_template">
+      <div class="page">
+        <div class="oe_structure"/>
+          <t t-foreach="clinica_records['surgical_technologist']" t-as="surgical_technologist">
+            <t t-set="surgical_technologist" t-value="surgical_technologist.with_context({'lang':surgical_technologist.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Date: <span t-field="surgical_technologist.surgical_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Type: <span t-field="surgical_technologist.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td style="width:50%; "><t t-if="surgical_technologist.numberid">Number ID: <span style="padding-left:2px;" t-field="surgical_technologist.numberid"/></t></td>
+                <td style="width:50%; ">
+                  Patient Name: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.lastname"/><br/>
+                  <t t-if="surgical_technologist.patient_id.age">Age: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age"/><br/></t>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <t t-if="surgical_technologist.room_id"><strong style="font-size:12px;">CIRUGÍA</strong><br/></t>
+              <t t-if="surgical_technologist.room_id">
+                <span t-field="surgical_technologist.room_id"/><br/>
+              </t>
+              <t t-if="surgical_technologist.surgeon_id"><strong style="font-size:12px;">CIRUJANO</strong><br/></t>
+              <t t-if="surgical_technologist.surgeon_id">
+                <span t-field="surgical_technologist.surgeon_id"/><br/>
+              </t>
+              <t t-if="surgical_technologist.product_ids"><strong style="font-size:12px;">PROCEDIMIENTOS EN SALUD</strong><br/></t>
+              <t t-if="surgical_technologist.product_ids">
+                <t t-foreach="surgical_technologist.product_ids" t-as="product_ids">
+                  * <span t-field="product_ids.name"/><br/>
+                </t>
+              </t>
+              <!-- <t t-if="surgical_technologist.recount_ids"><strong style="font-size:12px;"></strong><br/></t> -->
+              <t t-if="surgical_technologist.recount_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="4" style="text-align:center; "><strong>RECUENTO</strong></td></tr>
+                  <tr t-foreach="surgical_technologist.recount_ids" t-as="recount_ids">
+                    <td style="width:25%; "><t>Recuento: <span style="padding-left:2px;" t-field="recount_ids.recount"/></t></td>
+                    <td style="width:25%; "><t>Inicia: <span style="padding-left:2px;" t-field="recount_ids.start"/></t></td>
+                    <td style="width:25%; "><t>start: <span style="padding-left:2px;" t-field="recount_ids.end"/></t></td>
+                    <td style="width:25%; "><t>Nota de enfermería: <span style="padding-left:2px;" t-field="recount_ids.note"/></t></td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="surgical_technologist.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="surgical_technologist.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="surgical_technologist.surgeon_id.firstname"/> <span t-field="surgical_technologist.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
+            </div>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+        </template>
     
     
         <template id="visualizer_report_template">
@@ -936,8 +1120,14 @@
                     <t t-if="record == 'prescription'">
                       <t t-call="clinica_doctor_data.prescription_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
+                    <t t-if="record == 'surgical_technologist'">
+                      <t t-call="clinica_doctor_data.surgical_technologist_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
                     <t t-if="record == 'nurse_sheets'">
                       <t t-call="clinica_doctor_data.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
+                    <t t-if="record == 'nurse_sheets'">
+                      <t t-call="clinica_doctor_data.nurse_chief_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
                     <t t-if="record == 'recovery_sheet'">
                       <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
@@ -968,8 +1158,14 @@
                 <t t-if="record == 'prescription'">
                   <t t-call="clinica_doctor_data.prescription_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
+                <t t-if="record == 'surgical_technologist'">
+                  <t t-call="clinica_doctor_data.surgical_technologist_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
                 <t t-if="record == 'nurse_sheets'">
                   <t t-call="clinica_doctor_data.nurse_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'nurse_sheets'">
+                  <t t-call="clinica_doctor_data.nurse_chief_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
                 <t t-if="record == 'recovery_sheet'">
                   <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>

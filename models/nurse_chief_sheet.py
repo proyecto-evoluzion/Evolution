@@ -45,9 +45,18 @@ class ClinicaNurseChief(models.Model):
                 return True
         return False
 
+    def _get_professional(self):
+        ctx = self._context
+        user_id = self._context.get('uid')
+        user_obj = self.env['res.users'].search([('id','=',user_id)])
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+        if professional_obj:
+            return professional_obj.id        
+
     room_id = fields.Many2one('doctor.waiting.room', string='Surgery Room/Appointment', copy=False)
     procedure_ids = fields.One2many('nurse.chief.sheet.procedures', 'nurse_sheet_id', string='Health Procedures', copy=False)
     patient_id = fields.Many2one('doctor.patient', 'Patient', ondelete='restrict')
+    doctor_id = fields.Many2one('doctor.professional', string='Professional', default=_get_professional)
     procedure_date = fields.Date(string='Procedure Date', default=fields.Date.context_today)
     document_type = fields.Selection([('cc','CC - ID Document'),('ce','CE - Aliens Certificate'),
                                       ('pa','PA - Passport'),('rc','RC - Civil Registry'),('ti','TI - Identity Card'),
@@ -288,7 +297,7 @@ class ClinicaNurseChief(models.Model):
         vals = {
             'default_patient_id': self.patient_id and self.patient_id.id or False,
             'default_doctor_id': self.room_id and self.room_id.surgeon_id and self.room_id.surgeon_id.id or False,
-            'default_view_model': 'recovery_sheet',
+            'default_view_model': 'nurse_chief_sheet',
             }
         return vals
            
