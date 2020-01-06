@@ -32,10 +32,10 @@
        				</tr>
             </table>
             <div>
-              <t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">SURGERY ROOM PROCEDURE DETAILS</strong><br/></t>
+              <t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">DETALLES DE CIRUGÍA</strong><br/></t>
               <t t-if="nurse_sheet.room_id.room_type == 'surgery'">
                 Surgery Room Procedure Number: <span style="padding-left:2px;" t-field="nurse_sheet.room_id"/><br/>
-                Surgery Room: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgery_room_id"/><br/>
+                Sala de cirugía: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgery_room_id"/><br/>
                 <t t-if="nurse_sheet.room_id.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgeon_id.partner_id"/><br/></t>
                 <t t-if="nurse_sheet.room_id.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.anesthesiologist_id.partner_id"/></t>
                 <br/>
@@ -45,12 +45,12 @@
                 <t t-foreach="nurse_sheet.vital_sign_ids" t-as="vital_sign">
                   Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/>
                   FC <span t-field="vital_sign.vital_signs_fc"/><br/>
-                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
-                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
-                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Presión arterial sistólica <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Presión arterial diastólica <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  oximetría <span t-field="vital_sign.oximetry"/><br/>
                   Diuresis <span t-field="vital_sign.diuresis"/><br/>
-                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
-                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                  sangrado <span t-field="vital_sign.bleeding"/><br/>
+                  nota de enfermería <span t-field="vital_sign.note"/><br/>
                 </t>
               </t>
             </div>
@@ -391,31 +391,31 @@
                 <t t-if="presurgical_record.paraclinical_exam_date">Date of Exam: <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_exam_date"/><br/></t>
          				<t t-if="presurgical_record.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_asa"/><br/></t>
          				<t t-if="presurgical_record.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_goldman"/></t>
-	              <t t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg"><strong style="font-size:12px;">BLOOD COUNT:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg"><strong style="font-size:12px;">CUADRO HEMÁTICO:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hb"/>g/dl <br/> </t>
       					<t t-if="presurgical_record.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hto"/>Vol % <br/> </t>
       					<t t-if="presurgical_record.paraclinical_leukocytes">Leukocytes: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_leukocytes"/>x 10^3/ul </t>
       					<t t-if="presurgical_record.paraclinical_differential">Differential: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_differential"/><br/></t>
        				  <t t-if="presurgical_record.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_vsg"/>mm/H <br/></t>
-	              <t t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc"><strong style="font-size:12px;">COOGULACIAN TEST:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc"><strong style="font-size:12px;">TIEMPOS DE COAGULACIÓN:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_pt"/>S (seconds) <br/> </t>
          				<t t-if="presurgical_record.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_ptt"/>S (seconds)  </t>
          				<t t-if="presurgical_record.paraclinical_platelets">Platelets: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_platelets"/> x 10^3/ul<br/> </t>
          				<t t-if="presurgical_record.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_tc"/>m (Minutes)<br/> </t>
-	              <t t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob"><strong style="font-size:12px;">SANGUINEA CHEMICAL:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob"><strong style="font-size:12px;">QUÍMICA SANGUÍNEA:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glycemia"/>mg/dl<br/> </t>
          				<t t-if="presurgical_record.paraclinical_creatinine">Creatinina: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_creatinine"/>mg/dl </t>
          				<t t-if="presurgical_record.paraclinical_albumin">Albumin: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_albumin"/>g/dl<br/> </t>
          				<t t-if="presurgical_record.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glob"/> </t>
-	              <t t-if="presurgical_record.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAM:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAMA:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_ecg">
 	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_ecg"/>
 	              </t>
-	              <t t-if="presurgical_record.paraclinical_rx_chest"><strong style="font-size:12px;">RX. CHEST:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_rx_chest"><strong style="font-size:12px;">RX. TÓRAX:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_rx_chest">
 	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_rx_chest"/>
 	              </t>
-	              <t t-if="presurgical_record.paraclinical_others"><strong style="font-size:12px;">OTHERS:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_others"><strong style="font-size:12px;">OTROS:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_others">
 	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_others"/>
 	              </t>
@@ -429,7 +429,7 @@
 	              <t t-if="presurgical_record.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease3_id"/><br/></t>
 	              <t t-if="presurgical_record.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state2"/><br/></t>
 	              <t t-if="presurgical_record.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state3"/><br/></t>
-	              <t t-if="presurgical_record.plan_analysis"><strong style="font-size:12px;">PLAN, ANALYSIS AND CONDUCT:</strong><br/></t>
+	              <t t-if="presurgical_record.plan_analysis"><strong style="font-size:12px;">PLAN, ANALISIS Y CONDUCTA:</strong><br/></t>
 	              <t t-if="presurgical_record.plan_analysis">
 	              	<span style="padding-left:2px;" t-field="presurgical_record.plan_analysis"/>
 	              </t>
@@ -776,7 +776,7 @@
               <t t-if="plastic_surgery.marijuana">Marijuana: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.marijuana"/><br/></t>
               <t t-if="plastic_surgery.cocaine">Cocaine: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.cocaine"/><br/></t>
               <t t-if="plastic_surgery.ecstasy">Ecstasy: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.ecstasy"/><br/></t>
-              <t t-if="plastic_surgery.body_background_others"><strong style="font-size:12px;">Others:</strong><br/></t>
+              <t t-if="plastic_surgery.body_background_others"><strong style="font-size:12px;">Otros:</strong><br/></t>
               <t t-if="plastic_surgery.relatives">
                 <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.body_background_others"/><br/>
               </t>
@@ -791,10 +791,10 @@
               <t t-if="plastic_surgery.gender == 'female'">
                 Number of Pregnancies: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.pregnancy_number"/><br/>
                 N° de hijos: <span style="padding-left:2px;" t-field="plastic_surgery.child_number"/><br/>
-                Number of Abortions: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.abortion_number"/><br/>
-                Date of Last Birth: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_birth_date"/><br/>
-                Date of Last Menstruation: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_menstruation_date"/><br/>
-                Contrtaceptive Methods: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.contrtaceptive_methods"/><br/>
+                Número de abortos: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.abortion_number"/><br/>
+                Fecha último embarazo: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_birth_date"/><br/>
+                Fecha última menstruación: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_menstruation_date"/><br/>
+                Métodos anticonceptivos: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.contrtaceptive_methods"/><br/>
               </t>
               <t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index"><strong style="font-size:12px;">PHYSICAL DETAILS:</strong><br/></t>
               <t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure">
