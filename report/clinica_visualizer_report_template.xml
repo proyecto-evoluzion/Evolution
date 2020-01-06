@@ -1022,7 +1022,7 @@
           </div>
         </template>
 
-        <template id="clinica_doctor_data.surgical_technologist_visualizer_template">
+      <template id="clinica_doctor_data.surgical_technologist_visualizer_template">
       <div class="page">
         <div class="oe_structure"/>
           <t t-foreach="clinica_records['surgical_technologist']" t-as="surgical_technologist">
@@ -1067,6 +1067,157 @@
                     <td style="width:25%; "><t>Inicia: <span style="padding-left:2px;" t-field="recount_ids.start"/></t></td>
                     <td style="width:25%; "><t>Finaliza: <span style="padding-left:2px;" t-field="recount_ids.end"/></t></td>
                     <td style="width:25%; "><t>Nota de enfermería: <span style="padding-left:2px;" t-field="recount_ids.note"/></t></td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="surgical_technologist.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="surgical_technologist.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="surgical_technologist.surgeon_id.firstname"/> <span t-field="surgical_technologist.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
+            </div>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+        </template>
+
+        <template id="clinica_doctor_data.post_anhestesic_visualizer_template">
+      <div class="page">
+        <div class="oe_structure"/>
+          <t t-foreach="clinica_records['post_anhestesic']" t-as="post_anhestesic">
+            <t t-set="post_anhestesic" t-value="post_anhestesic.with_context({'lang':post_anhestesic.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha: <span t-field="post_anhestesic.date" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Tipo: <span t-field="post_anhestesic.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr>
+                <td style="width:50%; "><t t-if="post_anhestesic.numberid">Identificación: <span style="padding-left:2px;" t-field="post_anhestesic.numberid"/></t></td>
+                <td style="width:50%; ">
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.firstname"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.lastname"/><br/>
+                  <t t-if="post_anhestesic.patient_id.age">Edad: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.age"/><br/></t>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <t t-if="post_anhestesic.room_id"><strong style="font-size:12px;">CIRUGÍA</strong><br/></t>
+              <t t-if="post_anhestesic.room_id">
+                <span t-field="post_anhestesic.room_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.bed"><strong style="font-size:12px;">CAMA</strong><br/></t>
+              <t t-if="post_anhestesic.bed">
+                <span t-field="post_anhestesic.bed"/><br/>
+              </t>
+              <t t-if="post_anhestesic.duration"><strong style="font-size:12px;">DURACIÓN</strong><br/></t>
+              <t t-if="post_anhestesic.duration">
+                <span t-field="post_anhestesic.duration"/><br/>
+              </t>
+              <t t-if="post_anhestesic.anhestesia"><strong style="font-size:12px;">ANESTESIA</strong><br/></t>
+              <t t-if="post_anhestesic.anhestesia">
+                <span t-field="post_anhestesic.anhestesia"/><br/>
+              </t>
+              <t t-if="post_anhestesic.airway"><strong style="font-size:12px;">VÍA AÉREA</strong><br/></t>
+              <t t-if="post_anhestesic.airway">
+                <span t-field="post_anhestesic.airway"/><br/>
+              </t>
+              <t t-if="post_anhestesic.anesthesiologist_id"><strong style="font-size:12px;">ANESTESIÓLOGO</strong><br/></t>
+              <t t-if="post_anhestesic.anesthesiologist_id">
+                <span t-field="post_anhestesic.anesthesiologist_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.surgeon_id"><strong style="font-size:12px;">CIRUJANO</strong><br/></t>
+              <t t-if="post_anhestesic.surgeon_id">
+                <span t-field="post_anhestesic.surgeon_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.nurse_id"><strong style="font-size:12px;">ENFERMERO(A)</strong><br/></t>
+              <t t-if="post_anhestesic.nurse_id">
+                <span t-field="post_anhestesic.nurse_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.procedure"><strong style="font-size:12px;">PROCEDIMIENTOS EN SALUD</strong><br/></t>
+              <t t-if="post_anhestesic.procedure">
+                <t t-foreach="post_anhestesic.procedure" t-as="product_ids">
+                  * <span t-field="product_ids.name"/><br/>
+                </t>
+              </t>
+              <t t-if="post_anhestesic.chest_tube or post_anhestesic.hemovac or post_anhestesic.others or post_anhestesic.total"><strong style="font-size:12px;">DRENAJES</strong><br/></t>
+              <t t-if="post_anhestesic.chest_tube">
+                <span t-field="post_anhestesic.chest_tube"/><br/>
+              </t>
+              <t t-if="post_anhestesic.hemovac">
+                <span t-field="post_anhestesic.hemovac"/><br/>
+              </t>
+              <t t-if="post_anhestesic.others">
+                <span t-field="post_anhestesic.others"/><br/>
+              </t>
+              <t t-if="post_anhestesic.total">
+                <span t-field="post_anhestesic.total"/><br/>
+              </t>
+              <t t-if="surgical_technologist.liquids_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>LÍQUIDOS</strong></td></tr>
+                  <tr t-foreach="surgical_technologist.liquids_ids" t-as="liquids_ids">
+                    <td style="width:25%; "><t>Vía: <span style="padding-left:2px;" t-field="liquids_ids.liquid_via"/></t></td>
+                    <td style="width:25%; "><t>Sitio: <span style="padding-left:2px;" t-field="liquids_ids.liquid_site"/></t></td>
+                    <td style="width:25%; "><t>Tipo: <span style="padding-left:2px;" t-field="liquids_ids.liquid_type"/></t></td>
+                    <td style="width:25%; "><t>Cant. Inicial: <span style="padding-left:2px;" t-field="liquids_ids.liquid_initial_amount"/></t></td>
+                    <td style="width:25%; "><t>Cant. Recuperación: <span style="padding-left:2px;" t-field="liquids_ids.liquid_amount_recovery"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="surgical_technologist.aldrete_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="7" style="text-align:center; "><strong>ESCALA ALDRETE</strong></td></tr>
+                  <tr t-foreach="surgical_technologist.aldrete_ids" t-as="aldrete_ids">
+                    <td style="width:25%; "><t>Momento: <span style="padding-left:2px;" t-field="aldrete_ids.moment"/></t></td>
+                    <td style="width:25%; "><t>Conciencia: <span style="padding-left:2px;" t-field="aldrete_ids.conscience"/></t></td>
+                    <td style="width:25%; "><t>Saturación: <span style="padding-left:2px;" t-field="aldrete_ids.saturation"/></t></td>
+                    <td style="width:25%; "><t>Respiración: <span style="padding-left:2px;" t-field="aldrete_ids.breathing"/></t></td>
+                    <td style="width:25%; "><t>Circulación: <span style="padding-left:2px;" t-field="aldrete_ids.circulation"/></t></td>
+                    <td style="width:25%; "><t>Actividad: <span style="padding-left:2px;" t-field="aldrete_ids.activity"/></t></td>
+                    <td style="width:25%; "><t>Puntaje: <span style="padding-left:2px;" t-field="aldrete_ids.aldrete_score"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="surgical_technologist.drug_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>DROGAS</strong></td></tr>
+                  <tr t-foreach="surgical_technologist.drug_ids" t-as="drug_ids">
+                    <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="drug_ids.drug_time"/></t></td>
+                    <td style="width:25%; "><t>Droga: <span style="padding-left:2px;" t-field="drug_ids.drug_name"/></t></td>
+                    <td style="width:25%; "><t>Cantidad: <span style="padding-left:2px;" t-field="drug_ids.drug_quantity"/></t></td>
+                    <td style="width:25%; "><t>Vía: <span style="padding-left:2px;" t-field="drug_ids.drug_via"/></t></td>
+                    <td style="width:25%; "><t>D.R.: <span style="padding-left:2px;" t-field="drug_ids.drug_dr"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="surgical_technologist.observations_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>OBSERVACIONES</strong></td></tr>
+                  <tr t-foreach="surgical_technologist.observations_ids" t-as="observations_ids">
+                    <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="observations_ids.observation_time"/></t></td>
+                    <td style="width:25%; "><t>Observaciones: <span style="padding-left:2px;" t-field="observations_ids.observation"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="surgical_technologist.vital_sign_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="7" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
+                  <tr t-foreach="surgical_technologist.vital_sign_ids" t-as="vital_sign_ids">
+                    <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_date_hour"/></t></td>
+                    <td style="width:25%; "><t>TAS: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_tas"/></t></td>
+                    <td style="width:25%; "><t>TAD: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_tad"/></t></td>
+                    <td style="width:25%; "><t>FC: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_fc"/></t></td>
+                    <td style="width:25%; "><t>FR: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_fr"/></t></td>
+                    <td style="width:25%; "><t>SaO2: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_sao2"/></t></td>
+                    <td style="width:25%; "><t>Dolor(0-10): <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_pain"/></t></td>
+                    <td style="width:25%; "><t>Náuseas: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_queasiness"/></t></td>
+                    <td style="width:25%; "><t>Vómito: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_vomit"/></t></td>
                   </tr>
                 </table>
               </t>

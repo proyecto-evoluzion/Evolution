@@ -178,6 +178,15 @@
             <field name="surgeon_id"/>
             </tree>
           </field>
+		  <separator string="Post Anhestesic" attrs="{'invisible':[('view_model','not in',['post_anhestesic','all'])]}"/>
+          <field name="post_anhestesic_ids" nolabel="1" force_save="1" readonly="1" 
+            attrs="{'invisible':[('view_model','not in',['post_anhestesic','all'])]}">
+            <tree string="Post Anhestesic">
+              <field name="name"/>
+            <field name="patient_id"/>
+            <field name="surgeon_id"/>
+            </tree>
+          </field>
          	</sheet>
          </form>
          </field>
