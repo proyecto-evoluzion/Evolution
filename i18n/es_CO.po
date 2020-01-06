@@ -169,7 +169,7 @@ msgid ""
 "       \t\t\t\t\t\t\tSurgery Room:"
 msgstr ""
 "<br/>\n"
-"       \t\t\t\t\t\t\tSurgery Room:"
+"       \t\t\t\t\t\t\tSala de cirugía:"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
@@ -263,7 +263,7 @@ msgstr "<strong style="font-size:12px;">ALÉRGICOS:</strong><br/>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "<strong>BLOOD COUNT</strong>"
-msgstr "<strong>CAUDRA HEMÁTICACITAS</strong>"
+msgstr "<strong>CAUDRO HEMÁTICACITAS</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.medical_evolution_visualizer_template
@@ -455,7 +455,7 @@ msgstr "<strong style="font-size:12px;">FAMILIARES</strong><br/>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "<strong>RX. CHEST</strong>"
-msgstr "<strong>RX. TORAX</strong>"
+msgstr "<strong>RX. TÓRAX</strong>"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.epicrisis_visualizer_template
@@ -1097,6 +1097,8 @@ msgstr "Sangre"
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "Blood Count"
 msgstr "Cuadro Hemático"
 
@@ -4455,6 +4457,8 @@ msgstr "Plan Code"
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_doctor_presurgical_record_plan_analysis
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.plastic_surgery_visualizer_template
+#: model:ir.ui.view,arch_db:clinica_doctor_data.presurgical_record_visualizer_template
 msgid "Plan, Analysis and Conduct"
 msgstr "Plan, Análisis y Conducta"
 
@@ -5107,7 +5111,7 @@ msgstr "Room Type"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_anhestesic_registry_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_presurgical_record_form
 msgid "Rx. Chest"
-msgstr "Rx. Torax"
+msgstr "Rx. Tórax"
 
 #. module: clinica_doctor_data
 #: model:ir.ui.view,arch_db:clinica_doctor_data.anhestesic_registry_visualizer_template
@@ -5569,7 +5573,7 @@ msgstr "Sala de Cirugía"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.nurse_sheet_visualizer_template
 #: model:ir.ui.view,arch_db:clinica_doctor_data.room_visualizer_template
 msgid "Surgery Room Procedure Number:"
-msgstr "Surgery Room Procedure Number:"
+msgstr "Número de cirugía:"
 
 #. module: clinica_doctor_data
 #: selection:clinica.record.list.visualizer,view_model:0
@@ -6212,6 +6216,8 @@ msgstr "Víctima - Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_surgical_technologist_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.clinica_quirurgical_check_list_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
 msgid "View History"
 msgstr "Ver Historia"
 
