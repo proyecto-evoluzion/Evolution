@@ -51,7 +51,7 @@ class PresurgicalRecord(models.Model):
     def _default_doctor(self):
         ctx = self._context
         user_id = self._context.get('uid')
-        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)],limit=1)
         return professional_obj.id
     
     number = fields.Char('Attention number', readonly=True)
