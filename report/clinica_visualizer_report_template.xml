@@ -1158,10 +1158,10 @@
               <t t-if="post_anhestesic.total">
                 <span t-field="post_anhestesic.total"/><br/>
               </t>
-              <t t-if="surgical_technologist.liquids_ids">
+              <t t-if="post_anhestesic.liquids_ids">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="5" style="text-align:center; "><strong>LÍQUIDOS</strong></td></tr>
-                  <tr t-foreach="surgical_technologist.liquids_ids" t-as="liquids_ids">
+                  <tr t-foreach="post_anhestesic.liquids_ids" t-as="liquids_ids">
                     <td style="width:25%; "><t>Vía: <span style="padding-left:2px;" t-field="liquids_ids.liquid_via"/></t></td>
                     <td style="width:25%; "><t>Sitio: <span style="padding-left:2px;" t-field="liquids_ids.liquid_site"/></t></td>
                     <td style="width:25%; "><t>Tipo: <span style="padding-left:2px;" t-field="liquids_ids.liquid_type"/></t></td>
@@ -1170,10 +1170,10 @@
                   </tr>
                 </table>
               </t>
-              <t t-if="surgical_technologist.aldrete_ids">
+              <t t-if="post_anhestesic.aldrete_ids">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="7" style="text-align:center; "><strong>ESCALA ALDRETE</strong></td></tr>
-                  <tr t-foreach="surgical_technologist.aldrete_ids" t-as="aldrete_ids">
+                  <tr t-foreach="post_anhestesic.aldrete_ids" t-as="aldrete_ids">
                     <td style="width:25%; "><t>Momento: <span style="padding-left:2px;" t-field="aldrete_ids.moment"/></t></td>
                     <td style="width:25%; "><t>Conciencia: <span style="padding-left:2px;" t-field="aldrete_ids.conscience"/></t></td>
                     <td style="width:25%; "><t>Saturación: <span style="padding-left:2px;" t-field="aldrete_ids.saturation"/></t></td>
@@ -1184,10 +1184,10 @@
                   </tr>
                 </table>
               </t>
-              <t t-if="surgical_technologist.drug_ids">
+              <t t-if="post_anhestesic.drug_ids">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="5" style="text-align:center; "><strong>DROGAS</strong></td></tr>
-                  <tr t-foreach="surgical_technologist.drug_ids" t-as="drug_ids">
+                  <tr t-foreach="post_anhestesic.drug_ids" t-as="drug_ids">
                     <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="drug_ids.drug_time"/></t></td>
                     <td style="width:25%; "><t>Droga: <span style="padding-left:2px;" t-field="drug_ids.drug_name"/></t></td>
                     <td style="width:25%; "><t>Cantidad: <span style="padding-left:2px;" t-field="drug_ids.drug_quantity"/></t></td>
@@ -1196,19 +1196,19 @@
                   </tr>
                 </table>
               </t>
-              <t t-if="surgical_technologist.observations_ids">
+              <t t-if="post_anhestesic.observations_ids">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="5" style="text-align:center; "><strong>OBSERVACIONES</strong></td></tr>
-                  <tr t-foreach="surgical_technologist.observations_ids" t-as="observations_ids">
+                  <tr t-foreach="post_anhestesic.observations_ids" t-as="observations_ids">
                     <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="observations_ids.observation_time"/></t></td>
                     <td style="width:25%; "><t>Observaciones: <span style="padding-left:2px;" t-field="observations_ids.observation"/></t></td>
                   </tr>
                 </table>
               </t>
-              <t t-if="surgical_technologist.vital_sign_ids">
+              <t t-if="post_anhestesic.vital_sign_ids">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="7" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
-                  <tr t-foreach="surgical_technologist.vital_sign_ids" t-as="vital_sign_ids">
+                  <tr t-foreach="post_anhestesic.vital_sign_ids" t-as="vital_sign_ids">
                     <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_date_hour"/></t></td>
                     <td style="width:25%; "><t>TAS: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_tas"/></t></td>
                     <td style="width:25%; "><t>TAD: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_tad"/></t></td>
@@ -1223,13 +1223,13 @@
               </t>
             </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
-            <div t-if="surgical_technologist.review_note">
+            <div t-if="post_anhestesic.review_note">
               <strong>Nota Aclaratoria</strong>
-              <p t-field="surgical_technologist.review_note"/>
+              <p t-field="post_anhestesic.review_note"/>
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="surgical_technologist.surgeon_id.firstname"/> <span t-field="surgical_technologist.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="post_anhestesic.surgeon_id.firstname"/> <span t-field="post_anhestesic.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
