@@ -102,6 +102,7 @@ msgstr "Cerrar"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_post_anhestesic_care_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_surgical_technologist_form
 msgid "Set to Close"
 msgstr "Cerrar"
 
@@ -6210,6 +6211,7 @@ msgstr "Víctima - Subsidiado"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_recovery_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.view_clinica_nurse_chief_sheet_form
 #: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_prescription_form
+#: model:ir.ui.view,arch_db:clinica_doctor_data.doctor_surgical_technologist_form
 msgid "View History"
 msgstr "Ver Historia"
 
