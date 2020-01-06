@@ -187,6 +187,15 @@
             <field name="surgeon_id"/>
             </tree>
           </field>
+		  <separator string="Quirurgical Check List" attrs="{'invisible':[('view_model','not in',['quirurgical_checklist','all'])]}"/>
+          <field name="quirurgical_checklist_ids" nolabel="1" force_save="1" readonly="1" 
+            attrs="{'invisible':[('view_model','not in',['quirurgical_checklist','all'])]}">
+            <tree string="Quirurgical Check List">
+              <field name="name"/>
+            <field name="patient_id"/>
+            <field name="surgeon_id"/>
+            </tree>
+          </field>
          	</sheet>
          </form>
          </field>

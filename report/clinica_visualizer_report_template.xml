@@ -1235,7 +1235,141 @@
           </t>
           </div>
         </template>
-    
+
+      <template id="clinica_doctor_data.quirurgical_checklist_visualizer_template">
+      <div class="page">
+        <div class="oe_structure"/>
+          <t t-foreach="clinica_records['quirurgical_checklist']" t-as="quirurgical_checklist">
+            <t t-set="quirurgical_checklist" t-value="quirurgical_checklist.with_context({'lang':quirurgical_checklist.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha: <span t-field="quirurgical_checklist.procedure_datetime" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Tipo: <span t-field="quirurgical_checklist.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr>
+                <td style="width:50%; "><t t-if="quirurgical_checklist.numberid">Identificación: <span style="padding-left:2px;" t-field="quirurgical_checklist.numberid"/></t></td>
+                <td style="width:50%; ">
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.lastname"/><br/>
+                  <t t-if="quirurgical_checklist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.age"/><br/></t>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <t t-if="quirurgical_checklist.anesthesia_type"><strong style="font-size:12px;">ANESTESIA</strong><br/></t>
+              <t t-if="quirurgical_checklist.anesthesia_type">
+                <span t-field="quirurgical_checklist.anesthesia_type"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.anesthesiologist_id"><strong style="font-size:12px;">ANESTESIÓLOGO</strong><br/></t>
+              <t t-if="quirurgical_checklist.anesthesiologist_id">
+                <span t-field="quirurgical_checklist.anesthesiologist_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.surgeon_id"><strong style="font-size:12px;">CIRUJANO</strong><br/></t>
+              <t t-if="quirurgical_checklist.surgeon_id">
+                <span t-field="quirurgical_checklist.surgeon_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.nurse_id"><strong style="font-size:12px;">ENFERMERO(A)</strong><br/></t>
+              <t t-if="quirurgical_checklist.nurse_id">
+                <span t-field="quirurgical_checklist.nurse_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.technologist_id"><strong style="font-size:12px;">INSTRUMENTADOR</strong><br/></t>
+              <t t-if="quirurgical_checklist.technologist_id">
+                <span t-field="quirurgical_checklist.technologist_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.recovery"><strong style="font-size:12px;">RECUPERACIÓN</strong><br/></t>
+              <t t-if="quirurgical_checklist.recovery">
+                <span t-field="quirurgical_checklist.recovery"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.procedure_ids"><strong style="font-size:12px;">PROCEDIMIENTOS</strong><br/></t>
+              <t t-if="quirurgical_checklist.procedure_ids">
+                <t t-foreach="quirurgical_checklist.procedure_ids" t-as="product_ids">
+                  * <span t-field="product_ids.name"/><br/>
+                </t>
+              </t>
+              <t t-if="quirurgical_checklist.presurgery_active">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>PRE-OPERATORIO</strong></td></tr>
+                  <tr>
+                    <td style="width:80%; "><t>Confirma nombre paciente:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_patient_name"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se verifican datos de la manilla: Nombre, Tipo y Número de identificación, RH, Alergias:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_bracelet_data"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Confirma Procedimiento:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_procedure"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Consentimiento informado Quirúrgico totalmente diligenciado:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.surgical_concent_filled"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Valoración pre anestésica y Consentimiento informado Anestésico totalmente diligenciado:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pre_anesthetic_assessment_complete"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Retiro de: Prótesis dentales, joyas, lentes, esmalte, tampones, etc:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.removed_dental_aceesories"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Exámanes pre quirúrgicos laboratorio clínico:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pre_surgical_lab_exams"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Los objetos personales del paciente se encuentran bajo llave en el casillero en poder del familiar:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.patient_belongins_locked"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Tiempo de ayuno mayor a 8 horas:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.fasting_time_greater"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Indago sobre síntomas de gripa en la última semana:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.flu_symptoms_enquired"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.allergic_enquired=='yes'">
+                    <td style="width:40%; "><t>El paciente presenta alergias?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_enquired"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_text"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.enquired_proc_medication=='yes'">
+                    <td style="width:40%; "><t>El paciente consumió medicamentos previos al procedimiento?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication_note"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>El paciente consumió bebidas alcohólicas y/o estupefacientes previos al procedimiento?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.investigated_drug_consumption"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Marcación sitio operatorio:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.operational_site_marking"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.special_preparation=='yes'">
+                    <td style="width:40%; "><t>Preparaciones especiales?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparation"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparations_text"/></t></td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="quirurgical_checklist.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="quirurgical_checklist.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="quirurgical_checklist.anesthesiologist_id.firstname"/> <span t-field="quirurgical_checklist.anesthesiologist_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="quirurgical_checklist.anesthesiologist_id.medical_record"/></span>
+            </div>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+        </template>
     
         <template id="visualizer_report_template">
             <t t-call="web.html_container">
@@ -1286,6 +1420,9 @@
                     <t t-if="record == 'post_anhestesic'">
                       <t t-call="clinica_doctor_data.post_anhestesic_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
+                    <t t-if="record == 'quirurgical_checklist'">
+                      <t t-call="clinica_doctor_data.quirurgical_checklist_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
                     <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                       <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
@@ -1326,6 +1463,9 @@
                 </t>
                 <t t-if="record == 'post_anhestesic'">
                   <t t-call="clinica_doctor_data.post_anhestesic_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'quirurgical_checklist'">
+                  <t t-call="clinica_doctor_data.quirurgical_checklist_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
                 <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                   <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
