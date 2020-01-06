@@ -1229,7 +1229,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="post_anhestesic.surgeon_id.firstname"/> <span t-field="post_anhestesic.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="post_anhestesic.surgeon_id.firstname"/> <span t-field="post_anhestesic.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="post_anhestesic.surgeon_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
