@@ -1290,7 +1290,7 @@
               </t>
               <t t-if="quirurgical_checklist.confirm_patient_name">
                 <table class="table " style=" width:100%;">
-                  <tr><td colspan="5" style="text-align:center; "><strong>PRE-OPERATORIO</strong></td></tr>
+                  <tr><td colspan="2" style="text-align:center; "><strong>PRE-OPERATORIO</strong></td></tr>
                   <tr>
                     <td style="width:80%; "><t>Confirma nombre paciente:</t></td>
                     <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_patient_name"/></t></td>
@@ -1334,12 +1334,12 @@
                   <tr t-if="quirurgical_checklist.allergic_enquired=='yes'">
                     <td style="width:40%; "><t>El paciente presenta alergias?</t></td>
                     <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_enquired"/></t></td>
-                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_text"/></t></td>
+                    <td style="width:40%; ">Cuales? <t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_text"/></t></td>
                   </tr>
                   <tr t-if="quirurgical_checklist.enquired_proc_medication=='yes'">
                     <td style="width:40%; "><t>El paciente consumió medicamentos previos al procedimiento?</t></td>
                     <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication"/></t></td>
-                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication_note"/></t></td>
+                    <td style="width:40%; ">Cuales? <t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication_note"/></t></td>
                   </tr>
                   <tr>
                     <td style="width:80%; "><t>El paciente consumió bebidas alcohólicas y/o estupefacientes previos al procedimiento?</t></td>
@@ -1352,7 +1352,162 @@
                   <tr t-if="quirurgical_checklist.special_preparation=='yes'">
                     <td style="width:40%; "><t>Preparaciones especiales?</t></td>
                     <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparation"/></t></td>
-                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparations_text"/></t></td>
+                    <td style="width:40%; ">Cuales? <t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparations_text"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="quirurgical_checklist.recording_vital_signs">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>INTRA-OPERATORIO</strong></td></tr>
+                  <tr t-if="quirurgical_checklist.special_preparation=='yes'">
+                    <td style="width:80%; "><t>Toma y registro de signos vitales:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.recording_vital_signs"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:40%; "><t>Profilaxis antibiótica antes de la cirugia:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.antibiotic_prophylaxis"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.prophylaxis_text"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.surgeon_id"/> Se encuentra personal completo dentro de la sala para iniciar procedimiento:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.full_staff_in_room"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.anesthesiologist_id"/> La monitoria y la inducción se encuentra completo para iniciar:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.monitoring_induction_complete"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Anestesiólogo:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.monitor_indu_anesthesiologist_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.surgeon_id"/> Su paciente <span t-field="quirurgical_checklist.patient_id"/> Esta programado para :</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.is_scheduled"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Esta programado Dr.( Cirujano):</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.scheduled_surgeon_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Esta programado Paciente:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.scheduled_patient_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.surgeon_id"/> Los requerimientos en cuanto equipos solicitados por usted están en sala:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipments_in_room"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Cirujano:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipments_room_surgeon_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Instrumentadora los materiales, medicamentos e insumos especiales solicitados por el cirujano se encuentran en la sala:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.materials_in_room"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Instrumentadora todo el equipo se encuentra adecuadamente estéril y en orden:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipments_in_order"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Presión Venosa Intermitente funsionando:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.venous_pressure_working"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se entregaron elementos o insumos adicionales:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.supplies_delivered"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Paga:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pay"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>La cuenta del procedimiento la paga:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.proc_bill_pay"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Nombre Auxiliar de Cirugía:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.scheduled_nurse_id"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="quirurgical_checklist.doctor_done_additionaly">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>POST-OPERATORIO</strong></td></tr>
+                  <tr>
+                    <td style="width:80%; "><t>Doctor algo se realizo adicional o cambió el procedimiento:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.doctor_done_additionaly"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.sample_delivered=='yes'">
+                    <td style="width:40%; "><t>Se entregaron tomaron muestras para laboratorio:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.sample_delivered"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.sample_delivered_text"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Quien paga las muestras que se tomaron para laboratorio:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.sample_delivered_pay"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se entregan exámenes a recuperación:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.delivered_recovery_exam"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>He reportado los equipos o elementos disfuncionantes al jefe de cirugía:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.reported_disfunction_equip"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se hizo devolución de la sangre solicitada al Banco de sangre, que por cualquier circunstancia no se utilizó:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.blood_returned"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.add_items_delivered=='yes'">
+                    <td style="width:40%; "><t>Se entregaron elementos adicionales?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_items_delivered"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_items_delivered_text"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Quien paga los elementos adicionales?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pay_add_items_delivered"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Historia diligenciada y firmada:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.history_complete"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Entrega Enfermera:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.delivered_nurse_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Recibe Enfermera:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.received_nurse_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Tiempo:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.deliver_receive_time"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="quirurgical_checklist.history_received">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>RECUPERACIÓN</strong></td></tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se recibe historia clínica completa:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.history_received"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:40%; "><t>Todos los equipos para monitoreo y reanimación del paciente funcionando:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipment_working"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><tSe le informa al familiar del paciente de su estado y evolución:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.informed_family"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>El paciente sale con?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.patient_out_with"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.add_supplies=='yes'">
+                    <td style="width:40%; "><t>La paciente sale con insumos adicionales:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_supplies"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_supplies_text"/></t></td>
                   </tr>
                 </table>
               </t>
