@@ -283,7 +283,7 @@ class ClinicaRecordVisualizer(models.Model):
             post_anhestesic_search_domain.append(('surgeon_id','=',doctor.id))
         if start_period:
             post_anhestesic_search_domain.append(('date','=',start_period))     
-        post_anhestesic_objs = self.env['clinica.post.anhestesic.care'].search(surgical_technologist_search_domain)
+        post_anhestesic_objs = self.env['clinica.post.anhestesic.care'].search(post_anhestesic_search_domain)
         if post_anhestesic_objs:
             post_anhestesic_ids = post_anhestesic_objs.ids
         return post_anhestesic_ids        
