@@ -1085,7 +1085,7 @@
           </div>
         </template>
 
-        <template id="clinica_doctor_data.post_anhestesic_visualizer_template">
+      <template id="clinica_doctor_data.post_anhestesic_visualizer_template">
       <div class="page">
         <div class="oe_structure"/>
           <t t-foreach="clinica_records['post_anhestesic']" t-as="post_anhestesic">
@@ -1283,6 +1283,9 @@
                     <t t-if="record == 'recovery_sheet'">
                       <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
+                    <t t-if="record == 'post_anhestesic'">
+                      <t t-call="clinica_doctor_data.post_anhestesic_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
                     <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                       <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
@@ -1320,6 +1323,9 @@
                 </t>
                 <t t-if="record == 'recovery_sheet'">
                   <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'post_anhestesic'">
+                  <t t-call="clinica_doctor_data.post_anhestesic_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
                 <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                   <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
