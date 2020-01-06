@@ -1184,10 +1184,10 @@
                   </tr>
                 </table>
               </t>
-              <t t-if="post_anhestesic.drug_ids">
+              <t t-if="post_anhestesic.drugs_ids">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="5" style="text-align:center; "><strong>DROGAS</strong></td></tr>
-                  <tr t-foreach="post_anhestesic.drug_ids" t-as="drug_ids">
+                  <tr t-foreach="post_anhestesic.drugs_ids" t-as="drug_ids">
                     <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="drug_ids.drug_time"/></t></td>
                     <td style="width:25%; "><t>Droga: <span style="padding-left:2px;" t-field="drug_ids.drug_name"/></t></td>
                     <td style="width:25%; "><t>Cantidad: <span style="padding-left:2px;" t-field="drug_ids.drug_quantity"/></t></td>
