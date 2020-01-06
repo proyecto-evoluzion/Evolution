@@ -1288,7 +1288,7 @@
                   * <span t-field="product_ids.name"/><br/>
                 </t>
               </t>
-              <t t-if="quirurgical_checklist.presurgery_active">
+              <t t-if="quirurgical_checklist.confirm_patient_name">
                 <table class="table " style=" width:100%;">
                   <tr><td colspan="5" style="text-align:center; "><strong>PRE-OPERATORIO</strong></td></tr>
                   <tr>
