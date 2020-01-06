@@ -42,7 +42,7 @@ class PlasticSurgerySheet(models.Model):
     def _default_doctor(self):
         ctx = self._context
         user_id = self._context.get('uid')
-        doctor_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+        doctor_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)], limit=1)
         return doctor_obj.id
     
     number = fields.Char('Attention number', readonly=True)
