@@ -32,10 +32,10 @@
        				</tr>
             </table>
             <div>
-              <t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">SURGERY ROOM PROCEDURE DETAILS</strong><br/></t>
+              <t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">DETALLES DE CIRUGÍA</strong><br/></t>
               <t t-if="nurse_sheet.room_id.room_type == 'surgery'">
                 Surgery Room Procedure Number: <span style="padding-left:2px;" t-field="nurse_sheet.room_id"/><br/>
-                Surgery Room: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgery_room_id"/><br/>
+                Sala de cirugía: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgery_room_id"/><br/>
                 <t t-if="nurse_sheet.room_id.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.surgeon_id.partner_id"/><br/></t>
                 <t t-if="nurse_sheet.room_id.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="nurse_sheet.room_id.anesthesiologist_id.partner_id"/></t>
                 <br/>
@@ -45,12 +45,12 @@
                 <t t-foreach="nurse_sheet.vital_sign_ids" t-as="vital_sign">
                   Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/>
                   FC <span t-field="vital_sign.vital_signs_fc"/><br/>
-                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
-                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
-                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Presión arterial sistólica <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Presión arterial diastólica <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  oximetría <span t-field="vital_sign.oximetry"/><br/>
                   Diuresis <span t-field="vital_sign.diuresis"/><br/>
-                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
-                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                  sangrado <span t-field="vital_sign.bleeding"/><br/>
+                  nota de enfermería <span t-field="vital_sign.note"/><br/>
                 </t>
               </t>
             </div>
@@ -391,31 +391,31 @@
                 <t t-if="presurgical_record.paraclinical_exam_date">Date of Exam: <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_exam_date"/><br/></t>
          				<t t-if="presurgical_record.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_asa"/><br/></t>
          				<t t-if="presurgical_record.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_goldman"/></t>
-	              <t t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg"><strong style="font-size:12px;">BLOOD COUNT:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_hb or presurgical_record.paraclinical_hto or presurgical_record.paraclinical_leukocytes or presurgical_record.paraclinical_differential or presurgical_record.paraclinical_vsg"><strong style="font-size:12px;">CUADRO HEMÁTICO:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hb"/>g/dl <br/> </t>
       					<t t-if="presurgical_record.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_hto"/>Vol % <br/> </t>
       					<t t-if="presurgical_record.paraclinical_leukocytes">Leukocytes: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_leukocytes"/>x 10^3/ul </t>
       					<t t-if="presurgical_record.paraclinical_differential">Differential: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_differential"/><br/></t>
        				  <t t-if="presurgical_record.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_vsg"/>mm/H <br/></t>
-	              <t t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc"><strong style="font-size:12px;">COOGULACIAN TEST:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_pt or presurgical_record.paraclinical_ptt or presurgical_record.paraclinical_platelets or presurgical_record.paraclinical_tc"><strong style="font-size:12px;">TIEMPOS DE COAGULACIÓN:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_pt"/>S (seconds) <br/> </t>
          				<t t-if="presurgical_record.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_ptt"/>S (seconds)  </t>
          				<t t-if="presurgical_record.paraclinical_platelets">Platelets: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_platelets"/> x 10^3/ul<br/> </t>
          				<t t-if="presurgical_record.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_tc"/>m (Minutes)<br/> </t>
-	              <t t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob"><strong style="font-size:12px;">SANGUINEA CHEMICAL:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_glycemia or presurgical_record.paraclinical_creatinine or presurgical_record.paraclinical_albumin or presurgical_record.paraclinical_glob"><strong style="font-size:12px;">QUÍMICA SANGUÍNEA:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glycemia"/>mg/dl<br/> </t>
          				<t t-if="presurgical_record.paraclinical_creatinine">Creatinina: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_creatinine"/>mg/dl </t>
          				<t t-if="presurgical_record.paraclinical_albumin">Albumin: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_albumin"/>g/dl<br/> </t>
          				<t t-if="presurgical_record.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="presurgical_record.paraclinical_glob"/> </t>
-	              <t t-if="presurgical_record.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAM:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAMA:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_ecg">
 	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_ecg"/>
 	              </t>
-	              <t t-if="presurgical_record.paraclinical_rx_chest"><strong style="font-size:12px;">RX. CHEST:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_rx_chest"><strong style="font-size:12px;">RX. TÓRAX:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_rx_chest">
 	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_rx_chest"/>
 	              </t>
-	              <t t-if="presurgical_record.paraclinical_others"><strong style="font-size:12px;">OTHERS:</strong><br/></t>
+	              <t t-if="presurgical_record.paraclinical_others"><strong style="font-size:12px;">OTROS:</strong><br/></t>
 	              <t t-if="presurgical_record.paraclinical_others">
 	                <span style="padding-left:2px;" t-field="presurgical_record.paraclinical_others"/>
 	              </t>
@@ -429,7 +429,7 @@
 	              <t t-if="presurgical_record.disease3_id">Diagnosis: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease3_id"/><br/></t>
 	              <t t-if="presurgical_record.disease_state2">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state2"/><br/></t>
 	              <t t-if="presurgical_record.disease_state3">Disease Status: <span style="padding-left:2px;padding-right:4px; font-size:12px;" t-field="presurgical_record.disease_state3"/><br/></t>
-	              <t t-if="presurgical_record.plan_analysis"><strong style="font-size:12px;">PLAN, ANALYSIS AND CONDUCT:</strong><br/></t>
+	              <t t-if="presurgical_record.plan_analysis"><strong style="font-size:12px;">PLAN, ANALISIS Y CONDUCTA:</strong><br/></t>
 	              <t t-if="presurgical_record.plan_analysis">
 	              	<span style="padding-left:2px;" t-field="presurgical_record.plan_analysis"/>
 	              </t>
@@ -776,7 +776,7 @@
               <t t-if="plastic_surgery.marijuana">Marijuana: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.marijuana"/><br/></t>
               <t t-if="plastic_surgery.cocaine">Cocaine: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.cocaine"/><br/></t>
               <t t-if="plastic_surgery.ecstasy">Ecstasy: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.ecstasy"/><br/></t>
-              <t t-if="plastic_surgery.body_background_others"><strong style="font-size:12px;">Others:</strong><br/></t>
+              <t t-if="plastic_surgery.body_background_others"><strong style="font-size:12px;">Otros:</strong><br/></t>
               <t t-if="plastic_surgery.relatives">
                 <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.body_background_others"/><br/>
               </t>
@@ -791,10 +791,10 @@
               <t t-if="plastic_surgery.gender == 'female'">
                 Number of Pregnancies: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.pregnancy_number"/><br/>
                 N° de hijos: <span style="padding-left:2px;" t-field="plastic_surgery.child_number"/><br/>
-                Number of Abortions: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.abortion_number"/><br/>
-                Date of Last Birth: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_birth_date"/><br/>
-                Date of Last Menstruation: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_menstruation_date"/><br/>
-                Contrtaceptive Methods: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.contrtaceptive_methods"/><br/>
+                Número de abortos: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.abortion_number"/><br/>
+                Fecha último embarazo: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_birth_date"/><br/>
+                Fecha última menstruación: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.last_menstruation_date"/><br/>
+                Métodos anticonceptivos: <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.contrtaceptive_methods"/><br/>
               </t>
               <t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure or plastic_surgery.physical_fc or plastic_surgery.physical_fr or plastic_surgery.physical_weight or plastic_surgery.physical_size or plastic_surgery.physical_body_mass_index"><strong style="font-size:12px;">PHYSICAL DETAILS:</strong><br/></t>
               <t t-if="plastic_surgery.physical_sistolic_arteric_presure or plastic_surgery.physical_diastolic_artery_presure">
@@ -1022,7 +1022,7 @@
           </div>
         </template>
 
-        <template id="clinica_doctor_data.surgical_technologist_visualizer_template">
+      <template id="clinica_doctor_data.surgical_technologist_visualizer_template">
       <div class="page">
         <div class="oe_structure"/>
           <t t-foreach="clinica_records['surgical_technologist']" t-as="surgical_technologist">
@@ -1084,7 +1084,447 @@
           </t>
           </div>
         </template>
-    
+
+      <template id="clinica_doctor_data.post_anhestesic_visualizer_template">
+      <div class="page">
+        <div class="oe_structure"/>
+          <t t-foreach="clinica_records['post_anhestesic']" t-as="post_anhestesic">
+            <t t-set="post_anhestesic" t-value="post_anhestesic.with_context({'lang':post_anhestesic.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha: <span t-field="post_anhestesic.date" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Tipo: <span t-field="post_anhestesic.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr>
+                <td style="width:50%; "><t t-if="post_anhestesic.numberid">Identificación: <span style="padding-left:2px;" t-field="post_anhestesic.numberid"/></t></td>
+                <td style="width:50%; ">
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.firstname"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.lastname"/><br/>
+                  <t t-if="post_anhestesic.patient_id.age">Edad: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.age"/><br/></t>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <t t-if="post_anhestesic.room_id"><strong style="font-size:12px;">CIRUGÍA</strong><br/></t>
+              <t t-if="post_anhestesic.room_id">
+                <span t-field="post_anhestesic.room_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.bed"><strong style="font-size:12px;">CAMA</strong><br/></t>
+              <t t-if="post_anhestesic.bed">
+                <span t-field="post_anhestesic.bed"/><br/>
+              </t>
+              <t t-if="post_anhestesic.duration"><strong style="font-size:12px;">DURACIÓN</strong><br/></t>
+              <t t-if="post_anhestesic.duration">
+                <span t-field="post_anhestesic.duration"/><br/>
+              </t>
+              <t t-if="post_anhestesic.anhestesia"><strong style="font-size:12px;">ANESTESIA</strong><br/></t>
+              <t t-if="post_anhestesic.anhestesia">
+                <span t-field="post_anhestesic.anhestesia"/><br/>
+              </t>
+              <t t-if="post_anhestesic.airway"><strong style="font-size:12px;">VÍA AÉREA</strong><br/></t>
+              <t t-if="post_anhestesic.airway">
+                <span t-field="post_anhestesic.airway"/><br/>
+              </t>
+              <t t-if="post_anhestesic.anesthesiologist_id"><strong style="font-size:12px;">ANESTESIÓLOGO</strong><br/></t>
+              <t t-if="post_anhestesic.anesthesiologist_id">
+                <span t-field="post_anhestesic.anesthesiologist_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.surgeon_id"><strong style="font-size:12px;">CIRUJANO</strong><br/></t>
+              <t t-if="post_anhestesic.surgeon_id">
+                <span t-field="post_anhestesic.surgeon_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.nurse_id"><strong style="font-size:12px;">ENFERMERO(A)</strong><br/></t>
+              <t t-if="post_anhestesic.nurse_id">
+                <span t-field="post_anhestesic.nurse_id"/><br/>
+              </t>
+              <t t-if="post_anhestesic.procedure"><strong style="font-size:12px;">PROCEDIMIENTOS EN SALUD</strong><br/></t>
+              <t t-if="post_anhestesic.procedure">
+                <t t-foreach="post_anhestesic.procedure" t-as="product_ids">
+                  * <span t-field="product_ids.name"/><br/>
+                </t>
+              </t>
+              <t t-if="post_anhestesic.chest_tube or post_anhestesic.hemovac or post_anhestesic.others or post_anhestesic.total"><strong style="font-size:12px;">DRENAJES</strong><br/></t>
+              <t t-if="post_anhestesic.chest_tube">
+                <span t-field="post_anhestesic.chest_tube"/><br/>
+              </t>
+              <t t-if="post_anhestesic.hemovac">
+                <span t-field="post_anhestesic.hemovac"/><br/>
+              </t>
+              <t t-if="post_anhestesic.others">
+                <span t-field="post_anhestesic.others"/><br/>
+              </t>
+              <t t-if="post_anhestesic.total">
+                <span t-field="post_anhestesic.total"/><br/>
+              </t>
+              <t t-if="post_anhestesic.liquids_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>LÍQUIDOS</strong></td></tr>
+                  <tr t-foreach="post_anhestesic.liquids_ids" t-as="liquids_ids">
+                    <td style="width:25%; "><t>Vía: <span style="padding-left:2px;" t-field="liquids_ids.liquid_via"/></t></td>
+                    <td style="width:25%; "><t>Sitio: <span style="padding-left:2px;" t-field="liquids_ids.liquid_site"/></t></td>
+                    <td style="width:25%; "><t>Tipo: <span style="padding-left:2px;" t-field="liquids_ids.liquid_type"/></t></td>
+                    <td style="width:25%; "><t>Cant. Inicial: <span style="padding-left:2px;" t-field="liquids_ids.liquid_initial_amount"/></t></td>
+                    <td style="width:25%; "><t>Cant. Recuperación: <span style="padding-left:2px;" t-field="liquids_ids.liquid_amount_recovery"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="post_anhestesic.aldrete_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="7" style="text-align:center; "><strong>ESCALA ALDRETE</strong></td></tr>
+                  <tr t-foreach="post_anhestesic.aldrete_ids" t-as="aldrete_ids">
+                    <td style="width:25%; "><t>Momento: <span style="padding-left:2px;" t-field="aldrete_ids.moment"/></t></td>
+                    <td style="width:25%; "><t>Conciencia: <span style="padding-left:2px;" t-field="aldrete_ids.conscience"/></t></td>
+                    <td style="width:25%; "><t>Saturación: <span style="padding-left:2px;" t-field="aldrete_ids.saturation"/></t></td>
+                    <td style="width:25%; "><t>Respiración: <span style="padding-left:2px;" t-field="aldrete_ids.breathing"/></t></td>
+                    <td style="width:25%; "><t>Circulación: <span style="padding-left:2px;" t-field="aldrete_ids.circulation"/></t></td>
+                    <td style="width:25%; "><t>Actividad: <span style="padding-left:2px;" t-field="aldrete_ids.activity"/></t></td>
+                    <td style="width:25%; "><t>Puntaje: <span style="padding-left:2px;" t-field="aldrete_ids.aldrete_score"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="post_anhestesic.drugs_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>DROGAS</strong></td></tr>
+                  <tr t-foreach="post_anhestesic.drugs_ids" t-as="drug_ids">
+                    <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="drug_ids.drug_time"/></t></td>
+                    <td style="width:25%; "><t>Droga: <span style="padding-left:2px;" t-field="drug_ids.drug_name"/></t></td>
+                    <td style="width:25%; "><t>Cantidad: <span style="padding-left:2px;" t-field="drug_ids.drug_quantity"/></t></td>
+                    <td style="width:25%; "><t>Vía: <span style="padding-left:2px;" t-field="drug_ids.drug_via"/></t></td>
+                    <td style="width:25%; "><t>D.R.: <span style="padding-left:2px;" t-field="drug_ids.drug_dr"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="post_anhestesic.observations_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="5" style="text-align:center; "><strong>OBSERVACIONES</strong></td></tr>
+                  <tr t-foreach="post_anhestesic.observations_ids" t-as="observations_ids">
+                    <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="observations_ids.observation_time"/></t></td>
+                    <td style="width:25%; "><t>Observaciones: <span style="padding-left:2px;" t-field="observations_ids.observation"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="post_anhestesic.vital_sign_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="7" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
+                  <tr t-foreach="post_anhestesic.vital_sign_ids" t-as="vital_sign_ids">
+                    <td style="width:25%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_date_hour"/></t></td>
+                    <td style="width:25%; "><t>TAS: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_tas"/></t></td>
+                    <td style="width:25%; "><t>TAD: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_tad"/></t></td>
+                    <td style="width:25%; "><t>FC: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_fc"/></t></td>
+                    <td style="width:25%; "><t>FR: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_fr"/></t></td>
+                    <td style="width:25%; "><t>SaO2: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_sao2"/></t></td>
+                    <td style="width:25%; "><t>Dolor(0-10): <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_pain"/></t></td>
+                    <td style="width:25%; "><t>Náuseas: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_queasiness"/></t></td>
+                    <td style="width:25%; "><t>Vómito: <span style="padding-left:2px;" t-field="vital_sign_ids.vital_signs_vomit"/></t></td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="post_anhestesic.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="post_anhestesic.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="post_anhestesic.surgeon_id.firstname"/> <span t-field="post_anhestesic.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="post_anhestesic.surgeon_id.medical_record"/></span>
+            </div>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+        </template>
+
+      <template id="clinica_doctor_data.quirurgical_checklist_visualizer_template">
+      <div class="page">
+        <div class="oe_structure"/>
+          <t t-foreach="clinica_records['quirurgical_checklist']" t-as="quirurgical_checklist">
+            <t t-set="quirurgical_checklist" t-value="quirurgical_checklist.with_context({'lang':quirurgical_checklist.patient_id.partner_id.lang})" />
+            <table style="width:100%;">
+              <tr>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha: <span t-field="quirurgical_checklist.procedure_datetime" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Tipo: <span t-field="quirurgical_checklist.name" style="padding-left:2px;"/></strong></td>
+              </tr>
+            </table>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr>
+                <td style="width:50%; "><t t-if="quirurgical_checklist.numberid">Identificación: <span style="padding-left:2px;" t-field="quirurgical_checklist.numberid"/></t></td>
+                <td style="width:50%; ">
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.lastname"/><br/>
+                  <t t-if="quirurgical_checklist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.age"/><br/></t>
+                </td>
+              </tr>
+            </table>
+            <div>
+              <t t-if="quirurgical_checklist.anesthesia_type"><strong style="font-size:12px;">ANESTESIA</strong><br/></t>
+              <t t-if="quirurgical_checklist.anesthesia_type">
+                <span t-field="quirurgical_checklist.anesthesia_type"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.anesthesiologist_id"><strong style="font-size:12px;">ANESTESIÓLOGO</strong><br/></t>
+              <t t-if="quirurgical_checklist.anesthesiologist_id">
+                <span t-field="quirurgical_checklist.anesthesiologist_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.surgeon_id"><strong style="font-size:12px;">CIRUJANO</strong><br/></t>
+              <t t-if="quirurgical_checklist.surgeon_id">
+                <span t-field="quirurgical_checklist.surgeon_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.nurse_id"><strong style="font-size:12px;">ENFERMERO(A)</strong><br/></t>
+              <t t-if="quirurgical_checklist.nurse_id">
+                <span t-field="quirurgical_checklist.nurse_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.technologist_id"><strong style="font-size:12px;">INSTRUMENTADOR</strong><br/></t>
+              <t t-if="quirurgical_checklist.technologist_id">
+                <span t-field="quirurgical_checklist.technologist_id"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.recovery"><strong style="font-size:12px;">RECUPERACIÓN</strong><br/></t>
+              <t t-if="quirurgical_checklist.recovery">
+                <span t-field="quirurgical_checklist.recovery"/><br/>
+              </t>
+              <t t-if="quirurgical_checklist.procedure_ids"><strong style="font-size:12px;">PROCEDIMIENTOS</strong><br/></t>
+              <t t-if="quirurgical_checklist.procedure_ids">
+                <t t-foreach="quirurgical_checklist.procedure_ids" t-as="product_ids">
+                  * <span t-field="product_ids.name"/><br/>
+                </t>
+              </t>
+              <t t-if="quirurgical_checklist.confirm_patient_name">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>PRE-OPERATORIO</strong></td></tr>
+                  <tr>
+                    <td style="width:80%; "><t>Confirma nombre paciente:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_patient_name"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se verifican datos de la manilla: Nombre, Tipo y Número de identificación, RH, Alergias:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_bracelet_data"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Confirma Procedimiento:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.confirm_procedure"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Consentimiento informado Quirúrgico totalmente diligenciado:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.surgical_concent_filled"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Valoración pre anestésica y Consentimiento informado Anestésico totalmente diligenciado:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pre_anesthetic_assessment_complete"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Retiro de: Prótesis dentales, joyas, lentes, esmalte, tampones, etc:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.removed_dental_aceesories"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Exámanes pre quirúrgicos laboratorio clínico:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pre_surgical_lab_exams"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Los objetos personales del paciente se encuentran bajo llave en el casillero en poder del familiar:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.patient_belongins_locked"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Tiempo de ayuno mayor a 8 horas:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.fasting_time_greater"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Indago sobre síntomas de gripa en la última semana:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.flu_symptoms_enquired"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.allergic_enquired=='yes'">
+                    <td style="width:40%; "><t>El paciente presenta alergias?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_enquired"/></t></td>
+                    <td style="width:40%; ">Cuales? <t><span style="padding-left:2px;" t-field="quirurgical_checklist.allergic_text"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.enquired_proc_medication=='yes'">
+                    <td style="width:40%; "><t>El paciente consumió medicamentos previos al procedimiento?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication"/></t></td>
+                    <td style="width:40%; ">Cuales? <t><span style="padding-left:2px;" t-field="quirurgical_checklist.enquired_proc_medication_note"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>El paciente consumió bebidas alcohólicas y/o estupefacientes previos al procedimiento?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.investigated_drug_consumption"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Marcación sitio operatorio:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.operational_site_marking"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.special_preparation=='yes'">
+                    <td style="width:40%; "><t>Preparaciones especiales?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparation"/></t></td>
+                    <td style="width:40%; ">Cuales? <t><span style="padding-left:2px;" t-field="quirurgical_checklist.special_preparations_text"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="quirurgical_checklist.recording_vital_signs">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>INTRA-OPERATORIO</strong></td></tr>
+                  <tr t-if="quirurgical_checklist.special_preparation=='yes'">
+                    <td style="width:80%; "><t>Toma y registro de signos vitales:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.recording_vital_signs"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:40%; "><t>Profilaxis antibiótica antes de la cirugia:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.antibiotic_prophylaxis"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.prophylaxis_text"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.surgeon_id"/> Se encuentra personal completo dentro de la sala para iniciar procedimiento:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.full_staff_in_room"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.anesthesiologist_id"/> La monitoria y la inducción se encuentra completo para iniciar:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.monitoring_induction_complete"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Anestesiólogo:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.monitor_indu_anesthesiologist_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.surgeon_id"/> Su paciente <span t-field="quirurgical_checklist.patient_id"/> Esta programado para :</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.is_scheduled"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Esta programado Dr.( Cirujano):</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.scheduled_surgeon_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Esta programado Paciente:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.scheduled_patient_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Dr. <span t-field="quirurgical_checklist.surgeon_id"/> Los requerimientos en cuanto equipos solicitados por usted están en sala:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipments_in_room"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Cirujano:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipments_room_surgeon_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Instrumentadora los materiales, medicamentos e insumos especiales solicitados por el cirujano se encuentran en la sala:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.materials_in_room"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Instrumentadora todo el equipo se encuentra adecuadamente estéril y en orden:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipments_in_order"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Presión Venosa Intermitente funsionando:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.venous_pressure_working"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se entregaron elementos o insumos adicionales:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.supplies_delivered"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Paga:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pay"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>La cuenta del procedimiento la paga:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.proc_bill_pay"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Nombre Auxiliar de Cirugía:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.scheduled_nurse_id"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="quirurgical_checklist.doctor_done_additionaly">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>POST-OPERATORIO</strong></td></tr>
+                  <tr>
+                    <td style="width:80%; "><t>Doctor algo se realizo adicional o cambió el procedimiento:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.doctor_done_additionaly"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.sample_delivered=='yes'">
+                    <td style="width:40%; "><t>Se entregaron tomaron muestras para laboratorio:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.sample_delivered"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.sample_delivered_text"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Quien paga las muestras que se tomaron para laboratorio:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.sample_delivered_pay"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se entregan exámenes a recuperación:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.delivered_recovery_exam"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>He reportado los equipos o elementos disfuncionantes al jefe de cirugía:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.reported_disfunction_equip"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se hizo devolución de la sangre solicitada al Banco de sangre, que por cualquier circunstancia no se utilizó:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.blood_returned"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.add_items_delivered=='yes'">
+                    <td style="width:40%; "><t>Se entregaron elementos adicionales?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_items_delivered"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_items_delivered_text"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Quien paga los elementos adicionales?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.pay_add_items_delivered"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Historia diligenciada y firmada:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.history_complete"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Entrega Enfermera:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.delivered_nurse_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Recibe Enfermera:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.received_nurse_id"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Tiempo:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.deliver_receive_time"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <t t-if="quirurgical_checklist.history_received">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="2" style="text-align:center; "><strong>RECUPERACIÓN</strong></td></tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se recibe historia clínica completa:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.history_received"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:40%; "><t>Todos los equipos para monitoreo y reanimación del paciente funcionando:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.equipment_working"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>Se le informa al familiar del paciente de su estado y evolución:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.informed_family"/></t></td>
+                  </tr>
+                  <tr>
+                    <td style="width:80%; "><t>El paciente sale con?</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.patient_out_with"/></t></td>
+                  </tr>
+                  <tr t-if="quirurgical_checklist.add_supplies=='yes'">
+                    <td style="width:40%; "><t>La paciente sale con insumos adicionales:</t></td>
+                    <td style="width:20%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_supplies"/></t></td>
+                    <td style="width:40%; "><t><span style="padding-left:2px;" t-field="quirurgical_checklist.add_supplies_text"/></t></td>
+                  </tr>
+                </table>
+              </t>
+            </div>
+            <!--Espacio reservado para imprimir la nota aclaratoria-->
+            <div t-if="quirurgical_checklist.review_note">
+              <strong>Nota Aclaratoria</strong>
+              <p t-field="quirurgical_checklist.review_note"/>
+            </div>
+            <!--Espacio reservado para imprimir la firma del profesional encargado-->
+            <div style="text-align: center; border-bottom: 1px solid black;">
+              <strong>Firma:</strong> <span t-field="quirurgical_checklist.anesthesiologist_id.firstname"/> <span t-field="quirurgical_checklist.anesthesiologist_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="quirurgical_checklist.anesthesiologist_id.medical_record"/></span>
+            </div>
+            <p style="page-break-after: always;"/>
+          </t>
+          </div>
+        </template>
     
         <template id="visualizer_report_template">
             <t t-call="web.html_container">
@@ -1132,6 +1572,12 @@
                     <t t-if="record == 'recovery_sheet'">
                       <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
+                    <t t-if="record == 'post_anhestesic'">
+                      <t t-call="clinica_doctor_data.post_anhestesic_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
+                    <t t-if="record == 'quirurgical_checklist'">
+                      <t t-call="clinica_doctor_data.quirurgical_checklist_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                    </t>
                     <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                       <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                     </t>
@@ -1169,6 +1615,12 @@
                 </t>
                 <t t-if="record == 'recovery_sheet'">
                   <t t-call="clinica_doctor_data.recovery_sheet_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'post_anhestesic'">
+                  <t t-call="clinica_doctor_data.post_anhestesic_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
+                </t>
+                <t t-if="record == 'quirurgical_checklist'">
+                  <t t-call="clinica_doctor_data.quirurgical_checklist_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>
                 </t>
                 <t t-if="record == 'surgery_rooms' or record == 'waiting_rooms'">
                   <t t-call="clinica_doctor_data.room_visualizer_template" t-lang="o.patient_id.partner_id.lang"/>

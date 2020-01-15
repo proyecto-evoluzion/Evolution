@@ -60,13 +60,17 @@ class ClinicaRecordVisualizer(models.Model):
                                    string="Epicrisis", copy=False)
     prescription_ids = fields.Many2many('doctor.prescription', 'prescription_visualizer_rel', 'visualizer_id', 'prescription_id', 
                                    string="Prescription", copy=False)
+    post_anhestesic_ids = fields.Many2many('clinica.post.anhestesic.care', 'post_anhestesic_visualizer_rel', 'visualizer_id', 'post_anhestesic_id', 
+                                   string="Post Anhestesic", copy=False)
+    quirurgical_checklist_ids = fields.Many2many('clinica.quirurgical.check.list', 'quirurgical_checklist_visualizer_rel', 'visualizer_id', 'quirurgical_checklist_id', 
+                                   string="Quirurgical Check List", copy=False)
     surgical_technologist_ids = fields.Many2many('doctor.surgical.technologist', 'surgical_technologist_visualizer_rel', 'visualizer_id', 'surgical_technologist_id', 
                                    string="Surgical Technologist", copy=False)
     view_model = fields.Selection([('nurse_sheet','Nurse Sheet'),('nurse_chief_sheet','Nurse Chief Sheet'),('recovery_sheet','Recovery Sheet'),('quirurgic_sheet','Quirurgic Sheet'),
                                    ('surgery_room','Surgery Room Procedures'),('waiting_room','Waiting Room'),
                                    ('presurgical','Presurgical Record'),('anhestesic_registry','Anhestesic Registry'),
                                    ('plastic_surgery','Plastic Surgery'),('medical_evolution','Medical Evolution'),
-                                   ('epicrisis','Epicrisis'),('prescription','Prescription'),('surgical_technologist','Surgical Technologist'),('all','All')], string='View from model', default='all')
+                                   ('epicrisis','Epicrisis'),('prescription','Prescription'),('post_anhestesic','Post Anhestesic'),('surgical_technologist','Surgical Technologist'),('quirurgical_checklist','Quirurgical Check List'),('all','All')], string='View from model', default='all')
     
     
     def _get_nurse_sheet_ids(self, search_domain, doctor, start_period, end_period):
@@ -272,6 +276,32 @@ class ClinicaRecordVisualizer(models.Model):
         if surgical_technologist_objs:
             surgical_technologist_ids = surgical_technologist_objs.ids
         return surgical_technologist_ids        
+
+    def _get_post_anhestesic_ids(self, search_domain, doctor, start_period, end_period):
+        post_anhestesic_ids = []
+        post_anhestesic_search_domain = []
+        post_anhestesic_search_domain.extend(search_domain)
+        if doctor:
+            post_anhestesic_search_domain.append(('surgeon_id','=',doctor.id))
+        if start_period:
+            post_anhestesic_search_domain.append(('date','=',start_period))     
+        post_anhestesic_objs = self.env['clinica.post.anhestesic.care'].search(post_anhestesic_search_domain)
+        if post_anhestesic_objs:
+            post_anhestesic_ids = post_anhestesic_objs.ids
+        return post_anhestesic_ids        
+
+    def _get_quirurgical_checklist_ids(self, search_domain, doctor, start_period, end_period):
+        quirurgical_checklist_ids = []
+        quirurgical_checklist_search_domain = []
+        quirurgical_checklist_search_domain.extend(search_domain)
+        if doctor:
+            quirurgical_checklist_search_domain.append(('surgeon_id','=',doctor.id))
+        if start_period:
+            quirurgical_checklist_search_domain.append(('date','=',start_period))     
+        quirurgical_checklist_objs = self.env['clinica.quirurgical.check.list'].search(quirurgical_checklist_search_domain)
+        if quirurgical_checklist_objs:
+            quirurgical_checklist_ids = quirurgical_checklist_objs.ids
+        return quirurgical_checklist_ids        
     
     @api.onchange('patient_id','start_period','end_period','doctor_id','view_model')
     def onchange_visualizer_filter(self):
@@ -289,6 +319,8 @@ class ClinicaRecordVisualizer(models.Model):
         epicrisis_ids = []
         prescription_ids = []
         surgical_technologist_ids = []
+        post_anhestesic_ids = []
+        quirurgical_checklist_ids = []
         if self.patient_id:
             search_domain.append(('patient_id','=',self.patient_id.id))
         if self.patient_id or self.doctor_id or self.start_period or self.end_period:
@@ -314,6 +346,10 @@ class ClinicaRecordVisualizer(models.Model):
                 epicrisis_ids = self._get_epicrisis_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['prescription','all']:
                 prescription_ids = self._get_prescription_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['quirurgical_checklist','all']:
+                quirurgical_checklist_ids = self._get_quirurgical_checklist_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
+            if self.view_model in ['post_anhestesic','all']:
+                post_anhestesic_ids = self._get_post_anhestesic_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             if self.view_model in ['surgical_technologist','all']:
                 surgical_technologist_ids = self._get_surgical_technologist_ids(search_domain, self.doctor_id, self.start_period, self.end_period)
             
@@ -329,6 +365,8 @@ class ClinicaRecordVisualizer(models.Model):
         self.medical_evolution_ids = medical_evolution_ids
         self.epicrisis_ids = epicrisis_ids
         self.prescription_ids = prescription_ids       
+        self.post_anhestesic_ids = post_anhestesic_ids       
+        self.quirurgical_checklist_ids = quirurgical_checklist_ids       
         self.surgical_technologist_ids = surgical_technologist_ids       
         
     @api.multi
