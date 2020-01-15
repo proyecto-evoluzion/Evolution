@@ -246,44 +246,95 @@ class ClinicaNurseChief(models.Model):
     def action_validate_oders(self):
         flag = True
         for nurse_chief_sheet in self:
-            rest = []
+            ordered = []
+            mv_ordered = []
+            ordered_vals = {}
+            no_ordered = []
+            mv_no_ordered = []
+            no_ordered_vals = {}
             for procedure_line in nurse_chief_sheet.procedure_ids:
                 if procedure_line.product_id.is_invoice_supply:
-                    # move_id = self.env['stock.move'].create({
-                    # 'location_id': self.env.ref('stock.stock_location_locations').id,
-                    # 'location_dest_id': self.env.ref('stock.stock_location_customers').id,
-                    # 'product_id': procedure_line.product_id.id,
-                    # 'product_uom_qty': procedure_line.quantity_done,
-                    # 'name': procedure_line.product_id.name,
-                    # 'product_uom': procedure_line.product_id.id,
-                    # })
-                    # rest.append(move_id.id)
-                    if flag:
-                        vals = {
-        					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
-        					'validity_day': (dt.date.today()).today(),
-        					'order_line': [(0, 0, {
-    		                'product_id': procedure_line.product_id.id,
-    		                'name': procedure_line.product_id.name,
-    		                'product_uom_qty': procedure_line.quantity_done,
-    		                'price_unit': procedure_line.product_id.lst_price,
-    		                'tax_id': procedure_line.product_id.taxes_id.id,
-    		            	})],
-    		            	'state': 'draft',
-        				}
-                        order_id = self.env['sale.order'].create(vals)
+                    ordered_vals = {
+                        'product_id': procedure_line.product_id.id,
+                        'name': procedure_line.product_id.name,
+                        'product_uom_qty': procedure_line.quantity_done,
+                        'price_unit': procedure_line.product_id.lst_price,
+                        'tax_id': procedure_line.product_id.taxes_id.id,
+                        }                    
+                    ordered_move_id = self.env['stock.move'].create({
+                    'location_id': self.env.ref('stock.stock_location_locations').id,
+                    'location_dest_id': self.env.ref('stock.stock_location_customers').id,
+                    'product_id': procedure_line.product_id.id,
+                    'product_uom_qty': procedure_line.quantity_done,
+                    'name': procedure_line.product_id.name,
+                    'product_uom': procedure_line.product_id.product_tmpl_id.uom_id.id,
+                    })
+                    ordered.append(ordered_vals)
+                    mv_ordered.append(ordered_move_id.id)
+                else:
+                    no_ordered_vals = {
+                        'product_id': procedure_line.product_id.id,
+                        'name': procedure_line.product_id.name,
+                        'product_uom_qty': procedure_line.quantity_done,
+                        'price_unit': procedure_line.product_id.lst_price,
+                        'tax_id': procedure_line.product_id.taxes_id.id,
+                        }   
+                    no_ordered_move_id = self.env['stock.move'].create({
+                    'location_id': self.env.ref('stock.stock_location_locations').id,
+                    'location_dest_id': self.env.ref('stock.stock_location_customers').id,
+                    'product_id': procedure_line.product_id.id,
+                    'product_uom_qty': procedure_line.quantity_done,
+                    'name': procedure_line.product_id.name,
+                    'product_uom': procedure_line.product_id.product_tmpl_id.uom_id.id,
+                    })                 
+                    no_ordered.append(no_ordered_vals)
+                    mv_no_ordered.append(no_ordered_move_id.id)
+            if ordered:
+                if flag:
+                    i = 0
+                    vals = {
+    					'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+    					'validity_day': (dt.date.today()).today(),
+    	            	'state': 'draft',
+				    }
+                    order_id = self.env['sale.order'].create(vals)
+                    for create_order_line in ordered:
+                        ordered[i]['order_id'] = order_id.id
+                        order_line_ids = self.env['sale.order.line'].create(ordered[i])
+                        i =+ 1
+                    order_id.write({'state': 'sale'})
+                    sequence_obj = self.env['ir.sequence'].search([('prefix', 'in', ['WH/OUT/'])])
+                    ordered_picking_obj = self.env['stock.picking'].create({
+                        'name': sequence_obj.prefix+str(sequence_obj.number_next_actual),
+                        'origin': order_id.name +'/'+nurse_chief_sheet.name,
+                        'sale_id': order_id.id,
+                        'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+                        'scheduled_date': fields.Datetime.now(),
+                        'location_id': self.env.ref('stock.stock_location_locations').id,
+                        'location_dest_id': self.env.ref('stock.stock_location_customers').id,
+                        'picking_type_id': self.env.ref('stock.picking_type_out').id,
+                        'move_lines': [(6,0,mv_ordered)],
+                        })                    
+                    ordered_picking_obj.write({'state': 'assigned'})
+                    sequence_obj.number_next_actual += 1
+            if no_ordered:
+                sequence_obj = self.env['ir.sequence'].search([('prefix', 'in', ['WH/OUT/'])])
+                no_ordered_picking_obj = self.env['stock.picking'].create({
+                    'name': sequence_obj.prefix+str(sequence_obj.number_next_actual),
+                    'origin': nurse_chief_sheet.name,
+                    # 'sale_id': order_id.id,
+                    'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
+                    'scheduled_date': fields.Datetime.now(),
+                    'location_id': self.env.ref('stock.stock_location_locations').id,
+                    'location_dest_id': self.env.ref('stock.stock_location_customers').id,
+                    'picking_type_id': self.env.ref('stock.picking_type_out').id,
+                    'move_lines': [(6,0,mv_no_ordered)],
+                    'state': 'assigned'
+                    })                    
+                no_ordered_picking_obj.write({'state': 'assigned'})
+                sequence_obj.number_next_actual += 1
 
-            # sequence_obj = self.env['ir.sequence'].search([('prefix', 'in', ['WH/OUT/'])])
-            # self.env['stock.picking'].create({
-            #     'name': sequence_obj.prefix+str(sequence_obj.number_next_actual),
-            #     'origin': order_id.name,
-            #     'partner_id': nurse_chief_sheet.patient_id.partner_id.id,
-            #     'scheduled_date': fields.Datetime.now(),
-            #     'location_id': self.env.ref('stock.stock_location_locations').id,
-            #     'location_dest_id': self.env.ref('stock.stock_location_customers').id,
-            #     'picking_type_id': self.env.ref('stock.picking_type_out').id,
-            #     'move_lines': [(6,0,rest)],
-            #     })
+
             nurse_chief_sheet.validate_oders = True
         return True
         
