@@ -43,7 +43,7 @@ class DoctorEpicrisis(models.Model):
     def _default_professional(self):
         ctx = self._context
         user_id = self._context.get('uid')
-        user_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+        user_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)], limit=1)
         return user_obj.id
     
     name = fields.Char(string='Name', copy=False)

@@ -49,7 +49,7 @@ class ClinicaRecoverySheet(models.Model):
         ctx = self._context
         user_id = self._context.get('uid')
         user_obj = self.env['res.users'].search([('id','=',user_id)])
-        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)])
+        professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_obj.id)], limit=1)
         if professional_obj:
             return professional_obj.id        
 

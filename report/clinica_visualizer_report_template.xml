@@ -79,45 +79,45 @@
             <t t-set="recovery_sheet" t-value="recovery_sheet.with_context({'lang':recovery_sheet.patient_id.partner_id.lang})" />
             <table style="width:100%;">
               <tr>
-                <td style="width:30%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Procedure Date: <span t-field="recovery_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
-                <td style="width:50%; text-align:right; font-size: 15px;"><strong>Nurse Sheet Number: <span t-field="recovery_sheet.name" style="padding-left:15px;"/></strong></td>
+                <td style="width:30%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha de procedimiento: <span t-field="recovery_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:50%; text-align:right; font-size: 15px;"><strong>Recuperación: <span t-field="recovery_sheet.name" style="padding-left:15px;"/></strong></td>
                 <td></td>
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
                 <!-- <td t-if="recovery_sheet.patient_id.numberid" style="width:50%; ">Number ID: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.numberid"/></td> -->
                 <td t-if="recovery_sheet.patient_id or recovery_sheet.age" style="width:50%; ">
-                  Patient Name: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id"/><br/>
-                  <t t-if="recovery_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="recovery_sheet.age"/><span style="padding-left:2px;" t-field="recovery_sheet.age_meassure_unit"/><br/></t>
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id"/><br/>
+                  <t t-if="recovery_sheet.age and flag == 0">Edad: <span style="padding-left:2px;" t-field="recovery_sheet.age"/><span style="padding-left:2px;" t-field="recovery_sheet.age_meassure_unit"/><br/></t>
                   <t t-if="recovery_sheet.patient_id.insurer_id and flag == 0">
-                    Insurer: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.insurer_id"/><br/>
+                    Aseguradora: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.insurer_id"/><br/>
                   </t>
                 </td>
               </tr>
             </table>
             <div>
-              <t t-if="recovery_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">SURGERY ROOM PROCEDURE DETAILS</strong><br/></t>
+              <t t-if="recovery_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">DETALLES QUIRÚRGICOS</strong><br/></t>
               <t t-if="recovery_sheet.room_id.room_type == 'surgery'">
-                Surgery Room Procedure Number: <span style="padding-left:2px;" t-field="recovery_sheet.room_id"/><br/>
-                Surgery Room: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.surgery_room_id"/><br/>
-                <t t-if="recovery_sheet.room_id.surgeon_id">Surgeon: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.surgeon_id.partner_id"/><br/></t>
-                <t t-if="recovery_sheet.room_id.anesthesiologist_id">Anesthesiologist: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.anesthesiologist_id.partner_id"/></t>
+                Número de cirugía: <span style="padding-left:2px;" t-field="recovery_sheet.room_id"/><br/>
+                Número de cuarto: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.surgery_room_id"/><br/>
+                <t t-if="recovery_sheet.room_id.surgeon_id">Cirujano: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.surgeon_id.partner_id"/><br/></t>
+                <t t-if="recovery_sheet.room_id.anesthesiologist_id">Anestesiólogo: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.anesthesiologist_id.partner_id"/></t>
                 <br/>
               </t>
               <t t-if="recovery_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="recovery_sheet.vital_sign_ids">
                 <t t-foreach="recovery_sheet.vital_sign_ids" t-as="vital_sign">
                   <span t-field="vital_sign.vital_signs_date_hour"/><br/>
-                  Date and Hour 
+                  Fecha y hora 
                   FC <span t-field="vital_sign.vital_signs_fc"/><br/>
-                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
-                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
-                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Presión Arterial Sistólica <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Presión Arterial Diastólica <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  Oximetría <span t-field="vital_sign.oximetry"/><br/>
                   Diuresis <span t-field="vital_sign.diuresis"/><br/>
-                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
-                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                  Sangrado <span t-field="vital_sign.bleeding"/><br/>
+                  Nota de recuperación <span t-field="vital_sign.note"/><br/>
                 </t>
               </t>
             </div>
@@ -463,19 +463,19 @@
             <t t-set="nurse_chief_sheet" t-value="nurse_chief_sheet.with_context({'lang':nurse_chief_sheet.patient_id.partner_id.lang})" />
             <table style="width:100%;">
               <tr>
-                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Procedure Date: <span t-field="nurse_chief_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
-                <td style="width:25%; padding-left:5px; text-align:right; font-size: 15px;"><strong>Attention Code: <span t-field="nurse_chief_sheet.name" style="padding-left:2px;"/></strong></td>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha de procedimiento: <span t-field="nurse_chief_sheet.procedure_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:25%; padding-left:5px; text-align:right; font-size: 15px;"><strong>Atención: <span t-field="nurse_chief_sheet.name" style="padding-left:2px;"/></strong></td>
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
                 <td style="width:50%; ">
-                  Patient Name: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id"/><br/>
-                  <t t-if="nurse_chief_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="nurse_chief_sheet.age"/><span style="padding-left:2px;" t-field="nurse_chief_sheet.age_meassure_unit"/><br/></t>
-                  <t t-if="nurse_chief_sheet.patient_id.blood_type and flag == 0">Blood type: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.blood_type"/><br/></t>
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id"/><br/>
+                  <t t-if="nurse_chief_sheet.age and flag == 0">Edad: <span style="padding-left:2px;" t-field="nurse_chief_sheet.age"/><span style="padding-left:2px;" t-field="nurse_chief_sheet.age_meassure_unit"/><br/></t>
+                  <t t-if="nurse_chief_sheet.patient_id.blood_type and flag == 0">Tipo de sangre: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.blood_type"/><br/></t>
                   <t t-if="nurse_chief_sheet.patient_id.insurer_id and flag == 0">
-                    Insurer: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.insurer_id"/><br/>
+                    Aseguradora: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.insurer_id"/><br/>
                   </t>
                 </td>
               </tr>
@@ -497,11 +497,11 @@
                 <t t-if="nurse_chief_sheet.thyroid_disease">
                   <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.thyroid_disease"/><br/>
                 </t>
-                <t t-if="nurse_chief_sheet.pathological"><strong style="font-size:12px;">PATHOLOGICAL</strong><br/></t>
+                <t t-if="nurse_chief_sheet.pathological"><strong style="font-size:12px;">PATOLÓGICA</strong><br/></t>
                 <t t-if="nurse_chief_sheet.pathological">
                   <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pathological"/><br/>
                 </t>
-                <t t-if="nurse_chief_sheet.surgical"><strong style="font-size:12px;">SURGICAL</strong><br/></t>
+                <t t-if="nurse_chief_sheet.surgical"><strong style="font-size:12px;">CIRURGICO</strong><br/></t>
                 <t t-if="nurse_chief_sheet.surgical">
                   <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.surgical"/><br/>
                 </t>
@@ -510,45 +510,45 @@
                   <t t-if="nurse_chief_sheet.smoke">
                     Smoke: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.smoke"/><br/>
                   </t>
-                  <t t-if="nurse_chief_sheet.cigarate_daily">Cigarettes / Day: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.cigarate_daily"/><br/></t>
-                  <t t-if="nurse_chief_sheet.is_alcoholic">Alcoholic Drinks: <span style="padding-left:2px; font-size:12px;" t-field="presurgnurse_chief_sheetical_record.is_alcoholic"/><br/></t>
-                  <t t-if="nurse_chief_sheet.alcohol_frequency">Frequency: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.alcohol_frequency"/><br/></t>
-                  <t t-if="nurse_chief_sheet.marijuana">Marijuana: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.marijuana"/><br/></t>
-                  <t t-if="nurse_chief_sheet.cocaine">Cocaine: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.cocaine"/><br/></t>
-                  <t t-if="nurse_chief_sheet.ecstasy">Ecstasy: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.ecstasy"/><br/></t>
+                  <t t-if="nurse_chief_sheet.cigarate_daily">Cigarros / Días: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.cigarate_daily"/><br/></t>
+                  <t t-if="nurse_chief_sheet.is_alcoholic">Bebidas alcoholicas: <span style="padding-left:2px; font-size:12px;" t-field="presurgnurse_chief_sheetical_record.is_alcoholic"/><br/></t>
+                  <t t-if="nurse_chief_sheet.alcohol_frequency">Frecuencia: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.alcohol_frequency"/><br/></t>
+                  <t t-if="nurse_chief_sheet.marijuana">Marihuana: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.marijuana"/><br/></t>
+                  <t t-if="nurse_chief_sheet.cocaine">Cocaina: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.cocaine"/><br/></t>
+                  <t t-if="nurse_chief_sheet.ecstasy">Extasis: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.ecstasy"/><br/></t>
                 
-                <t t-if="nurse_chief_sheet.body_background_others"><strong style="font-size:12px;">Others:</strong><br/></t>
+                <t t-if="nurse_chief_sheet.body_background_others"><strong style="font-size:12px;">Otros:</strong><br/></t>
                 <t t-if="nurse_chief_sheet.body_background_others">
                   <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.body_background_others"/><br/>
                 </t>
-                <t t-if="nurse_chief_sheet.pharmacological"><strong style="font-size:12px;">Pharmacological:</strong><br/></t>
+                <t t-if="nurse_chief_sheet.pharmacological"><strong style="font-size:12px;">Farmacológico:</strong><br/></t>
                 <t t-if="nurse_chief_sheet.pharmacological">
                   <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pharmacological"/><br/>
                 </t>
-                <t t-if="nurse_chief_sheet.allergic"><strong style="font-size:12px;">Allergic:</strong><br/></t>
+                <t t-if="nurse_chief_sheet.allergic"><strong style="font-size:12px;">Alérgico:</strong><br/></t>
                 <t t-if="nurse_chief_sheet.allergic">
                   <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.allergic"/><br/>
                 </t>
                 <t t-if="nurse_chief_sheet.gender == 'female'">
-                  Number of Pregnancies: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pregnancy_number"/><br/>
+                  Numero de embarazos: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.pregnancy_number"/><br/>
                   N° de hijos: <span style="padding-left:2px;" t-field="nurse_chief_sheet.child_number"/><br/>
-                  Number of Abortions: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.abortion_number"/><br/>
-                  Date of Last Birth: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.last_birth_date"/><br/>
-                  Date of Last Menstruation: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.last_menstruation_date"/><br/>
-                  Contrtaceptive Methods: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.contrtaceptive_methods"/><br/>
+                  Numero de abortos: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.abortion_number"/><br/>
+                  Fecha último parto: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.last_birth_date"/><br/>
+                  Fecha última menstruación: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.last_menstruation_date"/><br/>
+                  Métodos aticonceptivos: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.contrtaceptive_methods"/><br/>
                 </t>
               </t>
               <t t-if="nurse_chief_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="nurse_chief_sheet.vital_sign_ids">
                 <t t-foreach="nurse_chief_sheet.vital_sign_ids" t-as="vital_sign">
-                  Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/>
+                  Fecha y hora <span t-field="vital_sign.vital_signs_date_hour"/><br/>
                   FC <span t-field="vital_sign.vital_signs_fc"/><br/>
-                  Sistolic Arteric Pressure <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
-                  Diastolic Artery Pressure <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
-                  Oximetry <span t-field="vital_sign.oximetry"/><br/>
+                  Presión Arterial Sistólica <span t-field="vital_sign.sistolic_arteric_pressure"/><br/>
+                  Presión Arterial Diastólica <span t-field="vital_sign.diastolic_arteric_pressure"/><br/>
+                  Oximetría <span t-field="vital_sign.oximetry"/><br/>
                   Diuresis <span t-field="vital_sign.diuresis"/><br/>
-                  Bleeding <span t-field="vital_sign.bleeding"/><br/>
-                  Nursing Note <span t-field="vital_sign.note"/><br/>
+                  Sangrado <span t-field="vital_sign.bleeding"/><br/>
+                  Nota de Enfermería <span t-field="vital_sign.note"/><br/>
                 </t>
               </t>
               <t t-if="nurse_chief_sheet.procedure_ids"><strong style="font-size:12px;">PROCEDIMIENTOS</strong><br/></t>
@@ -1029,17 +1029,17 @@
             <t t-set="surgical_technologist" t-value="surgical_technologist.with_context({'lang':surgical_technologist.patient_id.partner_id.lang})" />
             <table style="width:100%;">
               <tr>
-                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Date: <span t-field="surgical_technologist.surgical_date" style="padding-left:2px;"/></strong></td>
-                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Type: <span t-field="surgical_technologist.name" style="padding-left:2px;"/></strong></td>
+                <td style="width:25%; padding-left:5px; text-align:left; font-size: 15px;"><strong>Fecha: <span t-field="surgical_technologist.surgical_date" style="padding-left:2px;"/></strong></td>
+                <td style="width:40%; text-align:center; font-size: 15px;"><strong>Tipo: <span t-field="surgical_technologist.name" style="padding-left:2px;"/></strong></td>
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
-                <td style="width:50%; "><t t-if="surgical_technologist.numberid">Number ID: <span style="padding-left:2px;" t-field="surgical_technologist.numberid"/></t></td>
+                <td style="width:50%; "><t t-if="surgical_technologist.numberid">Identificación: <span style="padding-left:2px;" t-field="surgical_technologist.numberid"/></t></td>
                 <td style="width:50%; ">
-                  Patient Name: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.lastname"/><br/>
-                  <t t-if="surgical_technologist.patient_id.age">Age: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age"/><br/></t>
+                  Nombre de paciente: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.lastname"/><br/>
+                  <t t-if="surgical_technologist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age"/><br/></t>
                 </td>
               </tr>
             </table>
@@ -1065,7 +1065,7 @@
                   <tr t-foreach="surgical_technologist.recount_ids" t-as="recount_ids">
                     <td style="width:25%; "><t>Recuento: <span style="padding-left:2px;" t-field="recount_ids.recount"/></t></td>
                     <td style="width:25%; "><t>Inicia: <span style="padding-left:2px;" t-field="recount_ids.start"/></t></td>
-                    <td style="width:25%; "><t>start: <span style="padding-left:2px;" t-field="recount_ids.end"/></t></td>
+                    <td style="width:25%; "><t>Finaliza: <span style="padding-left:2px;" t-field="recount_ids.end"/></t></td>
                     <td style="width:25%; "><t>Nota de enfermería: <span style="padding-left:2px;" t-field="recount_ids.note"/></t></td>
                   </tr>
                 </table>
