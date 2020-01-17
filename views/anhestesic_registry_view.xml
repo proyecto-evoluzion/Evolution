@@ -97,7 +97,7 @@
 	                                    <field name="smoke_uom" nolabel="1" class="oe_inline" style="padding-left:4px;" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	                                </div>
 	                            </div>
-	       						<field name="is_alcoholic"   attrs="{'readonly':[('state','=','closed')]}"/>
+	       						<field name="is_alcoholic"   attrs="{'readonly':[('state','in',['closed','open'])]}"/>
 	       						<label for="alcohol_frequency" string="Frequency"/>
 	                            <div>
 	                                <div>

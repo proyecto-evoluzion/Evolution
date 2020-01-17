@@ -94,6 +94,7 @@ class ClinicaNurseChief(models.Model):
     body_background_others = fields.Text(string="Body Background Others", related='patient_id.body_background_others')
     pharmacological = fields.Text(string="Pharmacological", related='patient_id.pharmacological')
     allergic = fields.Text(string="Allergic", related='patient_id.allergic')
+    allergic_active = fields.Boolean(string="Allergic Alert")    
     pregnancy_number = fields.Integer(string="Number of Pregnancies", related='patient_id.pregnancy_number')
     child_number = fields.Integer(string="Number of Children", related='patient_id.child_number')
     abortion_number = fields.Integer(string="Number of Abortions", related='patient_id.abortion_number')
@@ -105,6 +106,11 @@ class ClinicaNurseChief(models.Model):
     review_readonly = fields.Boolean('set to readonly')
 
     # anhestesic_registry_id = fields.Many2one('clinica.anhestesic.registry', 'Anhestesic Registry')   
+
+    @api.onchange('allergic')
+    def onchange_allergic(self):
+        if self.allergic:
+            self.allergic_active = True    
     
     @api.multi
     @api.depends('birth_date')
@@ -223,6 +229,7 @@ class ClinicaNurseChief(models.Model):
     
     @api.model
     def create(self, vals):
+        vals['state'] = 'closed'
         vals['name'] = self.env['ir.sequence'].next_by_code('recovery.sheet') or '/'
         if vals.get('birth_date', False):
             warn_msg = self._check_birth_date(vals['birth_date'])
