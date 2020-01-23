@@ -123,6 +123,22 @@
       					</tree>
       				</field>
             </group>
+            <group string="Check List Cierre de Formatos">
+              <group>
+                <field name="is_nurse_sheet" attrs="{'readonly':[('is_nurse_sheet','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_nurse_chief_sheet" attrs="{'readonly':[('is_nurse_chief_sheet','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_recovery_sheet" attrs="{'readonly':[('is_recovery_sheet','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_presurgical_record" attrs="{'readonly':[('is_presurgical_record','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_anestesic_record" attrs="{'readonly':[('is_anestesic_record','!=',False)]}" force_save="1"/><br></br>
+              </group>
+              <group>
+                <field name="is_quirurgical_check_list" attrs="{'readonly':[('is_quirurgical_check_list','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_medical_evolution" attrs="{'readonly':[('is_medical_evolution','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_epicrisis" attrs="{'readonly':[('is_epicrisis','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_tecnical" attrs="{'readonly':[('is_tecnical','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_prescription" attrs="{'readonly':[('is_prescription','!=',False)]}" force_save="1"/><br></br>
+              </group>
+            </group>
             <div name="professional sign">
               <h3>Anestesiólogo que firma y autoriza la salida del paciente: 
                 <span style="border-bottom: 1px solid black;">

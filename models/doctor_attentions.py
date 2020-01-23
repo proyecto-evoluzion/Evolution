@@ -211,6 +211,12 @@ class PresurgicalRecord(models.Model):
             self.document_type = self.patient_id.tdoc
             hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)], limit=1)
             if hc_object:
+                self.pregnancy_number = hc_object.gestations
+                self.abortion_number = hc_object.abortion_number
+                self.last_menstruation_date = hc_object.last_menstruation_date
+                self.last_birth_date = hc_object.last_birth_date
+                self.contrtaceptive_methods = hc_object.mature_promoting_factor
+                self.child_number = hc_object.births + hc_object.cesarean
                 self.relatives = hc_object.relatives
                 self.diabetes = hc_object.diabetes
                 self.hypertension = hc_object.hypertension

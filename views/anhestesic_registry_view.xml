@@ -139,79 +139,79 @@
            					<group>
            					</group>
            				</group>
-           				<group name="paraclinical_blood_count" string="Blood Count">
+           				<group name="paraclinical_blood_count" string="Blood Count" attrs="{'invisible':[('paraclinical_hb','&lt;=',0.00), ('paraclinical_hto','&lt;=',0.00), ('paraclinical_leukocytes','&lt;=',0.00), ('paraclinical_differential','=',False), ('paraclinical_vsg','&lt;=',0), ]}">
            					<group name="paraclinical_blood_count_sub1">
-           						<label for="paraclinical_hb" string="HB"/>
-	           					<div>
+           						<label for="paraclinical_hb" string="HB" attrs="{'invisible':[('paraclinical_hb','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_hb','&lt;=',0.00)]}">
 	           						<field name="paraclinical_hb" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 g/dl
 	           					</div>
-	           					<label for="paraclinical_hto" string="Hto (Hematocrit)" />
-	           					<div>
+	           					<label for="paraclinical_hto" string="Hto (Hematocrit)" attrs="{'invisible':[('paraclinical_hto','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_hto','&lt;=',0.00)]}">
 	           						<field name="paraclinical_hto" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 Vol %
 	           					</div>
-	           					<label for="paraclinical_leukocytes" string="Leukocytes"/>
-	           					<div>
+	           					<label for="paraclinical_leukocytes" string="Leukocytes" attrs="{'invisible':[('paraclinical_leukocytes','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_leukocytes','&lt;=',0.00)]}">
 	           						<field name="paraclinical_leukocytes" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 x 10^3/ul
 	           					</div>
            					</group>
            					<group name="paraclinical_blood_count_sub2">
-           						<field name="paraclinical_differential" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
-           						<label for="paraclinical_vsg" string="VSG"/>
-	           					<div>
+           						<field name="paraclinical_differential" attrs="{'invisible':[('paraclinical_differential','=',False)],'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
+           						<label for="paraclinical_vsg" string="VSG" attrs="{'invisible':[('paraclinical_vsg','&lt;=',0)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_vsg','&lt;=',0)]}">
 	           						<field name="paraclinical_vsg" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 mm/H
 	          				    </div> 
            					</group>
            				</group>
-           				<group name="pruebas_coogulacian" string="Pruebas Coogulacian">
+           				<group name="pruebas_coogulacian" string="Pruebas Coogulacian" attrs="{'invisible':[('paraclinical_pt','=',False), ('paraclinical_ptt','=',False), ('paraclinical_platelets','&lt;=',0.00), ('paraclinical_tc','&lt;=',0.00)]}">
            					<group name="pruebas_coogulacian_sub1">
-           						<label for="paraclinical_pt" string="PT"/>
-	           					<div>
+           						<label for="paraclinical_pt" string="PT" attrs="{'invisible':[('paraclinical_pt','=',False)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_pt','=',False)]}">
 	           						<field name="paraclinical_pt" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 S (seconds)
 	           					</div>
-	           					<label for="paraclinical_ptt" string="PTT"/>
-	           					<div>
+	           					<label for="paraclinical_ptt" string="PTT" attrs="{'invisible':[('paraclinical_ptt','=',False)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_ptt','=',False)]}">
 	           						<field name="paraclinical_ptt" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 S (seconds)
 	           					</div>
            					</group>
            					<group name="pruebas_coogulacian_sub2">
-           						<label for="paraclinical_platelets" string="Platelets"/>
-	           					<div>
+           						<label for="paraclinical_platelets" string="Platelets" attrs="{'invisible':[('paraclinical_platelets','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_platelets','&lt;=',0.00)]}">
 	           						<field name="paraclinical_platelets" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 x 10^3/ul
 	           					</div>
-	           					<label for="paraclinical_tc" string="TC"  attrs="{'readonly':[('state','=','closed')]}"/>
-	           					<div>
+	           					<label for="paraclinical_tc" string="TC"  attrs="{'invisible':[('paraclinical_tc','&lt;=',0.00)],'readonly':[('state','=','closed')]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_tc','&lt;=',0.00)]}">
 	           						<field name="paraclinical_tc" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 m (Minutes)
 	           					</div>
            					</group>
            				</group>
-           				<group name="quimico_sanguinea" string="Quimico Sanguinea">
+           				<group name="quimico_sanguinea" string="Quimico Sanguinea" attrs="{'invisible':[('paraclinical_glycemia','&lt;=',0.00), ('paraclinical_creatinine','&lt;=',0.00), ('paraclinical_albumin','&lt;=',0.00), ('paraclinical_glob','&lt;=',0.00)]}">
            					<group name="quimico_sanguinea_sub1">
-           						<label for="paraclinical_glycemia" string="Glycemia"/>
-	           					<div>
+           						<label for="paraclinical_glycemia" string="Glycemia" attrs="{'invisible':[('paraclinical_glycemia','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_glycemia','&lt;=',0.00)]}">
 	           						<field name="paraclinical_glycemia" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 mg/dl
 	           					</div>
-	           					<label for="paraclinical_creatinine" string="Creatinine"/>
-	           					<div>
+	           					<label for="paraclinical_creatinine" string="Creatinine" attrs="{'invisible':[('paraclinical_creatinine','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_creatinine','&lt;=',0.00)]}">
 	           						<field name="paraclinical_creatinine" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 mg/dl
 	           					</div>
            					</group>
            					<group name="quimico_sanguinea_sub2">
-           						<label for="paraclinical_albumin" string="Albumin"/>
-	           					<div>
+           						<label for="paraclinical_albumin" string="Albumin" attrs="{'invisible':[('paraclinical_albumin','&lt;=',0.00)]}"/>
+	           					<div attrs="{'invisible':[('paraclinical_albumin','&lt;=',0.00)]}">
 	           						<field name="paraclinical_albumin" nolabel="1" class="oe_inline" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
 	          						 g/dl
 	           					</div>
-           						<field name="paraclinical_glob" attrs="{'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
+           						<field name="paraclinical_glob" attrs="{'invisible':[('paraclinical_glob','=',False)],'readonly':[('state','in',['closed','open'])]}" force_save="1"/>
            					</group>
            				</group>
            				<group name="ecg" colspan="2" col='1'>

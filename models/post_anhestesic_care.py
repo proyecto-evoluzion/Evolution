@@ -93,6 +93,17 @@ class ClinicaPostAnhestesicCare(models.Model):
 	get_nurse = fields.Many2one('doctor.professional', 'Get nurse', domain=[('profession_type','=','nurse')])
 	sign_date_hour = fields.Datetime(string='Fecha y Hora')
 	destiny = fields.Text('Destino')
+	is_nurse_sheet = fields.Boolean('Formato de Enfermería')
+	is_nurse_chief_sheet = fields.Boolean('Formato Jefe de Enfermería')
+	is_recovery_sheet = fields.Boolean('Formato Recuperación')
+	is_presurgical_record = fields.Boolean('Registro Preanestesico')
+	is_anestesic_record = fields.Boolean('Registro Anestesico')
+	is_quirurgical_check_list = fields.Boolean('Check List Quirúrgico')
+	is_medical_evolution = fields.Boolean('Evolución Médica')
+	is_epicrisis = fields.Boolean('Epicrisis')
+	is_tecnical = fields.Boolean('Inst. Quirúrgico')
+	is_prescription = fields.Boolean('prescripciones')
+
     
 	@api.onchange('room_id')
 	def onchange_room_id(self):
@@ -104,6 +115,57 @@ class ClinicaPostAnhestesicCare(models.Model):
 				for products in procedure_ids.product_id:
 					list_ids.append(products.id)
 			self.procedure = [(6, 0, list_ids)]
+			#DevFree: Cierre de formato
+			nurse_sheet_obj = self.env['clinica.nurse.sheet'].search([('room_id','=',self.room_id.id)],limit=1)
+			if nurse_sheet_obj:
+				self.is_nurse_sheet = True
+			else:
+				self.is_nurse_sheet = False				
+			nurse_chief_sheet_obj = self.env['clinica.nurse.chief.sheet'].search([('room_id','=',self.room_id.id)],limit=1)
+			if nurse_chief_sheet_obj:
+				self.is_nurse_chief_sheet = True
+			else:
+				self.nurse_chief_sheet_obj = False							
+			recovery_sheet_obj = self.env['clinica.recovery.sheet'].search([('room_id','=',self.room_id.id)],limit=1)
+			if recovery_sheet_obj:
+				self.is_recovery_sheet = True
+			else:
+				self.is_recovery_sheet = False							
+			presurgical_record_obj = self.env['doctor.presurgical.record'].search([('lead_id','=',self.room_id.id)],limit=1)
+			if presurgical_record_obj:
+				self.is_presurgical_record = True
+			else:
+				self.is_presurgical_record = False							
+			anestesic_record_obj = self.env['clinica.anhestesic.registry'].search([('room_id','=',self.room_id.id)],limit=1)
+			if anestesic_record_obj:
+				self.is_anestesic_record = True
+			else:
+				self.is_anestesic_record = False							
+			quirurgical_check_list_obj = self.env['clinica.quirurgical.check.list'].search([('room_id','=',self.room_id.id)],limit=1)
+			if quirurgical_check_list_obj:
+				self.is_quirurgical_check_list = True
+			else:
+				self.is_quirurgical_check_list = False							
+			medical_evolution_obj = self.env['clinica.medical.evolution'].search([('room_id','=',self.room_id.id)],limit=1)
+			if medical_evolution_obj:
+				self.is_medical_evolution = True
+			else:
+				self.is_medical_evolution = False							
+			epicrisis_obj = self.env['doctor.epicrisis'].search([('room_id','=',self.room_id.id)],limit=1)
+			if epicrisis_obj:
+				self.is_epicrisis = True
+			else:
+				self.is_epicrisis = False							
+			tecnical_obj = self.env['doctor.surgical.technologist'].search([('room_id','=',self.room_id.id)],limit=1)
+			if tecnical_obj:
+				self.is_tecnical = True
+			else:
+				self.is_tecnical = False							
+			prescription_obj = self.env['doctor.prescription'].search([('room_id','=',self.room_id.id)],limit=1)
+			if prescription_obj:
+				self.is_prescription = True
+			else:
+				self.is_prescription = False							
 
 	@api.onchange('professional_id')
 	def onchange_professional_id(self):
