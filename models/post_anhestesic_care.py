@@ -103,6 +103,7 @@ class ClinicaPostAnhestesicCare(models.Model):
 	is_epicrisis = fields.Boolean('Epicrisis')
 	is_tecnical = fields.Boolean('Inst. Quirúrgico')
 	is_prescription = fields.Boolean('prescripciones')
+	is_quirurgic_sheet = fields.Boolean('Hoja Quirúrgica')
 
     
 	@api.onchange('room_id')
@@ -166,6 +167,11 @@ class ClinicaPostAnhestesicCare(models.Model):
 				self.is_prescription = True
 			else:
 				self.is_prescription = False							
+			quirurgic_sheet_obj = self.env['doctor.quirurgic.sheet'].search([('room_id','=',self.room_id.id)],limit=1)
+			if quirurgic_sheet_obj:
+				self.is_quirurgic_sheet = True
+			else:
+				self.is_quirurgic_sheet = False				
 
 	@api.onchange('professional_id')
 	def onchange_professional_id(self):

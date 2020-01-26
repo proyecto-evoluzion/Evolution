@@ -104,7 +104,7 @@
 		       						<field name="body_background_others" string="Others" attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
 		       						<field name="pharmacological"  attrs="{'readonly':['|',('state','=','closed'),('background_edit_flag','=',False)]}"/>
 		       						<label for="allergic"/>
-	       							<field name="allergic" attrs="{'readonly':[('state','in',['closed','open'])]}" nolabel="1" force_save="1"/>
+	       							<field name="allergic" attrs="{'readonly':[('state','in',['closed'])]}" nolabel="1" force_save="1"/>
 		       					</group>
 		       				</group>
 		       				<group name="patient_female_backgorund_main" attrs="{'invisible':[('gender','=','male')]}">

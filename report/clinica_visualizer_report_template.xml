@@ -615,7 +615,7 @@
                 <t t-if="anhestesic_registry.paraclinical_asa">A.S.A : <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_asa"/><br/></t>
                 <t t-if="anhestesic_registry.paraclinical_goldman">GOLDMAN: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_goldman"/></t>
               </t>
-              <t t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg"><strong style="font-size:12px;">BLOOD COUNT</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg"><strong style="font-size:12px;">HEMOGRAMA</strong><br/></t>
               <t t-if="anhestesic_registry.paraclinical_hb or anhestesic_registry.paraclinical_hto or anhestesic_registry.paraclinical_leukocytes or anhestesic_registry.paraclinical_differential or anhestesic_registry.paraclinical_vsg">
                 <t t-if="anhestesic_registry.paraclinical_hb">HB: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_hb"/>g/dl </t>
                 <t t-if="anhestesic_registry.paraclinical_hto">Hto (Hematocrit): <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_hto"/>Vol % </t>
@@ -624,7 +624,7 @@
                 <t t-if="anhestesic_registry.paraclinical_vsg">VSG: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_vsg"/>mm/H  </t>
                 <br/>
               </t>
-              <t t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc"><strong style="font-size:12px;">COOGULACIAN TEST</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc"><strong style="font-size:12px;">TIEMPOS DE COAGULACIÓN</strong><br/></t>
               <t t-if="anhestesic_registry.paraclinical_pt or anhestesic_registry.paraclinical_ptt or anhestesic_registry.paraclinical_platelets or anhestesic_registry.paraclinical_tc">
                 <t t-if="anhestesic_registry.paraclinical_pt">PT: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_pt"/>S (seconds) </t>
                 <t t-if="anhestesic_registry.paraclinical_ptt">PTT: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_ptt"/>S (seconds) </t>
@@ -632,7 +632,7 @@
                 <t t-if="anhestesic_registry.paraclinical_tc">TC: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_tc"/>m (Minutes)</t>
                 <br/>
               </t>
-              <t t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob"><strong style="font-size:12px;">SANGUINEA CHEMICAL</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob"><strong style="font-size:12px;">QUÍMICA SANGUÍNEA</strong><br/></t>
               <t t-if="anhestesic_registry.paraclinical_glycemia or anhestesic_registry.paraclinical_creatinine or anhestesic_registry.paraclinical_albumin or anhestesic_registry.paraclinical_glob">
                 <t t-if="anhestesic_registry.paraclinical_glycemia">Glycemia: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_glycemia"/>mg/dl</t>
                 <t t-if="anhestesic_registry.paraclinical_creatinine">Creatinine: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_creatinine"/>mg/dl</t>
@@ -640,15 +640,15 @@
                 <t t-if="anhestesic_registry.paraclinical_glob">Glob: <span style="padding-left:2px;padding-right:4px;" t-field="anhestesic_registry.paraclinical_glob"/></t>
                 <br/>
               </t>
-              <t t-if="anhestesic_registry.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAM</strong><br/></t>
+              <t t-if="anhestesic_registry.paraclinical_ecg"><strong style="font-size:12px;">ELECTROCARDIOGRAMA</strong><br/></t>
               <t t-if="anhestesic_registry.paraclinical_ecg">
                 <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_ecg"/><br/>
               </t>
-              <t t-if="anhestesic_registry.paraclinical_rx_chest"><strong style="font-size:12px;">RX. CHEST</strong></t>
+              <t t-if="anhestesic_registry.paraclinical_rx_chest"><strong style="font-size:12px;">RX. TÓRAX</strong></t>
               <t t-if="anhestesic_registry.paraclinical_rx_chest">
                 <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_rx_chest"/><br/>
               </t>
-              <t t-if="anhestesic_registry.paraclinical_others"><strong style="font-size:12px;">OTHERS</strong></t>
+              <t t-if="anhestesic_registry.paraclinical_others"><strong style="font-size:12px;">OTROS</strong></t>
               <t t-if="anhestesic_registry.paraclinical_others">
                 <span style="padding-left:2px;" t-field="anhestesic_registry.paraclinical_others"/><br/>
               </t>

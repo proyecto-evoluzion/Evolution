@@ -209,31 +209,38 @@ class PresurgicalRecord(models.Model):
         if self.patient_id:
             self.consultation_reason = self.patient_id.consultation_reason
             self.document_type = self.patient_id.tdoc
-            hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)], limit=1)
+            hc_object = self.env['clinica.plastic.surgery'].search([('patient_id','=',self.patient_id.id)])
             if hc_object:
-                self.pregnancy_number = hc_object.gestations
-                self.abortion_number = hc_object.abortion_number
-                self.last_menstruation_date = hc_object.last_menstruation_date
-                self.last_birth_date = hc_object.last_birth_date
-                self.contrtaceptive_methods = hc_object.mature_promoting_factor
-                self.child_number = hc_object.births + hc_object.cesarean
-                self.relatives = hc_object.relatives
-                self.diabetes = hc_object.diabetes
-                self.hypertension = hc_object.hypertension
-                self.arthritis = hc_object.arthritis
-                self.thyroid_disease = hc_object.thyroid_disease
-                self.smoke = hc_object.smoke
-                self.is_alcoholic = hc_object.is_alcoholic
-                self.marijuana = hc_object.marijuana
-                self.cocaine = hc_object.cocaine
-                self.ecstasy = hc_object.ecstasy
-                self.pathological = hc_object.pathological
-                self.surgical = hc_object.surgical
-                self.cigarate_daily = hc_object.cigarate_daily
-                self.body_background_others = hc_object.others
-                self.pharmacological = hc_object.pharmacological
-                self.allergic = hc_object.allergic
-                self.alcohol_frequency = hc_object.alcohol_frequency
+                #DevFree: Capturamos el ultimo ID del objeto clinica.plastic.surgery
+                order_list = []
+                for order in hc_object:
+                    order_list.append(order.id)
+                last_id = len(order_list)
+                last_id -= 1
+
+                self.pregnancy_number = hc_object[last_id].gestations
+                self.abortion_number = hc_object[last_id].abortion_number
+                self.last_menstruation_date = hc_object[last_id].last_menstruation_date
+                self.last_birth_date = hc_object[last_id].last_birth_date
+                self.contrtaceptive_methods = hc_object[last_id].mature_promoting_factor
+                self.child_number = hc_object[last_id].births + hc_object[last_id].cesarean
+                self.relatives = hc_object[last_id].relatives
+                self.diabetes = hc_object[last_id].diabetes
+                self.hypertension = hc_object[last_id].hypertension
+                self.arthritis = hc_object[last_id].arthritis
+                self.thyroid_disease = hc_object[last_id].thyroid_disease
+                self.smoke = hc_object[last_id].smoke
+                self.is_alcoholic = hc_object[last_id].is_alcoholic
+                self.marijuana = hc_object[last_id].marijuana
+                self.cocaine = hc_object[last_id].cocaine
+                self.ecstasy = hc_object[last_id].ecstasy
+                self.pathological = hc_object[last_id].pathological
+                self.surgical = hc_object[last_id].surgical
+                self.cigarate_daily = hc_object[last_id].cigarate_daily
+                self.body_background_others = hc_object[last_id].others
+                self.pharmacological = hc_object[last_id].pharmacological
+                self.allergic = hc_object[last_id].allergic
+                self.alcohol_frequency = hc_object[last_id].alcohol_frequency
             lead_obj = self.lead_id.search([('patient_id','=',self.patient_id.id)])
             lead_list = [x.id for x in lead_obj]
             if lead_list:

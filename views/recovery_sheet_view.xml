@@ -16,10 +16,35 @@
             </header>
             <sheet>
             <group name='main_group'>
-            	<group name='sub_group1'>
-	                <field name="room_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-                  <field name="patient_id" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-            	</group>
+            	<group name="patient">
+                <field name="room_id" required="1" attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
+                <field name="room_id" required="1" attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}"/>
+              </group>
+              <div class="col-md-12" name="patient_allergic_alert">
+                <div attrs="{'invisible':[('allergic_active','=',True)]}">
+                  <div class="col-md-9">
+                    <strong>Paciente</strong><br/>
+                    <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
+                    <strong>Tipo documento</strong><br/>
+                    <field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}"/>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12" name="patient_allergic_alert">
+                <div attrs="{'invisible':[('allergic_active','=',False)]}">
+                  <div class="col-md-9">
+                    <strong>Paciente</strong><br/>
+                    <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}"/>
+                    <strong>Tipo documento</strong><br/>
+                    <field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','=','closed')]}"/>
+                  </div>
+                  <div class="col-md-3" style="border-top: 1px solid red; border-right: 1px solid red; border-bottom: 1px solid red;">
+                    <strong style="background-color: red; color: white; margin-left: 10%;">Alérgico</strong><br/>
+                    <field name="allergic" attrs="{'invisible':[('allergic_active','=',False)],'readonly':[('state','in',['closed','open'])]}" style="margin-left: 10%;" nolabel="1" force_save="1"/>
+                  </div>
+                  <field name="allergic_active" invisible="1"/>
+                </div>
+              </div>
             	<group name='sub_group2'>
 	                <field name="procedure_date" required="1" attrs="{'readonly':[('state','=','closed')]}"/>
             	</group>

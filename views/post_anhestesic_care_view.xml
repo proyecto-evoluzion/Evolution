@@ -133,10 +133,9 @@
               </group>
               <group>
                 <field name="is_quirurgical_check_list" attrs="{'readonly':[('is_quirurgical_check_list','!=',False)]}" force_save="1"/><br></br>
-                <field name="is_medical_evolution" attrs="{'readonly':[('is_medical_evolution','!=',False)]}" force_save="1"/><br></br>
                 <field name="is_epicrisis" attrs="{'readonly':[('is_epicrisis','!=',False)]}" force_save="1"/><br></br>
                 <field name="is_tecnical" attrs="{'readonly':[('is_tecnical','!=',False)]}" force_save="1"/><br></br>
-                <field name="is_prescription" attrs="{'readonly':[('is_prescription','!=',False)]}" force_save="1"/><br></br>
+                <field name="is_quirurgic_sheet" attrs="{'readonly':[('is_quirurgic_sheet','!=',False)]}" force_save="1"/><br></br>
               </group>
             </group>
             <div name="professional sign">
