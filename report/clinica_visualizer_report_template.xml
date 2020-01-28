@@ -41,29 +41,40 @@
                 <br/>
               </t>
               <t t-if="nurse_sheet.vital_sign_ids">
+                <!-- <div style="width:100%"><strong>SIGNOS VITALES</strong></div> -->
                 <table class="table " style=" width:100%;">
-                  <tr><td colspan="5" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
+                  <tr><td colspan="8" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
+                  <tr>
+                    <!-- <t t-if="vital_sign.vital_signs_date_hour and vital_sign.vital_signs_fc and vital_sign.sistolic_arteric_pressure and vital_sign.diastolic_arteric_pressure and vital_sign.oximetry and vital_sign.diuresis and vital_sign.bleeding and vital_sign.note"> -->
+                      <td style="width:15%; "><strong>Fecha y hora</strong></td>
+                      <td style="width:10%; "><strong>FC</strong></td>
+                      <td style="width:15%; "><strong>Presión arterial sistólica</strong></td>
+                      <td style="width:15%; "><strong>Presión arterial diastólica</strong></td>
+                      <td style="width:10%; "><strong>Oximetría</strong></td>
+                      <td style="width:10%; "><strong>Diuresis</strong></td>
+                      <td style="width:10%; "><strong>Sangrado</strong></td>
+                      <td style="width:15%; "><strong>Nota de enfermería</strong></td>
+                    <!-- </t> -->
+                    <!-- <t t-else="">
+                      <t t-if="vital_sign.vital_signs_date_hour">Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/></t>
+                      <t t-if="vital_sign.vital_signs_fc">FC <span t-field="vital_sign.vital_signs_fc"/><br/></t>
+                      <t t-if="vital_sign.sistolic_arteric_pressure">Presión arterial sistólica <span t-field="vital_sign.sistolic_arteric_pressure"/><br/></t>
+                      <t t-if="vital_sign.diastolic_arteric_pressure">Presión arterial diastólica <span t-field="vital_sign.diastolic_arteric_pressure"/><br/></t>
+                      <t t-if="vital_sign.oximetry">Oximetría <span t-field="vital_sign.oximetry"/><br/></t>
+                      <t t-if="vital_sign.diuresis">Diuresis <span t-field="vital_sign.diuresis"/><br/></t>
+                      <t t-if="vital_sign.bleeding">Sangrado <span t-field="vital_sign.bleeding"/><br/></t>
+                      <t t-if="vital_sign.note">Nota de enfermería <span t-field="vital_sign.note"/><br/></t>
+                    </t> -->
+                  </tr>
                   <tr t-foreach="nurse_sheet.vital_sign_ids" t-as="vital_sign">
-                    <t t-if="vital_sign.vital_signs_date_hour &gt;=0 and vital_sign.vital_signs_fc &gt;=0 and vital_sign.sistolic_arteric_pressure &gt;=0 and vital_sign.diastolic_arteric_pressure &gt;=0 and vital_sign.oximetry &gt;=0 and vital_sign.diuresis &gt;=0 and vital_sign.bleeding &gt;=0 and vital_sign.note &gt;=0">
-                      <td style="width:10%; "><t>Fecha y hora: <span style="padding-left:2px;" t-field="vital_sign.vital_signs_date_hour"/></t></td>
-                      <td style="width:10%; "><t>FC: <span style="padding-left:2px;" t-field="vital_sign.vital_signs_fc"/></t></td>
-                      <td style="width:10%; "><t>Presión arterial sistólica: <span style="padding-left:2px;" t-field="vital_sign.sistolic_arteric_pressure"/></t></td>
-                      <td style="width:10%; "><t>Presión arterial diastólica: <span style="padding-left:2px;" t-field="vital_sign.diastolic_arteric_pressure"/></t></td>
-                      <td style="width:10%; "><t>Oximetría: <span style="padding-left:2px;" t-field="vital_sign.oximetry"/></t></td>
-                      <td style="width:10%; "><t>Diuresis: <span style="padding-left:2px;" t-field="vital_sign.diuresis"/></t></td>
-                      <td style="width:10%; "><t>Sangrado: <span style="padding-left:2px;" t-field="vital_sign.bleeding"/></t></td>
-                      <td style="width:30%; "><t>Nota de enfermería: <span style="padding-left:2px;" t-field="vital_sign.note"/></t></td>
-                    </t>
-                    <t t-else="">
-                      <t t-if="vital_sign.vital_signs_date_hour &gt;=0">Date and Hour <span t-field="vital_sign.vital_signs_date_hour"/><br/></t>
-                      <t t-if="vital_sign.vital_signs_fc &gt;=0">FC <span t-field="vital_sign.vital_signs_fc"/><br/></t>
-                      <t t-if="vital_sign.sistolic_arteric_pressure &gt;=0">Presión arterial sistólica <span t-field="vital_sign.sistolic_arteric_pressure"/><br/></t>
-                      <t t-if="vital_sign.diastolic_arteric_pressure &gt;=0">Presión arterial diastólica <span t-field="vital_sign.diastolic_arteric_pressure"/><br/></t>
-                      <t t-if="vital_sign.oximetry &gt;=0">Oximetría <span t-field="vital_sign.oximetry"/><br/></t>
-                      <t t-if="vital_sign.diuresis &gt;=0">Diuresis <span t-field="vital_sign.diuresis"/><br/></t>
-                      <t t-if="vital_sign.bleeding &gt;=0">Sangrado <span t-field="vital_sign.bleeding"/><br/></t>
-                      <t t-if="vital_sign.note &gt;=0">Nota de enfermería <span t-field="vital_sign.note"/><br/></t>
-                    </t>
+                    <td style="width:15%; "><t t-if="vital_sign.vital_signs_date_hour"><span style="padding-left:2px;" t-field="vital_sign.vital_signs_date_hour"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.vital_signs_fc"><span style="padding-left:2px;" t-field="vital_sign.vital_signs_fc"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.sistolic_arteric_pressure"><span style="padding-left:2px;" t-field="vital_sign.sistolic_arteric_pressure"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.diastolic_arteric_pressure"><span style="padding-left:2px;" t-field="vital_sign.diastolic_arteric_pressure"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.oximetry"><span style="padding-left:2px;" t-field="vital_sign.oximetry"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.diuresis"><span style="padding-left:2px;" t-field="vital_sign.diuresis"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.bleeding"><span style="padding-left:2px;" t-field="vital_sign.bleeding"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.note"><span style="padding-left:2px;" t-field="vital_sign.note"/></t></td>
                   </tr>
                 </table>
               </t>
@@ -133,7 +144,32 @@
                 <t t-if="recovery_sheet.room_id.anesthesiologist_id">Anestesiólogo: <span style="padding-left:2px;" t-field="recovery_sheet.room_id.anesthesiologist_id.partner_id"/></t>
                 <br/>
               </t>
-              <t t-if="recovery_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
+              <t t-if="recovery_sheet.vital_sign_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="8" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
+                  <tr>
+                      <td style="width:15%; "><strong>Fecha y hora</strong></td>
+                      <td style="width:10%; "><strong>FC</strong></td>
+                      <td style="width:15%; "><strong>Presión arterial sistólica</strong></td>
+                      <td style="width:15%; "><strong>Presión arterial diastólica</strong></td>
+                      <td style="width:10%; "><strong>Oximetría</strong></td>
+                      <td style="width:10%; "><strong>Diuresis</strong></td>
+                      <td style="width:10%; "><strong>Sangrado</strong></td>
+                      <td style="width:15%; "><strong>Nota de enfermería</strong></td>
+                  </tr>
+                  <tr t-foreach="recovery_sheet.vital_sign_ids" t-as="vital_sign">
+                    <td style="width:15%; "><t t-if="vital_sign.vital_signs_date_hour"><span style="padding-left:2px;" t-field="vital_sign.vital_signs_date_hour"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.vital_signs_fc"><span style="padding-left:2px;" t-field="vital_sign.vital_signs_fc"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.sistolic_arteric_pressure"><span style="padding-left:2px;" t-field="vital_sign.sistolic_arteric_pressure"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.diastolic_arteric_pressure"><span style="padding-left:2px;" t-field="vital_sign.diastolic_arteric_pressure"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.oximetry"><span style="padding-left:2px;" t-field="vital_sign.oximetry"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.diuresis"><span style="padding-left:2px;" t-field="vital_sign.diuresis"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.bleeding"><span style="padding-left:2px;" t-field="vital_sign.bleeding"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.note"><span style="padding-left:2px;" t-field="vital_sign.note"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <!-- <t t-if="recovery_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="recovery_sheet.vital_sign_ids">
                 <t t-foreach="recovery_sheet.vital_sign_ids" t-as="vital_sign">
                   <span t-field="vital_sign.vital_signs_date_hour"/><br/>
@@ -146,7 +182,7 @@
                   Sangrado <span t-field="vital_sign.bleeding"/><br/>
                   Nota de recuperación <span t-field="vital_sign.note"/><br/>
                 </t>
-              </t>
+              </t> -->
             </div>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="recovery_sheet.review_note">
@@ -565,7 +601,32 @@
                   Métodos aticonceptivos: <span style="padding-left:2px; font-size:12px;" t-field="nurse_chief_sheet.contrtaceptive_methods"/><br/>
                 </t>
               </t>
-              <t t-if="nurse_chief_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
+              <t t-if="nurse_chief_sheet.vital_sign_ids">
+                <table class="table " style=" width:100%;">
+                  <tr><td colspan="8" style="text-align:center; "><strong>SIGNOS VITALES</strong></td></tr>
+                  <tr>
+                      <td style="width:15%; "><strong>Fecha y hora</strong></td>
+                      <td style="width:10%; "><strong>FC</strong></td>
+                      <td style="width:15%; "><strong>Presión arterial sistólica</strong></td>
+                      <td style="width:15%; "><strong>Presión arterial diastólica</strong></td>
+                      <td style="width:10%; "><strong>Oximetría</strong></td>
+                      <td style="width:10%; "><strong>Diuresis</strong></td>
+                      <td style="width:10%; "><strong>Sangrado</strong></td>
+                      <td style="width:15%; "><strong>Nota de enfermería</strong></td>
+                  </tr>
+                  <tr t-foreach="nurse_chief_sheet.vital_sign_ids" t-as="vital_sign">
+                    <td style="width:15%; "><t t-if="vital_sign.vital_signs_date_hour"><span style="padding-left:2px;" t-field="vital_sign.vital_signs_date_hour"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.vital_signs_fc"><span style="padding-left:2px;" t-field="vital_sign.vital_signs_fc"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.sistolic_arteric_pressure"><span style="padding-left:2px;" t-field="vital_sign.sistolic_arteric_pressure"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.diastolic_arteric_pressure"><span style="padding-left:2px;" t-field="vital_sign.diastolic_arteric_pressure"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.oximetry"><span style="padding-left:2px;" t-field="vital_sign.oximetry"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.diuresis"><span style="padding-left:2px;" t-field="vital_sign.diuresis"/></t></td>
+                    <td style="width:10%; "><t t-if="vital_sign.bleeding"><span style="padding-left:2px;" t-field="vital_sign.bleeding"/></t></td>
+                    <td style="width:15%; "><t t-if="vital_sign.note"><span style="padding-left:2px;" t-field="vital_sign.note"/></t></td>
+                  </tr>
+                </table>
+              </t>
+              <!-- <t t-if="nurse_chief_sheet.vital_sign_ids"><strong style="font-size:12px;">SIGNOS VITALES</strong><br/></t>
               <t t-if="nurse_chief_sheet.vital_sign_ids">
                 <t t-foreach="nurse_chief_sheet.vital_sign_ids" t-as="vital_sign">
                   Fecha y hora <span t-field="vital_sign.vital_signs_date_hour"/><br/>
@@ -577,7 +638,7 @@
                   Sangrado <span t-field="vital_sign.bleeding"/><br/>
                   Nota de Enfermería <span t-field="vital_sign.note"/><br/>
                 </t>
-              </t>
+              </t> -->
               <t t-if="nurse_chief_sheet.procedure_ids"><strong style="font-size:12px;">PROCEDIMIENTOS</strong><br/></t>
               <t t-if="nurse_chief_sheet.procedure_ids">
                 <t t-foreach="nurse_chief_sheet.procedure_ids" t-as="procedure_ids">
