@@ -337,8 +337,8 @@
 
                 <group string="Máscara Laríngea">
                   <group>
-                  <field name="number_mask"  attrs="{'readonly':[('state','=','closed')]}" />
-                  <field name="air_mask"   attrs="{'readonly':[('state','=','closed')]}"/>
+                  <field name="number_mask"  attrs="{'readonly':[('state','=','closed')],'invisible':[('number_mask','&lt;=',0)]}" />
+                  <field name="air_mask"   attrs="{'readonly':[('state','=','closed')],'invisible':[('air_mask','&lt;=',0.00)]}"/>
                   </group>
                   <group>
                   <field name="difficulty_mask"  attrs="{'readonly':[('state','=','closed')]}" />
@@ -369,10 +369,10 @@
                     <field name="tracheostomy"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
                   <group>
-                    <field name="distance"   attrs="{'readonly':[('state','=','closed')]}"/>
-                    <field name="pneumotapon"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="distance"   attrs="{'readonly':[('state','=','closed')],'invisible':[('distance','&lt;=',0.00)]}"/>
+                    <field name="pneumotapon"  attrs="{'readonly':[('state','=','closed')],'invisible':[('pneumotapon','&lt;=',0.00)]}" />
                     <!-- <separator/> -->
-                    <field name="attemps"  attrs="{'readonly':[('state','=','closed')]}" />
+                    <field name="attemps"  attrs="{'readonly':[('state','=','closed')],'invisible':[('attemps','&lt;=',0)]}" />
                     <field name="used_laryngoscope"  attrs="{'readonly':[('state','=','closed')]}"/>
                     <field name="intubation"  attrs="{'readonly':[('state','=','closed')]}"/>
                   </group>
@@ -407,39 +407,39 @@
            					<group name="liquidos_administrados" string="Liquidos Administrados">
            						<label for="crystalloids" string="Crystalloids"/>
 	           					<div>
-	           						<field name="crystalloids" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="crystalloids" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('crystalloids','&lt;=',0.00)]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="blood" string="Blood"/>
 	           					<div>
-	           						<field name="blood" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="blood" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('blood','&lt;=',0.00)]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="colloids" string="Colloids"/>
 	           					<div>
-	           						<field name="colloids" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="colloids" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('colloids','&lt;=',0.00)]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="infiltrated" string="Infiltrated"/>
 	           					<div>
-	           						<field name="infiltrated" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="infiltrated" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('infiltrated','&lt;=',0.00)]}"/>
 	          						 ml
 	           					</div>
          					</group>
           					<group name="liquidos_eliminados" string="Liquidos Eliminados">
 	           					<label for="bleeding" string="Bleeding"/>
 	           					<div>
-	           						<field name="bleeding" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="bleeding" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('bleeding','&lt;=',0.00)]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="diuresis" string="Diuresis"/>
 	           					<div>
-	           						<field name="diuresis" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="diuresis" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('diuresis','&lt;=',0.00)]}"/>
 	          						 ml
 	           					</div>
 	           					<label for="liposuction" string="Liposuction"/>
 	           					<div>
-	           						<field name="liposuction" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')]}"/>
+	           						<field name="liposuction" nolabel="1" class="oe_inline"  attrs="{'readonly':[('state','=','closed')],'invisible':[('liposuction','&lt;=',0.00)]}"/>
 	          						 ml
 	          				    </div>
          					</group>
