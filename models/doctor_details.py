@@ -238,7 +238,7 @@ class DoctorAdministrativeData(models.Model):
     age_unit = fields.Selection([('1','Years'),('2','Months'),('3','Days')], string='Unit of Measure of Age',
                                          compute='_compute_age_meassure_unit')
     birth_country_id = fields.Many2one('res.country', string='Country of Birth', required=True, default=lambda self: self.env.ref('base.co'))
-    provenance_country_id = fields.Many2one('res.country', string='Provenance', required=True)
+    provenance_country_id = fields.Many2one('res.country', string='Provenance', required=True, default=lambda self: self.env.ref('base.co'))
 #    birth_city_id = fields.Many2one('res.country.state.city', string='Location/City/Town of Birth')
 #     birth_district = fields.Char(string='Districts/localties/areas of Birth Place')
 #     birth_neighborhood = fields.Char(string='Neighborhood of Birth Place')
