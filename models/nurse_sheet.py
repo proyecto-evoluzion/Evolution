@@ -209,6 +209,7 @@ class ClinicaNurseSheet(models.Model):
         if room.sale_order_id:
             procedure_list = []
             invc_procedure_list = []
+            no_repeat = []
             if room.sale_order_id.picking_ids:
                 for picking in room.sale_order_id.picking_ids:
                     for move in picking.move_lines:
@@ -216,6 +217,19 @@ class ClinicaNurseSheet(models.Model):
                                                     'product_uom_qty': move.product_uom_qty,
                                                     'quantity_done': move.quantity_done,
                                                     'move_id': move.id}))
+            if procedure_list:
+                pivot_list = []
+                count = 0
+                for no_rep in procedure_list:
+                    no_repeat.append(no_rep[2]['product_id'])
+                pivot = sorted(no_repeat)
+                aux = list(set(pivot))
+                for no_rep in procedure_list:
+                    if no_rep[2]['product_id'] in aux:
+                        count += 1
+                        pivot_list.append(no_rep)                       
+                        aux.remove(no_rep[2]['product_id'])
+                procedure_list = pivot_list
             sequence = 0
             first_line = False
             for sale_line in room.sale_order_id.order_line:
@@ -233,7 +247,6 @@ class ClinicaNurseSheet(models.Model):
     def onchange_room_id(self):
         if self.room_id:
             room_change_vals = self._set_change_room_id(self.room_id)
-            print (room_change_vals)
             self.patient_id = self.room_id.patient_id and self.room_id.patient_id.id or False
             # self.professional_id = self.room_id.circulating_id and self.room_id.circulating_id.id or False
             self.procedure_ids = room_change_vals.get('procedure_ids', False)
@@ -321,6 +334,15 @@ class ClinicaNurseSheet(models.Model):
     @api.multi
     def action_update_stock(self):
         for nurse_sheet in self:
+            #DevFree: Complete picking move_line update
+            move_list = []
+            move_lines = []
+            for procedures in nurse_sheet.procedure_ids:
+                move_lines.append(procedures.move_id.id)
+            move_list.append((6,0,move_lines))
+            for picking in nurse_sheet.room_id.sale_order_id.picking_ids:
+                picking.move_lines = move_list
+            #DevFree: Simple picking qty update
             for procedure_line in nurse_sheet.procedure_ids:
                 if procedure_line.move_id:
                     procedure_line.move_id.quantity_done = procedure_line.quantity_done

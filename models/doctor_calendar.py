@@ -622,7 +622,9 @@ class DoctorWaitingRoom(models.Model):
                                                 'quantity_done': move.quantity_done,
                                                 'move_id': move.id}))
             if procedure_list:
-                vals.update({'default_procedure_ids': procedure_list})
+                #DevFree: procedure_ids values will be set in nurse_sheet model
+                pass
+                # vals.update({'default_procedure_ids': procedure_list})
         return vals
 
     @api.multi

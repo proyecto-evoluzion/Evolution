@@ -106,7 +106,7 @@
       				 
       				 <field name="procedure_ids" colspan="4" nolabel="1" context="{'default_room_id':room_id}" 
       				 	force_save="1" attrs="{'readonly':['|',('updated_stock','=',True),('state','=','closed')]}" >
-      				 	<tree editable="bottom" create="true" limit="10000" default_order="product_id desc">
+      				 	<tree editable="bottom" create="true" limit="10000" default_order="product_id asc">
        				 		<field name="product_id" readonly="1" force_save="1"/>
        				 		<field name="product_uom_qty"  readonly="1" force_save="1" invisible="1"/>
        				 		<field name="quantity_done" force_save="1"/>
