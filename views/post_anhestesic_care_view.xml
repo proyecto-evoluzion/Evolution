@@ -123,7 +123,7 @@
       					</tree>
       				</field>
             </group>
-            <group string="Check List Cierre de Formatos">
+            <group string="Check List Cierre de Formatos" groups="clinica_doctor_data.nursery_chief,base.group_system">
               <group>
                 <field name="is_nurse_sheet" attrs="{'readonly':[('is_nurse_sheet','!=',False)]}" force_save="1"/><br></br>
                 <field name="is_nurse_chief_sheet" attrs="{'readonly':[('is_nurse_chief_sheet','!=',False)]}" force_save="1"/><br></br>
