@@ -229,7 +229,7 @@ class ClinicaNurseSheet(models.Model):
                         count += 1
                         pivot_list.append(no_rep)                       
                         aux.remove(no_rep[2]['product_id'])
-                procedure_list = sorted(pivot_list)
+                procedure_list = pivot_list
             sequence = 0
             first_line = False
             for sale_line in room.sale_order_id.order_line:
