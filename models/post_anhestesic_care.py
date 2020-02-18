@@ -181,7 +181,8 @@ class ClinicaPostAnhestesicCare(models.Model):
 				user_groups_list.append(user_groups.id)
 			anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
 			nurse_group = self.env.ref('clinica_doctor_data.nursing_assistant')
-			if anhestesic_group.id in user_groups_list or nurse_group.id in user_groups_list:
+			nurse_chief_group = self.env.ref('clinica_doctor_data.nursery_chief')
+			if anhestesic_group.id in user_groups_list or nurse_group.id in user_groups_list or nurse_chief_group.id in user_groups_list:
 				self.background_edit_flag = True
 
 	def anhestesioligist_sign(self):
