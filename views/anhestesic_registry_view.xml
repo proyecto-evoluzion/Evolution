@@ -58,14 +58,14 @@
          	    		<field name="preoperative_note"   attrs="{'readonly':[('state','=','closed')]}"/>
          	    	</group>
          	    </group>
-         	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios" colspan="4">
-                  <field name="anesthesia_start_time" widget="float_time"  attrs="{'readonly':[('state','=','closed')]}"/>
-         	    		<field name="intubation_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>         	  
-         	    		<field name="start_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
-         	    		<field name="end_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
-                  <field name="extubation_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
-         	    		<field name="anesthesia_end_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
-         	    		<field name="recovery_transfer_time" widget="float_time"   attrs="{'readonly':[('state','=','closed')]}"/>
+         	    <group name="eventos_transoperatorios" string="Eventos Transoperatorios" colspan="4" attrs="{'invisible':[('anesthesia_start_time','&lt;=',0.00),('intubation_time','&lt;=',0.00),('start_time','&lt;=',0.00),('start_time','&lt;=',0.00),('end_time','&lt;=',0.00),('extubation_time','&lt;=',0.00),('anesthesia_end_time','&lt;=',0.00),('recovery_transfer_time','&lt;=',0.00),('state','=','closed')]}">
+                  	<field name="anesthesia_start_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('anesthesia_start_time','&lt;=',0.00),('state','=','closed')]}"/>
+         	    	<field name="intubation_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('intubation_time','&lt;=',0.00),('state','=','closed')]}"/>         	  
+         	    	<field name="start_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('start_time','&lt;=',0.00),('state','=','closed')]}"/>
+         	    	<field name="end_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('end_time','&lt;=',0.00),('state','=','closed')]}"/>
+                  	<field name="extubation_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('extubation_time','&lt;=',0.00),('state','=','closed')]}"/>
+         	    	<field name="anesthesia_end_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('anesthesia_end_time','&lt;=',0.00),('state','=','closed')]}"/>
+         	    	<field name="recovery_transfer_time" widget="float_time" attrs="{'readonly':[('state','=','closed')],'invisible':['&amp;',('recovery_transfer_time','&lt;=',0.00),('state','=','closed')]}"/>
          	    </group>
          	    <notebook>
          	    	<page name="background" string="Patient Background">
