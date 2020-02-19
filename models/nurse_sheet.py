@@ -392,6 +392,7 @@ class ClinicaNurseSheet(models.Model):
 
 class NurseSheetProcedures(models.Model):
     _name = "nurse.sheet.procedures"
+    _order = "product_id asc"
     
     nurse_sheet_id = fields.Many2one('clinica.nurse.sheet', string='Nurse Sheet', copy=False)
     product_id = fields.Many2one('product.product', string='Health Procedure')
