@@ -210,26 +210,38 @@ class ClinicaNurseSheet(models.Model):
             procedure_list = []
             invc_procedure_list = []
             no_repeat = []
+            no_repeat_name = []
             if room.sale_order_id.picking_ids:
                 for picking in room.sale_order_id.picking_ids:
                     for move in picking.move_lines:
                         procedure_list.append((0,0,{'product_id': move.product_id and move.product_id.id or False,
+                                                    'product_id_name': move.product_id.name or False,
                                                     'product_uom_qty': move.product_uom_qty,
                                                     'quantity_done': move.quantity_done,
                                                     'move_id': move.id}))
             if procedure_list:
                 pivot_list = []
+                final_list = []
+                sort_name = []
                 count = 0
                 for no_rep in procedure_list:
                     no_repeat.append(no_rep[2]['product_id'])
+                    no_repeat_name.append(no_rep[2]['product_id_name'])
                 pivot = sorted(no_repeat)
+                sort_name = sorted(no_repeat_name, key=str.lower)
                 aux = list(set(pivot))
                 for no_rep in procedure_list:
                     if no_rep[2]['product_id'] in aux:
                         count += 1
                         pivot_list.append(no_rep)                       
                         aux.remove(no_rep[2]['product_id'])
-                procedure_list = pivot_list
+                for pv in sort_name:
+                    for no_rep in pivot_list:
+                        if pv == no_rep[2]['product_id_name']:
+                            final_list.append(no_rep)
+
+                print(len(final_list))
+                procedure_list = final_list
             sequence = 0
             first_line = False
             for sale_line in room.sale_order_id.order_line:
