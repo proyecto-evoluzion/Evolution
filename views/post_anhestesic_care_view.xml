@@ -142,24 +142,37 @@
             <div name="professional sign">
               <h3>Anestesiólogo que firma y autoriza la salida del paciente: 
                 <span style="border-bottom: 1px solid black;">
-                  <field name="anhestesioligist" attrs="{'readonly':[('background_edit_flag','=',False)]}"/>
+                  <field name="anhestesioligist" force_save="1" readonly="1"/>
                   <button name="anhestesioligist_sign" 
                     string='Firmar'
                     type="object" 
                     icon="fa-pencil-square-o"
-                    groups="clinica_doctor_data.anesthesiologist" 
+                    groups="clinica_doctor_data.anesthesiologist,base.group_system" 
                     class="btn-success"
-                    confirm="Usted autoriza y firma la salida del paciente y que quede el registro con la hora de salida."/>
+                    confirm="Usted autoriza y firma la salida del paciente al recuperarse con aldrete 10/10?"/>
                 </span>
               </h3>
-              <h3>Fecha y hora de salida: <span><field name="sign_date_hour" attrs="{'readonly':[('background_edit_flag','=',False)]}"/></span></h3>
-              <h3>Enfermera que entrega: <span>
+              <h3 groups="clinica_doctor_data.anesthesiologist,clinica_doctor_data.nursery_chief,base.group_system">Fecha y hora de autorización: <span><field name="sign_date_hour" force_save="1" readonly="1"/></span></h3>
+              <h3 groups="clinica_doctor_data.nursery_chief,base.group_system">Responsable que firma y cierra la salida del paciente: 
+                <span style="border-bottom: 1px solid black;">
+                  <field name="chief_nurse" force_save="1" readonly="1"/>
+                  <button name="chief_nurse_sign" 
+                    string='Firmar'
+                    type="object" 
+                    icon="fa-pencil-square-o"
+                    groups="clinica_doctor_data.nursery_chief,base.group_system" 
+                    class="btn-success"
+                    confirm="Usted firma el cierre del proceso clínico y que quede el registro con la hora de salida?"/>
+                </span>
+              </h3>
+              <h3 groups="clinica_doctor_data.nursery_chief,base.group_system">Fecha y hora de salida: <span><field name="sign_date_hour_chief" force_save="1" readonly="1"/></span></h3>
+              <h3 groups="clinica_doctor_data.nursery_chief,clinica_doctor_data.nursing_assistant,base.group_system">Enfermera que entrega: <span>
                 <field name="put_nurse"/>
               </span></h3>
-              <h3>Enfermera que recibe: <span>
+              <h3 groups="clinica_doctor_data.nursery_chief,clinica_doctor_data.nursing_assistant,base.group_system">Enfermera que recibe: <span>
                 <field name="get_nurse"/>
               </span></h3>
-              <h3>Destino: <span>
+              <h3 groups="clinica_doctor_data.nursery_chief,base.group_system">Nota de salida: <span>
                 <field name="destiny"/>
               </span></h3>
             </div>

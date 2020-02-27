@@ -1310,6 +1310,21 @@
                 </table>
               </t>
             </div>
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>SALIDA DEL PACIENTE</strong></td></tr>
+              <tr>
+                <td style="width:50%; ">
+                  <t t-if="post_anhestesic.anhestesioligist">Anestesiologo que autoriza: <span t-field="post_anhestesic.anhestesioligist.firstname"/> <span t-field="post_anhestesic.anhestesioligist.lastname"/> | <span>Registro Médico: <span t-field="post_anhestesic.anhestesioligist.medical_record"/></span>
+                  </t><br/>
+                  <t t-if="post_anhestesic.anhestesioligist">Hora Autorización: <span style="padding-left:2px;" t-field="post_anhestesic.sign_date_hour"/><br/></t>
+                </td>
+                <td style="width:50%; ">
+                  <t t-if="post_anhestesic.chief_nurse">Responsable que firma la salida: <span t-field="post_anhestesic.chief_nurse.firstname"/> <span t-field="post_anhestesic.chief_nurse.lastname"/> | <span>Registro Médico: <span t-field="post_anhestesic.chief_nurse.medical_record"/></span>
+                  </t><br/>
+                  <t t-if="post_anhestesic.chief_nurse">Hora Salida: <span style="padding-left:2px;" t-field="post_anhestesic.sign_date_hour_chief"/><br/></t>
+                </td>
+              </tr>
+            </table>
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="post_anhestesic.review_note">
               <strong>Nota Aclaratoria</strong>

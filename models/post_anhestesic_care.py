@@ -91,7 +91,9 @@ class ClinicaPostAnhestesicCare(models.Model):
 	anhestesioligist = fields.Many2one('doctor.professional', 'Anestesiólogo', domain=[('profession_type','=','anesthesiologist')])
 	put_nurse = fields.Many2one('doctor.professional', 'Put nurse', domain=[('profession_type','=','nurse')])
 	get_nurse = fields.Many2one('doctor.professional', 'Get nurse', domain=[('profession_type','=','nurse')])
+	chief_nurse = fields.Many2one('doctor.professional', 'Chief nurse', domain=[('profession_type','=','nurse')])
 	sign_date_hour = fields.Datetime(string='Fecha y Hora')
+	sign_date_hour_chief = fields.Datetime(string='Fecha y Hora salida')
 	destiny = fields.Text('Destino')
 	is_nurse_sheet = fields.Boolean('Formato de Enfermería')
 	is_nurse_chief_sheet = fields.Boolean('Formato Jefe de Enfermería')
@@ -196,6 +198,18 @@ class ClinicaPostAnhestesicCare(models.Model):
 			user_groups_list.append(user_groups.id)
 		anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
 		self.anhestesioligist = professional_obj.id
+
+	def chief_nurse_sign(self):
+		ctx = self._context
+		user_id = self._context.get('uid')
+		user_obj = self.env['res.users'].search([('id','=',user_id)])
+		professional_obj = self.env['doctor.professional'].search([('res_user_id','=',user_id)])
+		self.sign_date_hour_chief = datetime.now()
+		# user_groups_list = []
+		# for user_groups in user_obj:
+		# 	user_groups_list.append(user_groups.id)
+		# anhestesic_group = self.env.ref('clinica_doctor_data.anesthesiologist')
+		self.chief_nurse = professional_obj.id
 
 
 	@api.onchange('patient_id')
