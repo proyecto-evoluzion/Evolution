@@ -22,7 +22,8 @@
                   string="Calcular costos"
                   class="oe_stat_button"
                   icon="fa-arrows-v"
-                  type="object"/>
+                  type="object"
+                  attrs="{'invisible': [('state', '!=', 'done')]}"/>
             </div>
 
             <xpath expr="//field[@name='move_lines']/tree" position="attributes">
@@ -31,7 +32,7 @@
             </xpath>
 
             <field name="quantity_done" position="after">
-                <field name="product_cost" readonly="1" force_save="1" attrs="{'invisible': [('state', '!=', 'done')]}"/>
+                <field name="product_cost" readonly="1" force_save="1"/>
             </field>
        </field>
     </record>
