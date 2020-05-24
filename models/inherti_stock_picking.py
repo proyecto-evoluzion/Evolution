@@ -13,7 +13,9 @@ class InheritStockPicking(models.Model):
     @api.multi
     def cost_calculation(self):
         for moves in self.move_lines:
-            moves.product_cost = moves.product_tmpl_id.standard_price
+        	qty = 1
+        	if moves.quantity_done > 0:
+        		moves.product_cost = moves.product_tmpl_id.standard_price * moves.quantity_done
 
 
 class InheritStockMove(models.Model):
