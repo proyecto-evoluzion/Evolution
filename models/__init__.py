@@ -20,6 +20,7 @@
 ###############################################################################
 
 from . import doctor_details
+from . import inherti_stock_picking
 from . import res_config_settings
 from . import clinica_text_template
 from . import res_partner

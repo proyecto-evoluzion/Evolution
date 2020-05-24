@@ -17,10 +17,22 @@
        <field name="model">stock.picking</field>
        <field name="inherit_id" ref="stock.view_picking_form"/>
        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+              <button name="cost_calculation"
+                  string="Calcular costos"
+                  class="oe_stat_button"
+                  icon="fa-arrows-v"
+                  type="object"/>
+            </div>
+
             <xpath expr="//field[@name='move_lines']/tree" position="attributes">
                 <attribute name="default_order">product_id asc</attribute>
                 <attribute name="limit">10000</attribute>
             </xpath>
+
+            <field name="quantity_done" position="after">
+                <field name="product_cost" readonly="1" force_save="1"/>
+            </field>
        </field>
     </record>
     
