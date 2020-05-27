@@ -59,9 +59,8 @@
          			<field name='description'  attrs="{'readonly':[('state','=','closed')]}"/>
          		</group>
          		<group name="sign_stamp" invisible="1">
-         			<field name='sign_stamp' />
+         			<!-- <field name='sign_stamp' /> -->
               <field name='numberid_integer' required="1" invisible="1"/>
-
          		</group>
 
             <button name="review_note_trigger" string='Review Note'
