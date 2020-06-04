@@ -181,6 +181,8 @@ class DoctorWaitingRoom(models.Model):
     procedure_ids = fields.One2many('doctor.waiting.room.procedures', 'room_id', string='Helath Procedures', copy=False)
     state = fields.Selection([('new','New'),('confirmed','Confirmed'),('ordered','SO Created')], 
                                         string='Status', default='new')
+    patient_state = fields.Selection([('dated','Citado'),('attended','Atendido'),('not_attended','No asistio'),('in_room','En sala de espera')], 
+                                        string='Estado paciente', default='not_attended')
     nurse_sheet_created = fields.Boolean(string='Nurse Sheet Created', compute='_compute_nurse_sheet_creation')
     recovery_sheet_created = fields.Boolean(string='Recovery Sheet Created', compute='_compute_nurse_sheet_creation')
     nurse_chief_sheet_created = fields.Boolean(string='Recovery Sheet Created', compute='_compute_nurse_sheet_creation')
@@ -701,6 +703,11 @@ class DoctorWaitingRoom(models.Model):
                     }
                 self.env['sale.order.line'].create(so_line_vals)
         return sale_order
+
+    @api.multi
+    def action_not_attended(self):
+        for record in self:
+            record.patient_state = 'not_attended'
 
     @api.multi
     def action_cancel_procedure(self):

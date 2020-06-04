@@ -211,6 +211,10 @@
 							string="Surgery Room Procedures"
 							groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
 						</button>
+                        <button name="action_view_surgery_room_procedures2" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
+                            string="Agendar"
+                            groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
+                        </button>
                 		<button name="action_view_appointments" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 							string="Appointments"
 							groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
@@ -247,6 +251,10 @@
 							string="Epicrisis"
 							groups="clinica_doctor_data.surgeon,clinica_doctor_data.nursing_assistant,clinica_doctor_data.nursery_chief,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 						</button>
+                        <button name="action_patient_arrived" type="object" class="oe_stat_button" icon="fa-calendar-check-o" 
+                            string="Asistió"
+                            groups="base.group_system,clinica_doctor_data.programmer_assistant,clinica_doctor_data.nursing_assistant,clinica_doctor_data.pharmacist,clinica_doctor_data.nursery_chief,clinica_doctor_data.administrative_assistant,clinica_doctor_data.accounting_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management,clinica_doctor_data.accounting_assistant">
+                        </button>
                 	</div>
                 	
                 	
