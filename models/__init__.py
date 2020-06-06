@@ -43,6 +43,7 @@ from . import invoice
 from . import doctor_prescription
 from . import record_authenticate
 from . import clinica_calendar_cancelation
+from . import external_attention
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:

@@ -71,6 +71,7 @@
         'views/base_localization_menu.xml',
         'views/clinica_calendar_cancelation.xml',
         'views/inherit_stock_picking.xml',
+        'views/external_attention.xml',
         'data/l10n_diseases_co_data.xml'
     ],
     'demo': [

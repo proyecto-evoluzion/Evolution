@@ -585,12 +585,13 @@ class DoctorAdministrativeData(models.Model):
     @api.multi
     def action_patient_arrived(self):
         # Se cambia estatus del paciente a asiste.
-        room = self.env['doctor.waiting.room'].search([('patient_id','=',self.id),('patient_state','=','dated')])
+        room = self.env['doctor.waiting.room2'].search([('patient_id','=',self.id),('patient_state','=','dated')])
+        print(room)
         count = 0
         for rec in room:
             count = rec.id
 
-        room = self.env['doctor.waiting.room'].search([('id','=',count)])
+        room = self.env['doctor.waiting.room2'].search([('id','=',count)])
         room.patient_state = 'in_room'
     
     @api.multi
@@ -598,7 +599,7 @@ class DoctorAdministrativeData(models.Model):
         # Redireccion a Agenda
         # action = self.env.ref('clinica_doctor_data.action_clinica_surgery_room_procedures')
         # Redireccion a Sala de espera
-        action = self.env.ref('clinica_doctor_data.action_clinica_waiting_room')
+        action = self.env.ref('clinica_doctor_data.action_clinica_waiting_room2')
         result = action.read()[0]
         #override the context to get rid of the default filtering
         ctx_vals = self._set_clinica_form_default_values()
@@ -609,13 +610,13 @@ class DoctorAdministrativeData(models.Model):
         ctx_vals.update({'default_surgeon_id': doctor_id.id})
         result['context'] = ctx_vals
         # room_proc_ids = self.env['doctor.waiting.room'].search([('room_type','=','surgery'),('patient_id','=',self.id)])
-        room_proc_ids = self.env['doctor.waiting.room'].search([('room_type','=','waiting'),('patient_id','=',self.id)])
+        room_proc_ids = self.env['doctor.waiting.room2'].search([('room_type','=','waiting'),('patient_id','=',self.id)])
         
         #choose the view_mode accordingly
         if len(room_proc_ids) != 1:
             result['domain'] = "[('id', 'in', " + str(room_proc_ids.ids) + ")]"
         elif len(room_proc_ids) == 1:
-            res = self.env.ref('clinica_doctor_data.clinica_waiting_room_form', False)
+            res = self.env.ref('clinica_doctor_data.clinica_waiting_room_form2', False)
             result['views'] = [(res and res.id or False, 'form')]
             result['res_id'] = room_proc_ids.id
         return result

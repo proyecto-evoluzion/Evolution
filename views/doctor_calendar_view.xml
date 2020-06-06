@@ -204,10 +204,10 @@
 						string="Pre-Surgical Records"
 						groups="base.group_system,clinica_doctor_data.anesthesiologist,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
 					</button>
-					<button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-times-o" 
+					<!-- <button name="action_not_attended" type="object" class="oe_stat_button" icon="fa-calendar-times-o" 
 						string="No asistió"
 						attrs="{'invisible':[('patient_state','!=','dated')]}">
-					</button>
+					</button> -->
 					<button name="action_view_quirurgic_sheet" type="object" class="oe_stat_button" icon="fa-pencil-square-o" 
 						string="Quirurgic Sheet"
 						groups="base.group_system,clinica_doctor_data.surgeon,clinica_doctor_data.programmer_assistant,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management">
@@ -244,7 +244,7 @@
 				<div class="oe_title">
 					<h1>
 						<field name="name" readonly="1"/>
-						<field name="patient_state" invisible="1"/>
+						
 					</h1>
 				</div>
 				<group col="4">
@@ -396,18 +396,13 @@
 		<field name="name">doctor.waiting.room.tree</field>
 		<field name="model">doctor.waiting.room</field>
 		<field name="arch" type="xml">
-			<tree string="Waiting Room Tree" decoration-success="patient_state in ('attended')" 
-              decoration-bf="patient_state == 'dated'"
-              decoration-warning="patient_state == 'not_attended'" 
-              decoration-info="patient_state == 'in_room'"
-              default_order="procedure_date">
-				<!--<field name="schedule_id"/>-->
-				<field name="patient_id" string="Paciente"/>
-				<field name="surgeon_id" string="Profesional"/>
-				<!--<field name="anesthesiologist_id"/>-->
-				<field name="procedure_date" string="Hora Inicio"/>
-				<!--<field name="procedure_end_date"/>-->
-				<field name="patient_state"/>
+			<tree string="Waiting Room Tree">
+				<field name="name"/>
+				<field name='patient_id'/>
+				<field name="surgeon_id"/>
+				<field name="anesthesiologist_id"/>
+				<field name="procedure_date"/>
+				<field name="procedure_end_date"/>
 			</tree>
 		</field>
 	</record>

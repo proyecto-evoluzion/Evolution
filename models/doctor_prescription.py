@@ -67,6 +67,7 @@ class DoctorPrescription(models.Model):
 	review_note = fields.Text('Review Note')
 	review_active = fields.Boolean('Is Review Note?')
 	review_readonly = fields.Boolean('set to readonly')
+	load_register = fields.Boolean(string='-', default=False)
 
 	@api.onchange('doctor_id')
 	def onchange_doctor_id(self):
