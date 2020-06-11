@@ -29,7 +29,7 @@
             		<group name="attention_details">
                         <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         <field name='professional_id' invisible="1"/>
-                        <field name='doctor_id' invisible="1"/>
+                        <field name='doctor_id' invisible="0"/>
                         <field name='background_edit_flag' invisible="1"/>
             			<field name='document_type' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         <field name="gender" invisible="1"  attrs="{'readonly':[('state','=','closed')]}"/>
@@ -170,9 +170,9 @@
             <field name="model">clinica.plastic.surgery</field>
             <field name="arch" type="xml">
                 <search string="Search Plastic Surgery">
-                    <field name="numberid"/>
-                    <field name="number"  />
-                    <field name='attention_code_id'/>
+                    <field name="number"/>
+                    <field name="doctor_id" />
+                    <field name='date_attention'/>
                     <field name="patient_id" />
                     <group expand="0" string="Group By">
                     	<filter string="Patient" name="groupby_patient_id" domain="[]" context="{'group_by':'patient_id'}"/>
@@ -186,7 +186,7 @@
             <field name="res_model">clinica.plastic.surgery</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="clinica_presurgical_record_tree"/>
+            <field name="view_id" ref="clinica_plastic_surgery_tree"/>
             <field name="search_view_id" ref="clinica_presurgical_record_filter"/>
         </record> 
         
