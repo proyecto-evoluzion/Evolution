@@ -35,6 +35,14 @@
                 <field name="product_cost" readonly="1" force_save="1"/>
             </field>
 
+            <xpath expr="//field[@name='move_lines']/tree/field[@name='product_uom_qty']" position="replace">
+            	<field name="product_uom_qty"/>
+            </xpath>
+
+            <!-- <field name="product_uom_qty" position="replace">
+            	<field name="product_uom_qty" readonly="0"/>
+            </field> -->
+
             <field name="move_lines" position="after">
                 <strong class="pull-right">
                   <label for="total_cost"/>:<br/>
