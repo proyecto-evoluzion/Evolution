@@ -30,6 +30,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="nurse_sheet.patient_id.accompany_name or nurse_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="nurse_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_name"/></td>
+                <td t-if="nurse_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="nurse_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">DETALLES DE CIRUGÍA</strong><br/></t>
@@ -134,6 +139,11 @@
                   </t>
                 </td>
               </tr>
+              <tr t-if="recovery_sheet.patient_id.accompany_name or recovery_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="recovery_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_name"/></td>
+                <td t-if="recovery_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="recovery_sheet.room_id.room_type == 'surgery'"><strong style="font-size:12px;">DETALLES QUIRÚRGICOS</strong><br/></t>
@@ -226,6 +236,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="quirgic_sheet.patient_id.accompany_name or quirgic_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="quirgic_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_name"/></td>
+                <td t-if="quirgic_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="quirgic_sheet.surgeon_id or quirgic_sheet.anesthesiologist_id or quirgic_sheet.anesthesia_type or quirgic_sheet.technologist_id or quirgic_sheet.helper_id"><strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/></t>
@@ -320,6 +335,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="room.patient_id.accompany_name or room.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="room.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="room.patient_id.accompany_name"/></td>
+                <td t-if="room.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="room.patient_id.accompany_phone"/></td>
+              </tr>
        				<tr t-if="room.surgeon_id or room.programmer_id or room.anesthesiologist_id or room.anesthesia_type"><td colspan="2" style="text-align:center; "><strong>HEALTH PROFESSIONAL DETAILS</strong></td></tr>
        				<tr t-if="room.surgeon_id or room.programmer_id or room.anesthesiologist_id or room.anesthesia_type">
        					<td style="width:50%; ">
@@ -385,6 +405,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="presurgical_record.patient_id.accompany_name or presurgical_record.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="presurgical_record.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_name"/></td>
+                <td t-if="presurgical_record.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_phone"/></td>
+              </tr>
        			</table>
        			<div>
 	              <t t-if="presurgical_record.consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
@@ -542,6 +567,11 @@
                   </t>
                 </td>
               </tr>
+              <tr t-if="nurse_chief_sheet.patient_id.accompany_name or nurse_chief_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="nurse_chief_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_name"/></td>
+                <td t-if="nurse_chief_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
                 <t t-if="nurse_chief_sheet.diabetes"><strong style="font-size:12px;">DIABETES</strong><br/></t>
@@ -685,6 +715,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="anhestesic_registry.patient_id.accompany_name or anhestesic_registry.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="anhestesic_registry.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_name"/></td>
+                <td t-if="anhestesic_registry.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="anhestesic_registry.product_id or anhestesic_registry.surgeon_id or anhestesic_registry.anesthesiologist_id or anhestesic_registry.anesthesia_type or anhestesic_registry.start_time or anhestesic_registry.end_time or anhestesic_registry.preoperative_note"><strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/></t>
@@ -836,6 +871,11 @@
                   </t>
                 </td>
               </tr>
+              <tr t-if="plastic_surgery.patient_id.accompany_name or plastic_surgery.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="plastic_surgery.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_name"/></td>
+                <td t-if="plastic_surgery.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="plastic_surgery.consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
@@ -955,6 +995,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="medical_evolution.patient_id.accompany_name or medical_evolution.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="medical_evolution.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_name"/></td>
+                <td t-if="medical_evolution.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="medical_evolution.surgeon_id or medical_evolution.anesthesiologist_id or medical_evolution.anesthesia_type or medical_evolution.user_id"><strong style="font-size:12px;">HEALTH PROFESSIONAL DETAILS</strong><br/></t>
@@ -1025,6 +1070,11 @@
        						</t>
        					</td>
        				</tr>
+              <tr t-if="epicrisis.patient_id.accompany_name or epicrisis.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="epicrisis.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_name"/></td>
+                <td t-if="epicrisis.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id"><strong style="font-size:12px;">OTHER DETAILS</strong><br/></t>
@@ -1083,6 +1133,11 @@
                   </t>
                 </td>
               </tr>
+              <tr t-if="prescription.patient_id.accompany_name or prescription.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="prescription.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_name"/></td>
+                <td t-if="prescription.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_phone"/></td>
+              </tr>
             </table>
             <div>
               <t t-if="prescription.order"><strong style="font-size:12px;">PRESCRIPTION</strong><br/></t>
@@ -1129,6 +1184,11 @@
                   Nombre de paciente: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.lastname"/><br/>
                   <t t-if="surgical_technologist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age"/><br/></t>
                 </td>
+              </tr>
+              <tr t-if="surgical_technologist.patient_id.accompany_name or surgical_technologist.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="surgical_technologist.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_name"/></td>
+                <td t-if="surgical_technologist.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_phone"/></td>
               </tr>
             </table>
             <div>
@@ -1192,6 +1252,11 @@
                   Nombre de paciente: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.firstname"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.lastname"/><br/>
                   <t t-if="post_anhestesic.patient_id.age">Edad: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.age"/><br/></t>
                 </td>
+              </tr>
+              <tr t-if="post_anhestesic.patient_id.accompany_name or post_anhestesic.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="post_anhestesic.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_name"/></td>
+                <td t-if="post_anhestesic.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_phone"/></td>
               </tr>
             </table>
             <div>
@@ -1358,6 +1423,11 @@
                   Nombre de paciente: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.lastname"/><br/>
                   <t t-if="quirurgical_checklist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.age"/><br/></t>
                 </td>
+              </tr>
+              <tr t-if="quirurgical_checklist.patient_id.accompany_name or quirurgical_checklist.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td t-if="quirurgical_checklist.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_name"/></td>
+                <td t-if="quirurgical_checklist.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_phone"/></td>
               </tr>
             </table>
             <div>
