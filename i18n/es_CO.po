@@ -2596,7 +2596,7 @@ msgstr "Fecha y Hora"
 #: selection:doctor.quirurgic.sheet,gender:0
 #: selection:doctor.waiting.room,gender:0
 msgid "Female"
-msgstr "Mujer"
+msgstr "Femenino"
 
 #. module: clinica_doctor_data
 #: selection:clinica.post.anhestesic.care,airway:0
@@ -3487,7 +3487,7 @@ msgstr "Mantenimiento"
 #: selection:doctor.quirurgic.sheet,gender:0
 #: selection:doctor.waiting.room,gender:0
 msgid "Male"
-msgstr "Hombre"
+msgstr "Masculino"
 
 #. module: clinica_doctor_data
 #: model:ir.model.fields,field_description:clinica_doctor_data.field_clinica_anhestesic_registry_mallampati_scale
