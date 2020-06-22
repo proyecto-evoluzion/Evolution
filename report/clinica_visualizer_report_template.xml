@@ -21,19 +21,64 @@
        			<table class="table " style=" width:100%;">
        				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
        				<tr>
-       					<td t-if="nurse_sheet.numberid" style="width:50%; ">Number ID: <span style="padding-left:2px;" t-field="nurse_sheet.numberid"/></td>
-       					<td t-if="nurse_sheet.patient_id or nurse_sheet.age" style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id"/><br/>
-       						<t t-if="nurse_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="nurse_sheet.age"/><span style="padding-left:2px;" t-field="nurse_sheet.age_meassure_unit"/><br/></t>
-       						<t t-if="nurse_sheet.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.insurer_id"/><br/>
+       					<td t-if="nurse_sheet.patient_id.firstname or nurse_sheet.patient_id.middlename or nurse_sheet.patient_id.lastname or nurse_sheet.patient_id.surname or nurse_sheet.patient_id.age or nurse_sheet.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.firstname"/> <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.middlename"/> <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.lastname"/> <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.surname"/><br/>
+                  <t t-if="nurse_sheet.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="nurse_sheet.patient_id.age_unit"/><br/></t>
+                  <t t-if="nurse_sheet.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+       					<td t-if="nurse_sheet.patient_id.tdoc or nurse_sheet.patient_id.number" style="width:50%; ">
+       						 Documento: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.tdoc"/><br/>
+       						<t>
+       							No: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.name"/><br/>
        						</t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.insurer_id.name"/><br/>
+                  </t>
        					</td>
        				</tr>
               <tr t-if="nurse_sheet.patient_id.accompany_name or nurse_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="nurse_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_name"/></td>
-                <td t-if="nurse_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.accompany_phone"/><br/>
+                <t t-if="nurse_sheet.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="nurse_sheet.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="nurse_sheet.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_sheet.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -114,10 +159,6 @@
       <template id="clinica_doctor_data.recovery_sheet_visualizer_template">
         <div class="page">
             <div class="oe_structure"/>
-        <!-- <t t-if="clinica_records['nurse_sheets']">
-          <span style="width:100%; text-align:left; font-size:30px;"><strong>NURSE SHEETS</strong></span>
-          <br/>
-          </t> -->
           <t t-foreach="clinica_records['recovery_sheet']" t-as="recovery_sheet">
             <t t-set="recovery_sheet" t-value="recovery_sheet.with_context({'lang':recovery_sheet.patient_id.partner_id.lang})" />
             <table style="width:100%;">
@@ -127,13 +168,12 @@
                 <td></td>
               </tr>
             </table>
-            <table class="table " style=" width:100%;">
+            <!-- <table class="table " style=" width:100%;">
               <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
               <tr>
-                <!-- <td t-if="recovery_sheet.patient_id.numberid" style="width:50%; ">Number ID: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.numberid"/></td> -->
                 <td t-if="recovery_sheet.patient_id or recovery_sheet.age" style="width:50%; ">
                   Nombre de paciente: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id"/><br/>
-                  <t t-if="recovery_sheet.age and flag == 0">Edad: <span style="padding-left:2px;" t-field="recovery_sheet.age"/><span style="padding-left:2px;" t-field="recovery_sheet.age_meassure_unit"/><br/></t>
+                  <t t-if="recovery_sheet.age and flag == 0">Edad: <span style="padding-left:2px;" t-field="recovery_sheet.age"/><span style="padding-left:2px;" t-field="recovery_sheet.age_unit"/><br/></t>
                   <t t-if="recovery_sheet.patient_id.insurer_id and flag == 0">
                     Aseguradora: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.insurer_id"/><br/>
                   </t>
@@ -143,6 +183,69 @@
               <tr>
                 <td t-if="recovery_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_name"/></td>
                 <td t-if="recovery_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_phone"/></td>
+              </tr>
+            </table> -->
+            <table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td t-if="recovery_sheet.patient_id.firstname or recovery_sheet.patient_id.middlename or recovery_sheet.patient_id.lastname or recovery_sheet.patient_id.surname or recovery_sheet.patient_id.age or recovery_sheet.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.firstname"/> <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.middlename"/> <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.lastname"/> <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.surname"/><br/>
+                  <t t-if="recovery_sheet.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="recovery_sheet.patient_id.age_unit"/><br/></t>
+                  <t t-if="recovery_sheet.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="recovery_sheet.patient_id.tdoc or recovery_sheet.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
+              <tr t-if="recovery_sheet.patient_id.accompany_name or recovery_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
+              <tr>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.accompany_phone"/><br/>
+                <t t-if="recovery_sheet.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="recovery_sheet.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="recovery_sheet.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="recovery_sheet.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -225,21 +328,66 @@
        				</tr>
        			</table>
        			<table class="table " style=" width:100%;">
-       				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
-       				<tr>
-       					<td style="width:50%; "><t t-if="quirgic_sheet.numberid">Number ID: <span style="padding-left:2px;" t-field="quirgic_sheet.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id"/><br/>
-       						<t t-if="quirgic_sheet.age and flag == 0">Age: <span style="padding-left:2px;" t-field="quirgic_sheet.age"/><span style="padding-left:2px;" t-field="quirgic_sheet.age_meassure_unit"/><br/></t>
-       						<t t-if="quirgic_sheet.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td t-if="quirgic_sheet.patient_id.firstname or quirgic_sheet.patient_id.middlename or quirgic_sheet.patient_id.lastname or quirgic_sheet.patient_id.surname or quirgic_sheet.patient_id.age or quirgic_sheet.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.firstname"/> <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.middlename"/> <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.lastname"/> <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.surname"/><br/>
+                  <t t-if="quirgic_sheet.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.age_unit"/><br/></t>
+                  <t t-if="quirgic_sheet.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="quirgic_sheet.patient_id.tdoc or quirgic_sheet.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
               <tr t-if="quirgic_sheet.patient_id.accompany_name or quirgic_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="quirgic_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_name"/></td>
-                <td t-if="quirgic_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.accompany_phone"/><br/>
+                <t t-if="quirgic_sheet.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="quirgic_sheet.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="quirgic_sheet.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirgic_sheet.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -291,20 +439,6 @@
 		<template id="clinica_doctor_data.room_visualizer_template">
 			<div class="page">
            	<div class="oe_structure"/>
-			<!-- <t t-if="record == 'surgery_rooms'">
-				<t t-if="clinica_records['surgery_rooms']">
-					<strong><span style="width:100%; text-align:left; font-size:30px;">SURGERY ROOM PROCEDURES</span></strong>
-					<br/>
-				</t>
-				<t t-set="clinica_rooms" t-value="clinica_records['surgery_rooms']" />
-			</t>
-			<t t-if="record == 'waiting_rooms'">
-				<t t-if="clinica_records['waiting_rooms']">
-				<strong><span style="width:100%; text-align:left; font-size:30px;">APPOINTMENTS</span></strong>
-				<br/>
-				</t>
-				<t t-set="clinica_rooms" t-value="clinica_records['waiting_rooms']" />
-			</t> -->
     	    <t t-foreach="clinica_rooms" t-as="room">
       			<t t-set="room" t-value="room.with_context({'lang':room.patient_id.partner_id.lang})" />
        			<table style="width:100%;">
@@ -329,7 +463,7 @@
        					<td style="width:50%; "><t t-if="room.numberid">Number ID: <span style="padding-left:2px;" t-field="room.numberid"/></t></td>
        					<td style="width:50%; ">
        						Patient Name: <span style="padding-left:2px;" t-field="room.patient_id"/><br/>
-       						<t t-if="room.age and flag == 0">Age: <span style="padding-left:2px;" t-field="room.age"/><span style="padding-left:2px;" t-field="room.age_meassure_unit"/><br/></t>
+       						<t t-if="room.age and flag == 0">Age: <span style="padding-left:2px;" t-field="room.age"/><span style="padding-left:2px;" t-field="room.age_unit"/><br/></t>
        						<t t-if="room.patient_id.insurer_id and flag == 0">
        							Insurer: <span style="padding-left:2px;" t-field="room.patient_id.insurer_id"/><br/>
        						</t>
@@ -394,23 +528,68 @@
        				</tr>
        			</table>
        			<table class="table " style=" width:100%;">
-       				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
-       				<tr>
-       					<td style="width:50%; "><t t-if="presurgical_record.numberid">Number ID: <span style="padding-left:2px;" t-field="presurgical_record.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="presurgical_record.patient_id"/><br/>
-       						<t t-if="presurgical_record.age and flag == 0">Age: <span style="padding-left:2px;" t-field="presurgical_record.age"/><span style="padding-left:2px;" t-field="presurgical_record.age_meassure_unit"/><br/></t>
-       						<t t-if="presurgical_record.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td t-if="presurgical_record.patient_id.firstname or presurgical_record.patient_id.middlename or presurgical_record.patient_id.lastname or presurgical_record.patient_id.surname or presurgical_record.patient_id.age or presurgical_record.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.firstname"/> <span style="padding-left:2px;" t-field="presurgical_record.patient_id.middlename"/> <span style="padding-left:2px;" t-field="presurgical_record.patient_id.lastname"/> <span style="padding-left:2px;" t-field="presurgical_record.patient_id.surname"/><br/>
+                  <t t-if="presurgical_record.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.age"/><span style="padding-left:2px;" t-field="presurgical_record.patient_id.age_unit"/><br/></t>
+                  <t t-if="presurgical_record.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="presurgical_record.patient_id.tdoc or presurgical_record.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
               <tr t-if="presurgical_record.patient_id.accompany_name or presurgical_record.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="presurgical_record.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_name"/></td>
-                <td t-if="presurgical_record.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.accompany_phone"/><br/>
+                <t t-if="presurgical_record.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
               </tr>
-       			</table>
+              <tr t-if="presurgical_record.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="presurgical_record.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="presurgical_record.patient_id.responsible_phone"/></td>
+              </tr>
+            </table>
        			<div>
 	              <t t-if="presurgical_record.consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
 	              <t t-if="presurgical_record.consultation_reason">
@@ -556,21 +735,66 @@
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
               <tr>
-                <td style="width:50%; ">
-                  Nombre de paciente: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id"/><br/>
-                  <t t-if="nurse_chief_sheet.age and flag == 0">Edad: <span style="padding-left:2px;" t-field="nurse_chief_sheet.age"/><span style="padding-left:2px;" t-field="nurse_chief_sheet.age_meassure_unit"/><br/></t>
-                  <t t-if="nurse_chief_sheet.patient_id.blood_type and flag == 0">Tipo de sangre: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.blood_type"/><br/></t>
-                  <t t-if="nurse_chief_sheet.patient_id.insurer_id and flag == 0">
-                    Aseguradora: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.insurer_id"/><br/>
+                <td t-if="nurse_chief_sheet.patient_id.firstname or nurse_chief_sheet.patient_id.middlename or nurse_chief_sheet.patient_id.lastname or nurse_chief_sheet.patient_id.surname or nurse_chief_sheet.patient_id.age or nurse_chief_sheet.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.firstname"/> <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.middlename"/> <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.lastname"/> <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.surname"/><br/>
+                  <t t-if="nurse_chief_sheet.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.age"/><span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.age_unit"/><br/></t>
+                  <t t-if="nurse_chief_sheet.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="nurse_chief_sheet.patient_id.tdoc or nurse_chief_sheet.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.insurer_id.name"/><br/>
                   </t>
                 </td>
               </tr>
               <tr t-if="nurse_chief_sheet.patient_id.accompany_name or nurse_chief_sheet.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="nurse_chief_sheet.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_name"/></td>
-                <td t-if="nurse_chief_sheet.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.accompany_phone"/><br/>
+                <t t-if="nurse_chief_sheet.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="nurse_chief_sheet.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="nurse_chief_sheet.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="nurse_chief_sheet.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -703,22 +927,67 @@
        					<td style="width:25%; padding-left:5px; text-align:right; font-size: 15px;"><strong></strong></td>
        				</tr>
        			</table>
-       			<table class="table" style=" width:100%;">
-       				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
-       				<tr>
-       					<td style="width:50%; "><t t-if="anhestesic_registry.numberid">Number ID: <span style="padding-left:2px;" t-field="anhestesic_registry.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id"/><br/>
-       						<t t-if="anhestesic_registry.age and flag == 0">Age: <span style="padding-left:2px;" t-field="anhestesic_registry.age"/><span style="padding-left:2px;" t-field="anhestesic_registry.age_meassure_unit"/><br/></t>
-       						<t t-if="anhestesic_registry.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+       			<table class="table " style=" width:100%;">
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td t-if="anhestesic_registry.patient_id.firstname or anhestesic_registry.patient_id.middlename or anhestesic_registry.patient_id.lastname or anhestesic_registry.patient_id.surname or anhestesic_registry.patient_id.age or anhestesic_registry.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.firstname"/> <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.middlename"/> <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.lastname"/> <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.surname"/><br/>
+                  <t t-if="anhestesic_registry.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.age"/><span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.age_unit"/><br/></t>
+                  <t t-if="anhestesic_registry.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="anhestesic_registry.patient_id.tdoc or anhestesic_registry.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
               <tr t-if="anhestesic_registry.patient_id.accompany_name or anhestesic_registry.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="anhestesic_registry.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_name"/></td>
-                <td t-if="anhestesic_registry.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.accompany_phone"/><br/>
+                <t t-if="anhestesic_registry.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="anhestesic_registry.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="anhestesic_registry.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="anhestesic_registry.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -855,7 +1124,7 @@
                     <strong>Date of birth: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.birth_date"/><br/>
                   </t>
                   <t t-if="plastic_surgery.patient_id.age">
-                    <strong>Age: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.age_meassure_unit"/><br/>
+                    <strong>Age: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.age_unit"/><br/>
                   </t>
                   <t t-if="plastic_surgery.patient_id.user_type">
                     <strong>User type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.user_type"/><br/>
@@ -875,6 +1144,15 @@
               <tr>
                 <td t-if="plastic_surgery.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_name"/></td>
                 <td t-if="plastic_surgery.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.accompany_phone"/></td>
+              </tr>
+              <tr t-if="plastic_surgery.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="plastic_surgery.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="plastic_surgery.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -984,21 +1262,66 @@
        				</tr>
        			</table>
        			<table class="table " style=" width:100%;">
-       				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
-       				<tr>
-       					<td style="width:50%; "><t t-if="medical_evolution.numberid">Number ID: <span style="padding-left:2px;" t-field="medical_evolution.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="medical_evolution.patient_id"/><br/>
-       						<t t-if="medical_evolution.age and flag == 0">Age: <span style="padding-left:2px;" t-field="medical_evolution.age"/><span style="padding-left:2px;" t-field="medical_evolution.age_meassure_unit"/><br/></t>
-       						<t t-if="medical_evolution.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td t-if="medical_evolution.patient_id.firstname or medical_evolution.patient_id.middlename or medical_evolution.patient_id.lastname or medical_evolution.patient_id.surname or medical_evolution.patient_id.age or medical_evolution.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.firstname"/> <span style="padding-left:2px;" t-field="medical_evolution.patient_id.middlename"/> <span style="padding-left:2px;" t-field="medical_evolution.patient_id.lastname"/> <span style="padding-left:2px;" t-field="medical_evolution.patient_id.surname"/><br/>
+                  <t t-if="medical_evolution.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.age"/><span style="padding-left:2px;" t-field="medical_evolution.patient_id.age_unit"/><br/></t>
+                  <t t-if="medical_evolution.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="medical_evolution.patient_id.tdoc or medical_evolution.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
               <tr t-if="medical_evolution.patient_id.accompany_name or medical_evolution.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="medical_evolution.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_name"/></td>
-                <td t-if="medical_evolution.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.accompany_phone"/><br/>
+                <t t-if="medical_evolution.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="medical_evolution.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="medical_evolution.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="medical_evolution.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -1059,24 +1382,68 @@
        				</tr>
        			</table>
        			<table class="table " style=" width:100%;">
-       				<tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
-       				<tr>
-       					<td style="width:50%; "><t t-if="epicrisis.numberid">Number ID: <span style="padding-left:2px;" t-field="epicrisis.numberid"/></t></td>
-       					<td style="width:50%; ">
-       						Patient Name: <span style="padding-left:2px;" t-field="epicrisis.patient_id"/><br/>
-       						<t t-if="epicrisis.age">Age: <span style="padding-left:2px;" t-field="epicrisis.age"/><span style="padding-left:2px;" t-field="epicrisis.age_meassure_unit"/><br/></t>
-       						<t t-if="epicrisis.patient_id.insurer_id and flag == 0">
-       							Insurer: <span style="padding-left:2px;" t-field="epicrisis.patient_id.insurer_id"/><br/>
-       						</t>
-       					</td>
-       				</tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
+              <tr>
+                <td t-if="epicrisis.patient_id.firstname or epicrisis.patient_id.middlename or epicrisis.patient_id.lastname or epicrisis.patient_id.surname or epicrisis.patient_id.age or epicrisis.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="epicrisis.patient_id.firstname"/> <span style="padding-left:2px;" t-field="epicrisis.patient_id.middlename"/> <span style="padding-left:2px;" t-field="epicrisis.patient_id.lastname"/> <span style="padding-left:2px;" t-field="epicrisis.patient_id.surname"/><br/>
+                  <t t-if="epicrisis.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="epicrisis.patient_id.age"/><span style="padding-left:2px;" t-field="epicrisis.patient_id.age_unit"/><br/></t>
+                  <t t-if="epicrisis.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="epicrisis.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="epicrisis.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="epicrisis.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="epicrisis.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="epicrisis.patient_id.tdoc or epicrisis.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="epicrisis.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="epicrisis.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="epicrisis.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="epicrisis.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="epicrisis.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="epicrisis.patient_id.insurer_id.name"/><br/>
+                  </t>
+                </td>
+              </tr>
               <tr t-if="epicrisis.patient_id.accompany_name or epicrisis.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="epicrisis.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_name"/></td>
-                <td t-if="epicrisis.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="epicrisis.patient_id.accompany_phone"/><br/>
+                <t t-if="epicrisis.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="epicrisis.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="epicrisis.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="epicrisis.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="epicrisis.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="epicrisis.patient_id.responsible_phone"/></td>
               </tr>
             </table>
-            <div>
               <t t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id"><strong style="font-size:12px;">OTHER DETAILS</strong><br/></t>
               <t t-if="epicrisis.disease_id or epicrisis.procedure_id or epicrisis.user_id">
                 <t t-if="epicrisis.disease_id">Diseases: <span style="padding-left:2px;" t-field="epicrisis.disease_id"/></t>
@@ -1095,7 +1462,7 @@
                 <span style="padding-left:2px;" t-field="epicrisis.epicrisis_note"/>
                 <br/>
               </t>
-            </div>
+            <!-- </div> -->
             <!--Espacio reservado para imprimir la nota aclaratoria-->
             <div t-if="epicrisis.review_note">
               <strong>Nota Aclaratoria</strong>
@@ -1124,19 +1491,64 @@
             <table class="table " style=" width:100%;">
               <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
               <tr>
-                <td style="width:50%; "><t t-if="prescription.patient_id.ref">Number ID: <span style="padding-left:2px;" t-field="prescription.patient_id.ref"/></t></td>
-                <td style="width:50%; ">
-                  Patient Name: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/><br/>
-                  <t t-if="prescription.patient_id.age">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><br/></t>
-                  <t t-if="prescription.patient_id.insurer_id and flag == 0">
-                    Insurer: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
+                <td t-if="prescription.patient_id.firstname or prescription.patient_id.middlename or prescription.patient_id.lastname or prescription.patient_id.surname or prescription.patient_id.age or prescription.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="prescription.patient_id.firstname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.middlename"/> <span style="padding-left:2px;" t-field="prescription.patient_id.lastname"/> <span style="padding-left:2px;" t-field="prescription.patient_id.surname"/><br/>
+                  <t t-if="prescription.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="prescription.patient_id.age"/><span style="padding-left:2px;" t-field="prescription.patient_id.age_unit"/><br/></t>
+                  <t t-if="prescription.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="prescription.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="prescription.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="prescription.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="prescription.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="prescription.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="prescription.patient_id.tdoc or prescription.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="prescription.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="prescription.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="prescription.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="prescription.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="prescription.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="prescription.patient_id.insurer_id.name"/><br/>
                   </t>
                 </td>
               </tr>
               <tr t-if="prescription.patient_id.accompany_name or prescription.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="prescription.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_name"/></td>
-                <td t-if="prescription.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="prescription.patient_id.accompany_phone"/><br/>
+                <t t-if="prescription.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="prescription.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="prescription.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="prescription.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="prescription.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="prescription.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -1177,18 +1589,66 @@
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
               <tr>
-                <td style="width:50%; "><t t-if="surgical_technologist.numberid">Identificación: <span style="padding-left:2px;" t-field="surgical_technologist.numberid"/></t></td>
-                <td style="width:50%; ">
-                  Nombre de paciente: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.lastname"/><br/>
-                  <t t-if="surgical_technologist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age"/><br/></t>
+                <td t-if="surgical_technologist.patient_id.firstname or surgical_technologist.patient_id.middlename or surgical_technologist.patient_id.lastname or surgical_technologist.patient_id.surname or surgical_technologist.patient_id.age or surgical_technologist.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.middlename"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.lastname"/> <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.surname"/><br/>
+                  <t t-if="surgical_technologist.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age"/><span style="padding-left:2px;" t-field="surgical_technologist.patient_id.age_unit"/><br/></t>
+                  <t t-if="surgical_technologist.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="surgical_technologist.patient_id.tdoc or surgical_technologist.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.insurer_id.name"/><br/>
+                  </t>
                 </td>
               </tr>
               <tr t-if="surgical_technologist.patient_id.accompany_name or surgical_technologist.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="surgical_technologist.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_name"/></td>
-                <td t-if="surgical_technologist.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.accompany_phone"/><br/>
+                <t t-if="surgical_technologist.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="surgical_technologist.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="surgical_technologist.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="surgical_technologist.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -1245,18 +1705,66 @@
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
               <tr>
-                <td style="width:50%; "><t t-if="post_anhestesic.numberid">Identificación: <span style="padding-left:2px;" t-field="post_anhestesic.numberid"/></t></td>
-                <td style="width:50%; ">
-                  Nombre de paciente: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.firstname"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.lastname"/><br/>
-                  <t t-if="post_anhestesic.patient_id.age">Edad: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.age"/><br/></t>
+                <td t-if="post_anhestesic.patient_id.firstname or post_anhestesic.patient_id.middlename or post_anhestesic.patient_id.lastname or post_anhestesic.patient_id.surname or post_anhestesic.patient_id.age or post_anhestesic.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.firstname"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.middlename"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.lastname"/> <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.surname"/><br/>
+                  <t t-if="post_anhestesic.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.age"/><span style="padding-left:2px;" t-field="post_anhestesic.patient_id.age_unit"/><br/></t>
+                  <t t-if="post_anhestesic.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="post_anhestesic.patient_id.tdoc or post_anhestesic.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.insurer_id.name"/><br/>
+                  </t>
                 </td>
               </tr>
               <tr t-if="post_anhestesic.patient_id.accompany_name or post_anhestesic.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="post_anhestesic.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_name"/></td>
-                <td t-if="post_anhestesic.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.accompany_phone"/><br/>
+                <t t-if="post_anhestesic.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="post_anhestesic.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="post_anhestesic.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="post_anhestesic.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
@@ -1416,18 +1924,66 @@
               </tr>
             </table>
             <table class="table " style=" width:100%;">
-              <tr><td colspan="2" style="text-align:center; "><strong>DATOS DEL PACIENTE</strong></td></tr>
+              <tr><td colspan="2" style="text-align:center; "><strong>PATIENT DATA</strong></td></tr>
               <tr>
-                <td style="width:50%; "><t t-if="quirurgical_checklist.numberid">Identificación: <span style="padding-left:2px;" t-field="quirurgical_checklist.numberid"/></t></td>
-                <td style="width:50%; ">
-                  Nombre de paciente: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.lastname"/><br/>
-                  <t t-if="quirurgical_checklist.patient_id.age">Edad: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.age"/><br/></t>
+                <td t-if="quirurgical_checklist.patient_id.firstname or quirurgical_checklist.patient_id.middlename or quirurgical_checklist.patient_id.lastname or quirurgical_checklist.patient_id.surname or quirurgical_checklist.patient_id.age or quirurgical_checklist.patient_id.sex" style="width:50%; ">Nombres y Apellidos: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.firstname"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.middlename"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.lastname"/> <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.surname"/><br/>
+                  <t t-if="quirurgical_checklist.patient_id.age and flag == 0">Age: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.age"/><span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.age_unit"/><br/></t>
+                  <t t-if="quirurgical_checklist.patient_id.sex">
+                    Sexo: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.sex"/><br/>
+                  </t>
+                  <t>
+                    Fecha de nacimiento: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.birth_date"/><br/>
+                  </t>
+                  <t>
+                    Estado civil: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.civil_state"/><br/>
+                  </t>
+                  <t>
+                    Direccion de residencia: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.residence_address"/><br/>
+                  </t>
+                  <t>
+                    Ciudad / Localidad: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.residence_city_id.name"/><br/>
+                  </t>
+                </td>
+                <td t-if="quirurgical_checklist.patient_id.tdoc or quirurgical_checklist.patient_id.number" style="width:50%; ">
+                   Documento: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.tdoc"/><br/>
+                  <t>
+                    No: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.name"/><br/>
+                  </t>
+                  <t>
+                    Teléfono: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.phone"/><br/>
+                  </t>
+                  <t>
+                    Email: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.email"/><br/>
+                  </t>
+                  <t>
+                    Ocupación: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.occupation"/><br/>
+                  </t>
+                  <t>
+                    Aseguradora: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.insurer_id.name"/><br/>
+                  </t>
                 </td>
               </tr>
               <tr t-if="quirurgical_checklist.patient_id.accompany_name or quirurgical_checklist.patient_id.accompany_phone"><td colspan="2" style="text-align:center; "><strong>DATOS DE ACOMPAÑANTE</strong></td></tr>
               <tr>
-                <td t-if="quirurgical_checklist.patient_id.accompany_name" style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_name"/></td>
-                <td t-if="quirurgical_checklist.patient_id.accompany_phone" style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_phone"/></td>
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_name"/><br/>
+                <t>
+                  Parentesco: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_relationship"/><br/>
+                </t>
+              </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.accompany_phone"/><br/>
+                <t t-if="quirurgical_checklist.patient_id.copy_responsible_info">
+                  <strong>Es la persona responsable</strong><br/>
+                </t>
+              </td>
+              </tr>
+              <tr t-if="quirurgical_checklist.patient_id.copy_responsible_info == False"><td colspan="2" style="text-align:center; "><strong>DATOS PERSONA RESPONSABLE</strong></td></tr>
+              <tr t-if="quirurgical_checklist.patient_id.copy_responsible_info == False">
+                <td style="width:50%; ">Nombre: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.responsible_name"/><br/>
+                  <t>
+                    Parentesco: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.responsible_relationship"/><br/>
+                  </t>
+                </td>
+                <td style="width:50%; ">Teléfono: <span style="padding-left:2px;" t-field="quirurgical_checklist.patient_id.responsible_phone"/></td>
               </tr>
             </table>
             <div>
