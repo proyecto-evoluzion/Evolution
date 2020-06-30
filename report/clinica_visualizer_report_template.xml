@@ -149,7 +149,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="nurse_sheet.doctor_id.firstname"/> <span t-field="nurse_sheet.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="nurse_sheet.doctor_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="nurse_sheet.doctor_id.firstname"/> <span t-field="nurse_sheet.doctor_id.middlename"/> <span t-field="nurse_sheet.doctor_id.lastname"/> <span t-field="nurse_sheet.doctor_id.surname"/> | <span><strong>Profesión: </strong><span t-field="nurse_sheet.doctor_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="nurse_sheet.doctor_id.medical_record"/></span>
             </div>
        			<p style="page-break-after: always;"/>
         	</t>
@@ -304,7 +304,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="recovery_sheet.doctor_id.firstname"/> <span t-field="recovery_sheet.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="recovery_sheet.doctor_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="recovery_sheet.doctor_id.firstname"/> <span t-field="recovery_sheet.doctor_id.middlename"/> <span t-field="recovery_sheet.doctor_id.lastname"/> <span t-field="recovery_sheet.doctor_id.surname"/> | <span><strong>Profesión: </strong><span t-field="recovery_sheet.doctor_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="recovery_sheet.doctor_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
@@ -429,7 +429,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="quirgic_sheet.surgeon_id.firstname"/> <span t-field="quirgic_sheet.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="quirgic_sheet.surgeon_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="quirgic_sheet.surgeon_id.firstname"/> <span t-field="quirgic_sheet.surgeon_id.middlename"/> <span t-field="quirgic_sheet.surgeon_id.lastname"/> <span t-field="quirgic_sheet.surgeon_id.surname"/> | <span><strong>Profesión: </strong><span t-field="quirgic_sheet.surgeon_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="quirgic_sheet.surgeon_id.medical_record"/></span>
             </div>
    				<p style="page-break-after: always;"/>
    			</t>
@@ -712,8 +712,8 @@
             </div>
           <!--Espacio reservado para imprimir la firma del profesional encargado-->
           <div style="text-align: center; border-bottom: 1px solid black;">
-            <strong>Firma:</strong> <span t-field="presurgical_record.doctor_id.firstname"/> <span t-field="presurgical_record.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="presurgical_record.doctor_id.medical_record"/></span>
-          </div>
+              <strong>Firma:</strong> <span t-field="presurgical_record.doctor_id.firstname"/> <span t-field="presurgical_record.doctor_id.middlename"/> <span t-field="presurgical_record.doctor_id.lastname"/> <span t-field="presurgical_record.doctor_id.surname"/> | <span><strong>Profesión: </strong><span t-field="presurgical_record.doctor_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="presurgical_record.doctor_id.medical_record"/></span>
+            </div>
    				<p style="page-break-after: always;"/>
 			</t>
 			</div>
@@ -908,8 +908,8 @@
             </div>
           <!--Espacio reservado para imprimir la firma del profesional encargado-->
           <div style="text-align: center; border-bottom: 1px solid black;">
-            <strong>Firma:</strong> <span t-field="nurse_chief_sheet.doctor_id.firstname"/> <span t-field="nurse_chief_sheet.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="nurse_chief_sheet.doctor_id.medical_record"/></span>
-          </div>
+              <strong>Firma:</strong> <span t-field="nurse_chief_sheet.doctor_id.firstname"/> <span t-field="nurse_chief_sheet.doctor_id.middlename"/> <span t-field="nurse_chief_sheet.doctor_id.lastname"/> <span t-field="nurse_chief_sheet.doctor_id.surname"/> | <span><strong>Profesión: </strong><span t-field="nurse_chief_sheet.doctor_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="nurse_chief_sheet.doctor_id.medical_record"/></span>
+            </div>
           <p style="page-break-after: always;"/>
       </t>
       </div>
@@ -1067,7 +1067,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="anhestesic_registry.anesthesiologist_id.firstname"/> <span t-field="anhestesic_registry.anesthesiologist_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="anhestesic_registry.anesthesiologist_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="anhestesic_registry.anesthesiologist_id.firstname"/> <span t-field="anhestesic_registry.anesthesiologist_id.middlename"/> <span t-field="anhestesic_registry.anesthesiologist_id.lastname"/> <span t-field="anhestesic_registry.anesthesiologist_id.surname"/> | <span><strong>Profesión: </strong><span t-field="anhestesic_registry.anesthesiologist_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="anhestesic_registry.monitor_indu_anesthesiologist_id.medical_record"/></span>
             </div>
        			<p style="page-break-after: always;"/>
        		</t>
@@ -1124,7 +1124,7 @@
                     <strong>Date of birth: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.birth_date"/><br/>
                   </t>
                   <t t-if="plastic_surgery.patient_id.age">
-                    <strong>Age: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.age_unit"/><br/>
+                    <strong>Age: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age"/><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.age_unit"/><br/>
                   </t>
                   <t t-if="plastic_surgery.patient_id.user_type">
                     <strong>User type: </strong><span style="padding-left:2px;" t-field="plastic_surgery.patient_id.user_type"/><br/>
@@ -1238,7 +1238,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="plastic_surgery.doctor_id.firstname"/> <span t-field="plastic_surgery.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="plastic_surgery.doctor_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="plastic_surgery.doctor_id.firstname"/> <span t-field="plastic_surgery.doctor_id.middlename"/> <span t-field="plastic_surgery.doctor_id.lastname"/> <span t-field="plastic_surgery.doctor_id.surname"/> | <span><strong>Profesión: </strong><span t-field="plastic_surgery.doctor_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="plastic_surgery.doctor_id.medical_record"/></span>
             </div>
    				<p style="page-break-after: always;"/>
 			</t>
@@ -1358,7 +1358,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="medical_evolution.surgeon_id.firstname"/> <span t-field="medical_evolution.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="medical_evolution.surgeon_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="medical_evolution.surgeon_id.firstname"/> <span t-field="medical_evolution.surgeon_id.middlename"/> <span t-field="medical_evolution.surgeon_id.lastname"/> <span t-field="medical_evolution.surgeon_id.surname"/> | <span><strong>Profesión: </strong><span t-field="medical_evolution.surgeon_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="medical_evolution.surgeon_id.medical_record"/></span>
             </div>
    				<p style="page-break-after: always;"/>
 			</t>
@@ -1470,7 +1470,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="epicrisis.professional_id.firstname"/> <span t-field="epicrisis.professional_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="epicrisis.professional_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="epicrisis.professional_id.firstname"/> <span t-field="epicrisis.professional_id.middlename"/> <span t-field="epicrisis.professional_id.lastname"/> <span t-field="epicrisis.professional_id.surname"/> | <span><strong>Profesión: </strong><span t-field="epicrisis.professional_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="epicrisis.professional_id .medical_record"/></span>
             </div>
        			<p style="page-break-after: always;"/>
        		</t>
@@ -1570,7 +1570,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="prescription.doctor_id.firstname"/> <span t-field="prescription.doctor_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="prescription.doctor_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="prescription.doctor_id.firstname"/> <span t-field="prescription.doctor_id.middlename"/> <span t-field="prescription.doctor_id.lastname"/> <span t-field="prescription.doctor_id.surname"/> | <span><strong>Profesión: </strong><span t-field="prescription.doctor_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="prescription.doctor_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
@@ -1686,7 +1686,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="surgical_technologist.surgeon_id.firstname"/> <span t-field="surgical_technologist.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="surgical_technologist.surgeon_id.firstname"/> <span t-field="surgical_technologist.surgeon_id.middlename"/> <span t-field="surgical_technologist.surgeon_id.lastname"/> <span t-field="surgical_technologist.surgeon_id.surname"/> | <span><strong>Profesión: </strong><span t-field="surgical_technologist.surgeon_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="surgical_technologist.surgeon_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
@@ -1905,7 +1905,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="post_anhestesic.surgeon_id.firstname"/> <span t-field="post_anhestesic.surgeon_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="post_anhestesic.surgeon_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="post_anhestesic.surgeon_id.firstname"/> <span t-field="post_anhestesic.surgeon_id.middlename"/> <span t-field="post_anhestesic.surgeon_id.lastname"/> <span t-field="post_anhestesic.surgeon_id.surname"/> | <span><strong>Profesión: </strong><span t-field="post_anhestesic.surgeon_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="post_anhestesic.surgeon_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
@@ -2248,7 +2248,7 @@
             </div>
             <!--Espacio reservado para imprimir la firma del profesional encargado-->
             <div style="text-align: center; border-bottom: 1px solid black;">
-              <strong>Firma:</strong> <span t-field="quirurgical_checklist.anesthesiologist_id.firstname"/> <span t-field="quirurgical_checklist.anesthesiologist_id.lastname"/> | <span><strong>Registro Médico: </strong><span t-field="quirurgical_checklist.anesthesiologist_id.medical_record"/></span>
+              <strong>Firma:</strong> <span t-field="quirurgical_checklist.surgeon_id.firstname"/> <span t-field="quirurgical_checklist.surgeon_id.middlename"/> <span t-field="quirurgical_checklist.surgeon_id.lastname"/> <span t-field="quirurgical_checklist.surgeon_id.surname"/> | <span><strong>Profesión: </strong><span t-field="quirurgical_checklist.surgeon_id.profession_type"/></span> | <span><strong>Registro Médico: </strong><span t-field="quirurgical_checklist.surgeon_id.medical_record"/></span>
             </div>
             <p style="page-break-after: always;"/>
           </t>
