@@ -246,7 +246,7 @@ class DoctorAdministrativeData(models.Model):
     residence_country_id = fields.Many2one('res.country', string='Residence Country', required=True, default=lambda self: self.env.ref('base.co'))
     residence_department_id = fields.Many2one('res.country.state', string='Residence Department/City', required=True, default=lambda self: self.env.ref('base.state_co_03'))
     # residence_city_id = fields.Many2one('res.country.state.city', string='Residence Location/City/Town', required=True, default=lambda self: self.env.ref('clinica_doctor_data.res_country_state_city_co_03001'))
-    residence_city_id = fields.Many2one('res.country.state.city', string='Residence Location/City/Town', required=True)
+    residence_city_id = fields.Many2one('res.country.state.city', string='Residence Location/City/Town', required=False)
 #    residence_district = fields.Char(string='Residence Districts/localties/areas', required=True)
 #     residence_neighborhood = fields.Char(string='Residence Neighborhood')
     residence_address = fields.Text(string="Residence Address")
