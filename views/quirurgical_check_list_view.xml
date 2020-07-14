@@ -178,7 +178,7 @@
 	         					<label for="equipments_in_order"/><br/><br/>
 	         					<label for="venous_pressure_working"/><br/><br/>
 	         					<label for="supplies_delivered"/><br/><br/>
-	         					<label for="pay"/><br/><br/>
+	         					<label for="pay"/><br/><br/><br/>
 	         					<label for="proc_bill_pay"/><br/><br/>
 	         					<label for="scheduled_nurse_id"/>
 	         				</div>
@@ -186,13 +186,13 @@
 	         					<field name="full_staff_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
 	         					<field name="monitoring_induction_complete" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/><br/>
 	         					<!-- <field name="monitor_indu_anesthesiologist_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','anesthesiologist')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/><br/> -->
-	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/><br/><br/>
+	         					<field name="is_scheduled" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/><br/>
 	         					<!-- <field name="scheduled_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/> -->
 	         					<!-- <field name="scheduled_patient_id" nolabel="1" class="oe_inline" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/> -->
 	         					<field name="equipments_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
 	         					<!-- <field name="equipments_room_surgeon_id" nolabel="1" class="oe_inline" domain="[('profession_type','=','plastic_surgeon')]" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/> -->
 	         					<field name="materials_in_room" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
-	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/><br/>
+	         					<field name="equipments_in_order" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
 	         					<field name="venous_pressure_working" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
 	         					<field name="supplies_delivered" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
 	         					<field name="pay" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('intra_surgery_active','=',True)]}"/><br/><br/>
