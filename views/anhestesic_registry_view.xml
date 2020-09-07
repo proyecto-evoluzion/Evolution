@@ -24,12 +24,13 @@
          				<field name='intervention_date' required="1"  attrs="{'readonly':[('state','=','closed')]}"/>
          			</group>
          			<group name="main_sub_group2" >
-                <field name='room_id'/>
+                <field name='room_id' invisible="1"/>
          			</group>
          		</group>
             <group name="patient">
                 <field name='patient_id' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
 				<field name='document_type' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
+				<field name='numberid' required="1"  attrs="{'invisible':[('allergic_active','=',True)],'readonly':[('state','=','closed')]}" style="width: 70%;"/>
 			</group>
 			<group class="col-md-12" name="patient_allergic_alert">
 				<div attrs="{'invisible':[('allergic_active','=',False)]}">

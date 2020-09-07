@@ -237,7 +237,8 @@
             name="Cuidado Post-Anestésico"
             parent="menu_doctor_process"
             action="action_clinica_post_anhestesic_care"
-            sequence="8"/>
+            sequence="8"
+            groups="base.group_system,clinica_doctor_data.administrative_assistant,clinica_doctor_data.anesthesiologist,clinica_doctor_data.clinical_auditor,clinica_doctor_data.management"/>
            
         
 </odoo>         

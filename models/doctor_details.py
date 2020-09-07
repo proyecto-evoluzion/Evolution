@@ -49,11 +49,18 @@ class AssurancePlan(models.Model):
 
 class DoctorDiseases(models.Model):
     _name = "doctor.diseases"
+    _rec_name = 'code_name'
 
     code = fields.Char('Code', size=4, required=True)
     name = fields.Char('Disease', size=256, required=True)
+    code_name = fields.Char('Codigo y Nombre', size=256)
 
     _sql_constraints = [('code_uniq', 'unique (code)', 'The Medical Diseases code must be unique')]
+
+    def set_code_name(self):
+        diseases_obj = self.env['doctor.diseases'].search([('id','>',0)])
+        for diseases in diseases_obj:
+            diseases.code_name = diseases.code +' '+ diseases.name
     
 class AppointmentType(models.Model):
     _name = "clinica.appointment.type"

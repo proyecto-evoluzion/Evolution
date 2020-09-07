@@ -209,6 +209,7 @@
 	         				</div>
 	         				<div class="col-md-8">
 	         					<field name="doctor_done_additionaly" nolabel="1" class="oe_inline" widget="radio" options="{'horizontal': true}" attrs="{'readonly':[('post_surgery_active','=',True)]}"/><br></br><br></br>
+	         					<field name="doctor_done_additionaly_text" attrs="{'invisible':[('doctor_done_additionaly','!=','yes')],'readonly':[('post_surgery_active','=',True)]}"/>
 	         				</div>
 	         			</div>
 	         			<div class="col-md-12">

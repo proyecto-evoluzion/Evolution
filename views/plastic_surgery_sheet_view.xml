@@ -21,7 +21,7 @@
                             <field name='type_id' attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
             			</group>
             			<group name="main_sub_group2" >
-                            <field name='number' readonly="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name='number' invisible="1" attrs="{'readonly':[('state','=','closed')]}"/>
                             <field name='numberid' invisible="1"/>
             				<field name='numberid_integer' invisible="1"/>
             			</group>
@@ -114,7 +114,7 @@
                             <group>
                             <!-- <field name='disease_type' /> -->
                             <!-- <field name='disease_state' attrs="{'invisible':[('disease_type','=','related')]}" string="Kind"/> -->
-                            <field name='disease_state' attrs="{'readonly':[('state','=','closed')]}"/>
+                            <field name='disease_state' attrs="{'readonly':[('state','=','closed')]}" invisible="1"/>
                             </group>  
                         </group>
                         
@@ -122,7 +122,7 @@
                             <label for="treatment" string="Treatment"/>
                             <field name="treatment" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         </group>
-                        <group name="template">
+                        <group name="template" invisible="1">
 		         			<group name="template_sub1">
 		         				<field name='medical_recipe_template_id' options="{'no_create_edit': True}"
 		         					domain="[('user_id','=',uid),('type','=','medical_recipe')]" attrs="{'readonly':[('state','=','closed')]}"/>

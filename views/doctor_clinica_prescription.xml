@@ -27,7 +27,7 @@
               <field name="doctor_id" attrs="{'readonly':[('state','=','closed')]}"/>
               <field name="profession_type" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
-             <group string="Prescribe"> 
+             <group string="Orden Médica"> 
               <field name="order" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
             </group>
             <group>

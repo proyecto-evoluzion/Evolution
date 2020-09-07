@@ -28,8 +28,9 @@
 		         	</group>
 		        </group>
             <group name="patient" col="4">
-              <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
-              <field name='tdoc' required="1" readonly="1"/>
+              <field name='patient_id' required="1" attrs="{'readonly':[('state','=','closed')]}"/><br></br>
+              <field name='tdoc' required="1" readonly="1"/><br></br>
+              <field name='numberid' required="1" readonly="1"/>
               <field name='surgeon_id' invisible="1"/>
             </group>
          	    <notebook>

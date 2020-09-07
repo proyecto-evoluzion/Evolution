@@ -116,6 +116,7 @@ class ClinicaQuirurgicalCheckList(models.Model):
 	
 	#POST OPERATORY fields
 	doctor_done_additionaly = fields.Selection([('yes','Yes'),('no', 'No')], string="Doctor something was done additionally or changed the procedure")
+	doctor_done_additionaly_text = fields.Text(string="doctor_done_additionaly ")
 	sample_delivered = fields.Selection([('yes','Yes'),('no', 'No')], string="Samples were delivered to the laboratory")
 	sample_delivered_text = fields.Text(string="Delivered Samples Details")
 	sample_delivered_pay = fields.Selection([('doctor','Medico'),('patient', 'Paciente')], string="Who pay the samples delivered to the laboratory")
