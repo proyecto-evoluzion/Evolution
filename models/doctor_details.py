@@ -340,28 +340,28 @@ class DoctorAdministrativeData(models.Model):
     epicrisis_ids = fields.One2many('doctor.epicrisis', 'patient_id', string="Epicrisis", copy=False)
     
     @api.multi
-    def name_get(self):
-        res = []
-        for patient in self:
-            ref = patient.ref
-            if ref == 0:
-                name = '['+patient.name+'] '+patient.patient_name
-            else :
-                name = '['+str(patient.ref)+'] '+patient.patient_name
-            res.append((patient.id, name))
-        return res
-
-    @api.model
-    def name_search(self, name='', args=None, operator='ilike', limit=100):
-        args = args or []
-        ids = []
-        if name:
-            ids = self.search([('name', 'ilike', name)] + args, limit=limit)
-            if not ids:
-                ids = self.search([('patient_name', operator, name)] + args, limit=limit)
-        else:
-            ids = self.search(args, limit=limit)
-        return ids.name_get()
+    def setting_names(self):
+        for patient in self.env['doctor.patient'].search([]):
+            partner_vals = {}
+            patient.patient_name = ''
+            partner_obj = self.env['res.partner'].search([('id','=',patient.partner_id.id)])
+            print(partner_obj)
+            firstname = patient.firstname
+            lastname = patient.lastname
+            patient.patient_name += lastname +' '
+            partner_vals.update({'x_lastname1': lastname})
+            if patient.surname:
+                surname = patient.surname            
+                patient.patient_name += surname +' '                
+                partner_vals.update({'x_lastname2': surname})
+            patient.patient_name += firstname +' '
+            partner_vals.update({'x_name1': firstname})
+            if patient.middlename:
+                middlename = patient.middlename
+                patient.patient_name += middlename
+                partner_vals.update({'x_name2': middlename})
+            partner_vals.update({'name': patient.patient_name})
+            partner_obj.write(partner_vals)
 
     
     @api.multi
@@ -577,6 +577,11 @@ class DoctorAdministrativeData(models.Model):
                  or 'birth_date' in vals or 'email' in vals or 'phone' in vals or 'mobile' in vals or 'image' in vals \
                  or 'residence_district' in vals or 'residence_department_id' in vals or 'residence_country_id' in vals or 'residence_address' in vals:
             for data in self:
+                firstname = data.firstname or ''
+                lastname = data.lastname or ''
+                middlename = data.middlename or ''
+                surname = data.surname or ''
+                data.patient_name = lastname + ' ' + surname + ' ' + firstname + ' ' +  middlename
                 if data.partner_id:
                     partner_vals = data._get_related_partner_vals(vals)
                     data.partner_id.write(partner_vals)
