@@ -32,11 +32,21 @@
             </xpath>
 
             <field name="quantity_done" position="after">
+                <field name="product_return" readonly="1" force_save="1"/>
                 <field name="product_cost" readonly="1" force_save="1"/>
             </field>
 
+            <field name="quantity_done" position="attributes">
+              <attribute name="string">Gastado</attribute>
+            </field>
+
+            <field name="reserved_availability" position="attributes">
+              <attribute name="invisible">1</attribute>
+            </field>
+
             <xpath expr="//field[@name='move_lines']/tree/field[@name='product_uom_qty']" position="replace">
-            	<field name="product_uom_qty"/>
+              <field name="product_uom_qty" string="Demanda Inicial"/>
+            	<field name="product_delivered"/>
             </xpath>
 
             <!-- <field name="product_uom_qty" position="replace">

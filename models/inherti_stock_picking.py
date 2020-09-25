@@ -27,3 +27,11 @@ class InheritStockMove(models.Model):
     _inherit = "stock.move"
 
     product_cost = fields.Float(string="Costo")
+    product_delivered = fields.Float(string="Entregado")
+    # product_return = fields.Float(string='Devuelto')
+    product_return = fields.Float(string='Devuelto', compute='_compute_product_return')
+
+    @api.depends('product_delivered', 'quantity_done')
+    def _compute_product_return(self):
+        for move in self:
+            move.product_return = move.product_delivered - move.quantity_done
