@@ -1156,9 +1156,9 @@
               </tr>
             </table>
             <div>
-              <t t-if="plastic_surgery.consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
-              <t t-if="plastic_surgery.consultation_reason">
-                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.consultation_reason"/><br/>
+              <t t-if="plastic_surgery.this_consultation_reason"><strong style="font-size:12px;">REASON FOR CONSULTATION</strong><br/></t>
+              <t t-if="plastic_surgery.this_consultation_reason">
+                <span style="padding-left:2px; font-size:12px;" t-field="plastic_surgery.this_consultation_reason"/><br/>
               </t>
               <t t-if="plastic_surgery.pathological"><strong style="font-size:12px;">PATHOLOGICAL</strong><br/></t>
               <t t-if="plastic_surgery.pathological">

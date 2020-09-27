@@ -34,9 +34,10 @@
             			<field name='document_type' required="1" attrs="{'readonly':[('state','=','closed')]}"/>
                         <field name="gender" invisible="1"  attrs="{'readonly':[('state','=','closed')]}"/>
             		</group>
-            		<group name="consultation_reason" colspan="2" col='1'>
-                         <label for="consultation_reason" string="Reason for Consultation" attrs="{'readonly':[('state','=','closed')]}"/>
-                         <field name="consultation_reason" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
+                     <group name="consultation_reason" colspan="2" col='1'>
+                         <label for="this_consultation_reason" string="Motivo de Consulta"/>
+                         <field name="consultation_reason" invisible="1"/>
+                         <field name="this_consultation_reason" nolabel="1" attrs="{'readonly':[('state','=','closed')]}"/>
                      </group>
             				
             		<notebook>

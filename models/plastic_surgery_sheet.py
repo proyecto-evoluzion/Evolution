@@ -69,6 +69,7 @@ class PlasticSurgerySheet(models.Model):
     blood_rh = fields.Selection([('positive','+'),('negative','-')], string='Rh')
     
     consultation_reason = fields.Text(string="Reason for Consultation", related="patient_id.consultation_reason")
+    this_consultation_reason = fields.Text(string="Motivo de Consulta")
     pathological = fields.Text(string="Pathological", related='patient_id.pathological')
     surgical = fields.Text(string="Surgical", related='patient_id.surgical')
     toxic = fields.Text(string="Toxic")
@@ -161,7 +162,7 @@ class PlasticSurgerySheet(models.Model):
     @api.onchange('patient_id')
     def onchange_consultation_reason(self):
         if self.patient_id:
-            self.consultation_reason = self.patient_id.consultation_reason
+            self.this_consultation_reason = self.patient_id.consultation_reason
             self.numberid = self.patient_id.name
             self.document_typee = self.patient_id.tdoc
             self.numberid_integer = int(self.patient_id.name)
@@ -262,6 +263,8 @@ class PlasticSurgerySheet(models.Model):
                 raise ValidationError(warn_msg)
         
         res = super(PlasticSurgerySheet, self).create(vals)
+        if res.this_consultation_reason:
+            res.consultation_reason = res.this_consultation_reason
         res._check_document_types()
         return res
     
