@@ -29,35 +29,40 @@ class InheritSaleOrderEv(models.Model):
     @api.multi
     def action_confirm(self):
         res = super(InheritSaleOrderEv, self).action_confirm()
-        bom_dir = {}
-        move_new_name = ''
+        # bom_dir = {}
+        # move_new_name = ''
         pick_obj = self.env['stock.picking'].search([('origin', '=', self.name)])
-        for move_to_delete in pick_obj:
-            for moves in move_to_delete.move_lines:
-                moves.state = 'draft'
-                move_new_name = moves.name
-            move_to_delete.move_lines.unlink()
+        out_move_obj = self.env['copy.stock.move'].search([('origin', '=', self.name)])
+        for move_to_delete in out_move_obj:
+            print(move_to_delete)
+            move_to_delete.write({'picking_id': pick_obj.id})
+        #     move_to_delete.move_lines = [(6,0,[])]
+            # for moves in move_to_delete.move_lines:
+            #     moves.state = 'draft'
+            #     move_new_name = moves.name
+            # move_to_delete.move_lines.unlink()
 
-            bom_obj = self.env['mrp.bom'].search([('id', '=', 14)])
-            for bom_line in bom_obj.bom_line_ids:
-                bom_dir = {
-                    'name': bom_obj.product_tmpl_id.name,
-                    'product_id': bom_line.product_id.id,
-                    'product_uom_qty': bom_line.product_qty,
-                    'product_uom': bom_line.product_uom_id.id,
-                    'state': 'assigned',
-                    'date_expected': move_to_delete.date,
-                    'date': move_to_delete.date,
-                    'partner_id': self.partner_id.id,
-                    'picking_id': move_to_delete.id,
-                    'origin': self.name,
-                    'reference': move_to_delete.name,
-                    'sale_line_id': self.id,
-                    'location_id': move_to_delete.location_id.id,
-                    'location_dest_id': move_to_delete.location_dest_id.id,
-                    'picking_type_id': move_to_delete.picking_type_id.id,
-                }
-                self.env['stock.move'].create(bom_dir)
-        self.picking_ids = [(6,0,pick_obj.ids)]
+            # bom_obj = self.env['mrp.bom'].search([('id', '=', 14)])
+            # for bom_line in bom_obj.bom_line_ids:
+            #     bom_dir = {
+            #         'name': bom_obj.product_tmpl_id.name,
+            #         'product_id': bom_line.product_id.id,
+            #         'product_uom_qty': bom_line.product_qty,
+            #         'product_uom': bom_line.product_uom_id.id,
+            #         'state': 'assigned',
+            #         'date_expected': move_to_delete.date,
+            #         'date': move_to_delete.date,
+            #         'partner_id': self.partner_id.id,
+            #         'picking_id': move_to_delete.id,
+            #         'origin': self.name,
+            #         'reference': move_to_delete.name,
+            #         'sale_line_id': self.id,
+            #         'location_id': move_to_delete.location_id.id,
+            #         'location_dest_id': move_to_delete.location_dest_id.id,
+            #         'picking_type_id': move_to_delete.picking_type_id.id,
+            #     }
+            #     self.env['stock.move'].create(bom_dir)
+            # move_to_delete.sale_id = self.id
+        # self.picking_ids = [(6,0,pick_obj.ids)]
 
         return res

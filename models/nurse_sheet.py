@@ -219,29 +219,32 @@ class ClinicaNurseSheet(models.Model):
                                                     'product_uom_qty': move.product_uom_qty,
                                                     'quantity_done': move.quantity_done,
                                                     'move_id': move.id}))
-            if procedure_list:
-                pivot_list = []
-                final_list = []
-                sort_name = []
-                count = 0
-                for no_rep in procedure_list:
-                    no_repeat.append(no_rep[2]['product_id'])
-                    no_repeat_name.append(no_rep[2]['product_id_name'])
-                pivot = sorted(no_repeat)
-                sort_name = sorted(no_repeat_name, key=str.lower)
-                aux = list(set(pivot))
-                for no_rep in procedure_list:
-                    if no_rep[2]['product_id'] in aux:
-                        count += 1
-                        pivot_list.append(no_rep)                       
-                        aux.remove(no_rep[2]['product_id'])
-                for pv in sort_name:
-                    for no_rep in pivot_list:
-                        if pv == no_rep[2]['product_id_name']:
-                            final_list.append(no_rep)
+            # if procedure_list:
+            #     pivot_list = []
+            #     final_list = []
+            #     sort_name = []
+            #     count = 0
+            #     print(procedure_list)
+            #     for no_rep in procedure_list:
+            #         no_repeat.append(no_rep[2]['product_id'])
+            #         no_repeat_name.append(no_rep[2]['product_id_name'])
+            #     pivot = sorted(no_repeat)
+            #     print(pivot)
+            #     bb
+            #     sort_name = sorted(no_repeat_name, key=str.lower)
+            #     aux = list(set(pivot))
+            #     for no_rep in procedure_list:
+            #         if no_rep[2]['product_id'] in aux:
+            #             count += 1
+            #             pivot_list.append(no_rep)                       
+            #             aux.remove(no_rep[2]['product_id'])
+            #     for pv in sort_name:
+            #         for no_rep in pivot_list:
+            #             if pv == no_rep[2]['product_id_name']:
+            #                 final_list.append(no_rep)
 
-                print(len(final_list))
-                procedure_list = final_list
+            #     print(len(final_list))
+            #     procedure_list = final_list
             sequence = 0
             first_line = False
             for sale_line in room.sale_order_id.order_line:
@@ -346,18 +349,14 @@ class ClinicaNurseSheet(models.Model):
     @api.multi
     def action_update_stock(self):
         for nurse_sheet in self:
-            #DevFree: Complete picking move_line update
-            move_list = []
-            move_lines = []
-            for procedures in nurse_sheet.procedure_ids:
-                move_lines.append(procedures.move_id.id)
-            move_list.append((6,0,move_lines))
-            for picking in nurse_sheet.room_id.sale_order_id.picking_ids:
-                picking.move_lines = move_list
             #DevFree: Simple picking qty update
             for procedure_line in nurse_sheet.procedure_ids:
                 if procedure_line.move_id:
-                    procedure_line.move_id.quantity_done = procedure_line.quantity_done
+                    for copy in self.env['copy.stock.move'].search([('picking_id','=',procedure_line.move_id.picking_id.id),('product_id','=',procedure_line.move_id.product_id.id)]):
+                        # procedure_line.move_id.quantity_done = procedure_line.quantity_done
+                        print(copy)
+                        copy.write({'quantity_done': procedure_line.quantity_done})
+                        break
             nurse_sheet.updated_stock = True
         return True
     

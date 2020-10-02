@@ -26,18 +26,18 @@
                   attrs="{'invisible': [('state', '!=', 'done')]}"/>
             </div>
 
+            <field name="location_id" position="after">
+              <field name="pivot_invisible" invisible="1" force_save="1"/>
+              <field name="aux_move_lines" invisible="1" force_save="1"/>
+            </field>
+
             <xpath expr="//field[@name='move_lines']/tree" position="attributes">
                 <attribute name="default_order">product_id asc</attribute>
                 <attribute name="limit">10000</attribute>
             </xpath>
 
             <field name="quantity_done" position="after">
-                <field name="product_return" readonly="1" force_save="1"/>
                 <field name="product_cost" readonly="1" force_save="1"/>
-            </field>
-
-            <field name="quantity_done" position="attributes">
-              <attribute name="string">Gastado</attribute>
             </field>
 
             <field name="reserved_availability" position="attributes">
@@ -46,19 +46,55 @@
 
             <xpath expr="//field[@name='move_lines']/tree/field[@name='product_uom_qty']" position="replace">
               <field name="product_uom_qty" string="Demanda Inicial"/>
-            	<field name="product_delivered"/>
             </xpath>
 
-            <!-- <field name="product_uom_qty" position="replace">
-            	<field name="product_uom_qty" readonly="0"/>
-            </field> -->
-
+            <!--Se fijan nuevos campos despues de la linea de productos-->
             <field name="move_lines" position="after">
                 <strong class="pull-right">
                   <label for="total_cost"/>:<br/>
                   <field name="total_cost" readonly="1" force_save="1"/>
                 </strong>
             </field>
+
+            <field name="move_lines" position="after">
+              <field name="out_move_lines" attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)],'invisible': [('pivot_invisible', '=', True)]}" context="{'picking_type_code': picking_type_code, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
+                <tree string="Stock Moves" editable="bottom" default_order="product_id asc" limit="10000">
+                  <field name="name" invisible="1"/>
+                  <field name="date_expected" invisible="1"/>
+                  <field name="state" invisible="1" readonly="0"/>
+                  <field name="picking_type_id" invisible="1"/>
+                  <field name="location_id" invisible="1"/>
+                  <field name="location_dest_id" invisible="1"/>
+                  <field name="product_id" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}" string="Producto"/>
+                  <field name="product_uom_qty" string="Demanda Inicial"/>
+                  <field name="product_delivered"/>
+                  <field name="quantity_done"/>
+                  <field name="product_return" readonly="1" force_save="1"/>
+                  <field name="product_cost" readonly="1" force_save="1"/>
+                  <field name="product_uom" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open': True, 'no_create': True}" string="Unidad de Medida" groups="product.group_uom"/>
+                </tree>
+              </field>
+              <field name="in_move_lines" attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)],'invisible': [('pivot_invisible', '=', False)]}" context="{'picking_type_code': picking_type_code, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
+                <tree string="Stock Moves" editable="bottom" default_order="product_id asc" limit="10000">
+                  <field name="name" invisible="1"/>
+                  <field name="date_expected" invisible="1"/>
+                  <field name="state" invisible="1" readonly="0"/>
+                  <field name="picking_type_id" invisible="1"/>
+                  <field name="location_id" invisible="1"/>
+                  <field name="location_dest_id" invisible="1"/>
+                  <field name="product_id" required="1" attrs="{'readonly': [('state', '!=', 'draft')]}" string="Producto"/>
+                  <field name="product_uom_qty" string="Cantidad solicitada"/>
+                  <field name="quantity_done"/>
+                  <field name="product_cost" readonly="1" force_save="1"/>
+                  <field name="product_uom" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open': True, 'no_create': True}" string="Unidad de Medida" groups="product.group_uom"/>
+                </tree>
+              </field>
+            </field>
+
+            <field name="move_lines" position="attributes">
+              <attribute name="attrs">{'invisible': [('aux_move_lines', '=', False)]}</attribute>
+            </field>
+
        </field>
     </record>
     
