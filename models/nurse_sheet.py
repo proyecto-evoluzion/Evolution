@@ -349,6 +349,22 @@ class ClinicaNurseSheet(models.Model):
     @api.multi
     def action_update_stock(self):
         for nurse_sheet in self:
+            #DevFree: Complete picking move_line update
+            move_list = []
+            move_lines = []
+            copy_lines = []
+            for procedures in nurse_sheet.procedure_ids:
+                move_lines.append(procedures.move_id.id)
+            move_list.append((6,0,move_lines))
+            for picking in nurse_sheet.room_id.sale_order_id.picking_ids:
+                picking.move_lines = move_list
+                for new_moves in picking.move_lines:
+                    for copy_moves in picking.out_move_lines:
+                        if copy_moves.product_id.id == new_moves.product_id.id:
+                            copy_lines.append(copy_moves.id)
+                picking.out_move_lines = copy_lines
+
+
             #DevFree: Simple picking qty update
             for procedure_line in nurse_sheet.procedure_ids:
                 if procedure_line.move_id:
