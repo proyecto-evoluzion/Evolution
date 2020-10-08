@@ -46,6 +46,44 @@ class InheritStockPicking(models.Model):
     			res.pivot_invisible = False
     	return res
 
+    @api.multi
+    def mirror_data(self):
+        copy_vals = {}
+        aux1 = 0
+        aux2 = 0
+        for pick in self.env['stock.picking'].search([('id','>',0)]):
+        # for pick in self.env['stock.picking'].search([('id','=',4706)]):
+            for move in pick.move_lines:
+                copy_vals = {
+                    'name': move.name,
+                    'product_id': move.product_id.id,
+                    'product_uom_qty': move.product_qty,
+                    'product_uom': move.product_uom.id,
+                    'state': move.state,
+                    'date_expected': move.date_expected,
+                    'date': move.date,
+                    'partner_id': move.partner_id.id,
+                    'picking_id': move.picking_id.id,
+                    'origin': move.origin,
+                    'reference': move.reference,
+                    'location_id': move.location_id.id,
+                    'location_dest_id': move.location_dest_id.id,
+                    'picking_type_id': move.picking_type_id.id,
+                }
+                print(copy_vals)
+                if pick.picking_type_id.code == 'outgoing':
+                    if len(pick.out_move_lines.ids) == 0 or aux1 == 1:
+                        self.env['copy.stock.move'].create(copy_vals)
+                        aux1 = 1
+                elif pick.picking_type_id.code == 'incoming':
+                    if len(pick.in_move_lines.ids) == 0 or aux2 == 1:
+                        self.env['copy.stock.move2'].create(copy_vals)
+                        aux2 = 1
+                copy_vals = {}
+            aux1 = 0
+            aux2 = 0
+
+
 
 class InheritStockMove(models.Model):
     _inherit = "stock.move"
