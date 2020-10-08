@@ -49,10 +49,7 @@ class InheritStockPicking(models.Model):
     @api.multi
     def mirror_data(self):
         copy_vals = {}
-        aux1 = 0
-        aux2 = 0
         for pick in self.env['stock.picking'].search([('id','>',0)]):
-        # for pick in self.env['stock.picking'].search([('id','=',4706)]):
             for move in pick.move_lines:
                 copy_vals = {
                     'name': move.name,
@@ -72,16 +69,10 @@ class InheritStockPicking(models.Model):
                 }
                 print(copy_vals)
                 if pick.picking_type_id.code == 'outgoing':
-                    if len(pick.out_move_lines.ids) == 0 or aux1 == 1:
-                        self.env['copy.stock.move'].create(copy_vals)
-                        aux1 = 1
+                    self.env['copy.stock.move'].create(copy_vals)
                 elif pick.picking_type_id.code == 'incoming':
-                    if len(pick.in_move_lines.ids) == 0 or aux2 == 1:
-                        self.env['copy.stock.move2'].create(copy_vals)
-                        aux2 = 1
+                    self.env['copy.stock.move2'].create(copy_vals)
                 copy_vals = {}
-            aux1 = 0
-            aux2 = 0
 
 
 
