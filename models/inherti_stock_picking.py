@@ -67,7 +67,6 @@ class InheritStockPicking(models.Model):
                     'location_dest_id': move.location_dest_id.id,
                     'picking_type_id': move.picking_type_id.id,
                 }
-                print(copy_vals)
                 if pick.picking_type_id.code == 'outgoing':
                     self.env['copy.stock.move'].create(copy_vals)
                 elif pick.picking_type_id.code == 'incoming':
@@ -80,33 +79,36 @@ class InheritStockMove(models.Model):
     _inherit = "stock.move"
 
     product_cost = fields.Float(string="Costo")
+    no_mirror_data = fields.Boolean(string="No Mirror Data")
 
     @api.model
     def create(self, vals):
         copy_vals = {}
         res = super(InheritStockMove, self).create(vals)
-        copy_vals = {
-            'name': res.name,
-            'product_id': res.product_id.id,
-            'product_uom_qty': res.product_qty,
-            'product_uom': res.product_uom.id,
-            'state': res.state,
-            'date_expected': res.date_expected,
-            'date': res.date,
-            'partner_id': res.partner_id.id,
-            # 'picking_id': self.env['stock.picking'].search([('origin', '=', res.origin)]).id,
-            'origin': res.origin,
-            'reference': res.reference,
-            'location_id': res.location_id.id,
-            'location_dest_id': res.location_dest_id.id,
-            'picking_type_id': res.picking_type_id.id,
-        }
+        if not res.no_mirror_data:
+        	copy_vals = {
+	            'name': res.name,
+	            'product_id': res.product_id.id,
+	            'product_uom_qty': res.product_qty,
+	            'product_uom': res.product_uom.id,
+	            'state': res.state,
+	            'date_expected': res.date_expected,
+	            'date': res.date,
+	            'partner_id': res.partner_id.id,
+	            'origin': res.origin,
+	            'reference': res.reference,
+	            'location_id': res.location_id.id,
+	            'location_dest_id': res.location_dest_id.id,
+	            'picking_type_id': res.picking_type_id.id,
+	            'no_mirror_data': True,
+	        }
+	        print('aaa')
 
-        for picking_type in res.picking_type_id:
-        	if picking_type.code == 'outgoing':
-        		self.env['copy.stock.move'].create(copy_vals)
-        	elif picking_type.code == 'incoming':
-        		self.env['copy.stock.move2'].create(copy_vals)
+	        for picking_type in res.picking_type_id:
+	        	if picking_type.code == 'outgoing':
+	        		self.env['copy.stock.move'].create(copy_vals)
+	        	elif picking_type.code == 'incoming':
+	        		self.env['copy.stock.move2'].create(copy_vals)
         return res
 
     # @api.multi
@@ -170,6 +172,7 @@ class CopyStockMove(models.Model):
     # product_return = fields.Float(string='Devuelto')
     product_return = fields.Float(string='Devuelto', compute='_compute_product_return')
     quantity_done = fields.Float('Gastado', digits=dp.get_precision('Product Unit of Measure'))
+    no_mirror_data = fields.Boolean(string="No Mirror Data")
 
     @api.depends('product_delivered', 'quantity_done')
     def _compute_product_return(self):
@@ -183,10 +186,42 @@ class CopyStockMove(models.Model):
     		move_obj = self.env['stock.move'].search([('picking_id','=',moves.picking_id.id),('product_id','=',moves.product_id.id)])
     		if vals.get('quantity_done', False):
     			if move_obj:
-    				for moves in move_obj:
-    					moves.write({'quantity_done':vals.get('quantity_done')})
+    				for lines in move_obj:
+    					lines.write({'quantity_done':vals.get('quantity_done')})
 
     	return res
+
+    @api.model
+    def create(self, vals):
+        copy_vals = {}
+        res = super(CopyStockMove, self).create(vals)
+        if not res.no_mirror_data:
+        	copy_vals = {
+	            'name': 'Mirror',
+	            'product_id': res.product_id.id,
+	            'product_uom_qty': res.product_uom_qty,
+	            'quantity_done': res.quantity_done,
+	            'product_uom': 1,
+	            'partner_id': res.picking_id.partner_id.id,
+	            'picking_id': res.picking_id.id,
+	            'origin': res.picking_id.origin,
+	            'location_id': 15,
+	            'location_dest_id': 9,
+	            'picking_type_id': 4,
+	            'no_mirror_data': True,
+	        }
+        	self.env['stock.move'].create(copy_vals)
+        return res
+
+    @api.multi
+    def unlink(self):
+    	for moves in self:
+    		move_obj = self.env['stock.move'].search([('picking_id','=',moves.picking_id.id),('product_id','=',moves.product_id.id)])
+    		if move_obj:
+    			for lines in move_obj[0]:
+    				lines.unlink()
+
+    	return super(CopyStockMove, self).unlink()
 
 
 class CopyStockMove2(models.Model):
@@ -243,7 +278,7 @@ class CopyStockMove2(models.Model):
 
     	if vals.get('quantity_done', False):
     		if move_obj:
-    			for moves in move_obj:
-    				moves.write({'quantity_done':vals.get('quantity_done')})
+    			for lines in move_obj:
+    				lines.write({'quantity_done':vals.get('quantity_done')})
 
     	return res
