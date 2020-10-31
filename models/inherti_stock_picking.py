@@ -73,6 +73,28 @@ class InheritStockPicking(models.Model):
                     self.env['copy.stock.move2'].create(copy_vals)
                 copy_vals = {}
 
+    # TO-DO: Delete this method after use
+    # Para restar elementos entre listas
+    def Diff(self, li1, li2):
+    	return (list(list(set(li1)-set(li2)) + list(set(li2)-set(li1))))
+
+
+    def stock_quant_update(self):
+    	move_lines_products = []
+    	out_move_lines_products = []
+    	new_list = []
+    	for move_product in self.move_lines:
+    		move_lines_products.append(move_product.product_id.id)
+    	for out_move_product in self.out_move_lines:
+    		out_move_lines_products.append(out_move_product.product_id.id)
+    	new_list = self.Diff(move_lines_products, out_move_lines_products)
+    	if new_list:
+    		for id_product in new_list:
+    			quant = self.env['stock.quant'].search([('product_id', '=', id_product),('location_id','=',15)], limit=1)
+    			out_cpy_obj = self.env['copy.stock.move'].search([('product_id', '=', id_product),('picking_id','=',self.id)], limit=1)
+    			result = abs(quant.quantity) - out_cpy_obj.quantity_done
+    			quant.update({'quantity': result})
+
 
 
 class InheritStockMove(models.Model):
@@ -110,18 +132,6 @@ class InheritStockMove(models.Model):
 	        	elif picking_type.code == 'incoming':
 	        		self.env['copy.stock.move2'].create(copy_vals)
         return res
-
-    # @api.multi
-    # def write(self, vals):
-    # 	res = super(InheritStockMove, self).write(vals)
-    # 	move_obj = self.env['copy.stock.move'].search([('picking_id','=',self.picking_id.id),('product_id','=',self.product_id.id)])
-
-    # 	if move_obj:
-    # 		if vals.get('quantity_done', False):
-    # 			for moves in move_obj:
-    # 				moves.write({'quantity_done':vals.get('quantity_done')})
-
-    # 	return res
 
 class CopyStockMove(models.Model):
     _name = "copy.stock.move"

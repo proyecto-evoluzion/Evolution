@@ -24,6 +24,13 @@
                   icon="fa-arrows-v"
                   type="object"
                   attrs="{'invisible': [('state', '!=', 'done')]}"/>
+
+                  <!-- TO-DO: Delete after use. -->
+                  <button name="stock_quant_update"
+                  string="Actualizar Stock"
+                  class="oe_stat_button"
+                  icon="fa-arrows-v"
+                  type="object"/>
             </div>
 
             <field name="location_id" position="after">
