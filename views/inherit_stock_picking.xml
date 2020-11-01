@@ -79,6 +79,8 @@
                   <field name="product_return" readonly="1" force_save="1"/>
                   <field name="product_cost" readonly="1" force_save="1"/>
                   <field name="product_uom" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open': True, 'no_create': True}" string="Unidad de Medida" groups="product.group_uom"/>
+                  <button name="action_show_details" string="Lotes" type="object" icon="fa-list" attrs="{'invisible': [('show_details_visible', '=', False)]}" options="{&quot;warn&quot;: true}"/>
+                  <field name="show_details_visible" invisible="1"/>
                 </tree>
               </field>
               <field name="in_move_lines" attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)],'invisible': [('pivot_invisible', '=', False)]}" context="{'picking_type_code': picking_type_code, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
@@ -94,6 +96,8 @@
                   <field name="quantity_done"/>
                   <field name="product_cost" readonly="1" force_save="1"/>
                   <field name="product_uom" attrs="{'readonly': [('state', '!=', 'draft')]}" options="{'no_open': True, 'no_create': True}" string="Unidad de Medida" groups="product.group_uom"/>
+                  <button name="action_show_details" string="Lotes" type="object" icon="fa-list" attrs="{'invisible': [('show_details_visible', '=', False)]}" options="{&quot;warn&quot;: true}"/>
+                  <field name="show_details_visible" invisible="1"/>
                 </tree>
               </field>
             </field>
@@ -103,6 +107,55 @@
             </field>
 
        </field>
+    </record>
+
+    <!--Para vista de Lotes / Fecha vencimiento-->
+    <record id="stock.view_stock_move_operations" model="ir.ui.view">
+        <field name="name">stock.move.operations.form</field>
+        <field name="model">stock.move</field>
+        <field name="priority">1000</field>
+        <field name="arch" type="xml">
+            <form string="Operaciones detalladas">
+                <field name="state" invisible="1"/>
+                <field name="location_id" invisible="1"/>
+                <field name="location_dest_id" invisible="1"/>
+                <field name="picking_id" invisible="1"/>
+                <field name="is_locked" invisible="1"/>
+                <group>
+                    <group>
+                        <field name="product_id" readonly="1"/>
+                        <label for="product_uom_qty"/>
+                        <div class="o_row">
+                            <span><field name="product_uom_qty" readonly="1" nolabel="1"/></span>
+                            <span><field name="product_uom" readonly="1" nolabel="1"/></span>
+                        </div>
+                        <label for="quantity_done"/>
+                        <div class="o_row">
+                            <span><field name="quantity_done" readonly="1" nolabel="1"/></span>
+                            <span attrs="{'invisible': [('state', '=', 'done')]}"> / </span>
+                            <span><field name="reserved_availability" nolabel="1" attrs="{'invisible': [('state', '=', 'done')]}" /></span>
+                            <span><field name="product_uom" readonly="1" nolabel="1"/></span>
+                        </div>
+
+                    </group>
+                </group>
+                <field name="move_line_ids" attrs="{'readonly': ['|', ('state', '=', 'cancel'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)]}" context="{'tree_view_ref': 'stock.view_stock_move_line_operation_tree', 'default_product_uom_id': product_uom, 'default_picking_id': picking_id, 'default_move_id': id, 'default_product_id': product_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
+                  <tree string="Lineas" editable="bottom">
+                    <field name="location_id"/>
+                    <field name="location_dest_id"/>
+                    <field name="lot_name"/>
+                    <field name="invima"/>
+                    <field name="expiration_date"/>
+                    <field name="product_uom_qty"/>
+                    <field name="qty_done"/>
+                  </tree>
+                </field>
+                <footer class="oe_edit_only">
+                    <button string="Confirmar" special="save" class="oe_highlight"/>
+                    <button string="Descartar" special="cancel"/>
+                </footer>
+            </form>
+        </field>
     </record>
     
 </odoo>
