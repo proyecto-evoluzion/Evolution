@@ -183,33 +183,6 @@ class CopyStockMove(models.Model):
     product_return = fields.Float(string='Devuelto', compute='_compute_product_return')
     quantity_done = fields.Float('Gastado', digits=dp.get_precision('Product Unit of Measure'))
     no_mirror_data = fields.Boolean(string="No Mirror Data")
-    show_details_visible = fields.Boolean('Details Visible', compute='_compute_show_details_visible')
-    has_tracking = fields.Selection(related='product_id.tracking', string='Product with Tracking', readonly=True)
-    move_line_ids = fields.One2many('stock.move.line', 'move_id')
-    origin_returned_move_id = fields.Many2one('stock.move', 'Origin return move', copy=False, help='Move that created the return move')
-    returned_move_ids = fields.One2many('stock.move', 'origin_returned_move_id', 'All returned moves', help='Optional: all returned moves created from this move')
-
-    @api.depends('product_id', 'has_tracking', 'move_line_ids', 'location_id', 'location_dest_id')
-    def _compute_show_details_visible(self):
-        """ According to this field, the button that calls `action_show_details` will be displayed
-        to work on a move from its picking form view, or not.
-        """
-        for move in self:
-            if not move.product_id:
-                move.show_details_visible = False
-                continue
-
-            multi_locations_enabled = False
-            if self.user_has_groups('stock.group_stock_multi_locations'):
-                multi_locations_enabled = move.location_id.child_ids or move.location_dest_id.child_ids
-            has_package = move.move_line_ids.mapped('package_id') | move.move_line_ids.mapped('result_package_id')
-            consignment_enabled = self.user_has_groups('stock.group_tracking_owner')
-            if move.picking_id.picking_type_id.show_operations is False\
-                    and (move.state != 'draft' or (not self._context.get('planned_picking') and move.state == 'draft'))\
-                    and (multi_locations_enabled or move.has_tracking != 'none' or len(move.move_line_ids) > 1 or has_package or consignment_enabled):
-                move.show_details_visible = True
-            else:
-                move.show_details_visible = False
 
     @api.depends('product_delivered', 'quantity_done')
     def _compute_product_return(self):
@@ -278,6 +251,7 @@ class CopyStockMove(models.Model):
 
         picking_type_id = self.picking_type_id or self.picking_id.picking_type_id
         move_obj = self.env['stock.move'].search([('picking_id','=',self.picking_id.id),('product_id','=',self.product_id.id)], limit=1)
+
         return {
             'name': _('Detailed Operations'),
             'type': 'ir.actions.act_window',
@@ -287,15 +261,15 @@ class CopyStockMove(models.Model):
             'views': [(view.id, 'form')],
             'view_id': view.id,
             'target': 'new',
-            'res_id': self.id,
+            'res_id': move_obj.id,
             'context': dict(
-                self.env.context,
-                show_lots_m2o=self.has_tracking != 'none' and (picking_type_id.use_existing_lots or self.state == 'done' or self.origin_returned_move_id.id),  # able to create lots, whatever the value of ` use_create_lots`.
-                show_lots_text=self.has_tracking != 'none' and picking_type_id.use_create_lots and not picking_type_id.use_existing_lots and self.state != 'done' and not self.origin_returned_move_id.id,
-                show_source_location=self.location_id.child_ids,
-                show_destination_location=self.location_dest_id.child_ids,
-                show_package=not self.location_id.usage == 'supplier',
-                show_reserved_quantity=self.state != 'done'
+                move_obj.env.context,
+                show_lots_m2o=move_obj.has_tracking != 'none' and (picking_type_id.use_existing_lots or move_obj.state == 'done' or move_obj.origin_returned_move_id.id),  # able to create lots, whatever the value of ` use_create_lots`.
+                show_lots_text=move_obj.has_tracking != 'none' and picking_type_id.use_create_lots and not picking_type_id.use_existing_lots and move_obj.state != 'done' and not move_obj.origin_returned_move_id.id,
+                show_source_location=move_obj.location_id.child_ids,
+                show_destination_location=move_obj.location_dest_id.child_ids,
+                show_package=not move_obj.location_id.usage == 'supplier',
+                show_reserved_quantity=move_obj.state != 'done'
             ),
         }
 
@@ -346,33 +320,6 @@ class CopyStockMove2(models.Model):
 
     product_cost = fields.Float(string="Costo")
     quantity_done = fields.Float('Cantidad recibida', digits=dp.get_precision('Product Unit of Measure'))
-    show_details_visible = fields.Boolean('Details Visible', compute='_compute_show_details_visible')
-    has_tracking = fields.Selection(related='product_id.tracking', string='Product with Tracking', readonly=True)
-    move_line_ids = fields.One2many('stock.move.line', 'move_id')
-    origin_returned_move_id = fields.Many2one('stock.move', 'Origin return move', copy=False, help='Move that created the return move')
-    returned_move_ids = fields.One2many('stock.move', 'origin_returned_move_id', 'All returned moves', help='Optional: all returned moves created from this move')
-
-    @api.depends('product_id', 'has_tracking', 'move_line_ids', 'location_id', 'location_dest_id')
-    def _compute_show_details_visible(self):
-        """ According to this field, the button that calls `action_show_details` will be displayed
-        to work on a move from its picking form view, or not.
-        """
-        for move in self:
-            if not move.product_id:
-                move.show_details_visible = False
-                continue
-
-            multi_locations_enabled = False
-            if self.user_has_groups('stock.group_stock_multi_locations'):
-                multi_locations_enabled = move.location_id.child_ids or move.location_dest_id.child_ids
-            has_package = move.move_line_ids.mapped('package_id') | move.move_line_ids.mapped('result_package_id')
-            consignment_enabled = self.user_has_groups('stock.group_tracking_owner')
-            if move.picking_id.picking_type_id.show_operations is False\
-                    and (move.state != 'draft' or (not self._context.get('planned_picking') and move.state == 'draft'))\
-                    and (multi_locations_enabled or move.has_tracking != 'none' or len(move.move_line_ids) > 1 or has_package or consignment_enabled):
-                move.show_details_visible = True
-            else:
-                move.show_details_visible = False
 
     @api.multi
     def write(self, vals):
@@ -425,9 +372,3 @@ class CopyStockMove2(models.Model):
                 show_reserved_quantity=move_obj.state != 'done'
             ),
         }
-
-class InheritStockMoveLine(models.Model):
-    _inherit = "stock.move.line"
-
-    invima = fields.Char('Registro Invima')
-    expiration_date = fields.Datetime('Fecha de Vencimiento')

@@ -6888,3 +6888,14 @@ msgstr "<strong style="font-size:12px;">PRESCRIPCIÓN</strong><br/>"
 #: model:ir.ui.view,arch_db:clinica_doctor_data.prescription_visualizer_template
 msgid "Age:"
 msgstr "Edad:"
+
+
+#. module: stock
+#: model:ir.model.fields,field_description:stock.field_stock_production_lot_ref
+msgid "Internal Reference"
+msgstr "Registro Invima"
+
+#. module: product_expiry
+#: model:ir.model.fields,field_description:product_expiry.field_stock_production_lot_life_date
+msgid "End of Life Date"
+msgstr "Fecha Vencimiento"
