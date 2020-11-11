@@ -133,6 +133,47 @@ class InheritStockMove(models.Model):
 	        		self.env['copy.stock.move2'].create(copy_vals)
         return res
 
+    def action_show_details(self):
+        """ Returns an action that will open a form view (in a popup) allowing to work on all the
+        move lines of a particular move. This form view is used when "show operations" is not
+        checked on the picking type.
+        """
+        self.ensure_one()
+
+        # If "show suggestions" is not checked on the picking type, we have to filter out the
+        # reserved move lines. We do this by displaying `move_line_nosuggest_ids`. We use
+        # different views to display one field or another so that the webclient doesn't have to
+        # fetch both.
+        if self.picking_id.picking_type_id.show_reserved:
+            view = self.env.ref('stock.view_stock_move_operations')
+        else:
+            view = self.env.ref('stock.view_stock_move_nosuggest_operations')
+
+        picking_type_id = self.picking_type_id or self.picking_id.picking_type_id
+
+        return {
+            'name': _('Detailed Operations'),
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'stock.move',
+            'views': [(view.id, 'form')],
+            'view_id': view.id,
+            'target': 'new',
+            'res_id': self.id,
+            'context': dict(
+                self.env.context,
+                # show_lots_m2o=self.has_tracking != 'none' and (picking_type_id.use_existing_lots or move_obj.state == 'done' or move_obj.origin_returned_move_id.id),  # able to create lots, whatever the value of ` use_create_lots`.
+                show_lots_m2o=True,
+                # show_lots_text=self.has_tracking != 'none' and picking_type_id.use_create_lots and not picking_type_id.use_existing_lots and move_obj.state != 'done' and not move_obj.origin_returned_move_id.id,
+                show_lots_text=False,
+                show_source_location=self.location_id.child_ids,
+                show_destination_location=self.location_dest_id.child_ids,
+                show_package=not self.location_id.usage == 'supplier',
+                show_reserved_quantity=self.state != 'done'
+            ),
+        }
+
 class CopyStockMove(models.Model):
     _name = "copy.stock.move"
 
@@ -364,8 +405,10 @@ class CopyStockMove2(models.Model):
             'res_id': move_obj.id,
             'context': dict(
                 move_obj.env.context,
-                show_lots_m2o=move_obj.has_tracking != 'none' and (picking_type_id.use_existing_lots or move_obj.state == 'done' or move_obj.origin_returned_move_id.id),  # able to create lots, whatever the value of ` use_create_lots`.
-                show_lots_text=move_obj.has_tracking != 'none' and picking_type_id.use_create_lots and not picking_type_id.use_existing_lots and move_obj.state != 'done' and not move_obj.origin_returned_move_id.id,
+                # show_lots_m2o=move_obj.has_tracking != 'none' and (picking_type_id.use_existing_lots or move_obj.state == 'done' or move_obj.origin_returned_move_id.id),  # able to create lots, whatever the value of ` use_create_lots`.
+                show_lots_m2o=True,
+                # show_lots_text=move_obj.has_tracking != 'none' and picking_type_id.use_create_lots and not picking_type_id.use_existing_lots and move_obj.state != 'done' and not move_obj.origin_returned_move_id.id,
+                show_lots_text=False,
                 show_source_location=move_obj.location_id.child_ids,
                 show_destination_location=move_obj.location_dest_id.child_ids,
                 show_package=not move_obj.location_id.usage == 'supplier',
