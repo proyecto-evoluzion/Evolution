@@ -124,7 +124,6 @@ class InheritStockMove(models.Model):
 	            'picking_type_id': res.picking_type_id.id,
 	            'no_mirror_data': True,
 	        }
-	        print('aaa')
 
 	        for picking_type in res.picking_type_id:
 	        	if picking_type.code == 'outgoing':
@@ -247,21 +246,39 @@ class CopyStockMove(models.Model):
         copy_vals = {}
         res = super(CopyStockMove, self).create(vals)
         if not res.no_mirror_data:
-        	copy_vals = {
-	            'name': 'Mirror',
-	            'product_id': res.product_id.id,
-	            'product_uom_qty': res.product_uom_qty,
-	            'quantity_done': res.quantity_done,
-	            'product_uom': 1,
-	            'partner_id': res.picking_id.partner_id.id,
-	            'picking_id': res.picking_id.id,
-	            'origin': res.picking_id.origin,
-	            'location_id': 15,
-	            'location_dest_id': 9,
-	            'picking_type_id': 4,
-	            'no_mirror_data': True,
-	        }
-        	self.env['stock.move'].create(copy_vals)
+            copy_vals = {
+                'name': 'Mirror',
+                'product_id': res.product_id.id,
+                'product_uom_qty': res.product_uom_qty,
+                'quantity_done': res.quantity_done,
+                'product_uom': 1,
+                'partner_id': res.picking_id.partner_id.id,
+                'picking_id': res.picking_id.id,
+                'origin': res.picking_id.origin,
+                'location_id': 15,
+                'location_dest_id': 9,
+                'picking_type_id': 4,
+                'no_mirror_data': True,
+            }
+            move_id = self.env['stock.move'].create(copy_vals)
+
+            # Onchange para setear lotes automaticos, en seleccion manual de productos, # En caso que exista el lote y tenga disponibilidad entonces se procesa todo normal, # en caso de cumplir con las condiciones entonces se emite un mensaje de alerta.
+            if res.product_id:
+                lot_obj = self.env['stock.production.lot'].search([('product_id','=',res.product_id.id)])
+                if lot_obj:
+                    count_lots = 0
+                    for lots in lot_obj:
+                        quant_obj = self.env['stock.quant'].search([('product_id','=',res.product_id.id),('lot_id','=',lots.id)])
+                        available = quant_obj.quantity - quant_obj.reserved_quantity
+                        if available != 0:
+                            if available >= res.quantity_done:
+                                count_lots += 1
+                                for lines in move_id.move_line_ids:
+                                    lines.update({'lot_id': lots.id})
+                                break
+                    if count_lots == 0:
+                        raise UserError(_("""No posee Stock/Lote suficiente para el producto: %s""")% (res.product_id.name),)
+
         return res
 
     @api.multi
