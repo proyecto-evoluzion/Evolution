@@ -44,8 +44,6 @@ from . import doctor_prescription
 from . import record_authenticate
 from . import clinica_calendar_cancelation
 from . import external_attention
-from . import inherit_sale_order
-from . import inherit_purchase_order
 
 
 # vim:expandtab:smartindent:tabstop=2:softtabstop=2:shiftwidth=2:
