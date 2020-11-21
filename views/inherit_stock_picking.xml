@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <odoo>
 
-	<record id="inherit_vpicktree" model="ir.ui.view">
+  <record id="inherit_vpicktree" model="ir.ui.view">
          <field name="name">inherit.vpicktree</field>
          <field name="model">stock.picking</field>
          <field name="inherit_id" ref="stock.vpicktree"/>
@@ -18,6 +18,12 @@
        <field name="inherit_id" ref="stock.view_picking_form"/>
        <field name="arch" type="xml">
             <div name="button_box" position="inside">
+              <button name="stock_lot_quant"
+                  string="Actualizar Lotes"
+                  class="oe_stat_button"
+                  icon="fa-refresh"
+                  type="object"
+                  attrs="{'invisible': [('state', '!=', 'assigned')]}"/>
               <button name="cost_calculation"
                   string="Calcular costos"
                   class="oe_stat_button"
@@ -33,25 +39,18 @@
                   type="object"/> -->
             </div>
 
-            <!-- <field name="location_id" position="after">
+            <field name="location_id" position="after">
               <field name="pivot_invisible" invisible="1" force_save="1"/>
               <field name="aux_move_lines" invisible="1" force_save="1"/>
-            </field> -->
+            </field>
 
             <xpath expr="//field[@name='move_lines']/tree" position="attributes">
                 <attribute name="default_order">product_id asc</attribute>
                 <attribute name="limit">10000</attribute>
             </xpath>
 
-            <!-- <field name="quantity_done" position="before">
-              <field name="product_delivered"/>
-              <field name="is_wh_out" invisible="1"/>
-            </field> -->
-
             <field name="quantity_done" position="after">
-              <!-- <field name="product_return" readonly="1" force_save="1"/> -->
-              <field name="product_cost" readonly="1" force_save="1"/>
-              <field name="no_mirror_data" invisible="1" force_save="1"/>
+                <field name="product_cost" readonly="1" force_save="1"/>
             </field>
 
             <field name="reserved_availability" position="attributes">
@@ -59,7 +58,7 @@
             </field>
 
             <xpath expr="//field[@name='move_lines']/tree/field[@name='product_uom_qty']" position="replace">
-              <field name="product_uom_qty" string="Demanda Inicial / Cantidad solicitada"/>
+              <field name="product_uom_qty" string="Demanda Inicial"/>
             </xpath>
 
             <!--Se fijan nuevos campos despues de la linea de productos-->
@@ -70,10 +69,11 @@
                 </strong>
             </field>
 
-            <!-- <field name="move_lines" position="after">
+            <field name="move_lines" position="after">
               <field name="out_move_lines" attrs="{'readonly': ['|', '&amp;', ('show_operations', '=', True), '|', ('is_locked', '=', True), ('state', '=', 'done'), '&amp;', ('state', '=', 'done'), ('is_locked', '=', True)],'invisible': [('pivot_invisible', '=', True)]}" context="{'picking_type_code': picking_type_code, 'default_picking_id': id, 'form_view_ref':'stock.view_move_picking_form', 'address_in_id': partner_id, 'default_picking_type_id': picking_type_id, 'default_location_id': location_id, 'default_location_dest_id': location_dest_id}">
-                <tree string="Stock Moves" editable="bottom" default_order="product_id asc" limit="10000">
+                <tree string="Stock Moves" editable="bottom" default_order="product_id asc" limit="10000" decoration-danger="no_available_lot == 1">
                   <field name="name" invisible="1"/>
+                  <field name="no_available_lot" invisible="1"/>
                   <field name="date_expected" invisible="1"/>
                   <field name="state" invisible="1" readonly="0"/>
                   <field name="picking_type_id" invisible="1"/>
@@ -109,7 +109,7 @@
 
             <field name="move_lines" position="attributes">
               <attribute name="attrs">{'invisible': [('aux_move_lines', '=', False)]}</attribute>
-            </field> -->
+            </field>
 
        </field>
     </record>
