@@ -703,7 +703,7 @@ class DoctorWaitingRoom(models.Model):
                     }
                 self.env['sale.order.line'].create(so_line_vals)
             # DevFree: Unique Quirurgic Kit.
-            kit_obj = self.env['product.product'].search([('name','=','INSUMOS QUIRÚRGICOS')])
+            kit_obj = self.env['product.product'].search([('name','=','MATERIALES DE CIRUGÍA')])
             kit_line_val = {
                 'product_id': kit_obj.id or False,
                 'product_uom_qty': 1,
